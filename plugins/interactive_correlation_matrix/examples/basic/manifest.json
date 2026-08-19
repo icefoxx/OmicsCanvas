@@ -1,0 +1,15 @@
+{
+  "id": "basic",
+  "label": "basic",
+  "plugin_id": "interactive_correlation_matrix",
+  "plot_type": "raw",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_correlation_matrix/plot.R --input plugins/interactive_correlation_matrix/examples/basic/input/example_input.csv --params plugins/interactive_correlation_matrix/examples/basic/params.json --output /tmp/interactive_correlation_matrix_basic_out"
+  }
+}

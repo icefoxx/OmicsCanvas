@@ -1,0 +1,15 @@
+{
+  "id": "basic",
+  "label": "basic",
+  "plugin_id": "violin_plot",
+  "plot_type": "long",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_long.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/violin_plot/plot.R --input plugins/violin_plot/examples/basic/input/example_long.csv --params plugins/violin_plot/examples/basic/params.json --output /tmp/violin_plot_basic_out"
+  }
+}

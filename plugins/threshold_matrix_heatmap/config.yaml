@@ -1,0 +1,47 @@
+id: threshold_matrix_heatmap
+name: Threshold Matrix Heatmap
+version: 1.0.0
+description: Draw a highly customizable table-based heatmap with row/column selection, row labels, per-column cutoff coloring rules, tile/circle/shape cells, and editable legend/axis details.
+language: R
+entrypoint: plot.R
+category: Heatmap
+status: experimental
+inputs:
+  - id: input
+    type: table
+    formats: [csv, tsv, txt]
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - selected_rows.csv
+  - run.log
+parameters:
+  row_label_column:
+    type: column
+    required: true
+    description: Column used as row labels in the plot.
+  value_columns:
+    type: columns
+    required: false
+    description: Columns shown as heatmap columns. Defaults to all numeric columns except the row label column.
+  rows_include:
+    type: string_array
+    required: false
+    description: Row labels selected by the table under the figure. Defaults to all rows.
+  default_rules:
+    type: string
+    required: false
+    description: Semicolon-separated cutoff rules used for all columns unless column-specific rules override them.
+  column_rules_string:
+    type: string
+    required: false
+    description: Semicolon-separated per-column cutoff rules, for example "colA:<0.01=#F97316|strong,<0.05=#C6FF1A|sig;colB:<0.05=#00A087|sig".
+  cell_shape:
+    type: select
+    options: [tile, circle, diamond, triangle]
+    default: tile
+  legend_name:
+    type: string
+    default: ""

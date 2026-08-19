@@ -1,0 +1,15 @@
+{
+  "id": "vertical_labels",
+  "label": "vertical_labels",
+  "plugin_id": "stacked_bar_plot",
+  "plot_type": "stack",
+  "mode": "vertical",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/stacked_bar_plot/plot.R --input plugins/stacked_bar_plot/examples/vertical_labels/input/example_input.csv --params plugins/stacked_bar_plot/examples/vertical_labels/params.json --output /tmp/out"
+  }
+}

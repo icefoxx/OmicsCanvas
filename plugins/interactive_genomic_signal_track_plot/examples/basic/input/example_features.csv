@@ -1,0 +1,5 @@
+"start","end","label","type","strand"
+112000,126000,"Gene A","gene","+"
+140000,151000,"Enhancer 1","enhancer","-"
+169000,181000,"Gene B","gene","+"
+184000,195000,"Regulatory region","region","+"

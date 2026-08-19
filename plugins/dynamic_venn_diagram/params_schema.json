@@ -1,0 +1,200 @@
+{
+  "data": {
+    "input_type": {
+      "type": "select",
+      "label": "Input type",
+      "help": "",
+      "default": "auto",
+      "options": [
+        "auto",
+        "element",
+        "abundance"
+      ]
+    },
+    "element_id_column": {
+      "type": "column",
+      "label": "Element id column",
+      "help": ""
+    },
+    "groups_include": {
+      "type": "string_array",
+      "label": "Groups include",
+      "help": "",
+      "default": []
+    },
+    "groups_exclude": {
+      "type": "string_array",
+      "label": "Groups exclude",
+      "help": "",
+      "default": []
+    },
+    "group_order": {
+      "type": "string_array",
+      "label": "Group order",
+      "help": "",
+      "default": []
+    },
+    "abundance_threshold": {
+      "type": "number",
+      "label": "Abundance threshold",
+      "help": "",
+      "default": 0
+    },
+    "abundance_operator": {
+      "type": "select",
+      "label": "Abundance operator",
+      "help": "",
+      "default": ">",
+      "options": [
+        ">",
+        ">=",
+        "<",
+        "<="
+      ]
+    },
+    "plot_mode": {
+      "type": "select",
+      "label": "Plot mode",
+      "help": "",
+      "default": "auto",
+      "options": [
+        "auto",
+        "venn",
+        "flower"
+      ]
+    }
+  },
+  "style": {
+    "title_show": {
+      "type": "boolean",
+      "label": "Show title",
+      "help": "",
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "help": "",
+      "default": "Dynamic Venn diagram"
+    },
+    "title_size": {
+      "type": "number",
+      "label": "Title size",
+      "help": "",
+      "default": 16
+    },
+    "palette_scheme": {
+      "type": "string",
+      "label": "Palette",
+      "help": "",
+      "default": "bold"
+    },
+    "set_colors": {
+      "type": "object",
+      "label": "Set colors",
+      "help": "",
+      "default": {}
+    },
+    "fill_alpha": {
+      "type": "number",
+      "label": "Fill alpha",
+      "help": "",
+      "default": 0.72
+    },
+    "border_color": {
+      "type": "color",
+      "label": "Border color",
+      "help": "",
+      "default": "#FFFFFF"
+    },
+    "border_width": {
+      "type": "number",
+      "label": "Border width",
+      "help": "",
+      "default": 2
+    },
+    "show_counts": {
+      "type": "boolean",
+      "label": "Show counts",
+      "help": "",
+      "default": true
+    },
+    "show_percent": {
+      "type": "boolean",
+      "label": "Show percent",
+      "help": "",
+      "default": true
+    },
+    "show_group_names": {
+      "type": "boolean",
+      "label": "Show group names",
+      "help": "",
+      "default": true
+    },
+    "show_bar_chart": {
+      "type": "boolean",
+      "label": "Show set-size bar chart",
+      "help": "",
+      "default": true
+    },
+    "count_size": {
+      "type": "number",
+      "label": "Count text size",
+      "help": "",
+      "default": 1.2
+    },
+    "group_name_size": {
+      "type": "number",
+      "label": "Group name size",
+      "help": "",
+      "default": 1.2
+    },
+    "group_name_color": {
+      "type": "color",
+      "label": "Group name color",
+      "help": "",
+      "default": "#222222"
+    }
+  },
+  "legend": {
+    "legend_show": {
+      "type": "boolean",
+      "label": "Show legend",
+      "help": "",
+      "default": true
+    },
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "help": "",
+      "default": "right",
+      "options": [
+        "right",
+        "left",
+        "top",
+        "bottom",
+        "none"
+      ]
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "label": "Width",
+      "help": "",
+      "default": 8
+    },
+    "height": {
+      "type": "number",
+      "label": "Height",
+      "help": "",
+      "default": 7
+    },
+    "dpi": {
+      "type": "number",
+      "label": "DPI",
+      "help": "",
+      "default": 300
+    }
+  }
+}

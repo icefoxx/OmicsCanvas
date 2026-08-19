@@ -1,0 +1,24 @@
+{
+  "category_column": "category",
+  "type_column": "type",
+  "value_column": "value",
+  "orientation": "horizontal",
+  "sort_by": "type_value",
+  "type_colors": {
+    "type-A": "#E07A5F",
+    "type-B": "#4A6FA5",
+    "type-C": "#5C5C5C",
+    "type-D": "#6A994E"
+  },
+  "bar_text_show": true,
+  "bar_text_size": 8,
+  "bar_text_digits": 0,
+  "title_show": true,
+  "title": "Pathway counts by class",
+  "legend_title": "xiaoshi",
+  "x_max": 26000,
+  "x_grid_show": true,
+  "width": 9,
+  "height": 7.5,
+  "dpi": 300
+}

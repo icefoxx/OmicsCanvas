@@ -1,0 +1,13 @@
+id: interactive_bubble_score_matrix
+name: Interactive Bubble Score Matrix
+version: 1.0.0
+description: Benchmark matrix with labeled metric bubbles and an independent overall-score panel.
+language: R
+entrypoint: plot.R
+category: Benchmark
+status: experimental
+inputs:
+  - {id: input, type: table, formats: [csv, tsv, txt], required: true}
+  - {id: scores, type: table, formats: [csv, tsv, txt], required: false}
+outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, matrix_data_used.csv, score_data_used.csv, row_order.csv, error.json]
+runtime: Rscript plugins/interactive_bubble_score_matrix/plot.R --input matrix.csv --params params.json --output output_dir

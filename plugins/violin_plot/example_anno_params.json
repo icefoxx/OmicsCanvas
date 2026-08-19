@@ -1,0 +1,24 @@
+{
+  "input_mode": "long",
+  "cell_id_column": "cell",
+  "feature_column": "gene",
+  "value_column": "value",
+  "group_column": "cluster",
+  "annotation_column": "category",
+  "add_stat": "boxplot",
+  "add_dot": false,
+  "add_anno": true,
+  "y_anno_label": "gene category",
+  "title": "Expression by cluster (annotation strip)",
+  "ylab": "Expression level",
+  "x_axis_text_angle": 45,
+  "anno_colors": {
+    "T_marker": "#4DBBD5",
+    "B_marker": "#E64B35",
+    "Mono_marker": "#00A087"
+  },
+  "legend_show": false,
+  "width": 8,
+  "height": 6.5,
+  "dpi": 220
+}

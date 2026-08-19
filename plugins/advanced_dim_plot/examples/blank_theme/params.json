@@ -1,0 +1,23 @@
+{
+  "plot_mode": "group",
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "title_show": false,
+  "subtitle_show": false,
+  "xlab_show": false,
+  "ylab_show": false,
+  "theme_use": "blank",
+  "point_size": 1.1,
+  "point_alpha": 0.82,
+  "group_palette": "Set1",
+  "label_groups": true,
+  "label_color": "#FFFFFF",
+  "label_point_color": "#111111",
+  "label_point_size": 2,
+  "label_size": 3.8,
+  "legend_position": "none",
+  "width": 6.2,
+  "height": 5.8
+}

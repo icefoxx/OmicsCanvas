@@ -1,0 +1,59 @@
+{
+  "plugin_id": "interactive_correlation_matrix",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic",
+      "plugin_id": "interactive_correlation_matrix",
+      "plot_type": "raw",
+      "mode": "",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_correlation_matrix/plot.R --input plugins/interactive_correlation_matrix/examples/basic/input/example_input.csv --params plugins/interactive_correlation_matrix/examples/basic/params.json --output /tmp/interactive_correlation_matrix_basic_out"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    },
+    {
+      "id": "interactive",
+      "label": "interactive",
+      "plugin_id": "interactive_correlation_matrix",
+      "plot_type": "raw",
+      "mode": "",
+      "params": "../examples/interactive/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/interactive/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_correlation_matrix/plot.R --input plugins/interactive_correlation_matrix/examples/interactive/input/example_input.csv --params plugins/interactive_correlation_matrix/examples/interactive/params.json --output /tmp/interactive_correlation_matrix_interactive_out"
+      },
+      "bundle": "../examples/interactive",
+      "gallery_png": "interactive.png",
+      "params_filename": "example_interactive_params.json"
+    },
+    {
+      "id": "lower_triangle",
+      "label": "lower_triangle",
+      "plugin_id": "interactive_correlation_matrix",
+      "plot_type": "raw",
+      "mode": "",
+      "params": "../examples/lower_triangle/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/lower_triangle/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_correlation_matrix/plot.R --input plugins/interactive_correlation_matrix/examples/lower_triangle/input/example_input.csv --params plugins/interactive_correlation_matrix/examples/lower_triangle/params.json --output /tmp/interactive_correlation_matrix_lower_triangle_out"
+      },
+      "bundle": "../examples/lower_triangle",
+      "gallery_png": "lower_triangle.png",
+      "params_filename": "example_lower_triangle_params.json"
+    }
+  ]
+}

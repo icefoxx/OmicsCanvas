@@ -1,0 +1,20 @@
+{
+  "id_column": "cell",
+  "group_column": "cluster",
+  "cell_annotation": ["condition", "batch"],
+  "features": ["CD3D", "IL7R", "MS4A1", "CD79A", "LYZ", "LST1", "MKI67", "TOP2A"],
+  "plot_type": "heatmap",
+  "heatmap_mode": "cell",
+  "summary": "log1p",
+  "heatmap_colors": ["#2C7BB6", "#FFFFBF", "#D7191C"],
+  "show_column_names": false,
+  "show_row_names": true,
+  "row_names_method": "linker",
+  "row_names_layers": 2,
+  "row_name_link_color": "#555555",
+  "cluster_rows": true,
+  "cluster_columns": false,
+  "border": false,
+  "width": 9,
+  "height": 5.8
+}

@@ -1,0 +1,1 @@
+{"upper_label":"Jaccard similarity","lower_label":"Pearson correlation","upper_metric":"jaccard","lower_metric":"pearson","upper_palette":"red","lower_palette":"blue","upper_limits":[0,1],"lower_limits":[-1,1],"cluster_features":false,"diagonal_mode":"none","interactive":false,"title":"Dual similarity heatmap","width":11,"height":10}

@@ -1,0 +1,51 @@
+#!/usr/bin/env Rscript
+suppressPackageStartupMessages({library(optparse); library(jsonlite); library(ggplot2)})
+op <- parse_args(OptionParser(option_list=list(
+  make_option('--input', type='character'), make_option('--params', type='character'),
+  make_option('--output', type='character'), make_option('--nodes', type='character', default=NULL))))
+`%||%` <- function(a,b) if(is.null(a)||length(a)==0||is.na(a[1])) b else a
+out <- op$output %||% 'output'; dir.create(out, recursive=TRUE, showWarnings=FALSE)
+logmsg <- function(x) cat(sprintf('[%s] %s\n',format(Sys.time(),'%F %T'),x),file=file.path(out,'run.log'),append=TRUE)
+fail <- function(e,d='',s='Check input and params') { writeLines(toJSON(list(error=e,detail=d,suggestion=s),auto_unbox=TRUE,pretty=TRUE),file.path(out,'error.json')); quit(status=1) }
+tryCatch({
+ readtab <- function(f) { if(is.null(f)||!file.exists(f)) stop('Input file not found: ',f); if(tolower(tools::file_ext(f))=='csv') read.csv(f,check.names=FALSE,stringsAsFactors=FALSE) else read.delim(f,check.names=FALSE,stringsAsFactors=FALSE) }
+ p <- fromJSON(op$params,simplifyVector=FALSE); get <- function(n,d=NULL) p[[n]] %||% d
+ vec <- function(x) {if(is.null(x)) character() else trimws(as.character(unlist(x)))}
+ num <- function(n,d) {z=suppressWarnings(as.numeric(get(n,d)[1])); if(is.na(z)) d else z}; bool <- function(n,d=FALSE) {z=get(n,d); if(is.logical(z)) isTRUE(z[1]) else tolower(as.character(z[1])) %in% c('true','1','yes','on')}
+ named <- function(x) {if(is.null(x)) return(character()); z=unlist(x); if(is.null(names(z))) character() else setNames(as.character(z),names(z))}
+ dat <- readtab(op$input); source_col=get('source_column','source'); target_col=get('target_column','target'); value_col=get('value_column','value')
+ req <- c(source_col,target_col,value_col); if(!all(req %in% names(dat))) stop('Missing flow columns: ',paste(setdiff(req,names(dat)),collapse=', '))
+ inc=vec(get('rows_include')); exc=vec(get('rows_exclude')); if(length(inc)) dat=dat[as.character(seq_len(nrow(dat))) %in% inc | as.character(dat[[source_col]]) %in% inc | as.character(dat[[target_col]]) %in% inc,,drop=FALSE]; if(length(exc)) dat=dat[!(as.character(seq_len(nrow(dat))) %in% exc | as.character(dat[[source_col]]) %in% exc | as.character(dat[[target_col]]) %in% exc),,drop=FALSE]
+ dat$.source=as.character(dat[[source_col]]); dat$.target=as.character(dat[[target_col]]); dat$.value=as.numeric(dat[[value_col]]); dat=dat[is.finite(dat$.value)&dat$.value>0,,drop=FALSE]
+ stage_col=get('stage_column',NULL); sc=get('source_stage_column',NULL); tc=get('target_stage_column',NULL)
+ stage_for <- function(id, side) { col=if(side=='source') sc else tc; if(!is.null(col)&&col %in% names(dat)) as.character(dat[[col]])[match(id,if(side=='source') dat$.source else dat$.target)] else if(!is.null(stage_col)&&stage_col %in% names(dat)) as.character(dat[[stage_col]])[match(id,if(side=='source') dat$.source else dat$.target)] else NA_character_ }
+ nodefile <- if(!is.null(op$nodes)) readtab(op$nodes) else NULL; idc=get('node_id_column','id'); labelc=get('label_column','label');
+ ids=unique(c(dat$.source,dat$.target)); if(!is.null(nodefile)&&idc %in% names(nodefile)) ids=unique(c(ids,as.character(nodefile[[idc]])))
+ stages=unique(c(vapply(ids,stage_for,'',side='source'),vapply(ids,stage_for,'',side='target'))); stages=stages[!is.na(stages)&nzchar(stages)]
+ stage_order=vec(get('stage_order')); if(length(stage_order)) stages=c(stage_order,setdiff(stages,stage_order)); if(!length(stages)) stages='1';
+ nd=data.frame(id=ids,label=ids,stage=NA_character_,x=NA_real_,y=NA_real_,color=NA_character_,highlight=FALSE,stringsAsFactors=FALSE)
+ for(i in seq_len(nrow(nd))) { nd$stage[i]=if(length(stages)==1) '1' else {a=stage_for(nd$id[i],'source'); b=stage_for(nd$id[i],'target'); z=if(!is.na(a)) a else b; if(is.na(z)||!nzchar(z)) stages[1] else z} }
+ if(!is.null(nodefile)) { for(i in seq_len(nrow(nd))) {j=match(nd$id[i],as.character(nodefile[[idc]])); if(!is.na(j)){if(labelc %in% names(nodefile)) nd$label[i]=as.character(nodefile[[labelc]][j]); for(q in c('stage','x','y','color','highlight')) if(q %in% names(nodefile)) nd[[q]][i]=nodefile[[q]][j]}}}
+ # deterministic stage layout, overridden by node x/y columns or node table coordinates
+ xcol=get('node_x_column','x'); ycol=get('node_y_column','y'); manual=all(is.finite(suppressWarnings(as.numeric(nd$x)))&is.finite(suppressWarnings(as.numeric(nd$y))))
+ if(!manual) { nd$x=(match(nd$stage,stages)-1)/max(1,length(stages)-1); nd$y=ave(seq_len(nrow(nd)),nd$stage,FUN=function(z)(z-.5)/max(1,length(z))) }
+ nd$x=pmin(.98,pmax(.02,as.numeric(nd$x))); nd$y=pmin(.98,pmax(.02,as.numeric(nd$y)))
+ nmap=setNames(seq_len(nrow(nd))-1,nd$id); dat$si=nmap[dat$.source]; dat$ti=nmap[dat$.target]
+ pal=named(get('node_colors')); defaultcols=grDevices::hcl(h=seq(15,375,length.out=max(2,nrow(nd)+1))[-1],c=65,l=65); nd$color=ifelse(is.na(nd$color)|!nzchar(nd$color),defaultcols[(seq_len(nrow(nd))-1)%%length(defaultcols)+1],as.character(nd$color)); if(length(pal)) nd$color=ifelse(nd$id %in% names(pal),pal[nd$id],nd$color); node_color=get('node_color',''); if(length(node_color)&&nzchar(as.character(node_color[1]))) nd$color=rep(as.character(node_color[1]),nrow(nd))
+ highlight=unique(c(vec(get('highlight_nodes')),vec(get('node_highlight')))); nd$highlight=tolower(as.character(nd$highlight)) %in% c('true','1','yes','on') | nd$id %in% highlight; if(bool('node_highlight',FALSE)&&!length(highlight)) nd$highlight=FALSE
+ lmode=get('link_color_mode','source'); lcols=named(get('link_colors')); dat$lcolor=nd$color[dat$si+1]; if(lmode=='target') dat$lcolor=nd$color[dat$ti+1]; if(lmode=='group'&&get('group_column',NULL)%in%names(dat)){g=as.character(dat[[get('group_column')]]); dat$lcolor=grDevices::hcl(h=seq(15,375,length.out=max(2,length(unique(g))+1))[-1])[as.integer(factor(g))]}; if(length(lcols)) dat$lcolor=ifelse(dat$.source %in% names(lcols),lcols[dat$.source],dat$lcolor)
+ # static alluvial ribbons as sampled cubic Bezier polygons
+ ribbon <- function(e) { a=nd[e$si+1,]; b=nd[e$ti+1,]; w=.018*sqrt(e$.value/max(dat$.value)); t=seq(0,1,length.out=30); cx=(1-t)^3*a$x+3*(1-t)^2*t*(a$x+.22)+3*(1-t)*t^2*(b$x-.22)+t^3*b$x; cy=(1-t)^3*a$y+3*(1-t)^2*t*a$y+3*(1-t)*t^2*b$y+t^3*b$y; data.frame(x=c(cx,rev(cx)),y=c(cy+w,rev(cy-w)),edge=1,col=e$lcolor)}
+ polys=do.call(rbind,lapply(seq_len(nrow(dat)),function(i) ribbon(dat[i,]))); W=num('width',10); H=num('height',7); alpha=num('link_alpha',.42); bg=get('background_color','white')
+ g=ggplot()+geom_polygon(data=polys,aes(x,y,group=interaction(edge,col)),fill=polys$col[1],alpha=alpha,colour=get('link_border_color',NA),linewidth=num('link_border_width',0))
+ # draw each ribbon separately so custom colors survive
+ g=ggplot(); for(i in seq_len(nrow(dat))) {z=ribbon(dat[i,]); g=g+geom_polygon(data=z,aes(x,y),fill=dat$lcolor[i],alpha=alpha,colour=get('link_border_color',NA),linewidth=num('link_border_width',0))}
+ g=g+geom_rect(data=nd,aes(xmin=x-.012,xmax=x+.012,ymin=y-.045,ymax=y+.045,fill=color),colour=get('node_border_color','#555555'),linewidth=num('node_border_width',.35),alpha=num('node_alpha',1),inherit.aes=FALSE)+scale_fill_identity()+coord_cartesian(xlim=c(-.05,1.05),ylim=c(1.05,-.05),expand=FALSE)+theme_void(base_size=num('base_size',12),base_family=get('font_family','sans'))+theme(plot.background=element_rect(fill=bg,colour=NA),panel.background=element_rect(fill=get('panel_background',bg),colour=NA))
+ if(bool('node_label_show',TRUE)) g=g+geom_text(data=nd,aes(x=x+.02,y=y,label=label),hjust=ifelse(nd$x>.8,1,0),colour=get('node_label_color','#222222'),size=num('node_label_size',3.5)/ggplot2::.pt,fontface=get('node_label_face','plain'),angle=num('node_label_angle',0),inherit.aes=FALSE)
+ if(bool('title_show',TRUE)) g=g+labs(title=get('title','Interactive Sankey'),subtitle=get('subtitle',NULL),caption=get('caption',NULL))+theme(plot.title=element_text(size=num('title_size',16),colour=get('title_color','#222222'),hjust=num('title_hjust',.5)))
+ saveone <- function(device) {device(); print(g); dev.off()}; saveone(function() svglite::svglite(file.path(out,'result.svg'),width=W,height=H)); saveone(function() grDevices::cairo_pdf(file.path(out,'result.pdf'),width=W,height=H)); saveone(function() png(file.path(out,'result.png'),width=W,height=H,units='in',res=num('dpi',150),type='cairo'))
+ write.csv(nd,file.path(out,'nodes_used.csv'),row.names=FALSE); write.csv(dat,file.path(out,'edges_used.csv'),row.names=FALSE); if(length(highlight)||any(nd$highlight)) write.csv(nd[nd$highlight,],file.path(out,'selected_nodes.csv'),row.names=FALSE)
+ # Plotly is used only for HTML: native Sankey interaction supports drag, zoom, hover and selection.
+ if(bool('interactive',TRUE)&&requireNamespace('plotly',quietly=TRUE)) { links=list(source=as.integer(dat$si),target=as.integer(dat$ti),value=dat$.value,color=dat$lcolor,hovertemplate=paste(dat$.source,' → ',dat$.target,': %{value}<extra></extra>')); nodes=list(label=nd$label,color=nd$color,x=nd$x,y=nd$y,pad=num('node_padding',15),thickness=num('node_width',18),line=list(color=get('node_border_color','#555555'),width=num('node_border_width',.5)),customdata=nd$label,hovertemplate='%{customdata}<extra></extra>'); fig=plotly::plot_ly(type='sankey',orientation=ifelse(get('orientation','h')=='v','v','h'),arrangement=ifelse(manual,'fixed',get('layout_mode','snap')),node=nodes,link=links); fig=plotly::layout(fig,title=list(text=get('title','Interactive Sankey'))); htmlwidgets::saveWidget(fig,file.path(out,'result.html'),selfcontained=TRUE)} else writeLines('<html><body><p>Interactive Sankey requires plotly.</p></body></html>',file.path(out,'result.html'))
+ meta=list(plugin='interactive_sankey_plot',engine='ggplot2 + plotly',inputs=list(input=op$input,nodes=op$nodes),n_nodes=nrow(nd),n_edges=nrow(dat),selected_nodes=nd$id[nd$highlight],outputs=list('result.svg','result.pdf','result.png','result.html','nodes_used.csv','edges_used.csv')); writeLines(toJSON(meta,auto_unbox=TRUE,pretty=TRUE),file.path(out,'figure.json')); if(file.exists(file.path(out,'error.json'))) unlink(file.path(out,'error.json')); logmsg('Completed Sankey rendering')
+}, error=function(e) {fail('Sankey rendering failed',conditionMessage(e))})

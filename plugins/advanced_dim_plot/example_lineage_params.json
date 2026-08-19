@@ -1,0 +1,38 @@
+{
+  "plot_mode": "group",
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "title": "Embedding With Custom Lineage Paths",
+  "subtitle": "Lineage coordinates come from params and can be styled independently",
+  "point_size": 0.85,
+  "point_alpha": 0.72,
+  "lineages": [
+    {
+      "name": "T trajectory",
+      "x": [-4.2, -3.3, -2.4, -1.6, 0.2, 2.3],
+      "y": [2.4, 1.2, -0.4, -1.4, -2.4, 0.7]
+    },
+    {
+      "name": "Myeloid branch",
+      "x": [1.4, 2.4, 3.4, 4.2],
+      "y": [1.9, 1.1, 0.2, -0.8]
+    }
+  ],
+  "lineage_color_map": {
+    "T trajectory": "#111111",
+    "Myeloid branch": "#D55E00"
+  },
+  "lineage_line_width": 1.4,
+  "lineage_arrow": true,
+  "lineage_arrow_length_mm": 3,
+  "lineage_legend_show": true,
+  "show_mark": true,
+  "mark_type": "ellipse",
+  "mark_alpha": 0.08,
+  "legend_position": "right",
+  "theme_use": "classic",
+  "width": 7.4,
+  "height": 6.2
+}

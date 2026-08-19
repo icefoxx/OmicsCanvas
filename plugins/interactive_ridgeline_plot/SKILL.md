@@ -1,0 +1,9 @@
+# Interactive ridgeline plot skill
+
+Use this plugin for one horizontal distribution ridge per numeric feature. Wide input contains an id column followed by numeric feature columns. Long input contains a feature/category/variable/key column, a value column, and optionally a group column. The aliases `feature`, `variable`, `key`, `value`, `sample`, and `id` are detected automatically; explicit mappings are preferred for reproducible runs.
+
+The density cloud is computed once and reused in ggplot2 static exports and Plotly HTML. `ridge_spacing`, `ridge_height`, `ridge_overlap`, `cloud_adjust`, `cloud_bandwidth`, and `cloud_trim` control the cloud geometry. Raw observations are jittered below each baseline with a deterministic `point_jitter_seed`; `box_show`, `median_show`, and `quantile_line_show` add summary overlays. Filtering and feature ordering are recorded in `distribution_data_used.csv` and, when filtering is requested, `selected_rows.csv`.
+
+For a screenshot-style grouped plot, use long data with `feature,value,group,sample,d,p`, set `group_overlay=true`, `fill_mode="group"`, `group_order=["Control","Patient"]`, and `statistic_method="supplied"`. The repository fixture `example_grouped_input.csv` contains deterministic OSD/MS rows, Control/Patient groups, and `d`/`p` columns; `example_grouped_params.json` is the complete runnable configuration. Grouped overlays use the exact defaults documented in README.md and preserve feature-mode behavior when `fill_mode="feature"`.
+
+Successful runs emit SVG, PDF, PNG, interactive HTML, `figure.json`, `run.log`, and the used distribution data. Plotly HTML supports hover, zoom/pan, trace toggles, and lasso/box selection when enabled. Run `run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas` for independent reproducible bundles under `examples/` and a gallery under `all_examples_gallery/`.

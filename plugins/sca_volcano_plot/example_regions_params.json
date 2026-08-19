@@ -1,0 +1,25 @@
+{
+  "plot_kind": "volcano",
+  "title": "Custom Volcano Regions",
+  "region_annotations_file": "example_regions.csv",
+  "region_layer": "background",
+  "region_label_show": true,
+  "region_label_size": 3.2,
+  "region_label_color": "#222222",
+  "region_label_face": "bold",
+  "x_limits": [-1, 1],
+  "y_limits": [-8, 8],
+  "x_breaks": [-1, -0.5, 0, 0.5, 1],
+  "y_breaks": [-8, -4, 0, 4, 8],
+  "grid_show": true,
+  "threshold_line_color": "#555555",
+  "threshold_line_width": 0.35,
+  "point_groups": [
+    {"name": "tracked", "genes": ["GENE014", "GENE098"], "color": "#111111", "size": 2.2, "alpha": 1, "label": "Tracked genes", "label_x": 0.4, "label_y": 6, "label_color": "#111111"}
+  ],
+  "features_label": ["GENE114"],
+  "pt_alpha": 0.75,
+  "width": 8,
+  "height": 5.5,
+  "dpi": 300
+}

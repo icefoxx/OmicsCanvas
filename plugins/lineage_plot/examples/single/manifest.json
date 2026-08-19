@@ -1,0 +1,16 @@
+{
+  "id": "single",
+  "label": "single",
+  "plugin_id": "lineage_plot",
+  "plot_type": "single",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_embedding.csv",
+    "lineages": "input/example_lineages.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/lineage_plot/plot.R --input plugins/lineage_plot/examples/single/input/example_embedding.csv --params plugins/lineage_plot/examples/single/params.json --output /tmp/lineage_plot_single_out --lineages plugins/lineage_plot/examples/single/input/example_lineages.csv"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "lower_triangle",
+  "label": "lower_triangle",
+  "plugin_id": "interactive_correlation_matrix",
+  "plot_type": "raw",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_correlation_matrix/plot.R --input plugins/interactive_correlation_matrix/examples/lower_triangle/input/example_input.csv --params plugins/interactive_correlation_matrix/examples/lower_triangle/params.json --output /tmp/interactive_correlation_matrix_lower_triangle_out"
+  }
+}

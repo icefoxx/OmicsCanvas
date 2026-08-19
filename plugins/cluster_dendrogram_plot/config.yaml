@@ -1,0 +1,25 @@
+name: cluster_dendrogram_plot
+category: Expression / Statistics
+subcategory: Dendrogram
+display_name: Cluster Dendrogram Plot
+description: Standardized SCA Seuclu2Denplot.R wrapper. Builds per-sample cluster average-expression profiles from an expression matrix + cell metadata, then draws a sample-cluster dendrogram with a group color bar and sample labels via plot.den.cols().
+runtime:
+  command: Rscript plot.R --input expression.csv --annot metadata.csv --params params.json --output output_dir
+inputs:
+  - name: input
+    type: table
+    required: true
+    description: Expression matrix CSV/TSV/TXT. First column = feature/gene id; remaining columns = cells.
+  - name: annot
+    type: table
+    required: true
+    description: Cell metadata CSV/TSV/TXT. First column = cell id; must contain sample and cluster columns.
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - matrix_used.csv
+  - annotation_used.csv
+  - run.log
+  - error.json

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "basic",
+    "label": "basic",
+    "plugin_id": "stacked_bar_plot",
+    "plot_type": "stack",
+    "mode": "horizontal",
+    "params": "../examples/basic/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/basic/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stacked_bar_plot/plot.R --input plugins/stacked_bar_plot/examples/basic/input/example_input.csv --params plugins/stacked_bar_plot/examples/basic/params.json --output /tmp/out"
+    },
+    "bundle": "../examples/basic",
+    "gallery_png": "basic.png",
+    "params_filename": "example_basic_params.json"
+  },
+  {
+    "id": "chiplot",
+    "label": "chiplot",
+    "plugin_id": "stacked_bar_plot",
+    "plot_type": "stack",
+    "mode": "horizontal",
+    "params": "../examples/chiplot/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/chiplot/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stacked_bar_plot/plot.R --input plugins/stacked_bar_plot/examples/chiplot/input/example_input.csv --params plugins/stacked_bar_plot/examples/chiplot/params.json --output /tmp/out"
+    },
+    "bundle": "../examples/chiplot",
+    "gallery_png": "chiplot.png",
+    "params_filename": "example_chiplot_params.json"
+  },
+  {
+    "id": "long",
+    "label": "long",
+    "plugin_id": "stacked_bar_plot",
+    "plot_type": "stack",
+    "mode": "horizontal",
+    "params": "../examples/long/params.json",
+    "inputs": {
+      "input": "input/example_long.csv"
+    },
+    "expected": "../examples/long/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stacked_bar_plot/plot.R --input plugins/stacked_bar_plot/examples/long/input/example_long.csv --params plugins/stacked_bar_plot/examples/long/params.json --output /tmp/out"
+    },
+    "bundle": "../examples/long",
+    "gallery_png": "long.png",
+    "params_filename": "example_long_params.json"
+  },
+  {
+    "id": "normal",
+    "label": "normal",
+    "plugin_id": "stacked_bar_plot",
+    "plot_type": "stack",
+    "mode": "vertical",
+    "params": "../examples/normal/params.json",
+    "inputs": {
+      "input": "input/example_normal_input.csv"
+    },
+    "expected": "../examples/normal/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stacked_bar_plot/plot.R --input plugins/stacked_bar_plot/examples/normal/input/example_normal_input.csv --params plugins/stacked_bar_plot/examples/normal/params.json --output /tmp/out"
+    },
+    "bundle": "../examples/normal",
+    "gallery_png": "normal.png",
+    "params_filename": "example_normal_params.json"
+  },
+  {
+    "id": "percent",
+    "label": "percent",
+    "plugin_id": "stacked_bar_plot",
+    "plot_type": "stack",
+    "mode": "horizontal",
+    "params": "../examples/percent/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/percent/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stacked_bar_plot/plot.R --input plugins/stacked_bar_plot/examples/percent/input/example_input.csv --params plugins/stacked_bar_plot/examples/percent/params.json --output /tmp/out"
+    },
+    "bundle": "../examples/percent",
+    "gallery_png": "percent.png",
+    "params_filename": "example_percent_params.json"
+  },
+  {
+    "id": "vertical_labels",
+    "label": "vertical_labels",
+    "plugin_id": "stacked_bar_plot",
+    "plot_type": "stack",
+    "mode": "vertical",
+    "params": "../examples/vertical_labels/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/vertical_labels/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stacked_bar_plot/plot.R --input plugins/stacked_bar_plot/examples/vertical_labels/input/example_input.csv --params plugins/stacked_bar_plot/examples/vertical_labels/params.json --output /tmp/out"
+    },
+    "bundle": "../examples/vertical_labels",
+    "gallery_png": "vertical_labels.png",
+    "params_filename": "example_vertical_labels_params.json"
+  }
+]

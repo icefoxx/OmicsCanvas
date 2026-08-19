@@ -1,0 +1,95 @@
+{
+  "plugin_id": "interactive_ridgeline_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic",
+      "plugin_id": "interactive_ridgeline_plot",
+      "plot_type": "wide",
+      "mode": "",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_ridgeline_plot/plot.R --input plugins/interactive_ridgeline_plot/examples/basic/input/example_input.csv --params plugins/interactive_ridgeline_plot/examples/basic/params.json --output /tmp/interactive_ridgeline_plot_basic_out"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    },
+    {
+      "id": "chiplot",
+      "label": "chiplot",
+      "plugin_id": "interactive_ridgeline_plot",
+      "plot_type": "wide",
+      "mode": "",
+      "params": "../examples/chiplot/params.json",
+      "inputs": {
+        "input": "input/example_chiplot_input.csv"
+      },
+      "expected": "../examples/chiplot/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_ridgeline_plot/plot.R --input plugins/interactive_ridgeline_plot/examples/chiplot/input/example_chiplot_input.csv --params plugins/interactive_ridgeline_plot/examples/chiplot/params.json --output /tmp/interactive_ridgeline_plot_chiplot_out"
+      },
+      "bundle": "../examples/chiplot",
+      "gallery_png": "chiplot.png",
+      "params_filename": "example_chiplot_params.json"
+    },
+    {
+      "id": "custom_layout",
+      "label": "custom_layout",
+      "plugin_id": "interactive_ridgeline_plot",
+      "plot_type": "wide",
+      "mode": "",
+      "params": "../examples/custom_layout/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/custom_layout/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_ridgeline_plot/plot.R --input plugins/interactive_ridgeline_plot/examples/custom_layout/input/example_input.csv --params plugins/interactive_ridgeline_plot/examples/custom_layout/params.json --output /tmp/interactive_ridgeline_plot_custom_layout_out"
+      },
+      "bundle": "../examples/custom_layout",
+      "gallery_png": "custom_layout.png",
+      "params_filename": "example_custom_layout_params.json"
+    },
+    {
+      "id": "grouped",
+      "label": "grouped",
+      "plugin_id": "interactive_ridgeline_plot",
+      "plot_type": "auto",
+      "mode": "",
+      "params": "../examples/grouped/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/grouped/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_ridgeline_plot/plot.R --input plugins/interactive_ridgeline_plot/examples/grouped/input/example_input.csv --params plugins/interactive_ridgeline_plot/examples/grouped/params.json --output /tmp/interactive_ridgeline_plot_grouped_out"
+      },
+      "bundle": "../examples/grouped",
+      "gallery_png": "grouped.png",
+      "params_filename": "example_grouped_params.json"
+    },
+    {
+      "id": "interactive",
+      "label": "interactive",
+      "plugin_id": "interactive_ridgeline_plot",
+      "plot_type": "wide",
+      "mode": "",
+      "params": "../examples/interactive/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/interactive/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_ridgeline_plot/plot.R --input plugins/interactive_ridgeline_plot/examples/interactive/input/example_input.csv --params plugins/interactive_ridgeline_plot/examples/interactive/params.json --output /tmp/interactive_ridgeline_plot_interactive_out"
+      },
+      "bundle": "../examples/interactive",
+      "gallery_png": "interactive.png",
+      "params_filename": "example_interactive_params.json"
+    }
+  ]
+}

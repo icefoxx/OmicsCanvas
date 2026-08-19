@@ -1,0 +1,60 @@
+{
+  "plugin_id": "interactive_network_plot",
+  "examples": [
+    {
+      "id": "manual_layout",
+      "label": "manual_layout",
+      "plugin_id": "interactive_network_plot",
+      "plot_type": "edge_list",
+      "mode": "",
+      "params": "../examples/manual_layout/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/manual_layout/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/manual_layout/input/example_input.csv --params plugins/interactive_network_plot/examples/manual_layout/params.json --output /tmp/interactive_network_plot_manual_layout_out"
+      },
+      "bundle": "../examples/manual_layout",
+      "gallery_png": "manual_layout.png",
+      "params_filename": "example_manual_layout_params.json"
+    },
+    {
+      "id": "membership",
+      "label": "membership",
+      "plugin_id": "interactive_network_plot",
+      "plot_type": "membership",
+      "mode": "",
+      "params": "../examples/membership/params.json",
+      "inputs": {
+        "input": "input/example_membership_input.csv"
+      },
+      "expected": "../examples/membership/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/membership/input/example_membership_input.csv --params plugins/interactive_network_plot/examples/membership/params.json --output /tmp/interactive_network_plot_membership_out"
+      },
+      "bundle": "../examples/membership",
+      "gallery_png": "membership.png",
+      "params_filename": "example_membership_params.json"
+    },
+    {
+      "id": "network",
+      "label": "network",
+      "plugin_id": "interactive_network_plot",
+      "plot_type": "edge_list",
+      "mode": "",
+      "params": "../examples/network/params.json",
+      "inputs": {
+        "input": "input/example_input.csv",
+        "nodes": "input/example_nodes.csv"
+      },
+      "expected": "../examples/network/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/network/input/example_input.csv --params plugins/interactive_network_plot/examples/network/params.json --output /tmp/interactive_network_plot_network_out --nodes plugins/interactive_network_plot/examples/network/input/example_nodes.csv"
+      },
+      "bundle": "../examples/network",
+      "gallery_png": "network.png",
+      "params_filename": "example_network_params.json"
+    }
+  ]
+}

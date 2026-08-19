@@ -1,0 +1,59 @@
+{
+  "plugin_id": "balloon_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic",
+      "plugin_id": "balloon_plot",
+      "plot_type": "basic",
+      "mode": "",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_matrix.csv"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/balloon_plot/plot.R --input plugins/balloon_plot/examples/basic/input/example_matrix.csv --params plugins/balloon_plot/examples/basic/params.json --output /tmp/balloon_plot_basic_out"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    },
+    {
+      "id": "gradient",
+      "label": "gradient",
+      "plugin_id": "balloon_plot",
+      "plot_type": "gradient",
+      "mode": "",
+      "params": "../examples/gradient/params.json",
+      "inputs": {
+        "input": "input/example_matrix.csv"
+      },
+      "expected": "../examples/gradient/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/balloon_plot/plot.R --input plugins/balloon_plot/examples/gradient/input/example_matrix.csv --params plugins/balloon_plot/examples/gradient/params.json --output /tmp/balloon_plot_gradient_out"
+      },
+      "bundle": "../examples/gradient",
+      "gallery_png": "gradient.png",
+      "params_filename": "example_gradient_params.json"
+    },
+    {
+      "id": "no_stats",
+      "label": "no_stats",
+      "plugin_id": "balloon_plot",
+      "plot_type": "no_stats",
+      "mode": "",
+      "params": "../examples/no_stats/params.json",
+      "inputs": {
+        "input": "input/example_matrix.csv"
+      },
+      "expected": "../examples/no_stats/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/balloon_plot/plot.R --input plugins/balloon_plot/examples/no_stats/input/example_matrix.csv --params plugins/balloon_plot/examples/no_stats/params.json --output /tmp/balloon_plot_no_stats_out"
+      },
+      "bundle": "../examples/no_stats",
+      "gallery_png": "no_stats.png",
+      "params_filename": "example_no_stats_params.json"
+    }
+  ]
+}

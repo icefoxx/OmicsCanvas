@@ -1,0 +1,16 @@
+{
+  "id_column": "cell",
+  "group_column": "cluster",
+  "stat_columns": ["module_score", "mito_percent", "complexity"],
+  "plot_type": "col",
+  "fill_by": "feature",
+  "palette": "Set1",
+  "stack": true,
+  "flip": true,
+  "same_y_lims": true,
+  "title": "Stacked column statistic",
+  "ylab": "Scaled metadata value",
+  "legend_position": "bottom",
+  "width": 8,
+  "height": 6
+}

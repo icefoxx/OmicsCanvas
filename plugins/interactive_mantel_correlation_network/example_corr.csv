@@ -1,0 +1,6 @@
+feature,Temp,pH,Salinity,Richness,Shannon
+Temp,1,0.62,-0.31,0.55,0.48
+pH,0.62,1,-0.22,0.41,0.38
+Salinity,-0.31,-0.22,1,-0.47,-0.35
+Richness,0.55,0.41,-0.47,1,0.76
+Shannon,0.48,0.38,-0.35,0.76,1

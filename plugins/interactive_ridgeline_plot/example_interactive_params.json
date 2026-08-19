@@ -1,0 +1,19 @@
+{
+  "input_mode": "wide",
+  "id_column": "sample",
+  "title": "Interactive feature distributions",
+  "cloud_fill_mode": "feature",
+  "ridge_height": 0.95,
+  "ridge_overlap": 0.28,
+  "point_size": 2.2,
+  "point_alpha": 0.82,
+  "point_density_sample": 180,
+  "box_show": true,
+  "median_show": true,
+  "selectable": true,
+  "lasso_select": true,
+  "zoom": true,
+  "pan": true,
+  "reset_view": true,
+  "interactive": true
+}

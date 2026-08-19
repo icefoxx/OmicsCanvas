@@ -1,0 +1,121 @@
+{
+  "data": {
+    "input_mode": {
+      "type": "select",
+      "label": "Input mode",
+      "default": "auto",
+      "options": ["auto", "wide", "long", "edges"],
+      "help": "wide: id + stage columns; long: id/stage/node; edges: source→target flows"
+    },
+    "id_column": { "type": "column", "label": "Path / entity id column", "default": "id" },
+    "stage_columns": {
+      "type": "string_array",
+      "label": "Stage columns (wide mode, ordered)",
+      "default": [],
+      "help": "e.g. [\"stage1\",\"stage2\",\"stage3\"]. Empty = auto-detect."
+    },
+    "stage_column": { "type": "column", "label": "Stage column (long mode)", "default": "stage" },
+    "node_column": { "type": "column", "label": "Node / category column (long mode)", "default": "node" },
+    "weight_column": { "type": "column", "label": "Weight / count column", "default": "weight" },
+    "source_column": { "type": "column", "label": "Source (edges mode)", "default": "source" },
+    "target_column": { "type": "column", "label": "Target (edges mode)", "default": "target" },
+    "value_column": { "type": "column", "label": "Value (edges mode)", "default": "value" },
+    "stage_order": { "type": "string_array", "label": "Stage order", "default": [] },
+    "node_order": { "type": "string_array", "label": "Node / category order", "default": [] },
+    "nodes_include": { "type": "string_array", "label": "Nodes include", "default": [] },
+    "nodes_exclude": { "type": "string_array", "label": "Nodes exclude", "default": [] },
+    "stages_include": { "type": "string_array", "label": "Stages include", "default": [] },
+    "stages_exclude": { "type": "string_array", "label": "Stages exclude", "default": [] },
+    "ids_include": { "type": "string_array", "label": "Path ids include", "default": [] },
+    "ids_exclude": { "type": "string_array", "label": "Path ids exclude", "default": [] },
+    "reverse_nodes": { "type": "boolean", "label": "Reverse node stack order", "default": false }
+  },
+  "flow": {
+    "fill_by": {
+      "type": "select",
+      "label": "Color flows by",
+      "default": "node",
+      "options": ["node", "first", "last", "alluvium"]
+    },
+    "flow_type": {
+      "type": "select",
+      "label": "Flow geometry",
+      "default": "sankey",
+      "options": ["sankey", "alluvial"]
+    },
+    "flow_alpha": { "type": "number", "label": "Ribbon opacity", "default": 0.55 },
+    "flow_smooth": { "type": "number", "label": "Ribbon smoothness", "default": 8 },
+    "flow_color": { "type": "color", "label": "Single flow color (override)", "default": "" },
+    "palette": {
+      "type": "select",
+      "label": "Named palette",
+      "default": "npg",
+      "options": ["npg", "aaas", "nejm", "lancet", "jco", "pastel", "soft"]
+    },
+    "node_colors": { "type": "object", "label": "Per-node colors {name: #hex}", "default": {} },
+    "stratum_width": { "type": "number", "label": "Stratum bar width", "default": 0.12 },
+    "stratum_alpha": { "type": "number", "label": "Stratum opacity", "default": 1 },
+    "stratum_border_color": { "type": "color", "label": "Stratum border color", "default": "#333333" },
+    "stratum_border_width": { "type": "number", "label": "Stratum border width", "default": 0.4 },
+    "node_space": { "type": "number", "label": "Space between nodes (null = auto)", "default": null },
+    "highlight_nodes": { "type": "string_array", "label": "Highlight node names", "default": [] }
+  },
+  "labels": {
+    "label_show": { "type": "boolean", "label": "Show node labels", "default": true },
+    "label_size": { "type": "number", "label": "Label size", "default": 3.2 },
+    "label_color": { "type": "color", "label": "Label color", "default": "#222222" },
+    "label_face": {
+      "type": "select",
+      "label": "Label font face",
+      "default": "plain",
+      "options": ["plain", "bold", "italic", "bold.italic"]
+    },
+    "label_fill": { "type": "color", "label": "Label box fill", "default": "#FFFFFF" },
+    "label_fill_alpha": { "type": "number", "label": "Label box opacity", "default": 0.65 },
+    "label_angle": { "type": "number", "label": "Label angle", "default": 0 },
+    "stage_label_show": { "type": "boolean", "label": "Show stage axis labels", "default": true },
+    "stage_label_size": { "type": "number", "label": "Stage label size", "default": 11 },
+    "stage_label_color": { "type": "color", "label": "Stage label color", "default": "#333333" },
+    "stage_labels": { "type": "object", "label": "Rename stages {old: new}", "default": {} }
+  },
+  "title": {
+    "title_show": { "type": "boolean", "label": "Show title", "default": true },
+    "title": { "type": "string", "label": "Title", "default": "Alluvial Plot" },
+    "subtitle": { "type": "string", "label": "Subtitle", "default": "" },
+    "caption": { "type": "string", "label": "Caption", "default": "" },
+    "title_size": { "type": "number", "label": "Title size", "default": 14 },
+    "title_color": { "type": "color", "label": "Title color", "default": "#222222" },
+    "title_face": {
+      "type": "select",
+      "label": "Title face",
+      "default": "bold",
+      "options": ["plain", "bold", "italic"]
+    },
+    "title_hjust": { "type": "number", "label": "Title hjust", "default": 0.5 }
+  },
+  "legend": {
+    "legend_show": { "type": "boolean", "label": "Show legend", "default": false },
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "default": "right",
+      "options": ["right", "left", "top", "bottom", "none"]
+    },
+    "legend_title": { "type": "string", "label": "Legend title", "default": "" },
+    "legend_text_size": { "type": "number", "label": "Legend text size", "default": 10 },
+    "legend_title_size": { "type": "number", "label": "Legend title size", "default": 11 }
+  },
+  "canvas": {
+    "width": { "type": "number", "label": "Width (in)", "default": 12 },
+    "height": { "type": "number", "label": "Height (in)", "default": 7 },
+    "dpi": { "type": "number", "label": "PNG DPI", "default": 300 },
+    "font_family": { "type": "string", "label": "Font family", "default": "sans" },
+    "base_size": { "type": "number", "label": "Base font size", "default": 12 },
+    "background_color": { "type": "color", "label": "Background", "default": "#FFFFFF" },
+    "panel_background": { "type": "color", "label": "Panel background", "default": "#FFFFFF" },
+    "margin_top": { "type": "number", "label": "Margin top", "default": 10 },
+    "margin_right": { "type": "number", "label": "Margin right", "default": 12 },
+    "margin_bottom": { "type": "number", "label": "Margin bottom", "default": 10 },
+    "margin_left": { "type": "number", "label": "Margin left", "default": 12 }
+  }
+}

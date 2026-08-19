@@ -1,0 +1,51 @@
+category,value,sample_id,pvalue
+Normoblasts,12.8,NB1,0.0002
+Normoblasts,13.5,NB2,0.0002
+Normoblasts,14.1,NB3,0.0002
+Normoblasts,13.2,NB4,0.0002
+Normoblasts,14.6,NB5,0.0002
+Normoblasts,12.5,NB6,0.0002
+Erythroblasts,11.2,EB1,0.02
+Erythroblasts,12.4,EB2,0.02
+Erythroblasts,11.8,EB3,0.02
+Erythroblasts,12.9,EB4,0.02
+Erythroblasts,11.5,EB5,0.02
+Erythroblasts,12.1,EB6,0.02
+Proerythroblasts,11.0,PE1,0.03
+Proerythroblasts,12.2,PE2,0.03
+Proerythroblasts,11.5,PE3,0.03
+Proerythroblasts,12.6,PE4,0.03
+Proerythroblasts,11.3,PE5,0.03
+Proerythroblasts,11.9,PE6,0.03
+MEPs,10.2,MEP1,0.08
+MEPs,11.4,MEP2,0.08
+MEPs,10.8,MEP3,0.08
+MEPs,11.1,MEP4,0.08
+MEPs,10.5,MEP5,0.08
+MEPs,11.6,MEP6,0.08
+B cells,5.2,O1,0.4
+T cells,4.8,O2,0.5
+Monocytes,6.1,O3,0.35
+NK cells,5.5,O4,0.42
+Fibroblasts,4.1,O5,0.6
+Endothelial,5.8,O6,0.38
+Hepatocytes,6.4,O7,0.3
+Neurons,4.5,O8,0.55
+Astrocytes,5.0,O9,0.48
+Cardiomyocytes,6.8,O10,0.28
+Adipocytes,4.3,O11,0.58
+Keratinocytes,5.3,O12,0.45
+Macrophages,6.0,O13,0.36
+Dendritic cells,5.1,O14,0.5
+Plasma cells,4.7,O15,0.52
+Platelets,5.6,O16,0.4
+HSCs,6.2,O17,0.33
+GMPs,5.4,O18,0.44
+CMPs,5.9,O19,0.37
+CLPs,4.9,O20,0.49
+Megakaryocytes,6.5,O21,0.29
+Osteoblasts,4.4,O22,0.57
+Chondrocytes,5.2,O23,0.46
+Smooth muscle,5.7,O24,0.41
+Skeletal muscle,4.6,O25,0.53
+Epithelial,6.3,O26,0.31

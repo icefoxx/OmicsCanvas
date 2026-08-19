@@ -1,0 +1,23 @@
+{
+  "features": ["GeneB"],
+  "dim1_column": "UMAP_1",
+  "dim2_column": "UMAP_2",
+  "cell_id_column": "cell",
+  "feature_id_column": "feature",
+  "scale01": true,
+  "raster": true,
+  "bias": 1.2,
+  "cells_knn": 30,
+  "title": "Scaled Density (0-1): GeneB",
+  "xlab": "UMAP_1",
+  "ylab": "UMAP_2",
+  "legend_name": "Density (scaled)",
+  "palette": "magma",
+  "point_size": 0.6,
+  "point_shape": 16,
+  "base_size": 14,
+  "legend_position": "right",
+  "width": 7,
+  "height": 5.5,
+  "dpi": 220
+}

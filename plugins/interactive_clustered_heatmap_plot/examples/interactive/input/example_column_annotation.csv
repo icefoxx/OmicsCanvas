@@ -1,0 +1,13 @@
+Sample,Dataset,Batch
+S1,Control,1
+S2,Control,1
+S3,Control,2
+S4,Control,2
+S5,Control,3
+S6,Control,3
+S7,Treated,1
+S8,Treated,1
+S9,Treated,2
+S10,Treated,2
+S11,Treated,3
+S12,Treated,3

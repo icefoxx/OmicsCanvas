@@ -1,0 +1,15 @@
+{
+  "id": "interactive",
+  "label": "interactive",
+  "plugin_id": "interactive_binary_plot",
+  "plot_type": "wide",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_binary_plot/plot.R --input plugins/interactive_binary_plot/examples/interactive/input/example_input.csv --params plugins/interactive_binary_plot/examples/interactive/params.json --output /tmp/interactive_binary_plot_interactive_out"
+  }
+}

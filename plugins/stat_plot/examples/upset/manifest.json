@@ -1,0 +1,15 @@
+{
+  "id": "upset",
+  "label": "upset",
+  "plugin_id": "stat_plot",
+  "plot_type": "upset",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_metadata.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/upset/input/example_metadata.csv --params plugins/stat_plot/examples/upset/params.json --output /tmp/stat_plot_upset_out"
+  }
+}

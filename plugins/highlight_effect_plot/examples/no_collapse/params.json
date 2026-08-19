@@ -1,0 +1,17 @@
+{
+  "input_mode": "points",
+  "category_column": "category",
+  "value_column": "value",
+  "pvalue_column": "pvalue",
+  "highlight_terms": ["Normoblasts", "Erythroblasts", "Proerythroblasts", "MEPs"],
+  "collapse_others": false,
+  "other_color": "#BBBBBB",
+  "other_point_size": 1.5,
+  "highlight_point_size": 4.2,
+  "stars_show": true,
+  "title_show": true,
+  "title": "Each category kept (others gray)",
+  "width": 7,
+  "height": 8,
+  "dpi": 300
+}

@@ -1,0 +1,20 @@
+name: exp_stat_plot
+display_name: Expression Statistic Plot
+description: Standardized SCA expStatPlot wrapper for highly customizable expression and metadata statistic plots.
+runtime:
+  command: Rscript plot.R --input metadata.csv --expr expression.csv --params params.json --output output_dir
+inputs:
+  - name: input
+    type: table
+    required: true
+    description: Metadata table. Rows are cells/samples; first column is the id by default.
+  - name: expr
+    type: matrix
+    required: false
+    description: Optional expression matrix. First column is gene/feature id; columns are cells/samples.
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - selected_rows.csv

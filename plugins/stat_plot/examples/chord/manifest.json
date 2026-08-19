@@ -1,0 +1,15 @@
+{
+  "id": "chord",
+  "label": "chord",
+  "plugin_id": "stat_plot",
+  "plot_type": "chord",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_metadata.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/chord/input/example_metadata.csv --params plugins/stat_plot/examples/chord/params.json --output /tmp/stat_plot_chord_out"
+  }
+}

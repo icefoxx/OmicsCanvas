@@ -1,0 +1,20 @@
+{
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic"
+    },
+    {
+      "id": "chiplot",
+      "label": "chiplot"
+    },
+    {
+      "id": "labeled",
+      "label": "labeled"
+    },
+    {
+      "id": "vertical",
+      "label": "vertical"
+    }
+  ]
+}

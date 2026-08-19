@@ -1,0 +1,15 @@
+{
+  "id": "interactive",
+  "label": "interactive",
+  "plugin_id": "interactive_bubble_score_matrix",
+  "plot_type": "interactive",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_bubble_score_matrix/plot.R --input plugins/interactive_bubble_score_matrix/examples/interactive/input/example_input.csv --params plugins/interactive_bubble_score_matrix/examples/interactive/params.json --output /tmp/interactive_bubble_score_matrix_interactive_out"
+  }
+}

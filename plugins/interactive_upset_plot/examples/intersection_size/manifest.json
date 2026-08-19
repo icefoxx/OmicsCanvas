@@ -1,0 +1,15 @@
+{
+  "id": "intersection_size",
+  "label": "intersection_size",
+  "plugin_id": "interactive_upset_plot",
+  "plot_type": "intersection_size",
+  "mode": "inclusive_intersection",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_upset_plot/plot.R --input plugins/interactive_upset_plot/examples/intersection_size/input/example_input.csv --params plugins/interactive_upset_plot/examples/intersection_size/params.json --output /tmp/interactive_upset_plot_intersection_size_out"
+  }
+}

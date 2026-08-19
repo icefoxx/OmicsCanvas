@@ -1,0 +1,1 @@
+{"row_id_column":"Gene","matrix_start_column":2,"cluster_rows":true,"cluster_columns":true,"show_row_dendrogram":true,"show_column_dendrogram":true,"palette":"viridis","title":"Clustered annotated heatmap","subtitle":"Two expression programs across twelve datasets","interactive":false,"width":12,"height":9}

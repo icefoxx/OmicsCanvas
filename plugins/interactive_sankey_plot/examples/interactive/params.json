@@ -1,0 +1,1 @@
+{"title":"Draggable flow explorer","source_stage_column":"source_stage","target_stage_column":"target_stage","group_column":"group","interactive":true,"drag_nodes":true,"zoom":true,"pan":true,"selectable":true,"highlight_neighbors":true,"hover_tooltip":true,"layout_mode":"freeform","node_label_show":true,"link_alpha":0.5}

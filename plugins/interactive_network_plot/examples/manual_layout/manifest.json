@@ -1,0 +1,15 @@
+{
+  "id": "manual_layout",
+  "label": "manual_layout",
+  "plugin_id": "interactive_network_plot",
+  "plot_type": "edge_list",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/manual_layout/input/example_input.csv --params plugins/interactive_network_plot/examples/manual_layout/params.json --output /tmp/interactive_network_plot_manual_layout_out"
+  }
+}

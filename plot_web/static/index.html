@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plot Studio | OmicsCanvas</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="portal-page">
+  <header class="topbar">
+    <button id="menuToggle" class="menu-toggle" aria-label="Open navigation">☰</button>
+    <div class="brand">
+      <div class="brand-mark brand-mark-dot" aria-hidden="true"></div>
+      <div>
+        <h1>OmicsCanvas <span class="brand-sub">Plot Studio</span></h1>
+        <p id="sessionSubtitle">Interactive Omics Data Visualization Studio</p>
+      </div>
+    </div>
+    <nav class="top-actions">
+      <button data-mode="plotLibrary" class="top-link">Explore Plots</button>
+      <button data-mode="aiStudio" class="top-link ai-nav-link">✦ AI Studio</button>
+      <button data-mode="dataUpload" class="top-link">Datasets</button>
+      <button data-mode="results" class="top-link">Runs</button>
+      <button data-mode="reports" class="top-link">Reports</button>
+      <button id="saveStateButton" class="secondary compact-action">Save Session</button>
+      <button id="loadStateButton" class="secondary compact-action">Load Session</button>
+      <div id="health" class="status">Checking backend</div>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <!-- MINT COLLAPSIBLE SIDEBAR WITH ENGLISH OMICS PLOTTING CATEGORIES -->
+    <aside class="sidebar" id="mainSidebar">
+      <button id="sidebarToggle" class="sidebar-toggle-btn" title="Toggle Sidebar Collapse">‹</button>
+      <nav class="sidebar-category-list">
+        <button class="cat-nav-item active" data-cat="All">
+          <span class="cat-icon">🌐</span>
+          <span class="cat-label">All Plots</span>
+        </button>
+        <button class="cat-nav-item" data-cat="Heatmap">
+          <span class="cat-icon">🔥</span>
+          <span class="cat-label">Heatmaps & Clustering</span>
+        </button>
+        <button class="cat-nav-item" data-cat="Scatter">
+          <span class="cat-icon">🌋</span>
+          <span class="cat-label">Scatter & Volcano</span>
+        </button>
+        <button class="cat-nav-item" data-cat="Expression">
+          <span class="cat-icon">📊</span>
+          <span class="cat-label">Expression & Stats</span>
+        </button>
+        <button class="cat-nav-item" data-cat="Dimension">
+          <span class="cat-icon">🧩</span>
+          <span class="cat-label">Dimension & Feature</span>
+        </button>
+        <button class="cat-nav-item" data-cat="Trajectory">
+          <span class="cat-icon">🌱</span>
+          <span class="cat-label">Trajectory & Lineage</span>
+        </button>
+        <button class="cat-nav-item" data-cat="Venn">
+          <span class="cat-icon">⭕</span>
+          <span class="cat-label">Venn & Overlap</span>
+        </button>
+        <button class="cat-nav-item" data-cat="Favorites">
+          <span class="cat-icon">⭐</span>
+          <span class="cat-label">Favorites</span>
+        </button>
+      </nav>
+    </aside>
+
+    <section class="workspace">
+      <!-- PLOT GALLERY PORTAL (ENGLISH VIEW) -->
+      <section id="plotLibraryPanel" class="mode-panel">
+        <div class="gallery-header-bar">
+          <div class="filter-pills">
+            <button class="filter-pill active" data-filter="all">All</button>
+            <button class="filter-pill" data-filter="latest">Latest <span class="badge-dot">1</span></button>
+            <button class="filter-pill" data-filter="popular">Popular</button>
+          </div>
+
+          <div class="gallery-tools">
+            <div class="tool-count-info">
+              Showing <strong id="toolCount">0</strong> tools <span class="page-num">1/1 ‹ ›</span>
+            </div>
+            <div class="search-input-wrap">
+              <input id="pluginSearch" class="search-input" placeholder="Search plots 🔍">
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-gallery">
+          <div id="plotCards" class="plot-cards"></div>
+        </div>
+      </section>
+
+      <!-- AI STUDIO -->
+      <section id="aiStudioPanel" class="mode-panel hidden">
+        <div class="ai-studio-layout">
+          <div class="ai-studio-main">
+            <div class="card ai-hero-card">
+              <div class="card-head">
+                <h3>✦ AI Plot Studio</h3>
+                <span class="ai-engine-pill" id="aiEnginePill">checking…</span>
+              </div>
+              <p class="ai-hero-text">
+                Upload a table and describe your goal. The studio will: (1) summarize intent,
+                (2) match plots and related skills, (3) render the top 3 demos, (4) explain each figure.
+                Rules always run; LLM refines text when <code>OPENCODE_API_KEY</code> / <code>XAI_API_KEY</code> is set.
+              </p>
+              <div class="ai-upload-row">
+                <label class="ai-file-label">
+                  <input type="file" id="aiFileInput" accept=".csv,.tsv,.txt,.xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                  <span id="aiFileLabel">Choose CSV / TSV / XLSX</span>
+                </label>
+                <input type="text" id="aiGoalInput" class="ai-goal-input" placeholder="What do you want to show? e.g. differential expression, composition…">
+                <button type="button" id="aiPipelineBtn" class="primary">Run top 3 &amp; explain</button>
+              </div>
+              <div class="ai-upload-row ai-secondary-actions">
+                <button type="button" id="aiRecommendBtn" class="secondary">Recommend only</button>
+                <span class="ai-hint">Recommend only = rank plots without rendering. Full pipeline renders top 3.</span>
+              </div>
+              <div id="aiIntentBox" class="ai-intent-box hidden"></div>
+              <div id="aiProfileBox" class="ai-profile-box hidden"></div>
+              <div id="aiSkillsBox" class="ai-skills-box hidden"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-head"><h3>Ranked plots (top 3)</h3></div>
+              <div id="aiRecommendList" class="ai-recommend-list">
+                <div class="ai-empty">After analysis, ranked plot matches appear here.</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-head"><h3>Top figures + AI explanation</h3></div>
+              <div id="aiDemoStatus" class="ai-demo-status">No demos yet. Use “Run top 3 &amp; explain”.</div>
+              <div id="aiFiguresGrid" class="ai-figures-grid">
+                <div class="ai-empty">Rendered demos and explanations will show here.</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <h3>Recommended palettes</h3>
+                <span class="ai-engine-pill" title="Source: color.amfe.space">AMFE</span>
+              </div>
+              <div id="aiPaletteList" class="ai-palette-list">
+                <div class="ai-empty">After analysis, journal-style palettes appear here (copy HEX).</div>
+              </div>
+            </div>
+
+          </div>
+
+          <aside class="ai-chat-aside card">
+            <div class="card-head"><h3>Assistant chat</h3></div>
+            <div id="aiChatLog" class="ai-chat-log">
+              <div class="ai-chat-bubble bot">Hi! Upload data, state your goal, then click “Run top 3 &amp; explain”. I will summarize intent, rank plots, render demos, and explain each figure.</div>
+            </div>
+            <div class="ai-chat-compose">
+              <input type="text" id="aiChatInput" placeholder="e.g. Why a volcano plot?">
+              <button type="button" id="aiChatSend" class="primary compact-action">Send</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- DATASET UPLOAD -->
+      <section id="dataUploadPanel" class="mode-panel hidden">
+        <div class="card">
+          <div class="card-head"><h3>Reusable Dataset Upload</h3></div>
+          <div class="dataset-form">
+            <input id="datasetName" type="text" placeholder="Dataset name">
+            <select id="datasetRole">
+              <option value="primary_table">primary_table</option>
+              <option value="expression_matrix">expression_matrix</option>
+              <option value="metadata">metadata</option>
+              <option value="annotation">annotation</option>
+            </select>
+            <input id="datasetFile" type="file" accept=".csv,.tsv,.txt,.xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+            <textarea id="datasetNotes" placeholder="Notes & metadata description"></textarea>
+            <button id="uploadDatasetButton" class="primary">Upload Dataset</button>
+          </div>
+          <div id="datasetList" class="table-preview"></div>
+        </div>
+      </section>
+
+      <!-- RUNS / RESULTS -->
+      <section id="resultsPanel" class="mode-panel hidden">
+        <div class="card">
+          <div class="card-head"><h3>Execution Runs History</h3><button id="refreshResultsButton" class="secondary">Refresh</button></div>
+          <div id="resultsTable" class="table-preview"></div>
+        </div>
+      </section>
+
+      <!-- REPORTS -->
+      <section id="reportsPanel" class="mode-panel hidden">
+        <div class="card">
+          <div class="card-head"><h3>Markdown Reports</h3><button id="createReportButton" class="secondary">Create Report</button></div>
+          <div id="reportsList" class="compact-list"></div>
+        </div>
+      </section>
+
+      <!-- PLOT EDITOR WORKSPACE (SCI light studio) -->
+      <section id="modulePanel" class="mode-panel hidden plot-editor studio-light">
+        <header class="editor-header studio-header">
+          <div class="editor-title">
+            <button data-mode="plotLibrary" class="back-button gallery-link">Gallery</button>
+            <div class="editor-title-text">
+              <h2 id="pluginName">Select a Plot</h2>
+              <p id="pluginDescription">Fine-tune aesthetics, axes, and legend for publication-ready figures.</p>
+            </div>
+          </div>
+          <div class="studio-header-actions">
+            <div class="status-pills">
+              <span class="status-pill connected" id="connectionPill">
+                <i class="status-dot"></i> Connected
+              </span>
+              <span class="status-pill ready" id="editorStatePill">
+                <span class="ready-dot" id="readyDot"></span>
+                <span id="editorStateText">Ready</span>
+              </span>
+            </div>
+            <label class="auto-update-toggle header-toggle" title="Re-render when parameters change">
+              <input type="checkbox" id="autoUpdateToggle" checked>
+              <span class="toggle-pill">Auto Update</span>
+            </label>
+            <button id="runDemoButton" class="secondary" disabled>Demo</button>
+            <button id="runButton" class="primary" disabled>Run Plot</button>
+            <!-- End of bar: Export dropdown (SVG/PDF/PNG/TIFF) -->
+            <div class="export-menu" id="exportMenu">
+              <button type="button" class="export-menu-btn" id="exportMenuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="exportMenuPanel">
+                <span class="export-icon" aria-hidden="true">↓</span>
+                Export
+                <span class="export-caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="export-menu-panel" id="exportMenuPanel" role="menu" aria-label="Download figure">
+                <div class="export-menu-empty" id="exportMenuEmpty">Run a plot to enable downloads</div>
+                <div id="quickDownloads" class="export-menu-links">
+                  <a class="export-item is-disabled" data-fmt="svg" role="menuitem" href="#" tabindex="-1">SVG</a>
+                  <a class="export-item is-disabled" data-fmt="pdf" role="menuitem" href="#" tabindex="-1">PDF</a>
+                  <a class="export-item is-disabled" data-fmt="png" role="menuitem" href="#" tabindex="-1">PNG</a>
+                  <a class="export-item is-disabled" data-fmt="tiff" role="menuitem" href="#" tabindex="-1">TIFF</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div class="editor-grid">
+          <!-- CENTER: light canvas -->
+          <section class="plot-stage">
+            <!-- Vertical floating tools: outside canvas, draggable, top-right by default -->
+            <div class="canvas-float-tools" id="canvasControlBar" aria-label="Canvas tools">
+              <button type="button" class="float-drag-handle" id="floatDragHandle" title="Drag to move" aria-label="Drag tools">
+                <span class="drag-dots" aria-hidden="true"></span>
+              </button>
+              <button type="button" data-stage-action="zoom-in" title="Zoom in" class="float-tool-btn" aria-label="Zoom in">+</button>
+              <button type="button" data-stage-action="zoom-out" title="Zoom out" class="float-tool-btn" aria-label="Zoom out">−</button>
+              <button type="button" data-stage-action="fullscreen" title="Fullscreen" class="float-tool-btn" aria-label="Fullscreen">⛶</button>
+            </div>
+            <div class="stage-canvas" id="stageCanvas">
+              <div class="preview-card" id="previewCard">
+                <div class="preview-wrap" id="previewWrap">
+                  <img id="preview" alt="Plot preview">
+                  <div id="plotlyPreview" class="plotly-preview hidden"></div>
+                  <div id="stageOverlay" class="stage-overlay hidden">
+                    <div class="spinner"></div>
+                    <span>Updating figure...</span>
+                  </div>
+                  <div class="empty-canvas" id="emptyCanvas">
+                    <div class="empty-icon">📊</div>
+                    <h3>No plot yet</h3>
+                    <p>Load a <strong>Demo</strong> or upload data, then click <strong>Run Plot</strong>.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stage-foot">
+              <div class="job-status-wrap">
+                <strong>Status</strong>
+                <div id="jobStatus" class="job-status">Ready for run.</div>
+              </div>
+              <!-- Secondary full file list (non-primary formats stay here) -->
+              <div id="downloadLinks" class="downloads export-cta-row" hidden></div>
+            </div>
+
+            <!-- Collapsed by default: frees canvas space -->
+            <details class="stage-data-drawer" id="stageDataDrawer">
+              <summary>
+                <span>Loaded dataset preview &amp; row filter</span>
+                <span class="drawer-hint">click to expand</span>
+              </summary>
+              <div class="data-drawer-body">
+                <div id="stageRowSelector" class="stage-row-selector"></div>
+                <div id="stageTablePreview" class="stage-table-preview"></div>
+              </div>
+            </details>
+
+            <details class="secondary-results">
+              <summary>Logs &amp; filtered outputs</summary>
+              <pre id="logs" class="logs"></pre>
+              <div id="selectedOutput" class="selected-output"></div>
+            </details>
+          </section>
+
+          <!-- RIGHT: parameters accordion -->
+          <aside class="controls-card editor-panel">
+            <div class="card-head settings-head">
+              <h3>Parameters &amp; Config</h3>
+              <div class="preset-wrap">
+                <label for="exampleSelect">Presets</label>
+                <select id="exampleSelect"></select>
+              </div>
+            </div>
+
+            <div id="controlTabs" class="control-tabs control-pills">
+              <button class="tab active" data-section="data">Data</button>
+              <button class="tab" data-section="basic">Mapping</button>
+              <button class="tab" data-section="graphic">Color &amp; Legend</button>
+              <button class="tab" data-section="typography">Axes &amp; Labels</button>
+              <button class="tab" data-section="export">Export</button>
+            </div>
+
+            <div class="editor-body">
+              <div class="editor-scroll">
+                <section id="dataBlock" class="editor-block tab-content active" data-tab="data">
+                  <div class="block-title">
+                    <strong>Data &amp; input</strong>
+                    <span id="inputHint"></span>
+                  </div>
+                  <div class="demo-actions">
+                    <button id="loadDemoButton" class="secondary" disabled>Load demo data</button>
+                    <button id="previewInputButton" class="secondary" disabled>Preview</button>
+                    <button id="downloadExampleButton" class="secondary" disabled>Load JSON</button>
+                  </div>
+                  <div id="fileInputs" class="file-inputs"></div>
+                  <div id="inputSummary" class="input-summary"></div>
+                  <div id="mappingBlock" class="mapping-box">
+                    <div class="block-title">
+                      <strong>Column &amp; row mapping</strong>
+                      <span id="tableHint">Upload a table to populate columns.</span>
+                    </div>
+                    <div id="columnSelector" class="selector-box"></div>
+                    <div id="rowSelector" class="selector-box"></div>
+                    <div id="tablePreview" class="table-preview"></div>
+                  </div>
+                  <div id="exampleGallery" class="example-gallery" aria-live="polite"></div>
+                  <div id="demoGallery" class="demo-gallery"></div>
+                </section>
+
+                <section id="controlPanelSection" class="tab-content">
+                  <div id="controlPanel" class="control-panel"></div>
+                </section>
+
+                <section id="exportBlockSection" class="tab-content" data-tab="export">
+                  <div class="block-title"><strong>Journal export</strong></div>
+                  <div class="journal-presets" id="journalPresets">
+                    <button type="button" class="journal-preset" data-preset="single">Single column 8.5 cm · 300 DPI</button>
+                    <button type="button" class="journal-preset" data-preset="double">Double column 17.5 cm · 300 DPI</button>
+                    <button type="button" class="journal-preset" data-preset="nature">Nature-style 600 DPI</button>
+                    <button type="button" class="journal-preset" data-preset="square">Square 120 mm · 300 DPI</button>
+                  </div>
+                  <p class="export-hint-text">Presets set <code>width</code> / <code>height</code> / <code>dpi</code> in params (inches). Re-run to bake into PNG.</p>
+                  <div id="exportBlock" class="export-cta-panel">
+                    <div class="export-cta-title">Download figure</div>
+                    <div id="headerExportLinks" class="export-cta-buttons"></div>
+                  </div>
+                  <details class="advanced-json">
+                    <summary>Advanced JSON parameters</summary>
+                    <textarea id="paramsText" spellcheck="false">{}</textarea>
+                  </details>
+                </section>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="statusbar">
+    <span id="statusText">OmicsCanvas Plot Studio Ready.</span>
+    <span id="outputPathText"></span>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

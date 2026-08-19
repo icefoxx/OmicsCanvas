@@ -1,0 +1,15 @@
+{
+  "id": "density_hex",
+  "label": "density_hex",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "density_hex",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/density_hex/input/example_input.csv --params plugins/advanced_dim_plot/examples/density_hex/params.json --output /tmp/advanced_dim_plot_density_hex_out"
+  }
+}

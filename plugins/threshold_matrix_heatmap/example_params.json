@@ -1,0 +1,22 @@
+{
+  "plugin_id": "threshold_matrix_heatmap",
+  "row_label_column": "term",
+  "value_columns": ["CK-vs-M1", "CK-vs-M2", "CK-vs-M3", "M1-vs-M2", "M1-vs-M3", "M2-vs-M3"],
+  "default_rules": "<0.01=#F97316|strong sig;<0.05=#C6FF1A|sig;else=#C9C9C9|non-sig;missing=#FFFFFF|none",
+  "column_rules_string": "M1-vs-M2:<0.001=#D94801|very strong,<0.01=#F97316|strong sig,<0.05=#C6FF1A|sig,else=#C9C9C9|non-sig;M2-vs-M3:<0.01=#C6FF1A|sig,else=#C9C9C9|non-sig",
+  "cell_shape": "tile",
+  "legend_name": "",
+  "legend_levels": ["sig", "non-sig", "none", "strong sig", "very strong"],
+  "title_show": false,
+  "row_name_size": 9,
+  "column_name_size": 9,
+  "column_name_angle": 90,
+  "cell_width": 0.95,
+  "cell_height": 0.95,
+  "show_cell_border": true,
+  "cell_border_color": "#FFFFFF",
+  "legend_position": "right",
+  "legend_key_size": 0.42,
+  "width": 7,
+  "height": 7
+}

@@ -1,0 +1,15 @@
+{
+  "id": "dotplot",
+  "label": "dotplot",
+  "plugin_id": "group_heatmap",
+  "plot_type": "dotplot",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/group_heatmap/plot.R --input plugins/group_heatmap/examples/dotplot/input/example_input.csv --params plugins/group_heatmap/examples/dotplot/params.json --output /tmp/group_heatmap_dotplot_out"
+  }
+}

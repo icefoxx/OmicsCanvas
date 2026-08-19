@@ -1,0 +1,31 @@
+{
+  "plot_mode": "group",
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "stat_plot_column": "sample",
+  "show_stat_embedded": true,
+  "stat_embedded_size": 0.045,
+  "stat_embedded_alpha": 0.95,
+  "stat_color_map": {
+    "CK": "#4E79A7",
+    "DrugA": "#F28E2B",
+    "DrugB": "#59A14F"
+  },
+  "title": "Embedded Composition Pies",
+  "subtitle": "Pie charts at cluster centers summarize sample composition",
+  "point_size": 0.65,
+  "point_alpha": 0.42,
+  "group_palette": "Set2",
+  "legend_name": "Cell type",
+  "stat_legend_name": "Sample",
+  "label_groups": true,
+  "label_show": true,
+  "label_size": 3.2,
+  "show_mark": false,
+  "theme_use": "classic",
+  "panel_border_show": true,
+  "width": 7.6,
+  "height": 6.2
+}

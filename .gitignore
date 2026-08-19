@@ -1,0 +1,7 @@
+plot_web/.venv/
+plot_web/storage/
+plot_web/__pycache__/
+plot_web/**/*.pyc
+plot_web/.env
+.env
+*.pem

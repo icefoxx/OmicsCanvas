@@ -1,0 +1,23 @@
+{
+  "plot_mode": "group",
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "background_column": "module_score",
+  "background_cutoff": 0.2,
+  "background_color": "#D6D6D6",
+  "background_alpha": 0.28,
+  "title": "Background Mask By Score",
+  "subtitle": "Cells below module_score cutoff are dimmed before group coloring",
+  "point_size": 0.95,
+  "point_alpha": 0.86,
+  "group_palette": "Set2",
+  "label_groups": true,
+  "label_size": 3.2,
+  "legend_position": "right",
+  "theme_use": "classic",
+  "panel_border_show": true,
+  "width": 7.2,
+  "height": 6.1
+}

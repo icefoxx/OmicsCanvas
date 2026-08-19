@@ -1,0 +1,21 @@
+term,CK-vs-M1,CK-vs-M2,CK-vs-M3,M1-vs-M2,M1-vs-M3,M2-vs-M3
+aminoglycan metabolic process,0.14,0.21,0.33,0.004,0.008,0.17
+isoprenoid metabolic process,0.18,0.42,0.31,0.11,0.09,0.003
+response to stress,0.2,0.12,0.08,0.09,0.006,0.21
+negative regulation of metabolic process,0.44,NA,0.13,0.16,0.19,0.007
+negative regulation of peptidase activity,0.29,0.18,0.14,NA,0.2,0.002
+monoterpenoid metabolic process,0.27,0.2,0.16,NA,0.11,0.01
+regulation of proteolysis,NA,NA,0.25,0.19,0.14,0.009
+nitrate metabolic process,0.22,NA,0.18,0.26,0.16,0.004
+pigment metabolic process,0.23,0.006,0.12,0.14,0.11,NA
+negative regulation of catalytic activity,0.19,NA,0.21,0.18,0.16,0.003
+cell wall macromolecule metabolic process,0.31,0.28,0.2,0.004,0.13,0.17
+negative regulation of molecular function,0.2,0.21,NA,0.22,0.17,0.005
+negative regulation of proteolysis,0.18,0.13,NA,0.16,0.11,0.002
+regulation of catalytic activity,0.25,NA,NA,0.18,NA,0.008
+regulation of molecular function,NA,NA,0.16,0.14,0.12,0.009
+reactive nitrogen species metabolic process,0.21,NA,0.22,NA,0.17,0.004
+inorganic anion transmembrane transporter activity,0.16,0.004,0.19,0.14,0.2,NA
+oxidoreductase activity,0.18,0.2,NA,0.003,0.13,0.16
+oxidoreductase activity oxygen as acceptor,0.22,NA,NA,0.006,0.19,0.2
+vitamin binding,0.2,0.16,0.006,0.12,0.14,0.19

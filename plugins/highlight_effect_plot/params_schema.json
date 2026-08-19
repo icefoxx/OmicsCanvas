@@ -1,0 +1,153 @@
+{
+  "data": {
+    "input_mode": {
+      "type": "select",
+      "label": "Input mode",
+      "default": "auto",
+      "options": ["auto", "points", "summary"],
+      "help": "points: raw observations; summary: precomputed mean/CI"
+    },
+    "category_column": { "type": "column", "label": "Category / term column", "default": "category" },
+    "value_column": { "type": "column", "label": "Value column (points mode)", "default": "value" },
+    "mean_column": { "type": "column", "label": "Mean column (summary mode)", "default": "mean" },
+    "ci_low_column": { "type": "column", "label": "CI low column", "default": "ci_low" },
+    "ci_high_column": { "type": "column", "label": "CI high column", "default": "ci_high" },
+    "se_column": { "type": "column", "label": "SE column (alt to CI)", "default": "se" },
+    "pvalue_column": { "type": "column", "label": "P-value column", "default": "pvalue" },
+    "highlight_column": { "type": "column", "label": "Highlight flag column", "default": "highlight" },
+    "highlight_terms": {
+      "type": "string_array",
+      "label": "Highlighted categories (focus)",
+      "default": [],
+      "help": "These get large points + error bars. All others go to the Other cloud."
+    },
+    "highlight_order": {
+      "type": "string_array",
+      "label": "Highlight display order (top→bottom)",
+      "default": []
+    },
+    "auto_highlight_n": {
+      "type": "integer",
+      "label": "Auto-highlight top N by mean (if none set)",
+      "default": 4
+    },
+    "categories_include": { "type": "string_array", "label": "Categories include", "default": [] },
+    "categories_exclude": { "type": "string_array", "label": "Categories exclude", "default": [] }
+  },
+  "other_cloud": {
+    "collapse_others": {
+      "type": "boolean",
+      "label": "Collapse non-highlight into one Other lane",
+      "default": true,
+      "help": "Key behavior: non-highlight terms become a jittered gray cloud on one row"
+    },
+    "other_label": { "type": "string", "label": "Other lane label", "default": "Other biosamples" },
+    "other_position": {
+      "type": "select",
+      "label": "Other lane position",
+      "default": "bottom",
+      "options": ["bottom", "top"]
+    },
+    "other_color": { "type": "color", "label": "Other point color", "default": "#B0B0B0" },
+    "other_alpha": { "type": "number", "label": "Other point opacity", "default": 0.75 },
+    "other_point_size": { "type": "number", "label": "Other point size", "default": 1.8 },
+    "other_point_shape": { "type": "integer", "label": "Other point shape", "default": 16 },
+    "jitter_width": { "type": "number", "label": "Jitter width (x)", "default": 0.55 },
+    "jitter_height": { "type": "number", "label": "Jitter height (y)", "default": 0.22 },
+    "jitter_seed": { "type": "integer", "label": "Jitter seed", "default": 1 }
+  },
+  "highlight": {
+    "highlight_color": { "type": "color", "label": "Single color for all highlights", "default": "" },
+    "highlight_colors": {
+      "type": "object",
+      "label": "Per-term colors {name: #hex}",
+      "default": {}
+    },
+    "highlight_point_size": { "type": "number", "label": "Highlight point size", "default": 4.5 },
+    "highlight_point_shape": { "type": "integer", "label": "Highlight point shape", "default": 16 },
+    "highlight_border_color": { "type": "color", "label": "Highlight border (optional)", "default": "" },
+    "highlight_point_stroke": { "type": "number", "label": "Highlight border stroke", "default": 0 },
+    "show_highlight_raw_points": {
+      "type": "boolean",
+      "label": "Also show raw points for highlights",
+      "default": false
+    },
+    "errorbar_height": { "type": "number", "label": "Error bar end height", "default": 0.18 },
+    "errorbar_linewidth": { "type": "number", "label": "Error bar line width", "default": 0.55 },
+    "errorbar_color_mode": {
+      "type": "select",
+      "label": "Error bar color",
+      "default": "match",
+      "options": ["match", "fixed"]
+    },
+    "errorbar_color": { "type": "color", "label": "Fixed error bar color", "default": "#333333" },
+    "ci_level": { "type": "number", "label": "CI level (points mode)", "default": 0.95 }
+  },
+  "stars": {
+    "stars_show": { "type": "boolean", "label": "Show significance stars", "default": true },
+    "star_thresholds": {
+      "type": "number_array",
+      "label": "P thresholds (*** ** *)",
+      "default": [0.001, 0.01, 0.05]
+    },
+    "star_labels": {
+      "type": "string_array",
+      "label": "Star labels",
+      "default": ["***", "**", "*"]
+    },
+    "stars_map": {
+      "type": "object",
+      "label": "Manual stars {term: \"***\"}",
+      "default": {}
+    },
+    "pvalue_map": {
+      "type": "object",
+      "label": "Manual p-values {term: 0.01}",
+      "default": {}
+    },
+    "star_size": { "type": "number", "label": "Star text size", "default": 4.2 },
+    "star_color": { "type": "color", "label": "Star color", "default": "#222222" },
+    "star_nudge": { "type": "number", "label": "Star offset right of CI", "default": 0.6 },
+    "star_face": {
+      "type": "select",
+      "label": "Star font face",
+      "default": "plain",
+      "options": ["plain", "bold"]
+    }
+  },
+  "axes": {
+    "xlab": { "type": "string", "label": "X label", "default": "" },
+    "ylab": { "type": "string", "label": "Y label", "default": "" },
+    "xlab_show": { "type": "boolean", "label": "Show x label", "default": false },
+    "ylab_show": { "type": "boolean", "label": "Show y label", "default": false },
+    "xmin": { "type": "number", "label": "X min", "default": null },
+    "xmax": { "type": "number", "label": "X max", "default": null },
+    "reverse_y": { "type": "boolean", "label": "First highlight at top", "default": true },
+    "x_text_size": { "type": "number", "label": "X tick size", "default": 10 },
+    "y_text_size": { "type": "number", "label": "Y tick size", "default": 11 },
+    "x_text_color": { "type": "color", "label": "X tick color", "default": "#333333" },
+    "y_text_color": { "type": "color", "label": "Y tick color", "default": "#333333" },
+    "axis_line_color": { "type": "color", "label": "Axis line color", "default": "#333333" },
+    "axis_line_width": { "type": "number", "label": "Axis line width", "default": 0.5 },
+    "tick_color": { "type": "color", "label": "Tick color", "default": "#333333" },
+    "grid_show": { "type": "boolean", "label": "Show vertical grid", "default": false },
+    "grid_color": { "type": "color", "label": "Grid color", "default": "#EEEEEE" }
+  },
+  "title": {
+    "title_show": { "type": "boolean", "label": "Show title", "default": false },
+    "title": { "type": "string", "label": "Title", "default": "" },
+    "subtitle": { "type": "string", "label": "Subtitle", "default": "" }
+  },
+  "canvas": {
+    "width": { "type": "number", "label": "Width (in)", "default": 6.5 },
+    "height": { "type": "number", "label": "Height (in)", "default": 4.2 },
+    "dpi": { "type": "number", "label": "PNG DPI", "default": 300 },
+    "font_family": { "type": "string", "label": "Font family", "default": "sans" },
+    "base_size": { "type": "number", "label": "Base font size", "default": 12 },
+    "background_color": { "type": "color", "label": "Background", "default": "#FFFFFF" },
+    "margin_top": { "type": "number", "label": "Margin top", "default": 8 },
+    "margin_right": { "type": "number", "label": "Margin right", "default": 14 },
+    "margin_bottom": { "type": "number", "label": "Margin bottom", "default": 8 },
+    "margin_left": { "type": "number", "label": "Margin left", "default": 8 }
+  }
+}

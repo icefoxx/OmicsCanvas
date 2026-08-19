@@ -1,0 +1,1 @@
+{"title":"Pathway enrichment","xlab":"Normalized enrichment score","ylab":"Pathway","sort_by":"value","sort":"descending","point_size_min":3,"point_size_max":10,"stem_show":true,"zero_line_show":true,"group_colors":{"type-A":"#D95F02","type-B":"#1B9E77","type-C":"#7570B3","type-D":"#E7298A"},"interactive":false,"width":9,"height":7}

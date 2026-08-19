@@ -1,0 +1,23 @@
+{
+  "plot_kind": "volcano",
+  "de_expr": "avg_log2FC > 0 & p_val_adj < 0.05",
+  "title": "SCA Volcano Plot (volcano)",
+  "xlab": "diff.pct",
+  "ylab": "-log10(p-adjust)",
+  "palette": "RdBu",
+  "pt_size": 1,
+  "pt_alpha": 0.8,
+  "highlight_n": 6,
+  "highlight_color": "black",
+  "sizes_highlight": 1.5,
+  "stroke_highlight": 0.6,
+  "alpha_highlight": 0.9,
+  "label_fg": "black",
+  "label_bg": "white",
+  "label_size": 4,
+  "base_size": 12,
+  "features_label": ["GENE014", "GENE098", "GENE114"],
+  "width": 8,
+  "height": 5.5,
+  "dpi": 300
+}

@@ -1,0 +1,20 @@
+{
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "feature_columns": ["module_score"],
+  "title": "Hex Feature Plot With Density",
+  "subtitle": "Hex bins summarize feature intensity",
+  "show_density": true,
+  "density_color": "grey80",
+  "hex": true,
+  "hex_bins": 28,
+  "hex_color": "white",
+  "hex_line_width": 0.25,
+  "palette": "Spectral",
+  "label_show": false,
+  "width": 6.8,
+  "height": 5.8,
+  "dpi": 220
+}

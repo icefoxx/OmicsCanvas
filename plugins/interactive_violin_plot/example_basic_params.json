@@ -1,0 +1,15 @@
+{
+  "input_mode": "wide",
+  "id_column": "sample",
+  "title": "Feature distributions: cloud, box, and points",
+  "xlab": "Feature",
+  "ylab": "Observed value",
+  "sort_features": true,
+  "sort_by": "variance",
+  "cloud_alpha": 0.7,
+  "point_show": true,
+  "point_jitter_seed": 42,
+  "box_show": true,
+  "interactive": true,
+  "export_formats": ["svg", "pdf", "png", "html"]
+}

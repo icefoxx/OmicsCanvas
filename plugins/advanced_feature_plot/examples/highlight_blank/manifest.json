@@ -1,0 +1,15 @@
+{
+  "id": "highlight_blank",
+  "label": "highlight_blank",
+  "plugin_id": "advanced_feature_plot",
+  "plot_type": "highlight_blank",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/highlight_blank/input/example_input.csv --params plugins/advanced_feature_plot/examples/highlight_blank/params.json --output /tmp/advanced_feature_plot_highlight_blank_out"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "basic",
+  "label": "basic",
+  "plugin_id": "interactive_radar_plot",
+  "plot_type": "wide",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_radar_plot/plot.R --input plugins/interactive_radar_plot/examples/basic/input/example_input.csv --params plugins/interactive_radar_plot/examples/basic/params.json --output /tmp/interactive_radar_plot_basic_out"
+  }
+}

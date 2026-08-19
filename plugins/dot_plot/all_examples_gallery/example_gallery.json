@@ -1,0 +1,57 @@
+[
+  {
+    "id": "aggregate",
+    "label": "aggregate",
+    "plugin_id": "dot_plot",
+    "plot_type": "aggregate",
+    "mode": "",
+    "params": "../examples/aggregate/params.json",
+    "inputs": {
+      "input": "input/example_matrix.csv",
+      "annot": "input/example_annotation.csv"
+    },
+    "expected": "../examples/aggregate/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/dot_plot/plot.R --input plugins/dot_plot/examples/aggregate/input/example_matrix.csv --params plugins/dot_plot/examples/aggregate/params.json --output /tmp/dot_plot_aggregate_out --annot plugins/dot_plot/examples/aggregate/input/example_annotation.csv"
+    },
+    "bundle": "../examples/aggregate",
+    "gallery_png": "aggregate.png",
+    "params_filename": "example_aggregate_params.json"
+  },
+  {
+    "id": "basic",
+    "label": "basic",
+    "plugin_id": "dot_plot",
+    "plot_type": "precomputed",
+    "mode": "",
+    "params": "../examples/basic/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/basic/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/dot_plot/plot.R --input plugins/dot_plot/examples/basic/input/example_input.csv --params plugins/dot_plot/examples/basic/params.json --output /tmp/dot_plot_basic_out"
+    },
+    "bundle": "../examples/basic",
+    "gallery_png": "basic.png",
+    "params_filename": "example_basic_params.json"
+  },
+  {
+    "id": "dendro",
+    "label": "dendro",
+    "plugin_id": "dot_plot",
+    "plot_type": "precomputed",
+    "mode": "",
+    "params": "../examples/dendro/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/dendro/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/dot_plot/plot.R --input plugins/dot_plot/examples/dendro/input/example_input.csv --params plugins/dot_plot/examples/dendro/params.json --output /tmp/dot_plot_dendro_out"
+    },
+    "bundle": "../examples/dendro",
+    "gallery_png": "dendro.png",
+    "params_filename": "example_dendro_params.json"
+  }
+]

@@ -1,0 +1,1 @@
+{"input_mode":"wide","id_column":"sample","stat":"count","position":"identity","alpha":0.55,"bins":40,"xlab":"mean nucleosome signal","ylab":"Count","legend_position":"bottom","legend_show":true,"interactive":true}

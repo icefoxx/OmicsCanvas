@@ -1,0 +1,15 @@
+{
+  "id": "regions",
+  "label": "regions",
+  "plugin_id": "sca_volcano_plot",
+  "plot_type": "volcano",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_markers.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/sca_volcano_plot/plot.R --input plugins/sca_volcano_plot/examples/regions/input/example_markers.csv --params plugins/sca_volcano_plot/examples/regions/params.json --output /tmp/sca_volcano_plot_regions_out"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "plot_kind": "column_dendrogram",
+  "row_id_column": "feature",
+  "sample_col": "sample",
+  "group_col": "celltype",
+  "distance_method": "correlation",
+  "cluster_method": "complete",
+  "title": "Colored Sample Labels",
+  "tile_height_ratio": 0.1,
+  "point_size": 5,
+  "label_size": 9,
+  "legend_size": 9,
+  "legend_title": "Cell type",
+  "legend_position": "right",
+  "group_colors": {
+    "T cell": "#4DBBD5",
+    "B cell": "#E64B35",
+    "Myeloid": "#00A087"
+  },
+  "x_text_color_col": "condition",
+  "x_text_colors": {
+    "Control": "#222222",
+    "DrugA": "#7E57C2",
+    "DrugB": "#D81B60"
+  },
+  "show_x_text_legend": true,
+  "x_text_legend_title": "Condition",
+  "x_text_angle": 45,
+  "x_text_hjust": 1,
+  "x_text_vjust": 1,
+  "width": 9.5,
+  "height": 5.8,
+  "dpi": 220
+}

@@ -1,0 +1,19 @@
+{
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "split_column": "sample",
+  "feature_columns": ["CD3D", "MS4A1"],
+  "title_show": false,
+  "subtitle_show": false,
+  "global_split": true,
+  "palette": "Spectral",
+  "point_size": 0.55,
+  "point_alpha": 0.85,
+  "label_show": false,
+  "legend_position": "right",
+  "width": 10.5,
+  "height": 6.5,
+  "dpi": 220
+}

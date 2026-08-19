@@ -1,0 +1,135 @@
+[
+  {
+    "id": "bar",
+    "label": "bar",
+    "plugin_id": "exp_stat_plot",
+    "plot_type": "bar",
+    "mode": "",
+    "params": "../examples/bar/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv",
+      "expr": "input/example_expression.csv"
+    },
+    "expected": "../examples/bar/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/exp_stat_plot/plot.R --input plugins/exp_stat_plot/examples/bar/input/example_metadata.csv --params plugins/exp_stat_plot/examples/bar/params.json --output /tmp/exp_stat_plot_bar_out --expr plugins/exp_stat_plot/examples/bar/input/example_expression.csv"
+    },
+    "bundle": "../examples/bar",
+    "gallery_png": "bar.png",
+    "params_filename": "example_bar_params.json"
+  },
+  {
+    "id": "box_split",
+    "label": "box_split",
+    "plugin_id": "exp_stat_plot",
+    "plot_type": "box",
+    "mode": "",
+    "params": "../examples/box_split/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv",
+      "expr": "input/example_expression.csv"
+    },
+    "expected": "../examples/box_split/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/exp_stat_plot/plot.R --input plugins/exp_stat_plot/examples/box_split/input/example_metadata.csv --params plugins/exp_stat_plot/examples/box_split/params.json --output /tmp/exp_stat_plot_box_split_out --expr plugins/exp_stat_plot/examples/box_split/input/example_expression.csv"
+    },
+    "bundle": "../examples/box_split",
+    "gallery_png": "box_split.png",
+    "params_filename": "example_box_split_params.json"
+  },
+  {
+    "id": "col_flip",
+    "label": "col_flip",
+    "plugin_id": "exp_stat_plot",
+    "plot_type": "col",
+    "mode": "",
+    "params": "../examples/col_flip/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv",
+      "expr": "input/example_expression.csv"
+    },
+    "expected": "../examples/col_flip/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/exp_stat_plot/plot.R --input plugins/exp_stat_plot/examples/col_flip/input/example_metadata.csv --params plugins/exp_stat_plot/examples/col_flip/params.json --output /tmp/exp_stat_plot_col_flip_out --expr plugins/exp_stat_plot/examples/col_flip/input/example_expression.csv"
+    },
+    "bundle": "../examples/col_flip",
+    "gallery_png": "col_flip.png",
+    "params_filename": "example_col_flip_params.json"
+  },
+  {
+    "id": "custom_style",
+    "label": "custom_style",
+    "plugin_id": "exp_stat_plot",
+    "plot_type": "violin",
+    "mode": "",
+    "params": "../examples/custom_style/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv",
+      "expr": "input/example_expression.csv"
+    },
+    "expected": "../examples/custom_style/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/exp_stat_plot/plot.R --input plugins/exp_stat_plot/examples/custom_style/input/example_metadata.csv --params plugins/exp_stat_plot/examples/custom_style/params.json --output /tmp/exp_stat_plot_custom_style_out --expr plugins/exp_stat_plot/examples/custom_style/input/example_expression.csv"
+    },
+    "bundle": "../examples/custom_style",
+    "gallery_png": "custom_style.png",
+    "params_filename": "example_custom_style_params.json"
+  },
+  {
+    "id": "dot_stack",
+    "label": "dot_stack",
+    "plugin_id": "exp_stat_plot",
+    "plot_type": "dot",
+    "mode": "",
+    "params": "../examples/dot_stack/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv",
+      "expr": "input/example_expression.csv"
+    },
+    "expected": "../examples/dot_stack/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/exp_stat_plot/plot.R --input plugins/exp_stat_plot/examples/dot_stack/input/example_metadata.csv --params plugins/exp_stat_plot/examples/dot_stack/params.json --output /tmp/exp_stat_plot_dot_stack_out --expr plugins/exp_stat_plot/examples/dot_stack/input/example_expression.csv"
+    },
+    "bundle": "../examples/dot_stack",
+    "gallery_png": "dot_stack.png",
+    "params_filename": "example_dot_stack_params.json"
+  },
+  {
+    "id": "highlight",
+    "label": "highlight",
+    "plugin_id": "exp_stat_plot",
+    "plot_type": "violin",
+    "mode": "",
+    "params": "../examples/highlight/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv",
+      "expr": "input/example_expression.csv"
+    },
+    "expected": "../examples/highlight/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/exp_stat_plot/plot.R --input plugins/exp_stat_plot/examples/highlight/input/example_metadata.csv --params plugins/exp_stat_plot/examples/highlight/params.json --output /tmp/exp_stat_plot_highlight_out --expr plugins/exp_stat_plot/examples/highlight/input/example_expression.csv"
+    },
+    "bundle": "../examples/highlight",
+    "gallery_png": "highlight.png",
+    "params_filename": "example_highlight_params.json"
+  },
+  {
+    "id": "violin",
+    "label": "violin",
+    "plugin_id": "exp_stat_plot",
+    "plot_type": "violin",
+    "mode": "",
+    "params": "../examples/violin/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv",
+      "expr": "input/example_expression.csv"
+    },
+    "expected": "../examples/violin/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/exp_stat_plot/plot.R --input plugins/exp_stat_plot/examples/violin/input/example_metadata.csv --params plugins/exp_stat_plot/examples/violin/params.json --output /tmp/exp_stat_plot_violin_out --expr plugins/exp_stat_plot/examples/violin/input/example_expression.csv"
+    },
+    "bundle": "../examples/violin",
+    "gallery_png": "violin.png",
+    "params_filename": "example_violin_params.json"
+  }
+]

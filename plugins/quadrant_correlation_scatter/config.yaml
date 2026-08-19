@@ -1,0 +1,42 @@
+id: quadrant_correlation_scatter
+name: Quadrant Correlation Scatter
+version: 1.0.0
+description: Draw a highly customizable correlation scatter plot with 4/9 quadrant coloring, threshold lines, selected labels, connector lines, legends, and row selection.
+language: R
+entrypoint: plot.R
+category: Scatter
+status: experimental
+inputs:
+  - id: input
+    type: table
+    formats: [csv, tsv, txt]
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - selected_rows.csv
+  - run.log
+parameters:
+  x_column:
+    type: column
+    required: true
+  y_column:
+    type: column
+    required: true
+  label_column:
+    type: column
+    required: false
+  quadrant_mode:
+    type: select
+    options: [nine, four, custom]
+    default: nine
+  x_thresholds:
+    type: number_array
+    default: [-1, 1]
+  y_thresholds:
+    type: number_array
+    default: [-1, 1]
+  selected_ids:
+    type: string_array
+    required: false

@@ -1,0 +1,20 @@
+{
+  "category_column": "category",
+  "type_column": "type",
+  "value_column": "value",
+  "orientation": "horizontal",
+  "sort_by": "input",
+  "title_show": true,
+  "title": "Hello world",
+  "legend_show": true,
+  "legend_title": "xiaoshi",
+  "legend_reverse": true,
+  "x_grid_show": true,
+  "x_min": 0,
+  "x_max": 24000,
+  "outerPadding": 0.15,
+  "panel_border": true,
+  "width": 8,
+  "height": 7,
+  "dpi": 300
+}

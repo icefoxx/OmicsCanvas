@@ -1,0 +1,47 @@
+id: combo_bar_dot_matrix
+name: Combo Bar Dot Matrix
+display_name: Combo Bar + Dot Matrix
+version: 1.0.0
+author: OmicsCanvas
+description: >
+  Combination figure: top bar plot (metric ± error, optional pairwise p-values)
+  with a shared x-axis bottom panel of binary or continuous dots (feature
+  presence / heatmap). Highly customizable horizontal reference line(s) with
+  position, text, color, size, linetype, and label placement — matching
+  method-benchmark panels (AUPRC bars + feature encoding matrix).
+language: R
+entrypoint: plot.R
+category: Comparison
+subcategory: Combo
+status: stable
+runtime:
+  command: >
+    Rscript plot.R --input bars.csv --params params.json --output out
+    [--matrix matrix.csv] [--comparisons comparisons.csv]
+inputs:
+  - id: input
+    name: input
+    type: table
+    required: true
+    formats: [csv, tsv, txt]
+    description: Bar table — one row per x category (value, optional se/ci, group, color).
+  - id: matrix
+    name: matrix
+    type: table
+    required: false
+    formats: [csv, tsv, txt]
+    description: Dot matrix (wide feature×x or long feature,x,value). Binary or continuous.
+  - id: comparisons
+    name: comparisons
+    type: table
+    required: false
+    formats: [csv, tsv, txt]
+    description: Optional pairwise p-value brackets (x1, x2, pvalue or label).
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - run.log
+  - bars_used.csv
+  - matrix_used.csv

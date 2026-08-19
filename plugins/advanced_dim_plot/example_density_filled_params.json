@@ -1,0 +1,22 @@
+{
+  "plot_mode": "group",
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "title": "Filled Density Overlay",
+  "subtitle": "Density layer can be filled or contour-only",
+  "show_density": true,
+  "density_filled": true,
+  "density_fill_color": "#BDBDBD",
+  "density_color": "#888888",
+  "density_bins": 9,
+  "point_size": 0.75,
+  "point_alpha": 0.78,
+  "group_palette": "Dark2",
+  "legend_position": "right",
+  "theme_use": "minimal",
+  "panel_border_show": true,
+  "width": 7.2,
+  "height": 6.1
+}

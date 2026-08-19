@@ -1,0 +1,59 @@
+{
+  "plugin_id": "interactive_motif_logo_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic",
+      "plugin_id": "interactive_motif_logo_plot",
+      "plot_type": "wide",
+      "mode": "",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_motif_logo_plot/plot.R --input plugins/interactive_motif_logo_plot/examples/basic/input/example_input.csv --params plugins/interactive_motif_logo_plot/examples/basic/params.json --output /tmp/interactive_motif_logo_plot_basic_out"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    },
+    {
+      "id": "custom",
+      "label": "custom",
+      "plugin_id": "interactive_motif_logo_plot",
+      "plot_type": "wide",
+      "mode": "",
+      "params": "../examples/custom/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/custom/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_motif_logo_plot/plot.R --input plugins/interactive_motif_logo_plot/examples/custom/input/example_input.csv --params plugins/interactive_motif_logo_plot/examples/custom/params.json --output /tmp/interactive_motif_logo_plot_custom_out"
+      },
+      "bundle": "../examples/custom",
+      "gallery_png": "custom.png",
+      "params_filename": "example_custom_params.json"
+    },
+    {
+      "id": "interactive",
+      "label": "interactive",
+      "plugin_id": "interactive_motif_logo_plot",
+      "plot_type": "auto",
+      "mode": "",
+      "params": "../examples/interactive/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/interactive/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_motif_logo_plot/plot.R --input plugins/interactive_motif_logo_plot/examples/interactive/input/example_input.csv --params plugins/interactive_motif_logo_plot/examples/interactive/params.json --output /tmp/interactive_motif_logo_plot_interactive_out"
+      },
+      "bundle": "../examples/interactive",
+      "gallery_png": "interactive.png",
+      "params_filename": "example_interactive_params.json"
+    }
+  ]
+}

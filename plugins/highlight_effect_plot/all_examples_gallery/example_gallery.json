@@ -1,0 +1,38 @@
+[
+  {
+    "id": "basic",
+    "label": "basic",
+    "plugin_id": "highlight_effect_plot",
+    "plot_type": "highlight_effect",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "expected/result.png",
+    "gallery_png": "basic.png"
+  },
+  {
+    "id": "no_collapse",
+    "label": "no_collapse",
+    "plugin_id": "highlight_effect_plot",
+    "plot_type": "highlight_effect",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "expected/result.png",
+    "gallery_png": "no_collapse.png"
+  },
+  {
+    "id": "summary",
+    "label": "summary",
+    "plugin_id": "highlight_effect_plot",
+    "plot_type": "highlight_effect",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_summary.csv"
+    },
+    "expected": "expected/result.png",
+    "gallery_png": "summary.png"
+  }
+]

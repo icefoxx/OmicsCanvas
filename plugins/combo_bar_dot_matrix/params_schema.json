@@ -1,0 +1,142 @@
+{
+  "data": {
+    "x_column": { "type": "column", "label": "X category column (bars)", "default": null },
+    "y_column": { "type": "column", "label": "Bar value column", "default": "auprc" },
+    "se_column": { "type": "column", "label": "SE column", "default": "se" },
+    "ci_low_column": { "type": "column", "label": "CI low", "default": "ci_low" },
+    "ci_high_column": { "type": "column", "label": "CI high", "default": "ci_high" },
+    "group_column": { "type": "column", "label": "Group / color class", "default": "group" },
+    "color_column": { "type": "column", "label": "Explicit color column", "default": "color" },
+    "annotation_column": {
+      "type": "column",
+      "label": "Per-bar annotation text column",
+      "default": "annotation"
+    },
+    "x_order": { "type": "string_array", "label": "X category order", "default": [] },
+    "feature_column": { "type": "column", "label": "Matrix feature column", "default": null },
+    "feature_order": { "type": "string_array", "label": "Feature order (top→bottom)", "default": [] },
+    "matrix_mode": {
+      "type": "select",
+      "label": "Matrix table mode",
+      "default": "auto",
+      "options": ["auto", "wide", "long"]
+    },
+    "matrix_value_mode": {
+      "type": "select",
+      "label": "Dot encoding",
+      "default": "binary",
+      "options": ["binary", "continuous", "fraction"],
+      "help": "binary: filled/empty; continuous: heatmap-colored dots"
+    }
+  },
+  "bar": {
+    "ylab": { "type": "string", "label": "Y axis label", "default": "AUPRC" },
+    "ymin": { "type": "number", "label": "Y min", "default": 0 },
+    "ymax": { "type": "number", "label": "Y max", "default": null },
+    "bar_width": { "type": "number", "label": "Bar width", "default": 0.72 },
+    "bar_alpha": { "type": "number", "label": "Bar opacity", "default": 1 },
+    "bar_fill": { "type": "color", "label": "Single bar fill override", "default": "" },
+    "group_colors": { "type": "object", "label": "Group colors {name:#hex}", "default": {} },
+    "errorbar_show": { "type": "boolean", "label": "Show error bars", "default": true },
+    "errorbar_width": { "type": "number", "label": "Error bar cap width", "default": 0.22 },
+    "errorbar_linewidth": { "type": "number", "label": "Error bar line width", "default": 0.45 },
+    "errorbar_color": { "type": "color", "label": "Error bar color", "default": "#222222" },
+    "bar_annotation_size": { "type": "number", "label": "Bar annotation size", "default": 2.8 },
+    "bar_annotation_color": { "type": "color", "label": "Bar annotation color", "default": "#333333" }
+  },
+  "comparisons": {
+    "pvalue_label_style": {
+      "type": "select",
+      "label": "P-value label style",
+      "default": "scientific",
+      "options": ["scientific", "plain"]
+    },
+    "bracket_tip_length": { "type": "number", "label": "Bracket tip length", "default": 0.015 },
+    "bracket_linewidth": { "type": "number", "label": "Bracket line width", "default": 0.4 },
+    "bracket_color": { "type": "color", "label": "Bracket color", "default": "#333333" },
+    "bracket_text_size": { "type": "number", "label": "Bracket text size", "default": 2.8 },
+    "bracket_text_color": { "type": "color", "label": "Bracket text color", "default": "#333333" },
+    "bracket_base_y": { "type": "number", "label": "First bracket Y (auto if null)", "default": null },
+    "bracket_step": { "type": "number", "label": "Vertical step between brackets", "default": 0.055 }
+  },
+  "hline": {
+    "hline_y": {
+      "type": "number",
+      "label": "Single reference line Y",
+      "default": null,
+      "help": "Or use hlines[] array for multiple fully customized lines"
+    },
+    "hline_label": { "type": "string", "label": "Reference line label", "default": "" },
+    "hline_color": { "type": "color", "label": "Line color", "default": "#666666" },
+    "hline_linewidth": { "type": "number", "label": "Line width", "default": 0.5 },
+    "hline_linetype": {
+      "type": "select",
+      "label": "Line type",
+      "default": "solid",
+      "options": ["solid", "dashed", "dotted", "dotdash", "longdash"]
+    },
+    "hline_label_x": { "type": "number", "label": "Label X position", "default": null },
+    "hline_label_y": { "type": "number", "label": "Label Y position", "default": null },
+    "hline_label_size": { "type": "number", "label": "Label size", "default": 3.2 },
+    "hline_label_color": { "type": "color", "label": "Label color", "default": "#444444" },
+    "hline_label_face": {
+      "type": "select",
+      "label": "Label face",
+      "default": "plain",
+      "options": ["plain", "bold", "italic"]
+    },
+    "hline_label_hjust": { "type": "number", "label": "Label hjust", "default": 0 },
+    "hline_label_vjust": { "type": "number", "label": "Label vjust", "default": 0.5 },
+    "hline_label_angle": { "type": "number", "label": "Label angle", "default": 0 },
+    "hline_show_arrow": { "type": "boolean", "label": "Arrow from label to line", "default": true },
+    "hlines": {
+      "type": "object",
+      "label": "Multiple lines [{y,label,color,linewidth,linetype,label_x,label_y,label_size,label_color,...}]",
+      "default": []
+    }
+  },
+  "matrix": {
+    "matrix_show": { "type": "boolean", "label": "Show bottom dot matrix", "default": true },
+    "dot_size": { "type": "number", "label": "Dot size", "default": 3.2 },
+    "dot_stroke": { "type": "number", "label": "Dot border width", "default": 0.55 },
+    "dot_on_color": { "type": "color", "label": "Binary ON fill", "default": "#111111" },
+    "dot_off_color": { "type": "color", "label": "Binary OFF fill", "default": "#FFFFFF" },
+    "dot_border_color": { "type": "color", "label": "Dot border", "default": "#111111" },
+    "matrix_low_color": { "type": "color", "label": "Continuous low", "default": "#F7FBFF" },
+    "matrix_mid_color": { "type": "color", "label": "Continuous mid", "default": "#6BAED6" },
+    "matrix_high_color": { "type": "color", "label": "Continuous high", "default": "#08306B" },
+    "matrix_legend_show": { "type": "boolean", "label": "Continuous legend", "default": false },
+    "matrix_panel_border": { "type": "boolean", "label": "Matrix panel border", "default": true },
+    "matrix_border_color": { "type": "color", "label": "Matrix border color", "default": "#333333" },
+    "matrix_border_width": { "type": "number", "label": "Matrix border width", "default": 0.5 },
+    "matrix_row_label_size": { "type": "number", "label": "Feature label size", "default": 9 },
+    "matrix_show_x_text": {
+      "type": "boolean",
+      "label": "Show x labels under matrix",
+      "default": false
+    },
+    "x_context_label": {
+      "type": "string",
+      "label": "X-axis context label under matrix",
+      "default": ""
+    },
+    "bar_panel_height": { "type": "number", "label": "Bar panel relative height", "default": 3.2 },
+    "matrix_panel_height": { "type": "number", "label": "Matrix panel relative height", "default": 1.6 }
+  },
+  "title": {
+    "title_show": { "type": "boolean", "label": "Show title", "default": false },
+    "title": { "type": "string", "label": "Title", "default": "" },
+    "title_size": { "type": "number", "label": "Title size", "default": 13 }
+  },
+  "canvas": {
+    "width": { "type": "number", "label": "Width (in)", "default": 7.2 },
+    "height": { "type": "number", "label": "Height (in)", "default": 5.4 },
+    "dpi": { "type": "number", "label": "PNG DPI", "default": 300 },
+    "font_family": { "type": "string", "label": "Font family", "default": "sans" },
+    "base_size": { "type": "number", "label": "Base font size", "default": 11 },
+    "background_color": { "type": "color", "label": "Background", "default": "#FFFFFF" },
+    "x_text_size": { "type": "number", "label": "X tick size", "default": 9 },
+    "x_text_angle": { "type": "number", "label": "X tick angle", "default": 45 },
+    "y_text_size": { "type": "number", "label": "Y tick size", "default": 10 }
+  }
+}

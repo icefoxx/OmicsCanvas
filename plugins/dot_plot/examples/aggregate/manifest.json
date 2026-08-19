@@ -1,0 +1,16 @@
+{
+  "id": "aggregate",
+  "label": "aggregate",
+  "plugin_id": "dot_plot",
+  "plot_type": "aggregate",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_matrix.csv",
+    "annot": "input/example_annotation.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/dot_plot/plot.R --input plugins/dot_plot/examples/aggregate/input/example_matrix.csv --params plugins/dot_plot/examples/aggregate/params.json --output /tmp/dot_plot_aggregate_out --annot plugins/dot_plot/examples/aggregate/input/example_annotation.csv"
+  }
+}

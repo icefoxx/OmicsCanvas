@@ -1,0 +1,15 @@
+{
+  "id": "dot",
+  "label": "dot",
+  "plugin_id": "stat_plot",
+  "plot_type": "dot",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_metadata.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/dot/input/example_metadata.csv --params plugins/stat_plot/examples/dot/params.json --output /tmp/stat_plot_dot_out"
+  }
+}

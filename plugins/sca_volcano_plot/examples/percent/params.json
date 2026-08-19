@@ -1,0 +1,22 @@
+{
+  "plot_kind": "percent_volcano",
+  "title": "SCA Percent Volcano (percentVocalno)",
+  "threshold": 0.25,
+  "highlight_n": 4,
+  "hline_size": 1,
+  "hline_color": "grey50",
+  "pforce": 5,
+  "nforce": 2.5,
+  "nudge_x": 0.8,
+  "pnudge_y": 0.25,
+  "nnudge_y": 0,
+  "base_size": 13,
+  "facet_color": "black",
+  "facet_fill": "white",
+  "ylab": "Log2-Fold Change",
+  "nrow": 2,
+  "features_label": ["GENE014", "GENE098"],
+  "width": 11,
+  "height": 7,
+  "dpi": 300
+}

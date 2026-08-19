@@ -1,0 +1,41 @@
+[
+  {
+    "id": "bar_only",
+    "label": "bar_only",
+    "plugin_id": "combo_bar_dot_matrix",
+    "plot_type": "combo_bar_dot_matrix",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "expected/result.png",
+    "gallery_png": "bar_only.png"
+  },
+  {
+    "id": "basic",
+    "label": "basic",
+    "plugin_id": "combo_bar_dot_matrix",
+    "plot_type": "combo_bar_dot_matrix",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_input.csv",
+      "matrix": "input/example_matrix.csv",
+      "comparisons": "input/example_comparisons.csv"
+    },
+    "expected": "expected/result.png",
+    "gallery_png": "basic.png"
+  },
+  {
+    "id": "heatmap_dots",
+    "label": "heatmap_dots",
+    "plugin_id": "combo_bar_dot_matrix",
+    "plot_type": "combo_bar_dot_matrix",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_input.csv",
+      "matrix": "input/example_matrix.csv"
+    },
+    "expected": "expected/result.png",
+    "gallery_png": "heatmap_dots.png"
+  }
+]

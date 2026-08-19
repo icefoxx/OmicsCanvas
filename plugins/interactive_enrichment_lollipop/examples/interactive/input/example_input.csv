@@ -1,0 +1,21 @@
+category,effect,group,size,pvalue,label
+Interferon signaling,2.8,type-A,42,0.001,Interferon signaling
+Antigen processing,2.1,type-A,31,0.004,Antigen processing
+T cell activation,1.6,type-B,56,0.012,T cell activation
+Cytokine production,1.2,type-B,38,0.021,Cytokine production
+Apoptosis,0.8,type-C,24,0.08,Apoptosis
+Cell cycle,0.4,type-C,19,0.15,Cell cycle
+DNA repair,0.1,type-D,28,0.46,DNA repair
+Oxidative phosphorylation,-0.3,type-D,44,0.31,Oxidative phosphorylation
+Ribosome,-0.7,type-C,63,0.06,Ribosome
+Fatty acid metabolism,-0.9,type-C,27,0.04,Fatty acid metabolism
+Glycolysis,-1.1,type-B,35,0.018,Glycolysis
+Hypoxia response,-1.4,type-B,22,0.009,Hypoxia response
+Complement cascade,-1.7,type-A,18,0.006,Complement cascade
+ECM organization,-2.0,type-A,29,0.002,ECM organization
+Wound healing,-2.4,type-A,33,0.001,Wound healing
+MAPK signaling,1.9,type-D,47,0.011,MAPK signaling
+NF-kB signaling,-1.8,type-D,39,0.014,NF-kB signaling
+Lipid transport,0.6,type-B,16,0.12,Lipid transport
+Cell adhesion,1.0,type-C,51,0.033,Cell adhesion
+Vesicle trafficking,-0.5,type-D,26,0.2,Vesicle trafficking

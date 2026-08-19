@@ -1,0 +1,12 @@
+id: interactive_radar_plot
+name: Interactive Radar Plot
+version: 1.0.0
+description: High-customization static and interactive radar/spider chart for multi-group metric profiles.
+language: R
+entrypoint: plot.R
+category: Comparison
+status: stable
+inputs:
+  - {id: input, type: table, formats: [csv, tsv, txt], required: true}
+outputs: [result.svg, result.pdf, result.png, result.html, figure.json, selected_rows.csv, run.log]
+runtime: Rscript plugins/interactive_radar_plot/plot.R --input input.csv --params params.json --output output_dir

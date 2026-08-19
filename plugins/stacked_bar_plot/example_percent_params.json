@@ -1,0 +1,33 @@
+{
+  "sample_column": "sample",
+  "group_column": "group",
+  "orientation": "horizontal",
+  "position": "stack",
+  "value_mode": "percent",
+  "y_label_mode": "group",
+  "outerPadding": 0.3,
+  "bar_fill_opacity": 0.95,
+  "title_show": true,
+  "title": "Relative composition (%)",
+  "title_size": 16,
+  "title_font_weight": "bold",
+  "legend_show": true,
+  "legend_title": "Taxon",
+  "legend_position": "right",
+  "xlab": "Relative abundance (%)",
+  "xlab_show": true,
+  "x_axis_text_angle": 0,
+  "x_grid_show": true,
+  "grid_stroke_opacity": 0.12,
+  "category_colors": {
+    "Corynebacteria": "#66C2A5",
+    "Microbacteria": "#FC8D62",
+    "Pseudonocardia": "#8DA0CB",
+    "Cyclobacteria": "#E78AC3",
+    "Balneolaceae": "#A6D854",
+    "Phormidiaceae": "#FFD92F"
+  },
+  "width": 9,
+  "height": 7,
+  "dpi": 300
+}

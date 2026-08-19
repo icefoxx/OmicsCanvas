@@ -1,0 +1,1 @@
+{"input_mode":"membership","group_column":"group","node_id_column":"element","layout_algorithm":"fr","seed":11,"title":"Network-Venn membership map","node_size_min":14,"node_size_max":46,"group_colors":{"Treatment_A":"#4477AA","Treatment_B":"#EE6677","Treatment_C":"#228833","Member":"#CCBB44"},"interactive":true,"drag_nodes":true,"highlight_nodes":["STAT3"],"save_positions":true}

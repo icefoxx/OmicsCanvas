@@ -1,0 +1,19 @@
+{
+  "id_column": "cell",
+  "group_column": "cluster",
+  "split_column": "condition",
+  "stat_columns": ["CD3D"],
+  "plot_type": "violin",
+  "fill_by": "group",
+  "palette": "Paired",
+  "highlight_column": "condition",
+  "highlight_levels": ["DrugB"],
+  "highlight_color": "#111111",
+  "highlight_size": 1.1,
+  "highlight_alpha": 0.9,
+  "add_box": true,
+  "title": "Highlighted cells",
+  "ylab": "CD3D expression",
+  "width": 7,
+  "height": 4.8
+}

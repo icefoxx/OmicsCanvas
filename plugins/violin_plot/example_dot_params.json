@@ -1,0 +1,20 @@
+{
+  "input_mode": "long",
+  "cell_id_column": "cell",
+  "feature_column": "gene",
+  "value_column": "value",
+  "group_column": "cluster",
+  "add_stat": "median",
+  "add_dot": true,
+  "add_anno": false,
+  "title": "Expression by cluster (dot + median)",
+  "ylab": "Expression level",
+  "dot_size": 0.15,
+  "point_color": "#222222",
+  "median_point_size": 1.2,
+  "x_axis_text_angle": 45,
+  "legend_show": false,
+  "width": 8,
+  "height": 6,
+  "dpi": 220
+}

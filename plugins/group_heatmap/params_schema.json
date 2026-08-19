@@ -1,0 +1,112 @@
+{
+  "data": {
+    "id_column": "Cell/sample id column.",
+    "rows_include": "Only keep these row ids.",
+    "rows_exclude": "Remove these row ids.",
+    "features": "Numeric feature columns to plot.",
+    "features_include": "Only keep these features.",
+    "features_exclude": "Remove these features."
+  },
+  "grouping": {
+    "group_column": "Primary group column.",
+    "group_columns": "Multiple group columns.",
+    "group_order": "Manual group order.",
+    "group_sep": "Separator for combined group names.",
+    "cell_annotation": "Metadata columns shown as top/side annotations.",
+    "top_annotation_labels": "Named map from annotation column to display label."
+  },
+  "feature_groups": {
+    "feature_groups": "Named list of feature sets or feature-to-group map.",
+    "feature_split": "Vector with one group per feature.",
+    "feature_order": "Manual feature order.",
+    "highlight_features": "Feature names highlighted with annotation labels.",
+    "highlight_side": "left or right.",
+    "highlight_label_size": "Highlight label size.",
+    "highlight_label_color": "Highlight label color."
+  },
+  "plot_mode": {
+    "plot_type": "heatmap, dotplot, violin, or clustered_dotplot.",
+    "heatmap_mode": "group or cell.",
+    "violin_mode": "plain or blocks.",
+    "style": "merge or seperate.",
+    "summary": "mean, zscore, or log1p.",
+    "threshold": "Expression threshold for percent/dot calculations.",
+    "group_heatmap_split_by_annotation": "Split group heatmap by categorical annotations."
+  },
+  "labels": {
+    "show_row_names": "Show feature names.",
+    "row_name_size": "Feature name font size.",
+    "row_names_every_n": "Show every nth row name.",
+    "row_names_max": "Maximum visible row names.",
+    "row_names_method": "plain, linker, or area.",
+    "row_names_layers": "Number of linker label layers.",
+    "row_name_link_color": "Linker line color.",
+    "row_name_link_size": "Linker line width.",
+    "row_name_side": "left or right.",
+    "show_column_names": "Show column names.",
+    "column_name_size": "Column name font size.",
+    "show_top_annotation_name": "Show annotation names.",
+    "top_annotation_name_angle": "Top annotation name angle.",
+    "top_annotation_name_size": "Top annotation name size.",
+    "show_feature_split_title": "Show feature split titles.",
+    "feature_split_title_angle": "Feature split title angle.",
+    "feature_split_title_size": "Feature split title size.",
+    "show_feature_group_name": "Show feature group annotation name.",
+    "feature_group_name_angle": "Feature group name angle.",
+    "feature_group_name_size": "Feature group name size."
+  },
+  "colors": {
+    "heatmap_palette": "Continuous heatmap palette.",
+    "heatmap_colors": "Explicit continuous color vector.",
+    "group_palette": "Discrete group palette.",
+    "group_colors": "Named group color map.",
+    "annotation_palette": "Annotation palette(s).",
+    "annotation_colors": "Named annotation color map."
+  },
+  "annotations": {
+    "annotation_pie_scale": "Pie annotation scale.",
+    "annotation_track_scale": "Annotation track scale.",
+    "annotation_track_gap": "Gap between annotation tracks.",
+    "annotation_pie_y_span": "Pie y-span.",
+    "annotation_pie_mode": "round or flush.",
+    "annotation_attach": "Attach annotations tightly.",
+    "annotation_row_frame": "Draw row frame for annotations.",
+    "show_annotation_frame": "Show annotation frame.",
+    "show_annotation_y_axis": "Show numeric annotation y axis.",
+    "show_annotation_label": "Show annotation labels.",
+    "annotation_label_angle": "Annotation label angle.",
+    "annotation_label_size": "Annotation label size.",
+    "annotation_label_face": "Annotation label face.",
+    "annotation_label_family": "Annotation label family."
+  },
+  "dotplot": {
+    "add_dot": "Overlay percent-size dots in heatmap modes.",
+    "add_reticle": "Draw reticle grid in cells.",
+    "dot_range": "Minimum and maximum dot size.",
+    "clustered_dotplot_row_mm": "Per-row mm size.",
+    "clustered_dotplot_col_mm": "Per-column mm size.",
+    "clustered_dotplot_max_height_mm": "Maximum auto height.",
+    "clustered_dotplot_max_width_mm": "Maximum auto width.",
+    "clustered_dotplot_row_fontsize": "Clustered dotplot row font size.",
+    "clustered_dotplot_column_fontsize": "Clustered dotplot column font size."
+  },
+  "layout": {
+    "orientation": "vertical, horizontal, or horizontal_blocks.",
+    "cluster_rows": "Cluster feature rows.",
+    "cluster_columns": "Cluster columns.",
+    "border": "Draw cell border.",
+    "feature_group_side": "left or right.",
+    "legend_position": "Heatmap legend side.",
+    "annotation_legend_position": "Annotation legend side.",
+    "merge_legends": "Merge legends.",
+    "legend_width_ratio": "Legend layout width ratio for SCA composite modes.",
+    "legend_stack_spacing": "Legend stack spacing.",
+    "legend_title_size": "Legend title size.",
+    "legend_text_size": "Legend text size.",
+    "legend_key_size": "Legend key size.",
+    "padding": "Draw padding top/right/bottom/left in mm.",
+    "width": "Output width in inches.",
+    "height": "Output height in inches.",
+    "dpi": "PNG resolution."
+  }
+}

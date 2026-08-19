@@ -1,0 +1,15 @@
+{
+  "id": "axis_label_controls",
+  "label": "axis_label_controls",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "axis_label_controls",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/axis_label_controls/input/example_input.csv --params plugins/advanced_dim_plot/examples/axis_label_controls/params.json --output /tmp/advanced_dim_plot_axis_label_controls_out"
+  }
+}

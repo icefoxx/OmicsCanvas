@@ -1,0 +1,30 @@
+{
+  "input_type": "element",
+  "groups_include": ["YF", "YC", "ZF"],
+  "group_order": ["YF", "YC", "ZF"],
+  "plot_mode": "venn",
+  "title": "Dynamic Venn diagram",
+  "title_show": true,
+  "palette_scheme": "soft",
+  "set_colors": {
+    "YF": "#8DA9C9",
+    "YC": "#FEC66D",
+    "ZF": "#F28E8C"
+  },
+  "fill_alpha": 0.72,
+  "border_color": "#FFFFFF",
+  "border_width": 2.8,
+  "border_lty": "solid",
+  "show_counts": true,
+  "show_percent": true,
+  "count_size": 1.2,
+  "group_name_size": 1.25,
+  "group_name_color": "#222222",
+  "show_group_names": true,
+  "show_bar_chart": true,
+  "bar_width": 0.55,
+  "bar_height_ratio": 0.23,
+  "width": 7.5,
+  "height": 7.8,
+  "dpi": 300
+}

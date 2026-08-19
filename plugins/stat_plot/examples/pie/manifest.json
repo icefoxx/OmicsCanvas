@@ -1,0 +1,15 @@
+{
+  "id": "pie",
+  "label": "pie",
+  "plugin_id": "stat_plot",
+  "plot_type": "pie",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_metadata.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/pie/input/example_metadata.csv --params plugins/stat_plot/examples/pie/params.json --output /tmp/stat_plot_pie_out"
+  }
+}

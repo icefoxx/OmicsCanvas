@@ -1,0 +1,15 @@
+{
+  "id": "density_filled",
+  "label": "density_filled",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "density_filled",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/density_filled/input/example_input.csv --params plugins/advanced_dim_plot/examples/density_filled/params.json --output /tmp/advanced_dim_plot_density_filled_out"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id_column": "cell",
+  "group_column": "condition",
+  "split_column": "cluster",
+  "stat_columns": ["module_score", "mito_percent"],
+  "plot_type": "box",
+  "fill_by": "group",
+  "palette": "Set2",
+  "add_dot": true,
+  "dot_size": 0.45,
+  "dot_alpha": 0.55,
+  "jitter_width": 0.22,
+  "add_stat": "mean",
+  "stat_color": "#111111",
+  "stat_size": 1.8,
+  "title": "Metadata statistic box plot",
+  "ylab": "Score",
+  "legend_position": "bottom",
+  "width": 9,
+  "height": 5.2
+}

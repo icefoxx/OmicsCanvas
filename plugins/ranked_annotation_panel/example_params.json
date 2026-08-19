@@ -1,0 +1,56 @@
+{
+  "plugin_id": "ranked_annotation_panel",
+  "row_label_column": "feature",
+  "left_value_column": "score",
+  "annotation_columns": ["L13", "L18", "L6"],
+  "sort_rows_by_left_value": true,
+  "sort_decreasing": true,
+  "title_show": false,
+  "x_title": "",
+  "point_color": "#001FBC",
+  "point_fill": "#001FBC",
+  "point_size": 2.5,
+  "point_shape": 21,
+  "show_grid": true,
+  "grid_color": "#E6E6E6",
+  "panel_border": true,
+  "row_name_size": 7,
+  "x_axis_text_size": 8,
+  "annotation_cell_width": 0.8,
+  "annotation_cell_height": 0.86,
+  "annotation_label_size": 7,
+  "annotation_label_angle": 45,
+  "annotation_border_color": "#222222",
+  "annotation_settings": {
+    "L13": {
+      "type": "continuous",
+      "colors": ["#008B5A", "#FFFFBF", "#B2182B"],
+      "low_label": "Low",
+      "high_label": "High"
+    },
+    "L18": {
+      "type": "discrete",
+      "colors": {
+        "Low": "#008B5A",
+        "Mid": "#FFFFBF",
+        "High": "#B2182B"
+      }
+    },
+    "L6": {
+      "type": "discrete",
+      "colors": {
+        "A": "#008B5A",
+        "B": "#FFFFBF",
+        "C": "#B2182B"
+      }
+    }
+  },
+  "show_legend": true,
+  "legend_title_size": 8,
+  "legend_text_size": 7,
+  "left_panel_width": 5.4,
+  "annotation_panel_width": 0.9,
+  "legend_panel_width": 1.3,
+  "width": 7.2,
+  "height": 6
+}

@@ -1,0 +1,448 @@
+{
+  "data": {
+    "plot_mode": {
+      "type": "select",
+      "label": "Plot mode",
+      "help": "group | feature | coexpression | ...",
+      "default": "group",
+      "options": [
+        "group",
+        "feature",
+        "expression",
+        "gradient",
+        "coexpression",
+        "blend",
+        "feature_mix"
+      ]
+    },
+    "x_column": {
+      "type": "column",
+      "label": "X embedding column",
+      "help": "",
+      "default": "dim1",
+      "required": true
+    },
+    "y_column": {
+      "type": "column",
+      "label": "Y embedding column",
+      "help": "",
+      "default": "dim2",
+      "required": true
+    },
+    "id_column": {
+      "type": "column",
+      "label": "Cell / row id column",
+      "help": "",
+      "default": "cell"
+    },
+    "group_column": {
+      "type": "column",
+      "label": "Group / cluster column",
+      "help": "",
+      "default": "cluster"
+    },
+    "split_column": {
+      "type": "column",
+      "label": "Split / facet column",
+      "help": ""
+    },
+    "feature_columns": {
+      "type": "columns",
+      "label": "Feature columns (expression mode)",
+      "help": "",
+      "default": []
+    },
+    "rows_include": {
+      "type": "string_array",
+      "label": "Rows include",
+      "help": "",
+      "default": []
+    },
+    "rows_exclude": {
+      "type": "string_array",
+      "label": "Rows exclude",
+      "help": "",
+      "default": []
+    },
+    "groups_include": {
+      "type": "string_array",
+      "label": "Groups include",
+      "help": "",
+      "default": []
+    },
+    "groups_exclude": {
+      "type": "string_array",
+      "label": "Groups exclude",
+      "help": "",
+      "default": []
+    },
+    "facet_split": {
+      "type": "boolean",
+      "label": "Facet by split column",
+      "help": "",
+      "default": false
+    },
+    "facet_nrow": {
+      "type": "integer",
+      "label": "Facet rows",
+      "help": ""
+    }
+  },
+  "axes": {
+    "xlab": {
+      "type": "string",
+      "label": "X axis title",
+      "help": "",
+      "default": "dim1"
+    },
+    "ylab": {
+      "type": "string",
+      "label": "Y axis title",
+      "help": "",
+      "default": "dim2"
+    },
+    "xlim": {
+      "type": "number_array",
+      "label": "X limits [min,max]",
+      "help": "",
+      "default": []
+    },
+    "ylim": {
+      "type": "number_array",
+      "label": "Y limits [min,max]",
+      "help": "",
+      "default": []
+    },
+    "show_x_axis": {
+      "type": "boolean",
+      "label": "Show X axis",
+      "help": "",
+      "default": true
+    },
+    "show_y_axis": {
+      "type": "boolean",
+      "label": "Show Y axis",
+      "help": "",
+      "default": true
+    },
+    "axis_title_size": {
+      "type": "number",
+      "label": "Axis title size",
+      "help": "",
+      "default": 12
+    },
+    "axis_text_size": {
+      "type": "number",
+      "label": "Axis tick text size",
+      "help": "",
+      "default": 10
+    },
+    "axis_arrow_show": {
+      "type": "boolean",
+      "label": "Show axis arrows",
+      "help": "",
+      "default": false
+    },
+    "axis_arrow_x_label": {
+      "type": "string",
+      "label": "X arrow label",
+      "help": "",
+      "default": ""
+    },
+    "axis_arrow_y_label": {
+      "type": "string",
+      "label": "Y arrow label",
+      "help": "",
+      "default": ""
+    },
+    "panel_border_show": {
+      "type": "boolean",
+      "label": "Panel border",
+      "help": "",
+      "default": true
+    },
+    "grid_show": {
+      "type": "boolean",
+      "label": "Show grid",
+      "help": "",
+      "default": false
+    }
+  },
+  "title": {
+    "title_show": {
+      "type": "boolean",
+      "label": "Show title",
+      "help": "",
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "help": "",
+      "default": ""
+    },
+    "subtitle_show": {
+      "type": "boolean",
+      "label": "Show subtitle",
+      "help": "",
+      "default": false
+    },
+    "subtitle": {
+      "type": "string",
+      "label": "Subtitle",
+      "help": "",
+      "default": ""
+    },
+    "title_size": {
+      "type": "number",
+      "label": "Title size",
+      "help": "",
+      "default": 14
+    }
+  },
+  "points": {
+    "point_size": {
+      "type": "number",
+      "label": "Point size",
+      "help": "",
+      "default": 1.0
+    },
+    "point_alpha": {
+      "type": "number",
+      "label": "Point alpha",
+      "help": "",
+      "default": 0.85
+    },
+    "point_shape": {
+      "type": "integer",
+      "label": "Point shape",
+      "help": "",
+      "default": 16
+    },
+    "raster": {
+      "type": "boolean",
+      "label": "Rasterize points",
+      "help": "",
+      "default": false
+    },
+    "raster_dpi": {
+      "type": "number",
+      "label": "Raster DPI",
+      "help": "",
+      "default": 1200
+    }
+  },
+  "colors": {
+    "group_palette": {
+      "type": "string",
+      "label": "Group palette",
+      "help": "",
+      "default": "Set2"
+    },
+    "group_color_map": {
+      "type": "object",
+      "label": "Per-group color map",
+      "help": "",
+      "default": {}
+    },
+    "feature_colors": {
+      "type": "color_array",
+      "label": "Feature gradient colors",
+      "help": "",
+      "default": []
+    },
+    "feature_bg_cutoff": {
+      "type": "number",
+      "label": "Feature background cutoff",
+      "help": "",
+      "default": 0.05
+    },
+    "coexpression_colors": {
+      "type": "color_array",
+      "label": "Coexpression colors",
+      "help": "",
+      "default": []
+    },
+    "color_mix_mode": {
+      "type": "select",
+      "label": "Color mix mode",
+      "help": "",
+      "default": "blend",
+      "options": [
+        "blend",
+        "screen",
+        "mix"
+      ]
+    }
+  },
+  "marks_labels": {
+    "show_mark": {
+      "type": "boolean",
+      "label": "Show cluster marks",
+      "help": "",
+      "default": false
+    },
+    "mark_type": {
+      "type": "select",
+      "label": "Mark type",
+      "help": "",
+      "default": "hull",
+      "options": [
+        "hull",
+        "ellipse",
+        "none"
+      ]
+    },
+    "mark_alpha": {
+      "type": "number",
+      "label": "Mark alpha",
+      "help": "",
+      "default": 0.12
+    },
+    "label_show": {
+      "type": "boolean",
+      "label": "Show labels",
+      "help": "",
+      "default": false
+    },
+    "label_groups": {
+      "type": "boolean",
+      "label": "Label group centroids",
+      "help": "",
+      "default": false
+    },
+    "selected_labels": {
+      "type": "string_array",
+      "label": "Selected label ids",
+      "help": "",
+      "default": []
+    },
+    "label_size": {
+      "type": "number",
+      "label": "Label size",
+      "help": "",
+      "default": 4
+    },
+    "label_color": {
+      "type": "color",
+      "label": "Label color",
+      "help": "",
+      "default": "#111111"
+    },
+    "label_repel": {
+      "type": "boolean",
+      "label": "Repel labels",
+      "help": "",
+      "default": true
+    },
+    "highlight_rows": {
+      "type": "string_array",
+      "label": "Highlight row ids",
+      "help": "",
+      "default": []
+    },
+    "highlight_fill": {
+      "type": "color",
+      "label": "Highlight fill",
+      "help": "",
+      "default": "#FFE45C"
+    },
+    "highlight_size": {
+      "type": "number",
+      "label": "Highlight size",
+      "help": "",
+      "default": 2.5
+    }
+  },
+  "density": {
+    "show_density": {
+      "type": "boolean",
+      "label": "Show density",
+      "help": "",
+      "default": false
+    },
+    "hex": {
+      "type": "boolean",
+      "label": "Hex density",
+      "help": "",
+      "default": false
+    },
+    "hex_bins": {
+      "type": "integer",
+      "label": "Hex bins",
+      "help": "",
+      "default": 40
+    }
+  },
+  "legend": {
+    "legend_show": {
+      "type": "boolean",
+      "label": "Show legend",
+      "help": "",
+      "default": true
+    },
+    "legend_name": {
+      "type": "string",
+      "label": "Legend title",
+      "help": "",
+      "default": ""
+    },
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "help": "",
+      "default": "right",
+      "options": [
+        "right",
+        "left",
+        "top",
+        "bottom",
+        "none"
+      ]
+    },
+    "legend_text_size": {
+      "type": "number",
+      "label": "Legend text size",
+      "help": "",
+      "default": 10
+    },
+    "legend_title_size": {
+      "type": "number",
+      "label": "Legend title size",
+      "help": "",
+      "default": 11
+    }
+  },
+  "theme_export": {
+    "theme_use": {
+      "type": "select",
+      "label": "Theme",
+      "help": "",
+      "default": "classic",
+      "options": [
+        "classic",
+        "minimal",
+        "bw",
+        "void"
+      ]
+    },
+    "width": {
+      "type": "number",
+      "label": "Width (in)",
+      "help": "",
+      "default": 7.2
+    },
+    "height": {
+      "type": "number",
+      "label": "Height (in)",
+      "help": "",
+      "default": 6.1
+    },
+    "dpi": {
+      "type": "number",
+      "label": "PNG DPI",
+      "help": "",
+      "default": 300
+    }
+  }
+}

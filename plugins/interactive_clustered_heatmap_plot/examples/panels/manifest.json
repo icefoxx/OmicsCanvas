@@ -1,0 +1,18 @@
+{
+  "id": "panels",
+  "label": "panels",
+  "plugin_id": "interactive_clustered_heatmap_plot",
+  "plot_type": "panels",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_matrix.csv",
+    "row-annot": "input/example_row_annotation.csv",
+    "col-annot": "input/example_column_annotation.csv",
+    "panel-groups": "input/example_panel_groups.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_clustered_heatmap_plot/plot.R --input plugins/interactive_clustered_heatmap_plot/examples/panels/input/example_matrix.csv --params plugins/interactive_clustered_heatmap_plot/examples/panels/params.json --output /tmp/interactive_clustered_heatmap_plot_panels_out --row-annot plugins/interactive_clustered_heatmap_plot/examples/panels/input/example_row_annotation.csv --col-annot plugins/interactive_clustered_heatmap_plot/examples/panels/input/example_column_annotation.csv --panel-groups plugins/interactive_clustered_heatmap_plot/examples/panels/input/example_panel_groups.csv"
+  }
+}

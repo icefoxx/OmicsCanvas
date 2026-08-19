@@ -1,0 +1,9 @@
+id,label,stage,color,x,y,highlight
+DNA,DNA,Genome,#4477AA,0.08,0.35,false
+RNA,RNA,Transcript,#66CCEE,0.42,0.25,true
+Protein,Protein,Product,#228833,0.68,0.25,false
+Degraded,Degraded,Outcome,#CC6677,0.92,0.12,false
+Active,Active,Outcome,#117733,0.92,0.32,true
+Stored,Stored,Outcome,#AA4499,0.92,0.52,false
+Secreted,Secreted,Outcome,#CCBB44,0.92,0.72,false
+Repair,Repair,Outcome,#999933,0.92,0.90,false

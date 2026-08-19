@@ -1,0 +1,16 @@
+{
+  "id": "dot_stack",
+  "label": "dot_stack",
+  "plugin_id": "exp_stat_plot",
+  "plot_type": "dot",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_metadata.csv",
+    "expr": "input/example_expression.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/exp_stat_plot/plot.R --input plugins/exp_stat_plot/examples/dot_stack/input/example_metadata.csv --params plugins/exp_stat_plot/examples/dot_stack/params.json --output /tmp/exp_stat_plot_dot_stack_out --expr plugins/exp_stat_plot/examples/dot_stack/input/example_expression.csv"
+  }
+}

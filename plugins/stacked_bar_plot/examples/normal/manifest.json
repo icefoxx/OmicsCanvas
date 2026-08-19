@@ -1,0 +1,15 @@
+{
+  "id": "normal",
+  "label": "normal",
+  "plugin_id": "stacked_bar_plot",
+  "plot_type": "stack",
+  "mode": "vertical",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_normal_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/stacked_bar_plot/plot.R --input plugins/stacked_bar_plot/examples/normal/input/example_normal_input.csv --params plugins/stacked_bar_plot/examples/normal/params.json --output /tmp/out"
+  }
+}

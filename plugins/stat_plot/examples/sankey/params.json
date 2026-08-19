@@ -1,0 +1,18 @@
+{
+  "id_column": "cell_id",
+  "stat_by": ["cluster", "phase"],
+  "plot_type": "sankey",
+  "stat_type": "count",
+  "combine": true,
+  "title": "Cluster to phase flow",
+  "show_label": false,
+  "palette": "npg",
+  "alpha": 0.85,
+  "legend_position": "right",
+  "legend_direction": "vertical",
+  "base_size": 12,
+  "width": 8,
+  "height": 6,
+  "dpi": 300,
+  "seed": 10086
+}

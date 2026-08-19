@@ -1,0 +1,1 @@
+{"plot_subclass":"grouped","item_column":"item_id","set_columns":["A","B","C","D","E","F","G"],"group_by":"sets","set_order":["A","B","C","D","E","F","G"],"mode":"inclusive_union","sort_intersections":"ascending","sort_intersections_by":"degree","n_intersections":16,"stripes":true,"title":"Grouped and degree-sorted intersections","width":11,"height":8,"dpi":160}

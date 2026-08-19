@@ -1,0 +1,1 @@
+{"input_mode":"auto","input_scale":"probability","normalize":"probability","information_content":true,"interactive":true,"zoom":true,"pan":true,"selectable":true,"lasso_select":true,"tooltip_columns":["motif","position","base","raw_weight","probability","height"],"title":"Interactive motif enrichment"}

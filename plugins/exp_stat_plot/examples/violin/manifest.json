@@ -1,0 +1,16 @@
+{
+  "id": "violin",
+  "label": "violin",
+  "plugin_id": "exp_stat_plot",
+  "plot_type": "violin",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_metadata.csv",
+    "expr": "input/example_expression.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/exp_stat_plot/plot.R --input plugins/exp_stat_plot/examples/violin/input/example_metadata.csv --params plugins/exp_stat_plot/examples/violin/params.json --output /tmp/exp_stat_plot_violin_out --expr plugins/exp_stat_plot/examples/violin/input/example_expression.csv"
+  }
+}

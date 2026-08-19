@@ -1,0 +1,15 @@
+{
+  "id": "blank_theme",
+  "label": "blank_theme",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "blank_theme",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/blank_theme/input/example_input.csv --params plugins/advanced_dim_plot/examples/blank_theme/params.json --output /tmp/advanced_dim_plot_blank_theme_out"
+  }
+}

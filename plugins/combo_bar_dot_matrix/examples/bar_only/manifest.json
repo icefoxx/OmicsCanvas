@@ -1,0 +1,11 @@
+{
+  "id": "bar_only",
+  "label": "bar_only",
+  "plugin_id": "combo_bar_dot_matrix",
+  "plot_type": "combo_bar_dot_matrix",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png"
+}

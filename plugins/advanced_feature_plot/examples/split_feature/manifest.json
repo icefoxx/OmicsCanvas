@@ -1,0 +1,15 @@
+{
+  "id": "split_feature",
+  "label": "split_feature",
+  "plugin_id": "advanced_feature_plot",
+  "plot_type": "split_feature",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/split_feature/input/example_input.csv --params plugins/advanced_feature_plot/examples/split_feature/params.json --output /tmp/advanced_feature_plot_split_feature_out"
+  }
+}

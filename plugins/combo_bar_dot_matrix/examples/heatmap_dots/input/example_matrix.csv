@@ -1,0 +1,6 @@
+feature,Full model,+DNase,+ATAC,+H3K27ac,+Hi-C,Core+DNase,Core+ATAC,Core+H3K27ac,Core only
+DNase-seq,1,1,0,0,0,1,0,0,0
+ATAC-seq,1,0,1,0,0,0,1,0,0
+H3K27ac,1,0,0,1,0,0,0,1,0
+ENCODE Hi-C,1,0,0,0,1,0,0,0,0
+Extended features,1,1,1,1,1,0,0,0,0

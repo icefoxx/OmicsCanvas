@@ -1,0 +1,1 @@
+{"input_mode":"wide","metric_column":"metric","group_order":["Clinical","Genomic","Imaging"],"group_colors":{"Clinical":"#0072B2","Genomic":"#D55E00","Imaging":"#009E73"},"radial_limits":[0,100],"radial_breaks":[0,25,50,75,100],"title":"Model profile by evaluation dimension","subtitle":"Six metrics across three approaches","interactive":true,"width":8,"height":7}

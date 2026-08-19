@@ -1,0 +1,62 @@
+{
+  "plugin_id": "den_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic",
+      "plugin_id": "den_plot",
+      "plot_type": "column_dendrogram",
+      "mode": "",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_matrix.csv",
+        "annot": "input/example_annotation.csv"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/den_plot/plot.R --input plugins/den_plot/examples/basic/input/example_matrix.csv --params plugins/den_plot/examples/basic/params.json --output /tmp/den_plot_basic_out --annot plugins/den_plot/examples/basic/input/example_annotation.csv"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    },
+    {
+      "id": "colored_labels",
+      "label": "colored_labels",
+      "plugin_id": "den_plot",
+      "plot_type": "column_dendrogram",
+      "mode": "",
+      "params": "../examples/colored_labels/params.json",
+      "inputs": {
+        "input": "input/example_matrix.csv",
+        "annot": "input/example_annotation.csv"
+      },
+      "expected": "../examples/colored_labels/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/den_plot/plot.R --input plugins/den_plot/examples/colored_labels/input/example_matrix.csv --params plugins/den_plot/examples/colored_labels/params.json --output /tmp/den_plot_colored_labels_out --annot plugins/den_plot/examples/colored_labels/input/example_annotation.csv"
+      },
+      "bundle": "../examples/colored_labels",
+      "gallery_png": "colored_labels.png",
+      "params_filename": "example_colored_labels_params.json"
+    },
+    {
+      "id": "subset",
+      "label": "subset",
+      "plugin_id": "den_plot",
+      "plot_type": "column_dendrogram",
+      "mode": "",
+      "params": "../examples/subset/params.json",
+      "inputs": {
+        "input": "input/example_matrix.csv",
+        "annot": "input/example_annotation.csv"
+      },
+      "expected": "../examples/subset/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/den_plot/plot.R --input plugins/den_plot/examples/subset/input/example_matrix.csv --params plugins/den_plot/examples/subset/params.json --output /tmp/den_plot_subset_out --annot plugins/den_plot/examples/subset/input/example_annotation.csv"
+      },
+      "bundle": "../examples/subset",
+      "gallery_png": "subset.png",
+      "params_filename": "example_subset_params.json"
+    }
+  ]
+}

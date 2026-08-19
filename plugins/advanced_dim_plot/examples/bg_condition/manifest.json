@@ -1,0 +1,15 @@
+{
+  "id": "bg_condition",
+  "label": "bg_condition",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "bg_condition",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_pdf_like_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/bg_condition/input/example_pdf_like_input.csv --params plugins/advanced_dim_plot/examples/bg_condition/params.json --output /tmp/advanced_dim_pdf_bg_condition_out"
+  }
+}

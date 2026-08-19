@@ -1,0 +1,239 @@
+{
+  "data": {
+    "x_column": {
+      "type": "column",
+      "label": "X embedding",
+      "help": "",
+      "default": "dim1",
+      "required": true
+    },
+    "y_column": {
+      "type": "column",
+      "label": "Y embedding",
+      "help": "",
+      "default": "dim2",
+      "required": true
+    },
+    "id_column": {
+      "type": "column",
+      "label": "Id column",
+      "help": "",
+      "default": "cell"
+    },
+    "feature_columns": {
+      "type": "columns",
+      "label": "Feature columns",
+      "help": "",
+      "default": [],
+      "required": true
+    },
+    "group_column": {
+      "type": "column",
+      "label": "Group column",
+      "help": ""
+    },
+    "split_column": {
+      "type": "column",
+      "label": "Split column",
+      "help": ""
+    },
+    "global_split": {
+      "type": "boolean",
+      "label": "Global split panels",
+      "help": "",
+      "default": false
+    }
+  },
+  "axes": {
+    "xlab": {
+      "type": "string",
+      "label": "X axis title",
+      "help": "",
+      "default": ""
+    },
+    "ylab": {
+      "type": "string",
+      "label": "Y axis title",
+      "help": "",
+      "default": ""
+    },
+    "show_x_axis": {
+      "type": "boolean",
+      "label": "Show X axis",
+      "help": "",
+      "default": true
+    },
+    "show_y_axis": {
+      "type": "boolean",
+      "label": "Show Y axis",
+      "help": "",
+      "default": true
+    },
+    "panel_border_show": {
+      "type": "boolean",
+      "label": "Panel border",
+      "help": "",
+      "default": true
+    }
+  },
+  "title": {
+    "title_show": {
+      "type": "boolean",
+      "label": "Show title",
+      "help": "",
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "help": "",
+      "default": ""
+    },
+    "subtitle_show": {
+      "type": "boolean",
+      "label": "Show subtitle",
+      "help": "",
+      "default": false
+    },
+    "subtitle": {
+      "type": "string",
+      "label": "Subtitle",
+      "help": "",
+      "default": ""
+    }
+  },
+  "style": {
+    "point_size": {
+      "type": "number",
+      "label": "Point size",
+      "help": "",
+      "default": 0.9
+    },
+    "point_alpha": {
+      "type": "number",
+      "label": "Point alpha",
+      "help": "",
+      "default": 0.85
+    },
+    "feature_palette": {
+      "type": "string",
+      "label": "Feature palette",
+      "help": "",
+      "default": ""
+    },
+    "palette": {
+      "type": "string",
+      "label": "Palette",
+      "help": "",
+      "default": ""
+    },
+    "background_color": {
+      "type": "color",
+      "label": "Background color",
+      "help": "",
+      "default": "#F2F2F2"
+    },
+    "background_cutoff": {
+      "type": "number",
+      "label": "Background cutoff",
+      "help": "",
+      "default": 0.05
+    },
+    "keep_zero": {
+      "type": "boolean",
+      "label": "Keep zero values",
+      "help": "",
+      "default": true
+    },
+    "hex": {
+      "type": "boolean",
+      "label": "Hex mode",
+      "help": "",
+      "default": false
+    },
+    "show_density": {
+      "type": "boolean",
+      "label": "Show density",
+      "help": "",
+      "default": false
+    }
+  },
+  "labels": {
+    "label_show": {
+      "type": "boolean",
+      "label": "Show labels",
+      "help": "",
+      "default": false
+    },
+    "group_label_show": {
+      "type": "boolean",
+      "label": "Show group labels",
+      "help": "",
+      "default": false
+    },
+    "group_label_size": {
+      "type": "number",
+      "label": "Group label size",
+      "help": "",
+      "default": 3.5
+    }
+  },
+  "legend": {
+    "legend_show": {
+      "type": "boolean",
+      "label": "Show legend",
+      "help": "",
+      "default": true
+    },
+    "legend_title": {
+      "type": "string",
+      "label": "Legend title",
+      "help": "",
+      "default": ""
+    },
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "help": "",
+      "default": "right",
+      "options": [
+        "right",
+        "left",
+        "top",
+        "bottom",
+        "none"
+      ]
+    }
+  },
+  "export": {
+    "theme_use": {
+      "type": "select",
+      "label": "Theme",
+      "help": "",
+      "default": "classic",
+      "options": [
+        "classic",
+        "minimal",
+        "bw"
+      ]
+    },
+    "width": {
+      "type": "number",
+      "label": "Width (in)",
+      "help": "",
+      "default": 7
+    },
+    "height": {
+      "type": "number",
+      "label": "Height (in)",
+      "help": "",
+      "default": 6
+    },
+    "dpi": {
+      "type": "number",
+      "label": "DPI",
+      "help": "",
+      "default": 300
+    }
+  }
+}

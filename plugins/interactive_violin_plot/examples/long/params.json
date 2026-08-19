@@ -1,0 +1,25 @@
+{
+  "input_mode": "long",
+  "id_column": "sample",
+  "feature_column": "feature",
+  "value_column": "value",
+  "group_column": "group",
+  "group_mode": "facet",
+  "facet_scales": "free_y",
+  "cloud_fill_mode": "group",
+  "cloud_colors": {
+    "Control": "#66c2a5",
+    "Treated": "#fc8d62"
+  },
+  "point_color": "#4d4d4d",
+  "point_alpha": 0.5,
+  "point_size": 1,
+  "point_jitter_width": 0.35,
+  "point_jitter_seed": 7,
+  "box_show": true,
+  "median_show": true,
+  "title": "Feature distributions by group",
+  "subtitle": "Long input example (example_input_long.csv)",
+  "legend_show": true,
+  "legend_position": "top"
+}

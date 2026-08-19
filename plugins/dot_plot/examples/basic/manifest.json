@@ -1,0 +1,15 @@
+{
+  "id": "basic",
+  "label": "basic",
+  "plugin_id": "dot_plot",
+  "plot_type": "precomputed",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/dot_plot/plot.R --input plugins/dot_plot/examples/basic/input/example_input.csv --params plugins/dot_plot/examples/basic/params.json --output /tmp/dot_plot_basic_out"
+  }
+}

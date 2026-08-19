@@ -1,0 +1,1 @@
+{"input_mode":"raw","id_column":"sample","correlation_method":"spearman","triangle_mode":"mixed","title":"Feature correlation matrix","subtitle":"Spearman correlation with significance","significance_show":true,"interactive":true,"width":8,"height":8,"dpi":180}

@@ -1,0 +1,37 @@
+{
+  "id_column": "cell",
+  "group_column": "cluster",
+  "cell_annotation": ["condition", "batch", "quality_score"],
+  "features": ["CD3D", "IL7R", "MS4A1", "CD79A", "LYZ", "LST1", "MKI67", "TOP2A", "GNLY", "NKG7"],
+  "feature_groups": {
+    "T cell": ["CD3D", "IL7R"],
+    "B cell": ["MS4A1", "CD79A"],
+    "Myeloid": ["LYZ", "LST1"],
+    "Cycling": ["MKI67", "TOP2A"],
+    "NK": ["GNLY", "NKG7"]
+  },
+  "plot_type": "heatmap",
+  "heatmap_mode": "group",
+  "summary": "zscore",
+  "heatmap_palette": "vlag",
+  "group_colors": {
+    "T cell": "#4C78A8",
+    "B cell": "#F58518",
+    "Myeloid": "#54A24B",
+    "Cycling": "#B279A2",
+    "NK": "#E45756"
+  },
+  "show_row_names": true,
+  "row_name_size": 10,
+  "show_column_names": true,
+  "column_name_size": 9,
+  "highlight_features": ["CD3D", "MS4A1", "LYZ"],
+  "highlight_label_color": "#111111",
+  "highlight_label_size": 9,
+  "cluster_rows": false,
+  "cluster_columns": false,
+  "legend_title_size": 10,
+  "legend_text_size": 9,
+  "width": 8.5,
+  "height": 6.2
+}

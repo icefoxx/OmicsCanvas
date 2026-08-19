@@ -1,0 +1,15 @@
+{
+  "id": "donut",
+  "label": "donut",
+  "plugin_id": "interactive_pie_plot",
+  "plot_type": "donut",
+  "mode": "donut",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_pie_plot/plot.R --input plugins/interactive_pie_plot/examples/donut/input/example_input.csv --params plugins/interactive_pie_plot/examples/donut/params.json --output /tmp/interactive_pie_plot_donut_out"
+  }
+}

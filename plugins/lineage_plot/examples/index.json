@@ -1,0 +1,62 @@
+{
+  "plugin_id": "lineage_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic",
+      "plugin_id": "lineage_plot",
+      "plot_type": "basic",
+      "mode": "",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_embedding.csv",
+        "lineages": "input/example_lineages.csv"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/lineage_plot/plot.R --input plugins/lineage_plot/examples/basic/input/example_embedding.csv --params plugins/lineage_plot/examples/basic/params.json --output /tmp/lineage_plot_basic_out --lineages plugins/lineage_plot/examples/basic/input/example_lineages.csv"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    },
+    {
+      "id": "single",
+      "label": "single",
+      "plugin_id": "lineage_plot",
+      "plot_type": "single",
+      "mode": "",
+      "params": "../examples/single/params.json",
+      "inputs": {
+        "input": "input/example_embedding.csv",
+        "lineages": "input/example_lineages.csv"
+      },
+      "expected": "../examples/single/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/lineage_plot/plot.R --input plugins/lineage_plot/examples/single/input/example_embedding.csv --params plugins/lineage_plot/examples/single/params.json --output /tmp/lineage_plot_single_out --lineages plugins/lineage_plot/examples/single/input/example_lineages.csv"
+      },
+      "bundle": "../examples/single",
+      "gallery_png": "single.png",
+      "params_filename": "example_single_params.json"
+    },
+    {
+      "id": "whiskers",
+      "label": "whiskers",
+      "plugin_id": "lineage_plot",
+      "plot_type": "whiskers",
+      "mode": "",
+      "params": "../examples/whiskers/params.json",
+      "inputs": {
+        "input": "input/example_embedding.csv",
+        "lineages": "input/example_lineages.csv"
+      },
+      "expected": "../examples/whiskers/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/lineage_plot/plot.R --input plugins/lineage_plot/examples/whiskers/input/example_embedding.csv --params plugins/lineage_plot/examples/whiskers/params.json --output /tmp/lineage_plot_whiskers_out --lineages plugins/lineage_plot/examples/whiskers/input/example_lineages.csv"
+      },
+      "bundle": "../examples/whiskers",
+      "gallery_png": "whiskers.png",
+      "params_filename": "example_whiskers_params.json"
+    }
+  ]
+}

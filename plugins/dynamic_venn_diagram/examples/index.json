@@ -1,0 +1,41 @@
+{
+  "plugin_id": "dynamic_venn_diagram",
+  "examples": [
+    {
+      "id": "abundance",
+      "label": "abundance",
+      "plugin_id": "dynamic_venn_diagram",
+      "plot_type": "abundance",
+      "mode": "auto",
+      "params": "../examples/abundance/params.json",
+      "inputs": {
+        "input": "input/example_abundance_input.csv"
+      },
+      "expected": "../examples/abundance/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/dynamic_venn_diagram/plot.R --input plugins/dynamic_venn_diagram/examples/abundance/input/example_abundance_input.csv --params plugins/dynamic_venn_diagram/examples/abundance/params.json --output /tmp/dynamic_venn_diagram_abundance_out"
+      },
+      "bundle": "../examples/abundance",
+      "gallery_png": "abundance.png",
+      "params_filename": "example_abundance_params.json"
+    },
+    {
+      "id": "params",
+      "label": "params",
+      "plugin_id": "dynamic_venn_diagram",
+      "plot_type": "params",
+      "mode": "venn",
+      "params": "../examples/params/params.json",
+      "inputs": {
+        "input": "input/example_element_input.csv"
+      },
+      "expected": "../examples/params/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/dynamic_venn_diagram/plot.R --input plugins/dynamic_venn_diagram/examples/params/input/example_element_input.csv --params plugins/dynamic_venn_diagram/examples/params/params.json --output /tmp/dynamic_venn_diagram_params_out"
+      },
+      "bundle": "../examples/params",
+      "gallery_png": "params.png",
+      "params_filename": "example_params_params.json"
+    }
+  ]
+}

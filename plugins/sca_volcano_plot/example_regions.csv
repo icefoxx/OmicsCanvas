@@ -1,0 +1,4 @@
+label,xmin,xmax,ymin,ymax,fill,alpha,border_color,border_width,border_linetype,label_x,label_y,label_color,label_size,label_face,show,z_order
+Down region,-Inf,-threshold,y_min,threshold_y,#4C78A8,0.20,#4C78A8,0.5,solid,-0.7,4,#1F4E79,3.2,bold,true,1
+No-change region,-threshold,threshold,y_min,y_max,#BDBDBD,0.14,#777777,0.4,dashed,0,6,#444444,3.2,plain,true,2
+Up region,threshold,Inf,threshold_y,Inf,#E45756,0.20,#E45756,0.5,solid,0.7,4,#8B1A1A,3.2,bold,true,3

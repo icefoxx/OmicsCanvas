@@ -1,0 +1,12 @@
+id: interactive_pie_plot
+name: Interactive Pie / Donut Plot
+version: 1.0.0
+description: Highly customizable pie and donut plot with static ggplot2 and interactive Plotly outputs.
+language: R
+entrypoint: plot.R
+category: Composition
+status: stable
+inputs:
+  - {id: input, type: table, formats: [csv, tsv, txt], required: true}
+outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, pie_data_used.csv, selected_rows.csv]
+runtime: Rscript plugins/interactive_pie_plot/plot.R --input input.csv --params params.json --output output_dir

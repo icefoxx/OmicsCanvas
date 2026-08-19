@@ -1,0 +1,21 @@
+name: dot_plot
+display_name: Dot Plot
+description: Standardized SCA dot plot wrapper for jjplot2.R (custDotplot / jjDotPlot1). Supports precomputed tidy data frames and aggregate mode from an expression matrix plus annotation, with optional dendrograms.
+runtime:
+  command: Rscript plot.R --input data.csv [--annot annotation.csv] --params params.json --output output_dir
+inputs:
+  - name: input
+    type: table
+    required: true
+    description: Tidy data frame (precomputed) or genes x cells matrix (aggregate).
+  - name: annot
+    type: table
+    required: false
+    description: Cell annotation with a cluster column (required for aggregate mode).
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - run.log
+  - selected_rows.csv

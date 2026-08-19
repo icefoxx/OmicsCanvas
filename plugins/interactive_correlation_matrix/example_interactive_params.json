@@ -1,0 +1,1 @@
+{"input_mode":"raw","id_column":"sample","correlation_method":"pearson","triangle_mode":"both","lower_mode":"circle","upper_mode":"number","cluster_features":true,"interactive":true,"selectable":true,"zoom":true,"pan":true,"lasso_select":true,"title":"Interactive correlations","legend_position":"right"}

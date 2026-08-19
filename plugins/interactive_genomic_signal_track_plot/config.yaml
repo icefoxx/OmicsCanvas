@@ -1,0 +1,15 @@
+id: interactive_genomic_signal_track_plot
+name: Interactive Genomic Signal Track Plot
+version: 1.0.0
+description: Stacked genomic signal/accessibility tracks with aligned expression distributions and optional genomic features.
+language: R
+entrypoint: plot.R
+category: Genomics
+status: stable
+inputs:
+  - {id: signal, type: table, formats: [csv, tsv], required: true}
+  - {id: expression, type: table, formats: [csv, tsv], required: false}
+  - {id: features, type: table, formats: [csv, tsv], required: false}
+  - {id: annotations, type: table, formats: [csv, tsv], required: false}
+outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, signal_data_used.csv, expression_data_used.csv, track_order.csv]
+runtime: Rscript plugins/interactive_genomic_signal_track_plot/plot.R --signal signal.csv --params params.json --output output_dir

@@ -1,0 +1,15 @@
+{
+  "id": "feature_comp",
+  "label": "feature_comp",
+  "plugin_id": "advanced_feature_plot",
+  "plot_type": "feature_comp",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/feature_comp/input/example_input.csv --params plugins/advanced_feature_plot/examples/feature_comp/params.json --output /tmp/advanced_feature_plot_feature_comp_out"
+  }
+}

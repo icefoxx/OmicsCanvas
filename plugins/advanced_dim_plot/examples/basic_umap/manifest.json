@@ -1,0 +1,15 @@
+{
+  "id": "basic_umap",
+  "label": "basic_umap",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "basic_umap",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_pdf_like_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/basic_umap/input/example_pdf_like_input.csv --params plugins/advanced_dim_plot/examples/basic_umap/params.json --output /tmp/advanced_dim_pdf_basic_umap_out"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic"
+    },
+    {
+      "id": "no_collapse",
+      "label": "no_collapse"
+    },
+    {
+      "id": "summary",
+      "label": "summary"
+    }
+  ]
+}

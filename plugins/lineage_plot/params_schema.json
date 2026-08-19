@@ -1,0 +1,66 @@
+{
+  "data": {
+    "cell_id_column": "Cell id column shared by --input and --lineages. Defaults to the first column of each file.",
+    "lineage_id_column": "Cell id column in the lineage table (defaults to cell_id_column / first column).",
+    "dim1_column": "Embedding column for the first dimension. Defaults to the second column of --input.",
+    "dim2_column": "Embedding column for the second dimension. Defaults to the third column of --input.",
+    "lineages": "Lineage/pseudotime columns to plot from the lineage table. Defaults to all non-id columns.",
+    "cells_include": "Only keep these cell ids.",
+    "cells_exclude": "Remove these cell ids."
+  },
+  "plot_mode": {
+    "dims": "Integer vector c(1,2) selecting which dim indices to use from the embedding.",
+    "trim": "Numeric vector c(lower, upper) quantiles used to trim lineage values before loess fitting.",
+    "span": "Loess span (smoothing parameter). Default 0.75.",
+    "return_layer": "Return the layer list instead of a ggplot (for composition). Default FALSE."
+  },
+  "labels": {
+    "title": "Plot title.",
+    "subtitle": "Plot subtitle.",
+    "xlab": "X axis title. Defaults to the dim1 column name.",
+    "ylab": "Y axis title. Defaults to the dim2 column name.",
+    "title_show": "Show/hide title.",
+    "xlab_show": "Show/hide x axis title.",
+    "ylab_show": "Show/hide y axis title."
+  },
+  "typography": {
+    "font_family": "Global font family.",
+    "font_size": "Global font size.",
+    "base_size": "themeDefault base size. Default 12.",
+    "title_size": "Title font size.",
+    "axis_label_size": "Axis title font size.",
+    "x_axis_text_size": "X tick label size.",
+    "y_axis_text_size": "Y tick label size."
+  },
+  "colors": {
+    "palette": "Named palette from SCA paletteCustomize (read from assets/palettes.rds). Default Dark2.",
+    "palcolor": "Named vector of explicit lineage colors, e.g. {\"Lineage1\": \"#E64B35\"}.",
+    "line_bg": "Background stroke color behind each curve. Default white.",
+    "line_bg_stroke": "Extra linewidth added to the background stroke. Default 0.5."
+  },
+  "layers": {
+    "linewidth": "Colored path linewidth. Default 1.",
+    "whiskers": "Draw whisker segments from fitted to raw points. Default FALSE.",
+    "whiskers_linewidth": "Whisker segment linewidth. Default 0.5.",
+    "whiskers_alpha": "Whisker segment alpha. Default 0.5.",
+    "lineages_arrow": "Add an arrow to the lineage paths. Default TRUE (arrow length 0.1 inches).",
+    "aspect_ratio": "Panel aspect ratio. Default 1."
+  },
+  "legends": {
+    "legend_position": "right, left, bottom, top, or none. Default right.",
+    "legend_direction": "vertical or horizontal. Default vertical.",
+    "legend_title_size": "Legend title font size.",
+    "legend_text_size": "Legend item text size.",
+    "legend_key_size": "Legend key size in points."
+  },
+  "selectors": {
+    "highlight_lineages": "Lineages to emphasize (reserved for highlight styling).",
+    "highlight_color": "Color used for highlighted lineages."
+  },
+  "output": {
+    "width": "Output width in inches. Default 7.",
+    "height": "Output height in inches. Default 6.",
+    "dpi": "PNG resolution. Default 300.",
+    "seed": "Random seed. Default 10086."
+  }
+}

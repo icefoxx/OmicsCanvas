@@ -1,0 +1,23 @@
+{
+  "plot_kind": "column_dendrogram",
+  "row_id_column": "feature",
+  "sample_col": "sample",
+  "group_col": "batch",
+  "sample_columns": ["S01", "S02", "S03", "S04", "S07", "S08", "S09", "S10"],
+  "rows_exclude": ["Gene20", "Gene21"],
+  "distance_method": "manhattan",
+  "cluster_method": "ward.D2",
+  "title": "Subset Samples With Batch Colors",
+  "tile_height_ratio": 0.12,
+  "point_size": 5.5,
+  "label_size": 10,
+  "legend_size": 10,
+  "legend_title": "Batch",
+  "legend_position": "bottom",
+  "x_text_angle": 30,
+  "x_text_hjust": 1,
+  "x_text_vjust": 1,
+  "width": 8.5,
+  "height": 5.0,
+  "dpi": 220
+}

@@ -1,0 +1,15 @@
+{
+  "id": "params",
+  "label": "params",
+  "plugin_id": "ranked_annotation_panel",
+  "plot_type": "params",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/ranked_annotation_panel/plot.R --input plugins/ranked_annotation_panel/examples/params/input/example_input.csv --params plugins/ranked_annotation_panel/examples/params/params.json --output /tmp/ranked_annotation_panel_params_out"
+  }
+}

@@ -1,0 +1,23 @@
+category,effect,group,size
+Transcription,1.5,type-A,8
+Signaling molecules and interaction,2.0,type-A,10
+Metabolism of terpenoids and polyketides,4.5,type-A,18
+Cell growth and death,5.0,type-A,20
+Metabolism of other amino acids,5.5,type-A,24
+Lipid metabolism,5.2,type-A,22
+Carbohydrate metabolism,11.0,type-B,48
+Cellular community,12.5,type-B,55
+Energy metabolism,15.0,type-B,70
+Transport and catabolism,2.5,type-B,12
+Amino acid metabolism,-18.0,type-C,90
+Nucleotide metabolism,-5.5,type-C,35
+"Folding, sorting and degradation",-5.0,type-C,28
+Membrane transport,-10.0,type-C,50
+Cell motility,-2.0,type-C,14
+Metabolism of cofactors and vitamins,19.0,type-D,95
+Translation,18.5,type-D,88
+Biosynthesis of other secondary metabolites,7.0,type-D,30
+Xenobiotics biodegradation and metabolism,7.2,type-D,32
+Glycan biosynthesis and metabolism,7.5,type-D,34
+Signal transduction,10.0,type-D,42
+Replication and repair,10.5,type-D,45

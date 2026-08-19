@@ -1,0 +1,19 @@
+{
+  "plot_mode": "group",
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "title": "Raster Optimized Rendering",
+  "subtitle": "scattermore-backed point layer for large embeddings",
+  "raster": true,
+  "raster_dpi": [1200, 1200],
+  "raster_point_size": 1,
+  "point_alpha": 0.8,
+  "group_palette": "Dark2",
+  "legend_position": "right",
+  "theme_use": "classic",
+  "panel_border_show": true,
+  "width": 7.2,
+  "height": 6.1
+}

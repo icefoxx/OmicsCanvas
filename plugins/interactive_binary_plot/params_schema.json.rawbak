@@ -1,0 +1,437 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Interactive Binary Plot parameters",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "input_mode": {
+          "enum": [
+            "wide",
+            "long"
+          ]
+        },
+        "row_id_column": {
+          "type": "string"
+        },
+        "row_column": {
+          "type": "string"
+        },
+        "column_column": {
+          "type": "string"
+        },
+        "value_column": {
+          "type": "string"
+        },
+        "column_include": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "column_exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "columns_include": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "columns_exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rows_include": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rows_exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "value_threshold": {
+          "type": "number"
+        },
+        "true_values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "false_values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "missing_values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transpose": {
+          "type": "boolean"
+        },
+        "group_column": {
+          "type": "string"
+        }
+      }
+    },
+    "order": {
+      "type": "object",
+      "properties": {
+        "row_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "column_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reverse_rows": {
+          "type": "boolean"
+        },
+        "reverse_columns": {
+          "type": "boolean"
+        },
+        "sort_rows": {
+          "type": "boolean"
+        },
+        "sort_columns": {
+          "type": "boolean"
+        },
+        "group_column": {
+          "type": "string"
+        },
+        "group_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cell": {
+      "type": "object",
+      "properties": {
+        "true_symbol": {
+          "type": "string"
+        },
+        "false_symbol": {
+          "type": "string"
+        },
+        "true_shape": {
+          "type": "string"
+        },
+        "false_shape": {
+          "type": "string"
+        },
+        "true_size": {
+          "type": "number"
+        },
+        "false_size": {
+          "type": "number"
+        },
+        "size_by_value": {
+          "type": "boolean"
+        },
+        "min_size": {
+          "type": "number"
+        },
+        "max_size": {
+          "type": "number"
+        },
+        "true_alpha": {
+          "type": "number"
+        },
+        "false_alpha": {
+          "type": "number"
+        },
+        "true_colors": {
+          "type": "object"
+        },
+        "false_color": {
+          "type": "string"
+        },
+        "border_color": {
+          "type": "string"
+        },
+        "border_width": {
+          "type": "number"
+        },
+        "stroke": {
+          "type": "number"
+        },
+        "missing_color": {
+          "type": "string"
+        },
+        "missing_show": {
+          "type": "boolean"
+        }
+      }
+    },
+    "axes": {
+      "type": "object",
+      "properties": {
+        "xlab": {
+          "type": "string"
+        },
+        "ylab": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        },
+        "title_show": {
+          "type": "boolean"
+        },
+        "title_size": {
+          "type": "number"
+        },
+        "title_color": {
+          "type": "string"
+        },
+        "title_face": {
+          "type": "string"
+        },
+        "title_hjust": {
+          "type": "number"
+        },
+        "x_text_show": {
+          "type": "boolean"
+        },
+        "y_text_show": {
+          "type": "boolean"
+        },
+        "x_text_size": {
+          "type": "number"
+        },
+        "y_text_size": {
+          "type": "number"
+        },
+        "x_text_angle": {
+          "type": "number"
+        },
+        "y_text_angle": {
+          "type": "number"
+        },
+        "x_text_color": {
+          "type": "string"
+        },
+        "y_text_color": {
+          "type": "string"
+        },
+        "axis_line_show": {
+          "type": "boolean"
+        },
+        "axis_line_color": {
+          "type": "string"
+        },
+        "grid_show": {
+          "type": "boolean"
+        },
+        "grid_color": {
+          "type": "string"
+        },
+        "grid_width": {
+          "type": "number"
+        },
+        "panel_border_show": {
+          "type": "boolean"
+        },
+        "panel_border_color": {
+          "type": "string"
+        },
+        "panel_border_width": {
+          "type": "number"
+        },
+        "x_expand": {
+          "type": "number"
+        },
+        "y_expand": {
+          "type": "number"
+        }
+      }
+    },
+    "annotation": {
+      "type": "object",
+      "properties": {
+        "row_group_colors": {
+          "type": "object"
+        },
+        "column_group_colors": {
+          "type": "object"
+        },
+        "group_strip_show": {
+          "type": "boolean"
+        },
+        "group_strip_size": {
+          "type": "number"
+        },
+        "cell_label_show": {
+          "type": "boolean"
+        },
+        "cell_label_format": {
+          "type": "string"
+        },
+        "cell_label_size": {
+          "type": "number"
+        },
+        "cell_label_color": {
+          "type": "string"
+        },
+        "highlight_rows": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "highlight_columns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "highlight_cells": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "highlight_color": {
+          "type": "string"
+        },
+        "highlight_size": {
+          "type": "number"
+        },
+        "highlight_alpha": {
+          "type": "number"
+        }
+      }
+    },
+    "legend": {
+      "type": "object",
+      "properties": {
+        "legend_show": {
+          "type": "boolean"
+        },
+        "legend_position": {
+          "type": "string"
+        },
+        "legend_title": {
+          "type": "string"
+        },
+        "legend_text_size": {
+          "type": "number"
+        },
+        "legend_title_size": {
+          "type": "number"
+        },
+        "legend_key_size": {
+          "type": "number"
+        },
+        "legend_ncol": {
+          "type": "integer"
+        }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "properties": {
+        "interactive": {
+          "type": "boolean"
+        },
+        "tooltip_columns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hover_template": {
+          "type": "string"
+        },
+        "selectable": {
+          "type": "boolean"
+        },
+        "lasso_select": {
+          "type": "boolean"
+        },
+        "zoom": {
+          "type": "boolean"
+        },
+        "pan": {
+          "type": "boolean"
+        },
+        "reset_view": {
+          "type": "boolean"
+        }
+      }
+    },
+    "theme/output": {
+      "type": "object",
+      "properties": {
+        "font_family": {
+          "type": "string"
+        },
+        "base_size": {
+          "type": "number"
+        },
+        "panel_background": {
+          "type": "string"
+        },
+        "plot_background": {
+          "type": "string"
+        },
+        "aspect_ratio": {
+          "type": "number"
+        },
+        "margin": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "dpi": {
+          "type": "number"
+        },
+        "html_width": {
+          "type": "number"
+        },
+        "html_height": {
+          "type": "number"
+        },
+        "export_formats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

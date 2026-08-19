@@ -1,0 +1,15 @@
+{
+  "id": "clustered_dotplot",
+  "label": "clustered_dotplot",
+  "plugin_id": "group_heatmap",
+  "plot_type": "clustered_dotplot",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/group_heatmap/plot.R --input plugins/group_heatmap/examples/clustered_dotplot/input/example_input.csv --params plugins/group_heatmap/examples/clustered_dotplot/params.json --output /tmp/group_heatmap_clustered_dotplot_out"
+  }
+}

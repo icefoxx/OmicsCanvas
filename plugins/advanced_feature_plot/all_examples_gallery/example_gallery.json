@@ -1,0 +1,110 @@
+[
+  {
+    "id": "density_hex",
+    "label": "density_hex",
+    "plugin_id": "advanced_feature_plot",
+    "plot_type": "density_hex",
+    "mode": "",
+    "params": "../examples/density_hex/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/density_hex/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/density_hex/input/example_input.csv --params plugins/advanced_feature_plot/examples/density_hex/params.json --output /tmp/advanced_feature_plot_density_hex_out"
+    },
+    "bundle": "../examples/density_hex",
+    "gallery_png": "density_hex.png",
+    "params_filename": "example_density_hex_params.json"
+  },
+  {
+    "id": "feature_comp",
+    "label": "feature_comp",
+    "plugin_id": "advanced_feature_plot",
+    "plot_type": "feature_comp",
+    "mode": "",
+    "params": "../examples/feature_comp/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/feature_comp/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/feature_comp/input/example_input.csv --params plugins/advanced_feature_plot/examples/feature_comp/params.json --output /tmp/advanced_feature_plot_feature_comp_out"
+    },
+    "bundle": "../examples/feature_comp",
+    "gallery_png": "feature_comp.png",
+    "params_filename": "example_feature_comp_params.json"
+  },
+  {
+    "id": "highlight_blank",
+    "label": "highlight_blank",
+    "plugin_id": "advanced_feature_plot",
+    "plot_type": "highlight_blank",
+    "mode": "",
+    "params": "../examples/highlight_blank/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/highlight_blank/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/highlight_blank/input/example_input.csv --params plugins/advanced_feature_plot/examples/highlight_blank/params.json --output /tmp/advanced_feature_plot_highlight_blank_out"
+    },
+    "bundle": "../examples/highlight_blank",
+    "gallery_png": "highlight_blank.png",
+    "params_filename": "example_highlight_blank_params.json"
+  },
+  {
+    "id": "multi_feature",
+    "label": "multi_feature",
+    "plugin_id": "advanced_feature_plot",
+    "plot_type": "multi_feature",
+    "mode": "",
+    "params": "../examples/multi_feature/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/multi_feature/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/multi_feature/input/example_input.csv --params plugins/advanced_feature_plot/examples/multi_feature/params.json --output /tmp/advanced_feature_plot_multi_feature_out"
+    },
+    "bundle": "../examples/multi_feature",
+    "gallery_png": "multi_feature.png",
+    "params_filename": "example_multi_feature_params.json"
+  },
+  {
+    "id": "single_feature",
+    "label": "single_feature",
+    "plugin_id": "advanced_feature_plot",
+    "plot_type": "single_feature",
+    "mode": "",
+    "params": "../examples/single_feature/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/single_feature/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/single_feature/input/example_input.csv --params plugins/advanced_feature_plot/examples/single_feature/params.json --output /tmp/advanced_feature_plot_single_feature_out"
+    },
+    "bundle": "../examples/single_feature",
+    "gallery_png": "single_feature.png",
+    "params_filename": "example_single_feature_params.json"
+  },
+  {
+    "id": "split_feature",
+    "label": "split_feature",
+    "plugin_id": "advanced_feature_plot",
+    "plot_type": "split_feature",
+    "mode": "",
+    "params": "../examples/split_feature/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/split_feature/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/split_feature/input/example_input.csv --params plugins/advanced_feature_plot/examples/split_feature/params.json --output /tmp/advanced_feature_plot_split_feature_out"
+    },
+    "bundle": "../examples/split_feature",
+    "gallery_png": "split_feature.png",
+    "params_filename": "example_split_feature_params.json"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "id": "custom",
+  "label": "custom",
+  "plugin_id": "interactive_dual_triangle_heatmap_plot",
+  "plot_type": "custom",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_upper.csv",
+    "annot": "input/example_annotation.csv",
+    "lower": "input/example_lower.csv",
+    "annotation": "input/3_example_annotation.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_dual_triangle_heatmap_plot/plot.R --input plugins/interactive_dual_triangle_heatmap_plot/examples/custom/input/example_upper.csv --params plugins/interactive_dual_triangle_heatmap_plot/examples/custom/params.json --output /tmp/interactive_dual_triangle_heatmap_plot_custom_out --annot plugins/interactive_dual_triangle_heatmap_plot/examples/custom/input/example_annotation.csv --lower plugins/interactive_dual_triangle_heatmap_plot/examples/custom/input/example_lower.csv --annotation plugins/interactive_dual_triangle_heatmap_plot/examples/custom/input/example_annotation.csv"
+  }
+}

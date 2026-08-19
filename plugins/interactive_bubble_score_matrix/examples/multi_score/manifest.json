@@ -1,0 +1,15 @@
+{
+  "id": "multi_score",
+  "label": "multi_score",
+  "plugin_id": "interactive_bubble_score_matrix",
+  "plot_type": "multi_score",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_multi_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_bubble_score_matrix/plot.R --input plugins/interactive_bubble_score_matrix/examples/multi_score/input/example_multi_input.csv --params plugins/interactive_bubble_score_matrix/examples/multi_score/params.json --output /tmp/interactive_bubble_score_matrix_multi_score_out"
+  }
+}

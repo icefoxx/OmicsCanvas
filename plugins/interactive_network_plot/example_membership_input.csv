@@ -1,0 +1,11 @@
+group,element,weight
+Treatment_A,IL6,1
+Treatment_A,TNF,1
+Treatment_A,STAT3,1
+Treatment_B,TNF,1
+Treatment_B,JAK1,1
+Treatment_B,STAT3,1
+Treatment_C,IL6,1
+Treatment_C,JAK1,1
+Treatment_C,MAPK1,1
+Treatment_C,STAT3,1

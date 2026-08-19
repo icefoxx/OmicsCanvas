@@ -1,0 +1,30 @@
+id: interactive_mantel_correlation_network
+name: Interactive Mantel Correlation Network
+version: 1.0.0
+description: Triangular correlation matrix with Mantel links and environmental/species point groups.
+language: R
+entrypoint: plot.R
+category: Correlation
+status: experimental
+inputs:
+  - id: input
+    type: table
+    formats: [csv, tsv, txt]
+  - id: input2
+    type: table
+    formats: [csv, tsv, txt]
+    optional: true
+  - id: mantel
+    type: table
+    formats: [csv, tsv, txt]
+    optional: true
+  - id: envpoints
+    type: table
+    formats: [csv, tsv, txt]
+    optional: true
+  - id: specpoints
+    type: table
+    formats: [csv, tsv, txt]
+    optional: true
+outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, correlation_matrix_used.csv, mantel_results.csv, env_points_used.csv, spec_points_used.csv, selected_links.csv]
+runtime: Rscript plugins/interactive_mantel_correlation_network/plot.R --input correlation.csv --params params.json --output output_dir --mantel mantel.csv --envpoints env_points.csv --specpoints spec_points.csv

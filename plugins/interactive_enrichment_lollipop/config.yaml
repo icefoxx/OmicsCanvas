@@ -1,0 +1,29 @@
+id: interactive_enrichment_lollipop
+name: Interactive Enrichment Lollipop
+display_name: Lollipop Plot
+version: 1.1.0
+description: >
+  ChiPlot-style zero-centered lollipop / Cleveland plot. Categories on one axis,
+  signed values on the other, stems to zero, group colors, optional size mapping,
+  full axis/title/legend controls, and optional plotly HTML.
+language: R
+entrypoint: plot.R
+category: Enrichment
+subcategory: Lollipop
+status: stable
+inputs:
+  - id: input
+    name: input
+    type: table
+    formats: [csv, tsv, txt]
+    required: true
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - result.html
+  - figure.json
+  - run.log
+  - selected_rows.csv
+runtime:
+  command: Rscript plot.R --input input.csv --params params.json --output output_dir

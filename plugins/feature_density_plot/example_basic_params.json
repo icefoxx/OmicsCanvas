@@ -1,0 +1,23 @@
+{
+  "features": ["GeneA"],
+  "dim1_column": "UMAP_1",
+  "dim2_column": "UMAP_2",
+  "cell_id_column": "cell",
+  "feature_id_column": "feature",
+  "scale01": false,
+  "raster": true,
+  "bias": 1,
+  "cells_knn": 25,
+  "title": "Feature Density: GeneA",
+  "xlab": "UMAP_1",
+  "ylab": "UMAP_2",
+  "legend_name": "Density",
+  "palette": "turbo",
+  "point_size": 0.5,
+  "point_shape": 16,
+  "base_size": 14,
+  "legend_position": "right",
+  "width": 7,
+  "height": 5.5,
+  "dpi": 220
+}

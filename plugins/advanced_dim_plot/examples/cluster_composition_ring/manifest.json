@@ -1,0 +1,15 @@
+{
+  "id": "cluster_composition_ring",
+  "label": "cluster_composition_ring",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "cluster_composition_ring",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_pdf_like_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/cluster_composition_ring/input/example_pdf_like_input.csv --params plugins/advanced_dim_plot/examples/cluster_composition_ring/params.json --output /tmp/advanced_dim_pdf_cluster_composition_ring_out"
+  }
+}

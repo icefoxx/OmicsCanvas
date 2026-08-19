@@ -1,0 +1,12 @@
+{
+  "input_mode": "wide",
+  "id_column": "sample",
+  "title": "Distribution clouds across features",
+  "xlab": "Observed value",
+  "cloud_alpha": 0.72,
+  "point_show": true,
+  "point_jitter_seed": 42,
+  "box_show": false,
+  "interactive": true,
+  "export_formats": ["svg", "pdf", "png", "html"]
+}

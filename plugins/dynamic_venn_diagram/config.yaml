@@ -1,0 +1,80 @@
+id: dynamic_venn_diagram
+name: Dynamic Venn Diagram
+version: 1.0.0
+description: Draw highly customizable Venn and flower Venn diagrams from element-list or abundance-matrix inputs, with subset exports.
+language: R
+entrypoint: plot.R
+category: Set
+status: experimental
+inputs:
+  - id: input
+    type: table
+    formats: [csv, tsv, txt]
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - subsets.csv
+  - subset_elements_long.csv
+  - set_sizes.csv
+  - run.log
+parameters:
+  input_type:
+    type: select
+    options: [auto, element, abundance]
+    default: auto
+  groups_include:
+    type: column_array
+    required: false
+  groups_exclude:
+    type: column_array
+    required: false
+  group_order:
+    type: string_array
+    required: false
+  element_id_column:
+    type: column
+    required: false
+  abundance_operator:
+    type: select
+    options: [">", ">=", "<", "<=", "==", "!="]
+    default: ">"
+  abundance_threshold:
+    type: number
+    default: 0
+  group_thresholds:
+    type: object
+    required: false
+  plot_mode:
+    type: select
+    options: [auto, venn, flower]
+    default: auto
+  palette_scheme:
+    type: select
+    options: [bold, soft, publication, vivid]
+    default: bold
+  set_colors:
+    type: object
+    required: false
+  fill_alpha:
+    type: number
+    default: 0.62
+  border_color:
+    type: color
+    default: "#FFFFFF"
+  border_width:
+    type: number
+    default: 2.2
+  show_counts:
+    type: boolean
+    default: true
+  show_percent:
+    type: boolean
+    default: false
+  show_group_names:
+    type: boolean
+    default: true
+  show_bar_chart:
+    type: boolean
+    default: false

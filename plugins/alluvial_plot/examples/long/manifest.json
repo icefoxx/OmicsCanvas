@@ -1,0 +1,9 @@
+{
+  "id": "long",
+  "label": "long",
+  "plugin_id": "alluvial_plot",
+  "plot_type": "alluvial",
+  "params": "params.json",
+  "inputs": {"input": "input/example_long.csv"},
+  "expected": "expected/result.png"
+}

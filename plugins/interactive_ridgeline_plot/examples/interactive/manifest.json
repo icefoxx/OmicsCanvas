@@ -1,0 +1,15 @@
+{
+  "id": "interactive",
+  "label": "interactive",
+  "plugin_id": "interactive_ridgeline_plot",
+  "plot_type": "wide",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_ridgeline_plot/plot.R --input plugins/interactive_ridgeline_plot/examples/interactive/input/example_input.csv --params plugins/interactive_ridgeline_plot/examples/interactive/params.json --output /tmp/interactive_ridgeline_plot_interactive_out"
+  }
+}

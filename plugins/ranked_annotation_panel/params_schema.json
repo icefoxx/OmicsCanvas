@@ -1,0 +1,224 @@
+{
+  "data": {
+    "row_label_column": {
+      "type": "column",
+      "label": "Row label column",
+      "help": "",
+      "required": true
+    },
+    "left_value_column": {
+      "type": "column",
+      "label": "Left value column",
+      "help": "",
+      "required": true
+    },
+    "annotation_columns": {
+      "type": "columns",
+      "label": "Annotation columns",
+      "help": "",
+      "default": []
+    },
+    "rows_include": {
+      "type": "string_array",
+      "label": "Rows include",
+      "help": "",
+      "default": []
+    },
+    "rows_exclude": {
+      "type": "string_array",
+      "label": "Rows exclude",
+      "help": "",
+      "default": []
+    },
+    "sort_rows_by_left_value": {
+      "type": "boolean",
+      "label": "Sort by left value",
+      "help": "",
+      "default": true
+    },
+    "sort_decreasing": {
+      "type": "boolean",
+      "label": "Sort decreasing",
+      "help": "",
+      "default": true
+    }
+  },
+  "axes": {
+    "x_title": {
+      "type": "string",
+      "label": "Left panel X title",
+      "help": "",
+      "default": ""
+    },
+    "x_min": {
+      "type": "number",
+      "label": "X min",
+      "help": ""
+    },
+    "x_max": {
+      "type": "number",
+      "label": "X max",
+      "help": ""
+    },
+    "x_axis_text_size": {
+      "type": "number",
+      "label": "X axis text size",
+      "help": "",
+      "default": 8
+    },
+    "row_name_size": {
+      "type": "number",
+      "label": "Row name size",
+      "help": "",
+      "default": 7
+    },
+    "show_grid": {
+      "type": "boolean",
+      "label": "Show grid",
+      "help": "",
+      "default": true
+    },
+    "grid_color": {
+      "type": "color",
+      "label": "Grid color",
+      "help": "",
+      "default": "#E6E6E6"
+    },
+    "panel_border": {
+      "type": "boolean",
+      "label": "Panel border",
+      "help": "",
+      "default": true
+    }
+  },
+  "title": {
+    "title_show": {
+      "type": "boolean",
+      "label": "Show title",
+      "help": "",
+      "default": false
+    },
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "help": "",
+      "default": ""
+    }
+  },
+  "points": {
+    "point_color": {
+      "type": "color",
+      "label": "Point color",
+      "help": "",
+      "default": "#001FBC"
+    },
+    "point_fill": {
+      "type": "color",
+      "label": "Point fill",
+      "help": "",
+      "default": "#001FBC"
+    },
+    "point_size": {
+      "type": "number",
+      "label": "Point size",
+      "help": "",
+      "default": 2.5
+    },
+    "point_shape": {
+      "type": "integer",
+      "label": "Point shape",
+      "help": "",
+      "default": 21
+    }
+  },
+  "annotation": {
+    "annotation_settings": {
+      "type": "object",
+      "label": "Per-column annotation colors/types",
+      "help": "",
+      "default": {}
+    },
+    "annotation_cell_width": {
+      "type": "number",
+      "label": "Annotation cell width",
+      "help": "",
+      "default": 0.8
+    },
+    "annotation_cell_height": {
+      "type": "number",
+      "label": "Annotation cell height",
+      "help": "",
+      "default": 0.86
+    },
+    "annotation_label_size": {
+      "type": "number",
+      "label": "Annotation label size",
+      "help": "",
+      "default": 7
+    },
+    "annotation_label_angle": {
+      "type": "number",
+      "label": "Annotation label angle",
+      "help": "",
+      "default": 45
+    },
+    "left_panel_width": {
+      "type": "number",
+      "label": "Left panel width",
+      "help": "",
+      "default": 5.4
+    },
+    "annotation_panel_width": {
+      "type": "number",
+      "label": "Annotation panel width",
+      "help": "",
+      "default": 0.9
+    }
+  },
+  "legend": {
+    "show_legend": {
+      "type": "boolean",
+      "label": "Show legend",
+      "help": "",
+      "default": true
+    },
+    "legend_title_size": {
+      "type": "number",
+      "label": "Legend title size",
+      "help": "",
+      "default": 8
+    },
+    "legend_text_size": {
+      "type": "number",
+      "label": "Legend text size",
+      "help": "",
+      "default": 7
+    },
+    "legend_panel_width": {
+      "type": "number",
+      "label": "Legend panel width",
+      "help": "",
+      "default": 1.3
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "label": "Width",
+      "help": "",
+      "default": 7.2
+    },
+    "height": {
+      "type": "number",
+      "label": "Height",
+      "help": "",
+      "default": 6
+    },
+    "dpi": {
+      "type": "number",
+      "label": "DPI",
+      "help": "",
+      "default": 300
+    }
+  }
+}

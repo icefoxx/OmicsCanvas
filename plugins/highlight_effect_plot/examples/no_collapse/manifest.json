@@ -1,0 +1,1 @@
+{"id":"no_collapse","label":"no_collapse","plugin_id":"highlight_effect_plot","plot_type":"highlight_effect","params":"params.json","inputs":{"input":"input/example_input.csv"},"expected":"expected/result.png"}

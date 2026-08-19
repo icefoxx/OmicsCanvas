@@ -1,0 +1,25 @@
+{
+  "id_column": "cell",
+  "group_column": "cluster",
+  "cell_annotation": ["condition", "batch"],
+  "features": ["CD3D", "IL7R", "MS4A1", "CD79A", "LYZ", "LST1", "MKI67", "TOP2A", "GNLY", "NKG7"],
+  "feature_groups": {
+    "T cell": ["CD3D", "IL7R"],
+    "B cell": ["MS4A1", "CD79A"],
+    "Myeloid": ["LYZ", "LST1"],
+    "Cycling": ["MKI67", "TOP2A"],
+    "NK": ["GNLY", "NKG7"]
+  },
+  "plot_type": "dotplot",
+  "style": "merge",
+  "orientation": "vertical",
+  "summary": "mean",
+  "threshold": 0.6,
+  "heatmap_palette": "YlOrRd",
+  "group_palette": "Paired",
+  "annotation_pie_scale": 0.5,
+  "annotation_track_scale": 0.8,
+  "legend_scale": 0.85,
+  "width": 9,
+  "height": 7
+}

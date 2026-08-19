@@ -1,0 +1,1 @@
+{"title":"Interactive pathway enrichment","interactive":true,"tooltip_columns":["category","value","group","size","pvalue"],"selectable":true,"lasso_select":true,"zoom":true,"pan":true,"reset_view":true,"group_colors":{"type-A":"#D95F02","type-B":"#1B9E77","type-C":"#7570B3","type-D":"#E7298A"},"width":10,"height":7,"html_width":1100,"html_height":750}

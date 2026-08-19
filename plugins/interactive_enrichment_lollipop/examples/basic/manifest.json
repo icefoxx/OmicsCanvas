@@ -1,0 +1,15 @@
+{
+  "id": "basic",
+  "label": "basic",
+  "plugin_id": "interactive_enrichment_lollipop",
+  "plot_type": "basic",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_enrichment_lollipop/plot.R --input plugins/interactive_enrichment_lollipop/examples/basic/input/example_input.csv --params plugins/interactive_enrichment_lollipop/examples/basic/params.json --output /tmp/interactive_enrichment_lollipop_basic_out"
+  }
+}

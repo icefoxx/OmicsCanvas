@@ -1,0 +1,15 @@
+{
+  "id": "split_highlight",
+  "label": "split_highlight",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "split_highlight",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/split_highlight/input/example_input.csv --params plugins/advanced_dim_plot/examples/split_highlight/params.json --output /tmp/advanced_dim_plot_split_highlight_out"
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "params",
+    "label": "params",
+    "plugin_id": "quadrant_correlation_scatter",
+    "plot_type": "params",
+    "mode": "",
+    "params": "../examples/params/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/params/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/quadrant_correlation_scatter/plot.R --input plugins/quadrant_correlation_scatter/examples/params/input/example_input.csv --params plugins/quadrant_correlation_scatter/examples/params/params.json --output /tmp/quadrant_correlation_scatter_params_out"
+    },
+    "bundle": "../examples/params",
+    "gallery_png": "params.png",
+    "params_filename": "example_params_params.json"
+  }
+]

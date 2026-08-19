@@ -1,0 +1,8 @@
+source,target,value,source_stage,target_stage,group,label
+RNA,Protein,42,Transcript,Product,Core,translation
+RNA,Degraded,8,Transcript,Outcome,Loss,degradation
+Protein,Active,30,Product,Outcome,Core,activation
+Protein,Stored,12,Product,Outcome,Reserve,storage
+Protein,Secreted,5,Product,Outcome,Export,secretion
+DNA,RNA,38,Genome,Transcript,Core,transcription
+DNA,Repair,7,Genome,Outcome,Repair,repair

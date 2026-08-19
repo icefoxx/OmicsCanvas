@@ -1,0 +1,494 @@
+{
+  "data": {
+    "input_mode": {
+      "type": "select",
+      "options": [
+        "edge_list",
+        "membership"
+      ],
+      "label": "Input Mode"
+    },
+    "source_column": {
+      "type": "column",
+      "label": "Source Column"
+    },
+    "target_column": {
+      "type": "column",
+      "label": "Target Column"
+    },
+    "node_id_column": {
+      "type": "column",
+      "label": "Node Id Column"
+    },
+    "label_column": {
+      "type": "column",
+      "label": "Label Column"
+    },
+    "group_column": {
+      "type": "column",
+      "label": "Group Column"
+    },
+    "weight_column": {
+      "type": "column",
+      "label": "Weight Column"
+    },
+    "edge_group_column": {
+      "type": "column",
+      "label": "Edge Group Column"
+    },
+    "directed": {
+      "type": "boolean",
+      "label": "Directed"
+    },
+    "rows_include": {
+      "type": "string_array",
+      "label": "Rows Include"
+    },
+    "rows_exclude": {
+      "type": "string_array",
+      "label": "Rows Exclude"
+    },
+    "nodes_include": {
+      "type": "string_array",
+      "label": "Nodes Include"
+    },
+    "nodes_exclude": {
+      "type": "string_array",
+      "label": "Nodes Exclude"
+    },
+    "groups_include": {
+      "type": "string_array",
+      "label": "Groups Include"
+    },
+    "groups_exclude": {
+      "type": "string_array",
+      "label": "Groups Exclude"
+    }
+  },
+  "layout": {
+    "layout_algorithm": {
+      "type": "select",
+      "options": [
+        "fr",
+        "kk",
+        "circle",
+        "stress",
+        "hierarchical",
+        "manual"
+      ],
+      "label": "Layout Algorithm"
+    },
+    "seed": {
+      "type": "number",
+      "label": "Seed"
+    },
+    "iterations": {
+      "type": "number",
+      "label": "Iterations"
+    },
+    "layout_width": {
+      "type": "number",
+      "label": "Layout Width"
+    },
+    "layout_height": {
+      "type": "number",
+      "label": "Layout Height"
+    },
+    "x_column": {
+      "type": "column",
+      "label": "X Column"
+    },
+    "y_column": {
+      "type": "column",
+      "label": "Y Column"
+    },
+    "level_column": {
+      "type": "column",
+      "label": "Level Column"
+    },
+    "node_spacing": {
+      "type": "number",
+      "label": "Node Spacing"
+    },
+    "component_layout": {
+      "type": "string",
+      "label": "Component Layout"
+    },
+    "flip_x": {
+      "type": "boolean",
+      "label": "Flip X"
+    },
+    "flip_y": {
+      "type": "boolean",
+      "label": "Flip Y"
+    },
+    "curved_edges": {
+      "type": "boolean",
+      "label": "Curved Edges"
+    },
+    "edge_curvature": {
+      "type": "number",
+      "label": "Edge Curvature"
+    }
+  },
+  "nodes": {
+    "node_size": {
+      "type": "number",
+      "label": "Node Size"
+    },
+    "node_size_min": {
+      "type": "number",
+      "label": "Node Size Min"
+    },
+    "node_size_max": {
+      "type": "number",
+      "label": "Node Size Max"
+    },
+    "node_shape": {
+      "type": "string",
+      "label": "Node Shape"
+    },
+    "node_alpha": {
+      "type": "number",
+      "label": "Node Alpha"
+    },
+    "node_stroke": {
+      "type": "number",
+      "label": "Node Stroke"
+    },
+    "node_stroke_color": {
+      "type": "color",
+      "label": "Node Stroke Color"
+    },
+    "node_color": {
+      "type": "color",
+      "label": "Node Color"
+    },
+    "node_colors": {
+      "type": "object",
+      "label": "Node Colors"
+    },
+    "group_colors": {
+      "type": "object",
+      "label": "Group Colors"
+    },
+    "label_show": {
+      "type": "boolean",
+      "label": "Label Show"
+    },
+    "label_column": {
+      "type": "column",
+      "label": "Label Column"
+    },
+    "label_size": {
+      "type": "number",
+      "label": "Label Size"
+    },
+    "label_color": {
+      "type": "color",
+      "label": "Label Color"
+    },
+    "label_family": {
+      "type": "string",
+      "label": "Label Family"
+    },
+    "label_face": {
+      "type": "string",
+      "label": "Label Face"
+    },
+    "label_angle": {
+      "type": "number",
+      "label": "Label Angle"
+    },
+    "label_repel": {
+      "type": "boolean",
+      "label": "Label Repel"
+    },
+    "label_nudge_x": {
+      "type": "number",
+      "label": "Label Nudge X"
+    },
+    "label_nudge_y": {
+      "type": "number",
+      "label": "Label Nudge Y"
+    },
+    "tooltip_columns": {
+      "type": "string_array",
+      "label": "Tooltip Columns"
+    },
+    "highlight_nodes": {
+      "type": "string_array",
+      "label": "Highlight Nodes"
+    },
+    "highlight_color": {
+      "type": "color",
+      "label": "Highlight Color"
+    },
+    "highlight_size": {
+      "type": "number",
+      "label": "Highlight Size"
+    },
+    "highlight_alpha": {
+      "type": "number",
+      "label": "Highlight Alpha"
+    },
+    "selected_nodes": {
+      "type": "string_array",
+      "label": "Selected Nodes"
+    }
+  },
+  "edges": {
+    "edge_color": {
+      "type": "color",
+      "label": "Edge Color"
+    },
+    "edge_colors": {
+      "type": "object",
+      "label": "Edge Colors"
+    },
+    "edge_width": {
+      "type": "number",
+      "label": "Edge Width"
+    },
+    "edge_width_min": {
+      "type": "number",
+      "label": "Edge Width Min"
+    },
+    "edge_width_max": {
+      "type": "number",
+      "label": "Edge Width Max"
+    },
+    "edge_alpha": {
+      "type": "number",
+      "label": "Edge Alpha"
+    },
+    "edge_linetype": {
+      "type": "string",
+      "label": "Edge Linetype"
+    },
+    "edge_arrow": {
+      "type": "boolean",
+      "label": "Edge Arrow"
+    },
+    "edge_arrow_size": {
+      "type": "number",
+      "label": "Edge Arrow Size"
+    },
+    "edge_label_show": {
+      "type": "boolean",
+      "label": "Edge Label Show"
+    },
+    "edge_label_column": {
+      "type": "column",
+      "label": "Edge Label Column"
+    },
+    "edge_label_size": {
+      "type": "number",
+      "label": "Edge Label Size"
+    },
+    "edge_label_color": {
+      "type": "color",
+      "label": "Edge Label Color"
+    }
+  },
+  "legend": {
+    "legend_show": {
+      "type": "boolean",
+      "label": "Legend Show"
+    },
+    "legend_position": {
+      "type": "string",
+      "label": "Legend Position"
+    },
+    "legend_title": {
+      "type": "string",
+      "label": "Legend Title"
+    },
+    "legend_text_size": {
+      "type": "number",
+      "label": "Legend Text Size"
+    },
+    "legend_title_size": {
+      "type": "number",
+      "label": "Legend Title Size"
+    },
+    "legend_key_size": {
+      "type": "number",
+      "label": "Legend Key Size"
+    },
+    "legend_ncol": {
+      "type": "number",
+      "label": "Legend Ncol"
+    }
+  },
+  "canvas_theme": {
+    "title": {
+      "type": "string",
+      "label": "Title"
+    },
+    "subtitle": {
+      "type": "string",
+      "label": "Subtitle"
+    },
+    "caption": {
+      "type": "string",
+      "label": "Caption"
+    },
+    "title_show": {
+      "type": "boolean",
+      "label": "Title Show"
+    },
+    "title_size": {
+      "type": "number",
+      "label": "Title Size"
+    },
+    "title_color": {
+      "type": "color",
+      "label": "Title Color"
+    },
+    "title_face": {
+      "type": "string",
+      "label": "Title Face"
+    },
+    "title_hjust": {
+      "type": "number",
+      "label": "Title Hjust"
+    },
+    "xlab": {
+      "type": "string",
+      "label": "Xlab"
+    },
+    "ylab": {
+      "type": "string",
+      "label": "Ylab"
+    },
+    "x_axis_show": {
+      "type": "boolean",
+      "label": "X Axis Show"
+    },
+    "y_axis_show": {
+      "type": "boolean",
+      "label": "Y Axis Show"
+    },
+    "grid_show": {
+      "type": "boolean",
+      "label": "Grid Show"
+    },
+    "grid_color": {
+      "type": "color",
+      "label": "Grid Color"
+    },
+    "panel_background": {
+      "type": "color",
+      "label": "Panel Background"
+    },
+    "plot_background": {
+      "type": "color",
+      "label": "Plot Background"
+    },
+    "panel_border_show": {
+      "type": "boolean",
+      "label": "Panel Border Show"
+    },
+    "panel_border_color": {
+      "type": "color",
+      "label": "Panel Border Color"
+    },
+    "panel_border_width": {
+      "type": "number",
+      "label": "Panel Border Width"
+    },
+    "margin": {
+      "type": "number",
+      "label": "Margin"
+    },
+    "font_family": {
+      "type": "string",
+      "label": "Font Family"
+    },
+    "base_size": {
+      "type": "number",
+      "label": "Base Size"
+    }
+  },
+  "interaction": {
+    "interactive": {
+      "type": "boolean",
+      "label": "Interactive"
+    },
+    "drag_nodes": {
+      "type": "boolean",
+      "label": "Drag Nodes"
+    },
+    "zoom_view": {
+      "type": "boolean",
+      "label": "Zoom View"
+    },
+    "pan_view": {
+      "type": "boolean",
+      "label": "Pan View"
+    },
+    "hover_neighborhood": {
+      "type": "boolean",
+      "label": "Hover Neighborhood"
+    },
+    "highlight_neighborhood": {
+      "type": "boolean",
+      "label": "Highlight Neighborhood"
+    },
+    "navigation_buttons": {
+      "type": "boolean",
+      "label": "Navigation Buttons"
+    },
+    "selectable": {
+      "type": "boolean",
+      "label": "Selectable"
+    },
+    "tooltip_show": {
+      "type": "boolean",
+      "label": "Tooltip Show"
+    },
+    "physics_enabled": {
+      "type": "boolean",
+      "label": "Physics Enabled"
+    },
+    "physics_solver": {
+      "type": "string",
+      "label": "Physics Solver"
+    },
+    "stabilize": {
+      "type": "boolean",
+      "label": "Stabilize"
+    },
+    "save_positions": {
+      "type": "boolean",
+      "label": "Save Positions"
+    }
+  },
+  "output": {
+    "width": {
+      "type": "number",
+      "label": "Width"
+    },
+    "height": {
+      "type": "number",
+      "label": "Height"
+    },
+    "dpi": {
+      "type": "number",
+      "label": "Dpi"
+    },
+    "html_width": {
+      "type": "number",
+      "label": "Html Width"
+    },
+    "html_height": {
+      "type": "number",
+      "label": "Html Height"
+    },
+    "export_formats": {
+      "type": "string_array",
+      "label": "Export Formats"
+    }
+  }
+}

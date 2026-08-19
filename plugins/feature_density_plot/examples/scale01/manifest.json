@@ -1,0 +1,16 @@
+{
+  "id": "scale01",
+  "label": "scale01",
+  "plugin_id": "feature_density_plot",
+  "plot_type": "scale01",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_expression.csv",
+    "embed": "input/example_embedding.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/feature_density_plot/plot.R --input plugins/feature_density_plot/examples/scale01/input/example_expression.csv --params plugins/feature_density_plot/examples/scale01/params.json --output /tmp/feature_density_plot_scale01_out --embed plugins/feature_density_plot/examples/scale01/input/example_embedding.csv"
+  }
+}

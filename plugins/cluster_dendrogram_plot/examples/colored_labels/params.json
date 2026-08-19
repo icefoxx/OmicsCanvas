@@ -1,0 +1,34 @@
+{
+  "sample_column": "sample",
+  "cluster_column": "cluster",
+  "distance_method": "correlation",
+  "cluster_method": "complete",
+  "title": "Sample-cluster dendrogram with colored labels",
+  "title_show": true,
+  "tile_height_ratio": 0.08,
+  "point_size": 4.5,
+  "label_size": 8,
+  "legend_size": 9,
+  "legend_title": "sample",
+  "legend_position": "right",
+  "group_colors": {
+    "S1": "#4DBBD5",
+    "S2": "#E64B35",
+    "S3": "#00A087"
+  },
+  "x_text_color_by": "cluster",
+  "x_text_colors": {
+    "0": "#F0E442",
+    "1": "#0072B2",
+    "2": "#D55E00",
+    "3": "#CC79A7"
+  },
+  "x_text_legend_title": "cluster",
+  "show_x_text_legend": true,
+  "x_text_angle": 45,
+  "x_text_hjust": 1,
+  "x_text_vjust": 1,
+  "width": 9.5,
+  "height": 6.2,
+  "dpi": 220
+}

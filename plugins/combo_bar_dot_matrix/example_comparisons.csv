@@ -1,0 +1,5 @@
+x1,x2,pvalue,label
+Full model,+DNase,0.0008,P = 8 × 10⁻⁴
++DNase,Core+DNase,0.002,P = 2 × 10⁻³
+Core+DNase,Core+ATAC,0.0006,P = 6 × 10⁻⁴
+Core+ATAC,Core only,0.0019,P = 1.9 × 10⁻³

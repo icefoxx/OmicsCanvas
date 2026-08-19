@@ -1,0 +1,19 @@
+{
+  "id_column": "cell",
+  "group_column": "cluster",
+  "split_column": "condition",
+  "stat_columns": ["percent_top50"],
+  "plot_type": "bar",
+  "fill_by": "group",
+  "palette": "Dark2",
+  "add_trend": true,
+  "trend_color": "#252525",
+  "trend_linewidth": 0.8,
+  "horizontal_lines": [42],
+  "horizontal_line_color": "#d73027",
+  "horizontal_line_type": 2,
+  "title": "Grouped bar statistic",
+  "ylab": "Percent top 50 genes",
+  "width": 7.5,
+  "height": 4.8
+}

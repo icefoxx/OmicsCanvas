@@ -1,0 +1,107 @@
+{
+  "data": {
+    "input_mode": "precomputed or aggregate. precomputed feeds a tidy data frame directly to custDotplot; aggregate computes avg.exp + pct.exp from an expression matrix plus annotation.",
+    "x_column": "Column mapped to x axis (e.g. gene).",
+    "y_column": "Column mapped to y axis (e.g. cluster).",
+    "size_by": "Column mapped to point size (e.g. pct.exp).",
+    "fill_by": "Column mapped to point fill (e.g. avg.exp.scaled).",
+    "shape_by": "Optional column mapped to point shape.",
+    "row_id_column": "Row id column for matrix input (aggregate mode), e.g. gene.",
+    "group_column": "Alias of cluster_column for aggregate mode.",
+    "cluster_column": "Cluster/group column in annotation (aggregate mode).",
+    "cell_column": "Cell/sample id column in annotation (aggregate mode).",
+    "gene_column": "Gene id column for aggregate tidy output.",
+    "rows_include": "Only keep these rows (x levels for precomputed, genes for aggregate).",
+    "rows_exclude": "Remove these rows.",
+    "columns_include": "Only keep these columns (y levels for precomputed, clusters/cells for aggregate).",
+    "columns_exclude": "Remove these columns.",
+    "features_include": "Alias of rows_include for gene/feature selection.",
+    "features_exclude": "Alias of rows_exclude for gene/feature selection."
+  },
+  "plot_mode": {
+    "point_geom": "Use geom_point dot layer (default true).",
+    "tile_geom": "Overlay geom_tile layer.",
+    "scale": "Z-score scale avg.exp per gene in aggregate mode.",
+    "col_min": "MinMax lower bound when scale is true.",
+    "col_max": "MinMax upper bound when scale is true.",
+    "rescale": "Use scales::rescale instead of MinMax in aggregate mode.",
+    "rescale_min": "Rescale lower bound.",
+    "rescale_max": "Rescale upper bound.",
+    "coord_fixed": "Fix coordinate aspect ratio.",
+    "coord_ratio": "Fixed ratio (reserved; uses aspect_ratio).",
+    "flip": "Flip x/y orientation.",
+    "clip": "ggplot clip setting: on or off."
+  },
+  "labels": {
+    "title": "Plot title.",
+    "subtitle": "Plot subtitle.",
+    "xlab": "X axis title.",
+    "ylab": "Y axis title.",
+    "title_show": "Show/hide title.",
+    "xlab_show": "Show/hide x axis title.",
+    "ylab_show": "Show/hide y axis title."
+  },
+  "typography": {
+    "base_size": "ggplot theme base size.",
+    "font_family": "Global font family.",
+    "x_text_angle": "X tick label angle.",
+    "x_text_hjust": "X tick label horizontal justification.",
+    "x_text_vjust": "X tick label vertical justification.",
+    "y_text_size": "Y tick label size.",
+    "title_size": "Title font size.",
+    "legend_title_size": "Legend title size.",
+    "legend_text_size": "Legend item text size."
+  },
+  "colors": {
+    "dot_col": "2 or 3 color vector for gradient/gradient2 fill.",
+    "midpoint": "Midpoint for gradient2.",
+    "palette": "Reserved palette name alias of dot_col.",
+    "fill_limits": "Numeric limits for fill scale.",
+    "fill_na_color": "Color for NA fill values.",
+    "group_colors": "Reserved named group colors."
+  },
+  "layers": {
+    "point_shape": "Point shape (default 21).",
+    "point_color": "Point border color.",
+    "point_stroke": "Point border stroke width.",
+    "point_alpha": "Point alpha.",
+    "dot_min": "Minimum point size range value.",
+    "dot_max": "Maximum point size range value.",
+    "dot_size": "Fixed point size when size_by is null.",
+    "shape_values": "Manual shape values for shape_by.",
+    "bar_width": "Reserved alias of colorbar_width.",
+    "size_width": "Size legend key width in cm."
+  },
+  "legends": {
+    "legend_position": "right, left, bottom, top, or none.",
+    "legend_direction": "vertical or horizontal.",
+    "fill_legend_title": "Fill colorbar legend title.",
+    "size_legend_title": "Size legend title.",
+    "shape_legend_title": "Shape legend title.",
+    "colorbar_width": "Colorbar width in cm.",
+    "show_grid": "Show/hide major grid.",
+    "show_border": "Show/hide panel border."
+  },
+  "dendrogram": {
+    "ytree": "Add y axis dendrogram (clusters y levels).",
+    "xtree": "Add x axis dendrogram (clusters x levels).",
+    "tree_pos": "Positions for y and x dendrograms, e.g. [right, top].",
+    "same_pos_label": "Place axis labels at the dendrogram side.",
+    "cluster_method": "hclust method (average, complete, ward.D, etc.).",
+    "distance_method": "dist method (euclidean, manhattan, etc.)."
+  },
+  "output": {
+    "width": "Output width in inches.",
+    "height": "Output height in inches.",
+    "dpi": "PNG resolution.",
+    "plot_margin": "Plot margin as top/right/bottom/left cm values.",
+    "aspect_ratio": "Fixed panel aspect ratio."
+  },
+  "selectors": {
+    "top_n": "Keep top N x levels by top_by.",
+    "top_by": "Column used to rank for top_n.",
+    "top_abs": "Use absolute value when ranking for top_n.",
+    "highlight_features": "x levels to highlight with a ring.",
+    "highlight_color": "Color of the highlight ring."
+  }
+}

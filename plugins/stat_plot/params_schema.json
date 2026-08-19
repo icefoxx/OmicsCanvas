@@ -1,0 +1,83 @@
+{
+  "data": {
+    "id_column": "Cell/sample id column in --input. Defaults to the first column.",
+    "stat_by": "REQUIRED. One or more metadata columns whose level counts/percentages are plotted. Vector of column names.",
+    "group_by": "Primary grouping column. If omitted, all rows form a single group.",
+    "split_by": "Optional facet/split column. Produces one panel per level.",
+    "bg_by": "Optional background grouping column. Adds a background grouping layer.",
+    "rows_include": "Only keep these cell/sample ids (values in id_column).",
+    "rows_exclude": "Remove these cell/sample ids.",
+    "stat_level": "For venn/upset: the level within each stat_by column considered 'present'. A single value (applied to all) or one per stat_by column.",
+    "keep_na": "Keep NA as an explicit level (statPlot keep.na).",
+    "keep_empty": "Keep empty factor levels (statPlot keep.empty).",
+    "each": "Make one plot per group element instead of one combined plot (statPlot each).",
+    "force": "Skip the >100-levels interactive prompt. Always TRUE in CLI mode."
+  },
+  "plot_mode": {
+    "plot_type": "bar, rose, ring, pie, trend, area, dot, sankey, chord, venn, or upset.",
+    "stat_type": "percent or count.",
+    "position": "stack or dodge (ggplot position for bar/trend/area).",
+    "flip": "Flip x/y orientation.",
+    "combine": "Combine multiple panels into one patchwork object (TRUE) or return a list (FALSE).",
+    "nrow": "Patchwork rows when multiple panels are combined.",
+    "ncol": "Patchwork columns when multiple panels are combined.",
+    "byrow": "Fill patchwork grid by row."
+  },
+  "labels": {
+    "title": "Plot title.",
+    "subtitle": "Plot subtitle.",
+    "xlab": "X axis title.",
+    "ylab": "Y axis title.",
+    "title_show": "Show/hide title.",
+    "subtitle_show": "Show/hide subtitle.",
+    "xlab_show": "Show/hide x axis title.",
+    "ylab_show": "Show/hide y axis title.",
+    "legend_name": "Override fill legend title (best-effort for single-panel ggplot outputs).",
+    "show_label": "Show value labels on the plot (statPlot label)."
+  },
+  "typography": {
+    "font_family": "Global font family (applied via theme.args where supported).",
+    "font_size": "Global font size hint.",
+    "base_size": "themeDefault baseSize.",
+    "title_size": "Title font size hint.",
+    "axis_label_size": "Axis title font size hint.",
+    "x_axis_text_size": "X tick label size hint.",
+    "x_axis_text_angle": "X tick label angle (statPlot forces 45 for non-polar types).",
+    "y_axis_text_size": "Y tick label size hint.",
+    "label_size": "Value label size (statPlot label.size).",
+    "label_fg": "Value label foreground color (statPlot label.fg).",
+    "label_bg": "Value label background color (statPlot label.bg).",
+    "label_bg_r": "Value label background radius (statPlot label.bg.r)."
+  },
+  "colors": {
+    "palette": "Named palette from SCA paletteCustomize (e.g. npg, jco, Paired, Set1).",
+    "palcolor": "Named colors for stat_by levels (named vector).",
+    "color_na": "Color for NA level (statPlot color.na).",
+    "palette_bg": "Background palette (statPlot palette.bg).",
+    "palcolor_bg": "Named colors for background groups (statPlot palcolor.bg).",
+    "alpha": "Main geometry alpha (statPlot alpha).",
+    "alpha_bg": "Background alpha (statPlot alpha.bg).",
+    "panel_fill": "Panel background fill (best-effort).",
+    "plot_fill": "Plot background fill (best-effort)."
+  },
+  "layers": {
+    "aspect_ratio": "Panel aspect ratio (statPlot aspect.ratio). Auto-set to 1 for rose/ring/pie."
+  },
+  "annotations": {
+    "highlight_levels": "Reserved selector: levels to highlight (best-effort, applied where supported).",
+    "highlight_color": "Reserved selector: highlight color."
+  },
+  "legends": {
+    "legend_position": "right, left, bottom, top, or none.",
+    "legend_direction": "vertical or horizontal.",
+    "legend_title_size": "Legend title size hint.",
+    "legend_text_size": "Legend item text size hint.",
+    "legend_key_size": "Legend key size hint."
+  },
+  "output": {
+    "width": "Output width in inches.",
+    "height": "Output height in inches.",
+    "dpi": "PNG resolution.",
+    "seed": "Random seed (statPlot seed)."
+  }
+}

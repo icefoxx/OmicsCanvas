@@ -1,0 +1,77 @@
+{
+  "plugin_id": "interactive_bubble_score_matrix",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic",
+      "plugin_id": "interactive_bubble_score_matrix",
+      "plot_type": "basic",
+      "mode": "",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_bubble_score_matrix/plot.R --input plugins/interactive_bubble_score_matrix/examples/basic/input/example_input.csv --params plugins/interactive_bubble_score_matrix/examples/basic/params.json --output /tmp/interactive_bubble_score_matrix_basic_out"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    },
+    {
+      "id": "custom",
+      "label": "custom",
+      "plugin_id": "interactive_bubble_score_matrix",
+      "plot_type": "custom",
+      "mode": "",
+      "params": "../examples/custom/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/custom/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_bubble_score_matrix/plot.R --input plugins/interactive_bubble_score_matrix/examples/custom/input/example_input.csv --params plugins/interactive_bubble_score_matrix/examples/custom/params.json --output /tmp/interactive_bubble_score_matrix_custom_out"
+      },
+      "bundle": "../examples/custom",
+      "gallery_png": "custom.png",
+      "params_filename": "example_custom_params.json"
+    },
+    {
+      "id": "interactive",
+      "label": "interactive",
+      "plugin_id": "interactive_bubble_score_matrix",
+      "plot_type": "interactive",
+      "mode": "",
+      "params": "../examples/interactive/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/interactive/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_bubble_score_matrix/plot.R --input plugins/interactive_bubble_score_matrix/examples/interactive/input/example_input.csv --params plugins/interactive_bubble_score_matrix/examples/interactive/params.json --output /tmp/interactive_bubble_score_matrix_interactive_out"
+      },
+      "bundle": "../examples/interactive",
+      "gallery_png": "interactive.png",
+      "params_filename": "example_interactive_params.json"
+    },
+    {
+      "id": "multi_score",
+      "label": "multi_score",
+      "plugin_id": "interactive_bubble_score_matrix",
+      "plot_type": "multi_score",
+      "mode": "",
+      "params": "../examples/multi_score/params.json",
+      "inputs": {
+        "input": "input/example_multi_input.csv"
+      },
+      "expected": "../examples/multi_score/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_bubble_score_matrix/plot.R --input plugins/interactive_bubble_score_matrix/examples/multi_score/input/example_multi_input.csv --params plugins/interactive_bubble_score_matrix/examples/multi_score/params.json --output /tmp/interactive_bubble_score_matrix_multi_score_out"
+      },
+      "bundle": "../examples/multi_score",
+      "gallery_png": "multi_score.png",
+      "params_filename": "example_multi_score_params.json"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"input_mode":"precomputed","correlation_file":"example_corr.csv","mantel_file":"example_mantel.csv","env_points_file":"example_env_points.csv","spec_points_file":"example_spec_points.csv","title":"Environmental and Species Associations","triangle_mode":"mixed","number_show":true,"interactive":true}

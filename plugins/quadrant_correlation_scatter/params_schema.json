@@ -1,0 +1,298 @@
+{
+  "data": {
+    "label_column": {
+      "type": "column",
+      "label": "Label column",
+      "help": "",
+      "default": "gene"
+    },
+    "x_column": {
+      "type": "column",
+      "label": "X column",
+      "help": "",
+      "required": true
+    },
+    "y_column": {
+      "type": "column",
+      "label": "Y column",
+      "help": "",
+      "required": true
+    },
+    "rows_include": {
+      "type": "string_array",
+      "label": "Rows include",
+      "help": "",
+      "default": []
+    },
+    "rows_exclude": {
+      "type": "string_array",
+      "label": "Rows exclude",
+      "help": "",
+      "default": []
+    },
+    "selected_ids": {
+      "type": "string_array",
+      "label": "Selected ids",
+      "help": "",
+      "default": []
+    },
+    "quadrant_mode": {
+      "type": "select",
+      "label": "Quadrant mode",
+      "help": "",
+      "default": "nine",
+      "options": [
+        "nine",
+        "four",
+        "custom"
+      ]
+    },
+    "x_thresholds": {
+      "type": "number_array",
+      "label": "X thresholds",
+      "help": "",
+      "default": [
+        -1,
+        1
+      ]
+    },
+    "y_thresholds": {
+      "type": "number_array",
+      "label": "Y thresholds",
+      "help": "",
+      "default": [
+        -1,
+        1
+      ]
+    }
+  },
+  "axes": {
+    "x_title": {
+      "type": "string",
+      "label": "X axis title",
+      "help": "",
+      "default": ""
+    },
+    "y_title": {
+      "type": "string",
+      "label": "Y axis title",
+      "help": "",
+      "default": ""
+    },
+    "x_min": {
+      "type": "number",
+      "label": "X min",
+      "help": ""
+    },
+    "x_max": {
+      "type": "number",
+      "label": "X max",
+      "help": ""
+    },
+    "y_min": {
+      "type": "number",
+      "label": "Y min",
+      "help": ""
+    },
+    "y_max": {
+      "type": "number",
+      "label": "Y max",
+      "help": ""
+    },
+    "show_x_axis": {
+      "type": "boolean",
+      "label": "Show X axis",
+      "help": "",
+      "default": true
+    },
+    "show_y_axis": {
+      "type": "boolean",
+      "label": "Show Y axis",
+      "help": "",
+      "default": true
+    },
+    "show_grid": {
+      "type": "boolean",
+      "label": "Show grid",
+      "help": "",
+      "default": true
+    },
+    "threshold_line_color": {
+      "type": "color",
+      "label": "Threshold line color",
+      "help": "",
+      "default": "#888888"
+    },
+    "threshold_line_type": {
+      "type": "select",
+      "label": "Threshold line type",
+      "help": "",
+      "default": "dashed",
+      "options": [
+        "solid",
+        "dashed",
+        "dotted"
+      ]
+    },
+    "panel_border_color": {
+      "type": "color",
+      "label": "Panel border color",
+      "help": "",
+      "default": "#222222"
+    }
+  },
+  "points": {
+    "point_size": {
+      "type": "number",
+      "label": "Point size",
+      "help": "",
+      "default": 0.8
+    },
+    "point_alpha": {
+      "type": "number",
+      "label": "Point alpha",
+      "help": "",
+      "default": 0.85
+    },
+    "quadrant_colors": {
+      "type": "object",
+      "label": "Quadrant colors",
+      "help": "",
+      "default": {}
+    },
+    "selected_point_fill": {
+      "type": "color",
+      "label": "Selected point fill",
+      "help": "",
+      "default": "#FFD166"
+    },
+    "selected_point_size": {
+      "type": "number",
+      "label": "Selected point size",
+      "help": "",
+      "default": 2.6
+    }
+  },
+  "labels": {
+    "label_show": {
+      "type": "boolean",
+      "label": "Show selected labels",
+      "help": "",
+      "default": true
+    },
+    "label_size": {
+      "type": "number",
+      "label": "Label size",
+      "help": "",
+      "default": 3
+    },
+    "label_color": {
+      "type": "color",
+      "label": "Label color",
+      "help": "",
+      "default": "#212121"
+    },
+    "label_line_color": {
+      "type": "color",
+      "label": "Connector color",
+      "help": "",
+      "default": "#555555"
+    }
+  },
+  "correlation": {
+    "show_correlation": {
+      "type": "boolean",
+      "label": "Show correlation",
+      "help": "",
+      "default": true
+    },
+    "cor_method": {
+      "type": "select",
+      "label": "Correlation method",
+      "help": "",
+      "default": "pearson",
+      "options": [
+        "pearson",
+        "spearman",
+        "kendall"
+      ]
+    },
+    "cor_label_size": {
+      "type": "number",
+      "label": "Correlation label size",
+      "help": "",
+      "default": 4
+    },
+    "cor_digits": {
+      "type": "integer",
+      "label": "R digits",
+      "help": "",
+      "default": 3
+    },
+    "p_digits": {
+      "type": "integer",
+      "label": "P digits",
+      "help": "",
+      "default": 3
+    }
+  },
+  "legend": {
+    "legend_show": {
+      "type": "boolean",
+      "label": "Show legend",
+      "help": "",
+      "default": true
+    },
+    "legend_name": {
+      "type": "string",
+      "label": "Legend title",
+      "help": "",
+      "default": ""
+    },
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "help": "",
+      "default": "right",
+      "options": [
+        "right",
+        "left",
+        "top",
+        "bottom",
+        "none"
+      ]
+    },
+    "legend_title_size": {
+      "type": "number",
+      "label": "Legend title size",
+      "help": "",
+      "default": 10
+    },
+    "legend_text_size": {
+      "type": "number",
+      "label": "Legend text size",
+      "help": "",
+      "default": 9
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "label": "Width",
+      "help": "",
+      "default": 7
+    },
+    "height": {
+      "type": "number",
+      "label": "Height",
+      "help": "",
+      "default": 6
+    },
+    "dpi": {
+      "type": "number",
+      "label": "DPI",
+      "help": "",
+      "default": 300
+    }
+  }
+}

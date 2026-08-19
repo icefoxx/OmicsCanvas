@@ -1,0 +1,15 @@
+{
+  "id": "summary",
+  "label": "summary",
+  "plugin_id": "fgsea_enrichment_plot",
+  "plot_type": "summary",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_fgsea_results.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/summary/input/example_fgsea_results.csv --params plugins/fgsea_enrichment_plot/examples/summary/params.json --output /tmp/fgsea_enrichment_plot_summary_out"
+  }
+}

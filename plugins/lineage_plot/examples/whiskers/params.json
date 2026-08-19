@@ -1,0 +1,23 @@
+{
+  "title": "Lineage trajectories with whiskers",
+  "subtitle": "Loess curves with raw-to-fitted whisker segments",
+  "xlab": "umap_1",
+  "ylab": "umap_2",
+  "palette": "Dark2",
+  "span": 0.75,
+  "trim": [0.01, 0.99],
+  "linewidth": 1,
+  "line_bg": "white",
+  "line_bg_stroke": 0.5,
+  "whiskers": true,
+  "whiskers_linewidth": 0.5,
+  "whiskers_alpha": 0.5,
+  "lineages_arrow": true,
+  "aspect_ratio": 1,
+  "legend_position": "right",
+  "legend_direction": "vertical",
+  "width": 7,
+  "height": 6,
+  "dpi": 300,
+  "seed": 10086
+}

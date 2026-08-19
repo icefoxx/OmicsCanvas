@@ -1,0 +1,83 @@
+[
+  {
+    "id": "basic",
+    "label": "basic",
+    "plugin_id": "interactive_clustered_heatmap_plot",
+    "plot_type": "basic",
+    "mode": "",
+    "params": "../examples/basic/params.json",
+    "inputs": {
+      "input": "input/example_matrix.csv",
+      "row-annot": "input/example_row_annotation.csv",
+      "col-annot": "input/example_column_annotation.csv"
+    },
+    "expected": "../examples/basic/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_clustered_heatmap_plot/plot.R --input plugins/interactive_clustered_heatmap_plot/examples/basic/input/example_matrix.csv --params plugins/interactive_clustered_heatmap_plot/examples/basic/params.json --output /tmp/interactive_clustered_heatmap_plot_basic_out --row-annot plugins/interactive_clustered_heatmap_plot/examples/basic/input/example_row_annotation.csv --col-annot plugins/interactive_clustered_heatmap_plot/examples/basic/input/example_column_annotation.csv"
+    },
+    "bundle": "../examples/basic",
+    "gallery_png": "basic.png",
+    "params_filename": "example_basic_params.json"
+  },
+  {
+    "id": "custom",
+    "label": "custom",
+    "plugin_id": "interactive_clustered_heatmap_plot",
+    "plot_type": "custom",
+    "mode": "",
+    "params": "../examples/custom/params.json",
+    "inputs": {
+      "input": "input/example_matrix.csv",
+      "row-annot": "input/example_row_annotation.csv",
+      "col-annot": "input/example_column_annotation.csv"
+    },
+    "expected": "../examples/custom/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_clustered_heatmap_plot/plot.R --input plugins/interactive_clustered_heatmap_plot/examples/custom/input/example_matrix.csv --params plugins/interactive_clustered_heatmap_plot/examples/custom/params.json --output /tmp/interactive_clustered_heatmap_plot_custom_out --row-annot plugins/interactive_clustered_heatmap_plot/examples/custom/input/example_row_annotation.csv --col-annot plugins/interactive_clustered_heatmap_plot/examples/custom/input/example_column_annotation.csv"
+    },
+    "bundle": "../examples/custom",
+    "gallery_png": "custom.png",
+    "params_filename": "example_custom_params.json"
+  },
+  {
+    "id": "interactive",
+    "label": "interactive",
+    "plugin_id": "interactive_clustered_heatmap_plot",
+    "plot_type": "interactive",
+    "mode": "",
+    "params": "../examples/interactive/params.json",
+    "inputs": {
+      "input": "input/example_matrix.csv",
+      "row-annot": "input/example_row_annotation.csv",
+      "col-annot": "input/example_column_annotation.csv"
+    },
+    "expected": "../examples/interactive/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_clustered_heatmap_plot/plot.R --input plugins/interactive_clustered_heatmap_plot/examples/interactive/input/example_matrix.csv --params plugins/interactive_clustered_heatmap_plot/examples/interactive/params.json --output /tmp/interactive_clustered_heatmap_plot_interactive_out --row-annot plugins/interactive_clustered_heatmap_plot/examples/interactive/input/example_row_annotation.csv --col-annot plugins/interactive_clustered_heatmap_plot/examples/interactive/input/example_column_annotation.csv"
+    },
+    "bundle": "../examples/interactive",
+    "gallery_png": "interactive.png",
+    "params_filename": "example_interactive_params.json"
+  },
+  {
+    "id": "panels",
+    "label": "panels",
+    "plugin_id": "interactive_clustered_heatmap_plot",
+    "plot_type": "panels",
+    "mode": "",
+    "params": "../examples/panels/params.json",
+    "inputs": {
+      "input": "input/example_matrix.csv",
+      "row-annot": "input/example_row_annotation.csv",
+      "col-annot": "input/example_column_annotation.csv",
+      "panel-groups": "input/example_panel_groups.csv"
+    },
+    "expected": "../examples/panels/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_clustered_heatmap_plot/plot.R --input plugins/interactive_clustered_heatmap_plot/examples/panels/input/example_matrix.csv --params plugins/interactive_clustered_heatmap_plot/examples/panels/params.json --output /tmp/interactive_clustered_heatmap_plot_panels_out --row-annot plugins/interactive_clustered_heatmap_plot/examples/panels/input/example_row_annotation.csv --col-annot plugins/interactive_clustered_heatmap_plot/examples/panels/input/example_column_annotation.csv --panel-groups plugins/interactive_clustered_heatmap_plot/examples/panels/input/example_panel_groups.csv"
+    },
+    "bundle": "../examples/panels",
+    "gallery_png": "panels.png",
+    "params_filename": "example_panels_params.json"
+  }
+]

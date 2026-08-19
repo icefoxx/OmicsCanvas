@@ -1,0 +1,7 @@
+metric,Clinical,Genomic,Imaging
+Sensitivity,82,74,68
+Specificity,76,88,71
+Accuracy,85,81,79
+Robustness,64,72,86
+Interpretability,91,63,75
+Speed,58,77,89

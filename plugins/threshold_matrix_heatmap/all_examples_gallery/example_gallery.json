@@ -1,0 +1,20 @@
+[
+  {
+    "id": "params",
+    "label": "params",
+    "plugin_id": "threshold_matrix_heatmap",
+    "plot_type": "params",
+    "mode": "",
+    "params": "../examples/params/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/params/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/threshold_matrix_heatmap/plot.R --input plugins/threshold_matrix_heatmap/examples/params/input/example_input.csv --params plugins/threshold_matrix_heatmap/examples/params/params.json --output /tmp/threshold_matrix_heatmap_params_out"
+    },
+    "bundle": "../examples/params",
+    "gallery_png": "params.png",
+    "params_filename": "example_params_params.json"
+  }
+]

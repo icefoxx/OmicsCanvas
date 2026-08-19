@@ -1,0 +1,194 @@
+{
+  "data": {
+    "category_column": { "type": "column", "label": "Category / label column", "default": null },
+    "type_column": { "type": "column", "label": "Type / class column (color)", "default": null },
+    "value_column": { "type": "column", "label": "Value column", "default": null },
+    "categories_include": { "type": "string_array", "label": "Categories include", "default": [] },
+    "categories_exclude": { "type": "string_array", "label": "Categories exclude", "default": [] },
+    "types_include": { "type": "string_array", "label": "Types include", "default": [] },
+    "types_exclude": { "type": "string_array", "label": "Types exclude", "default": [] },
+    "category_order": { "type": "string_array", "label": "Category order", "default": [] },
+    "type_order": { "type": "string_array", "label": "Type / legend order", "default": [] },
+    "sort_by": {
+      "type": "select",
+      "label": "Sort bars by",
+      "default": "input",
+      "options": ["input", "value", "value_desc", "category", "type_value"]
+    }
+  },
+  "canvas": {
+    "orientation": {
+      "type": "select",
+      "label": "Orientation",
+      "default": "horizontal",
+      "options": ["horizontal", "vertical"]
+    },
+    "width": { "type": "number", "label": "Width (in)", "default": 8 },
+    "height": { "type": "number", "label": "Height (in)", "default": 7 },
+    "dpi": { "type": "number", "label": "PNG DPI", "default": 300 },
+    "font_family": { "type": "string", "label": "Font family", "default": "sans" },
+    "margin_top": { "type": "number", "label": "Margin top", "default": 10 },
+    "margin_right": { "type": "number", "label": "Margin right", "default": 10 },
+    "margin_bottom": { "type": "number", "label": "Margin bottom", "default": 10 },
+    "margin_left": { "type": "number", "label": "Margin left", "default": 10 },
+    "panel_border": { "type": "boolean", "label": "Panel border", "default": true },
+    "panel_border_color": { "type": "color", "label": "Panel border color", "default": "#444444" },
+    "panel_border_width": { "type": "number", "label": "Panel border width", "default": 0.5 },
+    "background_show": { "type": "boolean", "label": "Background switch", "default": false },
+    "background_fill": { "type": "color", "label": "Background fill", "default": "#FFFFFF" },
+    "background_fill_opacity": { "type": "number", "label": "Background fill-opacity", "default": 1 },
+    "reverse_category": { "type": "boolean", "label": "Reverse category axis (first on top)", "default": true }
+  },
+  "bar": {
+    "outerPadding": { "type": "number", "label": "outerPadding", "default": 0.15 },
+    "bar_width": { "type": "number", "label": "Bar width override", "default": null },
+    "bar_fill_opacity": { "type": "number", "label": "Bar fill-opacity", "default": 1 },
+    "bar_stroke": { "type": "color", "label": "Bar stroke", "default": "#000000" },
+    "bar_stroke_width": { "type": "number", "label": "Bar stroke-width", "default": 0 },
+    "bar_stroke_opacity": { "type": "number", "label": "Bar stroke-opacity", "default": 1 },
+    "type_colors": { "type": "object", "label": "Per-type colors", "default": {} },
+    "palette": { "type": "string", "label": "Named palette", "default": "" },
+    "bar_text_show": { "type": "boolean", "label": "Bar text switch", "default": false },
+    "bar_text_size": { "type": "number", "label": "Bar text font-size", "default": 9 },
+    "bar_text_fill": { "type": "color", "label": "Bar text fill", "default": "#222222" },
+    "bar_text_font_weight": {
+      "type": "select",
+      "label": "Bar text font-weight",
+      "default": "normal",
+      "options": ["normal", "bold"]
+    },
+    "bar_text_digits": { "type": "integer", "label": "Bar text digits", "default": 0 },
+    "bar_text_suffix": { "type": "string", "label": "Bar text suffix", "default": "" },
+    "bar_text_nudge": { "type": "number", "label": "Bar text nudge (fraction of max)", "default": 0.02 }
+  },
+  "xAxis": {
+    "xlab": { "type": "string", "label": "X axis label text", "default": "" },
+    "xlab_show": { "type": "boolean", "label": "Show x axis label", "default": false },
+    "x_axis_title_size": { "type": "number", "label": "X label font-size", "default": 11 },
+    "x_axis_title_color": { "type": "color", "label": "X label fill", "default": "#000000" },
+    "x_axis_text_show": { "type": "boolean", "label": "X tick text switch", "default": true },
+    "x_axis_text_angle": { "type": "number", "label": "X tick rotate", "default": 0 },
+    "x_axis_text_size": { "type": "number", "label": "X tick font-size", "default": 9 },
+    "x_axis_text_fill": { "type": "color", "label": "X tick fill", "default": "#000000" },
+    "x_axis_font_weight": {
+      "type": "select",
+      "label": "X tick font-weight",
+      "default": "normal",
+      "options": ["normal", "bold"]
+    },
+    "x_tick_stroke": { "type": "color", "label": "X tick stroke", "default": "#000000" },
+    "x_tick_stroke_width": { "type": "number", "label": "X tick stroke-width", "default": 0.8 },
+    "x_tick_length": { "type": "number", "label": "X tick-length", "default": 4 },
+    "x_tick_orientation": {
+      "type": "select",
+      "label": "X tick-orientation",
+      "default": "outside",
+      "options": ["outside", "inside"]
+    },
+    "x_remove_path": { "type": "boolean", "label": "X removePath", "default": false },
+    "x_remove_tick": { "type": "boolean", "label": "X removeTick", "default": false },
+    "x_min": { "type": "number", "label": "min-value", "default": 0 },
+    "x_max": { "type": "number", "label": "max-value", "default": null },
+    "x_grid_show": { "type": "boolean", "label": "X grid switch", "default": true },
+    "grid_stroke": { "type": "color", "label": "Grid stroke", "default": "#CCCCCC" },
+    "grid_stroke_width": { "type": "number", "label": "Grid stroke-width", "default": 0.4 },
+    "grid_stroke_opacity": { "type": "number", "label": "Grid stroke-opacity", "default": 0.7 },
+    "grid_line_type": {
+      "type": "select",
+      "label": "Grid line type",
+      "default": "solid",
+      "options": ["solid", "dashed", "dotted"]
+    }
+  },
+  "yAxis": {
+    "ylab": { "type": "string", "label": "Y axis label text", "default": "" },
+    "ylab_show": { "type": "boolean", "label": "Show y axis label", "default": false },
+    "y_axis_title_size": { "type": "number", "label": "Y label font-size", "default": 11 },
+    "y_axis_title_color": { "type": "color", "label": "Y label fill", "default": "#000000" },
+    "y_axis_text_show": { "type": "boolean", "label": "Y tick text switch", "default": true },
+    "y_axis_text_angle": { "type": "number", "label": "Y tick rotate", "default": 0 },
+    "y_axis_text_size": { "type": "number", "label": "Y tick font-size", "default": 9 },
+    "y_axis_text_fill": { "type": "color", "label": "Y tick fill", "default": "#000000" },
+    "y_axis_font_weight": {
+      "type": "select",
+      "label": "Y tick font-weight",
+      "default": "normal",
+      "options": ["normal", "bold"]
+    },
+    "y_tick_stroke": { "type": "color", "label": "Y tick stroke", "default": "#000000" },
+    "y_tick_stroke_width": { "type": "number", "label": "Y tick stroke-width", "default": 0.8 },
+    "y_tick_length": { "type": "number", "label": "Y tick-length", "default": 4 },
+    "y_tick_orientation": {
+      "type": "select",
+      "label": "Y tick-orientation",
+      "default": "outside",
+      "options": ["outside", "inside"]
+    },
+    "y_remove_path": { "type": "boolean", "label": "Y removePath", "default": false },
+    "y_remove_tick": { "type": "boolean", "label": "Y removeTick", "default": false },
+    "y_grid_show": { "type": "boolean", "label": "Y grid switch", "default": false }
+  },
+  "title": {
+    "title_show": { "type": "boolean", "label": "Title switch", "default": true },
+    "title": { "type": "string", "label": "Title text", "default": "Hello world" },
+    "title_size": { "type": "number", "label": "Title font-size", "default": 13 },
+    "title_fill": { "type": "color", "label": "Title fill", "default": "#000000" },
+    "title_font_weight": {
+      "type": "select",
+      "label": "Title font-weight",
+      "default": "normal",
+      "options": ["normal", "bold"]
+    },
+    "title_text_anchor": {
+      "type": "select",
+      "label": "Title text-anchor",
+      "default": "middle",
+      "options": ["start", "middle", "end"]
+    },
+    "title_font_style": {
+      "type": "select",
+      "label": "Title font-style",
+      "default": "normal",
+      "options": ["normal", "italic"]
+    },
+    "title_background_show": { "type": "boolean", "label": "Title background switch", "default": true },
+    "title_background_fill": { "type": "color", "label": "Title background fill", "default": "#F0F0F0" },
+    "title_background_fill_opacity": { "type": "number", "label": "Title background opacity", "default": 1 },
+    "subtitle_show": { "type": "boolean", "label": "Subtitle switch", "default": false },
+    "subtitle": { "type": "string", "label": "Subtitle text", "default": "" }
+  },
+  "legend": {
+    "legend_show": { "type": "boolean", "label": "Legend switch", "default": true },
+    "legend_title": { "type": "string", "label": "Legend title", "default": "xiaoshi" },
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "default": "right",
+      "options": ["right", "left", "top", "bottom", "none"]
+    },
+    "legend_direction": {
+      "type": "select",
+      "label": "Legend direction",
+      "default": "vertical",
+      "options": ["vertical", "horizontal"]
+    },
+    "legend_title_size": { "type": "number", "label": "Legend title font-size", "default": 11 },
+    "legend_title_fill": { "type": "color", "label": "Legend title fill", "default": "#000000" },
+    "legend_title_font_weight": {
+      "type": "select",
+      "label": "Legend title font-weight",
+      "default": "normal",
+      "options": ["normal", "bold"]
+    },
+    "legend_text_size": { "type": "number", "label": "Legend item font-size", "default": 10 },
+    "legend_text_fill": { "type": "color", "label": "Legend item fill", "default": "#000000" },
+    "legend_key_size": { "type": "number", "label": "Legend key size (cm)", "default": 0.4 },
+    "legend_columns": { "type": "integer", "label": "Legend columns", "default": 1 },
+    "legend_reverse": { "type": "boolean", "label": "Reverse legend order", "default": true }
+  },
+  "export": {
+    "width": { "type": "number", "label": "Export width (in)", "default": 8 },
+    "height": { "type": "number", "label": "Export height (in)", "default": 7 },
+    "dpi": { "type": "number", "label": "Export DPI", "default": 300 }
+  }
+}

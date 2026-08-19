@@ -1,0 +1,23 @@
+{
+  "plot_mode": "group",
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "title": "Ellipse Mark Style",
+  "subtitle": "mark_type can be hull, ellipse, rect, or circle",
+  "point_size": 0.95,
+  "point_alpha": 0.7,
+  "show_mark": true,
+  "mark_type": "ellipse",
+  "mark_alpha": 0.1,
+  "mark_line_width": 0.55,
+  "mark_linetype": "dashed",
+  "label_groups": true,
+  "label_size": 3.5,
+  "legend_position": "bottom",
+  "theme_use": "classic",
+  "panel_border_show": true,
+  "width": 7.2,
+  "height": 6.1
+}

@@ -1,0 +1,15 @@
+{
+  "input_mode": "wide",
+  "row_column": "category",
+  "value_mode": "binary",
+  "palette": "habitat",
+  "circle_radius": 0.38,
+  "show_zero_circles": true,
+  "row_stripe_show": false,
+  "column_band_show": true,
+  "title_show": true,
+  "title": "Binary presence / absence",
+  "width": 12,
+  "height": 5,
+  "dpi": 300
+}

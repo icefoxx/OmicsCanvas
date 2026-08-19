@@ -1,0 +1,7812 @@
+{
+  "version": "1.0.0",
+  "source": {
+    "name": "lcpmgh/colors (scientific discrete palettes)",
+    "url": "https://github.com/lcpmgh/colors",
+    "csv": "https://raw.githubusercontent.com/lcpmgh/colors/main/@palettes.csv",
+    "license": "MIT",
+    "attribution": "Palettes curated in lcpmgh/colors (ggsci, RColorBrewer, journal cases).",
+    "fetched_at": "2026-08-10T21:20:48.796913+00:00"
+  },
+  "count": 229,
+  "palettes": [
+    {
+      "id": "lcpmgh-1",
+      "source_id": 1,
+      "name": "Case 1",
+      "raw_name": "nameless",
+      "colors": [
+        "#000080",
+        "#B22222"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-2",
+      "source_id": 2,
+      "name": "Case 2",
+      "raw_name": "nameless",
+      "colors": [
+        "#ACD6EC",
+        "#F5A889"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-3",
+      "source_id": 3,
+      "name": "Case 3",
+      "raw_name": "nameless",
+      "colors": [
+        "#148F28",
+        "#EA71AE"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-4",
+      "source_id": 4,
+      "name": "Case 4",
+      "raw_name": "nameless",
+      "colors": [
+        "#91CAE8",
+        "#F48892"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-5",
+      "source_id": 5,
+      "name": "Case 5",
+      "raw_name": "nameless",
+      "colors": [
+        "#BDB9B8",
+        "#DFEBD5"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-6",
+      "source_id": 6,
+      "name": "Case 6",
+      "raw_name": "nameless",
+      "colors": [
+        "#BEBAB9",
+        "#C47070"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-7",
+      "source_id": 7,
+      "name": "Case 7",
+      "raw_name": "nameless",
+      "colors": [
+        "#629433",
+        "#FEFF99"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-8",
+      "source_id": 8,
+      "name": "Case 8",
+      "raw_name": "nameless",
+      "colors": [
+        "#BFBBBA",
+        "#CFDAEC"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-9",
+      "source_id": 9,
+      "name": "Case 9",
+      "raw_name": "nameless",
+      "colors": [
+        "#050507",
+        "#1399B2"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-10",
+      "source_id": 10,
+      "name": "Case 10",
+      "raw_name": "nameless",
+      "colors": [
+        "#BEBAB9",
+        "#DBB8B2"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-11",
+      "source_id": 11,
+      "name": "Case 11",
+      "raw_name": "nameless",
+      "colors": [
+        "#8E7FB8",
+        "#A2C9AE"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-12",
+      "source_id": 12,
+      "name": "Case 12",
+      "raw_name": "nameless",
+      "colors": [
+        "#6888F5",
+        "#D77071"
+      ],
+      "n_colors": 2,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n2",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-13",
+      "source_id": 13,
+      "name": "Case 13",
+      "raw_name": "nameless",
+      "colors": [
+        "#000000",
+        "#2C939A",
+        "#A6A3A4"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-14",
+      "source_id": 14,
+      "name": "Case 14",
+      "raw_name": "nameless",
+      "colors": [
+        "#9ACE87",
+        "#D2D2D2",
+        "#EE634B"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-15",
+      "source_id": 15,
+      "name": "Case 15",
+      "raw_name": "nameless",
+      "colors": [
+        "#38C1F3",
+        "#8048AA",
+        "#FF0000"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-16",
+      "source_id": 16,
+      "name": "Case 16",
+      "raw_name": "nameless",
+      "colors": [
+        "#009E73",
+        "#B02226",
+        "#F0A12C"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-17",
+      "source_id": 17,
+      "name": "Case 17",
+      "raw_name": "nameless",
+      "colors": [
+        "#A9CA70",
+        "#C5D6F0",
+        "#F18C54"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-18",
+      "source_id": 18,
+      "name": "Case 18",
+      "raw_name": "nameless",
+      "colors": [
+        "#0E986F",
+        "#796CAD",
+        "#D65813"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-19",
+      "source_id": 19,
+      "name": "Case 19",
+      "raw_name": "nameless",
+      "colors": [
+        "#377EB9",
+        "#4DAE48",
+        "#974F9F"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-20",
+      "source_id": 20,
+      "name": "Case 20",
+      "raw_name": "nameless",
+      "colors": [
+        "#D0DD97",
+        "#DDDDDD",
+        "#E6B745"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-21",
+      "source_id": 21,
+      "name": "Case 21",
+      "raw_name": "nameless",
+      "colors": [
+        "#5BB5AC",
+        "#D8B365",
+        "#DE526C"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-22",
+      "source_id": 22,
+      "name": "Case 22",
+      "raw_name": "nameless",
+      "colors": [
+        "#7EA6D9",
+        "#D4E6BC",
+        "#F8F2A4"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-23",
+      "source_id": 23,
+      "name": "Case 23",
+      "raw_name": "nameless",
+      "colors": [
+        "#2B5863",
+        "#6A8078",
+        "#9D9D9D"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-24",
+      "source_id": 24,
+      "name": "Case 24",
+      "raw_name": "nameless",
+      "colors": [
+        "#23BAC5",
+        "#EECA40",
+        "#FD763F"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-25",
+      "source_id": 25,
+      "name": "Case 25",
+      "raw_name": "nameless",
+      "colors": [
+        "#00A14E",
+        "#688CC8",
+        "#ECE70F"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-26",
+      "source_id": 26,
+      "name": "Case 26",
+      "raw_name": "nameless",
+      "colors": [
+        "#91BFFA",
+        "#F2F2F2",
+        "#FFFEDF"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-27",
+      "source_id": 27,
+      "name": "Case 27",
+      "raw_name": "nameless",
+      "colors": [
+        "#43A3EF",
+        "#EF767B",
+        "#F9E7A7"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-28",
+      "source_id": 28,
+      "name": "Case 28",
+      "raw_name": "nameless",
+      "colors": [
+        "#1C3C63",
+        "#93C8C0",
+        "#D3D5D4"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-29",
+      "source_id": 29,
+      "name": "Case 29",
+      "raw_name": "nameless",
+      "colors": [
+        "#7998AD",
+        "#F07673",
+        "#FFF1CF"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-30",
+      "source_id": 30,
+      "name": "Case 30",
+      "raw_name": "nameless",
+      "colors": [
+        "#8583A9",
+        "#A0BDD5",
+        "#CA8BA8"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-31",
+      "source_id": 31,
+      "name": "Case 31",
+      "raw_name": "nameless",
+      "colors": [
+        "#85D0FF",
+        "#C2C48D",
+        "#FFDC8E"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-32",
+      "source_id": 32,
+      "name": "Case 32",
+      "raw_name": "nameless",
+      "colors": [
+        "#E0EBEB",
+        "#F7BDA9",
+        "#FBDED4"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-33",
+      "source_id": 33,
+      "name": "Case 33",
+      "raw_name": "nameless",
+      "colors": [
+        "#000000",
+        "#81B8DA",
+        "#EFC57F"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-34",
+      "source_id": 34,
+      "name": "Case 34",
+      "raw_name": "nameless",
+      "colors": [
+        "#4370B4",
+        "#549F9A",
+        "#C30078"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-35",
+      "source_id": 35,
+      "name": "Case 35",
+      "raw_name": "nameless",
+      "colors": [
+        "#2472A3",
+        "#A5B55D",
+        "#F4F3EE"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-36",
+      "source_id": 36,
+      "name": "Case 36",
+      "raw_name": "nameless",
+      "colors": [
+        "#94B5D8",
+        "#ACD2C7",
+        "#D57B70"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-37",
+      "source_id": 37,
+      "name": "Case 37",
+      "raw_name": "nameless",
+      "colors": [
+        "#4C4D4F",
+        "#97A9B7",
+        "#A5CCC7"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-38",
+      "source_id": 38,
+      "name": "Case 38",
+      "raw_name": "nameless",
+      "colors": [
+        "#688660",
+        "#9A5747",
+        "#F5F6BA"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-39",
+      "source_id": 39,
+      "name": "Case 39",
+      "raw_name": "nameless",
+      "colors": [
+        "#5CB3BA",
+        "#F3D707",
+        "#FF5E00"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-40",
+      "source_id": 40,
+      "name": "Case 40",
+      "raw_name": "nameless",
+      "colors": [
+        "#262626",
+        "#293890",
+        "#BF1D2D"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-41",
+      "source_id": 41,
+      "name": "Case 41",
+      "raw_name": "nameless",
+      "colors": [
+        "#040676",
+        "#397FC7",
+        "#F1B656"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-42",
+      "source_id": 42,
+      "name": "Case 42",
+      "raw_name": "nameless",
+      "colors": [
+        "#6D65A3",
+        "#6F6F6F",
+        "#F6631C"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-43",
+      "source_id": 43,
+      "name": "Case 43",
+      "raw_name": "nameless",
+      "colors": [
+        "#9998FF",
+        "#C99BFF",
+        "#FF9A9B"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-44",
+      "source_id": 44,
+      "name": "Case 44",
+      "raw_name": "nameless",
+      "colors": [
+        "#2C91E0",
+        "#3ABF99",
+        "#F0A73A"
+      ],
+      "n_colors": 3,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n3",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-45",
+      "source_id": 45,
+      "name": "Case 45",
+      "raw_name": "nameless",
+      "colors": [
+        "#C2DACF",
+        "#C2DCE9",
+        "#EAE1EF",
+        "#F8F3EB"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-46",
+      "source_id": 46,
+      "name": "Case 46",
+      "raw_name": "nameless",
+      "colors": [
+        "#85C3DC",
+        "#8DAFAB",
+        "#DAC6CF",
+        "#E2C098"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-47",
+      "source_id": 47,
+      "name": "Case 47",
+      "raw_name": "nameless",
+      "colors": [
+        "#383838",
+        "#5CA7C7",
+        "#D4352D",
+        "#FBCE6A"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-48",
+      "source_id": 48,
+      "name": "Case 48",
+      "raw_name": "nameless",
+      "colors": [
+        "#98C897",
+        "#9C6BA3",
+        "#9DBAD2",
+        "#FE9C9D"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-49",
+      "source_id": 49,
+      "name": "Case 49",
+      "raw_name": "nameless",
+      "colors": [
+        "#D3D2D2",
+        "#D6E6F2",
+        "#D7F0D0",
+        "#FAC4CC"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-50",
+      "source_id": 50,
+      "name": "Case 50",
+      "raw_name": "nameless",
+      "colors": [
+        "#EAF3FC",
+        "#F4F4F4",
+        "#F4F9F2",
+        "#FFE7E7"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-51",
+      "source_id": 51,
+      "name": "Case 51",
+      "raw_name": "nameless",
+      "colors": [
+        "#8FA2CD",
+        "#CC976B",
+        "#E07F86",
+        "#F8BC7E"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-52",
+      "source_id": 52,
+      "name": "Case 52",
+      "raw_name": "nameless",
+      "colors": [
+        "#5EA0C7",
+        "#6BC179",
+        "#B4D7E5",
+        "#BEDEAB"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-53",
+      "source_id": 53,
+      "name": "Case 53",
+      "raw_name": "nameless",
+      "colors": [
+        "#6F8A91",
+        "#93AC93",
+        "#DEAA87",
+        "#E9DDAF"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-54",
+      "source_id": 54,
+      "name": "Case 54",
+      "raw_name": "nameless",
+      "colors": [
+        "#1999B2",
+        "#95BCE5",
+        "#E84445",
+        "#F39DA0"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-55",
+      "source_id": 55,
+      "name": "Case 55",
+      "raw_name": "nameless",
+      "colors": [
+        "#9BDCFC",
+        "#C9EFBE",
+        "#CAC8EF",
+        "#F0CFEA"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-56",
+      "source_id": 56,
+      "name": "Case 56",
+      "raw_name": "nameless",
+      "colors": [
+        "#91BFFA",
+        "#EAEAEA",
+        "#FF7F00",
+        "#FFE0C1"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-57",
+      "source_id": 57,
+      "name": "Case 57",
+      "raw_name": "nameless",
+      "colors": [
+        "#074166",
+        "#8CC5BE",
+        "#CC011F",
+        "#FADADD"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-58",
+      "source_id": 58,
+      "name": "Case 58",
+      "raw_name": "nameless",
+      "colors": [
+        "#59B78F",
+        "#6A8EC9",
+        "#7A378A",
+        "#E84446"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-59",
+      "source_id": 59,
+      "name": "Case 59",
+      "raw_name": "nameless",
+      "colors": [
+        "#75C298",
+        "#A0ADD0",
+        "#E47178",
+        "#F5DC75"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-60",
+      "source_id": 60,
+      "name": "Case 60",
+      "raw_name": "nameless",
+      "colors": [
+        "#8EC8ED",
+        "#AED594",
+        "#D693BE",
+        "#F5B3A5"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-61",
+      "source_id": 61,
+      "name": "Case 61",
+      "raw_name": "nameless",
+      "colors": [
+        "#0B0B09",
+        "#223474",
+        "#9CC7F1",
+        "#EED26E"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-62",
+      "source_id": 62,
+      "name": "Case 62",
+      "raw_name": "nameless",
+      "colors": [
+        "#1CC3C9",
+        "#70A0AA",
+        "#8194A0",
+        "#89909E"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-63",
+      "source_id": 63,
+      "name": "Case 63",
+      "raw_name": "nameless",
+      "colors": [
+        "#3D89A3",
+        "#5EC7D0",
+        "#838482",
+        "#F1D756"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-64",
+      "source_id": 64,
+      "name": "Case 64",
+      "raw_name": "nameless",
+      "colors": [
+        "#018A67",
+        "#1868B2",
+        "#DE582B",
+        "#F3A332"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-65",
+      "source_id": 65,
+      "name": "Case 65",
+      "raw_name": "nameless",
+      "colors": [
+        "#010101",
+        "#069DFF",
+        "#808080",
+        "#A4E048"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-66",
+      "source_id": 66,
+      "name": "Case 66",
+      "raw_name": "nameless",
+      "colors": [
+        "#0001A1",
+        "#037F77",
+        "#BABABA",
+        "#C5272D"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-67",
+      "source_id": 67,
+      "name": "Case 67",
+      "raw_name": "nameless",
+      "colors": [
+        "#32037D",
+        "#7C1A97",
+        "#C94E65",
+        "#D9995B"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-68",
+      "source_id": 68,
+      "name": "Case 68",
+      "raw_name": "nameless",
+      "colors": [
+        "#015493",
+        "#019092",
+        "#999999",
+        "#F4A99B"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-69",
+      "source_id": 69,
+      "name": "Case 69",
+      "raw_name": "nameless",
+      "colors": [
+        "#0095FF",
+        "#019092",
+        "#6FDCB5",
+        "#909090"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-70",
+      "source_id": 70,
+      "name": "Case 70",
+      "raw_name": "nameless",
+      "colors": [
+        "#2F2D54",
+        "#9193B4",
+        "#BD9AAD",
+        "#E8D2B3"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-71",
+      "source_id": 71,
+      "name": "Case 71",
+      "raw_name": "nameless",
+      "colors": [
+        "#7C9D97",
+        "#9CB0C3",
+        "#D6D6D6",
+        "#EAB080"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-72",
+      "source_id": 72,
+      "name": "Case 72",
+      "raw_name": "nameless",
+      "colors": [
+        "#4FBD81",
+        "#5DBFE9",
+        "#ADE0B4",
+        "#E7E6D4"
+      ],
+      "n_colors": 4,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n4",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-73",
+      "source_id": 73,
+      "name": "Case 73",
+      "raw_name": "nameless",
+      "colors": [
+        "#237B9F",
+        "#71BFB2",
+        "#AD0B08",
+        "#EC817E",
+        "#FEE066"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-74",
+      "source_id": 74,
+      "name": "Case 74",
+      "raw_name": "nameless",
+      "colors": [
+        "#7399F4",
+        "#7AB656",
+        "#925EB0",
+        "#A5AEB7",
+        "#CC7C71"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-75",
+      "source_id": 75,
+      "name": "Case 75",
+      "raw_name": "nameless",
+      "colors": [
+        "#9BBBE1",
+        "#9D9EA3",
+        "#B7B7EB",
+        "#EAB883",
+        "#F09BA0"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-76",
+      "source_id": 76,
+      "name": "Case 76",
+      "raw_name": "nameless",
+      "colors": [
+        "#3E4F94",
+        "#3E90BF",
+        "#A6C0E3",
+        "#D8D3E7",
+        "#FAF9CB"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-77",
+      "source_id": 77,
+      "name": "Case 77",
+      "raw_name": "nameless",
+      "colors": [
+        "#000000",
+        "#0071BD",
+        "#C2272B",
+        "#DAE9E4",
+        "#FFF2D8"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-78",
+      "source_id": 78,
+      "name": "Case 78",
+      "raw_name": "nameless",
+      "colors": [
+        "#4C4D4F",
+        "#7A9590",
+        "#97A9B7",
+        "#AED6D5",
+        "#B86078"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-79",
+      "source_id": 79,
+      "name": "Case 79",
+      "raw_name": "nameless",
+      "colors": [
+        "#2673EF",
+        "#CD5257",
+        "#E8E8E8",
+        "#F2BA2F",
+        "#FAEADF"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-80",
+      "source_id": 80,
+      "name": "Case 80",
+      "raw_name": "nameless",
+      "colors": [
+        "#4F7D78",
+        "#CC141E",
+        "#D2D699",
+        "#FFD153",
+        "#FFECC2"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-81",
+      "source_id": 81,
+      "name": "Case 81",
+      "raw_name": "nameless",
+      "colors": [
+        "#95B6EC",
+        "#D3D3D3",
+        "#E98D83",
+        "#FFCBAA",
+        "#FFFBED"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-82",
+      "source_id": 82,
+      "name": "Case 82",
+      "raw_name": "nameless",
+      "colors": [
+        "#80D0C3",
+        "#9EAAC4",
+        "#A6DDEA",
+        "#F3A59A",
+        "#F9CDBF"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-83",
+      "source_id": 83,
+      "name": "Case 83",
+      "raw_name": "nameless",
+      "colors": [
+        "#000084",
+        "#870A4C",
+        "#95A8D2",
+        "#C3EAB5",
+        "#C5767B"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-84",
+      "source_id": 84,
+      "name": "Case 84",
+      "raw_name": "nameless",
+      "colors": [
+        "#0A87D7",
+        "#6F5B9B",
+        "#81AA2A",
+        "#AEA3CD",
+        "#B5711E"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-85",
+      "source_id": 85,
+      "name": "Case 85",
+      "raw_name": "nameless",
+      "colors": [
+        "#9BBBE1",
+        "#BABABC",
+        "#C8C2E4",
+        "#E0B77F",
+        "#F09BA0"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-86",
+      "source_id": 86,
+      "name": "Case 86",
+      "raw_name": "nameless",
+      "colors": [
+        "#074C9B",
+        "#4292C6",
+        "#BD0026",
+        "#FD8D3C",
+        "#FFFFB2"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-87",
+      "source_id": 87,
+      "name": "Case 87",
+      "raw_name": "nameless",
+      "colors": [
+        "#37AB78",
+        "#589FF3",
+        "#808080",
+        "#F3B169",
+        "#F94141"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-88",
+      "source_id": 88,
+      "name": "Case 88",
+      "raw_name": "nameless",
+      "colors": [
+        "#5B3660",
+        "#60966D",
+        "#63ADEE",
+        "#E90F44",
+        "#FFC839"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-89",
+      "source_id": 89,
+      "name": "Case 89",
+      "raw_name": "nameless",
+      "colors": [
+        "#A7D2BA",
+        "#ABC6E4",
+        "#C39398",
+        "#D0CADE",
+        "#FCDABA"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-90",
+      "source_id": 90,
+      "name": "Case 90",
+      "raw_name": "nameless",
+      "colors": [
+        "#4A4F7E",
+        "#719AAC",
+        "#72B063",
+        "#94C6CD",
+        "#B8DBB3",
+        "#E29135"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-91",
+      "source_id": 91,
+      "name": "Case 91",
+      "raw_name": "nameless",
+      "colors": [
+        "#3E608D",
+        "#4E1945",
+        "#8CBF87",
+        "#8D2F25",
+        "#909291",
+        "#CB9475"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-92",
+      "source_id": 92,
+      "name": "Case 92",
+      "raw_name": "nameless",
+      "colors": [
+        "#A0D0D0",
+        "#A7C0DF",
+        "#B7F5DE",
+        "#D5AABE",
+        "#DCA7EB",
+        "#EAE936"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-93",
+      "source_id": 93,
+      "name": "Case 93",
+      "raw_name": "nameless",
+      "colors": [
+        "#547BB4",
+        "#629C35",
+        "#6C61AF",
+        "#6F6F6F",
+        "#C0321A",
+        "#DD7C4F"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-94",
+      "source_id": 94,
+      "name": "Case 94",
+      "raw_name": "nameless",
+      "colors": [
+        "#257D8B",
+        "#68BED9",
+        "#BFDFD2",
+        "#EAA558",
+        "#ED8D5A",
+        "#EFCE87"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-95",
+      "source_id": 95,
+      "name": "Case 95",
+      "raw_name": "nameless",
+      "colors": [
+        "#156434",
+        "#218D42",
+        "#4583B6",
+        "#4DB748",
+        "#B02425",
+        "#FAA419"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-96",
+      "source_id": 96,
+      "name": "Case 96",
+      "raw_name": "nameless",
+      "colors": [
+        "#156434",
+        "#1F8E42",
+        "#4583B6",
+        "#4DB748",
+        "#B02425",
+        "#FAA419"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-97",
+      "source_id": 97,
+      "name": "Case 97",
+      "raw_name": "nameless",
+      "colors": [
+        "#79438E",
+        "#7EA4D1",
+        "#807C7D",
+        "#82AD7F",
+        "#C1565E",
+        "#DCA96A"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-98",
+      "source_id": 98,
+      "name": "Case 98",
+      "raw_name": "nameless",
+      "colors": [
+        "#000000",
+        "#32183C",
+        "#36659E",
+        "#40B7AD",
+        "#A21A54",
+        "#E7724F"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-99",
+      "source_id": 99,
+      "name": "Case 99",
+      "raw_name": "nameless",
+      "colors": [
+        "#B6B3D6",
+        "#CFCFD0",
+        "#DAD7E9",
+        "#E9687A",
+        "#F58F7A",
+        "#FDE2D8"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-100",
+      "source_id": 100,
+      "name": "Case 100",
+      "raw_name": "nameless",
+      "colors": [
+        "#1F77B4",
+        "#282973",
+        "#47A1A2",
+        "#708090",
+        "#DAA628",
+        "#F9BFCB"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-101",
+      "source_id": 101,
+      "name": "Case 101",
+      "raw_name": "nameless",
+      "colors": [
+        "#B2DBB9",
+        "#B8E5FA",
+        "#EEC186",
+        "#EEF0A7",
+        "#F7A6AC",
+        "#F7B7D2"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-102",
+      "source_id": 102,
+      "name": "Case 102",
+      "raw_name": "nameless",
+      "colors": [
+        "#099A63",
+        "#55A0FB",
+        "#91BFFA",
+        "#A09FA4",
+        "#AD07E3",
+        "#FEA0A0"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-103",
+      "source_id": 103,
+      "name": "Case 103",
+      "raw_name": "nameless",
+      "colors": [
+        "#3AB5B3",
+        "#5567B1",
+        "#80C66D",
+        "#954F97",
+        "#B3D5F1",
+        "#F0686C"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-104",
+      "source_id": 104,
+      "name": "Case 104",
+      "raw_name": "nameless",
+      "colors": [
+        "#3C9BC9",
+        "#76CBB4",
+        "#F88455",
+        "#FC757B",
+        "#FDCA93",
+        "#FFE59B"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-105",
+      "source_id": 105,
+      "name": "Case 105",
+      "raw_name": "nameless",
+      "colors": [
+        "#669A38",
+        "#6897CF",
+        "#EDEDEF",
+        "#F3ED99",
+        "#F58C86",
+        "#F6D586"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-106",
+      "source_id": 106,
+      "name": "Case 106",
+      "raw_name": "nameless",
+      "colors": [
+        "#3B5BA8",
+        "#73ABE4",
+        "#751A29",
+        "#759D3A",
+        "#AC4828",
+        "#CFA72D"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-107",
+      "source_id": 107,
+      "name": "Case 107",
+      "raw_name": "nameless",
+      "colors": [
+        "#45546A",
+        "#4770B5",
+        "#71AD48",
+        "#A3A3A3",
+        "#ED7D31",
+        "#FBBE0A"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-108",
+      "source_id": 108,
+      "name": "Case 108",
+      "raw_name": "nameless",
+      "colors": [
+        "#6AD1A3",
+        "#84ADDC",
+        "#88B6F1",
+        "#989898",
+        "#FF988B",
+        "#FFDE7B"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-109",
+      "source_id": 109,
+      "name": "Case 109",
+      "raw_name": "nameless",
+      "colors": [
+        "#8BABD3",
+        "#A58BD4",
+        "#ADDEAD",
+        "#D7B0B0",
+        "#DDAF70",
+        "#DE767C"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-110",
+      "source_id": 110,
+      "name": "Case 110",
+      "raw_name": "nameless",
+      "colors": [
+        "#377EB8",
+        "#BFBFBF",
+        "#D2EBD2",
+        "#E1F3FA",
+        "#E41A1C",
+        "#FFF0B1"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-111",
+      "source_id": 111,
+      "name": "Case 111",
+      "raw_name": "nameless",
+      "colors": [
+        "#36A9E1",
+        "#5C6572",
+        "#ADB2B9",
+        "#C2E5F6",
+        "#EB5B25",
+        "#F5AD92"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-112",
+      "source_id": 112,
+      "name": "Case 112",
+      "raw_name": "nameless",
+      "colors": [
+        "#80A3D5",
+        "#AA8873",
+        "#BF91D5",
+        "#D4C140",
+        "#FF8080",
+        "#FFBB80"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-113",
+      "source_id": 113,
+      "name": "Case 113",
+      "raw_name": "nameless",
+      "colors": [
+        "#478AC1",
+        "#8A9B6D",
+        "#98C9D5",
+        "#C198B3",
+        "#E4B78A",
+        "#FFEEC0"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-114",
+      "source_id": 114,
+      "name": "Case 114",
+      "raw_name": "nameless",
+      "colors": [
+        "#178642",
+        "#2356A7",
+        "#83B6E1",
+        "#A0D293",
+        "#ED342F",
+        "#F69A9B"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-115",
+      "source_id": 115,
+      "name": "Case 115",
+      "raw_name": "nameless",
+      "colors": [
+        "#000000",
+        "#345684",
+        "#878787",
+        "#A21549",
+        "#C3752B",
+        "#DAC1A2"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-116",
+      "source_id": 116,
+      "name": "Case 116",
+      "raw_name": "nameless",
+      "colors": [
+        "#496648",
+        "#8D8988",
+        "#9DBF83",
+        "#AC151C",
+        "#D2878C",
+        "#F5F291"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-117",
+      "source_id": 117,
+      "name": "Case 117",
+      "raw_name": "nameless",
+      "colors": [
+        "#391A53",
+        "#3B4293",
+        "#828387",
+        "#8F1B26",
+        "#91C6F2",
+        "#974F91"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-118",
+      "source_id": 118,
+      "name": "Case 118",
+      "raw_name": "nameless",
+      "colors": [
+        "#2481C4",
+        "#8A8A88",
+        "#C4C2DA",
+        "#C7C7C5",
+        "#DE061E",
+        "#F7D8D6"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-119",
+      "source_id": 119,
+      "name": "Case 119",
+      "raw_name": "nameless",
+      "colors": [
+        "#0C4E9B",
+        "#6B98C4",
+        "#C72228",
+        "#F5867F",
+        "#F98F34",
+        "#FFBC80"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-120",
+      "source_id": 120,
+      "name": "Case 120",
+      "raw_name": "nameless",
+      "colors": [
+        "#3B549D",
+        "#6BBC46",
+        "#9EAAD1",
+        "#B4DEA2",
+        "#D3272B",
+        "#F29091"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-121",
+      "source_id": 121,
+      "name": "Case 121",
+      "raw_name": "nameless",
+      "colors": [
+        "#000000",
+        "#23B2E0",
+        "#A5CC5B",
+        "#C2C2C2",
+        "#EEBEC0",
+        "#EF2C2B"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-122",
+      "source_id": 122,
+      "name": "Case 122",
+      "raw_name": "nameless",
+      "colors": [
+        "#000000",
+        "#338FEB",
+        "#5CA400",
+        "#8BCF02",
+        "#B31761",
+        "#E7308B"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-123",
+      "source_id": 123,
+      "name": "Case 123",
+      "raw_name": "nameless",
+      "colors": [
+        "#354898",
+        "#6B6B6B",
+        "#972D36",
+        "#C55645",
+        "#FAAE5F"
+      ],
+      "n_colors": 5,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n5",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-124",
+      "source_id": 124,
+      "name": "Case 124",
+      "raw_name": "nameless",
+      "colors": [
+        "#168676",
+        "#27447C",
+        "#4871B3",
+        "#991F22",
+        "#B88640",
+        "#E73C36"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-125",
+      "source_id": 125,
+      "name": "Case 125",
+      "raw_name": "nameless",
+      "colors": [
+        "#3E6790",
+        "#646774",
+        "#6483A4",
+        "#858892",
+        "#AF873E",
+        "#BD9E64"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-126",
+      "source_id": 126,
+      "name": "Case 126",
+      "raw_name": "nameless",
+      "colors": [
+        "#324C63",
+        "#386195",
+        "#3981AF",
+        "#5499BD",
+        "#6FB9D0",
+        "#91CDC8"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-127",
+      "source_id": 127,
+      "name": "Case 127",
+      "raw_name": "nameless",
+      "colors": [
+        "#80B1D3",
+        "#8DD1C6",
+        "#BDBADB",
+        "#F47F72",
+        "#FBB463",
+        "#FBF8B4"
+      ],
+      "n_colors": 6,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n6",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-128",
+      "source_id": 128,
+      "name": "Case 128",
+      "raw_name": "nameless",
+      "colors": [
+        "#4485C7",
+        "#682487",
+        "#7ABBDB",
+        "#84BA42",
+        "#A51C36",
+        "#D4562E",
+        "#DBB428"
+      ],
+      "n_colors": 7,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n7",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-129",
+      "source_id": 129,
+      "name": "Case 129",
+      "raw_name": "nameless",
+      "colors": [
+        "#979998",
+        "#C69287",
+        "#DDDDDF",
+        "#E4CD87",
+        "#E79A90",
+        "#EFBC91",
+        "#FAE5B8"
+      ],
+      "n_colors": 7,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n7",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-130",
+      "source_id": 130,
+      "name": "Case 130",
+      "raw_name": "nameless",
+      "colors": [
+        "#004600",
+        "#18BECF",
+        "#78B428",
+        "#7F7F7F",
+        "#BCBD23",
+        "#C8E63C",
+        "#FFE494"
+      ],
+      "n_colors": 7,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n7",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-131",
+      "source_id": 131,
+      "name": "Case 131",
+      "raw_name": "nameless",
+      "colors": [
+        "#000000",
+        "#098036",
+        "#4B57A2",
+        "#D3D3D3",
+        "#EE7D80",
+        "#F9BE80",
+        "#FCDFC0"
+      ],
+      "n_colors": 7,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n7",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-132",
+      "source_id": 132,
+      "name": "Case 132",
+      "raw_name": "nameless",
+      "colors": [
+        "#349F2B",
+        "#666666",
+        "#66A61E",
+        "#A5761C",
+        "#B2DF8A",
+        "#CCCCCC",
+        "#E5AB02"
+      ],
+      "n_colors": 7,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n7",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-133",
+      "source_id": 133,
+      "name": "Case 133",
+      "raw_name": "nameless",
+      "colors": [
+        "#00ADEF",
+        "#63BA45",
+        "#D7DCBE",
+        "#D9DDBA",
+        "#E69C81",
+        "#E6BA9D",
+        "#E7CEA5"
+      ],
+      "n_colors": 7,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n7",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-134",
+      "source_id": 134,
+      "name": "Case 134",
+      "raw_name": "nameless",
+      "colors": [
+        "#9DD3AF",
+        "#C0E2CA",
+        "#D1B494",
+        "#D9EEDF",
+        "#E0C79F",
+        "#F1DEBD",
+        "#FFFBD5"
+      ],
+      "n_colors": 7,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n7",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-135",
+      "source_id": 135,
+      "name": "Case 135",
+      "raw_name": "nameless",
+      "colors": [
+        "#581036",
+        "#6E8E9D",
+        "#777777",
+        "#97A4AA",
+        "#A65655",
+        "#B98E95",
+        "#F3EAE1"
+      ],
+      "n_colors": 7,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n7",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-136",
+      "source_id": 136,
+      "name": "Case 136",
+      "raw_name": "nameless",
+      "colors": [
+        "#6295D7",
+        "#67AFD5",
+        "#6AB3A2",
+        "#7488C5",
+        "#95A938",
+        "#AD3688",
+        "#CA645F"
+      ],
+      "n_colors": 7,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n7",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-137",
+      "source_id": 137,
+      "name": "Case 137",
+      "raw_name": "nameless",
+      "colors": [
+        "#87A4EA",
+        "#898CF3",
+        "#9881F3",
+        "#A1C6E0",
+        "#B6D3CF",
+        "#D0BEB0",
+        "#D7D1C5"
+      ],
+      "n_colors": 7,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n7",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-138",
+      "source_id": 138,
+      "name": "Case 138",
+      "raw_name": "nameless",
+      "colors": [
+        "#34183E",
+        "#4D779B",
+        "#585D5E",
+        "#606060",
+        "#82093B",
+        "#C45C69",
+        "#CD3B42",
+        "#FFC04D"
+      ],
+      "n_colors": 8,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n8",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-139",
+      "source_id": 139,
+      "name": "Case 139",
+      "raw_name": "nameless",
+      "colors": [
+        "#38917E",
+        "#3C518F",
+        "#4D0085",
+        "#989ED9",
+        "#A1D4A2",
+        "#A47DC0",
+        "#C6A550",
+        "#DB7272"
+      ],
+      "n_colors": 8,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n8",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-140",
+      "source_id": 140,
+      "name": "Case 140",
+      "raw_name": "nameless",
+      "colors": [
+        "#92B9BE",
+        "#949B93",
+        "#A9D3AD",
+        "#CDE3A5",
+        "#E7F5F6",
+        "#F4F7FE",
+        "#F5DF4D",
+        "#F6F8F7"
+      ],
+      "n_colors": 8,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n8",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-141",
+      "source_id": 141,
+      "name": "Case 141",
+      "raw_name": "nameless",
+      "colors": [
+        "#7DC69B",
+        "#9BD7F3",
+        "#D5EAD9",
+        "#D8EEFB",
+        "#DCD7EB",
+        "#F2A1A7",
+        "#FBDDDD",
+        "#FCE6CF"
+      ],
+      "n_colors": 8,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n8",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-142",
+      "source_id": 142,
+      "name": "Case 142",
+      "raw_name": "nameless",
+      "colors": [
+        "#000000",
+        "#283D7E",
+        "#467D80",
+        "#4F8B57",
+        "#5291B2",
+        "#7347BA",
+        "#91CC7A",
+        "#D8A266"
+      ],
+      "n_colors": 8,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n8",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-143",
+      "source_id": 143,
+      "name": "Case 143",
+      "raw_name": "nameless",
+      "colors": [
+        "#6C85F9",
+        "#939DE4",
+        "#A2C6D6",
+        "#BDD69F",
+        "#D9503D",
+        "#DEA441",
+        "#E9B9E1",
+        "#EBC98A"
+      ],
+      "n_colors": 8,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n8",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-144",
+      "source_id": 144,
+      "name": "Case 144",
+      "raw_name": "nameless",
+      "colors": [
+        "#0000FF",
+        "#5E8FC5",
+        "#79C5CE",
+        "#B9DBF4",
+        "#CE6090",
+        "#EEF4FB",
+        "#F15A22",
+        "#F9A31A"
+      ],
+      "n_colors": 8,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n8",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-145",
+      "source_id": 145,
+      "name": "Case 145",
+      "raw_name": "nameless",
+      "colors": [
+        "#8DAD95",
+        "#9DA190",
+        "#A6BA89",
+        "#C2D794",
+        "#C4A880",
+        "#D0FFB1",
+        "#DAD184",
+        "#EBA782"
+      ],
+      "n_colors": 8,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n8",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-146",
+      "source_id": 146,
+      "name": "Case 146",
+      "raw_name": "nameless",
+      "colors": [
+        "#000000",
+        "#1D71B9",
+        "#5AAE61",
+        "#6BAFD6",
+        "#878787",
+        "#9970AC",
+        "#A5761C",
+        "#CBBBA1"
+      ],
+      "n_colors": 8,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n8",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-147",
+      "source_id": 147,
+      "name": "Case 147",
+      "raw_name": "nameless",
+      "colors": [
+        "#4E606E",
+        "#6A8864",
+        "#9E5648",
+        "#A56B45",
+        "#B5BCC2",
+        "#B7C685",
+        "#BD8A99",
+        "#CDBB71"
+      ],
+      "n_colors": 8,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n8",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-148",
+      "source_id": 148,
+      "name": "Case 148",
+      "raw_name": "nameless",
+      "colors": [
+        "#ABD1BC",
+        "#BED0F9",
+        "#CCCC99",
+        "#DBE4FB",
+        "#E3BBED",
+        "#EDC3A5",
+        "#F1F1F1",
+        "#FCB6A5",
+        "#FDEBAA"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-149",
+      "source_id": 149,
+      "name": "Case 149",
+      "raw_name": "nameless",
+      "colors": [
+        "#7789B7",
+        "#89AA7B",
+        "#9DACCB",
+        "#ACBF9F",
+        "#C6CCBC",
+        "#CBD7C3",
+        "#D6D6D6",
+        "#EB6969",
+        "#F0EEEF"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-150",
+      "source_id": 150,
+      "name": "Case 150",
+      "raw_name": "nameless",
+      "colors": [
+        "#008A45",
+        "#468BCA",
+        "#5F5F5E",
+        "#7DD2F6",
+        "#80C5A2",
+        "#B384BA",
+        "#D9C2DD",
+        "#F27873",
+        "#FFD373"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-151",
+      "source_id": 151,
+      "name": "Case 151",
+      "raw_name": "nameless",
+      "colors": [
+        "#666666",
+        "#808080",
+        "#9BADB2",
+        "#A02C2C",
+        "#CCBCBC",
+        "#CCCCCC",
+        "#E5DEDE",
+        "#F4E3D7",
+        "#FFB889"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-152",
+      "source_id": 152,
+      "name": "Case 152",
+      "raw_name": "nameless",
+      "colors": [
+        "#389AB3",
+        "#5CA9BB",
+        "#858786",
+        "#87BBAF",
+        "#CAC658",
+        "#E1B224",
+        "#E7C21C",
+        "#E97123",
+        "#ED2225"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-153",
+      "source_id": 153,
+      "name": "Case 153",
+      "raw_name": "nameless",
+      "colors": [
+        "#1D91C2",
+        "#205EA7",
+        "#205EA7",
+        "#38B6C4",
+        "#3BB6C5",
+        "#7ECBB9",
+        "#965478",
+        "#C8E2B2",
+        "#EAF0B2"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-154",
+      "source_id": 154,
+      "name": "Case 154",
+      "raw_name": "nameless",
+      "colors": [
+        "#008E8A",
+        "#176A7A",
+        "#2E4857",
+        "#39B086",
+        "#88CF73",
+        "#DDE554",
+        "#DFE662",
+        "#E00200",
+        "#F8AF62"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-155",
+      "source_id": 155,
+      "name": "Case 155",
+      "raw_name": "nameless",
+      "colors": [
+        "#5BA9BD",
+        "#95BE54",
+        "#9D6067",
+        "#A93935",
+        "#B0783D",
+        "#D5A6A0",
+        "#DBCC57",
+        "#DCDE8B",
+        "#E0BB6D"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-156",
+      "source_id": 156,
+      "name": "Case 156",
+      "raw_name": "nameless",
+      "colors": [
+        "#508D40",
+        "#65A8EC",
+        "#8C4E29",
+        "#96A4C7",
+        "#A9B233",
+        "#B7C6E5",
+        "#D38386",
+        "#DB9C4D",
+        "#DDA5C8"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-157",
+      "source_id": 157,
+      "name": "Case 157",
+      "raw_name": "nameless",
+      "colors": [
+        "#75B0B4",
+        "#806CAB",
+        "#869C76",
+        "#AD4641",
+        "#AFAFAD",
+        "#AFC9A6",
+        "#B4C4E5",
+        "#D19692",
+        "#DED0A1"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-158",
+      "source_id": 158,
+      "name": "Case 158",
+      "raw_name": "nameless",
+      "colors": [
+        "#00BBF9",
+        "#1E90FF",
+        "#22A884",
+        "#22A884",
+        "#2A788E",
+        "#4AAC44",
+        "#7AD151",
+        "#EB1C4A",
+        "#FF8C00"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-159",
+      "source_id": 159,
+      "name": "Case 159",
+      "raw_name": "nameless",
+      "colors": [
+        "#3D5DA8",
+        "#694F98",
+        "#B2B0D7",
+        "#B90978",
+        "#C2DCAF",
+        "#CE7A5E",
+        "#D6E1F5",
+        "#DBA43F",
+        "#ECDE93"
+      ],
+      "n_colors": 9,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n9",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-160",
+      "source_id": 160,
+      "name": "Case 160",
+      "raw_name": "nameless",
+      "colors": [
+        "#291173",
+        "#356529",
+        "#611A44",
+        "#629586",
+        "#832F87",
+        "#858A2E",
+        "#95BEEC",
+        "#A75265",
+        "#CBC46A",
+        "#D5D5D5"
+      ],
+      "n_colors": 10,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n10",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-161",
+      "source_id": 161,
+      "name": "Case 161",
+      "raw_name": "nameless",
+      "colors": [
+        "#40B0A6",
+        "#6D8EF7",
+        "#6E579A",
+        "#A38E89",
+        "#A5C8DD",
+        "#CD5582",
+        "#E1BE6A",
+        "#E1BE6A",
+        "#E89A7A",
+        "#EC6B2D"
+      ],
+      "n_colors": 10,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n10",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-162",
+      "source_id": 162,
+      "name": "Case 162",
+      "raw_name": "nameless",
+      "colors": [
+        "#016450",
+        "#237B7A",
+        "#4592A5",
+        "#67A9CF",
+        "#7D4C99",
+        "#8AB6D7",
+        "#9FAAD1",
+        "#ADC4DE",
+        "#D0D1E6",
+        "#D0DAEB"
+      ],
+      "n_colors": 10,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n10",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-163",
+      "source_id": 163,
+      "name": "Case 163",
+      "raw_name": "nameless",
+      "colors": [
+        "#2900F2",
+        "#75AAB8",
+        "#8985B7",
+        "#A04646",
+        "#A3C98E",
+        "#AE3019",
+        "#B3C4D4",
+        "#B58C9A",
+        "#CFC580",
+        "#DCCB59",
+        "#E8DF92"
+      ],
+      "n_colors": 11,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n11",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-164",
+      "source_id": 164,
+      "name": "Case 164",
+      "raw_name": "nameless",
+      "colors": [
+        "#484848",
+        "#666666",
+        "#999999",
+        "#99D1D0",
+        "#9F6BBF",
+        "#A0B3DC",
+        "#BEA4BD",
+        "#CCCCCC",
+        "#CF66A5",
+        "#FAC5C6",
+        "#FCDFC7"
+      ],
+      "n_colors": 11,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n11",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-165",
+      "source_id": 165,
+      "name": "Case 165",
+      "raw_name": "nameless",
+      "colors": [
+        "#858585",
+        "#93B190",
+        "#B6E2FB",
+        "#B9BB8E",
+        "#D1D1D1",
+        "#DB6A5D",
+        "#DFDEE1",
+        "#E1E3FF",
+        "#E4CAD1",
+        "#FCCFE7",
+        "#FF8901"
+      ],
+      "n_colors": 11,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n11",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-166",
+      "source_id": 166,
+      "name": "Case 166",
+      "raw_name": "nameless",
+      "colors": [
+        "#596AAF",
+        "#75A6DE",
+        "#75AD8A",
+        "#7EB1A0",
+        "#A4C962",
+        "#B0CBE6",
+        "#B3D250",
+        "#C8795A",
+        "#D0813C",
+        "#D4C649",
+        "#DEBB5D"
+      ],
+      "n_colors": 11,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n11",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-167",
+      "source_id": 167,
+      "name": "Case 167",
+      "raw_name": "nameless",
+      "colors": [
+        "#7895C1",
+        "#8074C8",
+        "#992224",
+        "#A8CBDF",
+        "#B54764",
+        "#D6EFF4",
+        "#E3625D",
+        "#EF8B67",
+        "#F0C284",
+        "#F2FAFC",
+        "#F5EBAE",
+        "#F7FBC9"
+      ],
+      "n_colors": 12,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n12",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-168",
+      "source_id": 168,
+      "name": "Case 168",
+      "raw_name": "nameless",
+      "colors": [
+        "#0072BD",
+        "#08306B",
+        "#08519C",
+        "#2171B5",
+        "#6BAED6",
+        "#77AC30",
+        "#969696",
+        "#C6DBEF",
+        "#D95319",
+        "#EDB120",
+        "#FED976",
+        "#FFFFCC"
+      ],
+      "n_colors": 12,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n12",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-169",
+      "source_id": 169,
+      "name": "Case 169",
+      "raw_name": "nameless",
+      "colors": [
+        "#5861AC",
+        "#6AB4C1",
+        "#6B7EB9",
+        "#70B48F",
+        "#72C3A3",
+        "#A5C2E2",
+        "#F28080",
+        "#FEA040",
+        "#FF6100",
+        "#FF7F00",
+        "#FFC080",
+        "#FFE0C1"
+      ],
+      "n_colors": 12,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n12",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-170",
+      "source_id": 170,
+      "name": "Case 170",
+      "raw_name": "nameless",
+      "colors": [
+        "#2C6344",
+        "#308192",
+        "#5EA7B8",
+        "#5F9C61",
+        "#61496D",
+        "#A4C97C",
+        "#AED2E2",
+        "#B092B6",
+        "#C74D26",
+        "#CAC1D4",
+        "#E38D26",
+        "#F1CC74"
+      ],
+      "n_colors": 12,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n12",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-171",
+      "source_id": 171,
+      "name": "Case 171",
+      "raw_name": "nameless",
+      "colors": [
+        "#4626F6",
+        "#6C0E0F",
+        "#7B1415",
+        "#8479F9",
+        "#9CAD8B",
+        "#CB181C",
+        "#CE403F",
+        "#D3D0FD",
+        "#DB8382",
+        "#DFE8D5",
+        "#EBCEC0",
+        "#ECD2D3"
+      ],
+      "n_colors": 12,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n12",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-172",
+      "source_id": 172,
+      "name": "Case 172",
+      "raw_name": "nameless",
+      "colors": [
+        "#654E5E",
+        "#78828B",
+        "#A49193",
+        "#B5C9BE",
+        "#C89D94",
+        "#D3DCE3",
+        "#D6E3D2",
+        "#DECCA6",
+        "#E0DEDF",
+        "#EDE7D9",
+        "#EFE1D6",
+        "#F3E3E3"
+      ],
+      "n_colors": 12,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n12",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-173",
+      "source_id": 173,
+      "name": "Case 173",
+      "raw_name": "nameless",
+      "colors": [
+        "#26445E",
+        "#474769",
+        "#4C7780",
+        "#73A5A2",
+        "#7C4D77",
+        "#B2B6C1",
+        "#B55384",
+        "#C76B60",
+        "#D68438",
+        "#D6E2E2",
+        "#E4A031",
+        "#F0EFED",
+        "#F3DBC1",
+        "#F6E2C1"
+      ],
+      "n_colors": 14,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n14",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-174",
+      "source_id": 174,
+      "name": "Case 174",
+      "raw_name": "nameless",
+      "colors": [
+        "#0000FE",
+        "#00688B",
+        "#01008A",
+        "#1E90FF",
+        "#228B22",
+        "#566B30",
+        "#698B6A",
+        "#8370FE",
+        "#8B8378",
+        "#8B864E",
+        "#A020EF",
+        "#FE0000",
+        "#FF7F00",
+        "#FFB90F"
+      ],
+      "n_colors": 14,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n14",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-175",
+      "source_id": 175,
+      "name": "Case 175",
+      "raw_name": "nameless",
+      "colors": [
+        "#000000",
+        "#262A85",
+        "#4C9140",
+        "#519475",
+        "#5B99E6",
+        "#5D2B84",
+        "#6A4C30",
+        "#ACCBE8",
+        "#BE3731",
+        "#C65537",
+        "#DDA43D",
+        "#EDDB31",
+        "#EDF4FA",
+        "#F1EBED"
+      ],
+      "n_colors": 14,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n14",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-176",
+      "source_id": 176,
+      "name": "Case 176",
+      "raw_name": "nameless",
+      "colors": [
+        "#2D8875",
+        "#52AADC",
+        "#7C7979",
+        "#7FABD1",
+        "#91CCC0",
+        "#963B79",
+        "#97D0C5",
+        "#B5CE4E",
+        "#BD7795",
+        "#C7C1DE",
+        "#C89736",
+        "#D75B4E",
+        "#EC6E66",
+        "#EEB6D4",
+        "#F39865",
+        "#F7AC53"
+      ],
+      "n_colors": 16,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n16",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-177",
+      "source_id": 177,
+      "name": "Case 177",
+      "raw_name": "nameless",
+      "colors": [
+        "#00A664",
+        "#3FA0C0",
+        "#4C6C43",
+        "#5086C4",
+        "#7C7CBA",
+        "#B55489",
+        "#C7B8BD",
+        "#D5D9E5",
+        "#D5D9E5",
+        "#D6E0C8",
+        "#D6E0C8",
+        "#DCE125",
+        "#F0A19A",
+        "#F9ED1D",
+        "#FEDEC5",
+        "#FFF0BC"
+      ],
+      "n_colors": 16,
+      "family": "journal_case",
+      "classic_key": null,
+      "journal": "Journal figures (curated)",
+      "tags": [
+        "journal_case",
+        "n16",
+        "Journal figures (curated)"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "journal_case"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-178",
+      "source_id": 178,
+      "name": "AAAS",
+      "raw_name": "pal_aaas",
+      "colors": [
+        "#3B4992",
+        "#EE0000",
+        "#008B45",
+        "#631879",
+        "#008280",
+        "#BB0021",
+        "#5F559B",
+        "#A20056",
+        "#808180",
+        "#1B1919"
+      ],
+      "n_colors": 10,
+      "family": "ggsci",
+      "classic_key": "aaas",
+      "journal": "Science",
+      "tags": [
+        "ggsci",
+        "n10",
+        "Science",
+        "aaas"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-179",
+      "source_id": 179,
+      "name": "ATLASSIAN",
+      "raw_name": "pal_atlassian",
+      "colors": [
+        "#4688EC",
+        "#94C748",
+        "#C97CF4",
+        "#FCA700",
+        "#1558BC",
+        "#964AC0",
+        "#42B2D7",
+        "#E06C00"
+      ],
+      "n_colors": 8,
+      "family": "ggsci",
+      "classic_key": "atlassian",
+      "journal": "ATLASSIAN",
+      "tags": [
+        "ggsci",
+        "n8",
+        "ATLASSIAN",
+        "atlassian"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-180",
+      "source_id": 180,
+      "name": "BMJ",
+      "raw_name": "pal_bmj",
+      "colors": [
+        "#2A6EBB",
+        "#F0AB00",
+        "#C50084",
+        "#7D5CC6",
+        "#E37222",
+        "#69BE28",
+        "#00B2A9",
+        "#CD202C",
+        "#747678"
+      ],
+      "n_colors": 9,
+      "family": "ggsci",
+      "classic_key": "bmj",
+      "journal": "BMJ",
+      "tags": [
+        "ggsci",
+        "n9",
+        "BMJ",
+        "bmj"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-181",
+      "source_id": 181,
+      "name": "BS5",
+      "raw_name": "pal_bs5",
+      "colors": [
+        "#CEE1FF",
+        "#A3C8FD",
+        "#78AEFE",
+        "#4C94FC",
+        "#237AFF",
+        "#0363EA",
+        "#0A50B8",
+        "#073D8C",
+        "#04295F",
+        "#021533"
+      ],
+      "n_colors": 10,
+      "family": "ggsci",
+      "classic_key": "bs5",
+      "journal": "BS5",
+      "tags": [
+        "ggsci",
+        "n10",
+        "BS5",
+        "bs5"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-182",
+      "source_id": 182,
+      "name": "COSMIC",
+      "raw_name": "pal_cosmic",
+      "colors": [
+        "#2E2A2B",
+        "#CF4E9C",
+        "#8C57A2",
+        "#358DB9",
+        "#82581F",
+        "#2F509E",
+        "#E5614C",
+        "#97A1A7",
+        "#3DA873",
+        "#DC9445"
+      ],
+      "n_colors": 10,
+      "family": "ggsci",
+      "classic_key": "cosmic",
+      "journal": "COSMIC",
+      "tags": [
+        "ggsci",
+        "n10",
+        "COSMIC",
+        "cosmic"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-183",
+      "source_id": 183,
+      "name": "D3",
+      "raw_name": "pal_d3",
+      "colors": [
+        "#1F77B4",
+        "#FF7F0E",
+        "#2CA02C",
+        "#D62728",
+        "#9467BD",
+        "#8C564B",
+        "#E377C2",
+        "#7F7F7F",
+        "#BCBD22",
+        "#17BECF"
+      ],
+      "n_colors": 10,
+      "family": "ggsci",
+      "classic_key": "d3",
+      "journal": "D3",
+      "tags": [
+        "ggsci",
+        "n10",
+        "D3",
+        "d3"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-184",
+      "source_id": 184,
+      "name": "FLATUI",
+      "raw_name": "pal_flatui",
+      "colors": [
+        "#C0392B",
+        "#D35400",
+        "#F39C12",
+        "#27AE60",
+        "#16A085",
+        "#2980B9",
+        "#8E44AD",
+        "#2C3E50",
+        "#7F8C8D",
+        "#BDC3C7"
+      ],
+      "n_colors": 10,
+      "family": "ggsci",
+      "classic_key": "flatui",
+      "journal": "FLATUI",
+      "tags": [
+        "ggsci",
+        "n10",
+        "FLATUI",
+        "flatui"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-185",
+      "source_id": 185,
+      "name": "Frontiers",
+      "raw_name": "pal_frontiers",
+      "colors": [
+        "#D51317",
+        "#F39200",
+        "#EFD500",
+        "#95C11F",
+        "#007B3D",
+        "#31B7BC",
+        "#0094CD",
+        "#164194",
+        "#6F286A",
+        "#706F6F"
+      ],
+      "n_colors": 10,
+      "family": "ggsci",
+      "classic_key": "frontiers",
+      "journal": "Frontiers",
+      "tags": [
+        "ggsci",
+        "n10",
+        "Frontiers",
+        "frontiers"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-186",
+      "source_id": 186,
+      "name": "FUTURAMA",
+      "raw_name": "pal_futurama",
+      "colors": [
+        "#FF6F00",
+        "#C71000",
+        "#008EA0",
+        "#8A4198",
+        "#5A9599",
+        "#FF6348",
+        "#84D7E1",
+        "#FF95A8",
+        "#3D3B25",
+        "#ADE2D0",
+        "#1A5354",
+        "#3F4041"
+      ],
+      "n_colors": 12,
+      "family": "ggsci",
+      "classic_key": "futurama",
+      "journal": "FUTURAMA",
+      "tags": [
+        "ggsci",
+        "n12",
+        "FUTURAMA",
+        "futurama"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-187",
+      "source_id": 187,
+      "name": "GSEA",
+      "raw_name": "pal_gsea",
+      "colors": [
+        "#4500AC",
+        "#2600D1",
+        "#6B58EE",
+        "#8787FF",
+        "#C6C0FF",
+        "#D4D4FF",
+        "#FFBFE5",
+        "#FF8888",
+        "#FF707F",
+        "#FF5959",
+        "#EE3F3F",
+        "#D60C00"
+      ],
+      "n_colors": 12,
+      "family": "ggsci",
+      "classic_key": "gsea",
+      "journal": "GSEA",
+      "tags": [
+        "ggsci",
+        "n12",
+        "GSEA",
+        "gsea"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-188",
+      "source_id": 188,
+      "name": "IGV",
+      "raw_name": "pal_igv",
+      "colors": [
+        "#5050FF",
+        "#CE3D32",
+        "#749B58",
+        "#F0E685",
+        "#466983",
+        "#BA6338",
+        "#5DB1DD",
+        "#802268",
+        "#6BD76B",
+        "#D595A7",
+        "#924822",
+        "#837B8D",
+        "#C75127",
+        "#D58F5C",
+        "#7A65A5",
+        "#E4AF69",
+        "#3B1B53",
+        "#CDDEB7",
+        "#612A79",
+        "#AE1F63",
+        "#E7C76F",
+        "#5A655E",
+        "#CC9900",
+        "#99CC00",
+        "#A9A9A9",
+        "#CC9900",
+        "#99CC00",
+        "#33CC00",
+        "#00CC33",
+        "#00CC99",
+        "#0099CC",
+        "#0A47FF",
+        "#4775FF",
+        "#FFC20A",
+        "#FFD147",
+        "#990033",
+        "#991A00",
+        "#996600",
+        "#809900",
+        "#339900",
+        "#00991A",
+        "#009966",
+        "#008099",
+        "#003399",
+        "#1A0099",
+        "#660099",
+        "#990080",
+        "#D60047",
+        "#FF1463",
+        "#00D68F",
+        "#14FFB1"
+      ],
+      "n_colors": 51,
+      "family": "ggsci",
+      "classic_key": "igv",
+      "journal": "IGV",
+      "tags": [
+        "ggsci",
+        "n51",
+        "IGV",
+        "igv"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-189",
+      "source_id": 189,
+      "name": "ITERM",
+      "raw_name": "pal_iterm",
+      "colors": [
+        "#00CDE8",
+        "#FFC739",
+        "#FF666D",
+        "#9DEAF6",
+        "#B3E03A",
+        "#A392E8"
+      ],
+      "n_colors": 6,
+      "family": "ggsci",
+      "classic_key": "iterm",
+      "journal": "ITERM",
+      "tags": [
+        "ggsci",
+        "n6",
+        "ITERM",
+        "iterm"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-190",
+      "source_id": 190,
+      "name": "JAMA",
+      "raw_name": "pal_jama",
+      "colors": [
+        "#374E55",
+        "#DF8F44",
+        "#00A1D5",
+        "#B24745",
+        "#79AF97",
+        "#6A6599",
+        "#80796B"
+      ],
+      "n_colors": 7,
+      "family": "ggsci",
+      "classic_key": "jama",
+      "journal": "JAMA",
+      "tags": [
+        "ggsci",
+        "n7",
+        "JAMA",
+        "jama"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-191",
+      "source_id": 191,
+      "name": "JCO",
+      "raw_name": "pal_jco",
+      "colors": [
+        "#0073C2",
+        "#EFC000",
+        "#868686",
+        "#CD534C",
+        "#7AA6DC",
+        "#003C67",
+        "#8F7700",
+        "#3B3B3B",
+        "#A73030",
+        "#4A6990"
+      ],
+      "n_colors": 10,
+      "family": "ggsci",
+      "classic_key": "jco",
+      "journal": "JCO",
+      "tags": [
+        "ggsci",
+        "n10",
+        "JCO",
+        "jco"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-192",
+      "source_id": 192,
+      "name": "Lancet",
+      "raw_name": "pal_lancet",
+      "colors": [
+        "#00468B",
+        "#ED0000",
+        "#42B540",
+        "#0099B4",
+        "#925E9F",
+        "#FDAF91",
+        "#AD002A",
+        "#ADB6B6",
+        "#1B1919"
+      ],
+      "n_colors": 9,
+      "family": "ggsci",
+      "classic_key": "lancet",
+      "journal": "Lancet",
+      "tags": [
+        "ggsci",
+        "n9",
+        "Lancet",
+        "lancet"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-193",
+      "source_id": 193,
+      "name": "LocusZoom",
+      "raw_name": "pal_locuszoom",
+      "colors": [
+        "#D43F3A",
+        "#EEA236",
+        "#5CB85C",
+        "#46B8DA",
+        "#357EBD",
+        "#9632B8",
+        "#B8B8B8"
+      ],
+      "n_colors": 7,
+      "family": "ggsci",
+      "classic_key": "locuszoom",
+      "journal": "LocusZoom",
+      "tags": [
+        "ggsci",
+        "n7",
+        "LocusZoom",
+        "locuszoom"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-194",
+      "source_id": 194,
+      "name": "MATERIAL",
+      "raw_name": "pal_material",
+      "colors": [
+        "#FFEBED",
+        "#FFCCD2",
+        "#EE9999",
+        "#E57272",
+        "#EE5250",
+        "#F34335",
+        "#E53934",
+        "#D22E2E",
+        "#C52727",
+        "#B71B1B"
+      ],
+      "n_colors": 10,
+      "family": "ggsci",
+      "classic_key": "material",
+      "journal": "MATERIAL",
+      "tags": [
+        "ggsci",
+        "n10",
+        "MATERIAL",
+        "material"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-195",
+      "source_id": 195,
+      "name": "NEJM",
+      "raw_name": "pal_nejm",
+      "colors": [
+        "#BC3C29",
+        "#0072B5",
+        "#E18727",
+        "#20854E",
+        "#7876B1",
+        "#6F99AD",
+        "#FFDC91",
+        "#EE4C97"
+      ],
+      "n_colors": 8,
+      "family": "ggsci",
+      "classic_key": "nejm",
+      "journal": "NEJM",
+      "tags": [
+        "ggsci",
+        "n8",
+        "NEJM",
+        "nejm"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-196",
+      "source_id": 196,
+      "name": "NPG",
+      "raw_name": "pal_npg",
+      "colors": [
+        "#E64B35",
+        "#4DBBD5",
+        "#00A087",
+        "#3C5488",
+        "#F39B7F",
+        "#8491B4",
+        "#91D1C2",
+        "#DC0000",
+        "#7E6148",
+        "#B09C85"
+      ],
+      "n_colors": 10,
+      "family": "ggsci",
+      "classic_key": "npg",
+      "journal": "Nature",
+      "tags": [
+        "ggsci",
+        "n10",
+        "Nature",
+        "npg"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-197",
+      "source_id": 197,
+      "name": "OBSERVABLE",
+      "raw_name": "pal_observable",
+      "colors": [
+        "#4269D0",
+        "#EFB118",
+        "#FF725C",
+        "#6CC5B0",
+        "#3CA951",
+        "#FF8AB7",
+        "#A463F2",
+        "#97BBF5",
+        "#9C6B4E",
+        "#9498A0"
+      ],
+      "n_colors": 10,
+      "family": "ggsci",
+      "classic_key": "observable",
+      "journal": "OBSERVABLE",
+      "tags": [
+        "ggsci",
+        "n10",
+        "OBSERVABLE",
+        "observable"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-198",
+      "source_id": 198,
+      "name": "PRIMER",
+      "raw_name": "pal_primer",
+      "colors": [
+        "#006EDB",
+        "#EB670F",
+        "#DF0C24",
+        "#179B9B",
+        "#30A147",
+        "#894CEB",
+        "#B88700",
+        "#CE2C85",
+        "#856D4C",
+        "#527A29",
+        "#D43511",
+        "#167E53",
+        "#9D615C",
+        "#64762D",
+        "#A830E8",
+        "#866E04",
+        "#808FA3"
+      ],
+      "n_colors": 17,
+      "family": "ggsci",
+      "classic_key": "primer",
+      "journal": "PRIMER",
+      "tags": [
+        "ggsci",
+        "n17",
+        "PRIMER",
+        "primer"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-199",
+      "source_id": 199,
+      "name": "RICKANDMORTY",
+      "raw_name": "pal_rickandmorty",
+      "colors": [
+        "#FAFD7C",
+        "#82491E",
+        "#24325F",
+        "#B7E4F9",
+        "#FB6467",
+        "#526E2D",
+        "#E762D7",
+        "#E89242",
+        "#FAE48B",
+        "#A6EEE6",
+        "#917C5D",
+        "#69C8EC"
+      ],
+      "n_colors": 12,
+      "family": "ggsci",
+      "classic_key": "rickandmorty",
+      "journal": "RICKANDMORTY",
+      "tags": [
+        "ggsci",
+        "n12",
+        "RICKANDMORTY",
+        "rickandmorty"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-200",
+      "source_id": 200,
+      "name": "SIMPSONS",
+      "raw_name": "pal_simpsons",
+      "colors": [
+        "#FED439",
+        "#709AE1",
+        "#8A9197",
+        "#D2AF81",
+        "#FD7446",
+        "#D5E4A2",
+        "#197EC0",
+        "#F05C3B",
+        "#46732E",
+        "#71D0F5",
+        "#370335",
+        "#075149",
+        "#C80813",
+        "#91331F",
+        "#1A9993",
+        "#FD8CC1"
+      ],
+      "n_colors": 16,
+      "family": "ggsci",
+      "classic_key": "simpsons",
+      "journal": "SIMPSONS",
+      "tags": [
+        "ggsci",
+        "n16",
+        "SIMPSONS",
+        "simpsons"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-201",
+      "source_id": 201,
+      "name": "STARTREK",
+      "raw_name": "pal_startrek",
+      "colors": [
+        "#CC0C00",
+        "#5C88DA",
+        "#84BD00",
+        "#FFCD00",
+        "#7C878E",
+        "#00B5E2",
+        "#00AF66"
+      ],
+      "n_colors": 7,
+      "family": "ggsci",
+      "classic_key": "startrek",
+      "journal": "STARTREK",
+      "tags": [
+        "ggsci",
+        "n7",
+        "STARTREK",
+        "startrek"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-202",
+      "source_id": 202,
+      "name": "TRON",
+      "raw_name": "pal_tron",
+      "colors": [
+        "#FF410D",
+        "#6EE2FF",
+        "#F7C530",
+        "#95CC5E",
+        "#D0DFE6",
+        "#F79D1E",
+        "#748AA6"
+      ],
+      "n_colors": 7,
+      "family": "ggsci",
+      "classic_key": "tron",
+      "journal": "TRON",
+      "tags": [
+        "ggsci",
+        "n7",
+        "TRON",
+        "tron"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-203",
+      "source_id": 203,
+      "name": "TW3",
+      "raw_name": "pal_tw3",
+      "colors": [
+        "#F8F9FC",
+        "#EFF3F8",
+        "#DEE5ED",
+        "#BBC6D5",
+        "#7C8CA3",
+        "#516075",
+        "#39475B",
+        "#222E40",
+        "#10182B",
+        "#010617"
+      ],
+      "n_colors": 10,
+      "family": "ggsci",
+      "classic_key": "tw3",
+      "journal": "TW3",
+      "tags": [
+        "ggsci",
+        "n10",
+        "TW3",
+        "tw3"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-204",
+      "source_id": 204,
+      "name": "UChicago",
+      "raw_name": "pal_uchicago",
+      "colors": [
+        "#800000",
+        "#767676",
+        "#FFA319",
+        "#8A9045",
+        "#155F83",
+        "#C16622",
+        "#8F3931",
+        "#58593F",
+        "#350E20"
+      ],
+      "n_colors": 9,
+      "family": "ggsci",
+      "classic_key": "uchicago",
+      "journal": "UChicago",
+      "tags": [
+        "ggsci",
+        "n9",
+        "UChicago",
+        "uchicago"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-205",
+      "source_id": 205,
+      "name": "UCSCGB",
+      "raw_name": "pal_ucscgb",
+      "colors": [
+        "#FF0000",
+        "#FF9900",
+        "#FFCC00",
+        "#00FF00",
+        "#6699FF",
+        "#CC33FF",
+        "#99991E",
+        "#999999",
+        "#FF00CC",
+        "#CC0000",
+        "#FFCCCC",
+        "#FFFF00",
+        "#CCFF00",
+        "#358000",
+        "#0000CC",
+        "#99CCFF",
+        "#00FFFF",
+        "#CCFFFF",
+        "#9900CC",
+        "#CC99FF",
+        "#996600",
+        "#666600",
+        "#666666",
+        "#CCCCCC",
+        "#79CC3D",
+        "#CCCC99"
+      ],
+      "n_colors": 26,
+      "family": "ggsci",
+      "classic_key": "ucscgb",
+      "journal": "UCSCGB",
+      "tags": [
+        "ggsci",
+        "n26",
+        "UCSCGB",
+        "ucscgb"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "sci_journal",
+        "biomedical"
+      ],
+      "likes": 50,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-206",
+      "source_id": 206,
+      "name": "R3",
+      "raw_name": "R3",
+      "colors": [
+        "#000000",
+        "#FF0000",
+        "#00CD00",
+        "#0000FF",
+        "#00FFFF",
+        "#FF00FF",
+        "#FFFF00",
+        "#BEBEBE"
+      ],
+      "n_colors": 8,
+      "family": "grDevices",
+      "classic_key": "R3",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n8",
+        "R3"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-207",
+      "source_id": 207,
+      "name": "R4",
+      "raw_name": "R4",
+      "colors": [
+        "#000000",
+        "#DF536B",
+        "#61D04F",
+        "#2297E6",
+        "#28E2E5",
+        "#CD0BBC",
+        "#F5C710",
+        "#9E9E9E"
+      ],
+      "n_colors": 8,
+      "family": "grDevices",
+      "classic_key": "R4",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n8",
+        "R4"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-208",
+      "source_id": 208,
+      "name": "ggplot2",
+      "raw_name": "ggplot2",
+      "colors": [
+        "#000000",
+        "#F8766D",
+        "#00BA38",
+        "#619CFF",
+        "#00BFC4",
+        "#F564E3",
+        "#B79F00",
+        "#9E9E9E"
+      ],
+      "n_colors": 8,
+      "family": "grDevices",
+      "classic_key": "ggplot2",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n8",
+        "ggplot2"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-209",
+      "source_id": 209,
+      "name": "Okabe-Ito",
+      "raw_name": "Okabe-Ito",
+      "colors": [
+        "#000000",
+        "#E69F00",
+        "#56B4E9",
+        "#009E73",
+        "#F0E442",
+        "#0072B2",
+        "#D55E00",
+        "#CC79A7",
+        "#999999"
+      ],
+      "n_colors": 9,
+      "family": "grDevices",
+      "classic_key": "Okabe-Ito",
+      "journal": "Okabe-Ito",
+      "tags": [
+        "grDevices",
+        "n9",
+        "Okabe-Ito",
+        "Okabe-Ito"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-210",
+      "source_id": 210,
+      "name": "Accent",
+      "raw_name": "Accent",
+      "colors": [
+        "#7FC97F",
+        "#BEAED4",
+        "#FDC086",
+        "#FFFF99",
+        "#386CB0",
+        "#F0027F",
+        "#BF5B17",
+        "#666666"
+      ],
+      "n_colors": 8,
+      "family": "grDevices",
+      "classic_key": "Accent",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n8",
+        "Accent"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-211",
+      "source_id": 211,
+      "name": "Dark 2",
+      "raw_name": "Dark 2",
+      "colors": [
+        "#1B9E77",
+        "#D95F02",
+        "#7570B3",
+        "#E7298A",
+        "#66A61E",
+        "#E6AB02",
+        "#A6761D",
+        "#666666"
+      ],
+      "n_colors": 8,
+      "family": "grDevices",
+      "classic_key": "Dark_2",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n8",
+        "Dark_2"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-212",
+      "source_id": 212,
+      "name": "Paired",
+      "raw_name": "Paired",
+      "colors": [
+        "#A6CEE3",
+        "#1F78B4",
+        "#B2DF8A",
+        "#33A02C",
+        "#FB9A99",
+        "#E31A1C",
+        "#FDBF6F",
+        "#FF7F00",
+        "#CAB2D6",
+        "#6A3D9A",
+        "#FFFF99",
+        "#B15928"
+      ],
+      "n_colors": 12,
+      "family": "grDevices",
+      "classic_key": "Paired",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n12",
+        "Paired"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-213",
+      "source_id": 213,
+      "name": "Pastel 1",
+      "raw_name": "Pastel 1",
+      "colors": [
+        "#FBB4AE",
+        "#B3CDE3",
+        "#CCEBC5",
+        "#DECBE4",
+        "#FED9A6",
+        "#FFFFCC",
+        "#E5D8BD",
+        "#FDDAEC",
+        "#F2F2F2"
+      ],
+      "n_colors": 9,
+      "family": "grDevices",
+      "classic_key": "Pastel_1",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n9",
+        "Pastel_1"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-214",
+      "source_id": 214,
+      "name": "Pastel 2",
+      "raw_name": "Pastel 2",
+      "colors": [
+        "#B3E2CD",
+        "#FDCDAC",
+        "#CBD5E8",
+        "#F4CAE4",
+        "#E6F5C9",
+        "#FFF2AE",
+        "#F1E2CC",
+        "#CCCCCC"
+      ],
+      "n_colors": 8,
+      "family": "grDevices",
+      "classic_key": "Pastel_2",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n8",
+        "Pastel_2"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-215",
+      "source_id": 215,
+      "name": "Set 1",
+      "raw_name": "Set 1",
+      "colors": [
+        "#E41A1C",
+        "#377EB8",
+        "#4DAF4A",
+        "#984EA3",
+        "#FF7F00",
+        "#FFFF33",
+        "#A65628",
+        "#F781BF",
+        "#999999"
+      ],
+      "n_colors": 9,
+      "family": "grDevices",
+      "classic_key": "Set_1",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n9",
+        "Set_1"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-216",
+      "source_id": 216,
+      "name": "Set 2",
+      "raw_name": "Set 2",
+      "colors": [
+        "#66C2A5",
+        "#FC8D62",
+        "#8DA0CB",
+        "#E78AC3",
+        "#A6D854",
+        "#FFD92F",
+        "#E5C494",
+        "#B3B3B3"
+      ],
+      "n_colors": 8,
+      "family": "grDevices",
+      "classic_key": "Set_2",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n8",
+        "Set_2"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-217",
+      "source_id": 217,
+      "name": "Set 3",
+      "raw_name": "Set 3",
+      "colors": [
+        "#8DD3C7",
+        "#FFFFB3",
+        "#BEBADA",
+        "#FB8072",
+        "#80B1D3",
+        "#FDB462",
+        "#B3DE69",
+        "#FCCDE5",
+        "#D9D9D9",
+        "#BC80BD",
+        "#CCEBC5",
+        "#FFED6F"
+      ],
+      "n_colors": 12,
+      "family": "grDevices",
+      "classic_key": "Set_3",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n12",
+        "Set_3"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-218",
+      "source_id": 218,
+      "name": "Tableau 10",
+      "raw_name": "Tableau 10",
+      "colors": [
+        "#4E79A7",
+        "#F28E2B",
+        "#E15759",
+        "#76B7B2",
+        "#59A14F",
+        "#EDC948",
+        "#B07AA1",
+        "#FF9DA7",
+        "#9C755F",
+        "#BAB0AC"
+      ],
+      "n_colors": 10,
+      "family": "grDevices",
+      "classic_key": "Tableau_10",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n10",
+        "Tableau_10"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-219",
+      "source_id": 219,
+      "name": "Classic Tableau",
+      "raw_name": "Classic Tableau",
+      "colors": [
+        "#1F77B4",
+        "#FF7F0E",
+        "#2CA02C",
+        "#D62728",
+        "#9467BD",
+        "#8C564B",
+        "#E377C2",
+        "#7F7F7F",
+        "#BCBD22",
+        "#17BECF"
+      ],
+      "n_colors": 10,
+      "family": "grDevices",
+      "classic_key": "Classic_Tableau",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n10",
+        "Classic_Tableau"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-220",
+      "source_id": 220,
+      "name": "Polychrome 36",
+      "raw_name": "Polychrome 36",
+      "colors": [
+        "#5A5156",
+        "#E4E1E3",
+        "#F6222E",
+        "#FE00FA",
+        "#16FF32",
+        "#3283FE",
+        "#FEAF16",
+        "#B00068",
+        "#1CFFCE",
+        "#90AD1C",
+        "#2ED9FF",
+        "#DEA0FD",
+        "#AA0DFE",
+        "#F8A19F",
+        "#325A9B",
+        "#C4451C",
+        "#1C8356",
+        "#85660D",
+        "#B10DA1",
+        "#FBE426",
+        "#1CBE4F",
+        "#FA0087",
+        "#FC1CBF",
+        "#F7E1A0",
+        "#C075A6",
+        "#782AB6",
+        "#AAF400",
+        "#BDCDFF",
+        "#822E1C",
+        "#B5EFB5",
+        "#7ED7D1",
+        "#1C7F93",
+        "#D85FF7",
+        "#683B79",
+        "#66B0FF",
+        "#3B00FB"
+      ],
+      "n_colors": 36,
+      "family": "grDevices",
+      "classic_key": "Polychrome_36",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n36",
+        "Polychrome_36"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-221",
+      "source_id": 221,
+      "name": "Alphabet",
+      "raw_name": "Alphabet",
+      "colors": [
+        "#AA0DFE",
+        "#3283FE",
+        "#85660D",
+        "#782AB6",
+        "#565656",
+        "#1C8356",
+        "#16FF32",
+        "#F7E1A0",
+        "#E2E2E2",
+        "#1CBE4F",
+        "#C4451C",
+        "#DEA0FD",
+        "#FE00FA",
+        "#325A9B",
+        "#FEAF16",
+        "#F8A19F",
+        "#90AD1C",
+        "#F6222E",
+        "#1CFFCE",
+        "#2ED9FF",
+        "#B10DA1",
+        "#C075A6",
+        "#FC1CBF",
+        "#B00068",
+        "#FBE426",
+        "#FA0087"
+      ],
+      "n_colors": 26,
+      "family": "grDevices",
+      "classic_key": "Alphabet",
+      "journal": "",
+      "tags": [
+        "grDevices",
+        "n26",
+        "Alphabet"
+      ],
+      "domains": [
+        "categorical",
+        "publication"
+      ],
+      "likes": 5,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-222",
+      "source_id": 222,
+      "name": "Accent",
+      "raw_name": "Accent",
+      "colors": [
+        "#7FC97F",
+        "#BEAED4",
+        "#FDC086",
+        "#FFFF99",
+        "#386CB0",
+        "#F0027F",
+        "#BF5B17",
+        "#666666"
+      ],
+      "n_colors": 8,
+      "family": "RColorBrewer",
+      "classic_key": "Accent",
+      "journal": "",
+      "tags": [
+        "RColorBrewer",
+        "n8",
+        "Accent"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "general",
+        "multi_group"
+      ],
+      "likes": 20,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-223",
+      "source_id": 223,
+      "name": "Dark2",
+      "raw_name": "Dark2",
+      "colors": [
+        "#1B9E77",
+        "#D95F02",
+        "#7570B3",
+        "#E7298A",
+        "#66A61E",
+        "#E6AB02",
+        "#A6761D",
+        "#666666"
+      ],
+      "n_colors": 8,
+      "family": "RColorBrewer",
+      "classic_key": "Dark2",
+      "journal": "",
+      "tags": [
+        "RColorBrewer",
+        "n8",
+        "Dark2"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "general",
+        "multi_group"
+      ],
+      "likes": 20,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-224",
+      "source_id": 224,
+      "name": "Paired",
+      "raw_name": "Paired",
+      "colors": [
+        "#A6CEE3",
+        "#1F78B4",
+        "#B2DF8A",
+        "#33A02C",
+        "#FB9A99",
+        "#E31A1C",
+        "#FDBF6F",
+        "#FF7F00",
+        "#CAB2D6",
+        "#6A3D9A",
+        "#FFFF99",
+        "#B15928"
+      ],
+      "n_colors": 12,
+      "family": "RColorBrewer",
+      "classic_key": "Paired",
+      "journal": "",
+      "tags": [
+        "RColorBrewer",
+        "n12",
+        "Paired"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "general",
+        "multi_group"
+      ],
+      "likes": 20,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-225",
+      "source_id": 225,
+      "name": "Pastel1",
+      "raw_name": "Pastel1",
+      "colors": [
+        "#FBB4AE",
+        "#B3CDE3",
+        "#CCEBC5",
+        "#DECBE4",
+        "#FED9A6",
+        "#FFFFCC",
+        "#E5D8BD",
+        "#FDDAEC",
+        "#F2F2F2"
+      ],
+      "n_colors": 9,
+      "family": "RColorBrewer",
+      "classic_key": "Pastel1",
+      "journal": "",
+      "tags": [
+        "RColorBrewer",
+        "n9",
+        "Pastel1"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "general",
+        "multi_group"
+      ],
+      "likes": 20,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-226",
+      "source_id": 226,
+      "name": "Pastel2",
+      "raw_name": "Pastel2",
+      "colors": [
+        "#B3E2CD",
+        "#FDCDAC",
+        "#CBD5E8",
+        "#F4CAE4",
+        "#E6F5C9",
+        "#FFF2AE",
+        "#F1E2CC",
+        "#CCCCCC"
+      ],
+      "n_colors": 8,
+      "family": "RColorBrewer",
+      "classic_key": "Pastel2",
+      "journal": "",
+      "tags": [
+        "RColorBrewer",
+        "n8",
+        "Pastel2"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "general",
+        "multi_group"
+      ],
+      "likes": 20,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-227",
+      "source_id": 227,
+      "name": "Set1",
+      "raw_name": "Set1",
+      "colors": [
+        "#E41A1C",
+        "#377EB8",
+        "#4DAF4A",
+        "#984EA3",
+        "#FF7F00",
+        "#FFFF33",
+        "#A65628",
+        "#F781BF",
+        "#999999"
+      ],
+      "n_colors": 9,
+      "family": "RColorBrewer",
+      "classic_key": "Set1",
+      "journal": "",
+      "tags": [
+        "RColorBrewer",
+        "n9",
+        "Set1"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "general",
+        "multi_group"
+      ],
+      "likes": 20,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-228",
+      "source_id": 228,
+      "name": "Set2",
+      "raw_name": "Set2",
+      "colors": [
+        "#66C2A5",
+        "#FC8D62",
+        "#8DA0CB",
+        "#E78AC3",
+        "#A6D854",
+        "#FFD92F",
+        "#E5C494",
+        "#B3B3B3"
+      ],
+      "n_colors": 8,
+      "family": "RColorBrewer",
+      "classic_key": "Set2",
+      "journal": "",
+      "tags": [
+        "RColorBrewer",
+        "n8",
+        "Set2"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "general",
+        "multi_group"
+      ],
+      "likes": 20,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    },
+    {
+      "id": "lcpmgh-229",
+      "source_id": 229,
+      "name": "Set3",
+      "raw_name": "Set3",
+      "colors": [
+        "#8DD3C7",
+        "#FFFFB3",
+        "#BEBADA",
+        "#FB8072",
+        "#80B1D3",
+        "#FDB462",
+        "#B3DE69",
+        "#FCCDE5",
+        "#D9D9D9",
+        "#BC80BD",
+        "#CCEBC5",
+        "#FFED6F"
+      ],
+      "n_colors": 12,
+      "family": "RColorBrewer",
+      "classic_key": "Set3",
+      "journal": "",
+      "tags": [
+        "RColorBrewer",
+        "n12",
+        "Set3"
+      ],
+      "domains": [
+        "categorical",
+        "publication",
+        "general",
+        "multi_group"
+      ],
+      "likes": 20,
+      "source": "lcpmgh/colors",
+      "source_url": "https://github.com/lcpmgh/colors",
+      "catalog": "lcpmgh"
+    }
+  ]
+}

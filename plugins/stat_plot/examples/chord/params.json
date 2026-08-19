@@ -1,0 +1,17 @@
+{
+  "id_column": "cell_id",
+  "stat_by": ["cluster", "condition"],
+  "plot_type": "chord",
+  "stat_type": "count",
+  "combine": true,
+  "title": "Cluster vs condition chord",
+  "palette": "npg",
+  "alpha": 0.85,
+  "legend_position": "right",
+  "legend_direction": "vertical",
+  "base_size": 12,
+  "width": 7,
+  "height": 7,
+  "dpi": 300,
+  "seed": 10086
+}

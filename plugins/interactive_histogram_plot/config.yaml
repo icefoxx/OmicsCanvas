@@ -1,0 +1,12 @@
+id: interactive_histogram_plot
+name: Interactive Histogram Plot
+version: 1.0.0
+description: Grouped overlay histogram with shared bins, translucent outlined bars, static exports, and interactive Plotly HTML.
+language: R
+entrypoint: plot.R
+category: Distribution
+status: stable
+inputs:
+  - {id: input, type: table, formats: [csv, tsv, txt], required: true}
+outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, histogram_data_used.csv, selected_rows.csv]
+runtime: Rscript plugins/interactive_histogram_plot/plot.R --input input.csv --params params.json --output output_dir

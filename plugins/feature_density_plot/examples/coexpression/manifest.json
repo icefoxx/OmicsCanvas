@@ -1,0 +1,16 @@
+{
+  "id": "coexpression",
+  "label": "coexpression",
+  "plugin_id": "feature_density_plot",
+  "plot_type": "coexpression",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_expression.csv",
+    "embed": "input/example_embedding.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/feature_density_plot/plot.R --input plugins/feature_density_plot/examples/coexpression/input/example_expression.csv --params plugins/feature_density_plot/examples/coexpression/params.json --output /tmp/feature_density_plot_coexpression_out --embed plugins/feature_density_plot/examples/coexpression/input/example_embedding.csv"
+  }
+}

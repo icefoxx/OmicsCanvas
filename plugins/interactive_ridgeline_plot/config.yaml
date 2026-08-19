@@ -1,0 +1,12 @@
+id: interactive_ridgeline_plot
+name: Interactive Ridgeline Plot
+version: 1.0.0
+description: Horizontal distribution clouds with jittered observations and optional box or quantile overlays, exported as static graphics and interactive Plotly HTML.
+language: R
+entrypoint: plot.R
+category: Distribution
+status: stable
+inputs:
+  - {id: input, type: table, formats: [csv, tsv, txt], required: true}
+outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, distribution_data_used.csv, selected_rows.csv]
+runtime: Rscript plugins/interactive_ridgeline_plot/plot.R --input input.csv --params params.json --output output_dir

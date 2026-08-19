@@ -1,0 +1,22 @@
+{
+  "row_column":"method",
+  "metric_columns":["ARI","NMI","F1","ASW","V-Measure Homogeneity"],
+  "score_column":"Overall",
+  "rows_include":["scABC","SAILER","SnapATAC","scBFA","scOpen","SCALE","ArchR","Signac","cisTopic","MAESTRO","EpiScanpy","SnapATAC2"],
+  "sort_by_score":true,
+  "left_geom":"circle",
+  "left_size":8,
+  "left_label_show":true,
+  "score_geom":"bar",
+  "score_scale_independent":true,
+  "interactive":true,
+  "zoom":true,
+  "pan":true,
+  "selectable":true,
+  "lasso_select":true,
+  "reset_view":true,
+  "tooltip_columns":["cohort"],
+  "hover_show_metric":true,
+  "hover_show_score":true,
+  "title":"Interactive method comparison"
+}

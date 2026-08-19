@@ -1,0 +1,62 @@
+[
+  {
+    "id": "basic",
+    "label": "basic",
+    "plugin_id": "interactive_genomic_signal_track_plot",
+    "plot_type": "basic",
+    "mode": "",
+    "params": "../examples/basic/params.json",
+    "inputs": {
+      "input": "input/example_signal.csv",
+      "expression": "input/example_expression.csv",
+      "features": "input/example_features.csv"
+    },
+    "expected": "../examples/basic/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_genomic_signal_track_plot/plot.R --input plugins/interactive_genomic_signal_track_plot/examples/basic/input/example_signal.csv --params plugins/interactive_genomic_signal_track_plot/examples/basic/params.json --output /tmp/interactive_genomic_signal_track_plot_basic_out --expression plugins/interactive_genomic_signal_track_plot/examples/basic/input/example_expression.csv --features plugins/interactive_genomic_signal_track_plot/examples/basic/input/example_features.csv"
+    },
+    "bundle": "../examples/basic",
+    "gallery_png": "basic.png",
+    "params_filename": "example_basic_params.json"
+  },
+  {
+    "id": "custom_layout",
+    "label": "custom_layout",
+    "plugin_id": "interactive_genomic_signal_track_plot",
+    "plot_type": "custom_layout",
+    "mode": "",
+    "params": "../examples/custom_layout/params.json",
+    "inputs": {
+      "input": "input/example_signal.csv",
+      "expression": "input/example_expression.csv",
+      "features": "input/example_features.csv"
+    },
+    "expected": "../examples/custom_layout/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_genomic_signal_track_plot/plot.R --input plugins/interactive_genomic_signal_track_plot/examples/custom_layout/input/example_signal.csv --params plugins/interactive_genomic_signal_track_plot/examples/custom_layout/params.json --output /tmp/interactive_genomic_signal_track_plot_custom_layout_out --expression plugins/interactive_genomic_signal_track_plot/examples/custom_layout/input/example_expression.csv --features plugins/interactive_genomic_signal_track_plot/examples/custom_layout/input/example_features.csv"
+    },
+    "bundle": "../examples/custom_layout",
+    "gallery_png": "custom_layout.png",
+    "params_filename": "example_custom_layout_params.json"
+  },
+  {
+    "id": "interactive",
+    "label": "interactive",
+    "plugin_id": "interactive_genomic_signal_track_plot",
+    "plot_type": "interactive",
+    "mode": "",
+    "params": "../examples/interactive/params.json",
+    "inputs": {
+      "input": "input/example_signal.csv",
+      "expression": "input/example_expression.csv",
+      "features": "input/example_features.csv"
+    },
+    "expected": "../examples/interactive/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_genomic_signal_track_plot/plot.R --input plugins/interactive_genomic_signal_track_plot/examples/interactive/input/example_signal.csv --params plugins/interactive_genomic_signal_track_plot/examples/interactive/params.json --output /tmp/interactive_genomic_signal_track_plot_interactive_out --expression plugins/interactive_genomic_signal_track_plot/examples/interactive/input/example_expression.csv --features plugins/interactive_genomic_signal_track_plot/examples/interactive/input/example_features.csv"
+    },
+    "bundle": "../examples/interactive",
+    "gallery_png": "interactive.png",
+    "params_filename": "example_interactive_params.json"
+  }
+]

@@ -1,0 +1,136 @@
+{
+  "plugin_id": "fgsea_enrichment_plot",
+  "examples": [
+    {
+      "id": "custom_layout",
+      "label": "custom_layout",
+      "plugin_id": "fgsea_enrichment_plot",
+      "plot_type": "gradient_curve",
+      "mode": "",
+      "params": "../examples/custom_layout/params.json",
+      "inputs": {
+        "input": "input/example_ranks.csv",
+        "genesets": "input/example_pathways.gmt"
+      },
+      "expected": "../examples/custom_layout/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/custom_layout/input/example_ranks.csv --params plugins/fgsea_enrichment_plot/examples/custom_layout/params.json --output /tmp/fgsea_enrichment_plot_custom_layout_out --genesets plugins/fgsea_enrichment_plot/examples/custom_layout/input/example_pathways.gmt"
+      },
+      "bundle": "../examples/custom_layout",
+      "gallery_png": "custom_layout.png",
+      "params_filename": "example_custom_layout_params.json"
+    },
+    {
+      "id": "dot_summary",
+      "label": "dot_summary",
+      "plugin_id": "fgsea_enrichment_plot",
+      "plot_type": "dot_summary",
+      "mode": "",
+      "params": "../examples/dot_summary/params.json",
+      "inputs": {
+        "input": "input/example_fgsea_results.csv"
+      },
+      "expected": "../examples/dot_summary/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/dot_summary/input/example_fgsea_results.csv --params plugins/fgsea_enrichment_plot/examples/dot_summary/params.json --output /tmp/fgsea_enrichment_plot_dot_summary_out"
+      },
+      "bundle": "../examples/dot_summary",
+      "gallery_png": "dot_summary.png",
+      "params_filename": "example_dot_summary_params.json"
+    },
+    {
+      "id": "gradient_curve",
+      "label": "gradient_curve",
+      "plugin_id": "fgsea_enrichment_plot",
+      "plot_type": "running",
+      "mode": "",
+      "params": "../examples/gradient_curve/params.json",
+      "inputs": {
+        "input": "input/example_ranks.csv",
+        "genesets": "input/example_pathways.gmt"
+      },
+      "expected": "../examples/gradient_curve/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/gradient_curve/input/example_ranks.csv --params plugins/fgsea_enrichment_plot/examples/gradient_curve/params.json --output /tmp/fgsea_enrichment_plot_gradient_curve_out --genesets plugins/fgsea_enrichment_plot/examples/gradient_curve/input/example_pathways.gmt"
+      },
+      "bundle": "../examples/gradient_curve",
+      "gallery_png": "gradient_curve.png",
+      "params_filename": "example_gradient_curve_params.json"
+    },
+    {
+      "id": "image_like",
+      "label": "image_like",
+      "plugin_id": "fgsea_enrichment_plot",
+      "plot_type": "gradient_curve",
+      "mode": "",
+      "params": "../examples/image_like/params.json",
+      "inputs": {
+        "input": "input/example_ranks.csv",
+        "genesets": "input/example_pathways.gmt"
+      },
+      "expected": "../examples/image_like/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/image_like/input/example_ranks.csv --params plugins/fgsea_enrichment_plot/examples/image_like/params.json --output /tmp/fgsea_enrichment_plot_image_like_out --genesets plugins/fgsea_enrichment_plot/examples/image_like/input/example_pathways.gmt"
+      },
+      "bundle": "../examples/image_like",
+      "gallery_png": "image_like.png",
+      "params_filename": "example_image_like_params.json"
+    },
+    {
+      "id": "multiterm",
+      "label": "multiterm",
+      "plugin_id": "fgsea_enrichment_plot",
+      "plot_type": "running_multi_panel",
+      "mode": "",
+      "params": "../examples/multiterm/params.json",
+      "inputs": {
+        "input": "input/example_ranks.csv",
+        "genesets": "input/example_pathways.gmt"
+      },
+      "expected": "../examples/multiterm/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/multiterm/input/example_ranks.csv --params plugins/fgsea_enrichment_plot/examples/multiterm/params.json --output /tmp/fgsea_enrichment_plot_multiterm_out --genesets plugins/fgsea_enrichment_plot/examples/multiterm/input/example_pathways.gmt"
+      },
+      "bundle": "../examples/multiterm",
+      "gallery_png": "multiterm.png",
+      "params_filename": "example_multiterm_params.json"
+    },
+    {
+      "id": "running",
+      "label": "running",
+      "plugin_id": "fgsea_enrichment_plot",
+      "plot_type": "running",
+      "mode": "",
+      "params": "../examples/running/params.json",
+      "inputs": {
+        "input": "input/example_ranks.csv",
+        "genesets": "input/example_pathways.gmt"
+      },
+      "expected": "../examples/running/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/running/input/example_ranks.csv --params plugins/fgsea_enrichment_plot/examples/running/params.json --output /tmp/fgsea_enrichment_plot_running_out --genesets plugins/fgsea_enrichment_plot/examples/running/input/example_pathways.gmt"
+      },
+      "bundle": "../examples/running",
+      "gallery_png": "running.png",
+      "params_filename": "example_running_params.json"
+    },
+    {
+      "id": "summary",
+      "label": "summary",
+      "plugin_id": "fgsea_enrichment_plot",
+      "plot_type": "summary",
+      "mode": "",
+      "params": "../examples/summary/params.json",
+      "inputs": {
+        "input": "input/example_fgsea_results.csv"
+      },
+      "expected": "../examples/summary/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/summary/input/example_fgsea_results.csv --params plugins/fgsea_enrichment_plot/examples/summary/params.json --output /tmp/fgsea_enrichment_plot_summary_out"
+      },
+      "bundle": "../examples/summary",
+      "gallery_png": "summary.png",
+      "params_filename": "example_summary_params.json"
+    }
+  ]
+}

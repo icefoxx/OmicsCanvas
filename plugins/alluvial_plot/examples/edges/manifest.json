@@ -1,0 +1,1 @@
+{"id":"edges","label":"edges","plugin_id":"alluvial_plot","plot_type":"alluvial","params":"params.json","inputs":{"input":"input/example_edges.csv"},"expected":"expected/result.png"}

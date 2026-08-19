@@ -1,0 +1,15 @@
+{
+  "id": "custom_layout",
+  "label": "custom_layout",
+  "plugin_id": "interactive_enrichment_lollipop",
+  "plot_type": "custom_layout",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_enrichment_lollipop/plot.R --input plugins/interactive_enrichment_lollipop/examples/custom_layout/input/example_input.csv --params plugins/interactive_enrichment_lollipop/examples/custom_layout/params.json --output /tmp/interactive_enrichment_lollipop_custom_layout_out"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "interactive",
+  "label": "interactive",
+  "plugin_id": "interactive_motif_logo_plot",
+  "plot_type": "auto",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_motif_logo_plot/plot.R --input plugins/interactive_motif_logo_plot/examples/interactive/input/example_input.csv --params plugins/interactive_motif_logo_plot/examples/interactive/params.json --output /tmp/interactive_motif_logo_plot_interactive_out"
+  }
+}

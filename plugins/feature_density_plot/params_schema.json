@@ -1,0 +1,70 @@
+{
+  "data": {
+    "feature_id_column": "Feature/gene id column in --input (default: first column).",
+    "cell_id_column": "Cell id column in --embed (default: first column).",
+    "dim1_column": "First embedding dimension column (default: 2nd column of --embed).",
+    "dim2_column": "Second embedding dimension column (default: 3rd column of --embed).",
+    "features": "REQUIRED. Feature names/rows to plot (array).",
+    "cells_include": "Only keep these cell ids.",
+    "cells_exclude": "Remove these cell ids.",
+    "features_include": "Restrict features to this subset.",
+    "features_exclude": "Remove these features."
+  },
+  "plot_mode": {
+    "scale01": "Normalize density to 0-1 (boolean, default false).",
+    "coexpression": "Multiply densities across multiple features (auto-true when >1 feature).",
+    "raster": "Rasterise points via ggrastr (boolean, default true).",
+    "bias": "KDE bandwidth multiplier (numeric, default 1).",
+    "cells_knn": "KNN smoothing neighbor count (integer, default 25)."
+  },
+  "labels": {
+    "title": "Plot title.",
+    "xlab": "X axis title.",
+    "ylab": "Y axis title.",
+    "title_show": "Show/hide title (default true).",
+    "xlab_show": "Show/hide x axis title (default true).",
+    "ylab_show": "Show/hide y axis title (default true).",
+    "legend_name": "Color legend title (default 'Density')."
+  },
+  "typography": {
+    "font_family": "Global font family.",
+    "font_size": "Global font size.",
+    "base_size": "Base theme font size (default 14).",
+    "title_size": "Title font size.",
+    "axis_label_size": "Axis title font size.",
+    "x_axis_text_size": "X tick label size.",
+    "y_axis_text_size": "Y tick label size."
+  },
+  "colors": {
+    "palette": "Viridis option: turbo, viridis, plasma, magma, inferno, cividis (default turbo).",
+    "palcolor": "Reserved for explicit color mapping (not used by continuous density).",
+    "point_color": "Axis text color (default black).",
+    "strip_fill": "Facet strip fill color (default #ffe5cc)."
+  },
+  "layers": {
+    "point_size": "Scatter point size (default 0.5).",
+    "point_shape": "Scatter point shape (default 16).",
+    "point_alpha": "Scatter point alpha.",
+    "axis_line_size": "Axis line thickness (default 0.25)."
+  },
+  "legends": {
+    "legend_show": "Show/hide legend (default true).",
+    "legend_position": "right, left, bottom, top, or none (default right).",
+    "legend_title_size": "Legend title font size.",
+    "legend_text_size": "Legend item text size.",
+    "colorbar_width": "Colorbar width in cm.",
+    "colorbar_height": "Colorbar height in cm."
+  },
+  "output": {
+    "width": "Output width in inches (default 7).",
+    "height": "Output height in inches (default 5.5).",
+    "dpi": "PNG resolution (default 300)."
+  },
+  "selectors": {
+    "highlight_cells": "Cell ids to overlay as highlighted points.",
+    "highlight_color": "Highlight point color (default #E64B35).",
+    "highlight_size": "Highlight point size (default 1.2).",
+    "highlight_shape": "Highlight point shape (default 21).",
+    "highlight_alpha": "Highlight point alpha (default 1)."
+  }
+}

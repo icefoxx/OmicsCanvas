@@ -1,0 +1,23 @@
+{
+  "id_column": "cell_id",
+  "stat_by": ["cluster"],
+  "group_by": "sample",
+  "plot_type": "rose",
+  "stat_type": "count",
+  "position": "stack",
+  "flip": false,
+  "combine": true,
+  "title": "Cluster counts per sample (rose)",
+  "xlab": "Sample",
+  "ylab": "Count",
+  "show_label": false,
+  "palette": "npg",
+  "alpha": 0.9,
+  "legend_position": "right",
+  "legend_direction": "vertical",
+  "base_size": 12,
+  "width": 7,
+  "height": 6,
+  "dpi": 300,
+  "seed": 10086
+}

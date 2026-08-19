@@ -1,0 +1,15 @@
+{
+  "id": "multi_feature",
+  "label": "multi_feature",
+  "plugin_id": "advanced_feature_plot",
+  "plot_type": "multi_feature",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/multi_feature/input/example_input.csv --params plugins/advanced_feature_plot/examples/multi_feature/params.json --output /tmp/advanced_feature_plot_multi_feature_out"
+  }
+}

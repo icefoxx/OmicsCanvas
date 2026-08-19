@@ -1,0 +1,50 @@
+[
+  {
+    "id": "basic",
+    "label": "basic",
+    "plugin_id": "combo_bar_line_plot",
+    "plot_type": "combo",
+    "mode": "dual_axis",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "expected/result.png"
+  },
+  {
+    "id": "chiplot",
+    "label": "chiplot",
+    "plugin_id": "combo_bar_line_plot",
+    "plot_type": "combo",
+    "mode": "dual_axis",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "expected/result.png"
+  },
+  {
+    "id": "labeled",
+    "label": "labeled",
+    "plugin_id": "combo_bar_line_plot",
+    "plot_type": "combo",
+    "mode": "dual_axis",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "expected/result.png"
+  },
+  {
+    "id": "long",
+    "label": "long",
+    "plugin_id": "combo_bar_line_plot",
+    "plot_type": "combo",
+    "mode": "dual_axis",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_long.csv"
+    },
+    "expected": "expected/result.png"
+  }
+]

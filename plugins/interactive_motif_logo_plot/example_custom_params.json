@@ -1,0 +1,1 @@
+{"input_mode":"wide","input_scale":"probability","normalize":"probability","motif_order":["Oct4^3A/Oct4^5A","Oct4"],"reverse_positions":true,"position_text_angle":45,"width_per_position":0.7,"height_per_motif":1.3,"motif_label_size":12,"title":"Custom motif enrichment","interactive":true,"grid_show":true}

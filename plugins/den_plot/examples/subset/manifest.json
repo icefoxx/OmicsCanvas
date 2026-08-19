@@ -1,0 +1,16 @@
+{
+  "id": "subset",
+  "label": "subset",
+  "plugin_id": "den_plot",
+  "plot_type": "column_dendrogram",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_matrix.csv",
+    "annot": "input/example_annotation.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/den_plot/plot.R --input plugins/den_plot/examples/subset/input/example_matrix.csv --params plugins/den_plot/examples/subset/params.json --output /tmp/den_plot_subset_out --annot plugins/den_plot/examples/subset/input/example_annotation.csv"
+  }
+}

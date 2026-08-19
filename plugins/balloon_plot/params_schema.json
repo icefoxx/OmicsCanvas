@@ -1,0 +1,76 @@
+{
+  "data": {
+    "row_id_column": "Column name used as row id (default: first column).",
+    "rows_include": "Only keep these row ids.",
+    "rows_exclude": "Remove these row ids.",
+    "columns_include": "Only keep these column/sample names.",
+    "columns_exclude": "Remove these column/sample names."
+  },
+  "plot_mode": {
+    "show_value": "Show numeric value text inside each cell (true/false).",
+    "show_row_stats": "Show row summary statistic on the right margin (true/false).",
+    "show_col_stats": "Show column summary statistic on the bottom margin (true/false).",
+    "stat_function": "Summary function for margins: sum, mean, median, max, min, sd, var.",
+    "use_gradient": "Map tile fill color to value via a gradient/colorbar (true/false). When false, tiles use a fixed fill_color."
+  },
+  "labels": {
+    "title": "Plot title.",
+    "subtitle": "Plot subtitle.",
+    "xlab": "X axis title.",
+    "ylab": "Y axis title.",
+    "title_show": "Show/hide title.",
+    "subtitle_show": "Show/hide subtitle.",
+    "xlab_show": "Show/hide x axis title.",
+    "ylab_show": "Show/hide y axis title."
+  },
+  "typography": {
+    "font_family": "Global font family.",
+    "font_size": "Global base font size.",
+    "title_size": "Title font size.",
+    "axis_label_size": "X/Y axis title size.",
+    "x_axis_text_size": "X tick label size.",
+    "y_axis_text_size": "Y tick label size.",
+    "x_axis_text_angle": "X tick label angle in degrees.",
+    "value_text_size": "In-cell value text size (ggplot units).",
+    "stat_text_size": "Margin stat text size (ggplot units).",
+    "stat_text_color": "Margin stat text color."
+  },
+  "colors": {
+    "fill_color": "Tile background fill when use_gradient is false.",
+    "border_color": "Panel outer border color.",
+    "balloon_color": "Balloon point color.",
+    "text_color": "In-cell value text color and axis text color.",
+    "stat_color": "Alias of stat_text_color for margin stat text.",
+    "gradient_low": "Low end of the value gradient (when use_gradient is true).",
+    "gradient_high": "High end of the value gradient (when use_gradient is true).",
+    "palette": "Named RColorBrewer palette used for the gradient instead of gradient_low/high (e.g. Blues, Reds, Viridis)."
+  },
+  "layers": {
+    "balloon_alpha": "Balloon point transparency (0-1).",
+    "balloon_min_size": "Minimum balloon point size.",
+    "balloon_max_size": "Maximum balloon point size.",
+    "tile_border_show": "Draw tile borders (true/false).",
+    "tile_border_color": "Tile border color.",
+    "tile_border_width": "Tile border line width."
+  },
+  "annotations": {
+    "highlight_rows": "Row ids to outline with highlight_color.",
+    "highlight_columns": "Column/sample names to outline with highlight_color.",
+    "highlight_color": "Outline color for highlighted rows/columns."
+  },
+  "legends": {
+    "legend_show": "Show/hide all legends.",
+    "legend_position": "right, left, bottom, top, or none.",
+    "legend_name": "Legend title for the size (and fill) legend.",
+    "legend_title_size": "Legend title font size.",
+    "legend_text_size": "Legend item text size.",
+    "legend_key_size": "Legend key size in cm.",
+    "colorbar_width": "Colorbar width in cm (when use_gradient is true).",
+    "colorbar_height": "Colorbar height in cm (when use_gradient is true)."
+  },
+  "output": {
+    "width": "Output width in inches.",
+    "height": "Output height in inches.",
+    "dpi": "PNG resolution."
+  }
+}

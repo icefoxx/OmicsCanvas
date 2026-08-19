@@ -1,0 +1,180 @@
+{
+  "data": {
+    "row_id_column": {
+      "type": "column",
+      "label": "Row id column",
+      "help": ""
+    },
+    "sample_col": {
+      "type": "column",
+      "label": "Sample annotation column",
+      "help": ""
+    },
+    "group_col": {
+      "type": "column",
+      "label": "Group column",
+      "help": ""
+    },
+    "sample_columns": {
+      "type": "columns",
+      "label": "Sample / value columns",
+      "help": "",
+      "default": []
+    },
+    "rows_exclude": {
+      "type": "string_array",
+      "label": "Rows exclude",
+      "help": "",
+      "default": []
+    },
+    "plot_kind": {
+      "type": "select",
+      "label": "Plot kind",
+      "help": "",
+      "default": "default",
+      "options": [
+        "default",
+        "basic",
+        "colored"
+      ]
+    }
+  },
+  "clustering": {
+    "cluster_method": {
+      "type": "select",
+      "label": "Cluster method",
+      "help": "",
+      "default": "complete",
+      "options": [
+        "complete",
+        "average",
+        "single",
+        "ward.D2"
+      ]
+    },
+    "distance_method": {
+      "type": "select",
+      "label": "Distance",
+      "help": "",
+      "default": "euclidean",
+      "options": [
+        "euclidean",
+        "manhattan",
+        "maximum",
+        "canberra",
+        "binary",
+        "minkowski"
+      ]
+    }
+  },
+  "axes": {
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "help": "",
+      "default": ""
+    },
+    "x_text_angle": {
+      "type": "number",
+      "label": "X label angle",
+      "help": "",
+      "default": 90
+    },
+    "label_size": {
+      "type": "number",
+      "label": "Label size",
+      "help": "",
+      "default": 10
+    },
+    "show_x_text_legend": {
+      "type": "boolean",
+      "label": "Show x-text color legend",
+      "help": "",
+      "default": false
+    },
+    "x_text_legend_title": {
+      "type": "string",
+      "label": "X text legend title",
+      "help": "",
+      "default": ""
+    }
+  },
+  "colors": {
+    "group_colors": {
+      "type": "object",
+      "label": "Group colors",
+      "help": "",
+      "default": {}
+    },
+    "x_text_colors": {
+      "type": "object",
+      "label": "X text colors",
+      "help": "",
+      "default": {}
+    },
+    "x_text_color_col": {
+      "type": "column",
+      "label": "X text color column",
+      "help": ""
+    }
+  },
+  "legend": {
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "help": "",
+      "default": "right",
+      "options": [
+        "right",
+        "left",
+        "top",
+        "bottom",
+        "none"
+      ]
+    },
+    "legend_title": {
+      "type": "string",
+      "label": "Legend title",
+      "help": "",
+      "default": ""
+    },
+    "legend_size": {
+      "type": "number",
+      "label": "Legend size",
+      "help": "",
+      "default": 10
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "label": "Width",
+      "help": "",
+      "default": 8
+    },
+    "height": {
+      "type": "number",
+      "label": "Height",
+      "help": "",
+      "default": 6
+    },
+    "dpi": {
+      "type": "number",
+      "label": "DPI",
+      "help": "",
+      "default": 300
+    },
+    "point_size": {
+      "type": "number",
+      "label": "Point size",
+      "help": "",
+      "default": 2
+    },
+    "tile_height_ratio": {
+      "type": "number",
+      "label": "Tile height ratio",
+      "help": "",
+      "default": 0.15
+    }
+  }
+}

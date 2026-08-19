@@ -1,0 +1,21 @@
+{
+  "plot_kind": "column_dendrogram",
+  "row_id_column": "feature",
+  "sample_col": "sample",
+  "group_col": "celltype",
+  "distance_method": "euclidean",
+  "cluster_method": "average",
+  "title": "Sample Clustering Dendrogram",
+  "tile_height_ratio": 0.08,
+  "point_size": 4.5,
+  "label_size": 8,
+  "legend_size": 9,
+  "legend_title": "Cell type",
+  "legend_position": "right",
+  "x_text_angle": 60,
+  "x_text_hjust": 1,
+  "x_text_vjust": 1,
+  "width": 8.5,
+  "height": 5.4,
+  "dpi": 220
+}

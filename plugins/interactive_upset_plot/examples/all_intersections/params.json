@@ -1,0 +1,1 @@
+{"plot_subclass":"all_intersections","item_column":"item_id","set_columns":["A","B","C","D","E","F","G"],"intersections":"all","mode":"inclusive_union","max_degree":3,"n_intersections":24,"min_size":0,"keep_empty_groups":true,"title":"All combinations up to degree three","width":12,"height":9,"dpi":160}

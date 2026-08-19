@@ -1,0 +1,1 @@
+{"row_id_column":"Gene","matrix_start_column":2,"cluster_rows":true,"cluster_columns":true,"palette":"plasma","row_annotation_show":true,"column_annotation_show":true,"annotation_legend_show":true,"title":"Interactive clustered heatmap","interactive":true,"zoom":true,"pan":true,"selectable":true,"lasso_select":true,"tooltip_columns":["row","column","value"],"width":12,"height":9}

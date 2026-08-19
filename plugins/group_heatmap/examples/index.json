@@ -1,0 +1,95 @@
+{
+  "plugin_id": "group_heatmap",
+  "examples": [
+    {
+      "id": "cell_heatmap",
+      "label": "cell_heatmap",
+      "plugin_id": "group_heatmap",
+      "plot_type": "heatmap",
+      "mode": "",
+      "params": "../examples/cell_heatmap/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/cell_heatmap/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/group_heatmap/plot.R --input plugins/group_heatmap/examples/cell_heatmap/input/example_input.csv --params plugins/group_heatmap/examples/cell_heatmap/params.json --output /tmp/group_heatmap_cell_heatmap_out"
+      },
+      "bundle": "../examples/cell_heatmap",
+      "gallery_png": "cell_heatmap.png",
+      "params_filename": "example_cell_heatmap_params.json"
+    },
+    {
+      "id": "clustered_dotplot",
+      "label": "clustered_dotplot",
+      "plugin_id": "group_heatmap",
+      "plot_type": "clustered_dotplot",
+      "mode": "",
+      "params": "../examples/clustered_dotplot/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/clustered_dotplot/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/group_heatmap/plot.R --input plugins/group_heatmap/examples/clustered_dotplot/input/example_input.csv --params plugins/group_heatmap/examples/clustered_dotplot/params.json --output /tmp/group_heatmap_clustered_dotplot_out"
+      },
+      "bundle": "../examples/clustered_dotplot",
+      "gallery_png": "clustered_dotplot.png",
+      "params_filename": "example_clustered_dotplot_params.json"
+    },
+    {
+      "id": "dotplot",
+      "label": "dotplot",
+      "plugin_id": "group_heatmap",
+      "plot_type": "dotplot",
+      "mode": "",
+      "params": "../examples/dotplot/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/dotplot/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/group_heatmap/plot.R --input plugins/group_heatmap/examples/dotplot/input/example_input.csv --params plugins/group_heatmap/examples/dotplot/params.json --output /tmp/group_heatmap_dotplot_out"
+      },
+      "bundle": "../examples/dotplot",
+      "gallery_png": "dotplot.png",
+      "params_filename": "example_dotplot_params.json"
+    },
+    {
+      "id": "heatmap",
+      "label": "heatmap",
+      "plugin_id": "group_heatmap",
+      "plot_type": "heatmap",
+      "mode": "",
+      "params": "../examples/heatmap/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/heatmap/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/group_heatmap/plot.R --input plugins/group_heatmap/examples/heatmap/input/example_input.csv --params plugins/group_heatmap/examples/heatmap/params.json --output /tmp/group_heatmap_heatmap_out"
+      },
+      "bundle": "../examples/heatmap",
+      "gallery_png": "heatmap.png",
+      "params_filename": "example_heatmap_params.json"
+    },
+    {
+      "id": "violin",
+      "label": "violin",
+      "plugin_id": "group_heatmap",
+      "plot_type": "violin",
+      "mode": "",
+      "params": "../examples/violin/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/violin/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/group_heatmap/plot.R --input plugins/group_heatmap/examples/violin/input/example_input.csv --params plugins/group_heatmap/examples/violin/params.json --output /tmp/group_heatmap_violin_out"
+      },
+      "bundle": "../examples/violin",
+      "gallery_png": "violin.png",
+      "params_filename": "example_violin_params.json"
+    }
+  ]
+}

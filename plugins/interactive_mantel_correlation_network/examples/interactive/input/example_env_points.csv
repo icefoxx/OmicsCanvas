@@ -1,0 +1,4 @@
+id,label,x,y,group,color,size
+Temp,Temperature,-1.7,1,Climate,#E69F00,5
+pH,pH,-1.7,2,Chemistry,#56B4E9,4
+Salinity,Salinity,-1.7,3,Chemistry,#56B4E9,4

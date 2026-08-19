@@ -1,0 +1,5 @@
+env,spec,r,p,q,group
+Temp,Richness,0.72,0.004,0.008,Climate
+pH,Shannon,0.49,0.032,0.041,Chemistry
+Salinity,Richness,-0.61,0.011,0.018,Chemistry
+Temp,Shannon,0.38,0.084,0.091,Climate

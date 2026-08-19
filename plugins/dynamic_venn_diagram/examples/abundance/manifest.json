@@ -1,0 +1,15 @@
+{
+  "id": "abundance",
+  "label": "abundance",
+  "plugin_id": "dynamic_venn_diagram",
+  "plot_type": "abundance",
+  "mode": "auto",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_abundance_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/dynamic_venn_diagram/plot.R --input plugins/dynamic_venn_diagram/examples/abundance/input/example_abundance_input.csv --params plugins/dynamic_venn_diagram/examples/abundance/params.json --output /tmp/dynamic_venn_diagram_abundance_out"
+  }
+}

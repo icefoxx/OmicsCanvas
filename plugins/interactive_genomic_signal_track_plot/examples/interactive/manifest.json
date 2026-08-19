@@ -1,0 +1,17 @@
+{
+  "id": "interactive",
+  "label": "interactive",
+  "plugin_id": "interactive_genomic_signal_track_plot",
+  "plot_type": "interactive",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_signal.csv",
+    "expression": "input/example_expression.csv",
+    "features": "input/example_features.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_genomic_signal_track_plot/plot.R --input plugins/interactive_genomic_signal_track_plot/examples/interactive/input/example_signal.csv --params plugins/interactive_genomic_signal_track_plot/examples/interactive/params.json --output /tmp/interactive_genomic_signal_track_plot_interactive_out --expression plugins/interactive_genomic_signal_track_plot/examples/interactive/input/example_expression.csv --features plugins/interactive_genomic_signal_track_plot/examples/interactive/input/example_features.csv"
+  }
+}

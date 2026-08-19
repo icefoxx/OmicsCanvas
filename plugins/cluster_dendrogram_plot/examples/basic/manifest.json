@@ -1,0 +1,16 @@
+{
+  "id": "basic",
+  "label": "basic",
+  "plugin_id": "cluster_dendrogram_plot",
+  "plot_type": "basic",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_expression.csv",
+    "annot": "input/example_annotation.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/cluster_dendrogram_plot/plot.R --input plugins/cluster_dendrogram_plot/examples/basic/input/example_expression.csv --params plugins/cluster_dendrogram_plot/examples/basic/params.json --output /tmp/cluster_dendrogram_plot_basic_out --annot plugins/cluster_dendrogram_plot/examples/basic/input/example_annotation.csv"
+  }
+}

@@ -1,0 +1,1 @@
+{"input_mode":"wide","id_column":"sample","title":"Interactive nucleosome signal histogram","xlab":"mean nucleosome signal","stat":"count","bins":40,"alpha":0.55,"selectable":true,"lasso_select":true,"zoom":true,"pan":true,"reset_view":true,"interactive":true}

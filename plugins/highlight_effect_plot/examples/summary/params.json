@@ -1,0 +1,21 @@
+{
+  "input_mode": "summary",
+  "category_column": "category",
+  "mean_column": "mean",
+  "ci_low_column": "ci_low",
+  "ci_high_column": "ci_high",
+  "pvalue_column": "pvalue",
+  "highlight_column": "highlight",
+  "collapse_others": true,
+  "other_label": "Other biosamples",
+  "other_color": "#A8A8A8",
+  "other_point_size": 2.2,
+  "highlight_point_size": 4.5,
+  "highlight_color": "#2D1B4E",
+  "stars_show": true,
+  "title_show": true,
+  "title": "Focus categories vs other samples",
+  "width": 6.5,
+  "height": 3.8,
+  "dpi": 300
+}

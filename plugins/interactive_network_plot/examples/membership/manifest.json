@@ -1,0 +1,15 @@
+{
+  "id": "membership",
+  "label": "membership",
+  "plugin_id": "interactive_network_plot",
+  "plot_type": "membership",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_membership_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/membership/input/example_membership_input.csv --params plugins/interactive_network_plot/examples/membership/params.json --output /tmp/interactive_network_plot_membership_out"
+  }
+}

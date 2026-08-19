@@ -1,0 +1,15 @@
+{
+  "id": "custom_layout",
+  "label": "custom_layout",
+  "plugin_id": "interactive_binary_plot",
+  "plot_type": "custom_layout",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_binary_plot/plot.R --input plugins/interactive_binary_plot/examples/custom_layout/input/example_input.csv --params plugins/interactive_binary_plot/examples/custom_layout/params.json --output /tmp/interactive_binary_plot_custom_layout_out"
+  }
+}

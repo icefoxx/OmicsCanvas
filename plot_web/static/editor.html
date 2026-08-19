@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plot Editor | OmicsCanvas</title>
+  <link rel="stylesheet" href="/static/styles.css?v=param-common-1">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="editor-page studio-light">
+  <!-- TOP BAR: Gallery · title · Connected/Ready · Export ▾ · Run -->
+  <header class="editor-header studio-header editor-page-header">
+    <div class="editor-title">
+      <a href="/" class="back-button gallery-link">Gallery</a>
+      <div class="editor-title-text">
+        <h2 id="pluginName">Plot Editor</h2>
+        <p id="pluginDescription">Interactive parameter customization &amp; vector graphic generator</p>
+      </div>
+    </div>
+    <div class="studio-header-actions">
+      <div class="status-pills">
+        <span class="status-pill connected" id="health">
+          <i class="status-dot"></i> Connected
+        </span>
+        <span class="status-pill ready">
+          <span class="ready-dot" id="readyDot"></span>
+          <span id="editorStateText">Ready</span>
+        </span>
+      </div>
+      <label class="auto-update-toggle header-toggle" title="Re-render when parameters change">
+        <input type="checkbox" id="autoUpdateToggle" checked>
+        <span class="toggle-pill">Auto Update</span>
+      </label>
+      <button id="runDemoButton" class="secondary compact-action">Demo</button>
+      <button id="runButton" class="primary compact-action">Run Plot</button>
+      <div class="export-menu" id="exportMenu">
+        <button type="button" class="export-menu-btn" id="exportMenuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="exportMenuPanel">
+          <span class="export-icon" aria-hidden="true">↓</span>
+          Export
+          <span class="export-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="export-menu-panel" id="exportMenuPanel" role="menu" aria-label="Download figure">
+          <div class="export-menu-empty" id="exportMenuEmpty">Run Demo / Run Plot first</div>
+          <div id="quickDownloads" class="export-menu-links">
+            <a class="export-item is-disabled" data-fmt="svg" role="menuitem" href="#" tabindex="-1">SVG</a>
+            <a class="export-item is-disabled" data-fmt="pdf" role="menuitem" href="#" tabindex="-1">PDF</a>
+            <a class="export-item is-disabled" data-fmt="png" role="menuitem" href="#" tabindex="-1">PNG</a>
+            <a class="export-item is-disabled" data-fmt="tiff" role="menuitem" href="#" tabindex="-1">TIFF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="editor-workspace">
+    <div class="editor-grid">
+      <section class="plot-stage">
+        <!-- Vertical floating tools: outside canvas, draggable, top-right by default -->
+        <div class="canvas-float-tools" id="canvasControlBar" aria-label="Canvas tools">
+          <button type="button" class="float-drag-handle" id="floatDragHandle" title="Drag to move" aria-label="Drag tools">
+            <span class="drag-dots" aria-hidden="true"></span>
+          </button>
+          <button type="button" data-stage-action="zoom-in" title="Zoom in" class="float-tool-btn" aria-label="Zoom in">+</button>
+          <button type="button" data-stage-action="zoom-out" title="Zoom out" class="float-tool-btn" aria-label="Zoom out">−</button>
+          <button type="button" data-stage-action="fullscreen" title="Fullscreen" class="float-tool-btn" aria-label="Fullscreen">⛶</button>
+        </div>
+        <div class="stage-canvas" id="stageCanvas">
+          <div class="preview-card" id="previewCard">
+            <div class="preview-wrap" id="previewWrap">
+              <img id="preview" alt="Plot preview">
+              <div id="plotlyPreview" class="plotly-preview hidden"></div>
+              <div id="stageOverlay" class="stage-overlay hidden">
+                <div class="spinner"></div>
+                <span>Updating figure...</span>
+              </div>
+              <div class="empty-canvas" id="emptyCanvas">
+                <div class="empty-icon">📊</div>
+                <h3>Loading figure...</h3>
+                <p>Pre-loading demo case automatically...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-foot">
+          <div class="job-status-wrap">
+            <strong>Status</strong>
+            <div id="jobStatus" class="job-status">Ready.</div>
+          </div>
+          <div id="downloadLinks" class="downloads export-cta-row" hidden></div>
+        </div>
+
+        <details class="stage-data-drawer" id="stageDataDrawer">
+          <summary>
+            <span>Loaded dataset preview &amp; row filter</span>
+            <span class="drawer-hint">click to expand</span>
+          </summary>
+          <div class="data-drawer-body">
+            <div id="stageRowSelector" class="stage-row-selector"></div>
+            <div id="stageTablePreview" class="stage-table-preview"></div>
+          </div>
+        </details>
+
+        <details class="secondary-results">
+          <summary>Logs &amp; filtered outputs</summary>
+          <pre id="logs" class="logs"></pre>
+          <div id="selectedOutput" class="selected-output"></div>
+        </details>
+      </section>
+
+      <aside class="controls-card editor-panel">
+        <div class="card-head settings-head">
+          <h3>Parameters &amp; Config</h3>
+          <div class="preset-wrap">
+            <label for="exampleSelect">Presets</label>
+            <select id="exampleSelect"></select>
+          </div>
+        </div>
+
+        <div class="param-sidebar-grid">
+          <nav class="param-nav-col" id="paramNavCol" aria-label="Parameter groups">
+            <div class="param-nav-group-label">Plot</div>
+            <button class="param-tab active" data-ptab="data" type="button">data <span class="param-tab-count" data-count-for="data"></span></button>
+            <button class="param-tab" data-ptab="plot" type="button">plot <span class="param-tab-count" data-count-for="plot"></span></button>
+            <div class="param-nav-group-label">Common</div>
+            <button class="param-tab" data-ptab="theme" type="button">theme</button>
+            <button class="param-tab" data-ptab="axes" type="button">axes <span class="param-tab-count" data-count-for="axes"></span></button>
+            <button class="param-tab" data-ptab="title" type="button">title <span class="param-tab-count" data-count-for="title"></span></button>
+            <button class="param-tab" data-ptab="legend" type="button">legend <span class="param-tab-count" data-count-for="legend"></span></button>
+            <button class="param-tab" data-ptab="canvas" type="button">canvas <span class="param-tab-count" data-count-for="canvas"></span></button>
+            <button class="param-tab" data-ptab="export" type="button">export</button>
+          </nav>
+
+          <div class="param-content-col" id="paramContentCol">
+            <div id="paramContentArea" class="param-content-area"></div>
+            <!-- Export tab extras -->
+            <div id="exportExtras" class="export-extras hidden">
+              <div class="export-cta-panel">
+                <div class="export-cta-title">Download figure</div>
+                <div id="headerExportLinks" class="export-cta-buttons"></div>
+                <p class="export-hint-text">Same files as top-right <strong>Export</strong> menu.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="statusbar">
+    <span id="statusText">Plot Editor Ready.</span>
+    <span id="outputPathText"></span>
+  </footer>
+
+  <script src="/static/editor.js?v=param-common-1"></script>
+</body>
+</html>

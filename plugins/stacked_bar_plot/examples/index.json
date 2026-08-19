@@ -1,0 +1,28 @@
+{
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic"
+    },
+    {
+      "id": "chiplot",
+      "label": "chiplot"
+    },
+    {
+      "id": "long",
+      "label": "long"
+    },
+    {
+      "id": "normal",
+      "label": "normal"
+    },
+    {
+      "id": "percent",
+      "label": "percent"
+    },
+    {
+      "id": "vertical_labels",
+      "label": "vertical_labels"
+    }
+  ]
+}

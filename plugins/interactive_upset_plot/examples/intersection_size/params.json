@@ -1,0 +1,1 @@
+{"plot_subclass":"intersection_size","item_column":"item_id","set_columns":["A","B","C","D","E","F","G"],"mode":"inclusive_intersection","min_degree":1,"n_intersections":14,"intersection_percent_show":true,"intersection_percent_digits":1,"ratio_show":true,"title":"Inclusive intersection sizes","width":10,"height":7,"dpi":160}

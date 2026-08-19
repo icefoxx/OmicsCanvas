@@ -1,0 +1,9 @@
+name: interactive_sankey_plot
+display_name: Interactive Sankey / Alluvial Flow
+description: Highly customizable draggable Sankey flow plot with static vector/raster exports.
+runtime:
+  command: Rscript plot.R --input flows.csv --params params.json --output output_dir [--nodes nodes.csv]
+inputs:
+  - {name: input, type: table, required: true, description: Flow table with source, target, value and optional stage/group columns.}
+  - {name: nodes, type: table, required: false, description: Optional node id, label, stage/order, color, x, y, highlight table.}
+outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, nodes_used.csv, edges_used.csv, selected_nodes.csv]

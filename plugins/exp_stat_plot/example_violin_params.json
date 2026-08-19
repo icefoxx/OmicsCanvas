@@ -1,0 +1,26 @@
+{
+  "id_column": "cell",
+  "group_column": "cluster",
+  "split_column": "condition",
+  "stat_columns": ["CD3D", "MS4A1"],
+  "plot_type": "violin",
+  "fill_by": "group",
+  "palette": "Paired",
+  "group_colors": {
+    "DrugA": "#3b7ddd",
+    "DrugB": "#e45756",
+    "CK": "#2ca25f"
+  },
+  "title": "Expression statistic violin",
+  "subtitle": "SCA expStatPlot style",
+  "ylab": "Log-normalized expression",
+  "add_box": true,
+  "add_dot": true,
+  "dot_size": 0.35,
+  "dot_alpha": 0.45,
+  "same_y_lims": true,
+  "legend_position": "right",
+  "base_size": 12,
+  "width": 8.5,
+  "height": 5
+}

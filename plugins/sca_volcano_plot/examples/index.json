@@ -1,0 +1,77 @@
+{
+  "plugin_id": "sca_volcano_plot",
+  "examples": [
+    {
+      "id": "avg",
+      "label": "avg",
+      "plugin_id": "sca_volcano_plot",
+      "plot_type": "avg_volcano",
+      "mode": "",
+      "params": "../examples/avg/params.json",
+      "inputs": {
+        "input": "input/example_markers.csv"
+      },
+      "expected": "../examples/avg/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/sca_volcano_plot/plot.R --input plugins/sca_volcano_plot/examples/avg/input/example_markers.csv --params plugins/sca_volcano_plot/examples/avg/params.json --output /tmp/sca_volcano_plot_avg_out"
+      },
+      "bundle": "../examples/avg",
+      "gallery_png": "avg.png",
+      "params_filename": "example_avg_params.json"
+    },
+    {
+      "id": "basic",
+      "label": "basic",
+      "plugin_id": "sca_volcano_plot",
+      "plot_type": "volcano",
+      "mode": "",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_markers.csv"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/sca_volcano_plot/plot.R --input plugins/sca_volcano_plot/examples/basic/input/example_markers.csv --params plugins/sca_volcano_plot/examples/basic/params.json --output /tmp/sca_volcano_plot_basic_out"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    },
+    {
+      "id": "percent",
+      "label": "percent",
+      "plugin_id": "sca_volcano_plot",
+      "plot_type": "percent_volcano",
+      "mode": "",
+      "params": "../examples/percent/params.json",
+      "inputs": {
+        "input": "input/example_markers.csv"
+      },
+      "expected": "../examples/percent/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/sca_volcano_plot/plot.R --input plugins/sca_volcano_plot/examples/percent/input/example_markers.csv --params plugins/sca_volcano_plot/examples/percent/params.json --output /tmp/sca_volcano_plot_percent_out"
+      },
+      "bundle": "../examples/percent",
+      "gallery_png": "percent.png",
+      "params_filename": "example_percent_params.json"
+    },
+    {
+      "id": "regions",
+      "label": "regions",
+      "plugin_id": "sca_volcano_plot",
+      "plot_type": "volcano",
+      "mode": "",
+      "params": "../examples/regions/params.json",
+      "inputs": {
+        "input": "input/example_markers.csv"
+      },
+      "expected": "../examples/regions/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/sca_volcano_plot/plot.R --input plugins/sca_volcano_plot/examples/regions/input/example_markers.csv --params plugins/sca_volcano_plot/examples/regions/params.json --output /tmp/sca_volcano_plot_regions_out"
+      },
+      "bundle": "../examples/regions",
+      "gallery_png": "regions.png",
+      "params_filename": "example_regions_params.json"
+    }
+  ]
+}

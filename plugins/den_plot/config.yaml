@@ -1,0 +1,19 @@
+name: den_plot
+display_name: Den Plot
+description: Standardized SCA dendrogram plot wrapper for customizable sample/column clustering trees with annotation color bars.
+runtime:
+  command: Rscript plot.R --input matrix.csv --annot annotation.csv --params params.json --output output_dir
+inputs:
+  - name: input
+    type: table
+    required: true
+  - name: annot
+    type: table
+    required: false
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - matrix_used.csv
+  - annotation_used.csv

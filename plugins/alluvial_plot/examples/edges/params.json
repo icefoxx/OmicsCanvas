@@ -1,0 +1,16 @@
+{
+  "input_mode": "edges",
+  "source_column": "source",
+  "target_column": "target",
+  "value_column": "value",
+  "fill_by": "node",
+  "flow_alpha": 0.5,
+  "palette": "aaas",
+  "stratum_width": 0.14,
+  "label_show": true,
+  "title": "Edge-list two-step alluvial",
+  "legend_show": false,
+  "width": 10,
+  "height": 6,
+  "dpi": 300
+}

@@ -1,0 +1,7 @@
+id,label,group,type,highlight,tooltip
+ALPHA,Alpha hub,Core,Node,true,Central alpha node
+BETA,Beta,Core,Node,false,Beta interaction
+GAMMA,Gamma,Signal,Node,false,Gamma interaction
+DELTA,Delta,Signal,Node,false,Delta interaction
+EPSILON,Epsilon,Metabolic,Node,false,Epsilon interaction
+ZETA,Zeta,Metabolic,Node,false,Zeta interaction

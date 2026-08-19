@@ -1,0 +1,13 @@
+sample,celltype,condition,batch
+S01,T cell,Control,Batch1
+S02,T cell,DrugA,Batch1
+S03,T cell,DrugB,Batch1
+S04,T cell,Control,Batch1
+S05,B cell,Control,Batch1
+S06,B cell,DrugA,Batch1
+S07,B cell,DrugB,Batch2
+S08,B cell,Control,Batch2
+S09,Myeloid,Control,Batch2
+S10,Myeloid,DrugA,Batch2
+S11,Myeloid,DrugB,Batch2
+S12,Myeloid,Control,Batch2

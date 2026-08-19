@@ -1,0 +1,22 @@
+{
+  "input_mode": "wide",
+  "id_column": "sample",
+  "feature_order": ["Feature D", "Feature B", "Feature A", "Feature C"],
+  "reverse_features": false,
+  "width": 12,
+  "height": 7,
+  "ridge_spacing": 1.15,
+  "ridge_height": 0.68,
+  "ridge_overlap": 0.05,
+  "x_limits": [-3, 3],
+  "x_breaks": [-3, -2, -1, 0, 1, 2, 3],
+  "panel_background": "#FAFAF8",
+  "plot_background": "#F1F0EC",
+  "grid_color": "#D9D6CE",
+  "feature_label_face": "bold",
+  "title": "Custom spacing and shared scale",
+  "box_show": true,
+  "quantile_line_show": true,
+  "quantile_line_type": "dotted",
+  "interactive": true
+}

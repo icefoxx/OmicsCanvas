@@ -1,0 +1,15 @@
+{
+  "id": "rose",
+  "label": "rose",
+  "plugin_id": "stat_plot",
+  "plot_type": "rose",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_metadata.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/rose/input/example_metadata.csv --params plugins/stat_plot/examples/rose/params.json --output /tmp/stat_plot_rose_out"
+  }
+}

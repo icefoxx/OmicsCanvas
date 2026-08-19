@@ -1,0 +1,16 @@
+{
+  "id": "colored_labels",
+  "label": "colored_labels",
+  "plugin_id": "cluster_dendrogram_plot",
+  "plot_type": "colored_labels",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_expression.csv",
+    "annot": "input/example_annotation.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/cluster_dendrogram_plot/plot.R --input plugins/cluster_dendrogram_plot/examples/colored_labels/input/example_expression.csv --params plugins/cluster_dendrogram_plot/examples/colored_labels/params.json --output /tmp/cluster_dendrogram_plot_colored_labels_out --annot plugins/cluster_dendrogram_plot/examples/colored_labels/input/example_annotation.csv"
+  }
+}

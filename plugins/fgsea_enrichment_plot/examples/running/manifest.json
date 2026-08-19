@@ -1,0 +1,16 @@
+{
+  "id": "running",
+  "label": "running",
+  "plugin_id": "fgsea_enrichment_plot",
+  "plot_type": "running",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_ranks.csv",
+    "genesets": "input/example_pathways.gmt"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/running/input/example_ranks.csv --params plugins/fgsea_enrichment_plot/examples/running/params.json --output /tmp/fgsea_enrichment_plot_running_out --genesets plugins/fgsea_enrichment_plot/examples/running/input/example_pathways.gmt"
+  }
+}

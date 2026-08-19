@@ -1,0 +1,20 @@
+{
+  "id_column": "cell_id",
+  "stat_by": ["condition", "phase"],
+  "stat_level": ["Disease", "S"],
+  "plot_type": "venn",
+  "stat_type": "count",
+  "combine": true,
+  "title": "Disease cells vs S-phase cells",
+  "show_label": true,
+  "label_size": 3.5,
+  "palette": "npg",
+  "alpha": 0.6,
+  "legend_position": "right",
+  "legend_direction": "vertical",
+  "base_size": 12,
+  "width": 7,
+  "height": 6,
+  "dpi": 300,
+  "seed": 10086
+}

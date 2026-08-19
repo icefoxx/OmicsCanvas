@@ -1,0 +1,10 @@
+{
+  "id": "chiplot",
+  "label": "chiplot",
+  "plugin_id": "classified_bar_plot",
+  "plot_type": "classified_bar",
+  "mode": "horizontal",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png"
+}

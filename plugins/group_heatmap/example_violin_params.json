@@ -1,0 +1,17 @@
+{
+  "id_column": "cell",
+  "group_column": "cluster",
+  "features": ["CD3D", "MS4A1", "LYZ", "MKI67"],
+  "plot_type": "violin",
+  "violin_mode": "plain",
+  "violin_alpha": 0.72,
+  "group_colors": {
+    "T cell": "#4C78A8",
+    "B cell": "#F58518",
+    "Myeloid": "#54A24B",
+    "Cycling": "#B279A2",
+    "NK": "#E45756"
+  },
+  "width": 8.5,
+  "height": 5.5
+}

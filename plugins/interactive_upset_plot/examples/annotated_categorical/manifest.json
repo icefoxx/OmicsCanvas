@@ -1,0 +1,15 @@
+{
+  "id": "annotated_categorical",
+  "label": "annotated_categorical",
+  "plugin_id": "interactive_upset_plot",
+  "plot_type": "annotated_categorical",
+  "mode": "exclusive_intersection",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_upset_plot/plot.R --input plugins/interactive_upset_plot/examples/annotated_categorical/input/example_input.csv --params plugins/interactive_upset_plot/examples/annotated_categorical/params.json --output /tmp/interactive_upset_plot_annotated_categorical_out"
+  }
+}

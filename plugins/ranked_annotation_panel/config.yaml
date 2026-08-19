@@ -1,0 +1,40 @@
+id: ranked_annotation_panel
+name: Ranked Annotation Panel
+version: 1.0.0
+description: Draw a ranked numeric point panel with a right-side annotation heatmap panel. Users choose rows, left value column, right annotation columns, continuous/discrete colors, legends, labels, and panel layout.
+language: R
+entrypoint: plot.R
+category: Multi-panel
+status: experimental
+inputs:
+  - id: input
+    type: table
+    formats: [csv, tsv, txt]
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - selected_rows.csv
+  - run.log
+parameters:
+  row_label_column:
+    type: column
+    required: true
+    description: Column used as row labels.
+  left_value_column:
+    type: column
+    required: true
+    description: Numeric column plotted in the left ranked dot panel.
+  annotation_columns:
+    type: columns
+    required: true
+    description: Columns shown in the right annotation panel.
+  rows_include:
+    type: string_array
+    required: false
+    description: Row labels selected by the table under the plot. Defaults to all rows.
+  annotation_settings:
+    type: object
+    required: false
+    description: Per-annotation-column type, palette, limits, labels, and legend settings.

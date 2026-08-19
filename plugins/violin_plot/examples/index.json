@@ -1,0 +1,78 @@
+{
+  "plugin_id": "violin_plot",
+  "examples": [
+    {
+      "id": "anno",
+      "label": "anno",
+      "plugin_id": "violin_plot",
+      "plot_type": "long",
+      "mode": "",
+      "params": "../examples/anno/params.json",
+      "inputs": {
+        "input": "input/example_long.csv"
+      },
+      "expected": "../examples/anno/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/violin_plot/plot.R --input plugins/violin_plot/examples/anno/input/example_long.csv --params plugins/violin_plot/examples/anno/params.json --output /tmp/violin_plot_anno_out"
+      },
+      "bundle": "../examples/anno",
+      "gallery_png": "anno.png",
+      "params_filename": "example_anno_params.json"
+    },
+    {
+      "id": "basic",
+      "label": "basic",
+      "plugin_id": "violin_plot",
+      "plot_type": "long",
+      "mode": "",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_long.csv"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/violin_plot/plot.R --input plugins/violin_plot/examples/basic/input/example_long.csv --params plugins/violin_plot/examples/basic/params.json --output /tmp/violin_plot_basic_out"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    },
+    {
+      "id": "dot",
+      "label": "dot",
+      "plugin_id": "violin_plot",
+      "plot_type": "long",
+      "mode": "",
+      "params": "../examples/dot/params.json",
+      "inputs": {
+        "input": "input/example_long.csv"
+      },
+      "expected": "../examples/dot/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/violin_plot/plot.R --input plugins/violin_plot/examples/dot/input/example_long.csv --params plugins/violin_plot/examples/dot/params.json --output /tmp/violin_plot_dot_out"
+      },
+      "bundle": "../examples/dot",
+      "gallery_png": "dot.png",
+      "params_filename": "example_dot_params.json"
+    },
+    {
+      "id": "matrix",
+      "label": "matrix",
+      "plugin_id": "violin_plot",
+      "plot_type": "wide_matrix",
+      "mode": "",
+      "params": "../examples/matrix/params.json",
+      "inputs": {
+        "input": "input/example_matrix.csv",
+        "annot": "input/example_annotation.csv"
+      },
+      "expected": "../examples/matrix/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/violin_plot/plot.R --input plugins/violin_plot/examples/matrix/input/example_matrix.csv --params plugins/violin_plot/examples/matrix/params.json --output /tmp/violin_plot_matrix_out --annot plugins/violin_plot/examples/matrix/input/example_annotation.csv"
+      },
+      "bundle": "../examples/matrix",
+      "gallery_png": "matrix.png",
+      "params_filename": "example_matrix_params.json"
+    }
+  ]
+}

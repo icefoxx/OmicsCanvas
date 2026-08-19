@@ -1,0 +1,31 @@
+{
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "feature_columns": ["module_score"],
+  "highlight_column": "cluster",
+  "highlight_levels": ["Naive T", "B cell"],
+  "highlight_border_color": "black",
+  "highlight_size": 2.2,
+  "highlight_stroke": 0.6,
+  "group_label_show": true,
+  "group_label_size": 4,
+  "palette": "viridis",
+  "theme_use": "themeBlank",
+  "theme_args": {
+    "xlab": "dim1",
+    "ylab": "dim2",
+    "lab.size": 14,
+    "xlen.npc": 0.16,
+    "ylen.npc": 0.16
+  },
+  "title_show": false,
+  "subtitle_show": false,
+  "point_size": 0.75,
+  "point_alpha": 0.9,
+  "label_show": true,
+  "width": 7.2,
+  "height": 5.8,
+  "dpi": 220
+}

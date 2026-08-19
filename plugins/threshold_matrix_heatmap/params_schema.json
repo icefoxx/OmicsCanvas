@@ -1,0 +1,203 @@
+{
+  "data": {
+    "row_label_column": {
+      "type": "column",
+      "label": "Row label column",
+      "help": "",
+      "required": true
+    },
+    "value_columns": {
+      "type": "columns",
+      "label": "Value columns",
+      "help": "",
+      "default": []
+    },
+    "rows_include": {
+      "type": "string_array",
+      "label": "Rows include",
+      "help": "",
+      "default": []
+    },
+    "rows_exclude": {
+      "type": "string_array",
+      "label": "Rows exclude",
+      "help": "",
+      "default": []
+    },
+    "columns_exclude": {
+      "type": "string_array",
+      "label": "Columns exclude",
+      "help": "",
+      "default": []
+    }
+  },
+  "rules": {
+    "default_rules": {
+      "type": "textarea",
+      "label": "Default cutoff rules",
+      "help": "",
+      "default": "<0.05=#C6FF1A|sig;else=#C9C9C9|non-sig"
+    },
+    "column_rules_string": {
+      "type": "textarea",
+      "label": "Per-column rules string",
+      "help": "",
+      "default": ""
+    },
+    "cell_shape": {
+      "type": "select",
+      "label": "Cell shape",
+      "help": "",
+      "default": "tile",
+      "options": [
+        "tile",
+        "circle",
+        "diamond",
+        "triangle"
+      ]
+    }
+  },
+  "axes": {
+    "title_show": {
+      "type": "boolean",
+      "label": "Show title",
+      "help": "",
+      "default": false
+    },
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "help": "",
+      "default": ""
+    },
+    "row_name_size": {
+      "type": "number",
+      "label": "Row name size",
+      "help": "",
+      "default": 9
+    },
+    "column_name_size": {
+      "type": "number",
+      "label": "Column name size",
+      "help": "",
+      "default": 9
+    },
+    "column_name_angle": {
+      "type": "number",
+      "label": "Column name angle",
+      "help": "",
+      "default": 90
+    },
+    "row_label_position": {
+      "type": "select",
+      "label": "Row label position",
+      "help": "",
+      "default": "right",
+      "options": [
+        "left",
+        "right"
+      ]
+    },
+    "column_label_position": {
+      "type": "select",
+      "label": "Column label position",
+      "help": "",
+      "default": "bottom",
+      "options": [
+        "top",
+        "bottom"
+      ]
+    }
+  },
+  "cells": {
+    "cell_width": {
+      "type": "number",
+      "label": "Cell width",
+      "help": "",
+      "default": 0.95
+    },
+    "cell_height": {
+      "type": "number",
+      "label": "Cell height",
+      "help": "",
+      "default": 0.95
+    },
+    "show_cell_border": {
+      "type": "boolean",
+      "label": "Cell border",
+      "help": "",
+      "default": true
+    },
+    "cell_border_color": {
+      "type": "color",
+      "label": "Cell border color",
+      "help": "",
+      "default": "#FFFFFF"
+    },
+    "show_value": {
+      "type": "boolean",
+      "label": "Show cell values",
+      "help": "",
+      "default": false
+    }
+  },
+  "legend": {
+    "legend_show": {
+      "type": "boolean",
+      "label": "Show legend",
+      "help": "",
+      "default": true
+    },
+    "legend_name": {
+      "type": "string",
+      "label": "Legend title",
+      "help": "",
+      "default": "status"
+    },
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "help": "",
+      "default": "right",
+      "options": [
+        "right",
+        "left",
+        "top",
+        "bottom",
+        "none"
+      ]
+    },
+    "legend_levels": {
+      "type": "string_array",
+      "label": "Legend level order",
+      "help": "",
+      "default": []
+    },
+    "legend_key_size": {
+      "type": "number",
+      "label": "Legend key size",
+      "help": "",
+      "default": 0.42
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "label": "Width",
+      "help": "",
+      "default": 7
+    },
+    "height": {
+      "type": "number",
+      "label": "Height",
+      "help": "",
+      "default": 6
+    },
+    "dpi": {
+      "type": "number",
+      "label": "DPI",
+      "help": "",
+      "default": 300
+    }
+  }
+}

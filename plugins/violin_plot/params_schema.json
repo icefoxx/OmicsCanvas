@@ -1,0 +1,75 @@
+{
+  "data": {
+    "input_mode": "Input mode: long (default), wide_matrix (features x cells), or wide_cells (cells x features).",
+    "cell_id_column": "Column name for cell/sample id (long mode) or cell id in annotation (wide modes).",
+    "feature_column": "Feature/gene column name in long mode, or feature id column in wide_matrix mode.",
+    "value_column": "Numeric value column name in long mode.",
+    "group_column": "REQUIRED. Column name for the facet/group variable.",
+    "annotation_column": "Optional column used for the annotation strip (add_anno).",
+    "rows_include": "Only keep these cell/sample ids.",
+    "rows_exclude": "Remove these cell/sample ids.",
+    "features_include": "Only keep these features/genes.",
+    "features_exclude": "Remove these features/genes."
+  },
+  "plot_mode": {
+    "add_dot": "Overlay quasirandom dots (geom_quasirandom).",
+    "add_stat": "Overlay statistic: boxplot, median, or none.",
+    "add_anno": "Add annotation tile strip below the main plot (patchwork)."
+  },
+  "labels": {
+    "title": "Plot title.",
+    "xlab": "X axis title (hidden by default, SCA style).",
+    "ylab": "Y axis title (default 'Expression level').",
+    "title_show": "Show/hide title.",
+    "xlab_show": "Show/hide x axis title.",
+    "ylab_show": "Show/hide y axis title.",
+    "y_anno_label": "Label for the annotation strip y axis (plot.y.anno in original)."
+  },
+  "typography": {
+    "font_family": "Global font family.",
+    "font_size": "Global font size.",
+    "base_size": "Base theme font size.",
+    "title_size": "Title font size.",
+    "axis_label_size": "Axis title font size.",
+    "x_axis_text_size": "X tick label size.",
+    "x_axis_text_angle": "X tick label angle (default 45, SCA style).",
+    "y_axis_text_size": "Y tick label size.",
+    "strip_text_size": "Facet strip text size."
+  },
+  "colors": {
+    "group_colors": "Named vector of colors for violin fills (per feature/group).",
+    "point_color": "Color for overlaid quasirandom dots.",
+    "point_size": "Default point size (psize in original, default 0.5).",
+    "anno_colors": "Named vector of colors for the annotation strip tiles."
+  },
+  "layers": {
+    "violin_scale": "ggplot violin scale (default 'width').",
+    "violin_adjust": "Violin kernel adjust (default 1).",
+    "violin_trim": "Trim violin tails (default TRUE).",
+    "violin_alpha": "Violin fill alpha.",
+    "boxplot_width": "Boxplot width when add_stat=boxplot (default 0.1).",
+    "boxplot_outlier_size": "Boxplot outlier size.",
+    "median_point_size": "Median point size when add_stat=median.",
+    "dot_size": "Quasirandom dot size (default 0.1).",
+    "rotate_x": "Force x axis text to 90 degrees (overrides x_axis_text_angle)."
+  },
+  "annotations": {
+    "add_anno": "Add annotation tile strip below the main plot.",
+    "annotation_column": "Column used to build the annotation strip.",
+    "y_anno_label": "Y axis label for the annotation strip.",
+    "anno_colors": "Named colors for the annotation strip tiles."
+  },
+  "legends": {
+    "legend_show": "Show/hide legend (default FALSE, matching SCA legend.position='none').",
+    "legend_position": "Legend position: right, left, bottom, top, or none."
+  },
+  "output": {
+    "width": "Output width in inches.",
+    "height": "Output height in inches.",
+    "dpi": "PNG resolution."
+  },
+  "selectors": {
+    "highlight_features": "Features to highlight (reserved for future use).",
+    "highlight_color": "Color for highlighted features (reserved for future use)."
+  }
+}

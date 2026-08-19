@@ -1,0 +1,17 @@
+{
+  "id_column": "cell",
+  "group_column": "cluster",
+  "stat_columns": ["CD3D", "MS4A1", "LST1", "MKI67"],
+  "plot_type": "dot",
+  "fill_by": "expression",
+  "palette": "YlOrRd",
+  "stack": true,
+  "same_y_lims": true,
+  "sort": "decreasing",
+  "sort_by": "median",
+  "title": "Stacked dot expression summary",
+  "ylab": "Average expression",
+  "legend_position": "right",
+  "width": 7.2,
+  "height": 6.8
+}

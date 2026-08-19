@@ -1,0 +1,253 @@
+{
+  "data": {
+    "input_mode": {
+      "type": "select",
+      "label": "Input mode",
+      "default": "auto",
+      "options": ["auto", "wide", "long"]
+    },
+    "sample_column": { "type": "column", "label": "Sample / x column", "default": null },
+    "bar_column": { "type": "column", "label": "Bar value column (primary Y)", "default": null },
+    "line_column": { "type": "column", "label": "Line value column (secondary Y)", "default": null },
+    "group_column": { "type": "column", "label": "Group column (optional bar coloring)", "default": null },
+    "color_column": { "type": "column", "label": "Color key column", "default": null },
+    "metric_column": { "type": "column", "label": "Metric column (long)", "default": null },
+    "bar_metric": { "type": "string", "label": "Bar metric name (long)", "default": "count" },
+    "line_metric": { "type": "string", "label": "Line metric name (long)", "default": "percent" },
+    "long_value_column": { "type": "column", "label": "Value column (long)", "default": "value" },
+    "samples_include": { "type": "string_array", "label": "Samples include", "default": [] },
+    "samples_exclude": { "type": "string_array", "label": "Samples exclude", "default": [] },
+    "sample_order": { "type": "string_array", "label": "Sample order", "default": [] }
+  },
+  "layers": {
+    "show_bar": { "type": "boolean", "label": "Bar switch", "default": true },
+    "show_line": { "type": "boolean", "label": "Line switch", "default": true },
+    "show_line_points": { "type": "boolean", "label": "Line points switch", "default": true },
+    "dual_axis": { "type": "boolean", "label": "Secondary Y axis", "default": true }
+  },
+  "canvas": {
+    "width": { "type": "number", "label": "Width (in)", "default": 8 },
+    "height": { "type": "number", "label": "Height (in)", "default": 5.5 },
+    "dpi": { "type": "number", "label": "PNG DPI", "default": 300 },
+    "font_family": { "type": "string", "label": "Font family", "default": "sans" },
+    "margin_top": { "type": "number", "label": "Margin top", "default": 8 },
+    "margin_right": { "type": "number", "label": "Margin right", "default": 12 },
+    "margin_bottom": { "type": "number", "label": "Margin bottom", "default": 10 },
+    "margin_left": { "type": "number", "label": "Margin left", "default": 8 },
+    "panel_border": { "type": "boolean", "label": "Panel border", "default": false },
+    "panel_border_color": { "type": "color", "label": "Panel border color", "default": "#222222" },
+    "panel_border_width": { "type": "number", "label": "Panel border width", "default": 0.6 },
+    "background_show": { "type": "boolean", "label": "Background switch", "default": false },
+    "background_fill": { "type": "color", "label": "Background fill", "default": "#FFFFFF" },
+    "background_fill_opacity": { "type": "number", "label": "Background fill-opacity", "default": 1 }
+  },
+  "bar": {
+    "bar_color_mode": {
+      "type": "select",
+      "label": "Bar color mode",
+      "default": "by_sample",
+      "options": ["by_sample", "single", "by_group"]
+    },
+    "bar_fill": { "type": "color", "label": "Single bar fill", "default": "#66C2A5" },
+    "bar_colors": { "type": "object", "label": "Per-sample bar colors", "default": {} },
+    "palette": { "type": "string", "label": "Named palette", "default": "" },
+    "outerPadding": { "type": "number", "label": "outerPadding", "default": 0.35 },
+    "bar_width": { "type": "number", "label": "Bar width override", "default": null },
+    "bar_fill_opacity": { "type": "number", "label": "Bar fill-opacity", "default": 0.95 },
+    "bar_stroke": { "type": "color", "label": "Bar stroke", "default": "#000000" },
+    "bar_stroke_width": { "type": "number", "label": "Bar stroke-width", "default": 0 },
+    "bar_stroke_opacity": { "type": "number", "label": "Bar stroke-opacity", "default": 1 },
+    "bar_text_show": { "type": "boolean", "label": "Bar text switch", "default": false },
+    "bar_text_size": { "type": "number", "label": "Bar text font-size", "default": 10 },
+    "bar_text_fill": { "type": "color", "label": "Bar text fill", "default": "#222222" },
+    "bar_text_font_weight": {
+      "type": "select",
+      "label": "Bar text font-weight",
+      "default": "normal",
+      "options": ["normal", "bold"]
+    },
+    "bar_text_font_style": {
+      "type": "select",
+      "label": "Bar text font-style",
+      "default": "normal",
+      "options": ["normal", "italic"]
+    },
+    "bar_text_digits": { "type": "integer", "label": "Bar text digits", "default": 1 },
+    "bar_text_vjust": { "type": "number", "label": "Bar text vjust", "default": -0.4 },
+    "bar_text_suffix": { "type": "string", "label": "Bar text suffix", "default": "" }
+  },
+  "line": {
+    "line_color": { "type": "color", "label": "Line stroke", "default": "#2A9D8F" },
+    "line_width": { "type": "number", "label": "Line stroke-width", "default": 1.2 },
+    "line_opacity": { "type": "number", "label": "Line opacity", "default": 1 },
+    "line_type": {
+      "type": "select",
+      "label": "Line type",
+      "default": "solid",
+      "options": ["solid", "dashed", "dotted", "dotdash", "longdash", "twodash"]
+    },
+    "line_point_size": { "type": "number", "label": "Point size", "default": 2.2 },
+    "line_point_shape": { "type": "integer", "label": "Point shape", "default": 16 },
+    "line_point_color": { "type": "color", "label": "Point stroke", "default": "#2A9D8F" },
+    "line_point_fill": { "type": "color", "label": "Point fill", "default": "#2A9D8F" },
+    "line_point_stroke": { "type": "number", "label": "Point stroke-width", "default": 0.4 },
+    "line_point_opacity": { "type": "number", "label": "Point opacity", "default": 1 },
+    "line_text_show": { "type": "boolean", "label": "Line value text switch", "default": false },
+    "line_text_size": { "type": "number", "label": "Line text font-size", "default": 9 },
+    "line_text_fill": { "type": "color", "label": "Line text fill", "default": "#2A9D8F" },
+    "line_text_digits": { "type": "integer", "label": "Line text digits", "default": 0 },
+    "line_text_vjust": { "type": "number", "label": "Line text vjust", "default": -1.1 }
+  },
+  "xAxis": {
+    "xlab": { "type": "string", "label": "X axis label text", "default": "" },
+    "xlab_show": { "type": "boolean", "label": "Show x axis label", "default": false },
+    "x_axis_title_size": { "type": "number", "label": "X label font-size", "default": 11 },
+    "x_axis_title_color": { "type": "color", "label": "X label fill", "default": "#000000" },
+    "x_axis_text_show": { "type": "boolean", "label": "X tick text switch", "default": true },
+    "x_axis_text_angle": { "type": "number", "label": "X tick rotate", "default": 45 },
+    "x_axis_text_size": { "type": "number", "label": "X tick font-size", "default": 10 },
+    "x_axis_text_fill": { "type": "color", "label": "X tick fill", "default": "#000000" },
+    "x_axis_font_weight": {
+      "type": "select",
+      "label": "X tick font-weight",
+      "default": "normal",
+      "options": ["normal", "bold"]
+    },
+    "x_axis_font_style": {
+      "type": "select",
+      "label": "X tick font-style",
+      "default": "normal",
+      "options": ["normal", "italic"]
+    },
+    "x_tick_stroke": { "type": "color", "label": "X tick stroke", "default": "#000000" },
+    "x_tick_stroke_width": { "type": "number", "label": "X tick stroke-width", "default": 1 },
+    "x_tick_length": { "type": "number", "label": "X tick-length", "default": 6 },
+    "x_tick_orientation": {
+      "type": "select",
+      "label": "X tick-orientation",
+      "default": "outside",
+      "options": ["outside", "inside"]
+    },
+    "x_remove_path": { "type": "boolean", "label": "X removePath", "default": false },
+    "x_remove_tick": { "type": "boolean", "label": "X removeTick", "default": false },
+    "x_grid_show": { "type": "boolean", "label": "X grid switch", "default": false },
+    "reverse_x": { "type": "boolean", "label": "Reverse sample order", "default": false }
+  },
+  "yAxis": {
+    "ylab": { "type": "string", "label": "Primary Y label (bars)", "default": "" },
+    "ylab_show": { "type": "boolean", "label": "Show primary Y label", "default": false },
+    "y_axis_title_size": { "type": "number", "label": "Y1 label font-size", "default": 11 },
+    "y_axis_title_color": { "type": "color", "label": "Y1 label fill", "default": "#000000" },
+    "y_axis_text_show": { "type": "boolean", "label": "Y1 tick text switch", "default": true },
+    "y_axis_text_size": { "type": "number", "label": "Y1 tick font-size", "default": 10 },
+    "y_axis_text_fill": { "type": "color", "label": "Y1 tick fill", "default": "#000000" },
+    "y_axis_font_weight": {
+      "type": "select",
+      "label": "Y1 tick font-weight",
+      "default": "normal",
+      "options": ["normal", "bold"]
+    },
+    "y_min": { "type": "number", "label": "Y1 min-value", "default": 0 },
+    "y_max": { "type": "number", "label": "Y1 max-value", "default": null },
+    "y_tick_stroke": { "type": "color", "label": "Y1 tick stroke", "default": "#000000" },
+    "y_tick_stroke_width": { "type": "number", "label": "Y1 tick stroke-width", "default": 1 },
+    "y_tick_length": { "type": "number", "label": "Y1 tick-length", "default": 6 },
+    "y_tick_orientation": {
+      "type": "select",
+      "label": "Y1 tick-orientation",
+      "default": "outside",
+      "options": ["outside", "inside"]
+    },
+    "y_remove_path": { "type": "boolean", "label": "Y1 removePath", "default": false },
+    "y_remove_tick": { "type": "boolean", "label": "Y1 removeTick", "default": false },
+    "y_grid_show": { "type": "boolean", "label": "Y grid switch", "default": false },
+    "grid_stroke": { "type": "color", "label": "Grid stroke", "default": "#000000" },
+    "grid_stroke_width": { "type": "number", "label": "Grid stroke-width", "default": 0.4 },
+    "grid_stroke_opacity": { "type": "number", "label": "Grid stroke-opacity", "default": 0.1 },
+    "zero_line_show": { "type": "boolean", "label": "Zero line", "default": false },
+    "zero_line_color": { "type": "color", "label": "Zero line color", "default": "#888888" },
+    "horizontal_lines": { "type": "number_array", "label": "Horizontal reference lines", "default": [] },
+    "horizontal_line_color": { "type": "color", "label": "H-line color", "default": "#666666" },
+    "horizontal_line_type": {
+      "type": "select",
+      "label": "H-line type",
+      "default": "dashed",
+      "options": ["solid", "dashed", "dotted"]
+    },
+    "horizontal_line_width": { "type": "number", "label": "H-line width", "default": 0.4 }
+  },
+  "y2Axis": {
+    "y2lab": { "type": "string", "label": "Secondary Y label (line)", "default": "" },
+    "y2lab_show": { "type": "boolean", "label": "Show secondary Y label", "default": false },
+    "y2_axis_title_size": { "type": "number", "label": "Y2 label font-size", "default": 11 },
+    "y2_axis_title_color": { "type": "color", "label": "Y2 label fill", "default": "#2A9D8F" },
+    "y2_axis_text_show": { "type": "boolean", "label": "Y2 tick text switch", "default": true },
+    "y2_axis_text_size": { "type": "number", "label": "Y2 tick font-size", "default": 10 },
+    "y2_axis_text_fill": { "type": "color", "label": "Y2 tick fill", "default": "#2A9D8F" },
+    "y2_min": { "type": "number", "label": "Y2 min-value", "default": 0 },
+    "y2_max": { "type": "number", "label": "Y2 max-value", "default": null },
+    "y2_tick_stroke": { "type": "color", "label": "Y2 tick stroke", "default": "#2A9D8F" },
+    "y2_tick_stroke_width": { "type": "number", "label": "Y2 tick stroke-width", "default": 1 },
+    "y2_remove_path": { "type": "boolean", "label": "Y2 removePath", "default": false },
+    "y2_remove_tick": { "type": "boolean", "label": "Y2 removeTick", "default": false }
+  },
+  "title": {
+    "title_show": { "type": "boolean", "label": "Title switch", "default": false },
+    "title": { "type": "string", "label": "Title text", "default": "" },
+    "title_size": { "type": "number", "label": "Title font-size", "default": 14 },
+    "title_fill": { "type": "color", "label": "Title fill", "default": "#000000" },
+    "title_font_weight": {
+      "type": "select",
+      "label": "Title font-weight",
+      "default": "bold",
+      "options": ["normal", "bold"]
+    },
+    "title_text_anchor": {
+      "type": "select",
+      "label": "Title text-anchor",
+      "default": "middle",
+      "options": ["start", "middle", "end"]
+    },
+    "title_font_style": {
+      "type": "select",
+      "label": "Title font-style",
+      "default": "normal",
+      "options": ["normal", "italic"]
+    },
+    "subtitle_show": { "type": "boolean", "label": "Subtitle switch", "default": false },
+    "subtitle": { "type": "string", "label": "Subtitle text", "default": "" }
+  },
+  "legend": {
+    "legend_show": { "type": "boolean", "label": "Legend switch", "default": false },
+    "legend_title": { "type": "string", "label": "Legend title", "default": "" },
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "default": "right",
+      "options": ["right", "left", "top", "bottom", "none"]
+    },
+    "legend_direction": {
+      "type": "select",
+      "label": "Legend direction",
+      "default": "vertical",
+      "options": ["vertical", "horizontal"]
+    },
+    "legend_title_size": { "type": "number", "label": "Legend title font-size", "default": 12 },
+    "legend_title_fill": { "type": "color", "label": "Legend title fill", "default": "#000000" },
+    "legend_title_font_weight": {
+      "type": "select",
+      "label": "Legend title font-weight",
+      "default": "bold",
+      "options": ["normal", "bold"]
+    },
+    "legend_text_size": { "type": "number", "label": "Legend item font-size", "default": 10 },
+    "legend_text_fill": { "type": "color", "label": "Legend item fill", "default": "#000000" },
+    "legend_key_size": { "type": "number", "label": "Legend key size (cm)", "default": 0.4 },
+    "legend_columns": { "type": "integer", "label": "Legend columns", "default": 1 }
+  },
+  "export": {
+    "width": { "type": "number", "label": "Export width (in)", "default": 8 },
+    "height": { "type": "number", "label": "Export height (in)", "default": 5.5 },
+    "dpi": { "type": "number", "label": "Export DPI", "default": 300 }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "input_mode": "long",
+  "id_column": "id",
+  "stage_column": "stage",
+  "node_column": "node",
+  "weight_column": "weight",
+  "stage_order": ["T0", "T1", "T2", "T3", "T4"],
+  "fill_by": "node",
+  "flow_alpha": 0.5,
+  "palette": "npg",
+  "stratum_width": 0.12,
+  "label_show": true,
+  "title": "Long-format alluvial",
+  "legend_show": true,
+  "legend_position": "right",
+  "width": 11,
+  "height": 6.5,
+  "dpi": 300
+}

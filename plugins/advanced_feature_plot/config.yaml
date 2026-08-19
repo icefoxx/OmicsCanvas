@@ -1,0 +1,15 @@
+name: advanced_feature_plot
+display_name: Advanced Feature Plot
+description: Standardized SCA advFeaPlot wrapper for feature-expression, split, highlight, coexpression/composition, density, hex, raster, and themeBlank dim1/dim2 feature maps.
+runtime:
+  command: Rscript plot.R --input input.csv --params params.json --output output_dir
+inputs:
+  - name: input
+    type: table
+    required: true
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - selected_rows.csv

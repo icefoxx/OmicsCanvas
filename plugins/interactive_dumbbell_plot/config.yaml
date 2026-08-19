@@ -1,0 +1,12 @@
+id: interactive_dumbbell_plot
+name: Interactive Dumbbell Plot
+version: 1.0.0
+description: High-customization horizontal Women/Men dumbbell plot with static and Plotly outputs.
+language: R
+entrypoint: plot.R
+category: Comparison
+status: stable
+inputs:
+  - {id: input, type: table, formats: [csv, tsv, txt], required: true}
+outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, selected_rows.csv]
+runtime: Rscript plugins/interactive_dumbbell_plot/plot.R --input input.csv --params params.json --output output_dir

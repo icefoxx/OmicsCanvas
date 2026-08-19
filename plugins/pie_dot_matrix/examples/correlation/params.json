@@ -1,0 +1,20 @@
+{
+  "input_mode": "wide",
+  "row_column": "category",
+  "value_mode": "fraction",
+  "palette": "ocean",
+  "circle_radius": 0.4,
+  "circle_border_color": "#333333",
+  "show_zero_circles": true,
+  "row_stripe_show": true,
+  "row_stripe_alpha": 0.08,
+  "column_band_show": false,
+  "mark_size": 3,
+  "title_show": true,
+  "title": "Gene ratio / presence pie matrix",
+  "legend_show": true,
+  "legend_title": "Habitat",
+  "width": 12,
+  "height": 5.5,
+  "dpi": 300
+}

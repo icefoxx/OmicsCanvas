@@ -1,0 +1,27 @@
+{
+  "x_column": "model",
+  "y_column": "auprc",
+  "se_column": "se",
+  "group_column": "group",
+  "ylab": "AUPRC",
+  "matrix_show": false,
+  "hlines": [
+    {
+      "y": 0.5,
+      "label": "Chance level",
+      "color": "#888888",
+      "linewidth": 0.6,
+      "linetype": "dotted",
+      "label_x": 9.4,
+      "label_y": 0.56,
+      "label_size": 3,
+      "label_color": "#666666",
+      "show_arrow": false
+    }
+  ],
+  "title_show": true,
+  "title": "Bars only (matrix off)",
+  "width": 7,
+  "height": 3.8,
+  "dpi": 300
+}

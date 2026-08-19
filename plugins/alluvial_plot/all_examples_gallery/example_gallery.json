@@ -1,0 +1,50 @@
+[
+  {
+    "id": "basic",
+    "label": "basic",
+    "plugin_id": "alluvial_plot",
+    "plot_type": "alluvial",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "expected/result.png",
+    "gallery_png": "basic.png"
+  },
+  {
+    "id": "edges",
+    "label": "edges",
+    "plugin_id": "alluvial_plot",
+    "plot_type": "alluvial",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_edges.csv"
+    },
+    "expected": "expected/result.png",
+    "gallery_png": "edges.png"
+  },
+  {
+    "id": "hx_lineage",
+    "label": "hx_lineage",
+    "plugin_id": "alluvial_plot",
+    "plot_type": "alluvial",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "expected/result.png",
+    "gallery_png": "hx_lineage.png"
+  },
+  {
+    "id": "long",
+    "label": "long",
+    "plugin_id": "alluvial_plot",
+    "plot_type": "alluvial",
+    "params": "params.json",
+    "inputs": {
+      "input": "input/example_long.csv"
+    },
+    "expected": "expected/result.png",
+    "gallery_png": "long.png"
+  }
+]

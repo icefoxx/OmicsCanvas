@@ -1,0 +1,20 @@
+{
+  "plot_kind": "avg_volcano",
+  "title": "SCA Average Volcano (avgVolcano)",
+  "threshold": 0.25,
+  "qval_threshold": 0.05,
+  "highlight_n": 4,
+  "keep_all": true,
+  "rank_by": "Ranking = abs(pct.1 - pct.2) * abs(avg_log2FC)",
+  "de_colors": {
+    "sigDown": "#0099CC",
+    "sigUp": "#CC3333",
+    "Nonsig": "grey53"
+  },
+  "pt_size": 1.5,
+  "base_size": 14,
+  "features_label": ["GENE014", "GENE098"],
+  "width": 9,
+  "height": 6,
+  "dpi": 300
+}

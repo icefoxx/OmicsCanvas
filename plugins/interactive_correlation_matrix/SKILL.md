@@ -1,0 +1,3 @@
+# Interactive correlation matrix skill
+
+Use raw mode for observations and matrix mode for an already computed square correlation matrix. Keep feature names unique and numeric in raw mode. Use `feature_order` for reproducible ordering or `cluster_features` with `cluster_method`/`distance_method` for deterministic clustering. `triangle_mode` plus `lower_mode` and `upper_mode` controls the publication matrix; `mixed` is the recommended default. Set `interactive: true` for an HTML Plotly view (the HTML is always emitted). Hover text contains both feature names, correlation, p-value, and significance.

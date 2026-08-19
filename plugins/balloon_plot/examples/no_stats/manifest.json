@@ -1,0 +1,15 @@
+{
+  "id": "no_stats",
+  "label": "no_stats",
+  "plugin_id": "balloon_plot",
+  "plot_type": "no_stats",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_matrix.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/balloon_plot/plot.R --input plugins/balloon_plot/examples/no_stats/input/example_matrix.csv --params plugins/balloon_plot/examples/no_stats/params.json --output /tmp/balloon_plot_no_stats_out"
+  }
+}

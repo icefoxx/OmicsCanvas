@@ -1,0 +1,74 @@
+[
+  {
+    "id": "basic",
+    "label": "basic",
+    "plugin_id": "interactive_violin_plot",
+    "plot_type": "wide",
+    "mode": "",
+    "params": "../examples/basic/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/basic/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_violin_plot/plot.R --input plugins/interactive_violin_plot/examples/basic/input/example_input.csv --params plugins/interactive_violin_plot/examples/basic/params.json --output /tmp/interactive_violin_plot_basic_out"
+    },
+    "bundle": "../examples/basic",
+    "gallery_png": "basic.png",
+    "params_filename": "example_basic_params.json"
+  },
+  {
+    "id": "custom_layout",
+    "label": "custom_layout",
+    "plugin_id": "interactive_violin_plot",
+    "plot_type": "wide",
+    "mode": "",
+    "params": "../examples/custom_layout/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/custom_layout/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_violin_plot/plot.R --input plugins/interactive_violin_plot/examples/custom_layout/input/example_input.csv --params plugins/interactive_violin_plot/examples/custom_layout/params.json --output /tmp/interactive_violin_plot_custom_layout_out"
+    },
+    "bundle": "../examples/custom_layout",
+    "gallery_png": "custom_layout.png",
+    "params_filename": "example_custom_layout_params.json"
+  },
+  {
+    "id": "interactive",
+    "label": "interactive",
+    "plugin_id": "interactive_violin_plot",
+    "plot_type": "wide",
+    "mode": "",
+    "params": "../examples/interactive/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/interactive/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_violin_plot/plot.R --input plugins/interactive_violin_plot/examples/interactive/input/example_input.csv --params plugins/interactive_violin_plot/examples/interactive/params.json --output /tmp/interactive_violin_plot_interactive_out"
+    },
+    "bundle": "../examples/interactive",
+    "gallery_png": "interactive.png",
+    "params_filename": "example_interactive_params.json"
+  },
+  {
+    "id": "long",
+    "label": "long",
+    "plugin_id": "interactive_violin_plot",
+    "plot_type": "long",
+    "mode": "",
+    "params": "../examples/long/params.json",
+    "inputs": {
+      "input": "input/example_input_long.csv"
+    },
+    "expected": "../examples/long/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_violin_plot/plot.R --input plugins/interactive_violin_plot/examples/long/input/example_input_long.csv --params plugins/interactive_violin_plot/examples/long/params.json --output /tmp/interactive_violin_plot_long_out"
+    },
+    "bundle": "../examples/long",
+    "gallery_png": "long.png",
+    "params_filename": "example_long_params.json"
+  }
+]

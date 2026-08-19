@@ -1,0 +1,16 @@
+{
+  "id": "custom",
+  "label": "custom",
+  "plugin_id": "interactive_arc_network_plot",
+  "plot_type": "custom",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_edges.csv",
+    "nodes": "input/example_nodes.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_arc_network_plot/plot.R --input plugins/interactive_arc_network_plot/examples/custom/input/example_edges.csv --params plugins/interactive_arc_network_plot/examples/custom/params.json --output /tmp/interactive_arc_network_plot_custom_out --nodes plugins/interactive_arc_network_plot/examples/custom/input/example_nodes.csv"
+  }
+}

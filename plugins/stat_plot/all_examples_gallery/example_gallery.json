@@ -1,0 +1,146 @@
+[
+  {
+    "id": "bar",
+    "label": "bar",
+    "plugin_id": "stat_plot",
+    "plot_type": "bar",
+    "mode": "",
+    "params": "../examples/bar/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv"
+    },
+    "expected": "../examples/bar/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/bar/input/example_metadata.csv --params plugins/stat_plot/examples/bar/params.json --output /tmp/stat_plot_bar_out"
+    },
+    "bundle": "../examples/bar",
+    "gallery_png": "bar.png",
+    "params_filename": "example_bar_params.json"
+  },
+  {
+    "id": "chord",
+    "label": "chord",
+    "plugin_id": "stat_plot",
+    "plot_type": "chord",
+    "mode": "",
+    "params": "../examples/chord/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv"
+    },
+    "expected": "../examples/chord/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/chord/input/example_metadata.csv --params plugins/stat_plot/examples/chord/params.json --output /tmp/stat_plot_chord_out"
+    },
+    "bundle": "../examples/chord",
+    "gallery_png": "chord.png",
+    "params_filename": "example_chord_params.json"
+  },
+  {
+    "id": "dot",
+    "label": "dot",
+    "plugin_id": "stat_plot",
+    "plot_type": "dot",
+    "mode": "",
+    "params": "../examples/dot/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv"
+    },
+    "expected": "../examples/dot/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/dot/input/example_metadata.csv --params plugins/stat_plot/examples/dot/params.json --output /tmp/stat_plot_dot_out"
+    },
+    "bundle": "../examples/dot",
+    "gallery_png": "dot.png",
+    "params_filename": "example_dot_params.json"
+  },
+  {
+    "id": "pie",
+    "label": "pie",
+    "plugin_id": "stat_plot",
+    "plot_type": "pie",
+    "mode": "",
+    "params": "../examples/pie/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv"
+    },
+    "expected": "../examples/pie/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/pie/input/example_metadata.csv --params plugins/stat_plot/examples/pie/params.json --output /tmp/stat_plot_pie_out"
+    },
+    "bundle": "../examples/pie",
+    "gallery_png": "pie.png",
+    "params_filename": "example_pie_params.json"
+  },
+  {
+    "id": "rose",
+    "label": "rose",
+    "plugin_id": "stat_plot",
+    "plot_type": "rose",
+    "mode": "",
+    "params": "../examples/rose/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv"
+    },
+    "expected": "../examples/rose/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/rose/input/example_metadata.csv --params plugins/stat_plot/examples/rose/params.json --output /tmp/stat_plot_rose_out"
+    },
+    "bundle": "../examples/rose",
+    "gallery_png": "rose.png",
+    "params_filename": "example_rose_params.json"
+  },
+  {
+    "id": "sankey",
+    "label": "sankey",
+    "plugin_id": "stat_plot",
+    "plot_type": "sankey",
+    "mode": "",
+    "params": "../examples/sankey/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv"
+    },
+    "expected": "../examples/sankey/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/sankey/input/example_metadata.csv --params plugins/stat_plot/examples/sankey/params.json --output /tmp/stat_plot_sankey_out"
+    },
+    "bundle": "../examples/sankey",
+    "gallery_png": "sankey.png",
+    "params_filename": "example_sankey_params.json"
+  },
+  {
+    "id": "upset",
+    "label": "upset",
+    "plugin_id": "stat_plot",
+    "plot_type": "upset",
+    "mode": "",
+    "params": "../examples/upset/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv"
+    },
+    "expected": "../examples/upset/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/upset/input/example_metadata.csv --params plugins/stat_plot/examples/upset/params.json --output /tmp/stat_plot_upset_out"
+    },
+    "bundle": "../examples/upset",
+    "gallery_png": "upset.png",
+    "params_filename": "example_upset_params.json"
+  },
+  {
+    "id": "venn",
+    "label": "venn",
+    "plugin_id": "stat_plot",
+    "plot_type": "venn",
+    "mode": "",
+    "params": "../examples/venn/params.json",
+    "inputs": {
+      "input": "input/example_metadata.csv"
+    },
+    "expected": "../examples/venn/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/stat_plot/plot.R --input plugins/stat_plot/examples/venn/input/example_metadata.csv --params plugins/stat_plot/examples/venn/params.json --output /tmp/stat_plot_venn_out"
+    },
+    "bundle": "../examples/venn",
+    "gallery_png": "venn.png",
+    "params_filename": "example_venn_params.json"
+  }
+]

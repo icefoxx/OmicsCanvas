@@ -1,0 +1,15 @@
+{
+  "id": "gradient",
+  "label": "gradient",
+  "plugin_id": "balloon_plot",
+  "plot_type": "gradient",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_matrix.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/balloon_plot/plot.R --input plugins/balloon_plot/examples/gradient/input/example_matrix.csv --params plugins/balloon_plot/examples/gradient/params.json --output /tmp/balloon_plot_gradient_out"
+  }
+}

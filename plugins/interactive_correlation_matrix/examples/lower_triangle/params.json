@@ -1,0 +1,1 @@
+{"input_mode":"raw","id_column":"sample","correlation_method":"kendall","triangle_mode":"lower","lower_mode":"tile","diagonal_mode":"tile","title":"Lower triangle correlation","features_include":["Feature_01","Feature_02","Feature_03","Feature_04","Feature_05","Feature_06","Feature_07","Feature_08"],"width":7,"height":7}

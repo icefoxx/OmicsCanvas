@@ -1,0 +1,20 @@
+{
+  "input_mode": "long",
+  "sample_column": "sample",
+  "group_column": "group",
+  "stack_column": "taxon",
+  "value_column": "abundance",
+  "orientation": "horizontal",
+  "position": "stack",
+  "value_mode": "absolute",
+  "y_label_mode": "group",
+  "outerPadding": 0.3,
+  "title_show": true,
+  "title": "Stacked bar (long input)",
+  "legend_title": "Taxon",
+  "x_axis_text_angle": -45,
+  "bar_text_show": false,
+  "width": 9,
+  "height": 7,
+  "dpi": 300
+}

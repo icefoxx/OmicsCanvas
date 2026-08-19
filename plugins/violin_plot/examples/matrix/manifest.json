@@ -1,0 +1,16 @@
+{
+  "id": "matrix",
+  "label": "matrix",
+  "plugin_id": "violin_plot",
+  "plot_type": "wide_matrix",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_matrix.csv",
+    "annot": "input/example_annotation.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/violin_plot/plot.R --input plugins/violin_plot/examples/matrix/input/example_matrix.csv --params plugins/violin_plot/examples/matrix/params.json --output /tmp/violin_plot_matrix_out --annot plugins/violin_plot/examples/matrix/input/example_annotation.csv"
+  }
+}

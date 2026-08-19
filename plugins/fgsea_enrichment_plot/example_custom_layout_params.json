@@ -1,0 +1,13 @@
+{
+  "input_mode":"compute", "plot_type":"gradient_curve", "curve_style":"multi_term",
+  "gene_col":"gene", "stat_col":"avg_log2FC", "minSize":3, "maxSize":50, "selected_terms":["UP_PATHWAY","MIXED_PATHWAY"],
+  "term_colors":{"UP_PATHWAY":"#C43D3D","MIXED_PATHWAY":"#257A8A"},
+  "title":"Custom GSEA layout", "subtitle":"Summits and selected hits", "caption":"FGSEA / OmicsCanvas",
+  "title_size":18, "title_face":"bold", "title_hjust":0, "subtitle_hjust":0,
+  "xlab":"Ranked genes", "ylab":"Enrichment Score", "x_axis_text_angle":0,
+  "grid_show":true, "grid_linetype":"dashed", "panel_border_show":true,
+  "show_peak_marker":true, "peak_marker_fill":"white", "peak_marker_border_color":"#111111", "peak_marker_size":3,
+  "selected_genes":["Gene001","Gene004","Gene012"], "label_show":true, "label_arrow":true,
+  "label_arrow_color":"#555555", "label_arrow_width":0.4, "label_nudge_y":0.05, "label_size":3.1,
+  "legend_position":"bottom", "legend_direction":"horizontal", "width":9, "height":6.2
+}

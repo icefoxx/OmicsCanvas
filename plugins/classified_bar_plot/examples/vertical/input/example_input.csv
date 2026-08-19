@@ -1,0 +1,23 @@
+category,type,value
+Transcription,type-A,1800
+Signaling molecules and interaction,type-A,2200
+Metabolism of terpenoids and polyketides,type-A,3500
+Cell growth and death,type-A,4200
+Metabolism of other amino acids,type-A,4800
+Lipid metabolism,type-B,9000
+Carbohydrate metabolism,type-B,10500
+Cellular community,type-B,12000
+Energy metabolism,type-B,15500
+Transport and catabolism,type-B,7000
+Amino acid metabolism,type-C,18000
+Nucleotide metabolism,type-C,7500
+"Folding, sorting and degradation",type-C,6200
+Membrane transport,type-C,11000
+Cell motility,type-C,5500
+Metabolism of cofactors and vitamins,type-D,19500
+Translation,type-D,20500
+Biosynthesis of other secondary metabolites,type-D,7200
+Xenobiotics biodegradation and metabolism,type-D,6800
+Glycan biosynthesis and metabolism,type-D,8500
+Signal transduction,type-D,9200
+Replication and repair,type-D,10500

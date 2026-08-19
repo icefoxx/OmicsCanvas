@@ -1,0 +1,21 @@
+{
+  "input_mode": "wide",
+  "id_column": "sample",
+  "title": "Interactive feature distributions",
+  "cloud_fill_mode": "feature",
+  "point_data": "density_sample",
+  "point_density_sample": 90,
+  "point_alpha": 0.8,
+  "point_size": 1.6,
+  "quantile_show": true,
+  "quantile_color": "#555555",
+  "median_show": true,
+  "box_show": true,
+  "selectable": true,
+  "lasso_select": true,
+  "zoom": true,
+  "pan": true,
+  "reset_view": true,
+  "tooltip_columns": ["id", "feature", "group", "value"],
+  "interactive": true
+}

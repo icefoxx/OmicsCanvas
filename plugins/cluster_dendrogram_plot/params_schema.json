@@ -1,0 +1,55 @@
+{
+  "data": {
+    "feature_id_column": "Feature/gene id column in --input expression matrix (default: first column).",
+    "cell_id_column": "Cell id column in --annot metadata (default: first column).",
+    "sample_column": "REQUIRED. Sample/orig.ident column in --annot (e.g. 'sample', 'orig.ident').",
+    "cluster_column": "REQUIRED. Cluster column in --annot (e.g. 'seurat_clusters', 'cluster').",
+    "samples_include": "Only keep cells from these samples.",
+    "samples_exclude": "Drop cells from these samples.",
+    "clusters_include": "Only keep cells in these clusters.",
+    "clusters_exclude": "Drop cells in these clusters.",
+    "features_include": "Only keep these feature/gene rows in the clustering matrix.",
+    "features_exclude": "Drop these feature/gene rows from the clustering matrix."
+  },
+  "plot_mode": {
+    "distance_method": "dist() method: euclidean, maximum, manhattan, canberra, binary, minkowski, or correlation/spearman.",
+    "cluster_method": "hclust method: average, ward.D, ward.D2, single, complete, mcquitty, median, centroid."
+  },
+  "labels": {
+    "title": "Plot title (default 'Dendrogram for clusters in samples').",
+    "title_show": "Show/hide title."
+  },
+  "typography": {
+    "label_size": "X-axis (sample-cluster) label font size.",
+    "x_text_angle": "X-axis label rotation angle.",
+    "x_text_hjust": "X-axis label horizontal justification.",
+    "x_text_vjust": "X-axis label vertical justification.",
+    "legend_size": "Legend title/text size.",
+    "legend_title_size": "Override legend title size.",
+    "legend_text_size": "Override legend item text size."
+  },
+  "colors": {
+    "group_colors": "Named vector of colors keyed by sample (Sample_Group) for the color bar and tip points.",
+    "x_text_colors": "Named vector of colors keyed by label group when x_text_color_by is set.",
+    "x_text_color_by": "none, sample, or cluster. Colors x-axis labels by sample or cluster group.",
+    "x_text_legend_title": "Override the x-text color legend title."
+  },
+  "layers": {
+    "tile_height_ratio": "Height ratio of the group color bar relative to the tree (default 0.05).",
+    "point_size": "Tip point size at the bottom of the tree."
+  },
+  "legends": {
+    "legend_position": "right, left, bottom, top, or none.",
+    "legend_title": "Override the group color legend title (default = sample_column).",
+    "show_x_text_legend": "Show/hide the x-text color legend when x_text_color_by is set."
+  },
+  "output": {
+    "width": "Output width in inches.",
+    "height": "Output height in inches.",
+    "dpi": "PNG resolution."
+  },
+  "selectors": {
+    "highlight_samples": "Reserved for future sample highlighting.",
+    "highlight_color": "Reserved highlight color."
+  }
+}

@@ -1,0 +1,10 @@
+`%||%` <- function(a,b) if(is.null(a)||!nzchar(a)) b else a
+set.seed(20260810)
+arg <- commandArgs(trailingOnly=TRUE)
+dir <- normalizePath(arg[1] %||% 'plugins/interactive_genomic_signal_track_plot', mustWork=FALSE)
+tracks <- c('ORS','Sebaceous gland','Infundibulum','Basal','Dermal fibroblast','Dermal papilla','Hair matrix','IRS','ORS bulge','Langerhans','Macrophage','Melanocyte','Pericyte','Schwann cell','T cell','Endothelial','Suprabasal','Arrector pili')
+pos <- seq(100000,199800,by=333); peaks <- c(118000,145000,176000)
+s <- do.call(rbind,lapply(seq_along(tracks),function(i){ v<-0.08+abs(rnorm(length(pos),0,.018)); for(pk in peaks) v<-v+(0.1+i/45)*exp(-((pos-pk)/(1300+i*30))^2); data.frame(track=tracks[i],position=pos,value=round(v,4),chromosome='chr5',sample='demo',dataset='OmicsCanvas') }))
+e <- do.call(rbind,lapply(seq_along(tracks),function(i) data.frame(track=tracks[i],expression=round(pmax(0,rlnorm(80,log(.7+i/8),.42)),3))))
+f <- data.frame(start=c(112000,140000,169000,184000),end=c(126000,151000,181000,195000),label=c('Gene A','Enhancer 1','Gene B','Regulatory region'),type=c('gene','enhancer','gene','region'),strand=c('+','-','+','+'))
+write.csv(s,file.path(dir,'example_signal.csv'),row.names=FALSE); write.csv(e,file.path(dir,'example_expression.csv'),row.names=FALSE); write.csv(f,file.path(dir,'example_features.csv'),row.names=FALSE)

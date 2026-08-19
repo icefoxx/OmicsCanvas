@@ -1,0 +1,11 @@
+{
+  "row_column":"method",
+  "metric_columns":["ARI","NMI","F1","ASW","V-Measure Homogeneity"],
+  "score_column":"Overall",
+  "title":"Chromatin accessibility method benchmark",
+  "left_panel_title":"Benchmark metrics",
+  "score_panel_title":"Overall score",
+  "left_label_digits":2,
+  "score_label_digits":2,
+  "interactive":true
+}

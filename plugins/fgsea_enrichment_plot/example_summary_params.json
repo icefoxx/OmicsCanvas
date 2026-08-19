@@ -1,0 +1,30 @@
+{
+  "input_mode": "precomputed",
+  "plot_type": "summary",
+  "term_col": "term",
+  "nes_col": "NES",
+  "fdr_col": "FDR q-val",
+  "leading_genes_col": "Leading edge genes",
+  "top_n_terms": 14,
+  "x_column": "NES",
+  "title": "FGSEA enrichment summary",
+  "show_leading_gene_labels": true,
+  "label_top_n_terms": 8,
+  "leading_gene_label_n": 4,
+  "label_placement": "side",
+  "label_side": "right",
+  "label_side_padding": 0.2,
+  "label_wrap_width": 26,
+  "plot_margin_right": 120,
+  "max_log10_value": 10,
+  "colors": {
+    "positive": "#D84B39",
+    "negative": "#3B6FB6"
+  },
+  "point_shape": 21,
+  "point_alpha": 0.9,
+  "term_label_size": 8.5,
+  "legend_position": "bottom",
+  "width": 11.5,
+  "height": 6.8
+}

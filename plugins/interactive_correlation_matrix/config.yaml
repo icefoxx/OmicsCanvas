@@ -1,0 +1,14 @@
+id: interactive_correlation_matrix
+name: Interactive Correlation Matrix
+version: 1.0.0
+description: Publication-style customizable triangular correlation matrix with static and Plotly exports.
+language: R
+entrypoint: plot.R
+category: Correlation
+status: experimental
+inputs:
+  - id: input
+    type: table
+    formats: [csv, tsv, txt]
+outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, correlation_matrix.csv, pvalue_matrix.csv, selected_features.csv]
+runtime: Rscript plugins/interactive_correlation_matrix/plot.R --input data.csv --params params.json --output output_dir

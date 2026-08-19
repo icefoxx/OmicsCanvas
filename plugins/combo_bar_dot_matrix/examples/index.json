@@ -1,0 +1,16 @@
+{
+  "examples": [
+    {
+      "id": "bar_only",
+      "label": "bar_only"
+    },
+    {
+      "id": "basic",
+      "label": "basic"
+    },
+    {
+      "id": "heatmap_dots",
+      "label": "heatmap_dots"
+    }
+  ]
+}

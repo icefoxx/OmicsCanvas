@@ -1,0 +1,16 @@
+name: balloon_plot
+display_name: Balloon Plot
+description: Rewritten, customizable version of the SCA statBalloonplot function. Plots a tile/balloon matrix where each cell is sized by its value, with optional row/column summary statistics on the margins.
+runtime:
+  command: Rscript plot.R --input matrix.csv --params params.json --output output_dir
+inputs:
+  - name: input
+    type: table
+    required: true
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - run.log
+  - selected_rows.csv (when row filtering or highlight applied)

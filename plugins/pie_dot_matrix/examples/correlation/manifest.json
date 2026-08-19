@@ -1,0 +1,1 @@
+{"id":"correlation","label":"correlation","plugin_id":"pie_dot_matrix","plot_type":"pie_dot_matrix","params":"params.json","inputs":{"input":"input/example_input.csv","col_annot":"input/example_col_annot.csv","marks":"input/example_marks.csv"},"expected":"expected/result.png"}

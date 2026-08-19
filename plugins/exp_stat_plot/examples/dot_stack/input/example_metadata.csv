@@ -1,0 +1,211 @@
+cell,cluster,condition,batch,module_score,mito_percent,percent_top50,complexity
+Cell1,Myeloid,DrugA,Batch2,0.052,8.085,48.866,1.027
+Cell2,Myeloid,DrugB,Batch1,-0.096,5.218,48.442,1.22
+Cell3,T cell,DrugB,Batch1,0.649,7.08,38.812,1.447
+Cell4,Myeloid,DrugA,Batch2,0.023,8.85,54.209,1.737
+Cell5,B cell,CK,Batch1,0.274,6.042,34.981,1.207
+Cell6,B cell,DrugA,Batch1,0.671,10.187,34.503,1.244
+Cell7,B cell,CK,Batch2,-0.607,2.754,31.944,1.462
+Cell8,T cell,DrugA,Batch2,0.839,9.139,31.296,1.346
+Cell9,B cell,CK,Batch2,0.759,2.657,40.288,0.676
+Cell10,B cell,CK,Batch2,0.476,6.558,48.832,1.502
+Cell11,B cell,CK,Batch2,-0.225,5.661,31.218,1.272
+Cell12,B cell,DrugB,Batch1,0.83,7.241,36.681,1.302
+Cell13,Myeloid,DrugA,Batch2,-0.642,7.642,41.79,1.225
+Cell14,T cell,DrugA,Batch1,0.596,4.676,44.357,0.773
+Cell15,B cell,DrugA,Batch1,0.684,3.886,35.778,1.349
+Cell16,Myeloid,CK,Batch1,-0.381,6.474,50.253,1.136
+Cell17,Myeloid,CK,Batch2,0.123,5.368,51.436,2.049
+Cell18,T cell,DrugB,Batch2,1.019,4.472,30.62,1.533
+Cell19,B cell,DrugA,Batch2,-0.559,6.94,37.267,1.56
+Cell20,B cell,DrugA,Batch1,-0.232,6.291,36.402,1.253
+Cell21,Myeloid,DrugB,Batch2,-0.39,5.217,53.727,1.229
+Cell22,T cell,DrugB,Batch1,0.932,3.824,29.367,1.026
+Cell23,Myeloid,CK,Batch2,-0.401,1.931,40.6,1.562
+Cell24,Myeloid,DrugB,Batch2,0.031,5.105,54.361,1.561
+Cell25,T cell,DrugA,Batch1,0.691,9.381,33.883,1.217
+Cell26,B cell,CK,Batch2,1.001,8.879,33.378,1.153
+Cell27,T cell,DrugB,Batch2,0.526,5.505,38.791,1.687
+Cell28,Myeloid,DrugB,Batch1,-0.087,5.355,46.757,0.827
+Cell29,T cell,DrugA,Batch1,0.957,9.233,51.065,1.013
+Cell30,Myeloid,DrugB,Batch1,0.833,5.596,50.817,1.565
+Cell31,B cell,CK,Batch2,0.19,4.717,39.131,1.455
+Cell32,Myeloid,CK,Batch2,0.308,2.373,55.518,1.544
+Cell33,T cell,CK,Batch1,0.06,3.225,37.58,1.175
+Cell34,B cell,DrugA,Batch2,0.801,8.231,38.341,1.151
+Cell35,T cell,CK,Batch1,0.489,2.873,30.49,0.981
+Cell36,Myeloid,DrugB,Batch2,-0.024,7.387,32.949,1.383
+Cell37,T cell,DrugA,Batch1,0.301,5.076,29.55,0.514
+Cell38,T cell,DrugB,Batch1,1.21,5.152,38.799,0.93
+Cell39,Myeloid,CK,Batch2,0.553,5.496,41.767,1.51
+Cell40,B cell,CK,Batch2,1.24,5.477,42.822,1.29
+Cell41,T cell,CK,Batch2,0.315,5.774,43.076,1.293
+Cell42,T cell,CK,Batch1,1.019,6.577,39.522,1.274
+Cell43,T cell,CK,Batch1,1.425,5.273,36.588,0.991
+Cell44,Myeloid,DrugA,Batch1,-0.338,7.053,39.44,1.226
+Cell45,T cell,DrugB,Batch2,1.052,5.789,35.837,1.066
+Cell46,Myeloid,DrugB,Batch1,-0.037,4.719,45.83,0.854
+Cell47,Myeloid,DrugB,Batch2,0.369,8.267,53.643,1.015
+Cell48,B cell,CK,Batch2,0.779,1.594,47.16,1.367
+Cell49,Myeloid,CK,Batch1,0.059,7.349,52.507,1.059
+Cell50,B cell,CK,Batch1,0.294,5.053,30.102,1.388
+Cell51,T cell,DrugA,Batch1,0.664,8.26,49.697,1.092
+Cell52,T cell,DrugB,Batch2,1.374,7.278,45.072,1.621
+Cell53,T cell,DrugB,Batch1,0.903,7.004,39.565,1.489
+Cell54,Myeloid,CK,Batch1,-0.376,4.311,33.555,1.002
+Cell55,T cell,DrugB,Batch1,1.643,8.315,31.318,1.178
+Cell56,B cell,DrugA,Batch2,0.349,4.579,37.52,1.181
+Cell57,B cell,DrugB,Batch1,0.608,7.055,43.329,1.248
+Cell58,T cell,DrugA,Batch1,0.685,6.579,29.741,0.884
+Cell59,T cell,DrugB,Batch1,1.569,2.049,60.478,0.895
+Cell60,B cell,DrugB,Batch2,1.101,2.142,20.123,1.408
+Cell61,B cell,CK,Batch2,-0.241,5.941,36.348,1.368
+Cell62,Myeloid,CK,Batch2,-0.225,9.502,47.183,1.403
+Cell63,Myeloid,CK,Batch2,-0.228,5.992,44.356,1.364
+Cell64,B cell,DrugB,Batch1,0.24,7.535,35.767,0.994
+Cell65,Myeloid,DrugA,Batch2,-0.699,9.01,54.197,1.324
+Cell66,T cell,CK,Batch1,0.799,4.322,31.88,1.424
+Cell67,T cell,DrugB,Batch1,1.445,7.217,23.42,1.096
+Cell68,Myeloid,DrugB,Batch2,0.765,6.135,49.656,1.086
+Cell69,B cell,CK,Batch1,-0.709,5.872,37.987,0.931
+Cell70,T cell,CK,Batch1,0.484,7.302,37.908,0.88
+Cell71,T cell,CK,Batch2,0.66,6.845,42.676,1.17
+Cell72,T cell,DrugA,Batch2,0.052,6.372,37.908,1.098
+Cell73,T cell,CK,Batch1,0.462,6.211,43.432,0.575
+Cell74,B cell,CK,Batch1,-0.2,3.894,23.925,1.234
+Cell75,T cell,DrugA,Batch1,0.475,8.635,30.103,1.232
+Cell76,B cell,DrugB,Batch2,-0.485,4.721,40.442,1.3
+Cell77,T cell,CK,Batch2,0.896,6.314,35.53,1.205
+Cell78,T cell,DrugA,Batch1,0.516,8.162,44.613,0.938
+Cell79,B cell,DrugA,Batch2,0.834,7.013,30.967,1.43
+Cell80,T cell,DrugA,Batch1,1.158,8.338,43.067,1.145
+Cell81,B cell,DrugA,Batch2,-0.504,8.534,33.318,1.434
+Cell82,T cell,DrugB,Batch1,1.194,5.085,30.209,1.101
+Cell83,T cell,DrugA,Batch1,0.533,9.61,35.6,1.224
+Cell84,B cell,DrugB,Batch2,0.9,8.007,38.348,1.436
+Cell85,Myeloid,DrugA,Batch1,-0.226,6.308,40.406,1.212
+Cell86,B cell,CK,Batch2,-0.101,4.101,32.652,1.449
+Cell87,T cell,CK,Batch2,0.997,6.424,29.277,1.682
+Cell88,T cell,DrugB,Batch1,1.219,3.856,45.117,0.889
+Cell89,T cell,DrugB,Batch1,1.076,4.691,43.065,1.402
+Cell90,T cell,CK,Batch2,1.709,6.945,30.772,1.283
+Cell91,B cell,DrugA,Batch1,-0.088,6.468,41.901,1.087
+Cell92,T cell,CK,Batch2,0.588,2.029,36.211,1.366
+Cell93,T cell,DrugA,Batch2,0.104,8.696,30.206,1.26
+Cell94,Myeloid,CK,Batch2,-0.268,2.615,51.948,0.839
+Cell95,Myeloid,DrugA,Batch2,0.151,5.062,46.739,1.287
+Cell96,B cell,CK,Batch2,-0.782,0.068,44.161,1.358
+Cell97,T cell,DrugB,Batch1,1.037,6.996,36.636,0.752
+Cell98,B cell,DrugA,Batch1,-0.382,7.952,46.316,1.21
+Cell99,B cell,DrugB,Batch1,1.149,6.332,34.432,0.981
+Cell100,B cell,DrugA,Batch2,0.761,9.021,39.537,1.64
+Cell101,B cell,DrugA,Batch1,0.301,7.424,40.592,1.153
+Cell102,T cell,DrugA,Batch1,1.443,5.51,39.954,0.942
+Cell103,T cell,DrugB,Batch2,0.76,6.515,39.414,1.384
+Cell104,T cell,CK,Batch2,1.228,7.846,37.909,1.402
+Cell105,Myeloid,DrugB,Batch2,-0.163,2.8,48.364,1.532
+Cell106,Myeloid,CK,Batch1,-0.106,4.407,58.555,1.069
+Cell107,B cell,DrugB,Batch2,0.365,4.974,44.357,0.943
+Cell108,B cell,DrugA,Batch1,0.025,5.179,33.731,0.84
+Cell109,B cell,CK,Batch1,0.396,6.749,47.775,0.929
+Cell110,T cell,DrugA,Batch2,0.213,6.421,39.014,1.435
+Cell111,B cell,DrugA,Batch1,0.037,9.762,33.516,1.043
+Cell112,Myeloid,DrugA,Batch1,-0.173,7.596,50.189,0.977
+Cell113,Myeloid,CK,Batch1,-0.432,6.811,47.9,0.931
+Cell114,B cell,DrugB,Batch2,0.547,8.31,38.707,1.381
+Cell115,B cell,DrugA,Batch1,0.007,7.978,31.186,0.93
+Cell116,B cell,DrugA,Batch2,0.878,9.438,32.261,1.27
+Cell117,T cell,CK,Batch2,1.121,5.879,47.54,1.162
+Cell118,T cell,DrugB,Batch1,2.485,2.779,44.73,0.822
+Cell119,B cell,DrugB,Batch1,0.142,5.54,31.814,1.291
+Cell120,Myeloid,DrugA,Batch1,0.116,8.793,42.699,0.837
+Cell121,T cell,DrugB,Batch2,2.094,6.381,50.063,1.365
+Cell122,T cell,CK,Batch2,0.935,5.187,51.363,1.236
+Cell123,B cell,DrugB,Batch2,0.013,3.308,32.56,1.138
+Cell124,B cell,DrugB,Batch1,0.047,6.664,28.884,1.152
+Cell125,B cell,CK,Batch1,0.134,3.85,56.364,1.175
+Cell126,T cell,DrugA,Batch1,1.389,5.247,39.607,1.353
+Cell127,Myeloid,DrugA,Batch1,0.088,8.571,50.307,1.165
+Cell128,Myeloid,CK,Batch1,-1.212,3.281,49.533,1.072
+Cell129,T cell,DrugA,Batch2,0.485,7.94,47.834,1.87
+Cell130,B cell,DrugB,Batch2,0.496,5.505,36.658,1.22
+Cell131,Myeloid,CK,Batch2,-0.906,3.109,59.216,1.149
+Cell132,B cell,DrugA,Batch2,0.463,9.623,36.455,1.243
+Cell133,B cell,DrugB,Batch2,-0.608,4.433,41.536,1.328
+Cell134,Myeloid,CK,Batch1,-0.186,7.66,41.766,1.22
+Cell135,Myeloid,CK,Batch2,-0.426,4.645,50.193,1.433
+Cell136,B cell,DrugA,Batch2,-0.071,6.465,46.405,1.329
+Cell137,Myeloid,DrugB,Batch1,-0.028,5.444,47.856,0.929
+Cell138,T cell,CK,Batch1,0.942,4.855,46.977,1.325
+Cell139,Myeloid,DrugA,Batch2,-0.072,6.858,68.09,1.533
+Cell140,B cell,DrugA,Batch2,0.048,5.92,44.593,1.205
+Cell141,T cell,DrugB,Batch2,0.284,3.317,36.26,1.487
+Cell142,T cell,DrugB,Batch2,0.502,6.604,38.675,1.44
+Cell143,B cell,DrugA,Batch1,-0.511,6.049,34.962,1.309
+Cell144,Myeloid,CK,Batch1,0.093,3.022,64.251,1.13
+Cell145,B cell,DrugB,Batch2,0.39,4.586,17.289,1.122
+Cell146,Myeloid,DrugA,Batch2,-0.129,6.058,49.566,1.51
+Cell147,T cell,CK,Batch1,0.098,1.553,38.771,0.954
+Cell148,Myeloid,CK,Batch1,-0.491,4.976,50.494,1.205
+Cell149,T cell,CK,Batch1,1.053,5.801,27.095,1.435
+Cell150,T cell,DrugA,Batch2,0.72,8.03,39.513,1.066
+Cell151,B cell,DrugB,Batch1,0.448,6.207,39.314,1.412
+Cell152,T cell,DrugA,Batch2,0.768,5.698,46.81,1.621
+Cell153,Myeloid,DrugB,Batch1,0.645,4.914,52.665,0.994
+Cell154,T cell,DrugA,Batch1,0.523,5.685,45.808,1.05
+Cell155,B cell,DrugB,Batch1,0.804,4.356,31.297,0.963
+Cell156,Myeloid,DrugB,Batch1,0.504,3.322,48.129,0.986
+Cell157,T cell,CK,Batch2,0.265,3.49,39.342,1.466
+Cell158,T cell,DrugA,Batch1,0.855,8.634,39.906,0.92
+Cell159,T cell,CK,Batch2,0.795,5.009,33.143,1.312
+Cell160,B cell,DrugB,Batch2,0.963,5.034,48.354,1.321
+Cell161,Myeloid,DrugA,Batch1,0.162,10.613,44.718,1.081
+Cell162,B cell,CK,Batch2,0.149,5.395,26.7,1.386
+Cell163,B cell,DrugB,Batch2,0.561,4.533,40.817,1.669
+Cell164,T cell,DrugA,Batch1,0.476,8.845,42.652,1.01
+Cell165,B cell,CK,Batch1,0.061,4.623,44.609,0.941
+Cell166,T cell,CK,Batch1,0.337,7.971,31.376,1.258
+Cell167,B cell,CK,Batch2,-0.285,4.82,36.262,1.426
+Cell168,T cell,DrugA,Batch1,0.251,6.391,28.701,1.147
+Cell169,T cell,DrugA,Batch2,1.176,5.397,43.913,1.468
+Cell170,T cell,CK,Batch1,1.302,6.092,40.434,0.818
+Cell171,B cell,DrugB,Batch2,0.314,8.14,44.396,1.563
+Cell172,T cell,CK,Batch1,0.292,4.859,42.258,1.191
+Cell173,T cell,DrugB,Batch1,1.11,5.971,33.747,1.29
+Cell174,B cell,DrugA,Batch1,1.159,8.1,39.258,0.98
+Cell175,T cell,DrugB,Batch2,2.069,8.06,24.641,0.982
+Cell176,T cell,CK,Batch1,0.026,6.695,41.521,1.003
+Cell177,Myeloid,DrugA,Batch2,-0.411,5.567,55.782,1.169
+Cell178,B cell,DrugA,Batch2,0.84,6.246,31.87,1.795
+Cell179,Myeloid,DrugA,Batch1,-0.267,6.157,34.048,1.017
+Cell180,Myeloid,DrugA,Batch1,0.469,7.755,38.34,1.057
+Cell181,Myeloid,DrugB,Batch2,-0.05,5.493,41.208,1.563
+Cell182,Myeloid,CK,Batch2,0.022,6.162,57.687,1.474
+Cell183,T cell,DrugB,Batch2,1.251,4.317,38.024,1.485
+Cell184,T cell,CK,Batch1,2.253,4.823,29.335,1.627
+Cell185,B cell,DrugB,Batch2,0.914,6.834,41.89,1.383
+Cell186,B cell,CK,Batch1,-0.393,5.321,22.718,1.481
+Cell187,Myeloid,DrugA,Batch2,-0.522,6.322,47.271,1.401
+Cell188,Myeloid,DrugA,Batch2,-0.083,9.248,56.79,1.058
+Cell189,T cell,DrugB,Batch2,0.295,5.524,35.608,0.905
+Cell190,T cell,DrugB,Batch1,0.338,3.85,47.138,1.23
+Cell191,T cell,DrugA,Batch2,0.295,10.577,50.567,1.15
+Cell192,Myeloid,CK,Batch1,-0.407,3.397,40.825,1.108
+Cell193,T cell,DrugA,Batch1,1.358,4.294,29.934,1.455
+Cell194,T cell,CK,Batch1,0.677,1.444,31.599,1.169
+Cell195,T cell,DrugB,Batch1,1.223,6.672,41.701,1.043
+Cell196,T cell,DrugB,Batch2,1.121,4.541,43.846,0.965
+Cell197,B cell,DrugA,Batch1,-0.167,7.004,46.464,0.94
+Cell198,T cell,DrugB,Batch2,1.763,6.021,47.096,1.235
+Cell199,B cell,DrugB,Batch2,0.007,4.66,45.53,1.487
+Cell200,B cell,DrugA,Batch2,0.047,4.605,44.579,1.447
+Cell201,Myeloid,CK,Batch1,-0.407,1.99,50.144,1.103
+Cell202,B cell,DrugA,Batch2,0.389,6.887,31.783,1.386
+Cell203,Myeloid,DrugA,Batch2,0.473,7.815,43.917,1.292
+Cell204,T cell,DrugB,Batch1,1.381,1.4,40.853,1.106
+Cell205,T cell,CK,Batch2,1.422,6.023,49.785,1.404
+Cell206,T cell,DrugA,Batch1,1.143,8.26,49.942,1.19
+Cell207,Myeloid,DrugB,Batch2,-0.181,7.831,35.517,1.716
+Cell208,B cell,DrugA,Batch1,0.187,7.796,32.162,0.878
+Cell209,T cell,CK,Batch2,1.419,5.869,47.934,1.645
+Cell210,T cell,DrugA,Batch1,0.097,8.588,30.551,1.234

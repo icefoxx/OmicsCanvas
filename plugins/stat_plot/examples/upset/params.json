@@ -1,0 +1,20 @@
+{
+  "id_column": "cell_id",
+  "stat_by": ["condition", "phase"],
+  "stat_level": ["Disease", "S"],
+  "plot_type": "upset",
+  "stat_type": "count",
+  "combine": true,
+  "title": "Disease x S-phase intersection (upset)",
+  "show_label": true,
+  "label_size": 3.2,
+  "palette": "npg",
+  "alpha": 0.9,
+  "legend_position": "right",
+  "legend_direction": "vertical",
+  "base_size": 12,
+  "width": 8,
+  "height": 6,
+  "dpi": 300,
+  "seed": 10086
+}

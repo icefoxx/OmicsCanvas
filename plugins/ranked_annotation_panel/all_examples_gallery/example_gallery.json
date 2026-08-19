@@ -1,0 +1,20 @@
+[
+  {
+    "id": "params",
+    "label": "params",
+    "plugin_id": "ranked_annotation_panel",
+    "plot_type": "params",
+    "mode": "",
+    "params": "../examples/params/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/params/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/ranked_annotation_panel/plot.R --input plugins/ranked_annotation_panel/examples/params/input/example_input.csv --params plugins/ranked_annotation_panel/examples/params/params.json --output /tmp/ranked_annotation_panel_params_out"
+    },
+    "bundle": "../examples/params",
+    "gallery_png": "params.png",
+    "params_filename": "example_params_params.json"
+  }
+]

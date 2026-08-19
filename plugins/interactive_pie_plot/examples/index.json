@@ -1,0 +1,59 @@
+{
+  "plugin_id": "interactive_pie_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic",
+      "plugin_id": "interactive_pie_plot",
+      "plot_type": "basic",
+      "mode": "pie",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_pie_plot/plot.R --input plugins/interactive_pie_plot/examples/basic/input/example_input.csv --params plugins/interactive_pie_plot/examples/basic/params.json --output /tmp/interactive_pie_plot_basic_out"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    },
+    {
+      "id": "custom_layout",
+      "label": "custom_layout",
+      "plugin_id": "interactive_pie_plot",
+      "plot_type": "custom_layout",
+      "mode": "donut",
+      "params": "../examples/custom_layout/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/custom_layout/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_pie_plot/plot.R --input plugins/interactive_pie_plot/examples/custom_layout/input/example_input.csv --params plugins/interactive_pie_plot/examples/custom_layout/params.json --output /tmp/interactive_pie_plot_custom_layout_out"
+      },
+      "bundle": "../examples/custom_layout",
+      "gallery_png": "custom_layout.png",
+      "params_filename": "example_custom_layout_params.json"
+    },
+    {
+      "id": "donut",
+      "label": "donut",
+      "plugin_id": "interactive_pie_plot",
+      "plot_type": "donut",
+      "mode": "donut",
+      "params": "../examples/donut/params.json",
+      "inputs": {
+        "input": "input/example_input.csv"
+      },
+      "expected": "../examples/donut/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_pie_plot/plot.R --input plugins/interactive_pie_plot/examples/donut/input/example_input.csv --params plugins/interactive_pie_plot/examples/donut/params.json --output /tmp/interactive_pie_plot_donut_out"
+      },
+      "bundle": "../examples/donut",
+      "gallery_png": "donut.png",
+      "params_filename": "example_donut_params.json"
+    }
+  ]
+}

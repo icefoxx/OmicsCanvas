@@ -1,0 +1,20 @@
+{
+  "input_mode": "compute",
+  "plot_type": "running_multi_panel",
+  "curve_style": "multi_term",
+  "gene_col": "gene",
+  "stat_col": "avg_log2FC",
+  "comparison_col": "comparison",
+  "selected_comparison": "Mut_vs_WT",
+  "minSize": 3,
+  "maxSize": 50,
+  "selected_terms": ["UP_PATHWAY", "DOWN_PATHWAY", "MIXED_PATHWAY"],
+  "term_colors": {"UP_PATHWAY":"#D84A3A", "DOWN_PATHWAY":"#3264A5", "MIXED_PATHWAY":"#3A9D5D"},
+  "selected_genes": ["Gene001", "Gene019", "Gene012"],
+  "stats_show": true,
+  "stats_columns": ["NES", "pvalue", "padj"],
+  "stats_table_show": true,
+  "title": "Multi-term GSEA running enrichment",
+  "width": 10,
+  "height": 6
+}

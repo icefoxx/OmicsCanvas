@@ -1,0 +1,62 @@
+{
+  "plugin_id": "feature_density_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic",
+      "plugin_id": "feature_density_plot",
+      "plot_type": "basic",
+      "mode": "",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_expression.csv",
+        "embed": "input/example_embedding.csv"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/feature_density_plot/plot.R --input plugins/feature_density_plot/examples/basic/input/example_expression.csv --params plugins/feature_density_plot/examples/basic/params.json --output /tmp/feature_density_plot_basic_out --embed plugins/feature_density_plot/examples/basic/input/example_embedding.csv"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    },
+    {
+      "id": "coexpression",
+      "label": "coexpression",
+      "plugin_id": "feature_density_plot",
+      "plot_type": "coexpression",
+      "mode": "",
+      "params": "../examples/coexpression/params.json",
+      "inputs": {
+        "input": "input/example_expression.csv",
+        "embed": "input/example_embedding.csv"
+      },
+      "expected": "../examples/coexpression/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/feature_density_plot/plot.R --input plugins/feature_density_plot/examples/coexpression/input/example_expression.csv --params plugins/feature_density_plot/examples/coexpression/params.json --output /tmp/feature_density_plot_coexpression_out --embed plugins/feature_density_plot/examples/coexpression/input/example_embedding.csv"
+      },
+      "bundle": "../examples/coexpression",
+      "gallery_png": "coexpression.png",
+      "params_filename": "example_coexpression_params.json"
+    },
+    {
+      "id": "scale01",
+      "label": "scale01",
+      "plugin_id": "feature_density_plot",
+      "plot_type": "scale01",
+      "mode": "",
+      "params": "../examples/scale01/params.json",
+      "inputs": {
+        "input": "input/example_expression.csv",
+        "embed": "input/example_embedding.csv"
+      },
+      "expected": "../examples/scale01/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/feature_density_plot/plot.R --input plugins/feature_density_plot/examples/scale01/input/example_expression.csv --params plugins/feature_density_plot/examples/scale01/params.json --output /tmp/feature_density_plot_scale01_out --embed plugins/feature_density_plot/examples/scale01/input/example_embedding.csv"
+      },
+      "bundle": "../examples/scale01",
+      "gallery_png": "scale01.png",
+      "params_filename": "example_scale01_params.json"
+    }
+  ]
+}

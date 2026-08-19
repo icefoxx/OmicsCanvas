@@ -1,0 +1,12 @@
+id: interactive_binary_plot
+name: Interactive Binary Presence/Absence Plot
+version: 1.0.0
+description: Standards-compliant binary presence/absence dot matrix with static and interactive exports.
+language: R
+entrypoint: plot.R
+category: Matrix
+status: stable
+inputs:
+  - {id: input, type: table, formats: [csv, tsv, txt], required: true}
+outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, binary_matrix_used.csv, selected_cells.csv, error.json]
+runtime: Rscript plugins/interactive_binary_plot/plot.R --input input.csv --params params.json --output output_dir

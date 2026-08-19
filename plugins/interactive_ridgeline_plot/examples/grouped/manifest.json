@@ -1,0 +1,15 @@
+{
+  "id": "grouped",
+  "label": "grouped",
+  "plugin_id": "interactive_ridgeline_plot",
+  "plot_type": "auto",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_ridgeline_plot/plot.R --input plugins/interactive_ridgeline_plot/examples/grouped/input/example_input.csv --params plugins/interactive_ridgeline_plot/examples/grouped/params.json --output /tmp/interactive_ridgeline_plot_grouped_out"
+  }
+}

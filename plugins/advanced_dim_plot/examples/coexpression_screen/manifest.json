@@ -1,0 +1,15 @@
+{
+  "id": "coexpression_screen",
+  "label": "coexpression_screen",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "coexpression_screen",
+  "mode": "coexpression",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/coexpression_screen/input/example_input.csv --params plugins/advanced_dim_plot/examples/coexpression_screen/params.json --output /tmp/advanced_dim_plot_coexpression_screen_out"
+  }
+}

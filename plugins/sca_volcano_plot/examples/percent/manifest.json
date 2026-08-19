@@ -1,0 +1,15 @@
+{
+  "id": "percent",
+  "label": "percent",
+  "plugin_id": "sca_volcano_plot",
+  "plot_type": "percent_volcano",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_markers.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/sca_volcano_plot/plot.R --input plugins/sca_volcano_plot/examples/percent/input/example_markers.csv --params plugins/sca_volcano_plot/examples/percent/params.json --output /tmp/sca_volcano_plot_percent_out"
+  }
+}

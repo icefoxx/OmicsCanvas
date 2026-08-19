@@ -1,0 +1,146 @@
+[
+  {
+    "id": "all_intersections",
+    "label": "all_intersections",
+    "plugin_id": "interactive_upset_plot",
+    "plot_type": "all_intersections",
+    "mode": "inclusive_union",
+    "params": "../examples/all_intersections/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/all_intersections/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_upset_plot/plot.R --input plugins/interactive_upset_plot/examples/all_intersections/input/example_input.csv --params plugins/interactive_upset_plot/examples/all_intersections/params.json --output /tmp/interactive_upset_plot_all_intersections_out"
+    },
+    "bundle": "../examples/all_intersections",
+    "gallery_png": "all_intersections.png",
+    "params_filename": "example_all_intersections_params.json"
+  },
+  {
+    "id": "annotated_categorical",
+    "label": "annotated_categorical",
+    "plugin_id": "interactive_upset_plot",
+    "plot_type": "annotated_categorical",
+    "mode": "exclusive_intersection",
+    "params": "../examples/annotated_categorical/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/annotated_categorical/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_upset_plot/plot.R --input plugins/interactive_upset_plot/examples/annotated_categorical/input/example_input.csv --params plugins/interactive_upset_plot/examples/annotated_categorical/params.json --output /tmp/interactive_upset_plot_annotated_categorical_out"
+    },
+    "bundle": "../examples/annotated_categorical",
+    "gallery_png": "annotated_categorical.png",
+    "params_filename": "example_annotated_categorical_params.json"
+  },
+  {
+    "id": "annotated_numeric",
+    "label": "annotated_numeric",
+    "plugin_id": "interactive_upset_plot",
+    "plot_type": "annotated_numeric",
+    "mode": "exclusive_intersection",
+    "params": "../examples/annotated_numeric/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/annotated_numeric/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_upset_plot/plot.R --input plugins/interactive_upset_plot/examples/annotated_numeric/input/example_input.csv --params plugins/interactive_upset_plot/examples/annotated_numeric/params.json --output /tmp/interactive_upset_plot_annotated_numeric_out"
+    },
+    "bundle": "../examples/annotated_numeric",
+    "gallery_png": "annotated_numeric.png",
+    "params_filename": "example_annotated_numeric_params.json"
+  },
+  {
+    "id": "basic",
+    "label": "basic",
+    "plugin_id": "interactive_upset_plot",
+    "plot_type": "wide",
+    "mode": "exclusive_intersection",
+    "params": "../examples/basic/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/basic/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_upset_plot/plot.R --input plugins/interactive_upset_plot/examples/basic/input/example_input.csv --params plugins/interactive_upset_plot/examples/basic/params.json --output /tmp/interactive_upset_plot_basic_out"
+    },
+    "bundle": "../examples/basic",
+    "gallery_png": "basic.png",
+    "params_filename": "example_basic_params.json"
+  },
+  {
+    "id": "grouped",
+    "label": "grouped",
+    "plugin_id": "interactive_upset_plot",
+    "plot_type": "grouped",
+    "mode": "inclusive_union",
+    "params": "../examples/grouped/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/grouped/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_upset_plot/plot.R --input plugins/interactive_upset_plot/examples/grouped/input/example_input.csv --params plugins/interactive_upset_plot/examples/grouped/params.json --output /tmp/interactive_upset_plot_grouped_out"
+    },
+    "bundle": "../examples/grouped",
+    "gallery_png": "grouped.png",
+    "params_filename": "example_grouped_params.json"
+  },
+  {
+    "id": "intersection_size",
+    "label": "intersection_size",
+    "plugin_id": "interactive_upset_plot",
+    "plot_type": "intersection_size",
+    "mode": "inclusive_intersection",
+    "params": "../examples/intersection_size/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/intersection_size/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_upset_plot/plot.R --input plugins/interactive_upset_plot/examples/intersection_size/input/example_input.csv --params plugins/interactive_upset_plot/examples/intersection_size/params.json --output /tmp/interactive_upset_plot_intersection_size_out"
+    },
+    "bundle": "../examples/intersection_size",
+    "gallery_png": "intersection_size.png",
+    "params_filename": "example_intersection_size_params.json"
+  },
+  {
+    "id": "query_highlight",
+    "label": "query_highlight",
+    "plugin_id": "interactive_upset_plot",
+    "plot_type": "query_highlight",
+    "mode": "exclusive_intersection",
+    "params": "../examples/query_highlight/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/query_highlight/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_upset_plot/plot.R --input plugins/interactive_upset_plot/examples/query_highlight/input/example_input.csv --params plugins/interactive_upset_plot/examples/query_highlight/params.json --output /tmp/interactive_upset_plot_query_highlight_out"
+    },
+    "bundle": "../examples/query_highlight",
+    "gallery_png": "query_highlight.png",
+    "params_filename": "example_query_highlight_params.json"
+  },
+  {
+    "id": "ratio",
+    "label": "ratio",
+    "plugin_id": "interactive_upset_plot",
+    "plot_type": "ratio",
+    "mode": "exclusive_intersection",
+    "params": "../examples/ratio/params.json",
+    "inputs": {
+      "input": "input/example_input.csv"
+    },
+    "expected": "../examples/ratio/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/interactive_upset_plot/plot.R --input plugins/interactive_upset_plot/examples/ratio/input/example_input.csv --params plugins/interactive_upset_plot/examples/ratio/params.json --output /tmp/interactive_upset_plot_ratio_out"
+    },
+    "bundle": "../examples/ratio",
+    "gallery_png": "ratio.png",
+    "params_filename": "example_ratio_params.json"
+  }
+]

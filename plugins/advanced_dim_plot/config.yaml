@@ -1,0 +1,25 @@
+id: advanced_dim_plot
+name: Advanced Dimension Plot
+display_name: Advanced Dimension Plot
+version: 1.0.0
+description: Highly customizable dim1/dim2 embedding plots for groups, features, coexpression, splits, highlights, density, hexbin, marks, and lineage paths.
+language: R
+entrypoint: plot.R
+category: Scatter
+subcategory: Dimension
+status: stable
+runtime:
+  command: Rscript plot.R --input input.csv --params params.json --output output_dir
+inputs:
+  - id: input
+    name: input
+    type: table
+    required: true
+    formats: [csv, tsv, txt]
+outputs:
+  - result.svg
+  - result.pdf
+  - result.png
+  - figure.json
+  - selected_rows.csv
+  - run.log

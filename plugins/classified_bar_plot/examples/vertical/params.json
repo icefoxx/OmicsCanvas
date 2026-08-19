@@ -1,0 +1,28 @@
+{
+  "category_column": "category",
+  "type_column": "type",
+  "value_column": "value",
+  "orientation": "vertical",
+  "sort_by": "value_desc",
+  "type_colors": {
+    "type-A": "#E07A5F",
+    "type-B": "#4A6FA5",
+    "type-C": "#5C5C5C",
+    "type-D": "#6A994E"
+  },
+  "outerPadding": 0.2,
+  "title_show": true,
+  "title": "Classified bars (vertical)",
+  "title_font_weight": "bold",
+  "legend_title": "Class",
+  "legend_reverse": false,
+  "x_axis_text_angle": 60,
+  "x_axis_text_size": 8,
+  "y_grid_show": true,
+  "x_grid_show": false,
+  "x_min": 0,
+  "x_max": 24000,
+  "width": 10,
+  "height": 5.5,
+  "dpi": 300
+}

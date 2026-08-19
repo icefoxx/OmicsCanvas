@@ -1,0 +1,7 @@
+example_old_advdim_compat_params	generation failed (see /tmp/advanced_dim_plot_old_advdim_compat_out)
+example_pdf_bg_condition_params	generation failed (see /tmp/advanced_dim_plot_pdf_bg_condition_out)
+example_pdf_bg_cutoff_params	generation failed (see /tmp/advanced_dim_plot_pdf_bg_cutoff_out)
+example_pdf_cluster_composition_ring_params	generation failed (see /tmp/advanced_dim_plot_pdf_cluster_composition_ring_out)
+example_pdf_highlight_cells_params	generation failed (see /tmp/advanced_dim_plot_pdf_highlight_cells_out)
+example_pdf_old_style_single_panel_params	generation failed (see /tmp/advanced_dim_plot_pdf_old_style_single_panel_out)
+example_pdf_split_samples_params	generation failed (see /tmp/advanced_dim_plot_pdf_split_samples_out)

@@ -1,0 +1,8 @@
+category,mean,ci_low,ci_high,pvalue,highlight
+Normoblasts,13.45,12.1,14.9,0.0002,TRUE
+Erythroblasts,11.98,10.8,13.2,0.02,TRUE
+Proerythroblasts,11.75,10.7,12.9,0.03,TRUE
+MEPs,10.93,9.8,12.1,0.08,TRUE
+B cells,5.2,4.5,5.9,0.4,FALSE
+T cells,4.8,4.1,5.5,0.5,FALSE
+Monocytes,6.1,5.4,6.8,0.35,FALSE

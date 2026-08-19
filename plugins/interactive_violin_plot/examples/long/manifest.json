@@ -1,0 +1,15 @@
+{
+  "id": "long",
+  "label": "long",
+  "plugin_id": "interactive_violin_plot",
+  "plot_type": "long",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input_long.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_violin_plot/plot.R --input plugins/interactive_violin_plot/examples/long/input/example_input_long.csv --params plugins/interactive_violin_plot/examples/long/params.json --output /tmp/interactive_violin_plot_long_out"
+  }
+}

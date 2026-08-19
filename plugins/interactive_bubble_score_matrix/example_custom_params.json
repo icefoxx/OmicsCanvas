@@ -1,0 +1,19 @@
+{
+  "row_column":"method",
+  "metric_columns":["ARI","NMI","F1","ASW","V-Measure Homogeneity"],
+  "score_column":"Overall",
+  "row_order":["scABC","SAILER","SnapATAC","scBFA","scOpen","SCALE","ArchR","Signac","cisTopic","MAESTRO","EpiScanpy","SnapATAC2"],
+  "left_geom":"diamond",
+  "left_colors":["#264653","#F7F7F7","#E76F51"],
+  "left_limits":[0.4,1.0],
+  "score_colors":["#FFF3B0","#F4A261","#D95F02"],
+  "score_limits":[0.4,0.9],
+  "score_geom":"lollipop",
+  "left_right_gap":1.1,
+  "row_separator_linetype":"dotted",
+  "title":"Custom benchmark scorecard",
+  "background":"#FCFBF7",
+  "legend_position":"right",
+  "width":12,
+  "height":7
+}

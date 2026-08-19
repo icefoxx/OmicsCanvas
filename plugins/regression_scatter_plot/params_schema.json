@@ -1,0 +1,106 @@
+{
+  "data": {
+    "x_column": { "type": "column", "label": "X column", "default": null },
+    "y_column": { "type": "column", "label": "Y column", "default": null },
+    "group_column": { "type": "column", "label": "Group / color column", "default": null },
+    "id_column": { "type": "column", "label": "Point id / label column", "default": null },
+    "groups_include": { "type": "string_array", "label": "Groups include", "default": [] },
+    "groups_exclude": { "type": "string_array", "label": "Groups exclude", "default": [] },
+    "group_order": { "type": "string_array", "label": "Group order", "default": [] }
+  },
+  "canvas": {
+    "width": { "type": "number", "label": "Width (in)", "default": 8 },
+    "height": { "type": "number", "label": "Height (in)", "default": 6.5 },
+    "dpi": { "type": "number", "label": "PNG DPI", "default": 300 },
+    "font_family": { "type": "string", "label": "Font family", "default": "sans" },
+    "panel_background": { "type": "color", "label": "Panel background", "default": "#F7F7F7" },
+    "plot_background": { "type": "color", "label": "Plot background", "default": "#FFFFFF" },
+    "grid_show": { "type": "boolean", "label": "Grid switch", "default": true }
+  },
+  "scatter": {
+    "point_show": { "type": "boolean", "label": "Points switch", "default": true },
+    "point_size": { "type": "number", "label": "Point size (ChiPlot ~40)", "default": 40 },
+    "fill_opacity": { "type": "number", "label": "Point fill-opacity", "default": 1 },
+    "stroke_as_fill": { "type": "boolean", "label": "stroke-as-fill", "default": true },
+    "stroke": { "type": "color", "label": "Point stroke", "default": "#000000" },
+    "stroke_width": { "type": "number", "label": "Point stroke-width", "default": 0.5 },
+    "point_shape": { "type": "integer", "label": "Point shape", "default": 16 },
+    "group_colors": { "type": "object", "label": "Per-group colors", "default": {} },
+    "center_line_show": { "type": "boolean", "label": "Center line switch", "default": false },
+    "center_line_stroke": { "type": "color", "label": "Center line stroke", "default": "#000000" },
+    "center_line_width": { "type": "number", "label": "Center line stroke-width", "default": 0.6 },
+    "center_line_opacity": { "type": "number", "label": "Center line opacity", "default": 0.4 },
+    "point_text_show": { "type": "boolean", "label": "Point text switch", "default": false },
+    "point_text_size": { "type": "number", "label": "Point text font-size", "default": 3 },
+    "point_text_fill": { "type": "color", "label": "Point text fill", "default": "#222222" },
+    "point_text_dx": { "type": "number", "label": "Point text dx", "default": 0 },
+    "point_text_dy": { "type": "number", "label": "Point text dy", "default": -0.15 }
+  },
+  "regression": {
+    "regression_show": { "type": "boolean", "label": "Regression line switch", "default": true },
+    "regression_method": {
+      "type": "select",
+      "label": "Regression algorithm",
+      "default": "lm",
+      "options": ["lm", "loess"]
+    },
+    "loess_span": { "type": "number", "label": "loess-span", "default": 0.5 },
+    "reg_stroke_width": { "type": "number", "label": "Regression stroke-width", "default": 4 },
+    "reg_stroke_opacity": { "type": "number", "label": "Regression stroke-opacity", "default": 1 },
+    "ci_show": { "type": "boolean", "label": "Confidence interval switch", "default": true },
+    "ci_fill": { "type": "color", "label": "CI fill", "default": "#888888" },
+    "ci_fill_opacity": { "type": "number", "label": "CI fill-opacity", "default": 0.2 },
+    "ci_fill_as_line": { "type": "boolean", "label": "CI fill-as-line (group-colored)", "default": false },
+    "formula_show": { "type": "boolean", "label": "Formula text switch", "default": true },
+    "r2_show": { "type": "boolean", "label": "R text switch", "default": true },
+    "p_show": { "type": "boolean", "label": "P text switch", "default": true },
+    "formula_font_size": { "type": "number", "label": "Stat text font-size", "default": 14 },
+    "formula_fill": { "type": "color", "label": "Stat text fill", "default": "#222222" },
+    "formula_font_weight": {
+      "type": "select",
+      "label": "Stat text font-weight",
+      "default": "normal",
+      "options": ["normal", "bold"]
+    }
+  },
+  "xAxis": {
+    "xlab": { "type": "string", "label": "X label", "default": "" },
+    "xlab_show": { "type": "boolean", "label": "Show x label", "default": false },
+    "x_min": { "type": "number", "label": "X min", "default": null },
+    "x_max": { "type": "number", "label": "X max", "default": null }
+  },
+  "yAxis": {
+    "ylab": { "type": "string", "label": "Y label", "default": "" },
+    "ylab_show": { "type": "boolean", "label": "Show y label", "default": false },
+    "y_min": { "type": "number", "label": "Y min", "default": null },
+    "y_max": { "type": "number", "label": "Y max", "default": null }
+  },
+  "title": {
+    "title_show": { "type": "boolean", "label": "Title switch", "default": false },
+    "title": { "type": "string", "label": "Title text", "default": "" },
+    "title_size": { "type": "number", "label": "Title font-size", "default": 14 }
+  },
+  "legend": {
+    "legend_show": { "type": "boolean", "label": "Legend switch", "default": true },
+    "legend_title": { "type": "string", "label": "Legend title", "default": "ChiPlot" },
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "default": "right",
+      "options": ["right", "left", "top", "bottom", "none"]
+    },
+    "legend_title_size": { "type": "number", "label": "Legend title font-size", "default": 12 },
+    "legend_title_font_weight": {
+      "type": "select",
+      "label": "Legend title font-weight",
+      "default": "bold",
+      "options": ["normal", "bold"]
+    },
+    "legend_text_size": { "type": "number", "label": "Legend text size", "default": 10 }
+  },
+  "export": {
+    "width": { "type": "number", "label": "Export width", "default": 8 },
+    "height": { "type": "number", "label": "Export height", "default": 6.5 },
+    "dpi": { "type": "number", "label": "Export DPI", "default": 300 }
+  }
+}

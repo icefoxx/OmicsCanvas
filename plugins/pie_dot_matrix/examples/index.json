@@ -1,0 +1,16 @@
+{
+  "examples": [
+    {
+      "id": "basic",
+      "label": "basic"
+    },
+    {
+      "id": "binary",
+      "label": "binary"
+    },
+    {
+      "id": "correlation",
+      "label": "correlation"
+    }
+  ]
+}

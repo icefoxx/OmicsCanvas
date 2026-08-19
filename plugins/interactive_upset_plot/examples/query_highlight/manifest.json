@@ -1,0 +1,15 @@
+{
+  "id": "query_highlight",
+  "label": "query_highlight",
+  "plugin_id": "interactive_upset_plot",
+  "plot_type": "query_highlight",
+  "mode": "exclusive_intersection",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_upset_plot/plot.R --input plugins/interactive_upset_plot/examples/query_highlight/input/example_input.csv --params plugins/interactive_upset_plot/examples/query_highlight/params.json --output /tmp/interactive_upset_plot_query_highlight_out"
+  }
+}

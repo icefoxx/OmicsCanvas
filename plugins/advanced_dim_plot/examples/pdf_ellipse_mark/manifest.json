@@ -1,0 +1,15 @@
+{
+  "id": "pdf_ellipse_mark",
+  "label": "pdf_ellipse_mark",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "pdf_ellipse_mark",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/pdf_ellipse_mark/input/example_input.csv --params plugins/advanced_dim_plot/examples/pdf_ellipse_mark/params.json --output /tmp/advanced_dim_plot_pdf_ellipse_mark_out"
+  }
+}

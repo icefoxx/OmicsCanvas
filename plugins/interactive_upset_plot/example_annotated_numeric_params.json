@@ -1,0 +1,1 @@
+{"plot_subclass":"annotated_numeric","item_column":"item_id","set_columns":["A","B","C","D","E","F","G"],"annotation_columns":["score"],"annotation_types":["numeric"],"annotation_geoms":["violin"],"mode":"exclusive_intersection","n_intersections":12,"title":"Numeric annotation by intersection","width":11,"height":9,"dpi":160}

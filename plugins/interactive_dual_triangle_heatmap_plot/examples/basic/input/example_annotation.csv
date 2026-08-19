@@ -1,0 +1,17 @@
+Feature,Dataset,Group
+F01,Reference,A
+F02,Reference,A
+F03,Reference,B
+F04,Reference,B
+F05,Reference,A
+F06,Reference,B
+F07,External,A
+F08,External,A
+F09,External,B
+F10,External,B
+F11,External,A
+F12,External,B
+F13,Validation,A
+F14,Validation,B
+F15,Validation,A
+F16,Validation,B
