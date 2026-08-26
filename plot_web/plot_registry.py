@@ -356,8 +356,11 @@ def load_registry(rebuild: bool = False) -> dict[str, Any]:
         reg = build_registry()
         GENERATED_PATH.parent.mkdir(parents=True, exist_ok=True)
         GENERATED_PATH.write_text(json.dumps(reg, indent=2), encoding="utf-8")
-        return reg
-    return json.loads(GENERATED_PATH.read_text(encoding="utf-8"))
+    else:
+        reg = json.loads(GENERATED_PATH.read_text(encoding="utf-8"))
+    from plot_web.plot_guide import attach_guides
+
+    return attach_guides(reg)
 
 
 def get_all_plots(registry: dict[str, Any] | None = None) -> list[dict[str, Any]]:
@@ -413,6 +416,7 @@ def search_plots(query: str, registry: dict[str, Any] | None = None) -> list[dic
     tokens = [t for t in re.split(r"\s+", raw) if t]
     if not tokens:
         return get_all_plots(registry)
+    phrase = re.sub(r"[_\-]+", " ", raw)
     hits: list[dict[str, Any]] = []
     for plot in get_all_plots(registry):
         blob = _blob(plot)
@@ -426,10 +430,11 @@ def search_plots(query: str, registry: dict[str, Any] | None = None) -> list[dic
         }
         variant_names = {str(v.get("id") or "").lower() for v in plot.get("variants") or []}
         variant_names.update(str(v.get("name") or "").lower() for v in plot.get("variants") or [])
+        variant_names.update(re.sub(r"[_\-]+", " ", n) for n in list(variant_names))
         score = 0
         exact = False
         task_hit = False
-        if raw in names or raw in variant_names:
+        if raw in names or raw in variant_names or phrase in names or phrase in variant_names:
             exact = True
             score += 20
         for tok in tokens:
@@ -441,6 +446,20 @@ def search_plots(query: str, registry: dict[str, Any] | None = None) -> list[dic
                 score += 5
             elif tok in blob:
                 score += 2
+        for ctx in ANALYSIS_TAXONOMY:
+            for task in ctx["tasks"]:
+                labels = {str(task.get("id") or "").replace("_", " "), str(task.get("name") or "").lower()}
+                if any(label and label in phrase for label in labels):
+                    if _plot_matches_task_spec(plot, task):
+                        task_hit = True
+                        score += 10
+        for group in CHART_CATEGORY_TAXONOMY:
+            for chart in group["charts"]:
+                labels = {str(chart.get("id") or "").replace("_", " "), str(chart.get("name") or "").lower()}
+                if any(label and label in phrase for label in labels):
+                    if _plot_matches_chart(plot, chart):
+                        score += 8
+                        task_hit = True
         if score:
             kind = "exact" if exact else ("recommended" if task_hit else "related")
             hits.append({**plot, "_score": score, "match_kind": kind})
@@ -728,95 +747,194 @@ ANALYSIS_TAXONOMY = [
         "id": "single_cell",
         "name": "Single-cell",
         "context": "single_cell",
+        "blurb": "Explore clusters, gene expression, composition, markers and trajectories.",
         "tasks": [
-            {"id": "cell_clustering", "name": "Cell clustering", "match_tasks": ["cell_clustering", "clustering"]},
-            {"id": "gene_expression", "name": "Gene expression", "match_tasks": ["gene_expression", "feature_expression", "marker_visualization"]},
-            {"id": "cell_composition", "name": "Cell composition", "match_tasks": ["cell_composition", "composition"]},
-            {"id": "marker_genes", "name": "Marker genes", "match_tasks": ["marker_visualization", "differential_expression"]},
-            {"id": "trajectory", "name": "Trajectory", "match_tasks": ["trajectory"]},
-            {"id": "cell_cell_relationships", "name": "Cell-cell relationships", "match_tasks": ["network", "overlap"]},
+            {"id": "cell_clustering", "name": "Cell clustering", "blurb": "Explore clusters and annotations.", "match_tasks": ["cell_clustering", "clustering"]},
+            {"id": "gene_expression", "name": "Gene expression", "blurb": "Visualize feature expression across cells or groups.", "match_tasks": ["gene_expression", "feature_expression", "marker_visualization"]},
+            {"id": "cell_composition", "name": "Cell composition", "blurb": "Compare proportions across clusters, samples or conditions.", "match_tasks": ["cell_composition", "composition"]},
+            {"id": "marker_genes", "name": "Marker genes", "blurb": "Inspect and compare marker patterns.", "match_tasks": ["marker_visualization", "differential_expression"]},
+            {"id": "sample_differences", "name": "Sample differences", "blurb": "Compare conditions, samples or batches.", "match_tasks": ["sample_comparison", "group_comparison"], "family_ids": ["umap_tsne", "feature_embedding", "stacked_bar_plot"]},
+            {"id": "trajectory", "name": "Trajectory", "blurb": "Explore pseudotime, lineage and dynamic changes.", "match_tasks": ["trajectory"]},
         ],
     },
     {
         "id": "bulk_expression",
         "name": "Bulk Expression",
         "context": "bulk_expression",
+        "blurb": "Overview, differential tests, sample comparison and expression patterns.",
         "tasks": [
-            {"id": "expression_overview", "name": "Expression overview", "match_tasks": ["gene_expression", "heatmap", "expression_pattern"]},
-            {"id": "differential_expression", "name": "Differential expression", "match_tasks": ["differential_expression"]},
-            {"id": "sample_comparison", "name": "Sample comparison", "match_tasks": ["sample_comparison", "group_comparison"]},
-            {"id": "expression_patterns", "name": "Expression patterns", "match_tasks": ["expression_pattern", "heatmap"]},
-            {"id": "gene_clustering", "name": "Gene clustering", "match_tasks": ["gene_clustering", "heatmap"]},
+            {"id": "expression_overview", "name": "Expression overview", "blurb": "See expression across genes and samples.", "match_tasks": ["gene_expression", "heatmap", "expression_pattern"]},
+            {"id": "differential_expression", "name": "Differential expression", "blurb": "Rank and highlight changing genes.", "match_tasks": ["differential_expression"]},
+            {"id": "sample_comparison", "name": "Sample comparison", "blurb": "Compare groups, batches or conditions.", "match_tasks": ["sample_comparison", "group_comparison"]},
+            {"id": "expression_patterns", "name": "Expression patterns", "blurb": "Find coordinated expression modules.", "match_tasks": ["expression_pattern", "heatmap"]},
+            {"id": "gene_clustering", "name": "Gene clustering", "blurb": "Group genes by similar profiles.", "match_tasks": ["gene_clustering", "heatmap"]},
         ],
     },
     {
         "id": "functional_enrichment",
         "name": "Functional Enrichment",
         "context": "functional_enrichment",
+        "blurb": "ORA, GSEA, pathway comparison and gene–pathway links.",
         "tasks": [
-            {"id": "ora", "name": "ORA", "match_tasks": ["ora"]},
-            {"id": "gsea", "name": "GSEA", "match_tasks": ["gsea"]},
-            {"id": "pathway_comparison", "name": "Pathway comparison", "match_tasks": ["pathway_comparison"]},
-            {"id": "gene_pathway_relationship", "name": "Gene-pathway relationships", "match_tasks": ["gene_pathway_relationship"]},
+            {"id": "ora", "name": "ORA", "blurb": "Over-representation of gene sets.", "match_tasks": ["ora"]},
+            {"id": "gsea", "name": "GSEA", "blurb": "Ranked-list enrichment and running scores.", "match_tasks": ["gsea"]},
+            {"id": "pathway_comparison", "name": "Pathway comparison", "blurb": "Compare enrichment across groups or terms.", "match_tasks": ["pathway_comparison"]},
+            {"id": "gene_pathway_relationship", "name": "Gene-pathway relationships", "blurb": "Connect leading genes to pathways.", "match_tasks": ["gene_pathway_relationship"]},
         ],
     },
     {
         "id": "epigenomics",
         "name": "Epigenomics",
         "context": "epigenomics",
+        "blurb": "Peak signal, genomic profiles, accessibility and motifs.",
         "tasks": [
-            {"id": "peak_signal", "name": "Peak signal", "match_tasks": ["ranking"]},
-            {"id": "genomic_profiles", "name": "Genomic profiles", "match_tasks": ["ranking"]},
-            {"id": "differential_accessibility", "name": "Differential accessibility", "match_tasks": ["differential_expression"]},
-            {"id": "motif_analysis", "name": "Motif analysis", "match_tasks": ["ranking"]},
-            {"id": "genomic_annotation", "name": "Genomic annotation", "match_tasks": ["ranking"]},
+            {"id": "peak_signal", "name": "Peak signal", "blurb": "Inspect peak intensity along the genome.", "match_tasks": ["ranking"], "family_ids": ["interactive_genomic_signal_track_plot"]},
+            {"id": "genomic_profiles", "name": "Genomic profiles", "blurb": "Compare coverage tracks across samples.", "match_tasks": ["ranking"], "family_ids": ["interactive_genomic_signal_track_plot"]},
+            {"id": "differential_accessibility", "name": "Differential accessibility", "blurb": "Highlight changing peaks or regions.", "match_tasks": ["differential_expression"]},
+            {"id": "motif_analysis", "name": "Motif analysis", "blurb": "Visualize motif enrichment logos.", "match_tasks": ["ranking"], "family_ids": ["interactive_motif_logo_plot"]},
+            {"id": "genomic_annotation", "name": "Genomic annotation", "blurb": "Annotate genomic intervals.", "match_tasks": ["ranking"]},
         ],
     },
     {
         "id": "trajectory",
         "name": "Trajectory & Dynamics",
         "context": "trajectory",
+        "blurb": "Pseudotime, lineage, temporal trends and dynamic expression.",
         "tasks": [
-            {"id": "pseudotime", "name": "Pseudotime", "match_tasks": ["trajectory"]},
-            {"id": "lineage", "name": "Lineage", "match_tasks": ["trajectory"]},
-            {"id": "temporal_trends", "name": "Temporal trends", "match_tasks": ["trajectory", "group_comparison"]},
+            {"id": "pseudotime", "name": "Pseudotime", "blurb": "Order cells along a continuum.", "match_tasks": ["trajectory"]},
+            {"id": "lineage", "name": "Lineage", "blurb": "Compare branching fates.", "match_tasks": ["trajectory"]},
+            {"id": "temporal_trends", "name": "Temporal trends", "blurb": "Follow changes across time or stages.", "match_tasks": ["trajectory", "group_comparison"]},
+            {"id": "dynamic_expression", "name": "Dynamic expression", "blurb": "See how features change along a trajectory.", "match_tasks": ["trajectory", "gene_expression", "feature_expression"]},
         ],
     },
     {
         "id": "general_statistics",
         "name": "General Statistics",
         "context": "general_statistics",
+        "blurb": "Distributions, correlations, group tests, ranking and summaries.",
         "tasks": [
-            {"id": "distribution", "name": "Distribution", "match_tasks": ["distribution"]},
-            {"id": "correlation", "name": "Correlation", "match_tasks": ["correlation"]},
-            {"id": "group_comparison", "name": "Group comparison", "match_tasks": ["group_comparison"]},
-            {"id": "composition", "name": "Composition", "match_tasks": ["composition"]},
+            {"id": "distribution", "name": "Distribution", "blurb": "Shape of a numeric variable.", "match_tasks": ["distribution"]},
+            {"id": "correlation", "name": "Correlation", "blurb": "Association between features.", "match_tasks": ["correlation"]},
+            {"id": "group_comparison", "name": "Group comparison", "blurb": "Compare values across categories.", "match_tasks": ["group_comparison"]},
+            {"id": "ranking", "name": "Ranking", "blurb": "Order items by a score or statistic.", "match_tasks": ["ranking"]},
+            {"id": "summary", "name": "Summary", "blurb": "Compact statistical overviews.", "match_tasks": ["group_comparison"], "family_ids": ["stat_plot", "exp_stat_plot", "ranked_annotation_panel"]},
         ],
     },
     {
         "id": "relationships_overlap",
         "name": "Relationships & Overlap",
         "context": "relationships_overlap",
+        "blurb": "Set overlap, feature links, flow and networks.",
         "tasks": [
-            {"id": "venn_upset", "name": "Venn / UpSet", "match_tasks": ["overlap"]},
-            {"id": "correlation", "name": "Correlation", "match_tasks": ["correlation"]},
-            {"id": "sankey_alluvial", "name": "Sankey / Alluvial", "match_tasks": ["network", "composition"]},
-            {"id": "network", "name": "Network relationships", "match_tasks": ["network"]},
+            {"id": "set_overlap", "name": "Set overlap", "blurb": "Shared and unique members of sets.", "match_tasks": ["overlap"]},
+            {"id": "feature_relationships", "name": "Feature relationships", "blurb": "Links between features or samples.", "match_tasks": ["correlation"]},
+            {"id": "flow_relationships", "name": "Flow relationships", "blurb": "Movement between categories.", "match_tasks": ["network", "composition"], "family_ids": ["sankey", "alluvial", "gsea"]},
+            {"id": "network", "name": "Network relationships", "blurb": "Graph structure among entities.", "match_tasks": ["network"]},
+            {"id": "correlation", "name": "Correlation", "blurb": "Pairwise association matrices.", "match_tasks": ["correlation"]},
         ],
     },
 ]
 
 BROWSE_CATEGORIES = [
-    {"id": "dimension_reduction", "name": "Dimension Reduction", "family_ids": ["umap_tsne", "feature_embedding", "feature_density_plot"]},
-    {"id": "heatmaps", "name": "Heatmaps", "tasks": ["heatmap"]},
+    {"id": "single_cell", "name": "Single-cell", "contexts": ["single_cell"]},
     {"id": "expression", "name": "Expression", "tasks": ["gene_expression", "feature_expression", "expression_pattern"]},
-    {"id": "differential_analysis", "name": "Differential Analysis", "contexts": ["differential_expression"]},
+    {"id": "differential_analysis", "name": "Differential Analysis", "contexts": ["differential_expression"], "tasks": ["differential_expression"]},
     {"id": "enrichment", "name": "Enrichment", "contexts": ["functional_enrichment"]},
     {"id": "composition", "name": "Composition", "tasks": ["composition", "cell_composition"]},
-    {"id": "distribution", "name": "Distribution", "tasks": ["distribution"]},
-    {"id": "relationships", "name": "Relationships", "contexts": ["relationships_overlap"]},
-    {"id": "trajectory", "name": "Trajectory", "contexts": ["trajectory"], "tasks": ["trajectory"]},
-    {"id": "general_statistics", "name": "General Statistics", "contexts": ["general_statistics"]},
+    {"id": "statistics", "name": "Statistics", "contexts": ["general_statistics"], "tasks": ["distribution", "group_comparison", "correlation"]},
+    {"id": "network", "name": "Network", "tasks": ["network"]},
+]
+
+# Visual-grammar catalog for Browse by Chart Type.
+CHART_CATEGORY_TAXONOMY = [
+    {
+        "id": "distribution",
+        "name": "Distribution",
+        "charts": [
+            {"id": "violin", "name": "Violin", "family_ids": ["violin_plot", "interactive_violin_plot"]},
+            {"id": "density", "name": "Density", "family_ids": ["den_plot", "feature_density_plot"]},
+            {"id": "histogram", "name": "Histogram", "family_ids": ["interactive_histogram_plot"]},
+            {"id": "boxplot", "name": "Boxplot", "family_ids": ["interactive_violin_plot", "violin_plot", "exp_stat_plot", "stat_plot"]},
+            {"id": "ridgeline", "name": "Ridgeline", "family_ids": ["ridgeline", "gsea"]},
+            {"id": "beeswarm", "name": "Beeswarm", "family_ids": ["interactive_violin_plot", "violin_plot", "highlight_effect_plot"]},
+        ],
+    },
+    {
+        "id": "comparison",
+        "name": "Comparison",
+        "charts": [
+            {"id": "barplot", "name": "Barplot", "family_ids": ["classified_bar_plot", "stacked_bar_plot", "combo_bar_dot_matrix", "combo_bar_line_plot"]},
+            {"id": "dot", "name": "Dot plot", "family_ids": ["dot_plot", "combo_bar_dot_matrix", "balloon_plot"]},
+            {"id": "lollipop", "name": "Lollipop", "family_ids": ["enrichment_lollipop", "ranked_annotation_panel", "interactive_dumbbell_plot"]},
+            {"id": "radar", "name": "Radar / Spider", "family_ids": ["interactive_radar_plot"]},
+            {"id": "parallel", "name": "Parallel coordinates", "family_ids": ["ranked_annotation_panel"]},
+        ],
+    },
+    {
+        "id": "relationship",
+        "name": "Relationship",
+        "charts": [
+            {"id": "scatter", "name": "Scatter", "family_ids": ["regression_scatter_plot", "quadrant_correlation_scatter", "volcano", "umap_tsne", "feature_embedding"]},
+            {"id": "bubble", "name": "Bubble", "family_ids": ["balloon_plot", "interactive_bubble_score_matrix", "pie_dot_matrix"]},
+            {"id": "connected_scatter", "name": "Connected scatter", "family_ids": ["combo_bar_line_plot", "interactive_dumbbell_plot"]},
+            {"id": "density_2d", "name": "2D density", "family_ids": ["feature_density_plot", "umap_tsne", "feature_embedding"]},
+        ],
+    },
+    {
+        "id": "matrix",
+        "name": "Matrix",
+        "charts": [
+            {"id": "heatmap", "name": "Heatmap", "family_ids": ["grouped_heatmap", "gsea_heatmap", "interactive_clustered_heatmap_plot", "interactive_dual_triangle_heatmap_plot", "threshold_matrix_heatmap"]},
+            {"id": "correlogram", "name": "Correlogram", "family_ids": ["interactive_correlation_matrix", "interactive_dual_triangle_heatmap_plot"]},
+            {"id": "dot_matrix", "name": "Dot / Balloon matrix", "family_ids": ["balloon_plot", "pie_dot_matrix", "combo_bar_dot_matrix", "dot_plot"]},
+        ],
+    },
+    {
+        "id": "composition",
+        "name": "Composition",
+        "charts": [
+            {"id": "pie", "name": "Pie", "family_ids": ["interactive_pie_plot", "umap_tsne", "pie_dot_matrix"]},
+            {"id": "doughnut", "name": "Donut", "family_ids": ["interactive_pie_plot"]},
+            {"id": "stacked_bar", "name": "Stacked bar", "family_ids": ["stacked_bar_plot", "classified_bar_plot"]},
+            {"id": "treemap", "name": "Treemap", "family_ids": []},
+        ],
+    },
+    {
+        "id": "flow",
+        "name": "Flow & Network",
+        "charts": [
+            {"id": "sankey", "name": "Sankey", "family_ids": ["sankey", "gsea"]},
+            {"id": "alluvial", "name": "Alluvial", "family_ids": ["alluvial"]},
+            {"id": "network", "name": "Network", "family_ids": ["interactive_network_plot", "interactive_mantel_correlation_network"]},
+            {"id": "chord", "name": "Chord", "family_ids": ["alluvial"]},
+            {"id": "arc", "name": "Arc diagram", "family_ids": ["interactive_arc_network_plot"]},
+        ],
+    },
+    {
+        "id": "sets",
+        "name": "Sets",
+        "charts": [
+            {"id": "venn", "name": "Venn", "family_ids": ["venn"]},
+            {"id": "upset", "name": "UpSet", "family_ids": ["upset"]},
+        ],
+    },
+    {
+        "id": "tables",
+        "name": "Tables",
+        "charts": [
+            {"id": "table", "name": "Table", "family_ids": ["interactive_binary_plot"]},
+            {"id": "summary_table", "name": "Summary table", "family_ids": ["ranked_annotation_panel", "stat_plot"]},
+        ],
+    },
+    {
+        "id": "specialized",
+        "name": "Specialized",
+        "charts": [
+            {"id": "genomic_track", "name": "Genomic track", "family_ids": ["interactive_genomic_signal_track_plot"]},
+            {"id": "motif", "name": "Motif logo", "family_ids": ["interactive_motif_logo_plot"]},
+            {"id": "dendrogram", "name": "Dendrogram", "family_ids": ["cluster_dendrogram_plot"]},
+        ],
+    },
 ]
 
 
@@ -830,6 +948,35 @@ def _plot_matches_task(plot: dict[str, Any], match_tasks: list[str]) -> bool:
         if wanted & rec:
             return True
     return False
+
+
+def _plot_matches_task_spec(plot: dict[str, Any], task: dict[str, Any]) -> bool:
+    if _plot_matches_task(plot, list(task.get("match_tasks") or [])):
+        return True
+    wanted = {str(i).lower() for i in task.get("family_ids") or []}
+    if not wanted:
+        return False
+    return str(plot.get("id") or "").lower() in wanted or str(plot.get("engine_plugin_id") or "").lower() in wanted
+
+
+def _recommendation_priority(plot: dict[str, Any], task: dict[str, Any], rec_variant: str | None, context: str) -> int:
+    pri = 0
+    if rec_variant:
+        pri += 100
+    if _plot_matches_task(plot, list(task.get("match_tasks") or [])):
+        pri += 40
+    contexts = {str(c).lower() for c in plot.get("analysis_contexts") or []}
+    if context in contexts:
+        pri += 20
+    raw = plot.get("recommendation_priority") or {}
+    if isinstance(raw, dict):
+        for key in [task.get("id"), *(task.get("match_tasks") or [])]:
+            if key and key in raw:
+                try:
+                    pri += int(raw[key])
+                except (TypeError, ValueError):
+                    pass
+    return pri
 
 
 def _recommended_variant_for_task(plot: dict[str, Any], match_tasks: list[str]) -> str | None:
@@ -876,41 +1023,53 @@ def discovery_taxonomy(registry: dict[str, Any] | None = None) -> dict[str, Any]
     for ctx in ANALYSIS_TAXONOMY:
         tasks = []
         for task in ctx["tasks"]:
-            matched = [p for p in plots if _plot_matches_task(p, task["match_tasks"])]
-            # Prefer families that also share the analysis context when possible.
-            preferred = [
-                p
-                for p in matched
-                if ctx["context"] in [str(c).lower() for c in p.get("analysis_contexts") or []]
-            ]
-            use = preferred or matched
+            matched = [p for p in plots if _plot_matches_task_spec(p, task)]
             cards = []
-            for plot in use:
-                rec_variant = _recommended_variant_for_task(plot, task["match_tasks"])
+            for plot in matched:
+                rec_variant = _recommended_variant_for_task(plot, list(task.get("match_tasks") or []))
+                pri = _recommendation_priority(plot, task, rec_variant, ctx["context"])
                 cards.append(
                     _card_payload(
                         plot,
                         {
-                            "recommended": bool(rec_variant) or ctx["context"] in [str(c).lower() for c in plot.get("analysis_contexts") or []],
+                            "recommended": False,
                             "recommended_variant": rec_variant,
+                            "priority": pri,
+                            "why": task.get("blurb") or "",
                         },
                     )
                 )
+            cards.sort(key=lambda item: (-int(item.get("priority") or 0), str(item.get("name") or "")))
+            rec_limit = 4
+            tagged = 0
+            for card in cards:
+                strong = bool(card.get("recommended_variant")) or int(card.get("priority") or 0) >= 40
+                if strong and tagged < rec_limit:
+                    card["recommended"] = True
+                    tagged += 1
+            if tagged < 2:
+                for card in cards[:2]:
+                    card["recommended"] = True
             tasks.append(
                 {
                     "id": task["id"],
                     "name": task["name"],
-                    "path": f"/analysis/{ctx['id']}/{task['id']}",
+                    "blurb": task.get("blurb") or "",
+                    "path": f"/scenario/{ctx['id']}/{task['id']}",
                     "plot_count": len(cards),
                     "plots": cards,
                 }
             )
+        unique_ids = {p["id"] for t in tasks for p in t["plots"]}
         contexts.append(
             {
                 "id": ctx["id"],
                 "name": ctx["name"],
                 "context": ctx["context"],
-                "path": f"/analysis/{ctx['id']}",
+                "blurb": ctx.get("blurb") or "",
+                "path": f"/scenario/{ctx['id']}",
+                "task_count": len(tasks),
+                "plot_count": len(unique_ids),
                 "tasks": tasks,
             }
         )
@@ -958,6 +1117,56 @@ def browse_categories(registry: dict[str, Any] | None = None) -> dict[str, Any]:
             }
         )
     return {"categories": categories, "all_plots": [_card_payload(p) for p in plots]}
+
+
+def _plot_matches_chart(plot: dict[str, Any], chart: dict[str, Any]) -> bool:
+    wanted = {str(i).lower() for i in chart.get("family_ids") or []}
+    pid = str(plot.get("id") or "").lower()
+    engine = str(plot.get("engine_plugin_id") or "").lower()
+    if pid in wanted or engine in wanted:
+        return True
+    keys = [k.lower() for k in chart.get("keywords") or [] if k]
+    if not keys:
+        return False
+    blob = " ".join(
+        [
+            pid.replace("_", " "),
+            engine.replace("_", " "),
+            str(plot.get("name") or "").lower(),
+            *[str(a).lower().replace("_", " ") for a in plot.get("aliases") or []],
+        ]
+    )
+    return any(re.search(rf"(^|\\s){re.escape(k)}(\\s|$)", blob) for k in keys)
+
+
+def chart_categories(registry: dict[str, Any] | None = None) -> dict[str, Any]:
+    plots = get_all_plots(registry or load_registry())
+    groups = []
+    for spec in CHART_CATEGORY_TAXONOMY:
+        charts = []
+        for chart in spec["charts"]:
+            matched = [_card_payload(p) for p in plots if _plot_matches_chart(p, chart)]
+            charts.append(
+                {
+                    "id": chart["id"],
+                    "name": chart["name"],
+                    "icon": chart.get("icon") or chart["id"],
+                    "path": f"/category/{chart['id']}",
+                    "plot_count": len(matched),
+                    "family_count": len(matched),
+                    "plots": matched,
+                }
+            )
+        groups.append(
+            {
+                "id": spec["id"],
+                "name": spec["name"],
+                "charts": charts,
+                "chart_count": len(charts),
+                "plot_count": sum(c["plot_count"] for c in charts),
+            }
+        )
+    return {"groups": groups}
 
 
 def main(argv: list[str] | None = None) -> int:

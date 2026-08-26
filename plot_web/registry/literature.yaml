@@ -1,0 +1,34 @@
+# Curated literature. Do not add entries without a real citation.
+# Never set thumbnail_reuse_allowed true unless reuse rights are verified.
+entries:
+  - id: umap_mcinnes_2018
+    title: "UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction"
+    authors: "McInnes L, Healy J, Melville J"
+    citation: "McInnes L, Healy J, Melville J. UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction. arXiv:1802.03426, 2018."
+    journal: arXiv
+    year: 2018
+    doi: ""
+    url: "https://arxiv.org/abs/1802.03426"
+    figure: ""
+    license: "arXiv preprint (see paper for terms)"
+    thumbnail_reuse_allowed: false
+    description: "Introduces UMAP as a neighborhood-preserving dimension-reduction method used for 2D embeddings."
+    relevance: "Primary method paper for the UMAP embedding shown by this plot family."
+    use_case: [cell_clustering]
+    plot_families: [umap_tsne]
+
+  - id: umap_becht_2019
+    title: "Dimensionality reduction for visualizing single-cell data using UMAP"
+    authors: "Becht E, McInnes L, Healy J, Dutertre CA, Kwok IWH, Ng LG, Ginhoux F, Newell EW"
+    citation: "Becht E et al. Dimensionality reduction for visualizing single-cell data using UMAP. Nat Biotechnol. 2019;37:38–44."
+    journal: Nature Biotechnology
+    year: 2019
+    doi: "10.1038/nbt.4314"
+    url: "https://doi.org/10.1038/nbt.4314"
+    figure: ""
+    license: "Publisher terms; figure reuse not asserted"
+    thumbnail_reuse_allowed: false
+    description: "Shows UMAP for visualizing single-cell populations compared with t-SNE."
+    relevance: "Published single-cell use of UMAP for cluster and cell-type overview, without copying journal figures."
+    use_case: [cell_clustering, sample_comparison]
+    plot_families: [umap_tsne]

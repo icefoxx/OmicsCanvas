@@ -42,6 +42,7 @@ tasks:
   - network
   - ranking
   - heatmap
+  - summary
 
 parameter_groups:
   - data_mapping

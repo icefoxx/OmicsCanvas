@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Plot Editor | OmicsCanvas</title>
-  <link rel="stylesheet" href="/static/styles.css?v=param-common-1">
+  <link rel="stylesheet" href="/static/styles.css?v=plot-guide-1">
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,6 +57,26 @@
 
   <main class="editor-workspace">
     <div class="editor-grid">
+      <aside class="plot-guide" id="plotGuide" aria-label="Plot Guide">
+        <div class="plot-guide-rail">
+          <button type="button" class="plot-guide-toggle" id="plotGuideToggle" aria-expanded="true" title="Plot Guide">‹</button>
+        </div>
+        <div class="plot-guide-body" id="plotGuideBody">
+          <div class="plot-guide-head">
+            <h3>Plot Guide</h3>
+            <p class="plot-guide-kicker">Learn / interpret</p>
+          </div>
+          <nav class="plot-guide-tabs" id="plotGuideTabs">
+            <button type="button" class="plot-guide-tab active" data-guide-tab="about">About</button>
+            <button type="button" class="plot-guide-tab" data-guide-tab="examples">Examples</button>
+            <button type="button" class="plot-guide-tab" data-guide-tab="literature">Literature</button>
+            <button type="button" class="plot-guide-tab" data-guide-tab="interpret">Interpret</button>
+          </nav>
+          <div class="plot-guide-content" id="plotGuideContent">
+            <p class="empty-inline">Loading guide…</p>
+          </div>
+        </div>
+      </aside>
       <section class="plot-stage">
         <!-- Vertical floating tools: outside canvas, draggable, top-right by default -->
         <div class="canvas-float-tools" id="canvasControlBar" aria-label="Canvas tools">
@@ -155,6 +175,7 @@
     <span id="outputPathText"></span>
   </footer>
 
-  <script src="/static/editor.js?v=discovery-2"></script>
+  <script src="/static/plot_guide.js?v=plot-guide-1"></script>
+  <script src="/static/editor.js?v=plot-guide-1"></script>
 </body>
 </html>

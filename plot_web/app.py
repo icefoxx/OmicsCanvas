@@ -17,8 +17,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
+from plot_web.plot_guide import build_caption, compose_guide
 from plot_web.plot_registry import (
     browse_categories,
+    chart_categories,
     discovery_taxonomy,
     get_all_plots,
     get_compatible_plots,
@@ -250,7 +252,10 @@ def effective_params_schema(plugin_id: str, config: dict[str, Any]) -> dict[str,
 
     schema = read_params_schema(plugin_id)
     if schema:
-        return normalize_params_schema(schema) or schema
+        try:
+            return normalize_params_schema(schema) or schema
+        except Exception:
+            return schema
     parameters = config.get("parameters")
     if isinstance(parameters, dict) and parameters:
         return normalize_params_schema({"Parameters": parameters}) or {"Parameters": parameters}
@@ -597,6 +602,12 @@ def choose_demo_file(plugin_id: str, field: str, input_info: dict[str, Any]) -> 
         ("gsea_pathway_heatmap", "expr"): ["example_expression.csv"],
         ("gsea_pathway_heatmap", "enrichment"): ["example_enrichment.csv"],
         ("gsea_pathway_heatmap", "col_annot"): ["example_col_annot.csv"],
+        ("interactive_dual_triangle_heatmap_plot", "upper"): ["example_upper.csv"],
+        ("interactive_dual_triangle_heatmap_plot", "lower"): ["example_lower.csv"],
+        ("interactive_dual_triangle_heatmap_plot", "file"): ["example_upper.csv"],
+        ("interactive_dual_triangle_heatmap_plot", "input"): ["example_upper.csv"],
+        ("interactive_dual_triangle_heatmap_plot", "annotation"): ["example_annotation.csv"],
+        ("interactive_dual_triangle_heatmap_plot", "annot"): ["example_annotation.csv"],
     }
     override_names = plugin_overrides.get((plugin_id, field), [])
     candidates_by_field = {
@@ -641,6 +652,8 @@ def choose_demo_file(plugin_id: str, field: str, input_info: dict[str, Any]) -> 
         "matrix": ["example_matrix.csv", "example_dot_matrix.csv"],
         "comparisons": ["example_comparisons.csv", "example_pvalues.csv"],
         "enrichment": ["example_enrichment.csv", "example_fgsea_results.csv"],
+        "upper": ["example_upper.csv", "example_matrix.csv"],
+        "lower": ["example_lower.csv", "example_matrix2.csv", "example_input2.csv"],
     }
     candidates = [plugin_dir / name for name in override_names]
     candidates.extend(plugin_dir / name for name in candidates_by_field.get(field, []))
@@ -1005,7 +1018,7 @@ def parse_params(text_fields: dict[str, str], plugin_id: str) -> dict[str, Any]:
 
 
 def choose_main_input(saved_files: dict[str, Path]) -> Path:
-    for key in ("file", "input"):
+    for key in ("file", "input", "upper"):
         if key in saved_files:
             return saved_files[key]
     # Prefer ranked-gene tables over expression matrices when the main
@@ -1048,6 +1061,8 @@ def build_command(plugin_id: str, config: dict[str, Any], saved_files: dict[str,
         "comparisons": "--comparisons",
         "enrichment": "--enrichment",
         "col-annot": "--col-annot",
+        "upper": "--upper",
+        "lower": "--lower",
     }
     for key, flag in optional_flags.items():
         if key in saved_files:
@@ -1112,8 +1127,20 @@ def run_local_job(job: dict[str, Any], cmd: list[str], plugin_dir: Path, output_
 @app.get("/analysis", response_class=HTMLResponse)
 @app.get("/analysis/{context}", response_class=HTMLResponse)
 @app.get("/analysis/{context}/{task}", response_class=HTMLResponse)
+@app.get("/scenario", response_class=HTMLResponse)
+@app.get("/scenario/{context}", response_class=HTMLResponse)
+@app.get("/scenario/{context}/{task}", response_class=HTMLResponse)
+@app.get("/category", response_class=HTMLResponse)
+@app.get("/category/{chart_id}", response_class=HTMLResponse)
+@app.get("/chart-type", response_class=HTMLResponse)
+@app.get("/chart-type/{chart_id}", response_class=HTMLResponse)
 @app.get("/family/{plot_id}", response_class=HTMLResponse)
-def index(context: str | None = None, task: str | None = None, plot_id: str | None = None) -> str:
+def index(
+    context: str | None = None,
+    task: str | None = None,
+    plot_id: str | None = None,
+    chart_id: str | None = None,
+) -> str:
     return (STATIC_DIR / "index.html").read_text(encoding="utf-8")
 
 
@@ -1320,6 +1347,40 @@ def registry_get_plot(plot_id: str) -> dict[str, Any]:
     return plot
 
 
+@app.get("/api/registry/plots/{plot_id}/guide")
+def registry_get_guide(
+    plot_id: str,
+    variant: str | None = None,
+    example: str | None = None,
+) -> dict[str, Any]:
+    payload = compose_guide(plot_id, variant_id=variant, example_id=example)
+    if payload.get("reason") == "Plot family not found":
+        raise HTTPException(status_code=404, detail="Plot family not found")
+    return payload
+
+
+@app.post("/api/registry/plots/{plot_id}/caption")
+async def registry_caption(plot_id: str, request: Request) -> dict[str, Any]:
+    plot = get_plot(plot_id)
+    if not plot:
+        raise HTTPException(status_code=404, detail="Plot family not found")
+    body: dict[str, Any] = {}
+    try:
+        value = await request.json()
+        if isinstance(value, dict):
+            body = value
+    except Exception:
+        body = {}
+    payload = compose_guide(
+        plot_id,
+        variant_id=body.get("variant") or body.get("variant_id"),
+        example_id=body.get("example") or body.get("example_id"),
+        params=body.get("params") if isinstance(body.get("params"), dict) else {},
+    )
+    caption = payload.get("caption") or build_caption(plot, None, body.get("params") if isinstance(body.get("params"), dict) else {})
+    return {"plot_id": payload.get("plot_id"), "caption": caption, "current": payload.get("current")}
+
+
 @app.get("/api/registry/plots/{plot_id}/styles")
 def registry_get_styles(plot_id: str) -> dict[str, Any]:
     return list_plot_styles(plot_id)
@@ -1401,6 +1462,7 @@ def registry_discovery() -> dict[str, Any]:
     return {
         "taxonomy": discovery_taxonomy(),
         "browse": browse_categories(),
+        "chart_categories": chart_categories(),
     }
 
 
@@ -1412,6 +1474,11 @@ def registry_taxonomy() -> dict[str, Any]:
 @app.get("/api/registry/discovery/browse")
 def registry_browse() -> dict[str, Any]:
     return browse_categories()
+
+
+@app.get("/api/registry/discovery/categories")
+def registry_chart_categories() -> dict[str, Any]:
+    return chart_categories()
 
 
 @app.get("/api/plugins/{plugin_id}/examples/{example_id}")

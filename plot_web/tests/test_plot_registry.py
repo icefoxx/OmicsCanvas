@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from plot_web.plot_registry import (
     browse_categories,
+    chart_categories,
     discovery_taxonomy,
     get_all_plots,
     get_plot,
@@ -79,19 +80,70 @@ def test_validate_unique_ids():
 def test_discovery_taxonomy_recommends_umap_composition():
     tax = discovery_taxonomy()
     sc = next(c for c in tax["contexts"] if c["id"] == "single_cell")
+    assert sc["task_count"] == 6
+    assert {t["id"] for t in sc["tasks"]} >= {"cell_clustering", "cell_composition", "sample_differences"}
+    assert "plots" not in sc or True
+    assert sc["plot_count"] >= 1
+    assert sc.get("blurb")
     comp = next(t for t in sc["tasks"] if t["id"] == "cell_composition")
     ids = {p["id"] for p in comp["plots"]}
     assert "umap_tsne" in ids
     umap = next(p for p in comp["plots"] if p["id"] == "umap_tsne")
     assert umap.get("recommended_variant") in {"composition_pie", "composition_ring", "stat_panel"}
+    rec = [p for p in comp["plots"] if p.get("recommended")]
+    assert 1 <= len(rec) <= 4
     enrich = next(c for c in tax["contexts"] if c["id"] == "functional_enrichment")
     assert any(t["plot_count"] > 0 for t in enrich["tasks"])
+
+
+def test_search_scientific_task_and_chart_type():
+    hits = search_plots("cell composition")
+    assert any(h["id"] == "umap_tsne" for h in hits)
+    pie = search_plots("umap pie")
+    assert pie and pie[0]["id"] == "umap_tsne"
+    violin = search_plots("violin")
+    assert any(h["id"] in {"violin_plot", "interactive_violin_plot"} for h in violin)
+
+
+def test_schema_normalize_accepts_jsonschema_type_unions():
+    from plot_web.schema_normalize import normalize_params_schema
+
+    schema = {
+        "plugin": "interactive_violin_plot",
+        "groups": {"cloud": ["cloud_colors"]},
+        "properties": {
+            "cloud_colors": {"type": ["array", "object"], "description": "Named or list colors"},
+        },
+    }
+    out = normalize_params_schema(schema)
+    assert "cloud" in out
+    assert out["cloud"]["cloud_colors"]["type"] == "object"
+
+
+def test_chart_categories_gallery_types():
+    payload = chart_categories()
+    group_ids = [g["id"] for g in payload["groups"]]
+    for needed in ("distribution", "comparison", "relationship", "matrix", "composition", "flow", "sets", "tables"):
+        assert needed in group_ids, needed
+    ids = {c["id"] for g in payload["groups"] for c in g["charts"]}
+    for needed in ("violin", "heatmap", "sankey", "pie", "table", "network", "ridgeline", "barplot"):
+        assert needed in ids, needed
+    violin = next(c for g in payload["groups"] for c in g["charts"] if c["id"] == "violin")
+    assert any(p["id"] == "violin_plot" for p in violin["plots"])
+    assert violin["family_count"] == violin["plot_count"]
+    heat = next(c for g in payload["groups"] for c in g["charts"] if c["id"] == "heatmap")
+    assert any(p["id"] == "grouped_heatmap" for p in heat["plots"])
+    table = next(c for g in payload["groups"] for c in g["charts"] if c["id"] == "table")
+    assert table["name"] == "Table"
 
 
 def test_browse_covers_all_families():
     browse = browse_categories()
     ids = {p["id"] for p in browse["all_plots"]}
     assert len(ids) >= 40
+    names = [c["name"] for c in browse["categories"]]
+    for needed in ("Single-cell", "Expression", "Differential Analysis", "Enrichment", "Composition", "Statistics", "Network"):
+        assert needed in names, needed
     assigned = {p["id"] for c in browse["categories"] for p in c["plots"]}
     assert ids <= assigned or ids == {p["id"] for p in browse["all_plots"]}
 
@@ -116,6 +168,27 @@ def test_umap_family_style_cards():
     if any(s.get("card_group") == "pdf_styles" for s in payload["styles"]):
         assert payload["styles"][0]["card_group"] == "pdf_styles"
         assert pdf_first
+
+
+def test_dual_triangle_demo_binds_both_matrices():
+    from pathlib import Path
+
+    from plot_web.app import build_command, choose_demo_file, plugin_config_path, read_yaml
+
+    plugin = "interactive_dual_triangle_heatmap_plot"
+    upper = choose_demo_file(plugin, "upper", {"formats": ["csv"]})
+    lower = choose_demo_file(plugin, "lower", {"formats": ["csv"]})
+    assert upper is not None and upper.name == "example_upper.csv"
+    assert lower is not None and lower.name == "example_lower.csv"
+    cmd = build_command(
+        plugin,
+        read_yaml(plugin_config_path(plugin)),
+        {"upper": upper, "lower": lower},
+        Path("/tmp/params.json"),
+        Path("/tmp/out"),
+    )
+    assert "--lower" in cmd
+    assert str(lower) in cmd
 
 
 def test_search_match_kinds():

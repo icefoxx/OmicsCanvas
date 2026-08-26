@@ -2,11 +2,14 @@
 const Discovery = {
   taxonomy: { contexts: [] },
   browse: { categories: [], all_plots: [] },
+  chartCategories: { groups: [] },
   pluginsById: {},
-  view: "home", // home | browse | analysis | search | family
+  view: "home", // home | browse | analysis | category | search | family
   browseCategory: "all",
   analysisContext: null,
   analysisTask: null,
+  chartId: null,
+  chartGroup: null,
   searchQuery: "",
   searchResults: [],
   recent: [],
@@ -20,6 +23,62 @@ const Discovery = {
 };
 
 const STYLE_PAGE = 10;
+
+const ENTRY_MODES = [
+  { id: "scenario", label: "Explore by Scenario", path: "/scenario" },
+  { id: "category", label: "Browse by Chart Type", path: "/category" },
+  { id: "browse", label: "All Plots", path: "/plots" },
+];
+
+function chartIcon(id) {
+  const stroke = 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+  const icons = {
+    violin: `<path d="M24 8c4 8 6 14 6 20a6 6 0 0 1-12 0c0-6 2-12 6-20z" ${stroke}/><path d="M18 26h12" ${stroke}/>`,
+    density: `<path d="M6 36c6-2 8-18 12-18s5 10 9 10 5-16 9-16 4 16 6 20" ${stroke}/>`,
+    histogram: `<path d="M8 36V22h6v14M18 36V12h6v24M28 36V18h6v18M38 36v-8h6v8" ${stroke}/>`,
+    boxplot: `<path d="M24 8v8M24 32v8M16 16h16v16H16zM12 24h4M32 24h4" ${stroke}/>`,
+    ridgeline: `<path d="M6 34c4-8 8-8 12 0 4-10 8-10 12 0 4-8 8-8 12 0M6 24c4-8 8-8 12 0 4-10 8-10 12 0 4-8 8-8 12 0" ${stroke}/>`,
+    beeswarm: `<circle cx="18" cy="22" r="2.2" fill="currentColor"/><circle cx="24" cy="16" r="2.2" fill="currentColor"/><circle cx="30" cy="22" r="2.2" fill="currentColor"/><circle cx="22" cy="28" r="2.2" fill="currentColor"/><circle cx="28" cy="30" r="2.2" fill="currentColor"/><circle cx="16" cy="30" r="2.2" fill="currentColor"/>`,
+    scatter: `<circle cx="14" cy="30" r="2.4" fill="currentColor"/><circle cx="22" cy="18" r="2.4" fill="currentColor"/><circle cx="30" cy="24" r="2.4" fill="currentColor"/><circle cx="36" cy="14" r="2.4" fill="currentColor"/>`,
+    heatmap: `<rect x="8" y="8" width="10" height="10" rx="1" fill="currentColor" opacity=".9"/><rect x="20" y="8" width="10" height="10" rx="1" fill="currentColor" opacity=".45"/><rect x="32" y="8" width="10" height="10" rx="1" fill="currentColor" opacity=".7"/><rect x="8" y="20" width="10" height="10" rx="1" fill="currentColor" opacity=".35"/><rect x="20" y="20" width="10" height="10" rx="1" fill="currentColor" opacity=".8"/><rect x="32" y="20" width="10" height="10" rx="1" fill="currentColor" opacity=".25"/><rect x="8" y="32" width="10" height="10" rx="1" fill="currentColor" opacity=".55"/><rect x="20" y="32" width="10" height="10" rx="1" fill="currentColor" opacity=".3"/><rect x="32" y="32" width="10" height="10" rx="1" fill="currentColor" opacity=".95"/>`,
+    correlogram: `<path d="M10 10h28v28H10z" ${stroke}/><path d="M10 24h28M24 10v28" ${stroke}/>`,
+    bubble: `<circle cx="18" cy="28" r="7" ${stroke}/><circle cx="30" cy="18" r="10" ${stroke}/><circle cx="34" cy="32" r="4" ${stroke}/>`,
+    connected_scatter: `<path d="M10 34l8-12 8 4 10-16" ${stroke}/><circle cx="10" cy="34" r="2.4" fill="currentColor"/><circle cx="18" cy="22" r="2.4" fill="currentColor"/><circle cx="26" cy="26" r="2.4" fill="currentColor"/><circle cx="36" cy="10" r="2.4" fill="currentColor"/>`,
+    density_2d: `<ellipse cx="24" cy="24" rx="14" ry="10" ${stroke}/><ellipse cx="24" cy="24" rx="8" ry="5" ${stroke}/><ellipse cx="24" cy="24" rx="3" ry="2" ${stroke}/>`,
+    barplot: `<path d="M10 36V18h6v18M20 36V10h6v26M30 36V22h6v14" ${stroke}/>`,
+    radar: `<path d="M24 8l12 9-4.5 14h-15L12 17z" ${stroke}/><path d="M24 16l6 4.5-2.2 7h-7.6L18 20.5z" ${stroke}/>`,
+    wordcloud: `<text x="8" y="22" font-size="12" fill="currentColor" font-weight="800">Aa</text><text x="26" y="18" font-size="8" fill="currentColor">bb</text><text x="16" y="36" font-size="10" fill="currentColor">Cc</text>`,
+    parallel: `<path d="M12 8v32M24 8v32M36 8v32M12 16l12 8 12-12M12 30l12-6 12 10" ${stroke}/>`,
+    lollipop: `<path d="M14 36V18M24 36V12M34 36V22" ${stroke}/><circle cx="14" cy="18" r="3.5" fill="currentColor"/><circle cx="24" cy="12" r="3.5" fill="currentColor"/><circle cx="34" cy="22" r="3.5" fill="currentColor"/>`,
+    circular_barplot: `<path d="M24 24l10-8M24 24l2 12M24 24l-12 2" ${stroke}/><circle cx="24" cy="24" r="14" ${stroke}/>`,
+    table: `<rect x="8" y="10" width="32" height="28" rx="2" ${stroke}/><path d="M8 18h32M8 26h32M8 34h32M18 10v28M30 10v28" ${stroke}/>`,
+    stacked_bar: `<path d="M12 36v-8h8v8h-8zm0-8v-8h8v8h-8zm0-8V12h8v8h-8zM28 36v-6h8v6h-8zm0-6v-10h8v10h-8zm0-10V14h8v6h-8z" fill="currentColor"/>`,
+    treemap: `<rect x="8" y="8" width="20" height="32" ${stroke}/><rect x="28" y="8" width="12" height="18" ${stroke}/><rect x="28" y="26" width="12" height="14" ${stroke}/>`,
+    doughnut: `<circle cx="24" cy="24" r="14" ${stroke}/><circle cx="24" cy="24" r="6" ${stroke}/>`,
+    pie: `<path d="M24 24L24 8A16 16 0 0 1 38 32z" fill="currentColor"/><circle cx="24" cy="24" r="16" ${stroke}/>`,
+    dendrogram: `<path d="M8 36v-8h12v8M28 36v-8h12v8M14 28V20h20v8M24 20V12" ${stroke}/>`,
+    circular_packing: `<circle cx="24" cy="24" r="14" ${stroke}/><circle cx="18" cy="22" r="6" ${stroke}/><circle cx="30" cy="26" r="5" ${stroke}/>`,
+    waffle: `<rect x="8" y="8" width="8" height="8" fill="currentColor"/><rect x="20" y="8" width="8" height="8" fill="currentColor" opacity=".4"/><rect x="32" y="8" width="8" height="8" fill="currentColor"/><rect x="8" y="20" width="8" height="8" fill="currentColor" opacity=".4"/><rect x="20" y="20" width="8" height="8" fill="currentColor"/><rect x="32" y="20" width="8" height="8" fill="currentColor" opacity=".4"/><rect x="8" y="32" width="8" height="8" fill="currentColor"/><rect x="20" y="32" width="8" height="8" fill="currentColor"/><rect x="32" y="32" width="8" height="8" fill="currentColor" opacity=".4"/>`,
+    line: `<path d="M8 32l8-10 8 6 8-16 8 8" ${stroke}/>`,
+    area: `<path d="M8 34l8-12 8 6 8-16 8 8v14z" ${stroke} fill="currentColor" opacity=".2"/>`,
+    stacked_area: `<path d="M8 36l10-8 10 4 12-10v14z" fill="currentColor" opacity=".35"/><path d="M8 28l10-10 10 6 12-12v12L28 24 18 18 8 28z" fill="currentColor" opacity=".55"/>`,
+    streamchart: `<path d="M6 24c6-8 10-8 16 0s10 8 16 0M6 30c6-6 10-6 16 0s10 6 16 0" ${stroke}/>`,
+    time_series: `<path d="M8 36V12M8 36h32" ${stroke}/><path d="M12 28l8-8 6 4 10-12" ${stroke}/>`,
+    chord: `<path d="M24 8a16 16 0 1 1 0 32 16 16 0 0 1 0-32z" ${stroke}/><path d="M24 8c8 8 8 24 0 32M16 14c10 6 16 10 16 20" ${stroke}/>`,
+    network: `<circle cx="14" cy="16" r="4" ${stroke}/><circle cx="34" cy="14" r="4" ${stroke}/><circle cx="24" cy="34" r="4" ${stroke}/><circle cx="24" cy="22" r="3" ${stroke}/><path d="M17 18l5 3M31 16l-5 5M24 25v5" ${stroke}/>`,
+    sankey: `<path d="M8 12h8c8 0 8 10 16 10h8M8 36h8c8 0 8-10 16-10h8M8 24h8" ${stroke}/>`,
+    arc: `<path d="M8 36h32M12 36c4-16 20-16 24 0M18 36c2-8 10-8 12 0" ${stroke}/>`,
+    edge_bundling: `<path d="M10 12c16 4 12 20 28 24M10 36c16-4 12-20 28-24M10 24h28" ${stroke}/>`,
+    umap: `<circle cx="16" cy="18" r="2" fill="currentColor"/><circle cx="22" cy="14" r="2" fill="currentColor"/><circle cx="20" cy="22" r="2" fill="currentColor"/><circle cx="32" cy="28" r="2" fill="currentColor"/><circle cx="36" cy="22" r="2" fill="currentColor"/><circle cx="28" cy="32" r="2" fill="currentColor"/>`,
+    volcano: `<path d="M8 36l10-20 4 8 6-12 12 24z" ${stroke}/><circle cx="28" cy="14" r="2" fill="currentColor"/>`,
+    enrichment: `<path d="M8 36c8-2 12-20 20-20 6 0 8 8 12 8" ${stroke}/>`,
+    genomic_track: `<path d="M8 24h32M12 18v12M20 14v20M28 20v8M36 16v16" ${stroke}/>`,
+    venn: `<circle cx="19" cy="24" r="10" ${stroke}/><circle cx="29" cy="24" r="10" ${stroke}/>`,
+    upset: `<path d="M10 28V16h4v12M18 28V10h4v18M26 28v-8h4v8" ${stroke}/><circle cx="12" cy="34" r="2" fill="currentColor"/><circle cx="20" cy="34" r="2" fill="currentColor"/><circle cx="28" cy="34" r="2" fill="currentColor" opacity=".3"/>`,
+  };
+  const inner = icons[id] || `<circle cx="24" cy="24" r="10" ${stroke}/>`;
+  return `<svg class="chart-icon-svg" viewBox="0 0 48 48" aria-hidden="true">${inner}</svg>`;
+}
 
 const FAVORITES_KEY = "omicscanvas.favoritePlots";
 const RECENT_KEY = "omicscanvas.recentPlots";
@@ -111,11 +170,11 @@ function familyCard(plot, options = {}) {
         <p>${plot.description || "Open this visualization family in Plot Studio."}</p>
         <div class="family-meta">
           <span>${plot.variant_count || 0} variants</span>
-          <span>Preset cards</span>
           ${options.compat ? `<span class="compat-ok">Compatible</span>` : ""}
         </div>
+        ${options.why ? `<p class="family-why">${escapeHtml(options.why)}</p>` : ""}
         <div class="card-btn-row">
-          <button type="button" class="card-btn primary" data-open="${plot.id}">View styles</button>
+          <button type="button" class="card-btn primary" data-open="${plot.id}">Explore styles</button>
           <button type="button" class="card-btn secondary" data-demo="${plot.id}" data-variant="${variant || ""}">Quick Demo</button>
         </div>
       </div>
@@ -178,25 +237,32 @@ function renderHomeDiscovery() {
     const plot = findPlot(item.id) || item;
     return familyCard(plot, { source_context: "recent" });
   }).join("");
-  const contextTiles = Discovery.taxonomy.contexts.map((ctx) => `
-    <button type="button" class="analysis-tile" data-go-analysis="${ctx.id}">
-      <strong>${ctx.name}</strong>
-      <span>${ctx.tasks.length} tasks</span>
-    </button>
-  `).join("");
+  const launchTiles = `
+    <div class="analysis-grid">
+      <button type="button" class="analysis-tile" data-entry="scenario">
+        <strong>Explore by Scenario</strong>
+        <span>Start from your scientific question.</span>
+      </button>
+      <button type="button" class="analysis-tile" data-entry="category">
+        <strong>Browse by Chart Type</strong>
+        <span>Start from the visual form you want.</span>
+      </button>
+      <button type="button" class="analysis-tile" data-entry="browse">
+        <strong>All Plots</strong>
+        <span>Search every visualization family.</span>
+      </button>
+    </div>
+  `;
   return `
     <section class="discover-hero">
       <p class="eyebrow">Scientific Plot Studio</p>
       <h2>Find the right plot for your question</h2>
-      <p>Search by name, or start from your analysis context. Both paths open the same Studio.</p>
+      <p>Search by name, start from a scientific scenario, or pick a chart type. Every path opens the same Studio.</p>
       <label class="hero-search">
         <input id="pluginSearch" class="hero-search-input" placeholder="Search plots or describe what you need…" value="${escapeHtml(Discovery.searchQuery)}">
       </label>
-      <div class="entry-toggle">
-        <button type="button" data-entry="analysis">Explore by Analysis</button>
-        <button type="button" data-entry="browse">Browse All Plots</button>
-      </div>
     </section>
+    <section class="discover-section">${launchTiles}</section>
     ${Discovery.recommendations.length ? `
       <section class="discover-section">
         <h3>Recommended for your data</h3>
@@ -209,10 +275,6 @@ function renderHomeDiscovery() {
     <section class="discover-section">
       <h3>Recently used</h3>
       ${recentCards ? `<div class="family-grid">${recentCards}</div>` : `<p class="empty-inline">No recent plots yet.</p>`}
-    </section>
-    <section class="discover-section">
-      <h3>Explore by analysis</h3>
-      <div class="analysis-grid">${contextTiles}</div>
     </section>
   `;
 }
@@ -231,57 +293,58 @@ function renderBrowseDiscovery() {
   return `
     <section class="discover-hero compact">
       <h2>Browse all plots</h2>
-      <p>One card per visualization family. Click a family to browse its preset style cards.</p>
+      <p>Search visualization families directly.</p>
       <label class="hero-search">
         <input id="pluginSearch" class="hero-search-input" placeholder="Search plots…" value="${escapeHtml(Discovery.searchQuery)}">
       </label>
-      <div class="entry-toggle">
-        <button type="button" data-entry="analysis">Explore by Analysis</button>
-        <button type="button" class="active" data-entry="browse">Browse All Plots</button>
-      </div>
     </section>
     <div class="browse-toolbar">
-      <div class="filter-pills">${pills}</div>
+      <div class="filter-pills"><span class="filter-label">Filter:</span>${pills}</div>
       <div class="tool-count-info">Showing <strong id="toolCount">${list.length}</strong> families</div>
     </div>
-    <div class="family-grid" id="plotCards">${list.map((p) => familyCard(p, { source_context: "browse" })).join("") || `<div class="empty card">No plots in this category.</div>`}</div>
+    <div class="family-grid" id="plotCards">${list.map((p) => familyCard(p, { source_context: "browse" })).join("") || `<div class="empty card">No plots in this filter.</div>`}</div>
+  `;
+}
+
+function scenarioCard(ctx) {
+  const nTasks = ctx.task_count || (ctx.tasks || []).length;
+  const nPlots = ctx.plot_count ?? (ctx.tasks || []).reduce((n, t) => n + (t.plot_count || 0), 0);
+  return `
+    <button type="button" class="analysis-tile scenario-card" data-go-analysis="${ctx.id}">
+      <strong>${escapeHtml(ctx.name)}</strong>
+      <p>${escapeHtml(ctx.blurb || "Choose a scientific task to see recommended plot families.")}</p>
+      <span>${nTasks} analysis tasks · ${nPlots} plots</span>
+    </button>
   `;
 }
 
 function renderAnalysisDiscovery() {
   const ctx = Discovery.taxonomy.contexts.find((c) => c.id === Discovery.analysisContext);
   if (!ctx) {
-    const tiles = Discovery.taxonomy.contexts.map((item) => `
-      <button type="button" class="analysis-tile" data-go-analysis="${item.id}">
-        <strong>${item.name}</strong>
-        <span>${item.tasks.reduce((n, t) => n + t.plot_count, 0)} plots</span>
-      </button>
-    `).join("");
     return `
       <section class="discover-hero compact">
-        <h2>Explore by analysis</h2>
-        <p>Start from the scientific question, then pick a recommended family.</p>
-        <div class="entry-toggle">
-          <button type="button" class="active" data-entry="analysis">Explore by Analysis</button>
-          <button type="button" data-entry="browse">Browse All Plots</button>
-        </div>
+        <h2>Explore by Scenario</h2>
+        <p>Start from your scientific question and find suitable visualizations.</p>
       </section>
-      <div class="analysis-grid">${tiles}</div>
+      <div class="analysis-grid">${(Discovery.taxonomy.contexts || []).map(scenarioCard).join("")}</div>
     `;
   }
   const task = ctx.tasks.find((t) => t.id === Discovery.analysisTask);
   if (!task) {
     return `
-      <nav class="crumbs"><a href="/plots">Plots</a> / ${ctx.name}</nav>
+      <nav class="crumbs"><a href="/scenario">Explore by Scenario</a> / ${escapeHtml(ctx.name)}</nav>
       <section class="discover-hero compact">
-        <h2>${ctx.name}</h2>
-        <p>Choose a task to see recommended plot families.</p>
+        <h2>${escapeHtml(ctx.name)}</h2>
+        <p>${escapeHtml(ctx.blurb || "Choose a scientific task to see recommended plot families.")}</p>
       </section>
       <div class="task-list">
         ${ctx.tasks.map((t) => `
           <button type="button" class="task-row" data-go-task="${ctx.id}/${t.id}">
-            <strong>${t.name}</strong>
-            <span>${t.plot_count} families</span>
+            <span>
+              <strong>${escapeHtml(t.name)}</strong>
+              <em>${escapeHtml(t.blurb || "")}</em>
+            </span>
+            <span>${t.plot_count} plot families</span>
           </button>
         `).join("")}
       </div>
@@ -294,6 +357,7 @@ function renderAnalysisDiscovery() {
     recommended_variant: p.recommended_variant,
     source_context: ctx.context,
     source_task: task.id,
+    why: p.why || task.blurb,
   })).join("");
   const otherHtml = other.map((p) => familyCard(p, {
     recommended_variant: p.recommended_variant,
@@ -301,19 +365,82 @@ function renderAnalysisDiscovery() {
     source_task: task.id,
   })).join("");
   return `
-    <nav class="crumbs"><a href="/plots">Plots</a> / <a href="/analysis/${ctx.id}">${ctx.name}</a> / ${task.name}</nav>
+    <nav class="crumbs"><a href="/scenario">Explore by Scenario</a> / <a href="/scenario/${ctx.id}">${escapeHtml(ctx.name)}</a> / ${escapeHtml(task.name)}</nav>
     <section class="discover-hero compact">
-      <h2>${ctx.name} → ${task.name}</h2>
-      <p>Recommended families share this scientific task in the plot registry.</p>
+      <h2>${escapeHtml(ctx.name)} / ${escapeHtml(task.name)}</h2>
+      <p>${escapeHtml(task.blurb || "Recommended plot families for this scientific task.")}</p>
     </section>
     <section class="discover-section">
       <h3>Recommended</h3>
-      <div class="family-grid">${recHtml || `<p class="empty-inline">No tagged recommendations — showing related families below.</p>`}</div>
+      <div class="family-grid">${recHtml || `<p class="empty-inline">No tagged recommendations — open more compatible plots below.</p>`}</div>
     </section>
-    <section class="discover-section">
-      <h3>Other useful views</h3>
-      <div class="family-grid">${otherHtml || `<p class="empty-inline">No additional families for this task.</p>`}</div>
+    ${other.length ? `
+      <details class="more-plots">
+        <summary>More compatible plots</summary>
+        <div class="family-grid">${otherHtml}</div>
+      </details>` : ""}
+  `;
+}
+
+function chartTile(chart) {
+  const n = chart.plot_count || (chart.plots || []).length;
+  return `
+    <button type="button" class="chart-tile ${n ? "" : "is-empty"}" data-go-chart="${chart.id}">
+      <span class="chart-tile-icon">${chartIcon(chart.icon || chart.id)}</span>
+      <strong>${escapeHtml(chart.name)}</strong>
+      <span>${n ? `${n} plot famil${n === 1 ? "y" : "ies"}` : "Coming soon"}</span>
+    </button>
+  `;
+}
+
+function findChart(id) {
+  for (const group of Discovery.chartCategories.groups || []) {
+    const chart = (group.charts || []).find((item) => item.id === id);
+    if (chart) return { group, chart };
+  }
+  return null;
+}
+
+function renderCategoryDiscovery() {
+  const groups = Discovery.chartCategories.groups || [];
+  if (Discovery.chartId) {
+    const found = findChart(Discovery.chartId);
+    if (!found) {
+      return `
+        <nav class="crumbs"><a href="/category">Browse by Chart Type</a> / Unknown</nav>
+        <p class="empty-inline">That chart type was not found. <a href="/category">Back to chart types</a>.</p>
+      `;
+    }
+    const { group, chart } = found;
+    const cards = (chart.plots || []).map((p) => familyCard(p, { source_context: "category" })).join("");
+    return `
+      <nav class="crumbs"><a href="/category">Browse by Chart Type</a> / <a href="/category?group=${group.id}">${escapeHtml(group.name)}</a> / ${escapeHtml(chart.name)}</nav>
+      <section class="discover-hero compact">
+        <div class="category-hero-row">
+          <span class="chart-tile-icon large">${chartIcon(chart.icon || chart.id)}</span>
+          <div>
+            <h2>${escapeHtml(chart.name)}</h2>
+            <p>${chart.plot_count ? `Choose a plot family, then explore its visualization styles.` : `No plot family is wired to this chart type yet.`}</p>
+          </div>
+        </div>
+      </section>
+      <div class="family-grid">${cards || `<div class="empty card">Coming soon — this chart type is reserved so the gallery stays complete.</div>`}</div>
+    `;
+  }
+  const visible = Discovery.chartGroup
+    ? groups.filter((g) => g.id === Discovery.chartGroup)
+    : groups;
+  return `
+    <section class="discover-hero compact">
+      <h2>Browse by Chart Type</h2>
+      <p>Start from the visual form you want to create.</p>
     </section>
+    ${(visible.length ? visible : groups).map((group) => `
+      <section class="discover-section chart-group" id="chart-group-${group.id}">
+        <h3>${escapeHtml(group.name)}</h3>
+        <div class="chart-tile-grid">${(group.charts || []).map(chartTile).join("")}</div>
+      </section>
+    `).join("")}
   `;
 }
 
@@ -346,14 +473,13 @@ function escapeHtml(value) {
 }
 
 function styleBadge(style) {
-  if (style.card_group === "pdf_styles") return "PDF STYLE";
-  const mode = String(style.mode || style.plot_type || "preset").replace(/_/g, " ");
-  return mode.toUpperCase().slice(0, 18);
+  if (style.card_group === "pdf_styles") return "RECOMMENDED";
+  return "VARIANT";
 }
 
 function styleCard(plot, style) {
   const thumb = style.image || previewUrl(plot);
-  const blurb = style.blurb || style.howto || `Preset “${style.label}” for ${plot.name}.`;
+  const blurb = style.blurb || style.howto || `Visualization style “${style.label}” for ${plot.name}.`;
   return `
     <article class="plot-card style-card" data-style-id="${escapeHtml(style.id)}">
       <div class="card-thumb-box">
@@ -380,7 +506,7 @@ function renderFamilyDiscovery() {
   const plot = Discovery.familyPlot;
   if (!plot) {
     return `
-      <nav class="crumbs"><a href="/plots">Plots</a> / Unknown family</nav>
+      <nav class="crumbs"><a href="/plots">All Plots</a> / Unknown family</nav>
       <p class="empty-inline">This plot family was not found. <a href="/plots">Back to all plots</a>.</p>
     `;
   }
@@ -390,10 +516,10 @@ function renderFamilyDiscovery() {
   const cards = shown.map((style) => styleCard(plot, style)).join("");
   const loading = total === 0 && !Discovery.familyStylesCache[plot.id];
   return `
-    <nav class="crumbs"><a href="/plots">Plots</a> / ${escapeHtml(plot.name)}</nav>
+    <nav class="crumbs"><a href="/plots">All Plots</a> / ${escapeHtml(plot.name)}</nav>
     <section class="discover-hero compact">
       <h2>${escapeHtml(plot.name)}</h2>
-      <p>${escapeHtml(plot.description || "Choose a preset style card, then open it in Plot Studio.")}</p>
+      <p>${escapeHtml(plot.description || "Choose a visualization style, then open it in Plot Studio.")}</p>
       <div class="family-hero-actions">
         <button type="button" class="card-btn primary" data-family-studio="${plot.id}">Open Studio</button>
         <button type="button" class="card-btn secondary" data-demo="${plot.id}">Quick Demo</button>
@@ -401,17 +527,17 @@ function renderFamilyDiscovery() {
     </section>
     <div class="browse-toolbar">
       <div class="tool-count-info">
-        ${loading ? "Loading preset cards…" : `Showing <strong>${shown.length}</strong> of <strong>${total}</strong> style cards`}
+        ${loading ? "Loading visualization styles…" : `Showing <strong>${shown.length}</strong> of <strong>${total}</strong> styles`}
       </div>
     </div>
     <div class="plot-cards style-grid" id="styleCards">
-      ${loading ? `<div class="empty card">Loading styles…</div>` : (cards || `<div class="empty card">No preset cards yet for this family. Open Studio to plot from scratch.</div>`)}
+      ${loading ? `<div class="empty card">Loading styles…</div>` : (cards || `<div class="empty card">No visualization styles yet for this family. Open Studio to plot from scratch.</div>`)}
     </div>
     ${remaining ? `
       <div class="load-more-wrap" id="styleLoadMore">
         <button type="button" class="load-more-btn" data-load-more="1">Load more · ${Math.min(STYLE_PAGE, remaining)} of ${remaining} remaining</button>
         <p class="load-more-hint">Scroll down to load the next ${STYLE_PAGE} cards, or click Load more.</p>
-      </div>` : (total > STYLE_PAGE ? `<p class="load-more-hint done">All ${total} style cards are shown.</p>` : "")}
+      </div>` : (total > STYLE_PAGE ? `<p class="load-more-hint done">All ${total} styles are shown.</p>` : "")}
   `;
 }
 
@@ -470,7 +596,7 @@ function updateLoadMoreChrome(root) {
   const shown = Math.min(Discovery.styleLimit, total);
   const remaining = Math.max(0, total - shown);
   const count = root.querySelector(".browse-toolbar .tool-count-info");
-  if (count) count.innerHTML = `Showing <strong>${shown}</strong> of <strong>${total}</strong> style cards`;
+  if (count) count.innerHTML = `Showing <strong>${shown}</strong> of <strong>${total}</strong> styles`;
   const wrap = root.querySelector("#styleLoadMore");
   if (!wrap) return;
   if (!remaining) {
@@ -539,12 +665,13 @@ function renderDiscovery() {
   if (Discovery.view === "search") html = renderSearchDiscovery();
   else if (Discovery.view === "browse") html = renderBrowseDiscovery();
   else if (Discovery.view === "analysis") html = renderAnalysisDiscovery();
+  else if (Discovery.view === "category") html = renderCategoryDiscovery();
   else if (Discovery.view === "family") html = renderFamilyDiscovery();
   else html = renderHomeDiscovery();
   host.innerHTML = html;
   bindFamilyCards(host);
   if (Discovery.view === "family") bindStyleCards(host);
-  host.querySelectorAll(".crumbs a").forEach((link) => {
+  host.querySelectorAll(".crumbs a, .load-more-hint a").forEach((link) => {
     link.onclick = (event) => {
       const href = link.getAttribute("href") || "";
       if (href.startsWith("/")) {
@@ -554,13 +681,20 @@ function renderDiscovery() {
     };
   });
   host.querySelectorAll("[data-entry]").forEach((btn) => {
-    btn.onclick = () => navigateDiscovery(btn.dataset.entry === "analysis" ? "/analysis" : "/plots");
+    btn.onclick = () => {
+      const mode = ENTRY_MODES.find((item) => item.id === btn.dataset.entry)
+        || (btn.dataset.entry === "analysis" ? { path: "/scenario" } : null);
+      navigateDiscovery(mode ? mode.path : "/plots");
+    };
   });
   host.querySelectorAll("[data-go-analysis]").forEach((btn) => {
-    btn.onclick = () => navigateDiscovery(`/analysis/${btn.dataset.goAnalysis}`);
+    btn.onclick = () => navigateDiscovery(`/scenario/${btn.dataset.goAnalysis}`);
   });
   host.querySelectorAll("[data-go-task]").forEach((btn) => {
-    btn.onclick = () => navigateDiscovery(`/analysis/${btn.dataset.goTask}`);
+    btn.onclick = () => navigateDiscovery(`/scenario/${btn.dataset.goTask}`);
+  });
+  host.querySelectorAll("[data-go-chart]").forEach((btn) => {
+    btn.onclick = () => navigateDiscovery(`/category/${btn.dataset.goChart}`);
   });
   host.querySelectorAll("[data-browse]").forEach((btn) => {
     btn.onclick = () => {
@@ -594,11 +728,11 @@ function highlightSidebar() {
   document.querySelectorAll(".cat-nav-item").forEach((btn) => {
     let on = false;
     if (btn.dataset.nav === "home") on = Discovery.view === "home";
-    if (btn.dataset.nav === "browse") on = (Discovery.view === "browse" && Discovery.browseCategory === "all") || Discovery.view === "family";
+    if (btn.dataset.nav === "browse") on = ((Discovery.view === "browse" && Discovery.browseCategory !== "favorites") || Discovery.view === "family" || Discovery.view === "search");
+    if (btn.dataset.nav === "category") on = Discovery.view === "category";
     if (btn.dataset.nav === "favorites") on = Discovery.view === "browse" && Discovery.browseCategory === "favorites";
     if (btn.dataset.nav === "recent") on = Discovery.view === "home";
-    if (btn.dataset.browse) on = Discovery.view === "browse" && Discovery.browseCategory === btn.dataset.browse;
-    if (btn.dataset.analysis) on = Discovery.view === "analysis" && Discovery.analysisContext === btn.dataset.analysis;
+    if (btn.dataset.analysis === "root") on = Discovery.view === "analysis";
     btn.classList.toggle("active", on);
   });
 }
@@ -631,6 +765,8 @@ async function applyDiscoveryRoute() {
   const params = new URLSearchParams(window.location.search);
   Discovery.analysisContext = null;
   Discovery.analysisTask = null;
+  Discovery.chartId = null;
+  Discovery.chartGroup = null;
   if (params.get("q")) {
     runDiscoverySearch(params.get("q"));
     return;
@@ -640,11 +776,16 @@ async function applyDiscoveryRoute() {
   } else if (path === "/plots") {
     Discovery.view = "browse";
     Discovery.browseCategory = params.get("category") || "all";
-  } else if (path.startsWith("/analysis")) {
+  } else if (path.startsWith("/analysis") || path.startsWith("/scenario")) {
     Discovery.view = "analysis";
     const parts = path.split("/").filter(Boolean);
     Discovery.analysisContext = parts[1] || null;
     Discovery.analysisTask = parts[2] || null;
+  } else if (path === "/category" || path.startsWith("/category/") || path === "/chart-type" || path.startsWith("/chart-type/")) {
+    Discovery.view = "category";
+    const parts = path.split("/").filter(Boolean);
+    Discovery.chartId = parts[1] || null;
+    Discovery.chartGroup = params.get("group") || null;
   } else if (path.startsWith("/family/")) {
     Discovery.view = "family";
     const plotId = decodeURIComponent(path.split("/").filter(Boolean)[1] || "");
@@ -694,50 +835,30 @@ async function refreshRecommendationsFromData() {
 function renderSidebarDiscovery() {
   const nav = $("sidebarCategoryList");
   if (!nav) return;
-  const browseLinks = (Discovery.browse.categories || []).map((c) => `
-    <button class="cat-nav-item" data-browse="${c.id}">
-      <span class="cat-icon">·</span>
-      <span class="cat-label">${c.name}</span>
-    </button>
-  `).join("");
-  const analysisLinks = (Discovery.taxonomy.contexts || []).map((c) => `
-    <button class="cat-nav-item" data-analysis="${c.id}">
-      <span class="cat-icon">·</span>
-      <span class="cat-label">${c.name}</span>
-    </button>
-  `).join("");
   nav.innerHTML = `
+    <div class="sidebar-sep">Discover</div>
     <button class="cat-nav-item" data-nav="home"><span class="cat-icon">⌂</span><span class="cat-label">Home</span></button>
     <button class="cat-nav-item" data-nav="browse"><span class="cat-icon">▦</span><span class="cat-label">All Plots</span></button>
-    <button class="cat-nav-item" data-analysis="root"><span class="cat-icon">◎</span><span class="cat-label">Explore by Analysis</span></button>
+    <button class="cat-nav-item" data-analysis="root"><span class="cat-icon">◎</span><span class="cat-label">Explore by Scenario</span></button>
+    <button class="cat-nav-item" data-nav="category"><span class="cat-icon">▣</span><span class="cat-label">Browse by Chart Type</span></button>
     <button class="cat-nav-item" data-nav="favorites"><span class="cat-icon">★</span><span class="cat-label">Favorites</span></button>
-    <div class="sidebar-sep">Browse</div>
-    ${browseLinks}
-    <div class="sidebar-sep">Analysis</div>
-    ${analysisLinks}
   `;
   nav.querySelectorAll("[data-nav]").forEach((btn) => {
     btn.onclick = () => {
       if (btn.dataset.nav === "home") navigateDiscovery("/");
       if (btn.dataset.nav === "browse") navigateDiscovery("/plots");
+      if (btn.dataset.nav === "category") navigateDiscovery("/category");
       if (btn.dataset.nav === "favorites") {
         Discovery.view = "browse";
         Discovery.browseCategory = "favorites";
         history.pushState({}, "", "/plots?category=favorites");
         renderDiscovery();
+        highlightSidebar();
       }
     };
   });
-  nav.querySelectorAll("[data-browse]").forEach((btn) => {
-    btn.onclick = () => {
-      Discovery.browseCategory = btn.dataset.browse;
-      Discovery.view = "browse";
-      history.pushState({}, "", `/plots?category=${btn.dataset.browse}`);
-      renderDiscovery();
-    };
-  });
   nav.querySelectorAll("[data-analysis]").forEach((btn) => {
-    btn.onclick = () => navigateDiscovery(btn.dataset.analysis === "root" ? "/analysis" : `/analysis/${btn.dataset.analysis}`);
+    btn.onclick = () => navigateDiscovery("/scenario");
   });
 }
 
@@ -750,6 +871,7 @@ async function initDiscovery() {
     const payload = await api("/api/registry/discovery");
     Discovery.taxonomy = payload.taxonomy || { contexts: [] };
     Discovery.browse = payload.browse || { categories: [], all_plots: [] };
+    Discovery.chartCategories = payload.chart_categories || { groups: [] };
   } catch (err) {
     console.warn("Registry discovery unavailable", err);
   }

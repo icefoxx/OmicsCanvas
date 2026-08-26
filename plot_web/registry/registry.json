@@ -10186,7 +10186,8 @@
       "overlap",
       "network",
       "ranking",
-      "heatmap"
+      "heatmap",
+      "summary"
     ],
     "parameter_groups": [
       "data_mapping",

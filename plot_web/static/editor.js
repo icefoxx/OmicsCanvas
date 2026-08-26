@@ -26,6 +26,7 @@ const state = {
   autoUpdateTimer: null,
   isUpdating: false,
   lastOutputs: {},
+  userTouchedParams: false,
 };
 
 const SCIENTIFIC_PALETTES = {
@@ -71,6 +72,7 @@ async function api(path, options = {}) {
 }
 
 function triggerAutoUpdate(delayMs = 300) {
+  state.userTouchedParams = true;
   if (!state.autoUpdateEnabled) return;
   if (state.autoUpdateTimer) clearTimeout(state.autoUpdateTimer);
   state.autoUpdateTimer = setTimeout(() => {
@@ -2161,6 +2163,7 @@ function wireExampleSelect() {
       }
       renderParamContentArea();
       await runDemoSilent();
+      if (typeof refreshPlotGuide === "function") await refreshPlotGuide();
     } catch (err) {
       $("jobStatus").textContent = `Preset failed: ${err.message}`;
     }
@@ -2171,6 +2174,7 @@ async function init() {
   setupParamNavEvents();
   setupStageTools();
   wireExportMenu();
+  if (typeof initPlotGuide === "function") initPlotGuide();
 
   if ($("runDemoButton")) {
     $("runDemoButton").onclick = () => {
@@ -2226,6 +2230,7 @@ async function init() {
     } else {
       $("jobStatus").textContent = "Ready for data upload.";
     }
+    if (typeof refreshPlotGuide === "function") await refreshPlotGuide();
   } catch (err) {
     $("jobStatus").textContent = `Error loading plugin: ${err.message}`;
   }

@@ -9,11 +9,25 @@ import re
 from typing import Any
 
 
+def _primary_json_type(value: Any) -> str | None:
+    """JSON Schema allows type to be a string or a list of types."""
+    if isinstance(value, list):
+        types = [str(item) for item in value if item and item != "null"]
+        if "object" in types:
+            return "object"
+        if "array" in types:
+            return "array"
+        return types[0] if types else None
+    if value is None:
+        return None
+    return str(value)
+
+
 def _leaf_from_jsonschema(raw: Any, key: str) -> dict[str, Any]:
     if not isinstance(raw, dict):
         return {"help": str(raw), "label": key.replace("_", " ").title()}
     out: dict[str, Any] = {"label": key.replace("_", " ").title()}
-    t = raw.get("type")
+    t = _primary_json_type(raw.get("type"))
     if t == "array":
         out["type"] = "string_array"
     elif t == "integer":
