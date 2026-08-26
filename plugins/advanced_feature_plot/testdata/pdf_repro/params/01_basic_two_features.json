@@ -1,0 +1,25 @@
+{
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "theme_use": "themeBlank",
+  "point_size": 0.35,
+  "point_alpha": 0.9,
+  "palette": "Spectral",
+  "keep_zero": false,
+  "background_color": "grey85",
+  "legend_position": "right",
+  "raster": true,
+  "width": 9.5,
+  "height": 5.2,
+  "dpi": 220,
+  "feature_columns": [
+    "Atoh1",
+    "Neurod1"
+  ],
+  "title": "Basic feature plot \u00b7 Atoh1 + Neurod1",
+  "background_cutoff": 0,
+  "label_show": true,
+  "facet_ncol": 2
+}

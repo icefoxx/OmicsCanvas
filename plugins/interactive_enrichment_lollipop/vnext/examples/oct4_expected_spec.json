@@ -1,0 +1,63 @@
+{
+  "spec_version": "1.0",
+  "skill": {
+    "id": "interactive_enrichment_lollipop",
+    "version": "1.1.0"
+  },
+  "input": {
+    "source_file": "example_input.csv",
+    "format": "csv"
+  },
+  "mapping": {
+    "category": "category",
+    "signed_effect": "effect",
+    "group": "group",
+    "size": "size"
+  },
+  "transform": {
+    "preserve_order": true
+  },
+  "statistics": {
+    "method": null,
+    "multiple_testing": null
+  },
+  "visual": {
+    "orientation": "horizontal",
+    "zero_line": true,
+    "stem_to_zero": true,
+    "title": "OCT4A1/5A",
+    "xlab": "NES",
+    "ylab": "Top Enriched Terms",
+    "legend_show": true,
+    "interactive": false
+  },
+  "export": {
+    "format": "svg",
+    "formats": ["svg", "pdf", "png"],
+    "width_in": 9,
+    "height_in": 7,
+    "dpi": 300
+  },
+  "legacy_params": {
+    "sort_by": "input",
+    "reverse_categories": true,
+    "stem_color": "#B8B8B8",
+    "stem_width": 1.5,
+    "type_order": ["FDR<0.05", "FDR<0.25", "P.VAL<0.05"],
+    "type_colors": {
+      "FDR<0.05": "#EF3B2C",
+      "FDR<0.25": "#F4B6C2",
+      "P.VAL<0.05": "#9E9E9E"
+    },
+    "legend_title": "Group",
+    "size_legend_title": "GeneRatio",
+    "size_switch": true,
+    "min_radius": 4,
+    "max_radius": 20
+  },
+  "provenance": {
+    "generated_by_ai": false,
+    "user_modified": false,
+    "framework_version": "0.1.0"
+  }
+}

@@ -1,9 +1,9 @@
 {
   "id": "running",
-  "label": "running",
+  "label": "Faceted term-panel GSEA",
   "plugin_id": "fgsea_enrichment_plot",
-  "plot_type": "running",
-  "mode": "",
+  "plot_type": "faceted_running",
+  "mode": "single-term curve + rank panel",
   "params": "params.json",
   "inputs": {
     "input": "input/example_ranks.csv",

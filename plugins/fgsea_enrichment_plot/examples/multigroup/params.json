@@ -1,0 +1,24 @@
+{
+  "input_mode": "compute",
+  "plot_type": "multi_group",
+  "gene_col": "gene",
+  "stat_col": "avg_log2FC",
+  "group_col": "group",
+  "selected_groups": ["group1", "group2", "group3"],
+  "selected_terms": ["immune_response_activating_signaling_pathway"],
+  "group_colors": {
+    "group1": "#C2185B",
+    "group2": "#90CAF9",
+    "group3": "#111111"
+  },
+  "title": "immune response-activating signaling pathway",
+  "ylab": "Enrichment Score",
+  "xlab": "Rank in Ordered Dataset",
+  "positive_label": "Up regulated",
+  "negative_label": "Down regulated",
+  "legend_position": "right",
+  "curve_line_width": 0.95,
+  "width": 8.4,
+  "height": 6.6,
+  "dpi": 300
+}

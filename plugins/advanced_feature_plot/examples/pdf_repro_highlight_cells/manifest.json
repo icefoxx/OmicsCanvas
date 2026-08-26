@@ -1,0 +1,19 @@
+{
+  "id": "pdf_repro_highlight_cells",
+  "label": "Highlight cells",
+  "blurb": "Highlight first 500 cells on Atoh1/Neurod1 maps.",
+  "howto": "highlight_rows=[first 500]",
+  "card_group": "pdf_styles",
+  "plugin_id": "advanced_feature_plot",
+  "plot_type": "pdf_repro_highlight_cells",
+  "mode": "feature",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "gallery_png": "pdf_repro_highlight_cells.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/pdf_repro_highlight_cells/input/example_input.csv --params plugins/advanced_feature_plot/examples/pdf_repro_highlight_cells/params.json --output /tmp/pdf_repro_highlight_cells_out"
+  }
+}

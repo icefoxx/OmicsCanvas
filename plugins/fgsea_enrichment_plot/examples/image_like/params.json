@@ -1,6 +1,6 @@
 {
   "input_mode": "compute",
-  "plot_type": "gradient_curve",
+  "plot_type": "grouped_curves",
   "curve_style": "multi_term",
   "gene_col": "gene",
   "stat_col": "avg_log2FC",

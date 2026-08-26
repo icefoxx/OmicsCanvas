@@ -2,6 +2,69 @@
   "plugin_id": "advanced_feature_plot",
   "examples": [
     {
+      "id": "pdf_repro_basic_two_features",
+      "label": "Basic \u00b7 Atoh1 + Neurod1",
+      "blurb": "Two feature maps side by side (PDF basic).",
+      "howto": "feature_columns=[Atoh1,Neurod1]",
+      "card_group": "pdf_styles",
+      "mode": "feature",
+      "plot_type": "pdf_repro_basic_two_features"
+    },
+    {
+      "id": "pdf_repro_multi_feature_scaled",
+      "label": "Multi \u00b7 4 genes scaled",
+      "blurb": "Neurod1/Atoh1/Alpl/Runx2 with per-feature scale + bg.cutoff=0.1.",
+      "howto": "scale_by=feature \u00b7 quantile_cutoff=[0,0.95] \u00b7 background_cutoff=0.1",
+      "card_group": "pdf_styles",
+      "mode": "feature",
+      "plot_type": "pdf_repro_multi_feature_scaled"
+    },
+    {
+      "id": "pdf_repro_split_by_sample",
+      "label": "Split by sample",
+      "blurb": "Atoh1 split across orig.ident panels.",
+      "howto": "split_column=orig.ident \u00b7 global_split=true",
+      "card_group": "pdf_styles",
+      "mode": "feature",
+      "plot_type": "pdf_repro_split_by_sample"
+    },
+    {
+      "id": "pdf_repro_feature_comp_multiply",
+      "label": "Composite multiply",
+      "blurb": "Blend Atoh1\u00d7Neurod1 into one composite panel.",
+      "howto": "feature_comp=true \u00b7 color_mix_mode=multiply",
+      "card_group": "pdf_styles",
+      "mode": "feature",
+      "plot_type": "pdf_repro_feature_comp_multiply"
+    },
+    {
+      "id": "pdf_repro_highlight_cells",
+      "label": "Highlight cells",
+      "blurb": "Highlight first 500 cells on Atoh1/Neurod1 maps.",
+      "howto": "highlight_rows=[first 500]",
+      "card_group": "pdf_styles",
+      "mode": "feature",
+      "plot_type": "pdf_repro_highlight_cells"
+    },
+    {
+      "id": "pdf_repro_split_global_blank",
+      "label": "Split \u00b7 shared coords",
+      "blurb": "Sample split with shared axes + themeBlank.",
+      "howto": "global_split=true \u00b7 theme_use=themeBlank",
+      "card_group": "pdf_styles",
+      "mode": "feature",
+      "plot_type": "pdf_repro_split_global_blank"
+    },
+    {
+      "id": "pdf_repro_hexbin",
+      "label": "Hexbin features",
+      "blurb": "Hex-binned Neurod1 + Atoh1.",
+      "howto": "hex=true \u00b7 hex_bins=60",
+      "card_group": "pdf_styles",
+      "mode": "feature",
+      "plot_type": "pdf_repro_hexbin"
+    },
+    {
       "id": "density_hex",
       "label": "density_hex",
       "plugin_id": "advanced_feature_plot",
@@ -17,7 +80,8 @@
       },
       "bundle": "../examples/density_hex",
       "gallery_png": "density_hex.png",
-      "params_filename": "example_density_hex_params.json"
+      "params_filename": "example_density_hex_params.json",
+      "card_group": "more"
     },
     {
       "id": "feature_comp",
@@ -35,7 +99,8 @@
       },
       "bundle": "../examples/feature_comp",
       "gallery_png": "feature_comp.png",
-      "params_filename": "example_feature_comp_params.json"
+      "params_filename": "example_feature_comp_params.json",
+      "card_group": "more"
     },
     {
       "id": "highlight_blank",
@@ -53,7 +118,8 @@
       },
       "bundle": "../examples/highlight_blank",
       "gallery_png": "highlight_blank.png",
-      "params_filename": "example_highlight_blank_params.json"
+      "params_filename": "example_highlight_blank_params.json",
+      "card_group": "more"
     },
     {
       "id": "multi_feature",
@@ -71,7 +137,8 @@
       },
       "bundle": "../examples/multi_feature",
       "gallery_png": "multi_feature.png",
-      "params_filename": "example_multi_feature_params.json"
+      "params_filename": "example_multi_feature_params.json",
+      "card_group": "more"
     },
     {
       "id": "single_feature",
@@ -89,7 +156,8 @@
       },
       "bundle": "../examples/single_feature",
       "gallery_png": "single_feature.png",
-      "params_filename": "example_single_feature_params.json"
+      "params_filename": "example_single_feature_params.json",
+      "card_group": "more"
     },
     {
       "id": "split_feature",
@@ -107,7 +175,8 @@
       },
       "bundle": "../examples/split_feature",
       "gallery_png": "split_feature.png",
-      "params_filename": "example_split_feature_params.json"
+      "params_filename": "example_split_feature_params.json",
+      "card_group": "more"
     }
   ]
 }

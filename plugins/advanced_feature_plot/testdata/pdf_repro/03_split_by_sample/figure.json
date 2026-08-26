@@ -1,0 +1,29 @@
+{
+  "plot_type": "advanced_feature_plot",
+  "input_file": "/Users/qzhang10/Documents/OmicsCanvas/plugins/advanced_feature_plot/testdata/all_p8_p7_advfea_input.csv",
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "split_column": "orig.ident",
+  "feature_columns": "Atoh1",
+  "row_count": 34033,
+  "style": {
+    "theme_use": "themeBlank",
+    "feature_comp": false,
+    "color_mix_mode": "blend",
+    "point_size": 0.35,
+    "point_alpha": 0.9,
+    "keep_zero": false,
+    "show_density": false,
+    "hex": false,
+    "raster": true
+  },
+  "outputs": {
+    "svg": "result.svg",
+    "pdf": "result.pdf",
+    "png": "result.png",
+    "selected_rows": "selected_rows.csv",
+    "log": "run.log"
+  }
+}

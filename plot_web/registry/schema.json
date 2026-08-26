@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OmicsCanvas plot registry",
+  "type": "object",
+  "required": ["registry_version", "plots"],
+  "properties": {
+    "registry_version": {"type": "string"},
+    "spec": {"type": "string"},
+    "plots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "engine_plugin_id"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "engine_plugin_id": {"type": "string"},
+          "aliases": {"type": "array", "items": {"type": "string"}},
+          "analysis_contexts": {"type": "array", "items": {"type": "string"}},
+          "tasks": {"type": "array", "items": {"type": "string"}},
+          "variants": {"type": "array"},
+          "presets": {"type": "array"},
+          "demos": {"type": "array"},
+          "legacy_presets": {"type": "object"}
+        }
+      }
+    }
+  }
+}

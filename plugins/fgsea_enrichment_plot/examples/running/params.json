@@ -1,11 +1,11 @@
 {
   "input_mode": "compute",
-  "plot_type": "running",
+  "plot_type": "faceted_running",
   "gene_col": "gene",
   "stat_col": "avg_log2FC",
   "comparison_col": "comparison",
   "selected_comparison": "Mut_vs_WT",
-  "selected_terms": ["UP_PATHWAY"],
+  "selected_terms": ["UP_PATHWAY", "DOWN_PATHWAY", "MIXED_PATHWAY"],
   "selected_genes": ["Gene001", "Gene004", "Gene006"],
   "label_top_x_genes": 4,
   "minSize": 3,

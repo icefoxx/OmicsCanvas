@@ -1,0 +1,19 @@
+{
+  "id": "pdf_repro_highlight_cells",
+  "label": "Highlight cells",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "pdf_repro_highlight_cells",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "gallery_png": "pdf_repro_highlight_cells.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/pdf_repro_highlight_cells/input/example_input.csv --params plugins/advanced_dim_plot/examples/pdf_repro_highlight_cells/params.json --output /tmp/advanced_dim_pdf_repro_highlight_cells_out"
+  },
+  "blurb": "Focus a cell subset; others fade to grey.",
+  "howto": "highlight_rows=[...] \u00b7 non_highlight_alpha < 1",
+  "card_group": "pdf_styles"
+}

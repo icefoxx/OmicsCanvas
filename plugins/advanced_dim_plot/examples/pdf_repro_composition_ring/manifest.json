@@ -1,0 +1,19 @@
+{
+  "id": "pdf_repro_composition_ring",
+  "label": "Composition rings",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "pdf_repro_composition_ring",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "gallery_png": "pdf_repro_composition_ring.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/pdf_repro_composition_ring/input/example_input.csv --params plugins/advanced_dim_plot/examples/pdf_repro_composition_ring/params.json --output /tmp/advanced_dim_pdf_repro_composition_ring_out"
+  },
+  "blurb": "Embedded pie/ring showing sample composition per cluster.",
+  "howto": "show_stat_embedded=true \u00b7 stat_plot_column=orig.ident",
+  "card_group": "pdf_styles"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "pdf_repro_feature_comp_multiply",
+  "label": "Composite multiply",
+  "blurb": "Blend Atoh1\u00d7Neurod1 into one composite panel.",
+  "howto": "feature_comp=true \u00b7 color_mix_mode=multiply",
+  "card_group": "pdf_styles",
+  "plugin_id": "advanced_feature_plot",
+  "plot_type": "pdf_repro_feature_comp_multiply",
+  "mode": "feature",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "gallery_png": "pdf_repro_feature_comp_multiply.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/pdf_repro_feature_comp_multiply/input/example_input.csv --params plugins/advanced_feature_plot/examples/pdf_repro_feature_comp_multiply/params.json --output /tmp/pdf_repro_feature_comp_multiply_out"
+  }
+}

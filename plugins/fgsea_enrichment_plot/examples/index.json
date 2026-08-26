@@ -5,7 +5,7 @@
       "id": "custom_layout",
       "label": "custom_layout",
       "plugin_id": "fgsea_enrichment_plot",
-      "plot_type": "gradient_curve",
+      "plot_type": "grouped_curves",
       "mode": "",
       "params": "../examples/custom_layout/params.json",
       "inputs": {
@@ -59,10 +59,10 @@
     },
     {
       "id": "image_like",
-      "label": "image_like",
+      "label": "Gradient multi-term GSEA",
       "plugin_id": "fgsea_enrichment_plot",
       "plot_type": "gradient_curve",
-      "mode": "",
+      "mode": "multi-term gradient curves",
       "params": "../examples/image_like/params.json",
       "inputs": {
         "input": "input/example_ranks.csv",
@@ -78,10 +78,10 @@
     },
     {
       "id": "multiterm",
-      "label": "multiterm",
+      "label": "Annotated multi-term GSEA",
       "plugin_id": "fgsea_enrichment_plot",
-      "plot_type": "running_multi_panel",
-      "mode": "",
+      "plot_type": "classic_tracks",
+      "mode": "multi-term curves + statistics",
       "params": "../examples/multiterm/params.json",
       "inputs": {
         "input": "input/example_ranks.csv",
@@ -97,10 +97,10 @@
     },
     {
       "id": "running",
-      "label": "running",
+      "label": "Faceted term-panel GSEA",
       "plugin_id": "fgsea_enrichment_plot",
-      "plot_type": "running",
-      "mode": "",
+      "plot_type": "faceted_running",
+      "mode": "single-term curve + rank panel",
       "params": "../examples/running/params.json",
       "inputs": {
         "input": "input/example_ranks.csv",
@@ -113,6 +113,25 @@
       "bundle": "../examples/running",
       "gallery_png": "running.png",
       "params_filename": "example_running_params.json"
+    },
+    {
+      "id": "multigroup",
+      "label": "Multi-group GSEA overlay",
+      "plugin_id": "fgsea_enrichment_plot",
+      "plot_type": "multi_group",
+      "mode": "independent ES per group",
+      "params": "../examples/multigroup/params.json",
+      "inputs": {
+        "input": "input/example_multigroup_ranks.csv",
+        "genesets": "input/example_multigroup_pathways.gmt"
+      },
+      "expected": "../examples/multigroup/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/multigroup/input/example_multigroup_ranks.csv --params plugins/fgsea_enrichment_plot/examples/multigroup/params.json --output /tmp/fgsea_enrichment_plot_multigroup_out --genesets plugins/fgsea_enrichment_plot/examples/multigroup/input/example_multigroup_pathways.gmt"
+      },
+      "bundle": "../examples/multigroup",
+      "gallery_png": "multigroup.png",
+      "params_filename": "example_multigroup_params.json"
     },
     {
       "id": "summary",
@@ -131,6 +150,44 @@
       "bundle": "../examples/summary",
       "gallery_png": "summary.png",
       "params_filename": "example_summary_params.json"
+    },
+    {
+      "id": "ridge",
+      "label": "Enrichment ridge (log2FC density)",
+      "plugin_id": "fgsea_enrichment_plot",
+      "plot_type": "ridge",
+      "mode": "pathway gene log2FC ridges",
+      "params": "../examples/ridge/params.json",
+      "inputs": {
+        "input": "input/example_ridge_ranks.csv",
+        "genesets": "input/example_ridge_pathways.gmt"
+      },
+      "expected": "../examples/ridge/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/ridge/input/example_ridge_ranks.csv --params plugins/fgsea_enrichment_plot/examples/ridge/params.json --output /tmp/fgsea_enrichment_plot_ridge_out --genesets plugins/fgsea_enrichment_plot/examples/ridge/input/example_ridge_pathways.gmt"
+      },
+      "bundle": "../examples/ridge",
+      "gallery_png": "ridge.png",
+      "params_filename": "example_ridge_params.json"
+    },
+    {
+      "id": "gene_sankey",
+      "label": "Gene-pathway Sankey + bubble",
+      "plugin_id": "fgsea_enrichment_plot",
+      "plot_type": "gene_sankey",
+      "mode": "alluvial + enrichment bubbles",
+      "params": "../examples/gene_sankey/params.json",
+      "inputs": {
+        "input": "input/example_ridge_ranks.csv",
+        "genesets": "input/example_ridge_pathways.gmt"
+      },
+      "expected": "../examples/gene_sankey/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/fgsea_enrichment_plot/plot.R --input plugins/fgsea_enrichment_plot/examples/gene_sankey/input/example_ridge_ranks.csv --params plugins/fgsea_enrichment_plot/examples/gene_sankey/params.json --output /tmp/fgsea_enrichment_plot_gene_sankey_out --genesets plugins/fgsea_enrichment_plot/examples/gene_sankey/input/example_ridge_pathways.gmt"
+      },
+      "bundle": "../examples/gene_sankey",
+      "gallery_png": "gene_sankey.png",
+      "params_filename": "example_gene_sankey_params.json"
     }
   ]
 }

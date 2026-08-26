@@ -46,6 +46,12 @@ Rscript plugins/interactive_enrichment_lollipop/plot.R \
   --input plugins/interactive_enrichment_lollipop/example_input.csv \
   --params plugins/interactive_enrichment_lollipop/example_basic_params.json \
   --output /tmp/enrichment_lollipop
+
+# OCT4 signed NES enrichment example
+Rscript plugins/interactive_enrichment_lollipop/plot.R \
+  --input plugins/interactive_enrichment_lollipop/examples/oct4_enrichment/input/example_input.csv \
+  --params plugins/interactive_enrichment_lollipop/examples/oct4_enrichment/params.json \
+  --output /tmp/oct4_enrichment
 ```
 
 ## Outputs

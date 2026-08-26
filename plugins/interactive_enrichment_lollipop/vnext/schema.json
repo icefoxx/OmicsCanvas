@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "interactive_enrichment_lollipop PlotSpec extensions",
+  "type": "object",
+  "properties": {
+    "mapping": {
+      "type": "object",
+      "required": ["category", "signed_effect"],
+      "properties": {
+        "category": { "type": "string" },
+        "signed_effect": { "type": "string" },
+        "effect": { "type": "string" },
+        "group": { "type": "string" },
+        "size": { "type": "string" },
+        "gene_count": { "type": "string" },
+        "pvalue": { "type": "string" },
+        "adjusted_pvalue": { "type": "string" }
+      }
+    },
+    "visual": {
+      "type": "object",
+      "properties": {
+        "orientation": { "const": "horizontal" },
+        "zero_line": { "type": "boolean" },
+        "stem_to_zero": { "type": "boolean" }
+      }
+    }
+  }
+}

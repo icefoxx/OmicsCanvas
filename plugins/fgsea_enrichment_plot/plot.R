@@ -210,15 +210,27 @@ run_fgsea_if_needed <- function(df, params, mode) {
   max_size <- num_param(params, 'maxSize', num_param(params, 'max_size', 500))
   nperm <- num_param(params, 'nperm', 1000)
   exponent <- num_param(params, 'exponent', 1)
-  res <- suppressWarnings(fgsea::fgsea(
-    pathways = pathways,
-    stats = stats,
-    minSize = min_size,
-    maxSize = max_size,
-    nperm = nperm,
-    scoreType = get_param(params, 'scoreType', 'std'),
-    gseaParam = exponent
-  ))
+  method <- tolower(as.character(get_param(params, 'fgsea_method', 'standard'))[1])
+  if (method %in% c('multilevel', 'fgseaMultilevel', 'precise') && 'fgseaMultilevel' %in% getNamespaceExports('fgsea')) {
+    res <- suppressWarnings(fgsea::fgseaMultilevel(
+      pathways = pathways,
+      stats = stats,
+      minSize = min_size,
+      maxSize = max_size,
+      scoreType = get_param(params, 'scoreType', 'std'),
+      gseaParam = exponent
+    ))
+  } else {
+    res <- suppressWarnings(fgsea::fgsea(
+      pathways = pathways,
+      stats = stats,
+      minSize = min_size,
+      maxSize = max_size,
+      nperm = nperm,
+      scoreType = get_param(params, 'scoreType', 'std'),
+      gseaParam = exponent
+    ))
+  }
   res <- as.data.frame(res, stringsAsFactors = FALSE)
   if ('leadingEdge' %in% colnames(res)) {
     res$leadingEdge <- vapply(res$leadingEdge, paste, character(1), collapse = ';')
@@ -358,6 +370,472 @@ sig_stars <- function(x) {
   if (x < 1e-2) return('**')
   if (x < 5e-2) return('*')
   'ns'
+}
+
+is_multi_group_plot <- function(params) {
+  pt <- tolower(as.character(get_param(params, 'plot_type', ''))[1])
+  pt %in% c('multi_group', 'multigroup', 'grouped_gsea', 'multi_condition', 'group_running', 'multi_group_running')
+}
+
+default_group_colors <- function(groups) {
+  base <- c('#C2185B', '#90CAF9', '#111111', '#2CA02C', '#FF7F0E', '#9467BD')
+  setNames(rep(base, length.out = length(groups)), groups)
+}
+
+split_ranks_by_group <- function(df, params) {
+  gene_col <- get_param_any(params, c('gene_col', 'gene_column'), find_column(df, c('gene', 'Gene', 'gene_symbol', 'symbol', 'feature'), TRUE, 'rank gene column'))
+  group_col <- get_param_any(params, c('group_col', 'group_column', 'condition_col', 'comparison_col'), find_column(df, c('group', 'Group', 'condition', 'comparison', 'contrast'), FALSE))
+  selected_groups <- as_string_vector(get_param_any(params, c('selected_groups', 'groups', 'group_order'), NULL))
+  ranks_list <- list()
+
+  build_one <- function(d, stat_name) {
+    stat <- suppressWarnings(as.numeric(d[[stat_name]]))
+    genes <- as.character(d[[gene_col]])
+    keep <- !is.na(stat) & !is.na(genes) & nzchar(genes)
+    agg <- tapply(stat[keep], genes[keep], mean, na.rm = TRUE)
+    if (length(agg) < 2) return(NULL)
+    stats <- sort(as.numeric(agg), decreasing = TRUE)
+    names(stats) <- names(agg)[order(as.numeric(agg), decreasing = TRUE)]
+    stats
+  }
+
+  if (!is.null(group_col) && group_col %in% colnames(df)) {
+    stat_col <- get_param_any(params, c('stat_col', 'stat_column', 'rank_column'), find_column(df, c('avg_log2FC', 'log2FC', 'stat', 'score', 't', 'waldStat'), TRUE, 'rank statistic column'))
+    groups <- as.character(df[[group_col]])
+    levels_g <- unique(groups[nzchar(groups) & !is.na(groups)])
+    if (length(selected_groups) > 0) levels_g <- intersect(selected_groups, levels_g)
+    if (length(levels_g) < 2) write_error_and_exit('multi_group requires at least two groups', paste('Found:', paste(levels_g, collapse = ', ')), 'Provide a group/comparison column with >= 2 levels.')
+    for (g in levels_g) {
+      one <- build_one(df[groups == g, , drop = FALSE], stat_col)
+      if (!is.null(one)) ranks_list[[g]] <- one
+    }
+  } else {
+    numeric_cols <- names(df)[vapply(df, function(x) is.numeric(x) || all(is.finite(suppressWarnings(as.numeric(as.character(x))))), logical(1))]
+    numeric_cols <- setdiff(numeric_cols, gene_col)
+    if (length(selected_groups) > 0) numeric_cols <- intersect(selected_groups, numeric_cols)
+    if (length(numeric_cols) < 2) {
+      write_error_and_exit(
+        'multi_group needs a group column or multiple rank-statistic columns',
+        paste('Columns:', paste(colnames(df), collapse = ', ')),
+        'Use long format (gene, group, stat) or wide format (gene + one numeric column per group).'
+      )
+    }
+    for (g in numeric_cols) {
+      tmp <- df[, c(gene_col, g), drop = FALSE]
+      names(tmp)[2] <- 'stat'
+      one <- build_one(tmp, 'stat')
+      if (!is.null(one)) ranks_list[[g]] <- one
+    }
+  }
+  ranks_list <- ranks_list[lengths(ranks_list) >= 2]
+  if (length(ranks_list) < 2) write_error_and_exit('Could not build two independent ranked lists', '', 'Check group column values and statistic columns.')
+  ranks_list
+}
+
+make_multi_group_plot <- function(ranks_list, pathways, params) {
+  terms <- as_string_vector(get_param_any(params, c('selected_terms', 'selected_term', 'pathway', 'term'), NULL))
+  if (length(terms) == 0) {
+    if (length(pathways) == 0) write_error_and_exit('No pathway selected', '', 'Set selected_terms to one gene-set name.')
+    terms <- names(pathways)[1]
+  }
+  term <- terms[1]
+  if (!term %in% names(pathways)) {
+    write_error_and_exit('Selected pathway not found in genesets', term, paste('Available:', paste(head(names(pathways), 12), collapse = ', ')))
+  }
+  gene_set <- pathways[[term]]
+  groups <- names(ranks_list)
+  custom_colors <- as_named_vector(get_param_any(params, c('group_colors', 'curve_colors', 'term_colors'), NULL), NULL)
+  colors <- default_group_colors(groups)
+  if (!is.null(custom_colors)) {
+    for (nm in intersect(names(custom_colors), groups)) colors[nm] <- as.character(custom_colors[[nm]])
+  }
+  exponent <- num_param(params, 'exponent', 1)
+
+  score_df <- do.call(rbind, lapply(groups, function(g) {
+    d <- gsea_scores(ranks_list[[g]], gene_set, exponent)
+    d$group <- g
+    d
+  }))
+  score_df$group <- factor(score_df$group, levels = groups)
+
+  title_text <- get_param(params, 'title', gsub('_', ' ', term))
+  p_curve <- ggplot(score_df, aes(x = x, y = runningScore, color = group)) +
+    geom_hline(yintercept = 0, linetype = 'dashed', color = '#111111', linewidth = 0.55) +
+    geom_line(linewidth = num_param(params, 'curve_line_width', 0.9), alpha = 0.95) +
+    scale_color_manual(values = colors, name = get_param(params, 'legend_title', NULL)) +
+    labs(title = title_text, x = NULL, y = get_param(params, 'ylab', 'Enrichment Score')) +
+    theme_classic(base_family = get_param(params, 'font_family', 'sans')) +
+    theme(
+      plot.title = element_text(hjust = 0.5, size = num_param(params, 'title_size', 16), face = 'plain'),
+      axis.text.x = element_blank(),
+      axis.ticks.x = element_blank(),
+      axis.title.y = element_text(size = 12),
+      legend.position = get_param(params, 'legend_position', 'right'),
+      legend.title = if (is.null(get_param(params, 'legend_title', NULL))) element_blank() else element_text(),
+      panel.border = element_blank()
+    )
+
+  n_g <- length(groups)
+  hit_df <- score_df[score_df$is_hit, , drop = FALSE]
+  band_df <- data.frame(
+    group = factor(groups, levels = groups),
+    ymin = seq_len(n_g) - 0.42,
+    ymax = seq_len(n_g) + 0.42,
+    stringsAsFactors = FALSE
+  )
+  hit_df$ymin <- as.numeric(factor(hit_df$group, levels = groups)) - 0.42
+  hit_df$ymax <- as.numeric(factor(hit_df$group, levels = groups)) + 0.42
+  p_hits <- ggplot() +
+    geom_rect(
+      data = band_df,
+      aes(xmin = 0.5, xmax = max(score_df$x, na.rm = TRUE) + 0.5, ymin = ymin, ymax = ymax, fill = group),
+      inherit.aes = FALSE,
+      color = NA
+    ) +
+    geom_linerange(
+      data = hit_df,
+      aes(x = x, ymin = ymin, ymax = ymax),
+      color = 'white',
+      linewidth = num_param(params, 'hit_line_width', 0.35),
+      alpha = num_param(params, 'hit_alpha', 0.95)
+    ) +
+    scale_fill_manual(values = colors, guide = 'none') +
+    scale_y_reverse(breaks = seq_len(n_g), labels = groups, expand = c(0.04, 0.04)) +
+    labs(x = NULL, y = NULL) +
+    theme_classic(base_family = get_param(params, 'font_family', 'sans')) +
+    theme(
+      axis.text.x = element_blank(),
+      axis.ticks = element_blank(),
+      axis.text.y = element_blank(),
+      axis.line = element_blank(),
+      panel.border = element_blank(),
+      plot.margin = margin(2, 8, 2, 8)
+    )
+
+  # Shared rank-direction strip: mean statistic at each rank index across groups.
+  max_n <- max(vapply(ranks_list, length, integer(1)))
+  metric_mat <- vapply(ranks_list, function(r) {
+    v <- as.numeric(r)
+    if (length(v) < max_n) v <- c(v, rep(tail(v, 1), max_n - length(v)))
+    v[seq_len(max_n)]
+  }, numeric(max_n))
+  if (is.null(dim(metric_mat))) metric_mat <- matrix(metric_mat, ncol = 1)
+  rank_df <- data.frame(x = seq_len(max_n), stat = rowMeans(metric_mat, na.rm = TRUE))
+  caps <- stats::quantile(rank_df$stat, c(0.02, 0.98), na.rm = TRUE)
+  rank_df$stat_cap <- pmax(pmin(rank_df$stat, caps[2]), caps[1])
+  p_rank <- ggplot(rank_df, aes(x = x, y = 1, fill = stat_cap)) +
+    geom_tile(height = 0.9, width = 1.02, show.legend = FALSE) +
+    scale_fill_gradient2(
+      low = get_param(params, 'rank_band_negative_color', '#1565C0'),
+      mid = get_param(params, 'rank_band_mid_color', '#F5F5F5'),
+      high = get_param(params, 'rank_band_positive_color', '#C62828'),
+      midpoint = 0
+    ) +
+    annotate('text', x = max_n * 0.08, y = 1, label = get_param(params, 'positive_label', 'Up regulated'),
+             color = 'white', size = 3.2, fontface = 'plain') +
+    annotate('text', x = max_n * 0.92, y = 1, label = get_param(params, 'negative_label', 'Down regulated'),
+             color = 'white', size = 3.2, fontface = 'plain') +
+    labs(x = get_param(params, 'xlab', 'Rank in Ordered Dataset'), y = NULL) +
+    theme_classic(base_family = get_param(params, 'font_family', 'sans')) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.title.x = element_text(size = 13),
+      plot.margin = margin(2, 8, 8, 8)
+    )
+
+  if (!requireNamespace('patchwork', quietly = TRUE)) write_error_and_exit('Package patchwork is required')
+  rug_h <- num_param(params, 'hit_rug_height', 0.16) * n_g
+  heights <- as.numeric(unlist(get_param(params, 'rel_heights', c(1.35, rug_h, 0.22))))
+  if (length(heights) != 3) heights <- c(1.35, max(0.28, rug_h), 0.22)
+  patchwork::wrap_plots(p_curve, p_hits, p_rank, ncol = 1, heights = heights)
+}
+
+make_enrichment_ridge_plot <- function(selected, ranks, pathways, params) {
+  if (is.null(ranks) || is.null(pathways)) {
+    write_error_and_exit('Ridge plot requires rank stats and gene sets', '', 'Use compute mode with --genesets and a gene + log2FC table.')
+  }
+  if (nrow(selected) == 0) write_error_and_exit('No terms selected for ridge plot')
+  gene_mode <- tolower(as.character(get_param(params, 'ridge_gene_mode', 'all_members'))[1])
+  min_genes <- num_param(params, 'ridge_min_genes', 8)
+  rows <- list()
+  for (i in seq_len(nrow(selected))) {
+    term <- selected$term[i]
+    members <- character()
+    if (gene_mode == 'leading_edge') members <- parse_gene_string(selected$leading_genes[i])
+    if (length(members) == 0 && term %in% names(pathways)) members <- pathways[[term]]
+    members <- intersect(unique(members), names(ranks))
+    if (length(members) < min_genes) next
+    pval <- selected$pvalue[i]
+    if (is.na(pval)) pval <- selected$FDR[i]
+    if (is.na(pval)) pval <- 1
+    rows[[length(rows) + 1]] <- data.frame(
+      term = term,
+      gene = members,
+      log2FC = as.numeric(ranks[members]),
+      pvalue = pval,
+      NES = selected$NES[i],
+      stringsAsFactors = FALSE
+    )
+  }
+  gene_df <- do.call(rbind, rows)
+  if (is.null(gene_df) || nrow(gene_df) == 0) {
+    write_error_and_exit('No pathway genes overlap the ranked list', '', 'Check gene IDs in ranks vs GMT.')
+  }
+  gene_df <- gene_df[is.finite(gene_df$log2FC), , drop = FALSE]
+  log10_cap <- num_param(params, 'max_log10_value', 6)
+  gene_df$neglog10p <- pmin(-log10(pmax(gene_df$pvalue, 10 ^ (-log10_cap))), log10_cap)
+
+  order_by <- tolower(as.character(get_param(params, 'ridge_order', get_param(params, 'sort_by', 'pvalue')))[1])
+  term_meta <- unique(gene_df[, c('term', 'pvalue', 'NES', 'neglog10p')])
+  if (order_by %in% c('nes', 'NES')) {
+    term_meta <- term_meta[order(term_meta$NES, na.last = TRUE), , drop = FALSE]
+  } else if (order_by %in% c('user', 'given', 'selected')) {
+    term_meta <- term_meta[match(intersect(selected$term, term_meta$term), term_meta$term), , drop = FALSE]
+  } else {
+    term_meta <- term_meta[order(-term_meta$neglog10p, term_meta$pvalue, na.last = TRUE), , drop = FALSE]
+  }
+  term_levels <- rev(term_meta$term)
+  label_map <- stats::setNames(gsub('_', ' ', term_levels), term_levels)
+  gene_df$term <- factor(gene_df$term, levels = term_levels, labels = unname(label_map[term_levels]))
+  fill_map <- stats::setNames(term_meta$neglog10p, unname(label_map[term_meta$term]))
+  gene_df$fill_value <- unname(fill_map[as.character(gene_df$term)])
+
+  xlim <- as.numeric(unlist(get_param(params, 'ridge_xlim', NULL)))
+  if (length(xlim) != 2 || any(!is.finite(xlim))) {
+    xmax <- max(abs(range(gene_df$log2FC, na.rm = TRUE)), 1)
+    xlim <- c(-xmax, xmax) * num_param(params, 'ridge_xlim_expand', 1.05)
+  }
+
+  pal <- as_string_vector(get_param(params, 'ridge_palette', c('#0D0887', '#6A00A8', '#B12A90', '#E16462', '#FCA636', '#F0F921')))
+  if (length(pal) < 2) pal <- c('#0D0887', '#B12A90', '#F0F921')
+  rug_color <- get_param(params, 'ridge_rug_color', '#E53935')
+  scale_h <- num_param(params, 'ridge_scale', 1.15)
+  rel_min <- num_param(params, 'ridge_rel_min_height', 0.01)
+
+  if (!requireNamespace('ggridges', quietly = TRUE)) {
+    write_error_and_exit('Package ggridges is required for ridge plots', '', 'install.packages("ggridges")')
+  }
+
+  p <- ggplot(gene_df, aes(x = log2FC, y = term, fill = fill_value, group = term)) +
+    ggridges::geom_density_ridges(
+      scale = scale_h,
+      rel_min_height = rel_min,
+      color = get_param(params, 'ridge_outline_color', '#111111'),
+      linewidth = num_param(params, 'ridge_outline_width', 0.35),
+      alpha = num_param(params, 'ridge_alpha', 0.95)
+    ) +
+    geom_segment(
+      data = gene_df,
+      aes(x = log2FC, xend = log2FC, y = as.numeric(term) - 0.12, yend = as.numeric(term) - 0.02),
+      color = rug_color,
+      linewidth = num_param(params, 'ridge_rug_width', 0.28),
+      alpha = num_param(params, 'ridge_rug_alpha', 0.85),
+      inherit.aes = FALSE
+    ) +
+    scale_fill_gradientn(
+      colours = pal,
+      name = get_param(params, 'ridge_legend_title', '-log10(pvalue)'),
+      limits = c(min(gene_df$fill_value, na.rm = TRUE), max(gene_df$fill_value, na.rm = TRUE))
+    ) +
+    coord_cartesian(xlim = xlim, clip = 'off') +
+    labs(
+      title = get_param(params, 'title', NULL),
+      x = get_param(params, 'xlab', 'log2FoldChange'),
+      y = NULL
+    ) +
+    theme_classic(base_family = get_param(params, 'font_family', 'sans')) +
+    theme(
+      axis.text.y = element_text(size = num_param(params, 'ridge_term_size', 10), color = '#222222'),
+      axis.text.x = element_text(size = 10),
+      axis.title.x = element_text(size = 12),
+      legend.position = get_param(params, 'legend_position', 'right'),
+      plot.title = element_text(hjust = 0.5, size = num_param(params, 'title_size', 14)),
+      panel.grid.major.x = if (as_bool(get_param(params, 'ridge_show_grid', FALSE), FALSE)) element_line(color = '#E0E0E0') else element_blank(),
+      panel.grid.major.y = element_blank()
+    )
+  if (as_bool(get_param(params, 'ridge_vline0', TRUE), TRUE)) {
+    p <- p + geom_vline(xintercept = 0, color = '#888888', linewidth = 0.3, linetype = 'dotted')
+  }
+  p
+}
+
+pretty_term_label <- function(x, wrap = 22) {
+  lab <- gsub('_', ' ', as.character(x))
+  vapply(lab, function(s) paste(strwrap(s, width = wrap), collapse = '\n'), character(1))
+}
+
+make_gene_pathway_sankey_plot <- function(selected, ranks, pathways, params) {
+  if (!requireNamespace('ggforce', quietly = TRUE)) {
+    write_error_and_exit('Package ggforce is required for gene-pathway Sankey', '', 'install.packages("ggforce")')
+  }
+  if (is.null(pathways) || length(pathways) == 0) {
+    write_error_and_exit('Gene-pathway Sankey requires gene sets', '', 'Provide --genesets and compute/precomputed enrichment.')
+  }
+  max_terms <- num_param(params, 'sankey_max_terms', num_param(params, 'top_n_terms', 5))
+  max_genes <- num_param(params, 'sankey_max_genes', 22)
+  gene_mode <- tolower(as.character(get_param(params, 'sankey_gene_mode', 'leading_edge'))[1])
+  terms <- head(selected$term, max_terms)
+  selected <- selected[match(terms, selected$term), , drop = FALSE]
+
+  edges <- list()
+  for (i in seq_len(nrow(selected))) {
+    term <- selected$term[i]
+    members <- character()
+    if (gene_mode != 'all_members') members <- parse_gene_string(selected$leading_genes[i])
+    if (length(members) == 0 && term %in% names(pathways)) members <- pathways[[term]]
+    if (!is.null(ranks)) members <- intersect(members, names(ranks))
+    if (length(members) == 0) next
+    edges[[length(edges) + 1]] <- data.frame(gene = members, term = term, stringsAsFactors = FALSE)
+  }
+  edge_df <- do.call(rbind, edges)
+  if (is.null(edge_df) || nrow(edge_df) == 0) {
+    write_error_and_exit('No gene-pathway membership for Sankey', '', 'Check leading-edge genes and GMT overlap.')
+  }
+  if (!is.null(ranks)) {
+    edge_df$score <- abs(unname(ranks[edge_df$gene]))
+    edge_df$score[is.na(edge_df$score)] <- 0
+  } else {
+    edge_df$score <- 1
+  }
+  gene_rank <- tapply(edge_df$score, edge_df$gene, max)
+  keep_genes <- names(sort(gene_rank, decreasing = TRUE))
+  keep_genes <- head(keep_genes, max_genes)
+  edge_df <- edge_df[edge_df$gene %in% keep_genes, , drop = FALSE]
+  terms <- intersect(terms, unique(edge_df$term))
+  selected <- selected[selected$term %in% terms, , drop = FALSE]
+  genes <- keep_genes[keep_genes %in% edge_df$gene]
+  nG <- length(genes)
+  nT <- length(terms)
+  if (nG < 2 || nT < 1) write_error_and_exit('Sankey needs at least two genes and one term')
+
+  gene_y <- stats::setNames((nG:1 - 0.5) / nG, genes)
+  term_y <- stats::setNames((nT:1 - 0.5) / nT, terms)
+  term_h <- min(0.16, 0.72 / nT)
+
+  universe_n <- if (!is.null(ranks)) length(ranks) else length(unique(edge_df$gene))
+  term_stats <- lapply(seq_len(nrow(selected)), function(i) {
+    term <- selected$term[i]
+    k <- sum(edge_df$term == term)
+    size <- if (term %in% names(pathways)) max(length(pathways[[term]]), k) else k
+    pval <- selected$pvalue[i]
+    if (is.na(pval)) pval <- selected$FDR[i]
+    if (is.na(pval)) pval <- 1
+    data.frame(
+      term = term,
+      y = unname(term_y[term]),
+      neglog10p = -log10(pmax(pval, 1e-16)),
+      gene_ratio = k / max(universe_n, 1),
+      term_ratio = k / max(size, 1),
+      stringsAsFactors = FALSE
+    )
+  })
+  term_stats <- do.call(rbind, term_stats)
+  term_stats$term <- factor(term_stats$term, levels = rev(terms))
+
+  gene_cols <- grDevices::hcl.colors(max(nG, 8), palette = 'Dark 3')
+  if (nG > length(gene_cols)) gene_cols <- grDevices::hcl.colors(nG, palette = 'Set 2')
+  gene_fill <- stats::setNames(gene_cols[seq_len(nG)], genes)
+  term_fill <- as_named_vector(get_param(params, 'term_colors', NULL), NULL)
+  if (is.null(term_fill) || length(intersect(names(term_fill), terms)) == 0) {
+    term_fill <- stats::setNames(grDevices::hcl.colors(max(nT, 3), palette = 'Warm'), terms)
+  } else {
+    fallback <- stats::setNames(grDevices::hcl.colors(max(nT, 3), palette = 'Warm'), terms)
+    for (tm in terms) if (!tm %in% names(term_fill)) term_fill[[tm]] <- fallback[[tm]]
+    term_fill <- term_fill[terms]
+  }
+
+  bezier_df <- do.call(rbind, lapply(seq_len(nrow(edge_df)), function(i) {
+    g <- edge_df$gene[i]
+    tm <- edge_df$term[i]
+    gy <- unname(gene_y[g])
+    ty <- unname(term_y[tm])
+    data.frame(
+      x = c(0.16, 0.38, 0.58, 0.76),
+      y = c(gy, gy, ty, ty),
+      group = paste(g, tm, i, sep = '|'),
+      term = tm,
+      stringsAsFactors = FALSE
+    )
+  }))
+
+  gene_df <- data.frame(gene = genes, y = unname(gene_y[genes]), stringsAsFactors = FALSE)
+  term_df <- data.frame(
+    term = terms,
+    label = pretty_term_label(terms),
+    y = unname(term_y[terms]),
+    stringsAsFactors = FALSE
+  )
+
+  link_col <- get_param(params, 'sankey_link_color', '#C9C9C9')
+  bubble_pal <- as_string_vector(get_param(params, 'sankey_bubble_palette', c('#440154', '#31688E', '#35B779', '#FDE725')))
+  pmin <- min(term_stats$neglog10p, na.rm = TRUE)
+  pmax <- max(term_stats$neglog10p, na.rm = TRUE)
+  if (!is.finite(pmin) || !is.finite(pmax) || pmax <= pmin) {
+    pmin <- 0
+    pmax <- 1
+  }
+  x0 <- 1.72
+  x1 <- 2.38
+  term_stats$x_bub <- x0 + (x1 - x0) * (term_stats$neglog10p - pmin) / (pmax - pmin)
+  axis_breaks <- pretty(c(pmin, pmax), n = 4)
+  axis_breaks <- axis_breaks[axis_breaks >= pmin * 0.98 & axis_breaks <= pmax * 1.02]
+  if (length(axis_breaks) < 2) axis_breaks <- c(pmin, pmax)
+  axis_x <- x0 + (x1 - x0) * (axis_breaks - pmin) / (pmax - pmin)
+  axis_df <- data.frame(x = axis_x, label = format(axis_breaks, digits = 3), stringsAsFactors = FALSE)
+
+  p <- ggplot() +
+    ggforce::geom_bezier(
+      data = bezier_df,
+      aes(x = x, y = y, group = group),
+      color = link_col,
+      alpha = num_param(params, 'sankey_link_alpha', 0.45),
+      linewidth = num_param(params, 'sankey_link_width', 1.05)
+    ) +
+    geom_rect(
+      data = gene_df,
+      aes(xmin = 0.02, xmax = 0.07, ymin = y - 0.016, ymax = y + 0.016, fill = gene),
+      color = NA
+    ) +
+    geom_text(
+      data = gene_df,
+      aes(x = 0.0, y = y, label = gene),
+      hjust = 1,
+      size = num_param(params, 'sankey_gene_size', 2.7),
+      color = '#222222'
+    ) +
+    geom_text(
+      data = term_df,
+      aes(x = 0.80, y = y, label = label),
+      hjust = 0,
+      size = num_param(params, 'sankey_term_size', 3.1),
+      color = '#222222'
+    ) +
+    geom_rect(
+      data = term_df,
+      aes(xmin = 1.28, xmax = 1.48, ymin = y - term_h / 2, ymax = y + term_h / 2, fill = term),
+      color = NA
+    ) +
+    geom_point(
+      data = term_stats,
+      aes(x = x_bub, y = y, size = term_ratio, color = gene_ratio),
+      alpha = 0.95
+    ) +
+    geom_segment(x = x0, xend = x1, y = -0.045, yend = -0.045, linewidth = 0.35, color = '#222222') +
+    geom_segment(data = axis_df, aes(x = x, xend = x), y = -0.045, yend = -0.06, linewidth = 0.35, color = '#222222', inherit.aes = FALSE) +
+    geom_text(data = axis_df, aes(x = x, label = label), y = -0.085, size = 2.7, color = '#222222', inherit.aes = FALSE) +
+    annotate('text', x = (x0 + x1) / 2, y = -0.125, label = get_param(params, 'sankey_bubble_xlab', '-log10(pvalue)'), size = 3.2) +
+    scale_fill_manual(values = c(gene_fill, term_fill), guide = 'none') +
+    scale_color_gradientn(colours = bubble_pal, name = 'gene_ratio') +
+    scale_size_continuous(name = 'term_ratio', range = c(4.5, 12)) +
+    coord_cartesian(xlim = c(-0.38, 2.62), ylim = c(-0.16, 1.04), clip = 'off') +
+    theme_void() +
+    theme(
+      legend.position = 'right',
+      plot.margin = margin(10, 12, 16, 36)
+    )
+  p
 }
 
 make_summary_plot <- function(selected, params) {
@@ -861,6 +1339,43 @@ make_running_plot <- function(selected, ranks, pathways, params) {
   if (requireNamespace('patchwork', quietly = TRUE)) patchwork::wrap_plots(list(p1, p2, p3), ncol = 1, heights = heights) else p1
 }
 
+# Compact per-term panels matching the stacked GSEA reference layout.
+make_faceted_running_plot <- function(selected, ranks, pathways, params) {
+  if (is.null(ranks) || is.null(pathways)) write_error_and_exit('Faceted running plot requires rank stats and pathways')
+  terms <- head(selected$term, num_param(params, 'running_max_terms', 5))
+  exponent <- num_param(params, 'exponent', 1)
+  score_df <- do.call(rbind, lapply(terms, function(term) {
+    if (!term %in% names(pathways)) return(NULL)
+    d <- gsea_scores(ranks, pathways[[term]], exponent)
+    d$term <- term
+    d
+  }))
+  if (is.null(score_df) || !nrow(score_df)) write_error_and_exit('No running-score data available')
+  score_df$term <- factor(score_df$term, levels = terms)
+  colors <- palette_values(length(terms), 'terms')
+  names(colors) <- terms
+  custom <- as_named_vector(get_param(params, 'term_colors', NULL), NULL)
+  if (!is.null(custom)) colors[names(custom)] <- custom[names(custom)]
+  p <- ggplot(score_df, aes(x = x, y = runningScore)) +
+    geom_hline(yintercept = 0, colour = get_param(params, 'zero_line_color', '#222222'), linewidth = 0.45) +
+    geom_line(aes(colour = term), linewidth = num_param(params, 'curve_line_width', 1.1), show.legend = FALSE) +
+    geom_linerange(data = score_df[score_df$is_hit, , drop = FALSE], aes(x = x, ymin = 0, ymax = runningScore, colour = term), linewidth = num_param(params, 'hit_line_width', 0.65), alpha = 0.9, show.legend = FALSE) +
+    facet_grid(term ~ ., scales = 'free_y', switch = 'y') +
+    scale_colour_manual(values = colors) +
+    labs(x = get_param(params, 'xlab', 'Rank in Ordered Dataset'), y = get_param(params, 'ylab', 'Running Enrichment Score'), title = get_param(params, 'title', 'GSEA running enrichment')) +
+    theme_classic(base_family = get_param(params, 'font_family', 'sans')) +
+    theme(
+      strip.placement = 'outside', strip.background = element_rect(fill = get_param(params, 'facet_strip_fill', '#F2F2F2'), colour = '#222222'),
+      strip.text.y.left = element_text(angle = 0, hjust = 0, size = num_param(params, 'facet_label_size', 9)),
+      panel.spacing = grid::unit(num_param(params, 'facet_gap', 0.08), 'lines'),
+      panel.border = element_rect(fill = NA, colour = get_param(params, 'panel_border_color', '#222222'), linewidth = 0.55),
+      plot.title = element_text(size = num_param(params, 'title_size', 16), hjust = num_param(params, 'title_hjust', 0.5)),
+      panel.grid.major = element_line(colour = get_param(params, 'grid_color', '#E5E5E5'), linetype = get_param(params, 'grid_line_type', 'dashed')),
+      panel.grid.minor = element_blank()
+    )
+  p
+}
+
 make_gradient_curve_plot <- function(selected, ranks, pathways, params) {
   if (is.null(params$selected_genes) && !is.null(params$selected_gene_labels)) params$selected_genes <- params$selected_gene_labels
   if (is.null(params$label_size) && !is.null(params$selected_gene_label_size)) params$label_size <- params$selected_gene_label_size
@@ -1220,6 +1735,36 @@ main <- function() {
     params <- jsonlite::fromJSON(params_file, simplifyVector = FALSE)
   }
   df <- read_table_auto(input_file)
+  plot_type <- tolower(as.character(get_param(params, 'plot_type', 'auto'))[1])
+  if (is_multi_group_plot(params) || plot_type %in% c('multi_group', 'multigroup', 'grouped_gsea', 'multi_condition', 'group_running')) {
+    gs_file <- genesets_file
+    if (is.null(gs_file)) gs_file <- get_param(params, 'genesets_file', NULL)
+    pathways <- read_genesets(gs_file)
+    ranks_list <- split_ranks_by_group(df, params)
+    plot <- make_multi_group_plot(ranks_list, pathways, params)
+    width <- num_param(params, 'width', 8.2)
+    height <- num_param(params, 'height', 6.4)
+    dpi <- num_param(params, 'dpi', 300)
+    save_plot(plot, output_dir, width, height, dpi)
+    term <- as_string_vector(get_param_any(params, c('selected_terms', 'selected_term', 'pathway', 'term'), names(pathways)[1]))[1]
+    enr_rows <- lapply(names(ranks_list), function(g) {
+      data.frame(group = g, term = term, n_genes = length(ranks_list[[g]]), stringsAsFactors = FALSE)
+    })
+    write.csv(do.call(rbind, enr_rows), file.path(output_dir, 'enrichment_results.csv'), row.names = FALSE)
+    write.csv(data.frame(term = term, stringsAsFactors = FALSE), file.path(output_dir, 'selected_terms.csv'), row.names = FALSE)
+    write.csv(data.frame(term = character(), gene = character()), file.path(output_dir, 'selected_genes.csv'), row.names = FALSE)
+    figure <- list(
+      plot_type = 'fgsea_enrichment_plot',
+      visual_mode = 'multi_group',
+      selected_terms = term,
+      groups = names(ranks_list),
+      outputs = list(svg = 'result.svg', pdf = 'result.pdf', png = 'result.png', results = 'enrichment_results.csv', html = 'result.html', log = 'run.log')
+    )
+    writeLines(jsonlite::toJSON(figure, auto_unbox = TRUE, pretty = TRUE), file.path(output_dir, 'figure.json'))
+    write_result_html(plot, output_dir, figure)
+    write_log('Completed multi-group GSEA running plot.')
+    return(invisible(TRUE))
+  }
   mode <- detect_mode(df, params)
   fg <- run_fgsea_if_needed(df, params, mode)
   results <- standardize_results(fg$results, params)
@@ -1236,10 +1781,30 @@ main <- function() {
   write.csv(selected_genes, file.path(output_dir, 'selected_genes.csv'), row.names = FALSE)
 
   plot_type <- tolower(as.character(get_param(params, 'plot_type', ifelse(mode == 'compute', 'running', 'summary')))[1])
-  if (plot_type == 'composite') {
+  if (plot_type %in% c('faceted_running', 'facet_running', 'stacked_running')) {
+    plot <- make_faceted_running_plot(selected, fg$ranks, fg$pathways, params)
+  } else if (plot_type %in% c('classic_tracks', 'tracked_running')) {
+    plot <- make_running_plot(selected, fg$ranks, fg$pathways, params)
+  } else if (plot_type %in% c('grouped_curves', 'multi_curve', 'gsea_grouped')) {
+    params$curve_style <- 'multi_term'
+    plot <- make_gradient_curve_plot(selected, fg$ranks, fg$pathways, params)
+  } else if (plot_type == 'composite') {
     plot <- make_composite_plot(selected, fg$ranks, fg$pathways, params)
   } else if (plot_type %in% c('dot_summary', 'summary_dot', 'lollipop_summary')) {
     plot <- make_dot_summary_plot(selected, params)
+  } else if (plot_type %in% c('ridge', 'ridges', 'enrichment_ridge', 'gsea_ridge', 'ridgeplot')) {
+    plot <- make_enrichment_ridge_plot(selected, fg$ranks, fg$pathways, params)
+  } else if (plot_type %in% c('gene_sankey', 'sankey', 'cnet_sankey', 'gene_pathway_sankey', 'alluvial_bubble')) {
+    if (is.null(fg$ranks) || is.null(fg$pathways)) {
+      gs_file <- genesets_file
+      if (is.null(gs_file)) gs_file <- get_param(params, 'genesets_file', NULL)
+      if (!is.null(gs_file) && file.exists(gs_file)) fg$pathways <- read_genesets(gs_file)
+      if (is.null(fg$ranks)) {
+        rank_try <- tryCatch(make_ranks(df, params), error = function(e) NULL)
+        fg$ranks <- rank_try
+      }
+    }
+    plot <- make_gene_pathway_sankey_plot(selected, fg$ranks, fg$pathways, params)
   } else if (plot_type %in% c('gradient_curve', 'gradient_only', 'single_gradient', 'leading_edge_curve', 'running_multi_panel')) {
     plot <- make_gradient_curve_plot(selected, fg$ranks, fg$pathways, params)
   } else if (plot_type %in% c('running', 'curve', 'gsea')) {
@@ -1252,8 +1817,8 @@ main <- function() {
   } else {
     plot <- make_summary_plot(selected, params)
   }
-  width <- num_param(params, if (plot_type == 'composite') 'composite_width' else 'width', ifelse(plot_type == 'composite', 12, ifelse(plot_type %in% c('running', 'curve', 'gsea'), 8.2, 8.5)))
-  height <- num_param(params, if (plot_type == 'composite') 'composite_height' else 'height', ifelse(plot_type == 'composite', 10, ifelse(plot_type %in% c('running', 'curve', 'gsea'), 7.0, 6.2)))
+  width <- num_param(params, if (plot_type == 'composite') 'composite_width' else 'width', ifelse(plot_type == 'composite', 12, ifelse(plot_type %in% c('ridge', 'ridges', 'enrichment_ridge', 'gsea_ridge', 'ridgeplot'), 8.0, ifelse(plot_type %in% c('running', 'curve', 'gsea'), 8.2, 8.5))))
+  height <- num_param(params, if (plot_type == 'composite') 'composite_height' else 'height', ifelse(plot_type == 'composite', 10, ifelse(plot_type %in% c('ridge', 'ridges', 'enrichment_ridge', 'gsea_ridge', 'ridgeplot'), max(5.5, 0.55 * max(1, nrow(selected)) + 1.6), ifelse(plot_type %in% c('running', 'curve', 'gsea'), 7.0, 6.2))))
   dpi <- num_param(params, 'dpi', 300)
   save_plot(plot, output_dir, width, height, dpi)
   if (plot_type == 'composite' && as_bool(get_param(params, 'composite_export_panels', FALSE), FALSE)) {

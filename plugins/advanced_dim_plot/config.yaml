@@ -5,8 +5,8 @@ version: 1.0.0
 description: Highly customizable dim1/dim2 embedding plots for groups, features, coexpression, splits, highlights, density, hexbin, marks, and lineage paths.
 language: R
 entrypoint: plot.R
-category: Scatter
-subcategory: Dimension
+category: Dimension
+subcategory: Embedding
 status: stable
 runtime:
   command: Rscript plot.R --input input.csv --params params.json --output output_dir

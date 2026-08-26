@@ -1,0 +1,19 @@
+{
+  "id": "pdf_repro_hexbin",
+  "label": "Hexbin features",
+  "blurb": "Hex-binned Neurod1 + Atoh1.",
+  "howto": "hex=true \u00b7 hex_bins=60",
+  "card_group": "pdf_styles",
+  "plugin_id": "advanced_feature_plot",
+  "plot_type": "pdf_repro_hexbin",
+  "mode": "feature",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "gallery_png": "pdf_repro_hexbin.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/pdf_repro_hexbin/input/example_input.csv --params plugins/advanced_feature_plot/examples/pdf_repro_hexbin/params.json --output /tmp/pdf_repro_hexbin_out"
+  }
+}

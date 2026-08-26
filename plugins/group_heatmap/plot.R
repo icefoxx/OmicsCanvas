@@ -295,11 +295,11 @@ build_groupheatmap_args <- function(df, params) {
     dot_range = as_numeric_vector(get_param_any(params, c('dot_range'), c(0.5, 3.5)), c(0.5, 3.5)),
     border = as_bool(get_param_any(params, c('border', 'cell_border_show'), TRUE), TRUE),
     group_sep = get_param_any(params, c('group_sep'), ' | '),
-    annotation_pie_scale = num_param_any(params, c('annotation_pie_scale'), 0.32),
-    annotation_track_scale = num_param_any(params, c('annotation_track_scale'), 0.8),
-    annotation_track_gap = num_param_any(params, c('annotation_track_gap'), 0.01),
-    annotation_pie_y_span = num_param_any(params, c('annotation_pie_y_span'), 0.28),
-    annotation_pie_mode = get_param_any(params, c('annotation_pie_mode'), 'round'),
+    annotation_pie_scale = num_param_any(params, c('annotation_pie_scale'), 0.88),
+    annotation_track_scale = num_param_any(params, c('annotation_track_scale'), 1.0),
+    annotation_track_gap = num_param_any(params, c('annotation_track_gap'), 0.02),
+    annotation_pie_y_span = num_param_any(params, c('annotation_pie_y_span'), 0.5),
+    annotation_pie_mode = get_param_any(params, c('annotation_pie_mode'), 'flush'),
     annotation_attach = as_bool(get_param_any(params, c('annotation_attach'), TRUE), TRUE),
     annotation_row_frame = as_bool(get_param_any(params, c('annotation_row_frame'), FALSE), FALSE),
     show_annotation_frame = as_bool(get_param_any(params, c('show_annotation_frame'), TRUE), TRUE),
@@ -310,7 +310,14 @@ build_groupheatmap_args <- function(df, params) {
     annotation_label_face = get_param_any(params, c('annotation_label_face'), 'plain'),
     annotation_label_family = get_param_any(params, c('annotation_label_family', 'font_family'), ''),
     annotation_label_margin_pt = num_param_any(params, c('annotation_label_margin_pt'), 4),
-    track_heights = get_param(params, 'track_heights', c(group = 0.55, categorical = 0.9, numeric = 1.35, dot = 6)),
+    track_heights = {
+      .th <- get_param(params, 'track_heights', c(group = 0.9, categorical = 1.45, numeric = 1.7, dot = 5))
+      if (is.list(.th) && !is.data.frame(.th)) .th <- unlist(.th)
+      .th.names <- names(.th)
+      .th <- suppressWarnings(as.numeric(.th))
+      names(.th) <- if (!is.null(.th.names) && any(nzchar(.th.names))) .th.names else c('group', 'categorical', 'numeric', 'dot')[seq_along(.th)]
+      .th
+    },
     clustered_dotplot_row_mm = num_param_any(params, c('clustered_dotplot_row_mm'), NA_real_),
     clustered_dotplot_col_mm = num_param_any(params, c('clustered_dotplot_col_mm'), NA_real_),
     clustered_dotplot_max_height_mm = num_param_any(params, c('clustered_dotplot_max_height_mm'), 220),

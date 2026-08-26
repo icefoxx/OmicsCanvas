@@ -1,0 +1,23 @@
+{
+  "home_routes": {
+    "/": 200,
+    "/plots": 200,
+    "/analysis": 200
+  },
+  "taxonomy_contexts": [
+    "single_cell",
+    "bulk_expression",
+    "functional_enrichment",
+    "epigenomics",
+    "trajectory",
+    "general_statistics",
+    "relationships_overlap"
+  ],
+  "cell_composition": [
+    "umap_tsne",
+    "dot_plot",
+    "grouped_heatmap",
+    "stacked_bar_plot"
+  ],
+  "studio_redirect": "advanced_dim_plot + composition_pie"
+}

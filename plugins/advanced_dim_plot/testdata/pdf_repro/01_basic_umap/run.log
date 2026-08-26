@@ -1,0 +1,4 @@
+[2026-08-24 23:16:45] Starting advanced dimension plot plugin.
+[2026-08-24 23:16:46] SCA advDimPlot args: group.by=cluster split.by=NULL stat.plot.by=NULL nrow=NULL ncol=NULL
+[2026-08-24 23:16:46] SCA advDimPlot upper plot completed.
+[2026-08-24 23:16:48] Completed advanced dimension plot plugin.

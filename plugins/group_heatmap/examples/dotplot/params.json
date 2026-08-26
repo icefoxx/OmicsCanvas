@@ -17,9 +17,17 @@
   "threshold": 0.6,
   "heatmap_palette": "YlOrRd",
   "group_palette": "Paired",
-  "annotation_pie_scale": 0.5,
-  "annotation_track_scale": 0.8,
+  "annotation_pie_scale": 0.9,
+  "annotation_track_scale": 1.0,
+  "annotation_pie_y_span": 0.52,
+  "annotation_pie_mode": "flush",
+  "track_heights": {
+    "group": 1.0,
+    "categorical": 1.6,
+    "numeric": 1.8,
+    "dot": 5
+  },
   "legend_scale": 0.85,
   "width": 9,
-  "height": 7
+  "height": 8
 }

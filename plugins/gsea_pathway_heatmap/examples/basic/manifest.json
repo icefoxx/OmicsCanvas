@@ -1,0 +1,17 @@
+{
+  "id": "basic",
+  "label": "basic",
+  "plugin_id": "gsea_pathway_heatmap",
+  "plot_type": "basic",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_ranks.csv",
+    "genesets": "input/example_pathways.gmt",
+    "expr": "input/example_expression.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/gsea_pathway_heatmap/plot.R --input plugins/gsea_pathway_heatmap/examples/basic/input/example_ranks.csv --params plugins/gsea_pathway_heatmap/examples/basic/params.json --output /tmp/gsea_pathway_heatmap_basic_out --genesets plugins/gsea_pathway_heatmap/examples/basic/input/example_pathways.gmt --expr plugins/gsea_pathway_heatmap/examples/basic/input/example_expression.csv"
+  }
+}

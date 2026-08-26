@@ -1,6 +1,10 @@
-name: feature_density_plot
+id: feature_density_plot
+name: Feature Density Plot
 display_name: Feature Density Plot
 description: Standardized SCA GsDenPlot.R wrapper that computes KNN-smoothed weighted KDE density of feature expression over a 2D reduction embedding and plots a viridis-colored scatter.
+category: Feature
+subcategory: Density
+status: stable
 runtime:
   command: Rscript plot.R --input expression.csv --embed embedding.csv --params params.json --output output_dir
 inputs:

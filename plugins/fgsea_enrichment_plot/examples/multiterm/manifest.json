@@ -1,9 +1,9 @@
 {
   "id": "multiterm",
-  "label": "multiterm",
+  "label": "Annotated multi-term GSEA",
   "plugin_id": "fgsea_enrichment_plot",
-  "plot_type": "running_multi_panel",
-  "mode": "",
+  "plot_type": "classic_tracks",
+  "mode": "multi-term curves + statistics",
   "params": "params.json",
   "inputs": {
     "input": "input/example_ranks.csv",

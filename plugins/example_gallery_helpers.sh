@@ -27,7 +27,8 @@ run_plugin_examples() {
       interactive_violin_plot) [[ "$stem" == *long* ]] && input="$dir/example_input_long.csv";;
       exp_stat_plot) input="$dir/example_metadata.csv"; extra=(--expr "$dir/example_expression.csv");;
       feature_density_plot) input="$dir/example_expression.csv"; extra=(--embed "$dir/example_embedding.csv");;
-      fgsea_enrichment_plot) if [[ "$stem" == *summary* || "$stem" == *dot_summary* ]]; then input="$dir/example_fgsea_results.csv"; else input="$dir/example_ranks.csv"; extra=(--genesets "$dir/example_pathways.gmt"); fi;;
+      fgsea_enrichment_plot) if [[ "$stem" == *summary* || "$stem" == *dot_summary* ]]; then input="$dir/example_fgsea_results.csv"; elif [[ "$stem" == *multigroup* ]]; then input="$dir/example_multigroup_ranks.csv"; extra=(--genesets "$dir/example_multigroup_pathways.gmt"); elif [[ "$stem" == *ridge* || "$stem" == *gene_sankey* ]]; then input="$dir/example_ridge_ranks.csv"; extra=(--genesets "$dir/example_ridge_pathways.gmt"); else input="$dir/example_ranks.csv"; extra=(--genesets "$dir/example_pathways.gmt"); fi;;
+      gsea_pathway_heatmap) input="$dir/example_ranks.csv"; extra=(--genesets "$dir/example_pathways.gmt" --expr "$dir/example_expression.csv"); [[ "$stem" == *annotation* ]] && extra+=(--col_annot "$dir/example_col_annot.csv"); [[ "$stem" == *precomputed* ]] && extra+=(--enrichment "$dir/example_enrichment.csv");;
       lineage_plot) input="$dir/example_embedding.csv"; extra=(--lineages "$dir/example_lineages.csv");;
       sca_volcano_plot) input="$dir/example_markers.csv";;
       stat_plot) input="$dir/example_metadata.csv";;

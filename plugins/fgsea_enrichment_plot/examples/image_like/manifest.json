@@ -1,9 +1,9 @@
 {
   "id": "image_like",
-  "label": "image_like",
+  "label": "Gradient multi-term GSEA",
   "plugin_id": "fgsea_enrichment_plot",
-  "plot_type": "gradient_curve",
-  "mode": "",
+  "plot_type": "grouped_curves",
+  "mode": "multi-term gradient curves",
   "params": "params.json",
   "inputs": {
     "input": "input/example_ranks.csv",

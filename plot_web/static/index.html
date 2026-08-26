@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Plot Studio | OmicsCanvas</title>
-  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/styles.css?v=discovery-2">
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,65 +36,13 @@
     <!-- MINT COLLAPSIBLE SIDEBAR WITH ENGLISH OMICS PLOTTING CATEGORIES -->
     <aside class="sidebar" id="mainSidebar">
       <button id="sidebarToggle" class="sidebar-toggle-btn" title="Toggle Sidebar Collapse">‹</button>
-      <nav class="sidebar-category-list">
-        <button class="cat-nav-item active" data-cat="All">
-          <span class="cat-icon">🌐</span>
-          <span class="cat-label">All Plots</span>
-        </button>
-        <button class="cat-nav-item" data-cat="Heatmap">
-          <span class="cat-icon">🔥</span>
-          <span class="cat-label">Heatmaps & Clustering</span>
-        </button>
-        <button class="cat-nav-item" data-cat="Scatter">
-          <span class="cat-icon">🌋</span>
-          <span class="cat-label">Scatter & Volcano</span>
-        </button>
-        <button class="cat-nav-item" data-cat="Expression">
-          <span class="cat-icon">📊</span>
-          <span class="cat-label">Expression & Stats</span>
-        </button>
-        <button class="cat-nav-item" data-cat="Dimension">
-          <span class="cat-icon">🧩</span>
-          <span class="cat-label">Dimension & Feature</span>
-        </button>
-        <button class="cat-nav-item" data-cat="Trajectory">
-          <span class="cat-icon">🌱</span>
-          <span class="cat-label">Trajectory & Lineage</span>
-        </button>
-        <button class="cat-nav-item" data-cat="Venn">
-          <span class="cat-icon">⭕</span>
-          <span class="cat-label">Venn & Overlap</span>
-        </button>
-        <button class="cat-nav-item" data-cat="Favorites">
-          <span class="cat-icon">⭐</span>
-          <span class="cat-label">Favorites</span>
-        </button>
-      </nav>
+      <nav class="sidebar-category-list" id="sidebarCategoryList"></nav>
     </aside>
 
     <section class="workspace">
       <!-- PLOT GALLERY PORTAL (ENGLISH VIEW) -->
       <section id="plotLibraryPanel" class="mode-panel">
-        <div class="gallery-header-bar">
-          <div class="filter-pills">
-            <button class="filter-pill active" data-filter="all">All</button>
-            <button class="filter-pill" data-filter="latest">Latest <span class="badge-dot">1</span></button>
-            <button class="filter-pill" data-filter="popular">Popular</button>
-          </div>
-
-          <div class="gallery-tools">
-            <div class="tool-count-info">
-              Showing <strong id="toolCount">0</strong> tools <span class="page-num">1/1 ‹ ›</span>
-            </div>
-            <div class="search-input-wrap">
-              <input id="pluginSearch" class="search-input" placeholder="Search plots 🔍">
-            </div>
-          </div>
-        </div>
-
-        <div class="tool-gallery">
-          <div id="plotCards" class="plot-cards"></div>
-        </div>
+        <div id="discoveryRoot" class="discovery-root"></div>
       </section>
 
       <!-- AI STUDIO -->
@@ -388,6 +336,7 @@
     <span id="outputPathText"></span>
   </footer>
 
-  <script src="/static/app.js"></script>
+  <script src="/static/discovery.js?v=discovery-2"></script>
+  <script src="/static/app.js?v=discovery-2"></script>
 </body>
 </html>

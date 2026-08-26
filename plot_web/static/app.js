@@ -1231,6 +1231,58 @@ function selectExample(index, { updateControls = true } = {}) {
   }
 }
 
+function exampleBlurb(example) {
+  return example?.blurb || example?.description || example?.manifest?.blurb || "";
+}
+
+function exampleHowto(example) {
+  return example?.howto || example?.manifest?.howto || "";
+}
+
+function exampleCardGroup(example) {
+  const g = example?.card_group || example?.manifest?.card_group;
+  if (g) return g;
+  const id = String(example?.id || "");
+  if (id.startsWith("pdf_repro_")) return "pdf_styles";
+  return "more";
+}
+
+function appendExampleCard(grid, example, index) {
+  const card = document.createElement("button");
+  card.type = "button";
+  const isSelected = state.selectedExample && String(state.selectedExample.id) === String(example.id);
+  card.className = `example-card demo-frame ${isSelected ? "selected" : ""}`;
+  card.setAttribute("aria-pressed", isSelected ? "true" : "false");
+  const image = exampleImageUrl(example.image || example.expected);
+  const cat = example.mode || example.plot_type || "demo";
+  const blurb = exampleBlurb(example);
+  const howto = exampleHowto(example);
+  card.innerHTML = `
+    <span class="demo-frame-chrome">
+      <span class="demo-frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="demo-frame-title"></span>
+    </span>
+    <span class="example-card-image">${image ? `<img src="${image}" alt="">` : `<span class="example-placeholder">📊</span>`}</span>
+    <span class="example-card-copy">
+      <span class="example-card-label"></span>
+      <span class="example-card-blurb"></span>
+      <span class="example-card-howto"></span>
+      <span class="example-card-type"></span>
+    </span>`;
+  card.querySelector(".demo-frame-title").textContent = exampleLabel(example, index);
+  card.querySelector(".example-card-label").textContent = exampleLabel(example, index);
+  const blurbEl = card.querySelector(".example-card-blurb");
+  const howtoEl = card.querySelector(".example-card-howto");
+  if (blurb) blurbEl.textContent = blurb;
+  else blurbEl.remove();
+  if (howto) howtoEl.textContent = howto;
+  else howtoEl.remove();
+  card.querySelector(".example-card-type").textContent = `mode · ${cat}`;
+  card.title = [blurb, howto].filter(Boolean).join("\n");
+  card.onclick = () => selectExample(index);
+  grid.appendChild(card);
+}
+
 function renderExampleGallery() {
   const gallery = $("exampleGallery");
   if (!gallery) return;
@@ -1239,33 +1291,71 @@ function renderExampleGallery() {
 
   const head = document.createElement("div");
   head.className = "example-gallery-head";
-  head.innerHTML = `<strong>${state.examples.length} example ${state.examples.length === 1 ? "mode" : "modes"}</strong><small>Choose a type to load its parameters</small>`;
+  head.innerHTML = `<strong>${state.examples.length} demo cards</strong><small>Each card = one default plot setting</small>`;
   gallery.appendChild(head);
 
-  const grid = document.createElement("div");
-  grid.className = "example-gallery-grid";
+  // How-to notice for switching plot types / styles
+  const notice = document.createElement("div");
+  notice.className = "demo-howto-notice";
+  notice.innerHTML = `
+    <strong>How to switch plot types</strong>
+    <ol>
+      <li><b>Click a demo card</b> below to load that style’s default parameters + matching input.</li>
+      <li>Or open <b>Presets</b> (top-right) and pick another example.</li>
+      <li>To customize further, change keys in <b>Mapping / Color &amp; Legend / Axes</b>:
+        <code>plot_mode</code>, <code>group_column</code>, <code>show_mark</code>,
+        <code>split_column</code>, <code>show_stat_embedded</code>,
+        <code>highlight_rows</code>, <code>background_column</code> / <code>background_cutoff</code>.</li>
+      <li>Click <b>Demo</b> or <b>Run Plot</b> to re-render after edits.</li>
+    </ol>
+    <p class="demo-howto-tip">Tip: for <b>Advanced Dimension Plot</b>, the first 7 cards are PDF-matched UMAP styles (basic → ellipse → split → rings → highlight → mito background → sample background). For <b>Advanced Feature Plot</b>, the first 7 cards are PDF-matched feature styles (basic genes → multi scaled → split → composite → highlight → shared-split → hexbin).</p>
+  `;
+  gallery.appendChild(notice);
+
+  const styleIdx = [];
+  const moreIdx = [];
   state.examples.forEach((example, index) => {
-    const card = document.createElement("button");
-    card.type = "button";
-    const isSelected = state.selectedExample && String(state.selectedExample.id) === String(example.id);
-    card.className = `example-card ${isSelected ? "selected" : ""}`;
-    card.setAttribute("aria-pressed", isSelected ? "true" : "false");
-    const image = exampleImageUrl(example.image);
-    card.innerHTML = `<span class="example-card-image">${image ? `<img src="${image}" alt="">` : `<span class="example-placeholder">📊</span>`}</span><span class="example-card-copy"><span class="example-card-label"></span><span class="example-card-type"></span></span>`;
-    card.querySelector(".example-card-label").textContent = exampleLabel(example, index);
-    card.querySelector(".example-card-type").textContent = exampleType(example);
-    card.onclick = () => selectExample(index);
-    grid.appendChild(card);
+    if (exampleCardGroup(example) === "pdf_styles") styleIdx.push(index);
+    else moreIdx.push(index);
   });
-  gallery.appendChild(grid);
+
+  if (styleIdx.length) {
+    const section = document.createElement("div");
+    section.className = "demo-card-section";
+    section.innerHTML = `<div class="demo-card-section-title"><span>Style presets</span><small>${styleIdx.length} cards · click to compare defaults</small></div>`;
+    const grid = document.createElement("div");
+    grid.className = "example-gallery-grid demo-frame-grid demo-frame-grid-styles";
+    styleIdx.forEach((index) => appendExampleCard(grid, state.examples[index], index));
+    section.appendChild(grid);
+    gallery.appendChild(section);
+  }
+
+  if (moreIdx.length) {
+    const section = document.createElement("div");
+    section.className = "demo-card-section";
+    section.innerHTML = `<div class="demo-card-section-title"><span>More examples</span><small>${moreIdx.length} cards</small></div>`;
+    const grid = document.createElement("div");
+    grid.className = "example-gallery-grid demo-frame-grid";
+    moreIdx.forEach((index) => appendExampleCard(grid, state.examples[index], index));
+    section.appendChild(grid);
+    gallery.appendChild(section);
+  }
+
   if (state.selectedExample !== null) {
     const note = document.createElement("div");
     note.className = "example-selected-note";
     const selected = selectedExampleRecord();
-    note.textContent = `Selected: ${exampleLabel(selected, 0)} · ${exampleType(selected)} · Run demo uses exact params + bundled inputs`;
+    const howto = exampleHowto(selected);
+    note.innerHTML = `<div><strong>Selected:</strong> ${exampleLabel(selected, 0)} · ${exampleType(selected)}</div>`;
+    if (howto) {
+      const h = document.createElement("div");
+      h.className = "example-selected-howto";
+      h.textContent = `Settings: ${howto}`;
+      note.appendChild(h);
+    }
     const action = document.createElement("span");
     action.className = "example-reproduce-label";
-    action.textContent = "Reproduce this example";
+    action.textContent = "Run Demo to apply this card";
     note.appendChild(action);
     gallery.appendChild(note);
   }
@@ -1795,10 +1885,14 @@ const OMICS_PLOT_MAP = {
 };
 
 function renderPlotCards() {
+  if ($("discoveryRoot") && typeof renderDiscovery === "function") {
+    renderDiscovery();
+    return;
+  }
   const box = $("plotCards");
   if (!box) return;
   box.innerHTML = "";
-  const query = $("pluginSearch").value.trim().toLowerCase();
+  const query = ($("pluginSearch") && $("pluginSearch").value || "").trim().toLowerCase();
   const activeCat = state.category || "All";
 
   const visible = state.plugins.filter((plugin) => {
@@ -2850,11 +2944,17 @@ async function init() {
   state.tree = tree.categories || [];
   renderCategoryChips();
   renderPluginTree();
-  renderPlotCards();
   renderHome();
   wireAiStudio();
-  $("pluginSearch").oninput = renderPluginTree;
-  $("pluginSearch").addEventListener("input", renderPlotCards);
+  if (typeof initDiscovery === "function") {
+    await initDiscovery();
+  } else {
+    renderPlotCards();
+  }
+  if ($("pluginSearch") && !$("discoveryRoot")) {
+    $("pluginSearch").oninput = renderPluginTree;
+    $("pluginSearch").addEventListener("input", renderPlotCards);
+  }
   $("runButton").onclick = runSelectedPlugin;
   $("uploadDatasetButton").onclick = uploadDataset;
   $("refreshResultsButton").onclick = refreshResults;
@@ -2879,15 +2979,6 @@ async function init() {
       toggleBtn.textContent = sidebar.classList.contains("collapsed") ? "›" : "‹";
     };
   }
-
-  document.querySelectorAll(".cat-nav-item").forEach((btn) => {
-    btn.onclick = () => {
-      document.querySelectorAll(".cat-nav-item").forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      state.category = btn.dataset.cat;
-      renderPlotCards();
-    };
-  });
 
   document.querySelectorAll(".filter-pill").forEach((btn) => {
     btn.onclick = () => {

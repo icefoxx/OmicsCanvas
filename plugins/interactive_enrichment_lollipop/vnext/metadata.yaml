@@ -1,0 +1,35 @@
+id: interactive_enrichment_lollipop
+version: "1.1.0"
+family: enrichment
+aliases:
+  - enrichment lollipop
+  - signed enrichment plot
+  - Cleveland enrichment plot
+  - pathway lollipop
+accepts:
+  - enrichment_table
+required_semantics:
+  - category
+  - signed_effect
+optional_semantics:
+  - group
+  - size
+  - gene_count
+  - pvalue
+  - adjusted_pvalue
+capabilities:
+  interactive: true
+  statistics: false
+  export_svg: true
+  export_pdf: true
+  export_png: true
+  export_html: true
+  vnext_migrated: true
+guardrails:
+  - require_signed_metric
+  - distinguish_raw_p_and_fdr
+  - prefer_stem_to_zero
+legacy:
+  entrypoint: plot.R
+  language: R
+  params_schema: params_schema.json

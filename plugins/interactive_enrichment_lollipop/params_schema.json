@@ -135,6 +135,8 @@
     },
     "legend_text_size": { "type": "number", "label": "Legend text size", "default": 10 },
     "legend_title_size": { "type": "number", "label": "Legend title size", "default": 11 },
+    "size_legend_title": { "type": "string", "label": "Size legend title", "default": "Size" },
+    "size_legend_breaks": { "type": "number_array", "label": "Size legend breaks", "default": [] },
     "show_size_legend": { "type": "boolean", "label": "Show size legend", "default": false }
   },
   "export": {

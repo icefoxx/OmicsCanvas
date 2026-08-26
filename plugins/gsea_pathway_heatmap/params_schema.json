@@ -1,0 +1,44 @@
+{
+  "data": {
+    "gene_col": "Rank table gene column.",
+    "stat_col": "Rank statistic column.",
+    "comparison_col": "Optional comparison column.",
+    "selected_comparison": "Comparison to keep when comparison_col is set.",
+    "expr_gene_col": "Expression matrix gene column.",
+    "selected_terms": "Pathway/term names to plot.",
+    "top_n_terms": "Used when selected_terms is omitted.",
+    "terms_exclude": "Terms to drop.",
+    "term_col": "Precomputed enrichment term column.",
+    "nes_col": "NES column.",
+    "pvalue_col": "P-value column.",
+    "padj_col": "Adjusted p-value column.",
+    "leading_genes_col": "Leading-edge gene string column."
+  },
+  "gsea": {
+    "minSize": "Minimum gene-set size.",
+    "maxSize": "Maximum gene-set size.",
+    "nperm": "FGSEA permutations.",
+    "exponent": "GSEA weight exponent.",
+    "term_colors": "Named term colors.",
+    "curve_line_width": "Running-curve width.",
+    "legend_position": "Legend position for term colors."
+  },
+  "heatmap": {
+    "scale": "row, column, or none.",
+    "heatmap_gene_mode": "leading_edge or all_members.",
+    "heatmap_max_genes": "Maximum genes per pathway heatmap.",
+    "heatmap_palette_colors": "Diverging colors for z-score tiles.",
+    "heatmap_show_rownames": "Show gene names on heatmaps.",
+    "heatmap_column_angle": "Sample label angle.",
+    "heatmap_column_annotation_columns": "Sample annotation fields to mention.",
+    "sample_order": "Explicit sample column order."
+  },
+  "layout": {
+    "title": "Figure title.",
+    "subtitle": "Figure subtitle.",
+    "layout_heights": "Relative heights for curve, hits, rank strip, heatmaps.",
+    "width": "Width in inches.",
+    "height": "Height in inches.",
+    "dpi": "PNG DPI."
+  }
+}

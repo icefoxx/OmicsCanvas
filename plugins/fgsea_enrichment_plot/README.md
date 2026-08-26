@@ -2,6 +2,16 @@
 
 Standard OmicsCanvas FGSEA/GSEA plugin with `summary`, classic/gradient running curves, `running_multi_panel`, `dot_summary` (also `summary_dot` and `lollipop_summary`), and `composite` publication layouts. It preserves the older `upper_curve_style`, `gradient_x_title`, and related parameter names.
 
+## Reference GSEA Styles
+
+Three reproducible examples cover the supplied GSEA figure styles:
+
+- `examples/running/`: faceted per-term running enrichment panels with hit marks.
+- `examples/image_like/`: gradient-colored multi-term running curves with term legend and rank strip.
+- `examples/multiterm/`: annotated multi-term running curves with statistics table and selected genes.
+
+Each bundle contains its own `params.json`, input files, expected PNG, and `manifest.json` command.
+
 ## Inputs and commands
 
 `compute` requires a ranked table and GMT (or term/gene CSV/TSV):

@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://omicscanvas.local/vnext/plotspec/1.0",
+  "title": "OmicsCanvas PlotSpec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["spec_version", "skill", "mapping", "export"],
+  "properties": {
+    "spec_version": {
+      "type": "string",
+      "const": "1.0",
+      "description": "PlotSpec contract version (independent of skill versions)."
+    },
+    "skill": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dataset_id": { "type": ["string", "null"] },
+        "source_file": { "type": "string" },
+        "checksum": { "type": ["string", "null"] },
+        "format": {
+          "type": "string",
+          "enum": ["csv", "tsv", "txt", "xlsx", "unknown"]
+        }
+      }
+    },
+    "mapping": {
+      "type": "object",
+      "description": "Semantic role → column name. Keys are semantic roles.",
+      "additionalProperties": { "type": ["string", "null"] }
+    },
+    "transform": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "filters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field", "op", "value"],
+            "properties": {
+              "field": { "type": "string" },
+              "op": {
+                "type": "string",
+                "enum": ["<", "<=", ">", ">=", "==", "!=", "in", "not_in", "contains"]
+              },
+              "value": {}
+            }
+          }
+        },
+        "top_n": { "type": ["integer", "null"], "minimum": 1 },
+        "ranking": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "field": { "type": "string" },
+            "method": {
+              "type": "string",
+              "enum": ["asc", "desc", "abs_asc", "abs_desc"]
+            }
+          }
+        },
+        "preserve_order": { "type": "boolean" }
+      }
+    },
+    "statistics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "method": { "type": ["string", "null"] },
+        "multiple_testing": { "type": ["string", "null"] },
+        "uncertainty": {
+          "type": ["string", "null"],
+          "enum": [null, "sd", "sem", "ci95", "ci99", "none"]
+        }
+      }
+    },
+    "visual": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "orientation": { "type": "string", "enum": ["horizontal", "vertical"] },
+        "zero_line": { "type": "boolean" },
+        "stem_to_zero": { "type": "boolean" },
+        "palette_id": { "type": ["string", "null"] },
+        "title": { "type": ["string", "null"] },
+        "subtitle": { "type": ["string", "null"] },
+        "xlab": { "type": ["string", "null"] },
+        "ylab": { "type": ["string", "null"] },
+        "legend_show": { "type": "boolean" },
+        "interactive": { "type": "boolean" }
+      }
+    },
+    "export": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format"],
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": ["svg", "pdf", "png", "tiff", "html"]
+        },
+        "formats": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["svg", "pdf", "png", "tiff", "html"] }
+        },
+        "width_mm": { "type": "number", "minimum": 10 },
+        "height_mm": { "type": "number", "minimum": 10 },
+        "width_in": { "type": "number", "minimum": 0.5 },
+        "height_in": { "type": "number", "minimum": 0.5 },
+        "dpi": { "type": "integer", "minimum": 72, "maximum": 1200 }
+      }
+    },
+    "legacy_params": {
+      "type": "object",
+      "description": "Passthrough of existing plugin params.json fields for adapters. Must not invent science.",
+      "additionalProperties": true
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "generated_by_ai": { "type": "boolean" },
+        "user_modified": { "type": "boolean" },
+        "intent_text": { "type": ["string", "null"] },
+        "created_at": { "type": ["string", "null"] },
+        "plotspec_hash": { "type": ["string", "null"] },
+        "framework_version": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

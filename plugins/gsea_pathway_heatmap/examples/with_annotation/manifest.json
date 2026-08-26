@@ -1,0 +1,18 @@
+{
+  "id": "with_annotation",
+  "label": "with_annotation",
+  "plugin_id": "gsea_pathway_heatmap",
+  "plot_type": "with_annotation",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_ranks.csv",
+    "genesets": "input/example_pathways.gmt",
+    "expr": "input/example_expression.csv",
+    "col_annot": "input/example_col_annot.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/gsea_pathway_heatmap/plot.R --input plugins/gsea_pathway_heatmap/examples/with_annotation/input/example_ranks.csv --params plugins/gsea_pathway_heatmap/examples/with_annotation/params.json --output /tmp/gsea_pathway_heatmap_with_annotation_out --genesets plugins/gsea_pathway_heatmap/examples/with_annotation/input/example_pathways.gmt --expr plugins/gsea_pathway_heatmap/examples/with_annotation/input/example_expression.csv --col_annot plugins/gsea_pathway_heatmap/examples/with_annotation/input/example_col_annot.csv"
+  }
+}

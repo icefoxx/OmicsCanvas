@@ -114,11 +114,11 @@ GroupHeatmap <- function(
     dot_range = c(0.5, 3.5),
     border = TRUE,
     group_sep = " | ",
-    annotation_pie_scale = 0.32,
-    annotation_track_scale = 0.8,
-    annotation_track_gap = 0.01,
-    annotation_pie_y_span = 0.28,
-    annotation_pie_mode = c("round", "flush"),
+    annotation_pie_scale = 0.88,
+    annotation_track_scale = 1.0,
+    annotation_track_gap = 0.02,
+    annotation_pie_y_span = 0.5,
+    annotation_pie_mode = c("flush", "round"),
     annotation_attach = TRUE,
     annotation_row_frame = FALSE,
     show_annotation_frame = TRUE,
@@ -129,7 +129,7 @@ GroupHeatmap <- function(
     annotation_label_face = "plain",
     annotation_label_family = "",
     annotation_label_margin_pt = 4,
-    track_heights = c(group = 0.55, categorical = 0.9, numeric = 1.35, dot = 6),
+    track_heights = c(group = 0.9, categorical = 1.45, numeric = 1.7, dot = 5),
     clustered_dotplot_row_mm = NULL,
     clustered_dotplot_col_mm = NULL,
     clustered_dotplot_max_height_mm = 220,
@@ -236,11 +236,11 @@ GroupHeatmap <- function(
   .orientation.base <- .orientation
   .group.expand <- ggplot2::expansion(add = c(0.5, 0.5))
   annotation_track_scale <- as.numeric(annotation_track_scale)[1]
-  if (is.na(annotation_track_scale) || annotation_track_scale <= 0) annotation_track_scale <- 0.8
+  if (is.na(annotation_track_scale) || annotation_track_scale <= 0) annotation_track_scale <- 1.0
   annotation_track_gap <- as.numeric(annotation_track_gap)[1]
-  if (is.na(annotation_track_gap) || annotation_track_gap < 0) annotation_track_gap <- 0.01
+  if (is.na(annotation_track_gap) || annotation_track_gap < 0) annotation_track_gap <- 0.02
   annotation_pie_y_span <- as.numeric(annotation_pie_y_span)[1]
-  if (is.na(annotation_pie_y_span) || annotation_pie_y_span <= 0) annotation_pie_y_span <- 0.28
+  if (is.na(annotation_pie_y_span) || annotation_pie_y_span <= 0) annotation_pie_y_span <- 0.5
     annotation_pie_mode <- match.arg(annotation_pie_mode)
     annotation_attach <- isTRUE(annotation_attach)
     annotation_row_frame <- isTRUE(annotation_row_frame)
@@ -1191,9 +1191,14 @@ GroupHeatmap <- function(
         .anno.wide$y <- 1
         .pie.cols <- setdiff(colnames(.anno.wide), c("group", "x", "y"))
         if (length(.pie.cols) > 0) {
-          .pie.scale.auto <- min(0.9, 0.9 * 14 / max(14, length(group_levels)))
-          .pie.scale.use <- min(max(annotation_pie_scale, 0.42), .pie.scale.auto)
-          .pie.y.lim <- .pie.y.limits(.pie.scale.use)
+          # scatterpie radius = diff(range(x))/50 * pie_scale. Treat annotation_pie_scale
+          # as a relative diameter in group-slot units (1.0 ≈ fill the column width).
+          .x.span <- max(1, diff(range(.anno.wide$x, na.rm = TRUE)))
+          .rel.diameter <- min(0.98, max(0.2, as.numeric(annotation_pie_scale)[1]))
+          .target.r <- .rel.diameter / 2
+          .pie.scale.use <- .target.r * 50 / .x.span
+          .y.span <- max(as.numeric(annotation_pie_y_span)[1], .target.r * 1.12)
+          .pie.y.lim <- c(1 - .y.span, 1 + .y.span)
           .plot <- ggplot2::ggplot() +
             scatterpie::geom_scatterpie(data = .anno.wide, ggplot2::aes(x = x, y = y), cols = .pie.cols, color = "black", pie_scale = .pie.scale.use) +
             ggplot2::scale_fill_manual(values = .anno.cols, name = anno) +
@@ -1210,11 +1215,13 @@ GroupHeatmap <- function(
 	              panel.border = ggplot2::element_rect(fill = NA, colour = "black", linewidth = 1),
                 plot.margin = .annotation.margin
 	            ) + .annotation.label.theme()
-          if (identical(annotation_pie_mode, "round")) {
+          # Avoid aspect.ratio in vertical stacks: it letterboxes panels and breaks
+          # column alignment with the main gene panel under cowplot::align_plots.
+          if (identical(annotation_pie_mode, "round") && isTRUE(.horizontal_blocks_mode)) {
             .pie.aspect <- diff(.pie.y.lim) / max(1, length(group_levels))
             .plot <- .plot + ggplot2::theme(aspect.ratio = .pie.aspect)
           }
-	          return(list(plot = .plot, height = track_heights[["categorical"]] * annotation_track_scale * 0.75))
+	          return(list(plot = .plot, height = track_heights[["categorical"]] * annotation_track_scale))
 	        }
 	      }
       if (.horizontal_blocks_mode && requireNamespace("scatterpie", quietly = TRUE)) {
@@ -1288,7 +1295,7 @@ GroupHeatmap <- function(
             plot.margin = grid::unit(c(0, 0, 0, 0), "pt")
           ) + .annotation.label.theme()
       }
-	      list(plot = .plot, height = track_heights[["categorical"]] * annotation_track_scale * 0.75)
+	      list(plot = .plot, height = track_heights[["categorical"]] * annotation_track_scale)
 	    }
 
     .resolve_dot_size_range <- function(n_features, base_range = dot_range) {
@@ -2022,8 +2029,37 @@ GroupHeatmap <- function(
         })
       }
       .position.track.panels <- lapply(.position.tracks, .wrap_with_feature_space)
-      .panel.components <- list()
-      .panel.heights <- numeric()
+      .group.strip.df <- data.frame(
+        group = factor(.group.levels, levels = .group.levels),
+        x = seq_along(.group.levels),
+        y = 1,
+        stringsAsFactors = FALSE
+      )
+      .group.strip <- ggplot2::ggplot(.group.strip.df, ggplot2::aes(x = .data$x, y = .data$y, fill = .data$group)) +
+        ggplot2::geom_tile(width = 1, height = 1, color = "black", linewidth = 0.45) +
+        ggplot2::scale_fill_manual(values = .group.cols.primary, guide = "none") +
+        ggplot2::scale_x_continuous(
+          limits = c(0.5, length(.group.levels) + 0.5),
+          breaks = seq_along(.group.levels),
+          labels = .group.axis.labels,
+          expand = c(0, 0),
+          position = "top"
+        ) +
+        ggplot2::scale_y_continuous(expand = c(0, 0)) +
+        ggplot2::labs(x = NULL, y = if (isTRUE(show_annotation_label)) .group.by[1] else NULL) +
+        themeDefault() +
+        ggplot2::theme(
+          axis.text.x = if (isTRUE(show_column_names)) ggplot2::element_text(size = 11, margin = ggplot2::margin(b = 2)) else ggplot2::element_blank(),
+          axis.ticks.x = if (isTRUE(show_column_names)) ggplot2::element_line() else ggplot2::element_blank(),
+          axis.text.y = ggplot2::element_blank(),
+          axis.ticks.y = ggplot2::element_blank(),
+          panel.grid = ggplot2::element_blank(),
+          panel.border = ggplot2::element_rect(fill = NA, colour = "black", linewidth = 1),
+          plot.margin = .annotation.margin
+        ) + .annotation.label.theme()
+      .group.strip.panel <- .wrap_with_feature_space(.group.strip)
+      .panel.components <- list(.group.strip.panel)
+      .panel.heights <- c(track_heights[["group"]] * annotation_track_scale)
       if (length(.track.plot.panels) > 0) {
         .annotation.stack <- NULL
         .annotation.heights <- numeric()

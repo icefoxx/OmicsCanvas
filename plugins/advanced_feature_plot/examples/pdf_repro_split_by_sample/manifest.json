@@ -1,0 +1,19 @@
+{
+  "id": "pdf_repro_split_by_sample",
+  "label": "Split by sample",
+  "blurb": "Atoh1 split across orig.ident panels.",
+  "howto": "split_column=orig.ident \u00b7 global_split=true",
+  "card_group": "pdf_styles",
+  "plugin_id": "advanced_feature_plot",
+  "plot_type": "pdf_repro_split_by_sample",
+  "mode": "feature",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "gallery_png": "pdf_repro_split_by_sample.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/pdf_repro_split_by_sample/input/example_input.csv --params plugins/advanced_feature_plot/examples/pdf_repro_split_by_sample/params.json --output /tmp/pdf_repro_split_by_sample_out"
+  }
+}

@@ -1,6 +1,10 @@
-name: lineage_plot
+id: lineage_plot
+name: Lineage Plot
 display_name: Lineage Plot
 description: SCA-style lineage/pseudotime trajectory plot. Loess-fitted colored paths with arrows over a 2D embedding, optional whiskers and background stroke.
+category: Dimension
+subcategory: Trajectory
+status: stable
 runtime:
   command: Rscript plot.R --input embedding.csv --lineages lineage_table.csv --params params.json --output output_dir
 inputs:

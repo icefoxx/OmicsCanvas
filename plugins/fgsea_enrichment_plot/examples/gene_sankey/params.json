@@ -1,0 +1,18 @@
+{
+  "input_mode": "compute",
+  "plot_type": "gene_sankey",
+  "gene_col": "gene",
+  "stat_col": "avg_log2FC",
+  "comparison_col": "comparison",
+  "selected_comparison": "KO_vs_WT",
+  "fgsea_method": "multilevel",
+  "minSize": 15,
+  "maxSize": 400,
+  "top_n_terms": 5,
+  "sankey_max_terms": 5,
+  "sankey_max_genes": 22,
+  "sankey_gene_mode": "all_members",
+  "width": 11.2,
+  "height": 7.2,
+  "dpi": 300
+}

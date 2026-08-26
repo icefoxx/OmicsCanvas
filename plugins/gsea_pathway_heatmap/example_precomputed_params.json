@@ -1,0 +1,20 @@
+{
+  "gene_col": "gene",
+  "stat_col": "avg_log2FC",
+  "term_col": "pathway",
+  "nes_col": "NES",
+  "pvalue_col": "pval",
+  "padj_col": "padj",
+  "leading_genes_col": "leadingEdge",
+  "selected_terms": ["Cardiac_Chamber_Morphogenesis", "Heart_Morphogenesis"],
+  "term_colors": {
+    "Cardiac_Chamber_Morphogenesis": "#2CA02C",
+    "Heart_Morphogenesis": "#D62728"
+  },
+  "heatmap_gene_mode": "leading_edge",
+  "heatmap_max_genes": 16,
+  "scale": "row",
+  "title": "Precomputed NES with leading-edge heatmaps",
+  "width": 11,
+  "height": 9.2
+}

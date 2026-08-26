@@ -1,0 +1,19 @@
+{
+  "id": "pdf_repro_split_global_blank",
+  "label": "Split \u00b7 shared coords",
+  "blurb": "Sample split with shared axes + themeBlank.",
+  "howto": "global_split=true \u00b7 theme_use=themeBlank",
+  "card_group": "pdf_styles",
+  "plugin_id": "advanced_feature_plot",
+  "plot_type": "pdf_repro_split_global_blank",
+  "mode": "feature",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "gallery_png": "pdf_repro_split_global_blank.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/pdf_repro_split_global_blank/input/example_input.csv --params plugins/advanced_feature_plot/examples/pdf_repro_split_global_blank/params.json --output /tmp/pdf_repro_split_global_blank_out"
+  }
+}

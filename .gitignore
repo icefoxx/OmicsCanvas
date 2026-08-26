@@ -5,3 +5,7 @@ plot_web/**/*.pyc
 plot_web/.env
 .env
 *.pem
+**/__pycache__/
+*.pyc
+.DS_Store
+Rplots.pdf

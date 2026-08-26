@@ -1,0 +1,14 @@
+{
+  "id": "oct4_enrichment",
+  "label": "OCT4 enrichment",
+  "plugin_id": "interactive_enrichment_lollipop",
+  "plot_type": "enrichment",
+  "mode": "signed NES",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "reproduce": {
+    "command": "Rscript plugins/interactive_enrichment_lollipop/plot.R --input plugins/interactive_enrichment_lollipop/examples/oct4_enrichment/input/example_input.csv --params plugins/interactive_enrichment_lollipop/examples/oct4_enrichment/params.json --output /tmp/interactive_enrichment_lollipop_oct4_out"
+  }
+}

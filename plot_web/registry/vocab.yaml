@@ -1,0 +1,99 @@
+# Approved vocabularies for the plot registry (spec §5–§7).
+
+contexts:
+  - single_cell
+  - bulk_expression
+  - differential_expression
+  - functional_enrichment
+  - epigenomics
+  - trajectory
+  - composition
+  - general_statistics
+  - relationships_overlap
+  - cell_clustering
+  - gene_expression
+  - cell_composition
+  - genomics
+  - network
+
+tasks:
+  - clustering
+  - cell_clustering
+  - gene_expression
+  - marker_visualization
+  - cell_composition
+  - sample_comparison
+  - differential_expression
+  - expression_pattern
+  - gene_clustering
+  - gsea
+  - ora
+  - pathway_comparison
+  - gene_pathway_relationship
+  - trajectory
+  - correlation
+  - distribution
+  - group_comparison
+  - density
+  - highlighting
+  - composition
+  - feature_expression
+  - overlap
+  - network
+  - ranking
+  - heatmap
+
+parameter_groups:
+  - data_mapping
+  - marks
+  - colors
+  - labels
+  - legend
+  - axes
+  - theme
+  - layout
+  - statistics
+  - export
+  - highlight
+  - split
+  - background
+  - density
+  - annotation
+
+data_roles:
+  - x
+  - y
+  - x_embedding
+  - y_embedding
+  - group
+  - cluster
+  - sample
+  - condition
+  - feature
+  - metadata
+  - split
+  - rank
+  - geneset
+  - expression
+  - pvalue
+  - effect
+  - size
+  - source
+  - target
+  - weight
+  - id
+
+appearance_presets:
+  - recommended
+  - publication
+  - minimal
+  - large_dataset
+
+classifications:
+  - variant
+  - preset
+  - parameter
+  - demo
+  - export_template
+  - deprecated
+  - uncertain

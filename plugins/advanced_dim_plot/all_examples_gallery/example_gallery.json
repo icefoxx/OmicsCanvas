@@ -1,5 +1,61 @@
 [
   {
+    "id": "pdf_repro_bg_condition",
+    "label": "PDF \u00b7 Background samples",
+    "image": "pdf_repro_bg_condition.png",
+    "params_file": null,
+    "mode": "group",
+    "plot_type": "pdf_repro_bg_condition"
+  },
+  {
+    "id": "pdf_repro_bg_cutoff_mito",
+    "label": "PDF \u00b7 Background mito cutoff",
+    "image": "pdf_repro_bg_cutoff_mito.png",
+    "params_file": null,
+    "mode": "group",
+    "plot_type": "pdf_repro_bg_cutoff_mito"
+  },
+  {
+    "id": "pdf_repro_highlight_cells",
+    "label": "PDF \u00b7 Highlight cells",
+    "image": "pdf_repro_highlight_cells.png",
+    "params_file": null,
+    "mode": "group",
+    "plot_type": "pdf_repro_highlight_cells"
+  },
+  {
+    "id": "pdf_repro_composition_ring",
+    "label": "PDF \u00b7 Composition ring",
+    "image": "pdf_repro_composition_ring.png",
+    "params_file": null,
+    "mode": "group",
+    "plot_type": "pdf_repro_composition_ring"
+  },
+  {
+    "id": "pdf_repro_split_samples",
+    "label": "PDF \u00b7 Split samples",
+    "image": "pdf_repro_split_samples.png",
+    "params_file": null,
+    "mode": "group",
+    "plot_type": "pdf_repro_split_samples"
+  },
+  {
+    "id": "pdf_repro_ellipse_mark",
+    "label": "PDF \u00b7 Ellipse mark",
+    "image": "pdf_repro_ellipse_mark.png",
+    "params_file": null,
+    "mode": "group",
+    "plot_type": "pdf_repro_ellipse_mark"
+  },
+  {
+    "id": "pdf_repro_basic_umap",
+    "label": "PDF \u00b7 Basic UMAP",
+    "image": "pdf_repro_basic_umap.png",
+    "params_file": null,
+    "mode": "group",
+    "plot_type": "pdf_repro_basic_umap"
+  },
+  {
     "id": "axis_label_controls",
     "label": "axis_label_controls",
     "plugin_id": "advanced_dim_plot",

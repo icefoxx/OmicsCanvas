@@ -1,0 +1,19 @@
+{
+  "id": "pdf_repro_basic_two_features",
+  "label": "Basic \u00b7 Atoh1 + Neurod1",
+  "blurb": "Two feature maps side by side (PDF basic).",
+  "howto": "feature_columns=[Atoh1,Neurod1]",
+  "card_group": "pdf_styles",
+  "plugin_id": "advanced_feature_plot",
+  "plot_type": "pdf_repro_basic_two_features",
+  "mode": "feature",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "gallery_png": "pdf_repro_basic_two_features.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/pdf_repro_basic_two_features/input/example_input.csv --params plugins/advanced_feature_plot/examples/pdf_repro_basic_two_features/params.json --output /tmp/pdf_repro_basic_two_features_out"
+  }
+}

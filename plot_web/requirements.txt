@@ -3,3 +3,4 @@ uvicorn[standard]>=0.30
 python-multipart>=0.0.9
 PyYAML>=6.0
 openpyxl>=3.1.0
+jsonschema>=4.18

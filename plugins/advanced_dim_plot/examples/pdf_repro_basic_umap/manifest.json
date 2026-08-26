@@ -1,0 +1,19 @@
+{
+  "id": "pdf_repro_basic_umap",
+  "label": "Basic UMAP (clusters)",
+  "plugin_id": "advanced_dim_plot",
+  "plot_type": "pdf_repro_basic_umap",
+  "mode": "group",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "gallery_png": "pdf_repro_basic_umap.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/pdf_repro_basic_umap/input/example_input.csv --params plugins/advanced_dim_plot/examples/pdf_repro_basic_umap/params.json --output /tmp/advanced_dim_pdf_repro_basic_umap_out"
+  },
+  "blurb": "Default group coloring + labels on HarmonyUMAP2D.",
+  "howto": "plot_mode=group \u00b7 group_column=cluster \u00b7 label_groups=true",
+  "card_group": "pdf_styles"
+}

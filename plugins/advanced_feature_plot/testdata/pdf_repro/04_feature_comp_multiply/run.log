@@ -1,0 +1,3 @@
+[2026-08-24 23:59:03] Starting advanced feature plot plugin.
+[2026-08-24 23:59:04] SCA advFeaPlot args: features=Atoh1,Neurod1 split.by=NULL feature.comp=TRUE hex=FALSE
+[2026-08-24 23:59:08] Completed advanced feature plot plugin.

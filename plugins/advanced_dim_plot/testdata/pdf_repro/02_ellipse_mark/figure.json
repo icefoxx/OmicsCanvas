@@ -1,0 +1,28 @@
+{
+  "plot_type": "advanced_dim_plot",
+  "input_file": "/Users/qzhang10/Documents/OmicsCanvas/plugins/advanced_dim_plot/testdata/all_p8_p7_advdim_input.csv",
+  "mode": "group",
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "split_column": {},
+  "feature_columns": [],
+  "row_count": 34033,
+  "style": {
+    "title": "Advanced dimension plot",
+    "point_size": 0.22,
+    "point_alpha": 0.85,
+    "show_mark": true,
+    "show_density": false,
+    "hex": false,
+    "facet_split": true
+  },
+  "outputs": {
+    "svg": "result.svg",
+    "pdf": "result.pdf",
+    "png": "result.png",
+    "selected_rows": "selected_rows.csv",
+    "log": "run.log"
+  }
+}

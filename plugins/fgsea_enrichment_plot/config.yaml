@@ -26,7 +26,7 @@ outputs:
   - run.log
 parameters:
   input_mode: {type: select, options: [auto, precomputed, compute], default: auto}
-  plot_type: {type: select, options: [summary, running, gradient_curve, gradient_only, running_multi_panel, dot_summary, summary_dot, lollipop_summary, composite], default: summary}
+  plot_type: {type: select, options: [summary, running, faceted_running, classic_tracks, gradient_curve, grouped_curves, gradient_only, running_multi_panel, multi_group, ridge, gene_sankey, dot_summary, summary_dot, lollipop_summary, composite], default: summary}
   running_style: {type: select, options: [classic, normal, gradient, gradient_only, multi_term], default: classic}
   curve_style: {type: select, options: [normal, gradient, multi_term], default: multi_term}
   selected_terms: {type: string_array, required: false}

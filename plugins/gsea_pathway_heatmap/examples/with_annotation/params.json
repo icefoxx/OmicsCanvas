@@ -1,0 +1,18 @@
+{
+  "gene_col": "gene",
+  "stat_col": "avg_log2FC",
+  "selected_terms": ["Cardiac_Chamber_Morphogenesis", "Heart_Morphogenesis"],
+  "term_colors": {
+    "Cardiac_Chamber_Morphogenesis": "#2CA02C",
+    "Heart_Morphogenesis": "#D62728"
+  },
+  "heatmap_gene_mode": "all_members",
+  "heatmap_max_genes": 20,
+  "heatmap_show_column_annot": true,
+  "heatmap_column_annotation_columns": ["Day"],
+  "sample_order": ["Day0_1", "Day0_2", "Day4_1", "Day4_2"],
+  "scale": "row",
+  "title": "GSEA + pathway heatmaps with sample groups",
+  "width": 11.5,
+  "height": 9.8
+}

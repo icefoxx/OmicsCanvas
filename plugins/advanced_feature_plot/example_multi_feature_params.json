@@ -3,17 +3,30 @@
   "y_column": "dim2",
   "id_column": "cell",
   "group_column": "cluster",
-  "feature_columns": ["CD3D", "MS4A1", "LST1", "MKI67"],
-  "title": "Multiple Feature Maps",
-  "subtitle": "Each feature keeps its own color scale",
-  "palette": "Spectral",
-  "scale_by": "feature",
-  "quantile_cutoff": [0, 0.95],
-  "point_size": 0.65,
+  "theme_use": "themeBlank",
+  "point_size": 0.35,
   "point_alpha": 0.9,
+  "palette": "Spectral",
+  "keep_zero": false,
+  "background_color": "grey85",
+  "legend_position": "right",
+  "raster": true,
+  "width": 10,
+  "height": 8.5,
+  "dpi": 220,
+  "feature_columns": [
+    "Neurod1",
+    "Atoh1",
+    "Alpl",
+    "Runx2"
+  ],
+  "title": "Multiple features \u00b7 scale by feature",
+  "scale_by": "feature",
+  "quantile_cutoff": [
+    0,
+    0.95
+  ],
+  "background_cutoff": 0.1,
   "label_show": true,
-  "facet_ncol": 2,
-  "width": 9.0,
-  "height": 7.2,
-  "dpi": 220
+  "facet_ncol": 2
 }

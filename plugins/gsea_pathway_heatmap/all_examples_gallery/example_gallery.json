@@ -1,0 +1,64 @@
+[
+  {
+    "id": "basic",
+    "label": "basic",
+    "plugin_id": "gsea_pathway_heatmap",
+    "plot_type": "basic",
+    "mode": "",
+    "params": "../examples/basic/params.json",
+    "inputs": {
+      "input": "input/example_ranks.csv",
+      "genesets": "input/example_pathways.gmt",
+      "expr": "input/example_expression.csv"
+    },
+    "expected": "../examples/basic/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/gsea_pathway_heatmap/plot.R --input plugins/gsea_pathway_heatmap/examples/basic/input/example_ranks.csv --params plugins/gsea_pathway_heatmap/examples/basic/params.json --output /tmp/gsea_pathway_heatmap_basic_out --genesets plugins/gsea_pathway_heatmap/examples/basic/input/example_pathways.gmt --expr plugins/gsea_pathway_heatmap/examples/basic/input/example_expression.csv"
+    },
+    "bundle": "../examples/basic",
+    "gallery_png": "basic.png",
+    "params_filename": "example_basic_params.json"
+  },
+  {
+    "id": "precomputed",
+    "label": "precomputed",
+    "plugin_id": "gsea_pathway_heatmap",
+    "plot_type": "precomputed",
+    "mode": "",
+    "params": "../examples/precomputed/params.json",
+    "inputs": {
+      "input": "input/example_ranks.csv",
+      "genesets": "input/example_pathways.gmt",
+      "expr": "input/example_expression.csv",
+      "enrichment": "input/example_enrichment.csv"
+    },
+    "expected": "../examples/precomputed/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/gsea_pathway_heatmap/plot.R --input plugins/gsea_pathway_heatmap/examples/precomputed/input/example_ranks.csv --params plugins/gsea_pathway_heatmap/examples/precomputed/params.json --output /tmp/gsea_pathway_heatmap_precomputed_out --genesets plugins/gsea_pathway_heatmap/examples/precomputed/input/example_pathways.gmt --expr plugins/gsea_pathway_heatmap/examples/precomputed/input/example_expression.csv --enrichment plugins/gsea_pathway_heatmap/examples/precomputed/input/example_enrichment.csv"
+    },
+    "bundle": "../examples/precomputed",
+    "gallery_png": "precomputed.png",
+    "params_filename": "example_precomputed_params.json"
+  },
+  {
+    "id": "with_annotation",
+    "label": "with_annotation",
+    "plugin_id": "gsea_pathway_heatmap",
+    "plot_type": "with_annotation",
+    "mode": "",
+    "params": "../examples/with_annotation/params.json",
+    "inputs": {
+      "input": "input/example_ranks.csv",
+      "genesets": "input/example_pathways.gmt",
+      "expr": "input/example_expression.csv",
+      "col_annot": "input/example_col_annot.csv"
+    },
+    "expected": "../examples/with_annotation/expected/result.png",
+    "reproduce": {
+      "command": "Rscript plugins/gsea_pathway_heatmap/plot.R --input plugins/gsea_pathway_heatmap/examples/with_annotation/input/example_ranks.csv --params plugins/gsea_pathway_heatmap/examples/with_annotation/params.json --output /tmp/gsea_pathway_heatmap_with_annotation_out --genesets plugins/gsea_pathway_heatmap/examples/with_annotation/input/example_pathways.gmt --expr plugins/gsea_pathway_heatmap/examples/with_annotation/input/example_expression.csv --col_annot plugins/gsea_pathway_heatmap/examples/with_annotation/input/example_col_annot.csv"
+    },
+    "bundle": "../examples/with_annotation",
+    "gallery_png": "with_annotation.png",
+    "params_filename": "example_with_annotation_params.json"
+  }
+]

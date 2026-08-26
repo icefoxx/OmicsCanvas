@@ -303,6 +303,9 @@ tryCatch({
   legend_text_size <- num(c('legend_text_size'), 10)
   legend_title_size <- num(c('legend_title_size'), 11)
   show_size_legend <- bool(c('show_size_legend', 'size_legend_show'), FALSE)
+  size_legend_title <- as.character(val_any(c('size_legend_title'), 'Size')[1] %||% 'Size')
+  size_legend_breaks <- suppressWarnings(as.numeric(unlist(val('size_legend_breaks', NULL))))
+  size_legend_breaks <- size_legend_breaks[is.finite(size_legend_breaks)]
 
   grid_show <- bool(c('grid_show'), TRUE)
   grid_color <- as.character(val_any(c('grid_major_color', 'grid_stroke', 'grid_color'), '#E5E5E5')[1] %||% '#E5E5E5')
@@ -393,7 +396,8 @@ tryCatch({
   if (size_switch) {
     p <- p + scale_size_continuous(
       range = c(pt_min, pt_max),
-      name = 'Size',
+      name = size_legend_title,
+      breaks = if (length(size_legend_breaks)) size_legend_breaks else waiver(),
       guide = if (show_size_legend) 'legend' else 'none'
     )
   } else {

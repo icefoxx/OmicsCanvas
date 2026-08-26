@@ -64,7 +64,7 @@
     "annotation_colors": "Named annotation color map."
   },
   "annotations": {
-    "annotation_pie_scale": "Pie annotation scale.",
+    "annotation_pie_scale": "Relative pie diameter in one group column (0–1). 1.0 nearly fills the column width.",
     "annotation_track_scale": "Annotation track scale.",
     "annotation_track_gap": "Gap between annotation tracks.",
     "annotation_pie_y_span": "Pie y-span.",

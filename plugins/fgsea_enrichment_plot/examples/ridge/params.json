@@ -1,0 +1,19 @@
+{
+  "input_mode": "compute",
+  "plot_type": "ridge",
+  "gene_col": "gene",
+  "stat_col": "avg_log2FC",
+  "comparison_col": "comparison",
+  "selected_comparison": "KO_vs_WT",
+  "fgsea_method": "multilevel",
+  "minSize": 15,
+  "maxSize": 400,
+  "top_n_terms": 10,
+  "ridge_order": "pvalue",
+  "ridge_gene_mode": "all_members",
+  "ridge_scale": 1.2,
+  "xlab": "log2FoldChange",
+  "width": 8.2,
+  "height": 7.2,
+  "dpi": 300
+}

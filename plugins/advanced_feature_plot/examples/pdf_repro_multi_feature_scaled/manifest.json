@@ -1,0 +1,19 @@
+{
+  "id": "pdf_repro_multi_feature_scaled",
+  "label": "Multi \u00b7 4 genes scaled",
+  "blurb": "Neurod1/Atoh1/Alpl/Runx2 with per-feature scale + bg.cutoff=0.1.",
+  "howto": "scale_by=feature \u00b7 quantile_cutoff=[0,0.95] \u00b7 background_cutoff=0.1",
+  "card_group": "pdf_styles",
+  "plugin_id": "advanced_feature_plot",
+  "plot_type": "pdf_repro_multi_feature_scaled",
+  "mode": "feature",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "gallery_png": "pdf_repro_multi_feature_scaled.png",
+  "reproduce": {
+    "command": "Rscript plugins/advanced_feature_plot/plot.R --input plugins/advanced_feature_plot/examples/pdf_repro_multi_feature_scaled/input/example_input.csv --params plugins/advanced_feature_plot/examples/pdf_repro_multi_feature_scaled/params.json --output /tmp/pdf_repro_multi_feature_scaled_out"
+  }
+}

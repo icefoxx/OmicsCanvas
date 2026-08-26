@@ -1,0 +1,28 @@
+{
+  "x_column": "dim1",
+  "y_column": "dim2",
+  "id_column": "cell",
+  "group_column": "cluster",
+  "theme_use": "themeBlank",
+  "point_size": 0.35,
+  "point_alpha": 0.9,
+  "palette": "Spectral",
+  "keep_zero": false,
+  "background_color": "grey85",
+  "legend_position": "right",
+  "raster": true,
+  "width": 9.5,
+  "height": 5.2,
+  "dpi": 220,
+  "feature_columns": [
+    "Neurod1",
+    "Atoh1"
+  ],
+  "hex": true,
+  "hex_bins": 60,
+  "hex_color": "grey90",
+  "label_show": false,
+  "title": "Hexbin feature plot",
+  "background_cutoff": 0,
+  "facet_ncol": 2
+}

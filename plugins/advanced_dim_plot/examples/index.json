@@ -2,6 +2,69 @@
   "plugin_id": "advanced_dim_plot",
   "examples": [
     {
+      "id": "pdf_repro_basic_umap",
+      "label": "Basic UMAP (clusters)",
+      "mode": "group",
+      "plot_type": "pdf_repro_basic_umap",
+      "blurb": "Default group coloring + labels on HarmonyUMAP2D.",
+      "howto": "plot_mode=group \u00b7 group_column=cluster \u00b7 label_groups=true",
+      "card_group": "pdf_styles"
+    },
+    {
+      "id": "pdf_repro_ellipse_mark",
+      "label": "Ellipse marks",
+      "mode": "group",
+      "plot_type": "pdf_repro_ellipse_mark",
+      "blurb": "Same UMAP with cluster ellipses (confidence hulls).",
+      "howto": "show_mark=true \u00b7 mark_type=ellipse",
+      "card_group": "pdf_styles"
+    },
+    {
+      "id": "pdf_repro_split_samples",
+      "label": "Split by sample",
+      "mode": "group",
+      "plot_type": "pdf_repro_split_samples",
+      "blurb": "Facet panels by orig.ident (one UMAP per sample).",
+      "howto": "split_column=orig.ident \u00b7 facet_split=true",
+      "card_group": "pdf_styles"
+    },
+    {
+      "id": "pdf_repro_composition_ring",
+      "label": "Composition rings",
+      "mode": "group",
+      "plot_type": "pdf_repro_composition_ring",
+      "blurb": "Embedded pie/ring showing sample composition per cluster.",
+      "howto": "show_stat_embedded=true \u00b7 stat_plot_column=orig.ident",
+      "card_group": "pdf_styles"
+    },
+    {
+      "id": "pdf_repro_highlight_cells",
+      "label": "Highlight cells",
+      "mode": "group",
+      "plot_type": "pdf_repro_highlight_cells",
+      "blurb": "Focus a cell subset; others fade to grey.",
+      "howto": "highlight_rows=[...] \u00b7 non_highlight_alpha < 1",
+      "card_group": "pdf_styles"
+    },
+    {
+      "id": "pdf_repro_bg_cutoff_mito",
+      "label": "Background by mito cutoff",
+      "mode": "group",
+      "plot_type": "pdf_repro_bg_cutoff_mito",
+      "blurb": "Push high-mito cells to background (cutoff=5%).",
+      "howto": "background_column=mito \u00b7 background_cutoff=5",
+      "card_group": "pdf_styles"
+    },
+    {
+      "id": "pdf_repro_bg_condition",
+      "label": "Background by samples",
+      "mode": "group",
+      "plot_type": "pdf_repro_bg_condition",
+      "blurb": "Push selected samples (p8 + NSP53null) to background.",
+      "howto": "background_column=orig.ident \u00b7 background_levels=[...]",
+      "card_group": "pdf_styles"
+    },
+    {
       "id": "axis_label_controls",
       "label": "axis_label_controls",
       "plugin_id": "advanced_dim_plot",
@@ -14,7 +77,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/axis_label_controls/input/example_input.csv --params plugins/advanced_dim_plot/examples/axis_label_controls/params.json --output /tmp/advanced_dim_plot_axis_label_controls_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "background_mask",
@@ -29,7 +93,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/background_mask/input/example_input.csv --params plugins/advanced_dim_plot/examples/background_mask/params.json --output /tmp/advanced_dim_plot_background_mask_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "basic_umap",
@@ -44,7 +109,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/basic_umap/input/example_pdf_like_input.csv --params plugins/advanced_dim_plot/examples/basic_umap/params.json --output /tmp/advanced_dim_pdf_basic_umap_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "bg_condition",
@@ -59,7 +125,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/bg_condition/input/example_pdf_like_input.csv --params plugins/advanced_dim_plot/examples/bg_condition/params.json --output /tmp/advanced_dim_pdf_bg_condition_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "bg_cutoff",
@@ -74,7 +141,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/bg_cutoff/input/example_pdf_like_input.csv --params plugins/advanced_dim_plot/examples/bg_cutoff/params.json --output /tmp/advanced_dim_pdf_bg_cutoff_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "blank_theme",
@@ -89,7 +157,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/blank_theme/input/example_input.csv --params plugins/advanced_dim_plot/examples/blank_theme/params.json --output /tmp/advanced_dim_plot_blank_theme_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "cluster_composition_ring",
@@ -104,7 +173,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/cluster_composition_ring/input/example_pdf_like_input.csv --params plugins/advanced_dim_plot/examples/cluster_composition_ring/params.json --output /tmp/advanced_dim_pdf_cluster_composition_ring_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "coexpression",
@@ -119,7 +189,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/coexpression/input/example_input.csv --params plugins/advanced_dim_plot/examples/coexpression/params.json --output /tmp/advanced_dim_plot_coexpression_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "coexpression_screen",
@@ -134,7 +205,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/coexpression_screen/input/example_input.csv --params plugins/advanced_dim_plot/examples/coexpression_screen/params.json --output /tmp/advanced_dim_plot_coexpression_screen_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "density_filled",
@@ -149,7 +221,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/density_filled/input/example_input.csv --params plugins/advanced_dim_plot/examples/density_filled/params.json --output /tmp/advanced_dim_plot_density_filled_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "density_hex",
@@ -164,7 +237,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/density_hex/input/example_input.csv --params plugins/advanced_dim_plot/examples/density_hex/params.json --output /tmp/advanced_dim_plot_density_hex_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "ellipse_mark",
@@ -179,7 +253,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/ellipse_mark/input/example_pdf_like_input.csv --params plugins/advanced_dim_plot/examples/ellipse_mark/params.json --output /tmp/advanced_dim_pdf_ellipse_mark_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "embedded_pie",
@@ -194,7 +269,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/embedded_pie/input/example_input.csv --params plugins/advanced_dim_plot/examples/embedded_pie/params.json --output /tmp/advanced_dim_plot_embedded_pie_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "feature",
@@ -209,7 +285,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/feature/input/example_input.csv --params plugins/advanced_dim_plot/examples/feature/params.json --output /tmp/advanced_dim_plot_feature_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "group",
@@ -224,7 +301,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/group/input/example_input.csv --params plugins/advanced_dim_plot/examples/group/params.json --output /tmp/advanced_dim_plot_group_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "highlight_cells",
@@ -239,7 +317,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/highlight_cells/input/example_pdf_like_input.csv --params plugins/advanced_dim_plot/examples/highlight_cells/params.json --output /tmp/advanced_dim_pdf_highlight_cells_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "highlight_ring",
@@ -254,7 +333,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/highlight_ring/input/example_input.csv --params plugins/advanced_dim_plot/examples/highlight_ring/params.json --output /tmp/advanced_dim_plot_highlight_ring_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "lineage",
@@ -269,7 +349,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/lineage/input/example_input.csv --params plugins/advanced_dim_plot/examples/lineage/params.json --output /tmp/advanced_dim_plot_lineage_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "mark_shapes",
@@ -284,7 +365,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/mark_shapes/input/example_input.csv --params plugins/advanced_dim_plot/examples/mark_shapes/params.json --output /tmp/advanced_dim_plot_mark_shapes_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "pdf_basic_umap",
@@ -299,7 +381,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/pdf_basic_umap/input/example_input.csv --params plugins/advanced_dim_plot/examples/pdf_basic_umap/params.json --output /tmp/advanced_dim_plot_pdf_basic_umap_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "pdf_ellipse_mark",
@@ -314,7 +397,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/pdf_ellipse_mark/input/example_input.csv --params plugins/advanced_dim_plot/examples/pdf_ellipse_mark/params.json --output /tmp/advanced_dim_plot_pdf_ellipse_mark_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "raster",
@@ -329,7 +413,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/raster/input/example_input.csv --params plugins/advanced_dim_plot/examples/raster/params.json --output /tmp/advanced_dim_plot_raster_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "split_highlight",
@@ -344,7 +429,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/split_highlight/input/example_input.csv --params plugins/advanced_dim_plot/examples/split_highlight/params.json --output /tmp/advanced_dim_plot_split_highlight_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "split_samples",
@@ -359,7 +445,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/split_samples/input/example_pdf_like_input.csv --params plugins/advanced_dim_plot/examples/split_samples/params.json --output /tmp/advanced_dim_pdf_split_samples_out"
-      }
+      },
+      "card_group": "more"
     },
     {
       "id": "stat_panel",
@@ -374,7 +461,8 @@
       "expected": "expected/result.png",
       "reproduce": {
         "command": "Rscript plugins/advanced_dim_plot/plot.R --input plugins/advanced_dim_plot/examples/stat_panel/input/example_input.csv --params plugins/advanced_dim_plot/examples/stat_panel/params.json --output /tmp/advanced_dim_plot_stat_panel_out"
-      }
+      },
+      "card_group": "more"
     }
   ]
 }

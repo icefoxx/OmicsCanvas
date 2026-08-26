@@ -1,5 +1,68 @@
 [
   {
+    "id": "pdf_repro_basic_two_features",
+    "label": "Basic \u00b7 Atoh1 + Neurod1",
+    "image": "pdf_repro_basic_two_features.png",
+    "mode": "feature",
+    "plot_type": "pdf_repro_basic_two_features",
+    "blurb": "Two feature maps side by side (PDF basic).",
+    "howto": "feature_columns=[Atoh1,Neurod1]"
+  },
+  {
+    "id": "pdf_repro_multi_feature_scaled",
+    "label": "Multi \u00b7 4 genes scaled",
+    "image": "pdf_repro_multi_feature_scaled.png",
+    "mode": "feature",
+    "plot_type": "pdf_repro_multi_feature_scaled",
+    "blurb": "Neurod1/Atoh1/Alpl/Runx2 with per-feature scale + bg.cutoff=0.1.",
+    "howto": "scale_by=feature \u00b7 quantile_cutoff=[0,0.95] \u00b7 background_cutoff=0.1"
+  },
+  {
+    "id": "pdf_repro_split_by_sample",
+    "label": "Split by sample",
+    "image": "pdf_repro_split_by_sample.png",
+    "mode": "feature",
+    "plot_type": "pdf_repro_split_by_sample",
+    "blurb": "Atoh1 split across orig.ident panels.",
+    "howto": "split_column=orig.ident \u00b7 global_split=true"
+  },
+  {
+    "id": "pdf_repro_feature_comp_multiply",
+    "label": "Composite multiply",
+    "image": "pdf_repro_feature_comp_multiply.png",
+    "mode": "feature",
+    "plot_type": "pdf_repro_feature_comp_multiply",
+    "blurb": "Blend Atoh1\u00d7Neurod1 into one composite panel.",
+    "howto": "feature_comp=true \u00b7 color_mix_mode=multiply"
+  },
+  {
+    "id": "pdf_repro_highlight_cells",
+    "label": "Highlight cells",
+    "image": "pdf_repro_highlight_cells.png",
+    "mode": "feature",
+    "plot_type": "pdf_repro_highlight_cells",
+    "blurb": "Highlight first 500 cells on Atoh1/Neurod1 maps.",
+    "howto": "highlight_rows=[first 500]"
+  },
+  {
+    "id": "pdf_repro_split_global_blank",
+    "label": "Split \u00b7 shared coords",
+    "image": "pdf_repro_split_global_blank.png",
+    "mode": "feature",
+    "plot_type": "pdf_repro_split_global_blank",
+    "blurb": "Sample split with shared axes + themeBlank.",
+    "howto": "global_split=true \u00b7 theme_use=themeBlank"
+  },
+  {
+    "id": "pdf_repro_hexbin",
+    "label": "Hexbin features",
+    "image": "pdf_repro_hexbin.png",
+    "mode": "feature",
+    "plot_type": "pdf_repro_hexbin",
+    "blurb": "Hex-binned Neurod1 + Atoh1.",
+    "howto": "hex=true \u00b7 hex_bins=60"
+  },
+  {
     "id": "density_hex",
     "label": "density_hex",
     "plugin_id": "advanced_feature_plot",

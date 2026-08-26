@@ -1,0 +1,18 @@
+{
+  "id": "precomputed",
+  "label": "precomputed",
+  "plugin_id": "gsea_pathway_heatmap",
+  "plot_type": "precomputed",
+  "mode": "",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_ranks.csv",
+    "genesets": "input/example_pathways.gmt",
+    "expr": "input/example_expression.csv",
+    "enrichment": "input/example_enrichment.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/gsea_pathway_heatmap/plot.R --input plugins/gsea_pathway_heatmap/examples/precomputed/input/example_ranks.csv --params plugins/gsea_pathway_heatmap/examples/precomputed/params.json --output /tmp/gsea_pathway_heatmap_precomputed_out --genesets plugins/gsea_pathway_heatmap/examples/precomputed/input/example_pathways.gmt --expr plugins/gsea_pathway_heatmap/examples/precomputed/input/example_expression.csv --enrichment plugins/gsea_pathway_heatmap/examples/precomputed/input/example_enrichment.csv"
+  }
+}

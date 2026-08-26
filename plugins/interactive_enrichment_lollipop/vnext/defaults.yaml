@@ -1,0 +1,23 @@
+scientific_defaults:
+  # Do not silently assume multiple-testing correction
+  multiple_testing: null
+  method: null
+
+visual_defaults:
+  orientation: horizontal
+  zero_line: true
+  stem_to_zero: true
+  legend_show: true
+  interactive: false
+  xlab: "Normalized enrichment score"
+  ylab: "Pathway"
+
+export_defaults:
+  format: svg
+  formats: [svg, pdf, png]
+  width_in: 9
+  height_in: 7
+  dpi: 300
+
+transform_defaults:
+  preserve_order: false

@@ -14,8 +14,24 @@ from typing import Any
 import yaml
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
+
+from plot_web.plot_registry import (
+    browse_categories,
+    discovery_taxonomy,
+    get_all_plots,
+    get_compatible_plots,
+    get_plot,
+    get_plots_by_context,
+    get_plots_by_task,
+    get_recommended_plots,
+    get_variant,
+    get_variants,
+    resolve_legacy_preset,
+    search_plots,
+    validate_registry,
+)
 
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -115,6 +131,7 @@ def plugin_summary(plugin_id: str, config: dict[str, Any]) -> dict[str, Any]:
         "has_schema": (PLUGIN_DIR / plugin_id / "params_schema.json").exists(),
         "has_examples": bool(examples),
         "preview": preview,
+        "registry_family": (get_plot(plugin_id) or {}).get("id"),
     }
 
 
@@ -125,9 +142,10 @@ def normalized_category(plugin_id: str, category: Any) -> str:
     if explicit and explicit != "Plot":
         return explicit
     defaults = {
-        "advanced_dim_plot": "Scatter",
-        "advanced_feature_plot": "Scatter",
-        "feature_density_plot": "Scatter",
+        "advanced_dim_plot": "Dimension",
+        "lineage_plot": "Dimension",
+        "advanced_feature_plot": "Feature",
+        "feature_density_plot": "Feature",
         "quadrant_correlation_scatter": "Scatter",
         "sca_volcano_plot": "Scatter",
         "group_heatmap": "Heatmap",
@@ -156,14 +174,22 @@ def normalized_category(plugin_id: str, category: Any) -> str:
         "violin_plot": "Expression / Statistics",
         "dynamic_venn_diagram": "Set / Enrichment",
         "fgsea_enrichment_plot": "Set / Enrichment",
+        "gsea_pathway_heatmap": "Set / Enrichment",
         "ranked_annotation_panel": "Multi-panel",
-        "lineage_plot": "Multi-panel",
     }
     return defaults.get(plugin_id, "Plot")
 
 
 def default_subcategory(category: str, plugin_id: str) -> str:
     mapping = {
+        "Dimension": {
+            "advanced_dim_plot": "Embedding",
+            "lineage_plot": "Trajectory",
+        },
+        "Feature": {
+            "advanced_feature_plot": "Expression map",
+            "feature_density_plot": "Density",
+        },
         "Heatmap": {
             "group_heatmap": "Grouped",
             "threshold_matrix_heatmap": "Matrix",
@@ -172,9 +198,6 @@ def default_subcategory(category: str, plugin_id: str) -> str:
         "Scatter": {
             "quadrant_correlation_scatter": "Correlation",
             "regression_scatter_plot": "Regression",
-            "advanced_dim_plot": "Dimension",
-            "advanced_feature_plot": "Dimension",
-            "feature_density_plot": "Density",
             "sca_volcano_plot": "Volcano",
         },
         "Expression / Statistics": {
@@ -189,10 +212,11 @@ def default_subcategory(category: str, plugin_id: str) -> str:
         "Set / Enrichment": {
             "dynamic_venn_diagram": "Set",
             "fgsea_enrichment_plot": "Enrichment",
+            "gsea_pathway_heatmap": "GSEA + Heatmap",
+            "interactive_enrichment_lollipop": "Enrichment",
         },
         "Multi-panel": {
             "ranked_annotation_panel": "Annotation",
-            "lineage_plot": "Trajectory",
         },
     }
     return mapping.get(category, {}).get(plugin_id, "General")
@@ -307,6 +331,37 @@ def example_record(plugin_id: str, bundle: Path, manifest: dict[str, Any], index
             expected_url = example_url(plugin_id, example_id, "/files/" + expected_path.relative_to(bundle).as_posix())
         except HTTPException:
             expected_url = None
+    # Prefer a gallery thumbnail when declared so each demo has its own frame box.
+    gallery_png = None
+    for key in ("gallery_png", "image", "preview"):
+        raw = manifest.get(key) or (index_entry or {}).get(key)
+        if isinstance(raw, str) and raw.strip():
+            name = Path(raw).name
+            if (PLUGIN_DIR / plugin_id / "all_examples_gallery" / name).is_file():
+                gallery_png = f"/api/plugins/{plugin_id}/gallery/{name}"
+                break
+    image_url = gallery_png or expected_url
+    label = str(
+        (index_entry or {}).get("label")
+        or manifest.get("label")
+        or example_id
+    )
+    blurb = str(
+        (index_entry or {}).get("blurb")
+        or manifest.get("blurb")
+        or manifest.get("description")
+        or ""
+    )
+    howto = str(
+        (index_entry or {}).get("howto")
+        or manifest.get("howto")
+        or ""
+    )
+    card_group = str(
+        (index_entry or {}).get("card_group")
+        or manifest.get("card_group")
+        or ("pdf_styles" if str(example_id).startswith("pdf_repro_") else "more")
+    )
     return {
         "id": example_id,
         "bundle": example_url(plugin_id, example_id),
@@ -317,13 +372,17 @@ def example_record(plugin_id: str, bundle: Path, manifest: dict[str, Any], index
         "expected": expected_url,
         "plot_type": manifest.get("plot_type"),
         "mode": manifest.get("mode"),
-        "name": str((index_entry or {}).get("label") or manifest.get("label") or example_id),
+        "name": label,
         "path": str(bundle.relative_to(ROOT_DIR)),
-        "label": str((index_entry or {}).get("label") or manifest.get("label") or example_id),
+        "label": label,
+        "blurb": blurb,
+        "howto": howto,
+        "card_group": card_group,
         "params_file": params_path.name,
-        "image": expected_url,
-        "galleries": [],
+        "image": image_url,
+        "galleries": [gallery_png] if gallery_png else [],
         "manifest": manifest,
+        "demo_frame": True,
     }
 
 
@@ -426,6 +485,43 @@ def list_example_params(plugin_id: str) -> list[dict[str, Any]]:
     return [record_for(path.name) for path in sorted(params_paths.values(), key=lambda item: item.name)]
 
 
+def public_style_card(example: dict[str, Any]) -> dict[str, Any]:
+    """Gallery-safe preset card (no params payload)."""
+    group = str(example.get("card_group") or "")
+    example_id = str(example.get("id") or "")
+    if not group:
+        group = "pdf_styles" if example_id.startswith("pdf_repro_") else "more"
+    return {
+        "id": example.get("id"),
+        "label": example.get("label") or example.get("name") or example.get("id"),
+        "blurb": example.get("blurb") or "",
+        "howto": example.get("howto") or "",
+        "card_group": group,
+        "image": example.get("image") or example.get("expected"),
+        "plot_type": example.get("plot_type"),
+        "mode": example.get("mode"),
+    }
+
+
+def list_plot_styles(plot_id: str) -> dict[str, Any]:
+    plot = get_plot(plot_id)
+    if not plot:
+        raise HTTPException(status_code=404, detail="Plot family not found")
+    engine = str(plot.get("engine_plugin_id") or plot_id)
+    examples = list_example_params(engine)
+    styles = [public_style_card(item) for item in examples]
+    styles.sort(key=lambda item: 0 if item.get("card_group") == "pdf_styles" else 1)
+    return {
+        "plot_id": plot.get("id") or plot_id,
+        "name": plot.get("name"),
+        "description": plot.get("description") or "",
+        "engine_plugin_id": engine,
+        "variant_count": len(plot.get("variants") or []),
+        "count": len(styles),
+        "styles": styles,
+    }
+
+
 def gallery_files(plugin_id: str) -> list[Path]:
     gallery = PLUGIN_DIR / plugin_id / "all_examples_gallery"
     return sorted(path for path in gallery.glob("*.png") if path.is_file()) if gallery.is_dir() else []
@@ -441,6 +537,24 @@ def choose_demo_params(plugin_id: str) -> dict[str, Any] | None:
         "example_group_params.json",
         "example_single_params.json",
     ]
+    # Dimension / Feature plots: prefer PDF-matched real-data demos.
+    if plugin_id == "advanced_dim_plot":
+        preferred = [
+            "example_basic_params.json",
+            "example_pdf_basic_umap_params.json",
+            "example_group_params.json",
+        ] + [p for p in preferred if p not in {
+            "example_basic_params.json", "example_group_params.json"
+        }]
+    if plugin_id == "advanced_feature_plot":
+        preferred = [
+            "example_basic_params.json",
+            "example_multi_feature_params.json",
+            "example_single_feature_params.json",
+        ] + [p for p in preferred if p not in {
+            "example_basic_params.json", "example_multi_feature_params.json",
+            "example_single_feature_params.json",
+        }]
     paths = [plugin_dir / name for name in preferred]
     paths.extend(sorted(plugin_dir.glob("example_*_params.json")))
     for path in paths:
@@ -460,6 +574,29 @@ def choose_demo_file(plugin_id: str, field: str, input_info: dict[str, Any]) -> 
     field = fieldForBackend(field)
     plugin_overrides = {
         ("violin_plot", "file"): ["example_long.csv", "example_matrix.csv"],
+        # Prefer real all_p8_p7 embedding table for Advanced Dimension Plot demos.
+        ("advanced_dim_plot", "file"): [
+            "testdata/all_p8_p7_advdim_input.csv",
+            "example_input.csv",
+        ],
+        ("advanced_dim_plot", "input"): [
+            "testdata/all_p8_p7_advdim_input.csv",
+            "example_input.csv",
+        ],
+        ("advanced_feature_plot", "file"): [
+            "testdata/all_p8_p7_advfea_input.csv",
+            "example_input.csv",
+        ],
+        ("advanced_feature_plot", "input"): [
+            "testdata/all_p8_p7_advfea_input.csv",
+            "example_input.csv",
+        ],
+        ("gsea_pathway_heatmap", "file"): ["example_ranks.csv", "example_input.csv"],
+        ("gsea_pathway_heatmap", "input"): ["example_ranks.csv", "example_input.csv"],
+        ("gsea_pathway_heatmap", "genesets"): ["example_pathways.gmt"],
+        ("gsea_pathway_heatmap", "expr"): ["example_expression.csv"],
+        ("gsea_pathway_heatmap", "enrichment"): ["example_enrichment.csv"],
+        ("gsea_pathway_heatmap", "col_annot"): ["example_col_annot.csv"],
     }
     override_names = plugin_overrides.get((plugin_id, field), [])
     candidates_by_field = {
@@ -473,6 +610,7 @@ def choose_demo_file(plugin_id: str, field: str, input_info: dict[str, Any]) -> 
             "example_element_input.csv",
             "example_long.csv",
             "example_embedding.csv",
+            "example_ranks.csv",
         ],
         "input": [
             "example_input.csv",
@@ -484,6 +622,7 @@ def choose_demo_file(plugin_id: str, field: str, input_info: dict[str, Any]) -> 
             "example_element_input.csv",
             "example_long.csv",
             "example_embedding.csv",
+            "example_ranks.csv",
         ],
         "input2": ["example_input2.csv", "example_matrix2.csv", "example_abundance_input.csv"],
         "annot": ["example_annotation.csv", "example_annot.csv"],
@@ -501,6 +640,7 @@ def choose_demo_file(plugin_id: str, field: str, input_info: dict[str, Any]) -> 
         "nodes": ["example_nodes.csv"],
         "matrix": ["example_matrix.csv", "example_dot_matrix.csv"],
         "comparisons": ["example_comparisons.csv", "example_pvalues.csv"],
+        "enrichment": ["example_enrichment.csv", "example_fgsea_results.csv"],
     }
     candidates = [plugin_dir / name for name in override_names]
     candidates.extend(plugin_dir / name for name in candidates_by_field.get(field, []))
@@ -868,6 +1008,12 @@ def choose_main_input(saved_files: dict[str, Path]) -> Path:
     for key in ("file", "input"):
         if key in saved_files:
             return saved_files[key]
+    # Prefer ranked-gene tables over expression matrices when the main
+    # field was not bound (common for multi-input GSEA plugins).
+    for path in saved_files.values():
+        name = path.name.lower()
+        if "rank" in name or name in {"example_input.csv", "example_markers.csv"}:
+            return path
     if saved_files:
         return next(iter(saved_files.values()))
     raise HTTPException(status_code=400, detail="No input file uploaded")
@@ -900,6 +1046,8 @@ def build_command(plugin_id: str, config: dict[str, Any], saved_files: dict[str,
         "nodes": "--nodes",
         "matrix": "--matrix",
         "comparisons": "--comparisons",
+        "enrichment": "--enrichment",
+        "col-annot": "--col-annot",
     }
     for key, flag in optional_flags.items():
         if key in saved_files:
@@ -960,8 +1108,37 @@ def run_local_job(job: dict[str, Any], cmd: list[str], plugin_dir: Path, output_
 
 
 @app.get("/", response_class=HTMLResponse)
-def index() -> str:
+@app.get("/plots", response_class=HTMLResponse)
+@app.get("/analysis", response_class=HTMLResponse)
+@app.get("/analysis/{context}", response_class=HTMLResponse)
+@app.get("/analysis/{context}/{task}", response_class=HTMLResponse)
+@app.get("/family/{plot_id}", response_class=HTMLResponse)
+def index(context: str | None = None, task: str | None = None, plot_id: str | None = None) -> str:
     return (STATIC_DIR / "index.html").read_text(encoding="utf-8")
+
+
+@app.get("/plot/{plot_id}")
+@app.get("/plot/{plot_id}/{variant_id}")
+def plot_studio_entry(
+    plot_id: str,
+    variant_id: str | None = None,
+    source_context: str | None = None,
+    source_task: str | None = None,
+    example: str | None = None,
+) -> RedirectResponse:
+    plot = get_plot(plot_id)
+    engine = str((plot or {}).get("engine_plugin_id") or plot_id)
+    family = str((plot or {}).get("id") or plot_id)
+    params = [f"plugin={engine}", f"plot={family}"]
+    if variant_id:
+        params.append(f"variant={variant_id}")
+    if example:
+        params.append(f"example={example}")
+    if source_context:
+        params.append(f"source_context={source_context}")
+    if source_task:
+        params.append(f"source_task={source_task}")
+    return RedirectResponse("/static/editor.html?" + "&".join(params))
 
 
 @app.get("/api/health")
@@ -1073,7 +1250,17 @@ def plugin_tree() -> dict[str, Any]:
         sub_node = category_node["subcategories"].setdefault(subcategory, {"name": subcategory, "plugins": []})
         sub_node["plugins"].append(summary)
 
-    preferred = ["Heatmap", "Scatter", "Expression / Statistics", "Set / Enrichment", "Multi-panel", "Plot"]
+    preferred = [
+        "Dimension",
+        "Feature",
+        "Heatmap",
+        "Scatter",
+        "Expression / Statistics",
+        "Set / Enrichment",
+        "Network",
+        "Multi-panel",
+        "Plot",
+    ]
     categories = []
     for name in preferred + sorted(k for k in category_map if k not in preferred):
         if name not in category_map:
@@ -1101,6 +1288,13 @@ def get_plugin(plugin_id: str) -> dict[str, Any]:
     demo = demo_payload(plugin_id, config)
     demo.pop("_file_paths", None)
     config["demo"] = demo
+    family = get_plot(plugin_id)
+    if family:
+        config["registry"] = {
+            "family_id": family.get("id"),
+            "variants": [v.get("id") for v in family.get("variants") or []],
+            "presets": [p.get("id") for p in family.get("presets") or []],
+        }
     return config
 
 
@@ -1110,6 +1304,114 @@ def get_plugin_demo(plugin_id: str) -> dict[str, Any]:
     demo = demo_payload(plugin_id, config)
     demo.pop("_file_paths", None)
     return demo
+
+
+@app.get("/api/registry/plots")
+def registry_list_plots() -> dict[str, Any]:
+    plots = get_all_plots()
+    return {"plots": plots, "count": len(plots)}
+
+
+@app.get("/api/registry/plots/{plot_id}")
+def registry_get_plot(plot_id: str) -> dict[str, Any]:
+    plot = get_plot(plot_id)
+    if not plot:
+        raise HTTPException(status_code=404, detail="Plot family not found")
+    return plot
+
+
+@app.get("/api/registry/plots/{plot_id}/styles")
+def registry_get_styles(plot_id: str) -> dict[str, Any]:
+    return list_plot_styles(plot_id)
+
+
+@app.get("/api/registry/plots/{plot_id}/variants")
+def registry_get_variants(plot_id: str) -> dict[str, Any]:
+    if not get_plot(plot_id):
+        raise HTTPException(status_code=404, detail="Plot family not found")
+    return {"plot_id": plot_id, "variants": get_variants(plot_id)}
+
+
+@app.get("/api/registry/plots/{plot_id}/variants/{variant_id}")
+def registry_get_variant(plot_id: str, variant_id: str) -> dict[str, Any]:
+    variant = get_variant(plot_id, variant_id)
+    if not variant:
+        raise HTTPException(status_code=404, detail="Variant not found")
+    return variant
+
+
+@app.get("/api/registry/search")
+def registry_search(q: str = "") -> dict[str, Any]:
+    hits = search_plots(q)
+    return {"query": q, "results": hits, "count": len(hits)}
+
+
+@app.get("/api/registry/context/{context}")
+def registry_by_context(context: str) -> dict[str, Any]:
+    return {"context": context, "plots": get_plots_by_context(context)}
+
+
+@app.get("/api/registry/task/{task}")
+def registry_by_task(task: str) -> dict[str, Any]:
+    return {"task": task, "plots": get_plots_by_task(task)}
+
+
+@app.post("/api/registry/compatible")
+async def registry_compatible(request: Request) -> dict[str, Any]:
+    body = {}
+    try:
+        value = await request.json()
+        if isinstance(value, dict):
+            body = value
+    except Exception:
+        body = {}
+    schema = body.get("dataSchema") or body.get("schema") or body
+    return {"plots": get_compatible_plots(schema if isinstance(schema, dict) else {})}
+
+
+@app.post("/api/registry/recommend")
+async def registry_recommend(request: Request) -> dict[str, Any]:
+    body: dict[str, Any] = {}
+    try:
+        value = await request.json()
+        if isinstance(value, dict):
+            body = value
+    except Exception:
+        body = {}
+    schema = body.get("dataSchema") or body.get("schema") or {}
+    context = body.get("context")
+    return {"recommendations": get_recommended_plots(schema if isinstance(schema, dict) else {}, context)}
+
+
+@app.get("/api/registry/legacy/{plot_id}/{legacy_preset_id}")
+def registry_legacy(plot_id: str, legacy_preset_id: str) -> dict[str, Any]:
+    resolved = resolve_legacy_preset(plot_id, legacy_preset_id)
+    if not resolved:
+        raise HTTPException(status_code=404, detail="Legacy preset not found")
+    return resolved
+
+
+@app.get("/api/registry/validate")
+def registry_validate() -> dict[str, Any]:
+    return validate_registry()
+
+
+@app.get("/api/registry/discovery")
+def registry_discovery() -> dict[str, Any]:
+    return {
+        "taxonomy": discovery_taxonomy(),
+        "browse": browse_categories(),
+    }
+
+
+@app.get("/api/registry/discovery/taxonomy")
+def registry_taxonomy() -> dict[str, Any]:
+    return discovery_taxonomy()
+
+
+@app.get("/api/registry/discovery/browse")
+def registry_browse() -> dict[str, Any]:
+    return browse_categories()
 
 
 @app.get("/api/plugins/{plugin_id}/examples/{example_id}")
@@ -2170,3 +2472,76 @@ async def ai_chat(request: Request) -> JSONResponse:
             "engine": "rules",
         }
     )
+
+
+# ---------------------------------------------------------------------------
+# vNext PlotSpec API (additive; does not replace legacy params.json jobs)
+# ---------------------------------------------------------------------------
+
+
+@app.get("/api/vnext/status")
+def vnext_status() -> dict[str, Any]:
+    try:
+        from vnext import __version__ as vnext_version
+        from vnext.registry.loader import load_registry, validate_registry
+
+        reg = load_registry()
+        val = validate_registry(reg)
+        migrated = [
+            s.get("id")
+            for s in (reg.get("skills") or [])
+            if (s.get("capabilities") or {}).get("vnext_migrated")
+        ]
+        return {
+            "ok": True,
+            "framework_version": vnext_version,
+            "registry_valid": val.get("valid"),
+            "n_skills": val.get("n_skills"),
+            "migrated_skills": migrated,
+        }
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
+@app.post("/api/vnext/validate")
+async def vnext_validate(request: Request) -> JSONResponse:
+    """Validate a PlotSpec JSON body; optional multipart with file for scientific checks."""
+    try:
+        from vnext.validate.pipeline import validate_plotspec
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"vnext unavailable: {exc}") from exc
+
+    content_type = (request.headers.get("content-type") or "").lower()
+    table_path: Path | None = None
+    spec: dict[str, Any] | None = None
+
+    if "multipart/form-data" in content_type:
+        form = await request.form()
+        raw = form.get("spec") or form.get("plotspec")
+        if isinstance(raw, str):
+            try:
+                spec = json.loads(raw)
+            except json.JSONDecodeError as exc:
+                raise HTTPException(status_code=400, detail=f"Invalid PlotSpec JSON: {exc}") from exc
+        upload = form.get("file") or form.get("input")
+        filename = getattr(upload, "filename", None)
+        if filename:
+            ensure_storage()
+            tmp = UPLOADS_DIR / ("vnext_" + uuid.uuid4().hex[:10])
+            tmp.mkdir(parents=True, exist_ok=True)
+            table_path = tmp / Path(filename).name
+            with table_path.open("wb") as handle:
+                shutil.copyfileobj(upload.file, handle)
+    else:
+        try:
+            body = await request.json()
+        except Exception:
+            body = {}
+        if not isinstance(body, dict):
+            body = {}
+        spec = body.get("spec") if isinstance(body.get("spec"), dict) else body
+
+    if not isinstance(spec, dict):
+        raise HTTPException(status_code=400, detail="PlotSpec object required")
+    result = validate_plotspec(spec, table_path=table_path)
+    return JSONResponse(result)

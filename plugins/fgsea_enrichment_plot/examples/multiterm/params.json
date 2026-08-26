@@ -1,6 +1,6 @@
 {
   "input_mode": "compute",
-  "plot_type": "running_multi_panel",
+  "plot_type": "classic_tracks",
   "curve_style": "multi_term",
   "gene_col": "gene",
   "stat_col": "avg_log2FC",

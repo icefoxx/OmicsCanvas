@@ -2,6 +2,10 @@ const $ = (id) => document.getElementById(id);
 
 const urlParams = new URLSearchParams(window.location.search);
 const PLUGIN_ID = urlParams.get("plugin") || "group_heatmap";
+const STUDIO_VARIANT = urlParams.get("variant") || "";
+const STUDIO_EXAMPLE = urlParams.get("example") || "";
+const SOURCE_CONTEXT = urlParams.get("source_context") || "";
+const SOURCE_TASK = urlParams.get("source_task") || "";
 
 const state = {
   pluginId: PLUGIN_ID,
@@ -2194,9 +2198,18 @@ async function init() {
     state.detail = detail;
     state.demo = detail.demo || null;
     state.examples = Array.isArray(detail.examples) ? detail.examples : [];
+    if (STUDIO_EXAMPLE) {
+      const match = state.examples.find((ex) => ex.id === STUDIO_EXAMPLE || ex.name === STUDIO_EXAMPLE);
+      if (match) state.selectedExampleId = match.id;
+      else state.selectedExampleId = STUDIO_EXAMPLE;
+    } else if (STUDIO_VARIANT) {
+      const match = state.examples.find((ex) => ex.id === STUDIO_VARIANT || ex.plot_type === STUDIO_VARIANT);
+      if (match) state.selectedExampleId = match.id;
+    }
 
     $("pluginName").textContent = detail.display_name || detail.name || state.pluginId;
-    $("pluginDescription").textContent = detail.description || "";
+    const intent = [SOURCE_CONTEXT, SOURCE_TASK].filter(Boolean).join(" / ");
+    $("pluginDescription").textContent = (detail.description || "") + (intent ? ` · from ${intent}` : "");
     document.title = `${detail.display_name || state.pluginId} | Plot Editor`;
 
     renderSchema(detail.params_schema || detail.parameters);
