@@ -21,8 +21,11 @@ option_list <- list(
   make_option('--input', type = 'character', default = NULL),
   make_option('--params', type = 'character', default = NULL),
   make_option('--output', type = 'character', default = NULL),
-  make_option('--col_annot', type = 'character', default = NULL),
-  make_option('--row_annot', type = 'character', default = NULL),
+  # Studio sends hyphen flags; CLI docs/examples use underscores.
+  make_option('--col_annot', dest = 'col_annot', type = 'character', default = NULL),
+  make_option('--col-annot', dest = 'col_annot', type = 'character', default = NULL),
+  make_option('--row_annot', dest = 'row_annot', type = 'character', default = NULL),
+  make_option('--row-annot', dest = 'row_annot', type = 'character', default = NULL),
   make_option('--marks', type = 'character', default = NULL)
 )
 opt <- parse_args(OptionParser(option_list = option_list))
@@ -295,7 +298,8 @@ tryCatch({
   }
 
   min_show <- as_num(get_param(params, 'min_value_show', 0), 0)
-  # keep zeros as hollow circles
+  # Values below min_value_show are drawn hollow (like zeros).
+  if (min_show > 0) long_df$fraction[is.finite(long_df$value) & long_df$value < min_show] <- 0
 
   # orders
   col_order <- as_chr_vec(get_param(params, 'column_order', NULL))
@@ -601,9 +605,8 @@ tryCatch({
   }
   save_one(function() svglite::svglite(file.path(output_dir, 'result.svg'), width = W, height = H))
   save_one(function() grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = W, height = H))
-  save_one(function() grDevices::png(
-    file.path(output_dir, 'result.png'), width = W, height = H, units = 'in', res = dpi, type = 'cairo'
-  ))
+  save_one(function() (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(
+    file.path(output_dir, 'result.png'), width = W, height = H, units = 'in', res = dpi))
 
   write.csv(long_df, file.path(output_dir, 'cells_used.csv'), row.names = FALSE)
   # wide matrix used

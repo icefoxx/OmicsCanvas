@@ -1,28 +1,36 @@
 id: dynamic_venn_diagram
 name: Dynamic Venn Diagram
 version: 1.0.0
-description: Draw highly customizable Venn and flower Venn diagrams from element-list or abundance-matrix inputs, with subset exports.
+description: Draw highly customizable Venn and flower Venn diagrams from element-list or abundance-matrix inputs, with subset
+  exports.
 language: R
 entrypoint: plot.R
-category: Set
+category: Set / Enrichment
+subcategory: Set
 status: experimental
 inputs:
-  - id: input
-    type: table
-    formats: [csv, tsv, txt]
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
 outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - subsets.csv
-  - subset_elements_long.csv
-  - set_sizes.csv
-  - run.log
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- subsets.csv
+- subset_elements_long.csv
+- set_sizes.csv
+- run.log
 parameters:
   input_type:
     type: select
-    options: [auto, element, abundance]
+    options:
+    - auto
+    - element
+    - abundance
     default: auto
   groups_include:
     type: column_array
@@ -38,8 +46,14 @@ parameters:
     required: false
   abundance_operator:
     type: select
-    options: [">", ">=", "<", "<=", "==", "!="]
-    default: ">"
+    options:
+    - '>'
+    - '>='
+    - <
+    - <=
+    - ==
+    - '!='
+    default: '>'
   abundance_threshold:
     type: number
     default: 0
@@ -48,11 +62,18 @@ parameters:
     required: false
   plot_mode:
     type: select
-    options: [auto, venn, flower]
+    options:
+    - auto
+    - venn
+    - flower
     default: auto
   palette_scheme:
     type: select
-    options: [bold, soft, publication, vivid]
+    options:
+    - bold
+    - soft
+    - publication
+    - vivid
     default: bold
   set_colors:
     type: object
@@ -62,7 +83,7 @@ parameters:
     default: 0.62
   border_color:
     type: color
-    default: "#FFFFFF"
+    default: '#FFFFFF'
   border_width:
     type: number
     default: 2.2

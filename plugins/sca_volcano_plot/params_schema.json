@@ -15,7 +15,6 @@
   "plot_mode": {
     "plot_kind": "volcano (default), avg_volcano, or percent_volcano.",
     "de_expr": "Expression string for DE classification in volcano mode (default 'avg_log2FC > 0 & p_val_adj < 0.05').",
-    "x2y": "Boolean, volcanoPlot x/y swap.",
     "keep_all": "Boolean, avgVolcano keep non-significant points.",
     "threshold": "log2FC significance threshold (default 0.25).",
     "qval_threshold": "Adjusted p-value threshold for avgVolcano (default 0.05).",
@@ -25,7 +24,6 @@
   },
   "labels": {
     "title": "Plot title.",
-    "subtitle": "Plot subtitle (volcano mode only).",
     "xlab": "X axis title (volcano mode; default 'diff.pct').",
     "ylab": "Y axis title (volcano default '-log10(p-adjust)'; percent_volcano default 'Log2-Fold Change').",
     "title_show": "Show/hide title."
@@ -46,17 +44,11 @@
     "palcolor": "Explicit color vector override for the volcano gradient.",
     "facet_color": "Facet strip border color (percent_volcano).",
     "facet_fill": "Facet strip fill color (percent_volcano).",
-    "label_fg": "Repel label text color (volcano).",
-    "label_bg": "Repel label background color (volcano).",
-    "highlight_color": "DE point color (volcano cols.highlight).",
-    "cols_highlight": "Alias of highlight_color.",
-    "sizes_highlight": "DE point size increment (volcano)."
+    "label_fg": "Repel label text color (volcano)."
   },
   "layers": {
     "pt_size": "Point size (volcano default 1; avg_volcano default 1.5).",
     "pt_alpha": "Point alpha (volcano default 1).",
-    "stroke_highlight": "DE point stroke (volcano).",
-    "alpha_highlight": "DE point alpha (volcano).",
     "hline_size": "Dashed hline size (percent_volcano).",
     "hline_color": "Dashed hline color (percent_volcano).",
     "pforce": "Repel force for positive labels (percent_volcano).",
@@ -76,7 +68,6 @@
     "default_volcano_regions": "Boolean; generate four screenshot-like regions only when true.",
     "region_show": "Show region rectangles; defaults false when no regions are supplied.",
     "region_label_show": "Show region labels.",
-    "region_labels": "Optional label control/word list for region labels.",
     "region_label_size": "Default region label size.",
     "region_label_color": "Default region label color.",
     "region_label_face": "plain, bold, italic, or bold.italic.",
@@ -85,8 +76,6 @@
     "region_clip": "Clip annotations to coordinate limits.",
     "annotation_layer": "Legacy alias of region_layer.",
     "region_layer": "background, midground, or foreground (volcano region rectangles).",
-    "annotation_x_nudge": "Global annotation x nudge (reserved for file/UI clients).",
-    "annotation_y_nudge": "Global annotation y nudge (reserved for file/UI clients).",
     "point_groups": "Volcano-only objects with name, genes/features, color, size, alpha, label, label_x, label_y, label_color.",
     "feature_groups": "Volcano-only mapping of group name to gene array or group object; group colors override DE class and nonsig.",
     "default_region_labels": "Four default region labels.",
@@ -119,10 +108,7 @@
     "label_size": "Per-region label size.",
     "label_color": "Per-region label color.",
     "label_face": "Per-region font face.",
-    "label_alpha": "Per-region label opacity.",
-    "label_lines": "Optional multiline label array/text.",
-    "clip": "Per-region clipping hint.",
-    "inherit_axes": "Per-region axes inheritance hint."
+    "clip": "Per-region clipping hint."
   },
   "axes_and_theme": {
     "x_limits": "Two-number x limits for predictable placement.",
@@ -145,16 +131,13 @@
     "legend_position": "Legend position (applied where supported).",
     "legend_direction": "Legend direction (applied where supported).",
     "legend_title_size": "Legend title size (applied where supported).",
-    "legend_text_size": "Legend text size (applied where supported).",
-    "colorbar_width": "Colorbar width in cm (volcano gradient)."
+    "legend_text_size": "Legend text size (applied where supported)."
   },
   "output": {
     "width": "Output width in inches (default 8; percent_volcano 10).",
     "height": "Output height in inches (default 5.5; avg_volcano 6).",
     "dpi": "PNG resolution (default 300).",
     "nrow": "Patchwork/facet row count.",
-    "ncol": "Patchwork/facet column count.",
-    "byrow": "Patchwork fill direction.",
     "aspect_ratio": "Panel aspect ratio (volcano)."
   }
 }

@@ -329,7 +329,15 @@ cor_value <- unname(cor_result$estimate)
 p_value <- cor_result$p.value
 cor_digits <- as.integer(get_param(params, 'cor_digits', 4))
 p_digits <- as.integer(get_param(params, 'p_digits', 4))
-cor_label <- as.character(get_param(params, 'correlation_label', sprintf('%s correlation: %s\np-value: %s', cor_method, formatC(cor_value, format = 'f', digits = cor_digits), ifelse(p_value < 10^-p_digits, '0', formatC(p_value, format = 'f', digits = p_digits)))))[1]
+# A p-value is never 0: below the display precision use scientific notation,
+# below machine precision report an upper bound (as base R's format.pval does).
+format_p <- function(p) {
+  if (is.na(p)) return('NA')
+  if (p < .Machine$double.eps) return(sprintf('< %s', formatC(.Machine$double.eps, format = 'e', digits = 1)))
+  if (p < 10^-p_digits) return(formatC(p, format = 'e', digits = 2))
+  formatC(p, format = 'f', digits = p_digits)
+}
+cor_label <- as.character(get_param(params, 'correlation_label', sprintf('%s correlation: %s\np-value: %s', cor_method, formatC(cor_value, format = 'f', digits = cor_digits), format_p(p_value))))[1]
 show_correlation <- as_bool(get_param(params, 'show_correlation', TRUE), TRUE)
 cor_label_position <- tolower(as.character(get_param(params, 'cor_label_position', 'title'))[1])
 if (!cor_label_position %in% c('title', 'subtitle', 'panel', 'none')) cor_label_position <- 'title'
@@ -468,6 +476,8 @@ p <- p +
 
 width <- as.numeric(get_param(params, 'width', 6.5))
 height <- as.numeric(get_param(params, 'height', 5.5))
+# Generic appearance parameters not handled by this plugin (R/runtime/omicscanvas_theme.R).
+if (!exists('omicscanvas_apply_theme')) { .oc_f <- sub('^--file=', '', grep('^--file=', commandArgs(FALSE), value = TRUE)[1]); .oc_rt <- file.path(dirname(normalizePath(.oc_f, mustWork = FALSE)), '..', '..', 'R', 'runtime', 'omicscanvas_theme.R'); if (!file.exists(.oc_rt)) .oc_rt <- file.path('R', 'runtime', 'omicscanvas_theme.R'); sys.source(.oc_rt, envir = globalenv()) }; p <- omicscanvas_apply_theme(p, params, only = c('legend_show', 'show_x_axis', 'show_y_axis'))
 svg_file <- file.path(output_dir, 'result.svg')
 pdf_file <- file.path(output_dir, 'result.pdf')
 png_file <- file.path(output_dir, 'result.png')

@@ -64,7 +64,7 @@ examples:
     description: Compare group fractions within clusters using pies or rings.
     preview_asset: plugins/advanced_dim_plot/all_examples_gallery/pdf_repro_composition_ring.png
     demo_id: pdf_repro_composition_ring
-    variant_id: composition_ring
+    variant_id: composition
 literature_ids:
   - umap_mcinnes_2018
   - umap_becht_2019
@@ -137,47 +137,28 @@ variants:
     reporting:
       template: >
         Embeddings are shown separately by {split_column}.
-  composition_pie:
+  composition:
     summary: >
-      Displays categorical composition within embedding-defined groups using pie charts.
+      Displays categorical composition within embedding-defined groups using pie or ring glyphs.
     best_for:
       - Comparing sample composition across clusters
     interpretation:
-      - title: Pie slices
+      - title: Glyph slices
         type: direct
         text: >
-          Slice proportions represent the selected composition variable within each group.
+          Slice or ring segments represent the selected composition variable within each group.
       - title: Position
         type: direct
         text: >
-          Each pie is placed at the centroid of its group on the embedding.
+          Each glyph is placed at the centroid of its group on the embedding.
     cautions:
-      - title: Pie size
+      - title: Glyph size
         text: >
-          Pie area should only be interpreted as abundance when size is
+          Pie or ring area should only be interpreted as abundance when size is
           explicitly mapped to an abundance metric.
     reporting:
       template: >
-        Pie slices represent the relative composition of {composition_column}
-        within each {cluster_column}.
-  composition_ring:
-    summary: >
-      Shows categorical composition as rings associated with groups on the embedding.
-    best_for:
-      - Compact composition summaries on clusters
-    interpretation:
-      - title: Ring segments
-        type: direct
-        text: >
-          Ring segments represent the selected composition variable within each group.
-    cautions:
-      - title: Ring size
-        text: >
-          Ring size is a visual encoding and should not be treated as abundance
-          unless mapped to counts.
-    reporting:
-      template: >
-        Ring segments represent the relative composition of {composition_column}
+        Pie or ring slices represent the relative composition of {composition_column}
         within each {cluster_column}.
   density:
     summary: >

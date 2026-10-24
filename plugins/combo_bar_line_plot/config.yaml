@@ -1,42 +1,63 @@
 id: combo_bar_line_plot
 name: Combo Bar Line Plot
-display_name: Combo Bar + Line Plot
 version: 1.0.0
-author: OmicsCanvas
-description: >
-  Dual-axis combination chart: categorical colored bars on the primary Y axis
-  with an optional connected line (and points) on a secondary Y axis. Fully
-  customizable axes, bar/line styles, colors, labels, legend, and export.
+description: 'Dual-axis combination chart: categorical colored bars on the primary Y axis with an optional connected line
+  (and points) on a secondary Y axis. Fully customizable axes, bar/line styles, colors, labels, legend, and export.
+
+  '
 language: R
 entrypoint: plot.R
 category: Expression / Statistics
 subcategory: Combo
 status: stable
+inputs:
+- id: input
+  name: input
+  type: table
+  required: true
+  formats:
+  - csv
+  - tsv
+  - txt
+  description: 'Wide table with sample, bar value, and optional line value columns; or long table with sample, metric, value.
+
+    '
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- selected_rows.csv
+- matrix_used.csv
 runtime:
   command: Rscript plot.R --input input.csv --params params.json --output output_dir
-inputs:
-  - id: input
-    name: input
-    type: table
-    required: true
-    formats: [csv, tsv, txt]
-    description: >
-      Wide table with sample, bar value, and optional line value columns;
-      or long table with sample, metric, value.
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - run.log
-  - selected_rows.csv
-  - matrix_used.csv
+display_name: Combo Bar + Line Plot
+author: OmicsCanvas
 parameters:
-  sample_column: {type: column, required: false}
-  bar_column: {type: column, required: false}
-  line_column: {type: column, required: false}
-  dual_axis: {type: boolean, default: true}
-  orientation: {type: select, options: [vertical], default: vertical}
-  width: {type: number, default: 8}
-  height: {type: number, default: 5.5}
-  dpi: {type: number, default: 300}
+  sample_column:
+    type: column
+    required: false
+  bar_column:
+    type: column
+    required: false
+  line_column:
+    type: column
+    required: false
+  dual_axis:
+    type: boolean
+    default: true
+  orientation:
+    type: select
+    options:
+    - vertical
+    default: vertical
+  width:
+    type: number
+    default: 8
+  height:
+    type: number
+    default: 5.5
+  dpi:
+    type: number
+    default: 300

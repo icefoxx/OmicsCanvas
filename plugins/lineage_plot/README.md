@@ -4,7 +4,7 @@ This plugin standardizes the SCA `lineagePlot.R::lineagePlot()` visual style for
 
 Because the original SCA function is Seurat-centric (it reads `seu@reductions` and `seu@meta.data`), this CLI plugin **reimplements** the core fitting/plotting algorithm (the `.curve.layer` block of `lineagePlot`) to operate on plain CSV inputs: an embedding matrix and a lineage/pseudotime table. The SCA visual style is preserved exactly: loess (degree=2, span) fitting, trim quantiles, `geom_path` background stroke, colored paths with arrows, `scale_color_manual` via `paletteCustomize`, and `themeDefault`/`themeBlank`.
 
-The original SCA sources are copied under `reference_sca_helpers/` for fidelity (`util.plot.R` is sourced for `paletteCustomize`/`themeDefault`/`themeBlank`; `lineagePlot.R` is sourced for reference but not called).
+The original SCA sources are copied under the shared `R/sca/` library for fidelity (`util.plot.R` is sourced for `paletteCustomize`/`themeDefault`/`themeBlank`; `lineagePlot.R` is sourced for reference but not called).
 
 ## Runtime
 
@@ -120,7 +120,7 @@ Output:
 Run all examples:
 
 ```bash
-plugins/lineage_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/lineage_plot/run_all_examples.sh <repo-root>
 ```
 
 This writes `/tmp/lineage_plot_*_out` and updates:

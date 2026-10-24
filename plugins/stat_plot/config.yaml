@@ -1,36 +1,42 @@
-name: stat_plot
+id: stat_plot
+name: Stat Plot
+version: 1.0.0
+description: Standardized SCA statPlot wrapper for counts/percentages of categorical metadata levels across groups, with bar/rose/ring/pie/trend/area/dot/sankey/chord/venn/upset
+  plot types.
+language: R
+entrypoint: plot.R
 category: Expression / Statistics
 subcategory: Statistics
-display_name: Stat Plot
-description: Standardized SCA statPlot wrapper for counts/percentages of categorical metadata levels across groups, with bar/rose/ring/pie/trend/area/dot/sankey/chord/venn/upset plot types.
+status: stable
+inputs:
+- id: input
+  type: table
+  required: true
+  description: Metadata CSV/TSV/TXT. Rows are cells/samples; columns are categorical/numeric variables. First column is the
+    row id by default.
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- selected_rows.csv
+- run.log
 runtime:
   command: Rscript plot.R --input metadata.csv --params params.json --output output_dir
-inputs:
-  - name: input
-    type: table
-    required: true
-    description: Metadata CSV/TSV/TXT. Rows are cells/samples; columns are categorical/numeric variables. First column is the row id by default.
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - selected_rows.csv
-  - run.log
 plot_types:
-  - bar
-  - rose
-  - ring
-  - pie
-  - trend
-  - area
-  - dot
-  - sankey
-  - chord
-  - venn
-  - upset
+- bar
+- rose
+- ring
+- pie
+- trend
+- area
+- dot
+- sankey
+- chord
+- venn
+- upset
 notes:
-  - Wraps SCA statPlot.R::statPlot().
-  - Preserves SCA visual style (themeDefault, paletteCustomize).
-  - force is always TRUE in CLI mode to avoid interactive >100-level prompts.
-  - chord uses base graphics via recordPlot and is replayed onto the output device.
+- Wraps SCA statPlot.R::statPlot().
+- Preserves SCA visual style (themeDefault, paletteCustomize).
+- force is always TRUE in CLI mode to avoid interactive >100-level prompts.
+- chord uses base graphics via recordPlot and is replayed onto the output device.

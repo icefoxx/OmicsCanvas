@@ -9,6 +9,9 @@
   --emerald: #059669;
   --emerald-soft: rgba(5, 150, 105, 0.12);
   --coral: #e11d48;
+  --danger-soft: rgba(225, 29, 72, 0.08);
+  --warning: #b45309;
+  --warning-soft: rgba(217, 119, 6, 0.1);
   --bg: #f5f7fa;
   --panel: #ffffff;
   --sidebar-bg: #f0fdfa;
@@ -585,7 +588,7 @@ button { cursor: pointer; }
 
 /* PLOT EDITOR LAYOUT */
 .plot-editor,
-.chiplot-editor {
+.cab-demo-editor {
   margin: -32px -36px -32px;
   background: var(--bg);
 }
@@ -830,24 +833,6 @@ body.guide-collapsed .plot-guide-body { display: none; }
   gap: 8px;
   width: 100%;
 }
-.common-badge {
-  font-size: 9px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 1px 6px;
-  border-radius: 999px;
-  background: #ecfeff;
-  color: #0e7490;
-  border: 1px solid #a5f3fc;
-  flex-shrink: 0;
-}
-.control-row.is-common-control {
-  background: #f8fafc;
-  border-radius: 8px;
-  padding: 6px 8px;
-}
-
 .param-content-col {
   background: #ffffff;
   overflow-y: auto;
@@ -1168,6 +1153,13 @@ body.guide-collapsed .plot-guide-body { display: none; }
 .control-row.control-boolean {
   grid-template-columns: 1fr auto;
 }
+.switch-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-self: end;
+}
+.number-input { max-width: 120px; justify-self: start; }
 .control-row.control-boolean > span.control-label { grid-column: 1; }
 .control-row.control-textarea,
 .control-row.control-object,
@@ -1938,6 +1930,73 @@ body.editor-page header {
 }
 .stage-table-preview tr:hover { background: #f8fafc; }
 .stage-table-preview tr.row-selected { background: var(--accent-soft); }
+.dataset-stats { font-size: 11px; color: #64748b; margin-top: 6px; }
+.col-select { position: relative; }
+.col-select-input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 12px;
+}
+.col-select-menu {
+  position: absolute;
+  z-index: 20;
+  left: 0; right: 0;
+  max-height: 220px;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  margin-top: 4px;
+}
+.col-select-menu.hidden { display: none; }
+.col-select-group {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  padding: 6px 8px 2px;
+}
+.col-select-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.col-select-option:hover, .col-select-option.is-active { background: #ecfdf5; }
+.col-select-empty { padding: 8px 10px; font-size: 12px; color: #94a3b8; }
+.col-select-chips, .level-chip { display: flex; flex-wrap: wrap; gap: 4px; }
+.level-chip {
+  border: 1px solid #99f6e4;
+  background: #ecfdf5;
+  color: #0f766e;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+.mapping-error { color: #b45309; font-size: 11px; }
+.row-count-box {
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+.dataset-preview-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 8px; }
+.dataset-preview-head input { min-width: 180px; }
+.preview-table-wrap { overflow: auto; max-height: 360px; }
+.preview-pager { display: flex; gap: 10px; align-items: center; justify-content: flex-end; margin-top: 8px; font-size: 12px; }
 
 /* STATUS BAR */
 .statusbar {
@@ -2683,9 +2742,51 @@ body.editor-page header {
   }
   body.guide-collapsed .plot-guide { max-height: 44px; }
   .plot-editor,
-  .chiplot-editor { margin: -24px -16px; }
+  .cab-demo-editor { margin: -24px -16px; }
   .stage-canvas { min-height: 380px; }
   .example-gallery-grid { grid-template-columns: repeat(2, minmax(145px, 1fr)); overflow-x: auto; }
   .demo-actions { flex-wrap: wrap; }
   .demo-actions button { min-width: 130px; }
 }
+
+/* Scientific validation panel (PlotSpec layer) */
+.validation-panel {
+  margin-top: 8px;
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  background: var(--panel);
+  font-size: 12px;
+  color: var(--ink-secondary);
+}
+.validation-panel.is-ok { border-left-color: var(--emerald); }
+.validation-panel.is-warning { border-left-color: var(--warning); background: var(--warning-soft); }
+.validation-panel.is-error { border-left-color: var(--coral); background: var(--danger-soft); }
+.validation-panel.is-muted { border-left-color: var(--line); }
+.validation-head { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; color: var(--ink-primary); }
+.validation-hash { font-family: var(--font-mono); font-weight: 500; color: var(--ink-muted); }
+.validation-list { margin: 6px 0 0; padding-left: 0; list-style: none; display: grid; gap: 4px; }
+.validation-item code { font-family: var(--font-mono); font-size: 11px; margin-right: 4px; }
+.validation-item.sev-error code { color: var(--coral); }
+.validation-item.sev-warning code { color: var(--warning); }
+.validation-item.sev-info code { color: var(--ink-muted); }
+.validation-infos { margin-top: 6px; }
+.validation-infos summary { cursor: pointer; color: var(--ink-muted); }
+.validation-note { margin-top: 4px; color: var(--ink-muted); }
+.export-menu-action {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px 12px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+}
+.export-menu-action:hover { background: var(--accent-soft); }

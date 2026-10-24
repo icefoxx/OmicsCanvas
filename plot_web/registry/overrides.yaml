@@ -1,6 +1,22 @@
 # Curated registry overlays. Auto-scan of plugins/*/ fills families; this file
 # supplies scientific metadata, UMAP reference variants, and example classifications.
 
+hidden_families:
+  - den_plot
+  - feature_density_plot
+  - stat_plot
+  - interactive_clustered_heatmap_plot
+  - balloon_plot
+  - interactive_binary_plot
+  - sankey
+  - combo_bar_line_plot
+  - gsea_ridge_nes_plot
+  - classified_bar_plot
+  - gsea_heatmap
+  - stacked_bar_plot
+  - interactive_dual_triangle_heatmap_plot
+  - pie_dot_matrix
+
 family_id_map:
   advanced_dim_plot: umap_tsne
   sca_volcano_plot: volcano
@@ -30,6 +46,17 @@ families:
       - dimplot
       - advanced_dim_plot
       - advDimPlot
+      - basic umap
+      - feature expression
+      - composition
+      - cluster_composition_ring
+      - embedded_pie
+      - ellipse_mark
+      - highlight_cells
+      - background_mask
+      - coexpression_screen
+      - density_hex
+      - split_highlight
     categories: [single_cell, dimension_reduction]
     analysis_contexts: [single_cell, cell_clustering, gene_expression, cell_composition]
     tasks: [clustering, feature_expression, composition, density, highlighting, trajectory]
@@ -50,138 +77,271 @@ families:
       - when: {has_embedding_xy: true, has_sample: true}
         recommend: {variant: split_samples, priority: 80}
       - when: {has_embedding_xy: true, has_cluster: true, has_sample: true}
-        recommend: {variant: composition_pie, priority: 90}
+        recommend: {variant: composition, priority: 90}
       - when: {has_embedding_xy: true, has_feature: true}
         recommend: {variant: feature_expression, priority: 95}
     variants:
       - id: clusters
-        name: Clusters
+        name: Basic UMAP
+        short_description: Color cells by cluster or annotation on a 2D embedding.
         description: Color cells by cluster or annotation.
         recommended_for: [cell_clustering]
-        parameter_groups: [data_mapping, marks, colors, labels, legend, axes, export]
+        parameter_groups: [data_mapping, marks, colors, labels, legend, axes, theme, export]
+        gallery: {visible: true, section: recommended, order: 1}
+        representative_example: pdf_repro_basic_umap
       - id: feature_expression
         name: Feature Expression
+        short_description: Map numeric feature expression onto the embedding.
         description: Map numeric feature expression onto the embedding.
         recommended_for: [gene_expression]
         parameter_groups: [data_mapping, colors, legend, axes, export]
+        gallery: {visible: true, section: recommended, order: 2}
+        representative_example: feature
       - id: split_samples
-        name: Split samples
+        name: Split by Sample
+        short_description: Facet the embedding by sample or condition.
         description: Facet the embedding by sample or condition.
         recommended_for: [sample_comparison]
-      - id: composition_pie
-        name: Composition pie
-        description: Show group composition as pies on clusters.
+        gallery: {visible: true, section: recommended, order: 3}
+        representative_example: pdf_repro_split_samples
+      - id: composition
+        name: Composition
+        short_description: Show categorical composition within embedding-defined groups using pie or ring glyphs.
+        description: Embedded pie or ring glyphs summarize category fractions inside clusters.
         recommended_for: [cell_composition]
-      - id: composition_ring
-        name: Composition ring
-        description: Embedded ring/pie of sample composition per cluster.
-        recommended_for: [cell_composition]
-      - id: density
-        name: Density
-        description: Filled or hexbin density of cells on the embedding.
-        recommended_for: [density]
+        gallery: {visible: true, section: recommended, order: 4}
+        representative_example: pdf_repro_composition_ring
       - id: highlight_cells
-        name: Highlight cells
+        name: Highlight Cells
+        short_description: Emphasize a cell subset and fade the rest.
         description: Emphasize a cell subset; fade the rest.
         recommended_for: [highlighting]
+        gallery: {visible: true, section: recommended, order: 5}
+        representative_example: pdf_repro_highlight_cells
       - id: ellipse
-        name: Ellipse marks
-        description: Confidence ellipses around groups.
+        name: Ellipse Marks
+        short_description: Outline groups with ellipse, hull, rectangle, or circle marks.
+        description: Confidence ellipses or related marks around groups.
         recommended_for: [cell_clustering]
+        gallery: {visible: true, section: recommended, order: 6}
+        representative_example: pdf_repro_ellipse_mark
+      - id: density
+        name: Density
+        short_description: Show local cell density as filled contours, contour lines, or hexbins.
+        description: Density overlay or hexbin aggregation on the embedding.
+        recommended_for: [density]
+        gallery: {visible: true, section: more, order: 7}
+        representative_example: density_filled
       - id: coexpression
-        name: Coexpression
-        description: Blend two features on the embedding.
+        name: Coexpression Map
+        short_description: Mix two or more features onto the embedding with blended color.
+        description: Blend multiple features on the embedding.
         recommended_for: [gene_expression]
+        gallery: {visible: true, section: more, order: 8}
+        representative_example: coexpression
+      - id: background_mask
+        name: Background / Mask
+        short_description: Dim cells by category, numeric cutoff, or selected IDs.
+        description: Push cells into the background by metadata category, numeric cutoff, or selection.
+        recommended_for: [highlighting]
+        gallery: {visible: true, section: more, order: 9}
+        representative_example: pdf_repro_bg_cutoff_mito
+      - id: split_highlight
+        name: Split & Highlight
+        short_description: Facet by sample or condition while highlighting a cell subset.
+        description: Combine split panels with a scientifically meaningful cell highlight.
+        recommended_for: [sample_comparison, highlighting]
+        gallery: {visible: true, section: more, order: 10}
+        representative_example: split_highlight
       - id: lineage
         name: Lineage
+        short_description: Overlay lineage, trajectory, or path information on the embedding.
         description: Overlay lineage/trajectory paths on the embedding.
         recommended_for: [trajectory]
-      - id: mark_shapes
-        name: Mark shapes
-        description: Encode groups with point shapes as well as color.
-        recommended_for: [cell_clustering]
+        gallery: {visible: true, section: more, order: 11}
+        representative_example: lineage
       - id: stat_panel
-        name: Stat panel
+        name: Embedding + Statistical Panel
+        short_description: Pair the embedding with a quantitative composition or count panel.
         description: Side statistics panel next to the embedding.
         recommended_for: [cell_composition]
+        gallery: {visible: true, section: more, order: 12}
+        representative_example: stat_panel
     example_classifications:
-      basic_umap: {class: variant, maps_to: {variant: clusters, preset: recommended}}
-      group: {class: variant, maps_to: {variant: clusters, preset: recommended}}
-      feature: {class: variant, maps_to: {variant: feature_expression, preset: recommended}}
-      ellipse_mark: {class: variant, maps_to: {variant: ellipse, preset: recommended}}
-      split_samples: {class: variant, maps_to: {variant: split_samples, preset: recommended}}
-      split_highlight: {class: variant, maps_to: {variant: highlight_cells, preset: recommended}}
-      composition_ring: {class: variant, maps_to: {variant: composition_ring, preset: recommended}}
-      cluster_composition_ring: {class: variant, maps_to: {variant: composition_ring, preset: recommended}}
-      embedded_pie: {class: variant, maps_to: {variant: composition_pie, preset: recommended}}
-      density_filled: {class: variant, maps_to: {variant: density, preset: recommended}}
-      density_hex: {class: variant, maps_to: {variant: density, preset: recommended}}
-      highlight_cells: {class: variant, maps_to: {variant: highlight_cells, preset: recommended}}
-      highlight_ring: {class: variant, maps_to: {variant: highlight_cells, preset: recommended}}
-      coexpression: {class: variant, maps_to: {variant: coexpression, preset: recommended}}
-      coexpression_screen: {class: variant, maps_to: {variant: coexpression, preset: recommended}}
-      lineage: {class: variant, maps_to: {variant: lineage, preset: recommended}}
-      mark_shapes: {class: variant, maps_to: {variant: mark_shapes, preset: recommended}}
-      stat_panel: {class: variant, maps_to: {variant: stat_panel, preset: recommended}}
-      axis_label_controls: {class: parameter, parameter_group: axes}
-      background_mask: {class: parameter, parameter_group: background}
-      bg_cutoff: {class: parameter, parameter_group: background}
-      bg_condition: {class: parameter, parameter_group: background}
-      blank_theme: {class: preset, maps_to: {variant: clusters, preset: minimal}}
-      raster: {class: export_template, maps_to: {variant: clusters, preset: large_dataset}}
-      pdf_basic_umap: {class: export_template, maps_to: {variant: clusters, preset: publication}}
-      pdf_ellipse_mark: {class: export_template, maps_to: {variant: ellipse, preset: publication}}
       pdf_repro_basic_umap: {class: demo, maps_to: {variant: clusters, preset: recommended}}
+      basic_umap: {class: legacy_alias, maps_to: {variant: clusters, preset: recommended}}
+      group: {class: legacy_alias, maps_to: {variant: clusters, preset: recommended}}
+      axis_label_controls: {class: parameter, parameter_group: axes, maps_to: {variant: clusters, preset: recommended}}
+      blank_theme: {class: preset, maps_to: {variant: clusters, preset: blank}}
+      pdf_basic_umap: {class: export, maps_to: {variant: clusters, preset: publication, export_format: pdf}}
+      raster: {class: rendering, maps_to: {variant: clusters, preset: large_dataset, parameters: {rendering_mode: raster}}}
+      feature: {class: demo, maps_to: {variant: feature_expression, preset: recommended}}
       pdf_repro_ellipse_mark: {class: demo, maps_to: {variant: ellipse, preset: recommended}}
+      ellipse_mark: {class: legacy_alias, maps_to: {variant: ellipse, preset: recommended}}
+      mark_shapes: {class: parameter, parameter_group: marks, maps_to: {variant: ellipse, preset: recommended, parameters: {mark_type: ellipse}}}
+      pdf_ellipse_mark: {class: export, maps_to: {variant: ellipse, preset: publication, export_format: pdf}}
       pdf_repro_split_samples: {class: demo, maps_to: {variant: split_samples, preset: recommended}}
-      pdf_repro_composition_ring: {class: demo, maps_to: {variant: composition_ring, preset: recommended}}
+      split_samples: {class: legacy_alias, maps_to: {variant: split_samples, preset: recommended}}
+      split_highlight: {class: variant, maps_to: {variant: split_highlight, preset: recommended}}
+      pdf_repro_composition_ring: {class: demo, maps_to: {variant: composition, preset: recommended, parameters: {composition_glyph: ring}}}
+      cluster_composition_ring: {class: legacy_alias, maps_to: {variant: composition, preset: recommended, parameters: {composition_glyph: ring}}}
+      embedded_pie: {class: legacy_alias, maps_to: {variant: composition, preset: recommended, parameters: {composition_glyph: pie}}}
       pdf_repro_highlight_cells: {class: demo, maps_to: {variant: highlight_cells, preset: recommended}}
-      pdf_repro_bg_cutoff_mito: {class: parameter, parameter_group: background}
-      pdf_repro_bg_condition: {class: parameter, parameter_group: background}
+      highlight_cells: {class: legacy_alias, maps_to: {variant: highlight_cells, preset: recommended}}
+      highlight_ring: {class: legacy_alias, maps_to: {variant: highlight_cells, preset: recommended, parameters: {highlight_style: ring}}}
+      pdf_repro_bg_cutoff_mito: {class: demo, maps_to: {variant: background_mask, preset: recommended, parameters: {background_mode: cutoff}}}
+      pdf_repro_bg_condition: {class: demo, maps_to: {variant: background_mask, preset: recommended, parameters: {background_mode: category}}}
+      background_mask: {class: legacy_alias, maps_to: {variant: background_mask, preset: recommended, parameters: {background_mode: cutoff}}}
+      bg_cutoff: {class: legacy_alias, maps_to: {variant: background_mask, preset: recommended, parameters: {background_mode: cutoff}}}
+      bg_condition: {class: legacy_alias, maps_to: {variant: background_mask, preset: recommended, parameters: {background_mode: category}}}
+      density_filled: {class: legacy_alias, maps_to: {variant: density, preset: recommended, parameters: {density_style: filled}}}
+      density_hex: {class: legacy_alias, maps_to: {variant: density, preset: recommended, parameters: {density_style: hexbin}}}
+      coexpression: {class: demo, maps_to: {variant: coexpression, preset: recommended, parameters: {color_mix_mode: blend}}}
+      coexpression_screen: {class: legacy_alias, maps_to: {variant: coexpression, preset: recommended, parameters: {color_mix_mode: screen}}}
+      lineage: {class: demo, maps_to: {variant: lineage, preset: recommended}}
+      stat_panel: {class: demo, maps_to: {variant: stat_panel, preset: recommended}}
     legacy_presets:
       basic_umap: {variant: clusters, preset: recommended}
-      embedded_pie: {variant: composition_pie, preset: recommended}
-      ellipse_mark: {variant: ellipse, preset: recommended}
-      split_samples: {variant: split_samples, preset: recommended}
-      composition_ring: {variant: composition_ring, preset: recommended}
-      density_filled: {variant: density, preset: recommended}
-      density_hex: {variant: density, preset: recommended}
-      highlight_cells: {variant: highlight_cells, preset: recommended}
-      blank_theme: {variant: clusters, preset: minimal}
-      pdf_basic_umap: {variant: clusters, preset: publication}
       group: {variant: clusters, preset: recommended}
+      axis_label_controls: {variant: clusters, preset: recommended}
+      blank_theme: {variant: clusters, preset: blank}
+      pdf_basic_umap: {variant: clusters, preset: publication, export_format: pdf}
+      raster: {variant: clusters, preset: large_dataset, parameters: {rendering_mode: raster}}
       feature: {variant: feature_expression, preset: recommended}
+      ellipse_mark: {variant: ellipse, preset: recommended}
+      mark_shapes: {variant: ellipse, preset: recommended, parameters: {mark_type: ellipse}}
+      pdf_ellipse_mark: {variant: ellipse, preset: publication, export_format: pdf}
+      split_samples: {variant: split_samples, preset: recommended}
+      split_highlight: {variant: split_highlight, preset: recommended}
+      composition_pie: {variant: composition, preset: recommended, parameters: {composition_glyph: pie}}
+      composition_ring: {variant: composition, preset: recommended, parameters: {composition_glyph: ring}}
+      cluster_composition_ring: {variant: composition, preset: recommended, parameters: {composition_glyph: ring}}
+      embedded_pie: {variant: composition, preset: recommended, parameters: {composition_glyph: pie}}
+      highlight_cells: {variant: highlight_cells, preset: recommended}
+      highlight_ring: {variant: highlight_cells, preset: recommended, parameters: {highlight_style: ring}}
+      background_mask: {variant: background_mask, preset: recommended, parameters: {background_mode: cutoff}}
+      bg_cutoff: {variant: background_mask, preset: recommended, parameters: {background_mode: cutoff}}
+      bg_condition: {variant: background_mask, preset: recommended, parameters: {background_mode: category}}
+      density_filled: {variant: density, preset: recommended, parameters: {density_style: filled}}
+      density_hex: {variant: density, preset: recommended, parameters: {density_style: hexbin}}
+      coexpression: {variant: coexpression, preset: recommended}
+      coexpression_screen: {variant: coexpression, preset: recommended, parameters: {color_mix_mode: screen}}
+      lineage: {variant: lineage, preset: recommended}
+      stat_panel: {variant: stat_panel, preset: recommended}
 
   feature_embedding:
     name: Feature embedding
     short_name: Feature plot
-    description: Map one or more features onto a 2D embedding.
-    aliases: [feature plot, featureplot, gene umap, expression map, advFeaPlot]
+    description: Map one or more quantitative features onto a 2D embedding.
+    aliases:
+      - feature plot
+      - featureplot
+      - gene umap
+      - expression map
+      - advFeaPlot
+      - single_feature
+      - multi_feature
+      - split_feature
+      - feature_comp
+      - density_hex
+      - highlight_blank
+      - feature density
+      - feature density plot
+      - expression density
+      - scale01
     analysis_contexts: [single_cell, gene_expression]
     tasks: [feature_expression, marker_visualization, density, highlighting]
     data_requirements:
       required_roles: [x_embedding, y_embedding, feature]
       optional_roles: [sample, split, cluster]
+    recommendation_rules:
+      - when: {has_embedding_xy: true, has_feature: true}
+        recommend: {variant: feature_expression, priority: 100}
+      - when: {has_embedding_xy: true, has_feature: true, has_sample: true}
+        recommend: {variant: split_feature_expression, priority: 80}
+    variants:
+      - id: feature_expression
+        name: Feature Expression
+        short_description: Visualize one or more feature values across observations in a 2D embedding.
+        description: Map one or more quantitative features onto an existing 2D embedding, as single or multi-panel maps.
+        recommended_for: [feature_expression, marker_visualization]
+        gallery: {visible: true, section: recommended, order: 1}
+        representative_example: pdf_repro_basic_two_features
+      - id: split_feature_expression
+        name: Split Feature Expression
+        short_description: Compare feature maps across samples, conditions, or other groups on the same embedding.
+        description: Facet feature expression by a categorical split while retaining embedding context.
+        recommended_for: [sample_comparison, feature_expression]
+        gallery: {visible: true, section: recommended, order: 2}
+        representative_example: pdf_repro_split_by_sample
+      - id: feature_coexpression
+        name: Feature Coexpression
+        short_description: Jointly encode multiple features on one map by mixing their colors.
+        description: Blend, multiply, screen, or average per-feature color scales into one coexpression map. This is color mixing, not a numeric product of expression values.
+        recommended_for: [feature_expression, gene_expression]
+        gallery: {visible: true, section: recommended, order: 3}
+        representative_example: pdf_repro_feature_comp_multiply
+      - id: aggregated_feature_expression
+        name: Aggregated Feature Expression
+        short_description: Summarize feature intensity in spatial bins instead of drawing every cell.
+        description: Hexagonal bins encode mean feature value per region; optional density contours overlay cell crowding.
+        recommended_for: [density, feature_expression]
+        gallery: {visible: true, section: more, order: 4}
+        representative_example: pdf_repro_hexbin
     example_classifications:
-      single_feature: {class: variant, maps_to: {variant: single_feature, preset: recommended}}
-      multi_feature: {class: variant, maps_to: {variant: multi_feature, preset: recommended}}
-      split_feature: {class: variant, maps_to: {variant: split_samples, preset: recommended}}
-      density_hex: {class: variant, maps_to: {variant: density, preset: recommended}}
-      feature_comp: {class: variant, maps_to: {variant: coexpression, preset: recommended}}
-      highlight_blank: {class: variant, maps_to: {variant: highlight_cells, preset: minimal}}
-      pdf_repro_basic_two_features: {class: demo, maps_to: {variant: multi_feature, preset: recommended}}
-      pdf_repro_multi_feature_scaled: {class: demo, maps_to: {variant: multi_feature, preset: recommended}}
-      pdf_repro_split_by_sample: {class: demo, maps_to: {variant: split_samples, preset: recommended}}
-      pdf_repro_feature_comp_multiply: {class: demo, maps_to: {variant: coexpression, preset: recommended}}
-      pdf_repro_highlight_cells: {class: demo, maps_to: {variant: highlight_cells, preset: recommended}}
-      pdf_repro_split_global_blank: {class: preset, maps_to: {variant: split_samples, preset: minimal}}
-      pdf_repro_hexbin: {class: demo, maps_to: {variant: density, preset: recommended}}
+      pdf_repro_basic_two_features: {class: demo, maps_to: {variant: feature_expression, preset: recommended, parameters: {feature_layout: side_by_side}}}
+      pdf_repro_multi_feature_scaled: {class: demo, maps_to: {variant: feature_expression, preset: recommended, parameters: {feature_layout: grid, scale_by: feature}}}
+      pdf_repro_highlight_cells: {class: demo, maps_to: {variant: feature_expression, preset: recommended, parameters: {highlight_enabled: true}}}
+      single_feature: {class: legacy_alias, maps_to: {variant: feature_expression, preset: recommended, parameters: {feature_layout: single}}}
+      multi_feature: {class: legacy_alias, maps_to: {variant: feature_expression, preset: recommended, parameters: {feature_layout: grid, scale_by: feature}}}
+      highlight_blank: {class: legacy_alias, maps_to: {variant: feature_expression, preset: blank, parameters: {highlight_enabled: true, theme_use: blank}}}
+      pdf_repro_split_by_sample: {class: demo, maps_to: {variant: split_feature_expression, preset: recommended, parameters: {global_split: true}}}
+      pdf_repro_split_global_blank: {class: preset, maps_to: {variant: split_feature_expression, preset: blank, parameters: {global_split: true, theme_use: blank}}}
+      split_feature: {class: legacy_alias, maps_to: {variant: split_feature_expression, preset: recommended, parameters: {global_split: true}}}
+      pdf_repro_feature_comp_multiply: {class: demo, maps_to: {variant: feature_coexpression, preset: recommended, parameters: {feature_comp: true, color_mix_mode: multiply}}}
+      feature_comp: {class: legacy_alias, maps_to: {variant: feature_coexpression, preset: recommended, parameters: {feature_comp: true, color_mix_mode: blend}}}
+      pdf_repro_hexbin: {class: demo, maps_to: {variant: aggregated_feature_expression, preset: recommended, parameters: {aggregation_style: hexbin}}}
+      density_hex: {class: legacy_alias, maps_to: {variant: aggregated_feature_expression, preset: recommended, parameters: {aggregation_style: hexbin, show_density: true}}}
+    legacy_presets:
+      single_feature: {variant: feature_expression, preset: recommended, parameters: {feature_layout: single}}
+      multi_feature: {variant: feature_expression, preset: recommended, parameters: {feature_layout: grid, scale_by: feature}}
+      highlight_blank: {variant: feature_expression, preset: blank, parameters: {highlight_enabled: true, theme_use: blank}}
+      split_feature: {variant: split_feature_expression, preset: recommended, parameters: {global_split: true}}
+      split_samples: {variant: split_feature_expression, preset: recommended, parameters: {global_split: true}}
+      density_hex: {variant: aggregated_feature_expression, preset: recommended, parameters: {aggregation_style: hexbin, show_density: true}}
+      feature_comp: {variant: feature_coexpression, preset: recommended, parameters: {feature_comp: true, color_mix_mode: blend}}
+      coexpression: {variant: feature_coexpression, preset: recommended, parameters: {feature_comp: true}}
+      highlight_cells: {variant: feature_expression, preset: recommended, parameters: {highlight_enabled: true}}
+      density: {variant: aggregated_feature_expression, preset: recommended, parameters: {aggregation_style: hexbin}}
+    extra_gallery:
+      - id: feature_density
+        engine_plugin_id: feature_density_plot
+        example_id: basic
+        name: Feature Density
+        short_description: KNN-smoothed density of one feature across the embedding.
+        gallery: {visible: true, section: more, order: 10}
+      - id: coexpression_density
+        engine_plugin_id: feature_density_plot
+        example_id: coexpression
+        name: Coexpression Density
+        short_description: Combined density of two features on the same embedding.
+        gallery: {visible: true, section: more, order: 11}
+      - id: scaled_feature_density
+        engine_plugin_id: feature_density_plot
+        example_id: scale01
+        name: Scaled Feature Density
+        short_description: Feature density rescaled to a 0–1 color range.
+        gallery: {visible: true, section: more, order: 12}
+
+  feature_density_plot:
+    status: hidden
+    gallery: {visible: false}
 
   gsea:
     name: GSEA / enrichment running plots
     short_name: GSEA
     description: Ranked-list enrichment curves, summaries, ridges, and gene-pathway diagrams.
-    aliases: [gsea, fgsea, running enrichment, enrichment plot, ridgeplot, joyplot, cnet, gene sankey]
+    aliases: [gsea, fgsea, running enrichment, enrichment plot, ridgeplot, joyplot, cnet, gene sankey, pathway ridge, nes bubble, gsea heatmap, pathway heatmap]
     analysis_contexts: [functional_enrichment, differential_expression]
     tasks: [gsea, ora, pathway_comparison, gene_pathway_relationship, ranking]
     data_requirements:
@@ -223,25 +383,88 @@ families:
       multigroup: {class: variant, maps_to: {variant: multi_group, preset: recommended}}
       ridge: {class: variant, maps_to: {variant: ridge, preset: recommended}}
       gene_sankey: {class: variant, maps_to: {variant: gene_sankey, preset: recommended}}
+    extra_gallery:
+      - id: ridge_nes
+        engine_plugin_id: gsea_ridge_nes_plot
+        example_id: basic
+        name: Pathway Ridge + NES
+        short_description: Gene-level log2FC ridges per pathway with a left NES bubble (color and size).
+        gallery: {visible: true, section: recommended, order: 1}
+      - id: pathway_heatmap
+        engine_plugin_id: gsea_pathway_heatmap
+        example_id: basic
+        name: GSEA + Pathway Heatmap
+        short_description: Running-enrichment tracks with per-pathway expression heatmaps. Precomputed NES and sample annotation are optional inputs.
+        gallery: {visible: true, section: more, order: 2}
     legacy_presets:
       grouped_curves: {variant: running, preset: recommended}
       classic_tracks: {variant: running, preset: recommended}
       faceted_running: {variant: running, preset: recommended}
 
+  gsea_ridge_nes_plot:
+    status: hidden
+    gallery: {visible: false}
+
   grouped_heatmap:
     name: Group heatmap
-    aliases: [group heatmap, dotplot, clustered dotplot, violin heatmap]
+    aliases: [group heatmap, dotplot, clustered dotplot, clustered heatmap, interactive clustered heatmap]
     analysis_contexts: [single_cell, bulk_expression, gene_expression]
     tasks: [gene_expression, gene_clustering, heatmap, group_comparison, cell_composition]
     data_requirements:
       required_roles: [feature, group]
       optional_roles: [sample, metadata]
+    variants:
+      - id: heatmap
+        name: Heatmap
+        short_description: Grouped expression heatmap across clusters or samples.
+        gallery: {visible: true, section: more, order: 1}
+        representative_example: heatmap
+      - id: cell_heatmap
+        name: Cell Heatmap
+        short_description: Cell-level heatmap of selected features.
+        gallery: {visible: true, section: more, order: 2}
+        representative_example: cell_heatmap
+      - id: dotplot
+        name: Dotplot
+        short_description: Grouped marker summary with color and size.
+        gallery: {visible: true, section: more, order: 3}
+        representative_example: dotplot
+      - id: clustered_dotplot
+        name: Clustered Dotplot
+        short_description: Marker dotplot with dendrograms on genes or groups.
+        gallery: {visible: true, section: more, order: 4}
+        representative_example: clustered_dotplot
+    extra_gallery:
+      - id: clustered_heatmap
+        engine_plugin_id: interactive_clustered_heatmap_plot
+        example_id: basic
+        name: Clustered Heatmap
+        short_description: Cluster rows and columns of a numeric matrix with optional annotations.
+        gallery: {visible: true, section: more, order: 20}
+      - id: custom_clustered_heatmap
+        engine_plugin_id: interactive_clustered_heatmap_plot
+        example_id: custom
+        name: Custom Annotated Heatmap
+        short_description: Annotated clustered heatmap with a custom color scale and cell values.
+        gallery: {visible: true, section: more, order: 21}
+      - id: interactive_clustered_heatmap
+        engine_plugin_id: interactive_clustered_heatmap_plot
+        example_id: interactive
+        name: Interactive Heatmap
+        short_description: Clustered heatmap with hover, zoom, and pan.
+        gallery: {visible: true, section: more, order: 22}
+      - id: split_panel_heatmap
+        engine_plugin_id: interactive_clustered_heatmap_plot
+        example_id: panels
+        name: Split-Panel Heatmap
+        short_description: Clustered heatmap split into column groups such as conditions.
+        gallery: {visible: true, section: more, order: 23}
     example_classifications:
-      heatmap: {class: variant, maps_to: {variant: heatmap, preset: recommended}}
-      cell_heatmap: {class: variant, maps_to: {variant: heatmap, preset: recommended}}
-      dotplot: {class: variant, maps_to: {variant: dotplot, preset: recommended}}
-      clustered_dotplot: {class: variant, maps_to: {variant: clustered_dotplot, preset: recommended}}
-      violin: {class: variant, maps_to: {variant: violin, preset: recommended}}
+      heatmap: {class: demo, maps_to: {variant: heatmap, preset: recommended}}
+      cell_heatmap: {class: demo, maps_to: {variant: cell_heatmap, preset: recommended}}
+      dotplot: {class: demo, maps_to: {variant: dotplot, preset: recommended}}
+      clustered_dotplot: {class: demo, maps_to: {variant: clustered_dotplot, preset: recommended}}
+      violin: {class: parameter, parameter_group: marks}
 
   volcano:
     name: Volcano
@@ -269,49 +492,502 @@ families:
     aliases: [venn diagram, set overlap]
     analysis_contexts: [relationships_overlap]
     tasks: [overlap]
+    extra_gallery:
+      - id: venn
+        engine_plugin_id: stat_plot
+        example_id: venn
+        name: Venn
+        short_description: Compare overlapping groups from categorical metadata.
+        gallery: {visible: true, section: more, order: 20}
   upset:
     name: UpSet
     aliases: [upset plot, set intersections]
     analysis_contexts: [relationships_overlap]
     tasks: [overlap]
+    extra_gallery:
+      - id: upset
+        engine_plugin_id: stat_plot
+        example_id: upset
+        name: UpSet
+        short_description: Rank set intersections from categorical metadata.
+        gallery: {visible: true, section: more, order: 20}
+  go_kegg_enrichment_bar_bubble:
+    name: GO / KEGG Enrichment
+    short_name: GO / KEGG
+    description: >
+      Horizontal enrichment bars for GO ontologies and KEGG pathways, with
+      gene-count dots. Top-N per category is a plotting parameter.
+    aliases:
+      - go kegg enrichment
+      - go enrichment
+      - kegg enrichment
+      - ontology enrichment
+      - go bar
+      - kegg bar
+    analysis_contexts: [functional_enrichment]
+    tasks: [ora]
+    variants:
+      - id: grouped_bar_dot
+        name: GO / KEGG Bar + Count Dots
+        short_description: Top GO and KEGG terms as grouped bars; dot size is gene count.
+        gallery: {visible: true, section: recommended, order: 1}
+        representative_example: go_kegg
+    example_classifications:
+      go_kegg: {class: demo, maps_to: {variant: grouped_bar_dot, preset: recommended}}
+
   enrichment_lollipop:
     name: Enrichment lollipop
     aliases: [lollipop, signed enrichment, cleveland enrichment]
     analysis_contexts: [functional_enrichment]
     tasks: [ora, gsea]
+    variants:
+      - id: lollipop
+        name: Enrichment Lollipop
+        short_description: Signed pathway effects as zero-centered lollipops, with group color and set-size mapping.
+        gallery: {visible: true, section: recommended, order: 1}
+        representative_example: basic
+      - id: oct4_enrichment
+        name: OCT4 Enrichment
+        short_description: Signed NES lollipops for an OCT4 enrichment table.
+        gallery: {visible: true, section: more, order: 2}
+        representative_example: oct4_enrichment
+    example_classifications:
+      basic: {class: demo, maps_to: {variant: lollipop, preset: recommended}}
+      custom_layout: {class: parameter, parameter_group: layout, maps_to: {variant: lollipop, preset: recommended}}
+      interactive: {class: parameter, parameter_group: export, maps_to: {variant: lollipop, preset: recommended, parameters: {interactive: true}}}
+      oct4_enrichment: {class: demo, maps_to: {variant: oct4_enrichment, preset: recommended}}
+    legacy_presets:
+      custom_layout: {variant: lollipop, preset: recommended}
+      interactive: {variant: lollipop, preset: recommended, parameters: {interactive: true}}
   ridgeline:
     name: Ridgeline
     aliases: [ridge, ridgeplot, joyplot, density ridge, gsea ridge]
     analysis_contexts: [general_statistics]
     tasks: [distribution]
   sankey:
-    name: Sankey
-    aliases: [sankey diagram, flow]
-    analysis_contexts: [composition, relationships_overlap]
-    tasks: [composition, network]
+    status: hidden
+    gallery: {visible: false}
   alluvial:
-    name: Alluvial
-    aliases: [alluvial, sankey flow, 冲积图]
-    analysis_contexts: [composition, trajectory]
-    tasks: [composition, trajectory]
+    name: Alluvial / Sankey / Chord Plot
+    short_name: Flow
+    description: >
+      Show how observations move between categories: multi-stage alluvial
+      strata, two-layer Sankey flows, or circular chord ribbons.
+    aliases:
+      - alluvial
+      - sankey
+      - sankey diagram
+      - sankey flow
+      - chord
+      - chord diagram
+      - alluvial chart
+      - flow
+    analysis_contexts: [composition, trajectory, relationships_overlap]
+    tasks: [composition, trajectory, network]
+    extra_gallery:
+      - id: sankey_flow
+        engine_plugin_id: interactive_sankey_plot
+        example_id: basic
+        name: Sankey
+        short_description: Two-layer flows from a source category to a target category.
+        gallery: {visible: true, section: more, order: 10}
+      - id: sankey_interactive
+        engine_plugin_id: interactive_sankey_plot
+        example_id: interactive
+        name: Interactive Sankey
+        short_description: Sankey flows with draggable nodes and hover.
+        gallery: {visible: true, section: more, order: 11}
+      - id: sankey_layout
+        engine_plugin_id: interactive_sankey_plot
+        example_id: custom_layout
+        name: Sankey layout
+        short_description: Sankey flows with a custom node order and layout.
+        gallery: {visible: true, section: more, order: 12}
+      - id: sankey
+        engine_plugin_id: stat_plot
+        example_id: sankey
+        name: Composition Sankey
+        short_description: Show how category membership flows from one grouping to another.
+        gallery: {visible: true, section: more, order: 13}
+      - id: chord
+        engine_plugin_id: stat_plot
+        example_id: chord
+        name: Chord
+        short_description: Circular flows between categories, with ribbon width for shared counts.
+        gallery: {visible: true, section: more, order: 14}
   gsea_heatmap:
-    name: GSEA pathway heatmap
-    aliases: [gsea heatmap, pathway heatmap]
-    analysis_contexts: [functional_enrichment]
-    tasks: [gsea, heatmap, gene_expression]
+    status: hidden
+    gallery: {visible: false}
+
+  den_plot:
+    status: hidden
+    gallery: {visible: false}
+
+  stat_plot:
+    status: hidden
+    gallery: {visible: false}
+
+  interactive_clustered_heatmap_plot:
+    status: hidden
+    gallery: {visible: false}
+
+  classified_bar_plot:
+    status: hidden
+    gallery: {visible: false}
 
   stacked_bar_plot:
-    aliases: [stacked bar, composition bar]
+    status: hidden
+    gallery: {visible: false}
+  interactive_pie_plot:
+    name: Pie / Rose Plot
+    short_name: Pie / Rose
+    description: >
+      Show category fractions as pie, donut, or nightingale rose charts.
+    aliases: [pie, donut, doughnut, rose, nightingale, composition pie]
     analysis_contexts: [composition, single_cell, general_statistics]
-    tasks: [composition, cell_composition, group_comparison]
+    tasks: [composition, cell_composition]
+    extra_gallery:
+      - id: pie
+        engine_plugin_id: stat_plot
+        example_id: pie
+        name: Pie
+        short_description: Category proportions as pies or concentric rings.
+        gallery: {visible: true, section: more, order: 20}
+      - id: rose
+        engine_plugin_id: stat_plot
+        example_id: rose
+        name: Rose
+        short_description: Nightingale rose of category counts around a polar axis.
+        gallery: {visible: true, section: more, order: 21}
   violin_plot:
     aliases: [violin, expression violin]
     analysis_contexts: [single_cell, bulk_expression, general_statistics]
     tasks: [gene_expression, distribution, group_comparison]
   interactive_violin_plot:
+    name: Violin / Box / Point Plot
+    short_name: Violin / Box / Point
+    description: >
+      Violin, box, and jittered-point distributions for expression or metadata
+      values, including grouped and split views.
+    aliases: [violin, violin box point, expression violin]
     analysis_contexts: [single_cell, general_statistics]
     tasks: [gene_expression, distribution, group_comparison]
+    extra_gallery:
+      - id: grouped_violin
+        engine_plugin_id: group_heatmap
+        example_id: violin
+        name: Grouped Violin
+        short_description: Feature violins split by cluster or group from a wide expression table.
+        gallery: {visible: true, section: more, order: 19}
+      - id: violin
+        engine_plugin_id: exp_stat_plot
+        example_id: violin
+        name: Violin
+        short_description: Expression or metadata values as violins, with optional box and point overlays.
+        gallery: {visible: true, section: more, order: 20}
+      - id: box_split
+        engine_plugin_id: exp_stat_plot
+        example_id: box_split
+        name: Split Box Plot
+        short_description: Compare groups with box plots, split panels, and jittered points.
+        gallery: {visible: true, section: more, order: 21}
+      - id: custom_style
+        engine_plugin_id: exp_stat_plot
+        example_id: custom_style
+        name: Violin, Box & Points
+        short_description: Combined violin, box, and point layers with full axis and highlight styling.
+        gallery: {visible: true, section: more, order: 22}
+      - id: highlight
+        engine_plugin_id: exp_stat_plot
+        example_id: highlight
+        name: Highlighted Violin
+        short_description: Violin distribution with a selected cell or group subset emphasized.
+        gallery: {visible: true, section: more, order: 23}
+  combo_bar_line_plot:
+    status: hidden
+    gallery: {visible: false}
+
+  exp_stat_plot:
+    name: Basic / Advanced Bar Plot
+    short_name: Bar Plot
+    description: >
+      Basic grouped or stacked bars for expression scores and metadata
+      statistics. Advanced views include classified category bars and
+      dual-axis bar-plus-line charts.
+    aliases:
+      - bar plot
+      - grouped bar
+      - stacked bar
+      - composition bar
+      - statistic bar
+      - column plot
+      - combo bar
+      - bar line
+      - labeled bar
+      - classified bar
+      - categorical bar
+      - cab_demo
+      - vertical bar
+      - expression statistic
+      - expStatPlot
+    analysis_contexts: [single_cell, bulk_expression, general_statistics]
+    tasks: [group_comparison, gene_expression]
+    variants:
+      - id: grouped_bar
+        name: Grouped Bar
+        short_description: Compare group statistics as bars, with optional trend and reference lines.
+        description: Grouped bars for a numeric statistic across clusters or conditions.
+        recommended_for: [group_comparison]
+        gallery: {visible: true, section: recommended, order: 1}
+        representative_example: bar
+      - id: flipped_bar
+        name: Flipped Stacked Bar
+        short_description: Stacked columns rotated for long labels or many categories.
+        description: Stacked column statistics with axes flipped.
+        recommended_for: [group_comparison]
+        gallery: {visible: true, section: more, order: 2}
+        representative_example: col_flip
+    extra_gallery:
+      - id: stacked_bar
+        engine_plugin_id: stacked_bar_plot
+        example_id: basic
+        name: Stacked Bar
+        short_description: Stacked category composition across groups. Percent, long input, and theme demos are plotting parameters.
+        gallery: {visible: true, section: more, order: 5}
+      - id: stacked_bar_vertical
+        engine_plugin_id: stacked_bar_plot
+        example_id: normal
+        name: Vertical Stacked Bar
+        short_description: Vertical stacked composition with reversed stack order.
+        gallery: {visible: true, section: more, order: 6}
+      - id: stacked_bar_labeled
+        engine_plugin_id: stacked_bar_plot
+        example_id: vertical_labels
+        name: Labeled Vertical Stacked Bar
+        short_description: Vertical stacked bars with in-bar value labels.
+        gallery: {visible: true, section: more, order: 7}
+      - id: stacked_composition_bar
+        engine_plugin_id: stat_plot
+        example_id: bar
+        name: Stacked Composition Bar
+        short_description: Stacked percentages of category levels across groups.
+        gallery: {visible: true, section: more, order: 9}
+      - id: classified_bar
+        engine_plugin_id: classified_bar_plot
+        example_id: CAB_demo
+        name: Classified Bar
+        short_description: Category bars colored by group or class; orientation is a plotting parameter.
+        gallery: {visible: true, section: more, order: 8}
+      - id: labeled_bar_line
+        engine_plugin_id: combo_bar_line_plot
+        example_id: labeled
+        name: Labeled Bar + Line
+        short_description: Dual-axis bars with a secondary line series and value labels.
+        gallery: {visible: true, section: more, order: 10}
+    example_classifications:
+      bar: {class: demo, maps_to: {variant: grouped_bar, preset: recommended}}
+      col_flip: {class: demo, maps_to: {variant: flipped_bar, preset: recommended}}
+      violin: {class: parameter, parameter_group: marks}
+      box_split: {class: parameter, parameter_group: marks}
+      custom_style: {class: parameter, parameter_group: theme}
+      highlight: {class: parameter, parameter_group: marks}
+      dot_stack: {class: parameter, parameter_group: marks}
+    legacy_presets:
+      bar: {variant: grouped_bar, preset: recommended}
+      col_flip: {variant: flipped_bar, preset: recommended}
+  balloon_plot:
+    status: hidden
+    gallery: {visible: false}
+    analysis_contexts: [general_statistics]
+    tasks: [group_comparison]
+
+  interactive_binary_plot:
+    status: hidden
+    gallery: {visible: false}
+
+  interactive_dual_triangle_heatmap_plot:
+    status: hidden
+    gallery: {visible: false}
+
+  pie_dot_matrix:
+    status: hidden
+    gallery: {visible: false}
+
+  interactive_mantel_correlation_network:
+    name: Mantel + Pearson Correlation
+    short_name: Mantel + Pearson
+    description: >
+      Upper-triangle Pearson correlations among environmental variables,
+      with diagonal labels and a Mantel-test network in the lower left.
+      Edge color is Mantel p-value; edge width is |r|.
+    aliases:
+      - mantel
+      - mantel test
+      - mantel correlation
+      - mantel network
+      - pearson mantel
+      - environmental mantel
+    analysis_contexts: [relationships_overlap, general_statistics]
+    tasks: [correlation, network]
+    variants:
+      - id: mantel_pearson
+        name: Combined Mantel + Pearson
+        short_description: Pearson triangle of env variables plus Mantel links from community distances.
+        gallery: {visible: true, section: recommended, order: 1}
+        representative_example: basic
+    example_classifications:
+      basic: {class: demo, maps_to: {variant: mantel_pearson, preset: recommended}}
+      interactive: {class: parameter, parameter_group: export, maps_to: {variant: mantel_pearson, preset: recommended, parameters: {interactive: true}}}
+      custom_layout: {class: parameter, parameter_group: layout, maps_to: {variant: mantel_pearson, preset: recommended}}
+    legacy_presets:
+      interactive: {variant: mantel_pearson, preset: recommended, parameters: {interactive: true}}
+      custom_layout: {variant: mantel_pearson, preset: recommended}
+
+  interactive_correlation_matrix:
+    name: Correlation / Dual-Triangle Matrix
+    short_name: Correlation Matrix
+    description: >
+      Feature–feature correlation matrices, plus dual-triangle heatmaps that
+      place two metrics in the upper and lower triangles of one view.
+    aliases:
+      - correlation matrix
+      - correlogram
+      - dual triangle
+      - dual-triangle heatmap
+      - dual triangle heatmap
+      - two-triangle heatmap
+      - interactive dual-triangle heatmap
+      - jaccard pearson heatmap
+    analysis_contexts: [relationships_overlap, general_statistics]
+    tasks: [correlation, group_comparison]
+    extra_gallery:
+      - id: dual_triangle
+        engine_plugin_id: interactive_dual_triangle_heatmap_plot
+        example_id: basic
+        name: Dual-Triangle Heatmap
+        short_description: Two metrics in one matrix — upper and lower triangles from separate tables. Palettes, clustering, annotation strips, and interactive HTML are plotting parameters.
+        gallery: {visible: true, section: more, order: 10}
+
   dot_plot:
-    aliases: [dot plot, cluster dotplot]
+    name: Basic / Advanced Dot Plot
+    short_name: Dot Plot
+    description: >
+      Basic marker dots summarize mean expression and detection rate across
+      groups. Advanced views size dots by a matrix value (balloon), show
+      binary presence and absence, or fill each cell as a ratio pie.
+    aliases:
+      - dot plot
+      - cluster dotplot
+      - marker dot plot
+      - balloon plot
+      - balloon
+      - bubble plot
+      - presence absence
+      - binary plot
+      - binary presence
+      - pie dot matrix
+      - pie-dot matrix
+      - ratio circles
+      - pie filled dots
     analysis_contexts: [single_cell, bulk_expression]
     tasks: [gene_expression, cell_composition, group_comparison]
+    variants:
+      - id: marker_dot
+        name: Basic Dot Plot
+        short_description: >
+          Compare gene expression across clusters or samples using color for
+          mean expression and size for detection rate.
+        description: >
+          A gene-by-group summary: each dot is one gene in one cluster or sample.
+          Use it to highlight markers, annotate clusters, and compare expression
+          programs. Optional dendrograms group similar genes or clusters.
+        recommended_for: [gene_expression, marker_visualization]
+        gallery: {visible: true, section: recommended, order: 1}
+        representative_example: basic
+    extra_gallery:
+      - id: balloon
+        engine_plugin_id: balloon_plot
+        example_id: basic
+        name: Balloon Plot
+        short_description: Size each matrix cell by its value, with optional row and column summaries.
+        gallery: {visible: true, section: more, order: 10}
+      - id: balloon_gradient
+        engine_plugin_id: balloon_plot
+        example_id: gradient
+        name: Gradient Balloon
+        short_description: Balloon matrix with a continuous color scale for the cell value.
+        gallery: {visible: true, section: more, order: 11}
+      - id: balloon_no_stats
+        engine_plugin_id: balloon_plot
+        example_id: no_stats
+        name: Balloon without summaries
+        short_description: Balloon matrix without row or column summary statistics.
+        gallery: {visible: true, section: more, order: 12}
+      - id: presence_absence
+        engine_plugin_id: interactive_binary_plot
+        example_id: basic
+        name: Presence / Absence
+        short_description: Dot matrix for binary presence or absence of features across samples.
+        gallery: {visible: true, section: more, order: 13}
+      - id: presence_absence_layout
+        engine_plugin_id: interactive_binary_plot
+        example_id: custom_layout
+        name: Presence / Absence layout
+        short_description: Presence/absence dots with a custom grid and label layout.
+        gallery: {visible: true, section: more, order: 14}
+      - id: presence_absence_interactive
+        engine_plugin_id: interactive_binary_plot
+        example_id: interactive
+        name: Interactive Presence / Absence
+        short_description: Presence/absence dots with hover and zoom.
+        gallery: {visible: true, section: more, order: 15}
+      - id: dot_stack
+        engine_plugin_id: exp_stat_plot
+        example_id: dot_stack
+        name: Stacked Dot
+        short_description: Summarize several genes or scores as stacked dots per group.
+        gallery: {visible: true, section: more, order: 16}
+      - id: dot
+        engine_plugin_id: stat_plot
+        example_id: dot
+        name: Composition Dot
+        short_description: Counts of category levels across groups, with dot size for magnitude.
+        gallery: {visible: true, section: more, order: 17}
+      - id: pie_dot_matrix
+        engine_plugin_id: pie_dot_matrix
+        example_id: basic
+        name: Pie Dot Matrix
+        short_description: Matrix of pie-filled circles; the filled slice is gene ratio, correlation, or prevalence. Binary fill and theme are plotting parameters.
+        gallery: {visible: true, section: more, order: 18}
+    example_classifications:
+      basic: {class: demo, maps_to: {variant: marker_dot, preset: recommended}}
+      aggregate: {class: demo, maps_to: {variant: marker_dot, preset: recommended, parameters: {input_mode: aggregate}}}
+      dendro: {class: legacy_alias, maps_to: {variant: marker_dot, preset: recommended, parameters: {xtree: true, ytree: true}}}
+    legacy_presets:
+      basic: {variant: marker_dot, preset: recommended}
+      aggregate: {variant: marker_dot, preset: recommended, parameters: {input_mode: aggregate}}
+      dendro: {variant: marker_dot, preset: recommended, parameters: {xtree: true, ytree: true}}
+
+  hierarchical_marker_panel:
+    name: Hierarchical Marker Panel
+    short_name: Hierarchical Marker Panel
+    description: Hierarchical cell-type annotation with cell counts and marker expression dots.
+    aliases: [hierarchical marker panel, cell type marker panel, marker hierarchy]
+    categories: [single_cell]
+    analysis_contexts: [single_cell, gene_expression]
+    tasks: [marker_visualization, feature_expression, composition]
+    data_requirements:
+      required_roles: [feature, group]
+      optional_roles: [metadata, value]
+      accepted_types: {feature: categorical, group: categorical, metadata: categorical, value: numeric}
+    variants:
+      - id: basic
+        name: Basic
+        short_description: Hierarchy, cell counts, and marker dot matrix.
+        representative_example: basic
+        gallery: {visible: true, section: recommended, order: 1}
+      - id: CAB_demo
+        name: CAB_demo
+        short_description: Reference-style hierarchical marker panel.
+        representative_example: CAB_demo
+        gallery: {visible: true, section: more, order: 2}

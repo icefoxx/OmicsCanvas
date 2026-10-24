@@ -33,6 +33,8 @@ option_list <- list(
               help = 'Optional precomputed enrichment table.'),
   make_option('--col_annot', dest = 'col_annot', type = 'character', default = NULL,
               help = 'Optional sample annotation table (first column = sample id).'),
+  make_option('--col-annot', dest = 'col_annot', type = 'character', default = NULL,
+              help = 'Optional sample annotation table (first column = sample id).'),
   make_option(c('--params'), type = 'character', default = NULL,
               help = 'Path to params.json.'),
   make_option(c('--output'), type = 'character', default = NULL,

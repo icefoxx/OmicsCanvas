@@ -1,0 +1,17 @@
+{
+  "plugin_id": "go_kegg_enrichment_bar_bubble",
+  "examples": [
+    {
+      "id": "go_kegg",
+      "label": "GO / KEGG Bar + Count Dots",
+      "plugin_id": "go_kegg_enrichment_bar_bubble",
+      "plot_type": "grouped_bar_dot",
+      "mode": "top 5 per ontology",
+      "params": "../examples/go_kegg/params.json",
+      "inputs": {"input": "input/example_enrichment.csv"},
+      "bundle": "../examples/go_kegg",
+      "gallery_png": "go_kegg.png",
+      "blurb": "Top GO and KEGG terms as grouped bars; dot size is gene count."
+    }
+  ]
+}

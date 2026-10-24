@@ -1,47 +1,64 @@
 id: gsea_pathway_heatmap
 name: GSEA Pathway Heatmap
-display_name: GSEA Pathway Heatmap
 version: 1.0.0
-description: Combined GSEA running-enrichment figure with per-pathway expression heatmaps. Ranked genes drive the curves and hit tracks; overlapping pathway genes are shown as sample heatmaps.
+description: Combined GSEA running-enrichment figure with per-pathway expression heatmaps. Ranked genes drive the curves and
+  hit tracks; overlapping pathway genes are shown as sample heatmaps.
 language: R
 entrypoint: plot.R
 category: Set / Enrichment
 subcategory: GSEA + Heatmap
 status: experimental
 inputs:
-  - id: input
-    type: table
-    formats: [csv, tsv, txt]
-    required: true
-    description: Ranked gene table (gene + statistic).
-  - id: genesets
-    type: table
-    formats: [gmt, csv, tsv, txt]
-    required: true
-    description: Gene-set membership (GMT or term-gene table).
-  - id: expr
-    type: table
-    formats: [csv, tsv, txt]
-    required: true
-    description: Gene-by-sample expression matrix.
-  - id: enrichment
-    type: table
-    formats: [csv, tsv, txt]
-    optional: true
-    description: Optional precomputed FGSEA/ORA table.
-  - id: col_annot
-    type: table
-    formats: [csv, tsv, txt]
-    optional: true
-    description: Optional sample annotation table.
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+  description: Ranked gene table (gene + statistic).
+- id: genesets
+  type: table
+  formats:
+  - gmt
+  - csv
+  - tsv
+  - txt
+  required: true
+  description: Gene-set membership (GMT or term-gene table).
+- id: expr
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+  description: Gene-by-sample expression matrix.
+- id: enrichment
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  optional: true
+  description: Optional precomputed FGSEA/ORA table.
+- id: col_annot
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  optional: true
+  description: Optional sample annotation table.
 outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - enrichment_results.csv
-  - selected_terms.csv
-  - pathway_genes_used.csv
-  - matrix_data_used.csv
-  - run.log
-runtime: Rscript plugins/gsea_pathway_heatmap/plot.R --input ranks.csv --genesets pathways.gmt --expr expression.csv --params params.json --output output_dir
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- enrichment_results.csv
+- selected_terms.csv
+- pathway_genes_used.csv
+- matrix_data_used.csv
+- run.log
+runtime: Rscript plugins/gsea_pathway_heatmap/plot.R --input ranks.csv --genesets pathways.gmt --expr expression.csv --params
+  params.json --output output_dir

@@ -5,18 +5,50 @@ description: Interactive edge-list and membership/network-Venn graph with static
 language: R
 entrypoint: plot.R
 category: Network
+subcategory: General
 status: experimental
 inputs:
-  - id: input
-    type: table
-    formats: [csv, tsv, txt]
-  - id: nodes
-    type: table
-    required: false
-outputs: [result.svg, result.pdf, result.png, result.html, figure.json, nodes_used.csv, edges_used.csv, run.log]
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+- id: nodes
+  type: table
+  required: false
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- nodes_used.csv
+- edges_used.csv
+- run.log
 parameters:
-  input_mode: {type: select, options: [edge_list, membership], default: edge_list}
-  layout_algorithm: {type: select, options: [fr, kk, circle, stress, hierarchical, manual], default: fr}
-  interactive: {type: boolean, default: true}
-  group_colors: {type: object, required: false}
-  highlight_nodes: {type: string_array, required: false}
+  input_mode:
+    type: select
+    options:
+    - edge_list
+    - membership
+    default: edge_list
+  layout_algorithm:
+    type: select
+    options:
+    - fr
+    - kk
+    - circle
+    - stress
+    - hierarchical
+    - manual
+    default: fr
+  interactive:
+    type: boolean
+    default: true
+  group_colors:
+    type: object
+    required: false
+  highlight_nodes:
+    type: string_array
+    required: false

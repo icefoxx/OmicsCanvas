@@ -1,0 +1,14 @@
+{
+  "plugin_id": "__PLUGIN_ID__",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Basic",
+      "plugin_id": "__PLUGIN_ID__",
+      "params": "../examples/basic/params.json",
+      "inputs": {"input": "input/example_input.csv"},
+      "expected": "../examples/basic/expected/result.png",
+      "bundle": "../examples/basic"
+    }
+  ]
+}

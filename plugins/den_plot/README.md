@@ -123,7 +123,7 @@ Output:
 Run all examples:
 
 ```bash
-plugins/den_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/den_plot/run_all_examples.sh <repo-root>
 ```
 
 This writes `/tmp/den_plot_*_out` and updates:

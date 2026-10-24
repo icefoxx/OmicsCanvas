@@ -31,11 +31,9 @@
       "type": "select",
       "label": "Plot kind",
       "help": "",
-      "default": "default",
+      "default": "column_dendrogram",
       "options": [
-        "default",
-        "basic",
-        "colored"
+        "column_dendrogram"
       ]
     }
   },

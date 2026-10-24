@@ -1,0 +1,142 @@
+# Curated knowledge used by `python -m vnext.cli migrate` to generate
+# plugins/<id>/vnext/metadata.yaml. Everything here is reviewed by hand; the
+# generator only adds what it can detect mechanically (column parameters from
+# params_schema.json + example params).
+
+# Canonical semantic roles. Scientific guardrails only reason about these.
+# `kind` is the expected column type; `aliases` are parameter stems
+# (parameter name minus _column/_col/_columns/_by) that mean this role.
+roles:
+  id:              {kind: id,          aliases: [id, row_id, cell, cell_id, element_id, node_id, barcode]}
+  # x/y are axes, not necessarily numeric (dot plots use gene x cluster); embedding rules require numbers.
+  x:               {kind: any,         aliases: [x, dim1, umap1, umap_1, tsne1, tsne_1, pc1]}
+  y:               {kind: any,         aliases: [y, dim2, umap2, umap_2, tsne2, tsne_2, pc2]}
+  group:           {kind: categorical, aliases: [group, cluster, groups, ident]}
+  category:        {kind: categorical, aliases: [category, term, pathway, description]}
+  signed_effect:   {kind: numeric,     aliases: [nes, log2fc, logfc, lfc, signed_effect]}
+  value:           {kind: numeric,     aliases: [value, values, long_value, mean, metric, score]}
+  pvalue:          {kind: numeric,     aliases: [pvalue, pval, p_value, p]}
+  adjusted_pvalue: {kind: numeric,     aliases: [adjusted_pvalue, padj, fdr, qval, q_value, p_adj]}
+  significance:    {kind: categorical, aliases: [significance, sig]}
+  size:            {kind: numeric,     aliases: [size, count, gene_count, n]}
+  color:           {kind: any,         aliases: [color, colour, fill]}
+  label:           {kind: any,         aliases: [label, row_label, edge_label, gene_label]}
+  sample:          {kind: categorical, aliases: [sample, samples, sample_id]}
+  split:           {kind: categorical, aliases: [split, facet, panel_group]}
+  feature:         {kind: any,         aliases: [feature, features, gene, genes, symbol]}
+  source:          {kind: any,         aliases: [source, from]}
+  target:          {kind: any,         aliases: [target, to]}
+  weight:          {kind: numeric,     aliases: [weight, edge_weight]}
+  correlation:     {kind: numeric,     aliases: [r, cor, correlation, rho]}
+  se:              {kind: numeric,     aliases: [se, sem, stderr]}
+  ci_low:          {kind: numeric,     aliases: [ci_low, ci_lower, lower]}
+  ci_high:         {kind: numeric,     aliases: [ci_high, ci_upper, upper]}
+  annotation:      {kind: any,         aliases: [annotation, annotations, type]}
+
+# Plugin -> family. Families select the scientific rule set in
+# vnext/validate/scientific.py.
+families:
+  enrichment: [interactive_enrichment_lollipop, fgsea_enrichment_plot, go_kegg_enrichment_bar_bubble,
+               gsea_pathway_heatmap, gsea_ridge_nes_plot]
+  differential_expression: [sca_volcano_plot]
+  embedding: [advanced_dim_plot, advanced_feature_plot, feature_density_plot, lineage_plot]
+  composition: [stacked_bar_plot, interactive_pie_plot, alluvial_plot, classified_bar_plot]
+  group_comparison: [exp_stat_plot, stat_plot, violin_plot, interactive_violin_plot, interactive_ridgeline_plot,
+                     interactive_histogram_plot, highlight_effect_plot, interactive_dumbbell_plot,
+                     interactive_radar_plot, combo_bar_line_plot, combo_bar_dot_matrix]
+  matrix: [dot_plot, group_heatmap, balloon_plot, interactive_binary_plot, interactive_clustered_heatmap_plot,
+           interactive_dual_triangle_heatmap_plot, pie_dot_matrix, threshold_matrix_heatmap,
+           interactive_bubble_score_matrix, cluster_dendrogram_plot, den_plot]
+  correlation: [interactive_correlation_matrix, interactive_mantel_correlation_network,
+                quadrant_correlation_scatter, regression_scatter_plot]
+  network: [interactive_network_plot, interactive_arc_network_plot, interactive_sankey_plot]
+  set_overlap: [dynamic_venn_diagram, interactive_upset_plot]
+  genomic_track: [interactive_genomic_signal_track_plot, interactive_motif_logo_plot]
+  multi_panel: [ranked_annotation_panel, hierarchical_marker_panel]
+
+# Within a family a generic stem can carry a stronger meaning.
+family_role_overrides:
+  enrichment: {value: signed_effect}
+
+# Per-plugin curation; a plugin listed here counts as "curated" in the registry. Keys:
+#   roles:      role -> parameter (adds or replaces detected roles)
+#   not_roles:  parameters the detector flags that are NOT column mappings
+#   statistics: PlotSpec statistics field -> parameter
+#   required_roles: roles that must resolve to a column for a valid figure
+#   guardrails: names of extra skill-level checks
+skills:
+  interactive_enrichment_lollipop:
+    # plot.R has no adjusted p-value parameter; an adjusted_pvalue mapping is reported as unsupported.
+    roles: {category: category_column, signed_effect: value_column, group: group_column,
+            size: size_column, pvalue: pvalue_column}
+    role_aliases: {term: category, effect: signed_effect, gene_count: size, significance: group}
+    # PlotSpec visual field -> plugin param (null = recorded in the spec but not forwarded).
+    visual: {zero_line: zero_line_show, stem_to_zero: stem_show, palette_id: palette, orientation: null}
+    transform_hook: sort_params
+    required_roles: [category, signed_effect]
+    # Column autodetection implemented in plot.R (colfind); pvalue mixes raw and adjusted names.
+    autodetect:
+      category: [category, term, pathway, description, label, name, id]
+      signed_effect: [effect, value, nes, enrichment, score, log2fc, estimate, stat]
+      group: [group, type, class, cluster]
+      size: [size, count, gene_count, n, set_size, weight]
+      pvalue: [pvalue, p_value, p.val, pval, fdr, padj, qvalue]
+    guardrails: [require_signed_metric, distinguish_raw_p_and_fdr, prefer_stem_to_zero]
+  fgsea_enrichment_plot:
+    roles: {category: term_col, signed_effect: nes_col, adjusted_pvalue: fdr_col,
+            feature: gene_col, group: group_col}
+  go_kegg_enrichment_bar_bubble:
+    roles: {category: term_column, annotation: category_column, pvalue: pvalue_column,
+            adjusted_pvalue: adjusted_pvalue_column, size: count_column}
+    required_roles: [category]
+  gsea_pathway_heatmap:
+    # Precomputed enrichment table (--enrichment); compute mode derives it from ranks + GMT.
+    roles: {category: term_col, signed_effect: nes_col, pvalue: pvalue_col, adjusted_pvalue: padj_col,
+            feature: gene_col}
+  gsea_ridge_nes_plot:
+    roles: {category: term_col, signed_effect: nes_col, pvalue: pvalue_col, adjusted_pvalue: fdr_col,
+            feature: gene_col}
+  sca_volcano_plot:
+    # pval_column is documented as the *adjusted* p-value (autodetect prefers p_val_adj).
+    roles: {feature: gene_column, signed_effect: log2fc_column, adjusted_pvalue: pval_column,
+            group: cluster_column, split: split_column}
+    not_roles: [rank_by]
+    required_roles: [signed_effect, adjusted_pvalue]
+  exp_stat_plot:
+    not_roles: [stat_columns]   # gene names = rows of the --expr matrix, not columns
+    statistics: {method: pairwise_method, multiple_testing: multiple_method, comparisons: comparisons}
+  interactive_correlation_matrix:
+    statistics: {correlation_method: correlation_method, clustering_method: cluster_method}
+  interactive_mantel_correlation_network:
+    statistics: {correlation_method: correlation_method}
+    # pick_col() candidates in plot.R for the --mantel results table.
+    autodetect:
+      correlation: [r, mantel_r, statistic, correlation]
+      pvalue: [p, pvalue, p_value, p.value, signif, mantel_p]
+  quadrant_correlation_scatter:
+    statistics: {correlation_method: cor_method}
+  regression_scatter_plot:
+    statistics: {method: regression_method}
+  interactive_ridgeline_plot:
+    statistics: {method: statistic_method}
+  interactive_clustered_heatmap_plot:
+    statistics: {clustering_method: cluster_method, distance_method: distance_method}
+  interactive_dual_triangle_heatmap_plot:
+    statistics: {clustering_method: cluster_method, distance_method: distance_method}
+  den_plot:
+    statistics: {clustering_method: cluster_method, distance_method: distance_method}
+  cluster_dendrogram_plot:
+    statistics: {clustering_method: cluster_method, distance_method: distance_method}
+  dot_plot:
+    not_roles: [top_by, dot_col]
+    statistics: {clustering_method: cluster_method, distance_method: distance_method}
+  interactive_violin_plot:
+    not_roles: [sort_by, cloud_fill_mode]
+  interactive_dumbbell_plot:
+    not_roles: [group1, group2]   # series display labels
+  stat_plot:
+    roles: {group: group_by, category: stat_by}   # stat_by is the counted categorical variable
+  advanced_dim_plot:
+    required_roles: [x, y]
+  advanced_feature_plot:
+    required_roles: [x, y]

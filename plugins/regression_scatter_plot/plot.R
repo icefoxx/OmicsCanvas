@@ -3,7 +3,7 @@
 # BioFigureAI Plot Plugin: Regression Scatter Plot
 # ------------------------------------------------------------
 # Multi-group scatter with per-group linear (or loess) regression,
-# confidence band, and ChiPlot-style formula / R² / P annotations.
+# confidence band, and CAB_demo-style formula / R² / P annotations.
 #
 # Runtime:
 #   Rscript plot.R --input input.csv --params params.json --output output_dir
@@ -161,10 +161,10 @@ for (key in c('group_colors', 'type_colors', 'category_colors', 'color_map', 'cu
   }
 }
 
-# Point style (ChiPlot)
+# Point style (CAB_demo)
 point_show <- as_bool(get_param_any(c('point_show', 'scatter_show'), TRUE), TRUE)
 point_size_raw <- num_param('point_size', num_param('size', 40))
-# ChiPlot size ~40 is roughly ggplot size ~2.5
+# CAB_demo size ~40 is roughly ggplot size ~2.5
 point_size <- if (point_size_raw > 10) point_size_raw / 15 else point_size_raw
 point_alpha <- num_param('point_alpha', num_param('fill_opacity', num_param('point_fill_opacity', 1)))
 point_stroke <- num_param('point_stroke', num_param('stroke_width', 0.5))
@@ -189,7 +189,7 @@ if (!reg_method %in% c('lm', 'loess', 'glm')) reg_method <- 'lm'
 loess_span <- num_param('loess_span', 0.5)
 reg_se <- as_bool(get_param_any(c('ci_show', 'confidence_interval_show', 'se_show', 'show_ci'), TRUE), TRUE)
 reg_linewidth <- num_param('regression_line_width', num_param('reg_stroke_width', 1.2))
-# ChiPlot stroke-width 4 is thick in px → ~1.2–1.5 ggplot
+# CAB_demo stroke-width 4 is thick in px → ~1.2–1.5 ggplot
 if (reg_linewidth > 2.5) reg_linewidth <- reg_linewidth / 3
 reg_line_alpha <- num_param('regression_line_opacity', num_param('reg_stroke_opacity', 1))
 ci_alpha <- num_param('ci_fill_opacity', num_param('ci_alpha', 0.2))
@@ -206,7 +206,7 @@ if (stat_text_size > 8) stat_text_size <- stat_text_size / ggplot2::.pt
 stat_text_color <- as.character(get_param_any(c('formula_fill', 'stat_text_color'), '#222222')[1] %||% '#222222')
 stat_text_face <- as.character(get_param_any(c('formula_font_weight'), 'plain')[1] %||% 'plain')
 if (tolower(stat_text_face) == 'bold') stat_text_face <- 'bold' else if (tolower(stat_text_face) == 'normal') stat_text_face <- 'plain'
-# Placement: ChiPlot puts R2/P top-right, equations mid-right
+# Placement: CAB_demo puts R2/P top-right, equations mid-right
 formula_x <- suppressWarnings(as.numeric(get_param('formula_x', NA))[1])
 formula_y <- suppressWarnings(as.numeric(get_param('formula_y', NA))[1])
 r2_x <- suppressWarnings(as.numeric(get_param('r2_x', NA))[1])
@@ -230,7 +230,7 @@ xlab_show <- as_bool(get_param_any(c('xlab_show', 'x_title_show'), nzchar(xlab))
 ylab_show <- as_bool(get_param_any(c('ylab_show', 'y_title_show'), nzchar(ylab)), nzchar(ylab))
 
 legend_show <- as_bool(get_param('legend_show', TRUE), TRUE)
-legend_title <- as.character(get_param_any(c('legend_title', 'legend_name'), 'ChiPlot')[1] %||% 'ChiPlot')
+legend_title <- as.character(get_param_any(c('legend_title', 'legend_name'), g_col %||% '')[1] %||% (g_col %||% ''))
 legend_position <- as.character(get_param('legend_position', 'right')[1] %||% 'right')
 legend_title_size <- num_param('legend_title_size', 12)
 legend_text_size <- num_param('legend_text_size', 10)
@@ -282,7 +282,8 @@ for (g in groups) {
   # equation string
   sign_chr <- if (is.finite(intercept) && intercept >= 0) '+' else '-'
   eq <- sprintf('%s: y = %sx %s %s', g, fmt_num(slope, 3), sign_chr, fmt_num(abs(intercept), 3))
-  r2s <- sprintf('%s: R² = %s', g, fmt_num(r2, 4))
+  # R² is a proportion: fixed decimals, never scientific notation.
+  r2s <- if (is.finite(r2) && r2 < 0.001) sprintf('%s: R² < 0.001', g) else sprintf('%s: R² = %s', g, if (is.finite(r2)) sprintf('%.3f', r2) else 'NA')
   ps <- sprintf('%s: P = %s', g, fmt_p(pval))
   stat_rows[[length(stat_rows) + 1]] <- data.frame(
     group = g, slope = slope, intercept = intercept, r2 = r2, pvalue = pval,
@@ -331,12 +332,25 @@ if (reg_show) {
 }
 
 if (point_show) {
-  p <- p + geom_point(
-    size = point_size,
-    alpha = point_alpha,
-    shape = point_shape,
-    stroke = point_stroke
-  )
+  if (is.na(point_stroke_color)) {
+    p <- p + geom_point(
+      size = point_size,
+      alpha = point_alpha,
+      shape = point_shape,
+      stroke = point_stroke
+    )
+  } else {
+    # Separate outline colour: use a fillable shape (group colour = fill, outline = point_stroke_color).
+    fillable <- if (point_shape %in% 21:25) point_shape else c(`15` = 22L, `17` = 24L, `18` = 23L)[as.character(point_shape)] %||% 21L
+    p <- p + geom_point(
+      aes(fill = group),
+      size = point_size,
+      alpha = point_alpha,
+      shape = fillable,
+      colour = point_stroke_color,
+      stroke = point_stroke
+    )
+  }
 }
 
 p <- p +
@@ -455,6 +469,8 @@ save_one <- function(path, device) {
   if (device == 'png') {
     ggsave(path, p, width = width, height = height, dpi = dpi, units = 'in')
   } else {
+    # cairo_pdf matches system fonts and falls back for unknown families (pdf() errors).
+    if (device == 'pdf') device <- if (capabilities('cairo')) grDevices::cairo_pdf else 'pdf'
     ggsave(path, p, width = width, height = height, units = 'in', device = device)
   }
 }

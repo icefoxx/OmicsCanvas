@@ -1,39 +1,58 @@
 id: classified_bar_plot
 name: Classified Bar Plot
-display_name: Classified Bar Plot
 version: 1.0.0
-author: OmicsCanvas
-description: >
-  Classified / categorical bar chart (分类柱状图): one bar per category label,
-  colored by a type/group class. Horizontal by default with full axis, title,
-  legend, grid, and color customization.
+description: 'Compare categorical values using bars colored by group or class. Supports horizontal and vertical orientations,
+  custom ordering, labels, legends, axes, and color settings.
+
+  '
 language: R
 entrypoint: plot.R
 category: Expression / Statistics
 subcategory: Bar
 status: stable
+inputs:
+- id: input
+  name: input
+  type: table
+  required: true
+  formats:
+  - csv
+  - tsv
+  - txt
+  description: Table with category labels, optional type/class, and numeric values.
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- selected_rows.csv
+- matrix_used.csv
 runtime:
   command: Rscript plot.R --input input.csv --params params.json --output output_dir
-inputs:
-  - id: input
-    name: input
-    type: table
-    required: true
-    formats: [csv, tsv, txt]
-    description: Table with category labels, optional type/class, and numeric values.
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - run.log
-  - selected_rows.csv
-  - matrix_used.csv
+author: OmicsCanvas
 parameters:
-  category_column: {type: column, required: false}
-  type_column: {type: column, required: false}
-  value_column: {type: column, required: false}
-  orientation: {type: select, options: [horizontal, vertical], default: horizontal}
-  width: {type: number, default: 8}
-  height: {type: number, default: 7}
-  dpi: {type: number, default: 300}
+  category_column:
+    type: column
+    required: false
+  type_column:
+    type: column
+    required: false
+  value_column:
+    type: column
+    required: false
+  orientation:
+    type: select
+    options:
+    - horizontal
+    - vertical
+    default: horizontal
+  width:
+    type: number
+    default: 8
+  height:
+    type: number
+    default: 7
+  dpi:
+    type: number
+    default: 300

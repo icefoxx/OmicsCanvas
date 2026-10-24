@@ -1,0 +1,6706 @@
+{
+  "rows": [
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "axis_label_controls",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "axis_label_controls",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "axis_label_controls",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "axis_label_controls",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "background_mask",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "background_mask",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "background_mask",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "background_mask",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "basic_umap",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "basic_umap",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "basic_umap",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "basic_umap",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "bg_condition",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "bg_condition",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "bg_condition",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "bg_condition",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "bg_cutoff",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "bg_cutoff",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "bg_cutoff",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "bg_cutoff",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "blank_theme",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "blank_theme",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "blank_theme",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "blank_theme",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "cluster_composition_ring",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "cluster_composition_ring",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "cluster_composition_ring",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "cluster_composition_ring",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "coexpression",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "coexpression",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "coexpression",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "coexpression",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "coexpression_screen",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "coexpression_screen",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "coexpression_screen",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "coexpression_screen",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "density_filled",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "density_filled",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "density_filled",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "density_filled",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "density_hex",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "density_hex",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "density_hex",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "density_hex",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "ellipse_mark",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "ellipse_mark",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "ellipse_mark",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "ellipse_mark",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "embedded_pie",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "embedded_pie",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "embedded_pie",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "embedded_pie",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "feature",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "feature",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "feature",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "feature",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "group",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "group",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "group",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "group",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "highlight_cells",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "highlight_cells",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "highlight_cells",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "highlight_cells",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "highlight_ring",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "highlight_ring",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "highlight_ring",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "highlight_ring",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "lineage",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "lineage",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "lineage",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "lineage",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "mark_shapes",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "mark_shapes",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "mark_shapes",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "mark_shapes",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_basic_umap",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_basic_umap",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_basic_umap",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_basic_umap",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_ellipse_mark",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_ellipse_mark",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_ellipse_mark",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_ellipse_mark",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_basic_umap",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_basic_umap",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_basic_umap",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_basic_umap",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_bg_condition",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_bg_condition",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_bg_condition",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_bg_condition",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_bg_cutoff_mito",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_bg_cutoff_mito",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_bg_cutoff_mito",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_bg_cutoff_mito",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_composition_ring",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_composition_ring",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_composition_ring",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_composition_ring",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_ellipse_mark",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_ellipse_mark",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_ellipse_mark",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_ellipse_mark",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_highlight_cells",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_highlight_cells",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_highlight_cells",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_highlight_cells",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_split_samples",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_split_samples",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_split_samples",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_split_samples",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "raster",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "raster",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "raster",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "raster",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "split_highlight",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "split_highlight",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "split_highlight",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "split_highlight",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "split_samples",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "split_samples",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "split_samples",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "split_samples",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "stat_panel",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "stat_panel",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "stat_panel",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "stat_panel",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "density_hex",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "density_hex",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "density_hex",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "density_hex",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "feature_comp",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "feature_comp",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "feature_comp",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "feature_comp",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "highlight_blank",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "highlight_blank",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "highlight_blank",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "highlight_blank",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "multi_feature",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "multi_feature",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "multi_feature",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "multi_feature",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_basic_two_features",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_basic_two_features",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_basic_two_features",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_basic_two_features",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_feature_comp_multiply",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_feature_comp_multiply",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_feature_comp_multiply",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_feature_comp_multiply",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_hexbin",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_hexbin",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_hexbin",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_hexbin",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_highlight_cells",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_highlight_cells",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_highlight_cells",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_highlight_cells",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_multi_feature_scaled",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_multi_feature_scaled",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_multi_feature_scaled",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_multi_feature_scaled",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_split_by_sample",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_split_by_sample",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_split_by_sample",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_split_by_sample",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_split_global_blank",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_split_global_blank",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_split_global_blank",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_split_global_blank",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "single_feature",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "single_feature",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "single_feature",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "single_feature",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "split_feature",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "split_feature",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "split_feature",
+      "family": "embedding",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "split_feature",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "basic",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "basic",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "edges",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "edges",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "edges",
+      "family": "composition",
+      "fault": "negative_composition",
+      "expected": [
+        "NEGATIVE_COMPOSITION"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_COMPOSITION": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "hx_lineage",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "hx_lineage",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "long",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "long",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "balloon_plot",
+      "example_id": "basic",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "balloon_plot",
+      "example_id": "gradient",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "balloon_plot",
+      "example_id": "no_stats",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "CAB_demo",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "CAB_demo",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "CAB_demo",
+      "family": "composition",
+      "fault": "negative_composition",
+      "expected": [
+        "NEGATIVE_COMPOSITION"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_COMPOSITION": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "basic",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "basic",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "basic",
+      "family": "composition",
+      "fault": "negative_composition",
+      "expected": [
+        "NEGATIVE_COMPOSITION"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_COMPOSITION": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "labeled",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "labeled",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "labeled",
+      "family": "composition",
+      "fault": "negative_composition",
+      "expected": [
+        "NEGATIVE_COMPOSITION"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_COMPOSITION": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "vertical",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "vertical",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "vertical",
+      "family": "composition",
+      "fault": "negative_composition",
+      "expected": [
+        "NEGATIVE_COMPOSITION"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_COMPOSITION": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "cluster_dendrogram_plot",
+      "example_id": "basic",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "cluster_dendrogram_plot",
+      "example_id": "colored_labels",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "cluster_dendrogram_plot",
+      "example_id": "subset",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "combo_bar_dot_matrix",
+      "example_id": "bar_only",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "combo_bar_dot_matrix",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "combo_bar_dot_matrix",
+      "example_id": "heatmap_dots",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "combo_bar_line_plot",
+      "example_id": "CAB_demo",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "combo_bar_line_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "combo_bar_line_plot",
+      "example_id": "labeled",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "combo_bar_line_plot",
+      "example_id": "long",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "combo_bar_line_plot",
+      "example_id": "long",
+      "family": "group_comparison",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "den_plot",
+      "example_id": "basic",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "den_plot",
+      "example_id": "colored_labels",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "den_plot",
+      "example_id": "subset",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "dot_plot",
+      "example_id": "aggregate",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "dot_plot",
+      "example_id": "basic",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "dot_plot",
+      "example_id": "dendro",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "dynamic_venn_diagram",
+      "example_id": "abundance",
+      "family": "set_overlap",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "dynamic_venn_diagram",
+      "example_id": "params",
+      "family": "set_overlap",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "bar",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "box_split",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "col_flip",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "custom_style",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "dot_stack",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "highlight",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "violin",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "basic",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "basic",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "basic",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "coexpression",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "coexpression",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "coexpression",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "scale01",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "scale01",
+      "family": "embedding",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_COORDINATES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "scale01",
+      "family": "embedding",
+      "fault": "duplicate_cell_ids",
+      "expected": [
+        "DUPLICATE_IDS"
+      ],
+      "valid": true,
+      "codes": {
+        "DUPLICATE_IDS": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "custom_layout",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "dot_summary",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "dot_summary",
+      "family": "enrichment",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "dot_summary",
+      "family": "enrichment",
+      "fault": "raw_p_used_as_adjusted",
+      "expected": [
+        "RAW_P_USED_AS_ADJUSTED"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_USED_AS_ADJUSTED": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "dot_summary",
+      "family": "enrichment",
+      "fault": "effect_sign_lost",
+      "expected": [
+        "EFFECT_NOT_BIDIRECTIONAL",
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "EFFECT_NOT_BIDIRECTIONAL": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "dot_summary",
+      "family": "enrichment",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "gene_sankey",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "gradient_curve",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "image_like",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "multigroup",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "multiterm",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "ridge",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "running",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "summary",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "summary",
+      "family": "enrichment",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "summary",
+      "family": "enrichment",
+      "fault": "raw_p_used_as_adjusted",
+      "expected": [
+        "RAW_P_USED_AS_ADJUSTED"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_USED_AS_ADJUSTED": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "summary",
+      "family": "enrichment",
+      "fault": "effect_sign_lost",
+      "expected": [
+        "EFFECT_NOT_BIDIRECTIONAL",
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "EFFECT_NOT_BIDIRECTIONAL": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "summary",
+      "family": "enrichment",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "go_kegg_enrichment_bar_bubble",
+      "example_id": "go_kegg",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "go_kegg_enrichment_bar_bubble",
+      "example_id": "go_kegg",
+      "family": "enrichment",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "go_kegg_enrichment_bar_bubble",
+      "example_id": "go_kegg",
+      "family": "enrichment",
+      "fault": "raw_p_used_as_adjusted",
+      "expected": [
+        "RAW_P_USED_AS_ADJUSTED"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_USED_AS_ADJUSTED": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "go_kegg_enrichment_bar_bubble",
+      "example_id": "go_kegg",
+      "family": "enrichment",
+      "fault": "raw_and_adjusted_swapped",
+      "expected": [
+        "ADJUSTED_BELOW_RAW"
+      ],
+      "valid": true,
+      "codes": {
+        "ADJUSTED_BELOW_RAW": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "go_kegg_enrichment_bar_bubble",
+      "example_id": "go_kegg",
+      "family": "enrichment",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "go_kegg_enrichment_bar_bubble",
+      "example_id": "go_kegg",
+      "family": "enrichment",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "go_kegg_enrichment_bar_bubble",
+      "example_id": "go_kegg",
+      "family": "enrichment",
+      "fault": "negative_size",
+      "expected": [
+        "NEGATIVE_SIZE"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_SIZE": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "group_heatmap",
+      "example_id": "cell_heatmap",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "group_heatmap",
+      "example_id": "clustered_dotplot",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "group_heatmap",
+      "example_id": "dotplot",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "group_heatmap",
+      "example_id": "heatmap",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "group_heatmap",
+      "example_id": "violin",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "gsea_pathway_heatmap",
+      "example_id": "basic",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "gsea_pathway_heatmap",
+      "example_id": "precomputed",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "gsea_pathway_heatmap",
+      "example_id": "precomputed",
+      "family": "enrichment",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "gsea_pathway_heatmap",
+      "example_id": "precomputed",
+      "family": "enrichment",
+      "fault": "raw_p_used_as_adjusted",
+      "expected": [
+        "RAW_P_USED_AS_ADJUSTED"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_USED_AS_ADJUSTED": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "gsea_pathway_heatmap",
+      "example_id": "precomputed",
+      "family": "enrichment",
+      "fault": "raw_and_adjusted_swapped",
+      "expected": [
+        "ADJUSTED_BELOW_RAW"
+      ],
+      "valid": true,
+      "codes": {
+        "ADJUSTED_BELOW_RAW": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "gsea_pathway_heatmap",
+      "example_id": "precomputed",
+      "family": "enrichment",
+      "fault": "effect_sign_lost",
+      "expected": [
+        "EFFECT_NOT_BIDIRECTIONAL",
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "EFFECT_NOT_BIDIRECTIONAL": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "gsea_pathway_heatmap",
+      "example_id": "precomputed",
+      "family": "enrichment",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "gsea_pathway_heatmap",
+      "example_id": "with_annotation",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "gsea_ridge_nes_plot",
+      "example_id": "basic",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "RAW_P_USED": "warning"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "raw_p_labelled_as_fdr",
+      "expected": [
+        "RAW_P_LABELED_AS_FDR"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_LABELED_AS_FDR": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "role_not_supported_by_renderer",
+      "expected": [
+        "UNSUPPORTED_ROLE"
+      ],
+      "valid": false,
+      "codes": {
+        "UNSUPPORTED_ROLE": "error",
+        "RAW_P_USED_AS_ADJUSTED": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "no_collapse",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "no_collapse",
+      "family": "group_comparison",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "no_collapse",
+      "family": "group_comparison",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "RAW_P_USED": "warning"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "no_collapse",
+      "family": "group_comparison",
+      "fault": "raw_p_labelled_as_fdr",
+      "expected": [
+        "RAW_P_LABELED_AS_FDR"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_LABELED_AS_FDR": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "no_collapse",
+      "family": "group_comparison",
+      "fault": "role_not_supported_by_renderer",
+      "expected": [
+        "UNSUPPORTED_ROLE"
+      ],
+      "valid": false,
+      "codes": {
+        "UNSUPPORTED_ROLE": "error",
+        "RAW_P_USED_AS_ADJUSTED": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "summary",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "summary",
+      "family": "group_comparison",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "summary",
+      "family": "group_comparison",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "RAW_P_USED": "warning"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "summary",
+      "family": "group_comparison",
+      "fault": "raw_p_labelled_as_fdr",
+      "expected": [
+        "RAW_P_LABELED_AS_FDR"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_LABELED_AS_FDR": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "summary",
+      "family": "group_comparison",
+      "fault": "role_not_supported_by_renderer",
+      "expected": [
+        "UNSUPPORTED_ROLE"
+      ],
+      "valid": false,
+      "codes": {
+        "UNSUPPORTED_ROLE": "error",
+        "RAW_P_USED_AS_ADJUSTED": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_arc_network_plot",
+      "example_id": "basic",
+      "family": "network",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_arc_network_plot",
+      "example_id": "custom",
+      "family": "network",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_arc_network_plot",
+      "example_id": "interactive",
+      "family": "network",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_binary_plot",
+      "example_id": "basic",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_binary_plot",
+      "example_id": "custom_layout",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_binary_plot",
+      "example_id": "interactive",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_bubble_score_matrix",
+      "example_id": "basic",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_bubble_score_matrix",
+      "example_id": "custom",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_bubble_score_matrix",
+      "example_id": "interactive",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_bubble_score_matrix",
+      "example_id": "multi_score",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_clustered_heatmap_plot",
+      "example_id": "basic",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_clustered_heatmap_plot",
+      "example_id": "custom",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_clustered_heatmap_plot",
+      "example_id": "interactive",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_clustered_heatmap_plot",
+      "example_id": "panels",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_correlation_matrix",
+      "example_id": "basic",
+      "family": "correlation",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_correlation_matrix",
+      "example_id": "interactive",
+      "family": "correlation",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_correlation_matrix",
+      "example_id": "lower_triangle",
+      "family": "correlation",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_dual_triangle_heatmap_plot",
+      "example_id": "basic",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_dual_triangle_heatmap_plot",
+      "example_id": "custom",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_dual_triangle_heatmap_plot",
+      "example_id": "interactive",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_dumbbell_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_dumbbell_plot",
+      "example_id": "custom_layout",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_dumbbell_plot",
+      "example_id": "interactive",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "basic",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "basic",
+      "family": "enrichment",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "basic",
+      "family": "enrichment",
+      "fault": "effect_sign_lost",
+      "expected": [
+        "EFFECT_NOT_BIDIRECTIONAL",
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning",
+        "EFFECT_NOT_BIDIRECTIONAL": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "basic",
+      "family": "enrichment",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "basic",
+      "family": "enrichment",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "basic",
+      "family": "enrichment",
+      "fault": "negative_size",
+      "expected": [
+        "NEGATIVE_SIZE"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_SIZE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "basic",
+      "family": "enrichment",
+      "fault": "raw_p_labelled_as_fdr",
+      "expected": [
+        "RAW_P_LABELED_AS_FDR"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_LABELED_AS_FDR": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "basic",
+      "family": "enrichment",
+      "fault": "role_not_supported_by_renderer",
+      "expected": [
+        "UNSUPPORTED_ROLE"
+      ],
+      "valid": false,
+      "codes": {
+        "UNSUPPORTED_ROLE": "error",
+        "RAW_P_USED_AS_ADJUSTED": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "custom_layout",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "custom_layout",
+      "family": "enrichment",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "custom_layout",
+      "family": "enrichment",
+      "fault": "effect_sign_lost",
+      "expected": [
+        "EFFECT_NOT_BIDIRECTIONAL",
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning",
+        "EFFECT_NOT_BIDIRECTIONAL": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "custom_layout",
+      "family": "enrichment",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "custom_layout",
+      "family": "enrichment",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "custom_layout",
+      "family": "enrichment",
+      "fault": "negative_size",
+      "expected": [
+        "NEGATIVE_SIZE"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_SIZE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "custom_layout",
+      "family": "enrichment",
+      "fault": "raw_p_labelled_as_fdr",
+      "expected": [
+        "RAW_P_LABELED_AS_FDR"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_LABELED_AS_FDR": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "custom_layout",
+      "family": "enrichment",
+      "fault": "role_not_supported_by_renderer",
+      "expected": [
+        "UNSUPPORTED_ROLE"
+      ],
+      "valid": false,
+      "codes": {
+        "UNSUPPORTED_ROLE": "error",
+        "RAW_P_USED_AS_ADJUSTED": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "interactive",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "interactive",
+      "family": "enrichment",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "interactive",
+      "family": "enrichment",
+      "fault": "effect_sign_lost",
+      "expected": [
+        "EFFECT_NOT_BIDIRECTIONAL",
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning",
+        "EFFECT_NOT_BIDIRECTIONAL": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "interactive",
+      "family": "enrichment",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "interactive",
+      "family": "enrichment",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "interactive",
+      "family": "enrichment",
+      "fault": "negative_size",
+      "expected": [
+        "NEGATIVE_SIZE"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_SIZE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "interactive",
+      "family": "enrichment",
+      "fault": "raw_p_labelled_as_fdr",
+      "expected": [
+        "RAW_P_LABELED_AS_FDR"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_LABELED_AS_FDR": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "interactive",
+      "family": "enrichment",
+      "fault": "role_not_supported_by_renderer",
+      "expected": [
+        "UNSUPPORTED_ROLE"
+      ],
+      "valid": false,
+      "codes": {
+        "UNSUPPORTED_ROLE": "error",
+        "RAW_P_USED_AS_ADJUSTED": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "oct4_enrichment",
+      "family": "enrichment",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "oct4_enrichment",
+      "family": "enrichment",
+      "fault": "effect_sign_lost",
+      "expected": [
+        "EFFECT_NOT_BIDIRECTIONAL",
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "EFFECT_NOT_BIDIRECTIONAL": "warning"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "oct4_enrichment",
+      "family": "enrichment",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "oct4_enrichment",
+      "family": "enrichment",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "oct4_enrichment",
+      "family": "enrichment",
+      "fault": "negative_size",
+      "expected": [
+        "NEGATIVE_SIZE"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_SIZE": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_genomic_signal_track_plot",
+      "example_id": "basic",
+      "family": "genomic_track",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_genomic_signal_track_plot",
+      "example_id": "basic",
+      "family": "genomic_track",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_genomic_signal_track_plot",
+      "example_id": "custom_layout",
+      "family": "genomic_track",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_genomic_signal_track_plot",
+      "example_id": "custom_layout",
+      "family": "genomic_track",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_genomic_signal_track_plot",
+      "example_id": "interactive",
+      "family": "genomic_track",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_genomic_signal_track_plot",
+      "example_id": "interactive",
+      "family": "genomic_track",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_histogram_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_histogram_plot",
+      "example_id": "custom_layout",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_histogram_plot",
+      "example_id": "interactive",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "basic",
+      "family": "correlation",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "basic",
+      "family": "correlation",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "basic",
+      "family": "correlation",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "basic",
+      "family": "correlation",
+      "fault": "correlation_out_of_range",
+      "expected": [
+        "CORRELATION_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "CORRELATION_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "basic",
+      "family": "correlation",
+      "fault": "raw_p_labelled_as_fdr",
+      "expected": [
+        "RAW_P_LABELED_AS_FDR"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_LABELED_AS_FDR": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "basic",
+      "family": "correlation",
+      "fault": "role_not_supported_by_renderer",
+      "expected": [
+        "UNSUPPORTED_ROLE"
+      ],
+      "valid": false,
+      "codes": {
+        "UNSUPPORTED_ROLE": "error",
+        "RAW_P_USED_AS_ADJUSTED": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "custom_layout",
+      "family": "correlation",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "custom_layout",
+      "family": "correlation",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "custom_layout",
+      "family": "correlation",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "custom_layout",
+      "family": "correlation",
+      "fault": "correlation_out_of_range",
+      "expected": [
+        "CORRELATION_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "CORRELATION_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "custom_layout",
+      "family": "correlation",
+      "fault": "raw_p_labelled_as_fdr",
+      "expected": [
+        "RAW_P_LABELED_AS_FDR"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_LABELED_AS_FDR": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "custom_layout",
+      "family": "correlation",
+      "fault": "role_not_supported_by_renderer",
+      "expected": [
+        "UNSUPPORTED_ROLE"
+      ],
+      "valid": false,
+      "codes": {
+        "UNSUPPORTED_ROLE": "error",
+        "RAW_P_USED_AS_ADJUSTED": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "interactive",
+      "family": "correlation",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "interactive",
+      "family": "correlation",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "interactive",
+      "family": "correlation",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "interactive",
+      "family": "correlation",
+      "fault": "correlation_out_of_range",
+      "expected": [
+        "CORRELATION_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "CORRELATION_OUT_OF_RANGE": "error",
+        "RAW_P_USED": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "interactive",
+      "family": "correlation",
+      "fault": "raw_p_labelled_as_fdr",
+      "expected": [
+        "RAW_P_LABELED_AS_FDR"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_LABELED_AS_FDR": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "interactive",
+      "family": "correlation",
+      "fault": "role_not_supported_by_renderer",
+      "expected": [
+        "UNSUPPORTED_ROLE"
+      ],
+      "valid": false,
+      "codes": {
+        "UNSUPPORTED_ROLE": "error",
+        "RAW_P_USED_AS_ADJUSTED": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_motif_logo_plot",
+      "example_id": "basic",
+      "family": "genomic_track",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_motif_logo_plot",
+      "example_id": "custom",
+      "family": "genomic_track",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_motif_logo_plot",
+      "example_id": "interactive",
+      "family": "genomic_track",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_network_plot",
+      "example_id": "manual_layout",
+      "family": "network",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_network_plot",
+      "example_id": "membership",
+      "family": "network",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_network_plot",
+      "example_id": "network",
+      "family": "network",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_network_plot",
+      "example_id": "network",
+      "family": "network",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "basic",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "basic",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "basic",
+      "family": "composition",
+      "fault": "negative_composition",
+      "expected": [
+        "NEGATIVE_COMPOSITION"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_COMPOSITION": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "custom_layout",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "custom_layout",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "custom_layout",
+      "family": "composition",
+      "fault": "negative_composition",
+      "expected": [
+        "NEGATIVE_COMPOSITION"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_COMPOSITION": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "donut",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "donut",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "donut",
+      "family": "composition",
+      "fault": "negative_composition",
+      "expected": [
+        "NEGATIVE_COMPOSITION"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_COMPOSITION": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "interactive_radar_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_radar_plot",
+      "example_id": "custom_layout",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_radar_plot",
+      "example_id": "interactive",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_ridgeline_plot",
+      "example_id": "CAB_demo",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_ridgeline_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_ridgeline_plot",
+      "example_id": "custom_layout",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_ridgeline_plot",
+      "example_id": "grouped",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_ridgeline_plot",
+      "example_id": "interactive",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_sankey_plot",
+      "example_id": "basic",
+      "family": "network",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_sankey_plot",
+      "example_id": "custom_layout",
+      "family": "network",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_sankey_plot",
+      "example_id": "interactive",
+      "family": "network",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "all_intersections",
+      "family": "set_overlap",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "annotated_categorical",
+      "family": "set_overlap",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "annotated_numeric",
+      "family": "set_overlap",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "basic",
+      "family": "set_overlap",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "grouped",
+      "family": "set_overlap",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "intersection_size",
+      "family": "set_overlap",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "query_highlight",
+      "family": "set_overlap",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "ratio",
+      "family": "set_overlap",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_violin_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_violin_plot",
+      "example_id": "custom_layout",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_violin_plot",
+      "example_id": "interactive",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_violin_plot",
+      "example_id": "long",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "interactive_violin_plot",
+      "example_id": "long",
+      "family": "group_comparison",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "lineage_plot",
+      "example_id": "basic",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "lineage_plot",
+      "example_id": "single",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "lineage_plot",
+      "example_id": "whiskers",
+      "family": "embedding",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "pie_dot_matrix",
+      "example_id": "basic",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "pie_dot_matrix",
+      "example_id": "binary",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "pie_dot_matrix",
+      "example_id": "correlation",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "quadrant_correlation_scatter",
+      "example_id": "params",
+      "family": "correlation",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "ranked_annotation_panel",
+      "example_id": "params",
+      "family": "multi_panel",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "regression_scatter_plot",
+      "example_id": "CAB_demo",
+      "family": "correlation",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "regression_scatter_plot",
+      "example_id": "basic",
+      "family": "correlation",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "avg",
+      "family": "differential_expression",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "avg",
+      "family": "differential_expression",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "avg",
+      "family": "differential_expression",
+      "fault": "raw_p_used_as_adjusted",
+      "expected": [
+        "RAW_P_USED_AS_ADJUSTED"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_USED_AS_ADJUSTED": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "avg",
+      "family": "differential_expression",
+      "fault": "effect_sign_lost",
+      "expected": [
+        "EFFECT_NOT_BIDIRECTIONAL",
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "FOLD_CHANGE_NOT_LOG": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "avg",
+      "family": "differential_expression",
+      "fault": "fold_change_not_log2",
+      "expected": [
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "FOLD_CHANGE_NOT_LOG": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "avg",
+      "family": "differential_expression",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "avg",
+      "family": "differential_expression",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "basic",
+      "family": "differential_expression",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "basic",
+      "family": "differential_expression",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "basic",
+      "family": "differential_expression",
+      "fault": "raw_p_used_as_adjusted",
+      "expected": [
+        "RAW_P_USED_AS_ADJUSTED"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_USED_AS_ADJUSTED": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "basic",
+      "family": "differential_expression",
+      "fault": "effect_sign_lost",
+      "expected": [
+        "EFFECT_NOT_BIDIRECTIONAL",
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "FOLD_CHANGE_NOT_LOG": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "basic",
+      "family": "differential_expression",
+      "fault": "fold_change_not_log2",
+      "expected": [
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "FOLD_CHANGE_NOT_LOG": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "basic",
+      "family": "differential_expression",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "basic",
+      "family": "differential_expression",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "percent",
+      "family": "differential_expression",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "percent",
+      "family": "differential_expression",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "percent",
+      "family": "differential_expression",
+      "fault": "raw_p_used_as_adjusted",
+      "expected": [
+        "RAW_P_USED_AS_ADJUSTED"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_USED_AS_ADJUSTED": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "percent",
+      "family": "differential_expression",
+      "fault": "effect_sign_lost",
+      "expected": [
+        "EFFECT_NOT_BIDIRECTIONAL",
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "FOLD_CHANGE_NOT_LOG": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "percent",
+      "family": "differential_expression",
+      "fault": "fold_change_not_log2",
+      "expected": [
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "FOLD_CHANGE_NOT_LOG": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "percent",
+      "family": "differential_expression",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "percent",
+      "family": "differential_expression",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "regions",
+      "family": "differential_expression",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "regions",
+      "family": "differential_expression",
+      "fault": "pvalue_already_-log10",
+      "expected": [
+        "PVALUE_OUT_OF_RANGE"
+      ],
+      "valid": false,
+      "codes": {
+        "PVALUE_OUT_OF_RANGE": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "regions",
+      "family": "differential_expression",
+      "fault": "raw_p_used_as_adjusted",
+      "expected": [
+        "RAW_P_USED_AS_ADJUSTED"
+      ],
+      "valid": false,
+      "codes": {
+        "RAW_P_USED_AS_ADJUSTED": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "regions",
+      "family": "differential_expression",
+      "fault": "effect_sign_lost",
+      "expected": [
+        "EFFECT_NOT_BIDIRECTIONAL",
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "FOLD_CHANGE_NOT_LOG": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "regions",
+      "family": "differential_expression",
+      "fault": "fold_change_not_log2",
+      "expected": [
+        "FOLD_CHANGE_NOT_LOG"
+      ],
+      "valid": true,
+      "codes": {
+        "FOLD_CHANGE_NOT_LOG": "warning",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": false,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "regions",
+      "family": "differential_expression",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "regions",
+      "family": "differential_expression",
+      "fault": "required_column_missing",
+      "expected": [
+        "MISSING_MAPPED_COLUMN"
+      ],
+      "valid": false,
+      "codes": {
+        "MISSING_MAPPED_COLUMN": "error",
+        "AUTODETECTED_COLUMN": "info"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "CAB_demo",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "basic",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "long",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "long",
+      "family": "composition",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "long",
+      "family": "composition",
+      "fault": "negative_composition",
+      "expected": [
+        "NEGATIVE_COMPOSITION"
+      ],
+      "valid": false,
+      "codes": {
+        "NEGATIVE_COMPOSITION": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "normal",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "percent",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "vertical_labels",
+      "family": "composition",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "bar",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "chord",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "dot",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "pie",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "rose",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "sankey",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "upset",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "venn",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "threshold_matrix_heatmap",
+      "example_id": "params",
+      "family": "matrix",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "violin_plot",
+      "example_id": "anno",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "violin_plot",
+      "example_id": "anno",
+      "family": "group_comparison",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "violin_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "violin_plot",
+      "example_id": "basic",
+      "family": "group_comparison",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "violin_plot",
+      "example_id": "dot",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    },
+    {
+      "plugin_id": "violin_plot",
+      "example_id": "dot",
+      "family": "group_comparison",
+      "fault": "text_in_numeric_role",
+      "expected": [
+        "NON_NUMERIC_COORDINATES",
+        "NON_NUMERIC_VALUES"
+      ],
+      "valid": false,
+      "codes": {
+        "NON_NUMERIC_VALUES": "error"
+      },
+      "detected": true,
+      "detected_as_error": true,
+      "legacy": "failed"
+    },
+    {
+      "plugin_id": "violin_plot",
+      "example_id": "matrix",
+      "family": "group_comparison",
+      "fault": "clean",
+      "expected": [],
+      "valid": true,
+      "codes": {},
+      "legacy": "rendered"
+    }
+  ],
+  "summary": {
+    "clean": {
+      "n": 208,
+      "false_positive_errors": 0,
+      "legacy_rendered": 208
+    },
+    "faults": {
+      "correlation_out_of_range": {
+        "n": 3,
+        "plugins": 1,
+        "detected": 3,
+        "detected_as_error": 3,
+        "legacy_rendered_silently": 0
+      },
+      "duplicate_cell_ids": {
+        "n": 48,
+        "plugins": 3,
+        "detected": 48,
+        "detected_as_error": 0,
+        "legacy_rendered_silently": 35
+      },
+      "effect_sign_lost": {
+        "n": 11,
+        "plugins": 4,
+        "detected": 11,
+        "detected_as_error": 0,
+        "legacy_rendered_silently": 9
+      },
+      "fold_change_not_log2": {
+        "n": 4,
+        "plugins": 1,
+        "detected": 4,
+        "detected_as_error": 0,
+        "legacy_rendered_silently": 2
+      },
+      "negative_composition": {
+        "n": 9,
+        "plugins": 4,
+        "detected": 9,
+        "detected_as_error": 9,
+        "legacy_rendered_silently": 6
+      },
+      "negative_size": {
+        "n": 5,
+        "plugins": 2,
+        "detected": 5,
+        "detected_as_error": 5,
+        "legacy_rendered_silently": 5
+      },
+      "pvalue_already_-log10": {
+        "n": 17,
+        "plugins": 7,
+        "detected": 17,
+        "detected_as_error": 17,
+        "legacy_rendered_silently": 14
+      },
+      "raw_and_adjusted_swapped": {
+        "n": 2,
+        "plugins": 2,
+        "detected": 2,
+        "detected_as_error": 0,
+        "legacy_rendered_silently": 2
+      },
+      "raw_p_labelled_as_fdr": {
+        "n": 9,
+        "plugins": 3,
+        "detected": 9,
+        "detected_as_error": 9,
+        "legacy_rendered_silently": 9
+      },
+      "raw_p_used_as_adjusted": {
+        "n": 8,
+        "plugins": 4,
+        "detected": 8,
+        "detected_as_error": 8,
+        "legacy_rendered_silently": 8
+      },
+      "required_column_missing": {
+        "n": 54,
+        "plugins": 5,
+        "detected": 54,
+        "detected_as_error": 54,
+        "legacy_rendered_silently": 5
+      },
+      "role_not_supported_by_renderer": {
+        "n": 9,
+        "plugins": 3,
+        "detected": 9,
+        "detected_as_error": 9,
+        "legacy_rendered_silently": 9
+      },
+      "text_in_numeric_role": {
+        "n": 87,
+        "plugins": 19,
+        "detected": 87,
+        "detected_as_error": 87,
+        "legacy_rendered_silently": 11
+      }
+    },
+    "total": {
+      "n": 266,
+      "detected": 266,
+      "detected_as_error": 201,
+      "legacy_rendered_silently": 115,
+      "silent_but_detected": 115
+    }
+  }
+}

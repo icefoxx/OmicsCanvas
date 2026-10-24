@@ -1,17 +1,44 @@
 id: interactive_upset_plot
 name: Interactive UpSet Plot
 version: 1.0.0
-description: "Many customizable UpSet plot variants organized as subclasses: basic, intersection size, set size, matrix only, ratio, annotated numeric/categorical, query highlight, grouped, and all intersections."
+description: 'Many customizable UpSet plot variants organized as subclasses: basic, intersection size, set size, matrix only,
+  ratio, annotated numeric/categorical, query highlight, grouped, and all intersections.'
 language: R
 entrypoint: plot.R
-category: Set intersections
+category: Set / Enrichment
 subcategory: UpSet
 status: stable
 inputs:
-  - {name: input, type: table, formats: [csv, tsv, txt], required: true, description: Wide membership table or long item-set edge table.}
-outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, membership_matrix_used.csv, intersections_used.csv, set_sizes_used.csv]
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+  description: Wide membership table or long item-set edge table.
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- run.log
+- membership_matrix_used.csv
+- intersections_used.csv
+- set_sizes_used.csv
 runtime: Rscript plugins/interactive_upset_plot/plot.R --input input.csv --params params.json --output output_dir
-plot_subclasses: [basic, intersection_size, set_size, matrix_only, ratio, annotated_numeric, annotated_categorical, query_highlight, grouped, all_intersections]
+plot_subclasses:
+- basic
+- intersection_size
+- set_size
+- matrix_only
+- ratio
+- annotated_numeric
+- annotated_categorical
+- query_highlight
+- grouped
+- all_intersections
 notes:
-  - Native ggplot2/grid renderer; ComplexUpset is optional and never installed by the plugin.
-  - Plotly is optional for result.html; a useful static fallback is written when unavailable.
+- Native ggplot2/grid renderer; ComplexUpset is optional and never installed by the plugin.
+- Plotly is optional for result.html; a useful static fallback is written when unavailable.

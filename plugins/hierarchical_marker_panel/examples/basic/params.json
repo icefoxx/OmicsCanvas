@@ -1,0 +1,8 @@
+{
+  "title": "",
+  "cell_type_order": ["Astrocytes", "Microglia", "Oligo", "OPC", "GLUT/GNB4", "GLUT/RGS6", "GABA/PVALB", "GABA/SST"],
+  "marker_order": ["FLT1", "SLC1A2", "C1QB", "MOBP", "GNB4", "RGS6", "GAD1", "SST"],
+  "class_colors": {"Non-neuronal": "#86A5C2", "Glutamatergic": "#2C7FB8", "GABAergic": "#D95F02"},
+  "width": 10,
+  "height": 7
+}

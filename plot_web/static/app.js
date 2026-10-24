@@ -254,19 +254,19 @@ function renderPluginTree() {
     const details = document.createElement("details");
     details.className = "tree-category";
     details.open = true;
-    details.innerHTML = `<summary>${category.name}</summary>`;
+    details.innerHTML = `<summary>${escapeHtml(category.name)}</summary>`;
 
     visibleSubs.forEach((sub) => {
       const subDetails = document.createElement("details");
       subDetails.className = "tree-subcategory";
       subDetails.open = true;
-      subDetails.innerHTML = `<summary>${sub.name}</summary>`;
+      subDetails.innerHTML = `<summary>${escapeHtml(sub.name)}</summary>`;
       sub.plugins.forEach((plugin) => {
         const button = document.createElement("button");
         button.className = `plugin-item ${state.selected === plugin.id ? "active" : ""}`;
         button.innerHTML = `
-          <strong>${plugin.name}</strong>
-          <span>${plugin.id}</span>
+          <strong>${escapeHtml(plugin.name)}</strong>
+          <span>${escapeHtml(plugin.id)}</span>
         `;
         button.onclick = () => selectPlugin(plugin.id);
         subDetails.appendChild(button);
@@ -328,7 +328,7 @@ function renderHome() {
   state.plugins.slice(0, 6).forEach((plugin) => {
     const item = document.createElement("button");
     item.className = "quick-item";
-    item.innerHTML = `<strong>${plugin.name}</strong><small>${plugin.category} / ${plugin.subcategory}</small>`;
+    item.innerHTML = `<strong>${escapeHtml(plugin.name)}</strong><small>${escapeHtml(plugin.category)} / ${escapeHtml(plugin.subcategory)}</small>`;
     item.onclick = () => selectPlugin(plugin.id);
     quick.appendChild(item);
   });
@@ -343,7 +343,7 @@ function renderHomeRecent() {
   recent.forEach((job) => {
     const div = document.createElement("button");
     div.className = "compact-item";
-    div.innerHTML = `<strong>${job.plugin_id}</strong><small>${job.status} · ${job.job_id}</small>`;
+    div.innerHTML = `<strong>${escapeHtml(job.plugin_id)}</strong><small>${escapeHtml(job.status)} · ${escapeHtml(job.job_id)}</small>`;
     div.onclick = () => openResult(job);
     box.appendChild(div);
   });
@@ -368,12 +368,12 @@ function renderPlotCards() {
     card.className = "plot-card";
     card.innerHTML = `
       <div class="plot-thumb">
-        ${plugin.preview ? `<img src="${plugin.preview}" alt="${plugin.name} preview" />` : `<span>${plugin.name.slice(0, 1)}</span>`}
+        ${plugin.preview ? `<img src="${escapeHtml(plugin.preview)}" alt="${escapeHtml(plugin.name)} preview" />` : `<span>${escapeHtml(plugin.name.slice(0, 1))}</span>`}
       </div>
       <div class="plot-body">
-        <strong>${plugin.name}</strong>
-        <span class="plot-cat-tag">${plugin.category || "General"} · ${plugin.subcategory || "Visualization"}</span>
-        <p>${plugin.description || ""}</p>
+        <strong>${escapeHtml(plugin.name)}</strong>
+        <span class="plot-cat-tag">${escapeHtml(plugin.category || "General")} · ${escapeHtml(plugin.subcategory || "Visualization")}</span>
+        <p>${escapeHtml(plugin.description || "")}</p>
       </div>
       <div class="plot-actions">
         <button class="primaryBtn primary">🛠️ Open Editor</button>
@@ -389,10 +389,13 @@ function renderPlotCards() {
 
 function renderDataMap() {
   const canvas = $("dataMapCanvas");
+  const hint = $("dataMapHint");
+  if (!canvas && !hint) return;
   const stateData = state.serverState || { data_map: { nodes: [], edges: [] } };
   const nodes = stateData.data_map?.nodes || [];
   const edges = stateData.data_map?.edges || [];
-  $("dataMapHint").textContent = `${nodes.length} nodes · ${edges.length} edges`;
+  if (hint) hint.textContent = `${nodes.length} nodes · ${edges.length} edges`;
+  if (!canvas) return;
   canvas.innerHTML = "";
   if (!nodes.length) {
     canvas.innerHTML = `<div class="empty">No provenance yet. Run a demo or upload a dataset.</div>`;
@@ -401,7 +404,7 @@ function renderDataMap() {
   nodes.forEach((node) => {
     const div = document.createElement("button");
     div.className = `map-node ${node.type || "node"}`;
-    div.innerHTML = `<strong>${node.label || node.id}</strong><small>${node.type || "node"}</small>`;
+    div.innerHTML = `<strong>${escapeHtml(node.label || node.id)}</strong><small>${escapeHtml(node.type || "node")}</small>`;
     div.onclick = () => {
       if (node.type === "result" && node.job_id) {
         const job = state.results.find((item) => item.job_id === node.job_id);
@@ -427,7 +430,7 @@ async function refreshDatasets() {
     box.innerHTML = `<div class="empty">No datasets uploaded yet.</div>`;
     return;
   }
-  box.innerHTML = `<table><thead><tr><th>Name</th><th>ID</th><th>Roles</th><th>Created</th></tr></thead><tbody>${state.datasets.map((d) => `<tr><td>${d.name}</td><td>${d.dataset_id}</td><td>${Object.keys(d.roles || {}).join(", ")}</td><td>${d.created_at || ""}</td></tr>`).join("")}</tbody></table>`;
+  box.innerHTML = `<table><thead><tr><th>Name</th><th>ID</th><th>Roles</th><th>Created</th></tr></thead><tbody>${state.datasets.map((d) => `<tr><td>${escapeHtml(d.name)}</td><td>${escapeHtml(d.dataset_id)}</td><td>${escapeHtml(Object.keys(d.roles || {}).join(", "))}</td><td>${escapeHtml(d.created_at || "")}</td></tr>`).join("")}</tbody></table>`;
 }
 
 async function uploadDataset() {
@@ -458,7 +461,7 @@ async function refreshResults() {
     box.innerHTML = `<div class="empty">No runs yet.</div>`;
     return;
   }
-  box.innerHTML = `<table><thead><tr><th>Run ID</th><th>Plot</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead><tbody>${state.results.slice(0, 80).map((job) => `<tr><td>${job.job_id}</td><td>${job.plugin_id}</td><td>${job.status}</td><td>${job.created_at || ""}</td><td><button data-job="${job.job_id}" class="table-action">Open</button></td></tr>`).join("")}</tbody></table>`;
+  box.innerHTML = `<table><thead><tr><th>Run ID</th><th>Plot</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead><tbody>${state.results.slice(0, 80).map((job) => `<tr><td>${escapeHtml(job.job_id)}</td><td>${escapeHtml(job.plugin_id)}</td><td>${escapeHtml(job.status)}</td><td>${escapeHtml(job.created_at || "")}</td><td><button data-job="${escapeHtml(job.job_id)}" class="table-action">Open</button></td></tr>`).join("")}</tbody></table>`;
   box.querySelectorAll("button[data-job]").forEach((button) => {
     button.onclick = () => {
       const job = state.results.find((item) => item.job_id === button.dataset.job);
@@ -493,7 +496,7 @@ async function refreshReports() {
     a.className = "compact-item";
     a.href = `/api/reports/${report.report_id}/download`;
     a.target = "_blank";
-    a.innerHTML = `<strong>${report.filename}</strong><small>${report.created_at}</small>`;
+    a.innerHTML = `<strong>${escapeHtml(report.filename)}</strong><small>${escapeHtml(report.created_at)}</small>`;
     box.appendChild(a);
   });
 }
@@ -969,8 +972,8 @@ function renderPaletteControl(control, value) {
     btn.type = "button";
     btn.className = `scientific-palette-btn ${currentValStr === JSON.stringify(p.colors) ? "active" : ""}`;
     btn.innerHTML = `
-      <span class="palette-label">${p.name}</span>
-      <div class="palette-preview-bar" style="background: linear-gradient(90deg, ${p.colors.join(",")})"></div>
+      <span class="palette-label">${escapeHtml(p.name)}</span>
+      <div class="palette-preview-bar" style="background: linear-gradient(90deg, ${escapeHtml(p.colors.join(","))})"></div>
     `;
     btn.onclick = () => {
       state.params[control.key] = p.colors;
@@ -1079,14 +1082,14 @@ function renderActiveControls() {
     const details = document.createElement("details");
     details.className = "control-group";
     details.open = true;
-    details.innerHTML = `<summary>${groupName}</summary>`;
+    details.innerHTML = `<summary>${escapeHtml(groupName)}</summary>`;
     groupControls.forEach((control) => {
       const row = document.createElement("label");
       row.className = `control-row control-${control.type}`;
       const required = control.required ? `<span class="required">*</span>` : "";
       const label = document.createElement("span");
       label.className = "control-label";
-      label.innerHTML = `${control.label}${required}`;
+      label.innerHTML = `${escapeHtml(control.label)}${required}`;
       row.appendChild(label);
       row.appendChild(renderInputForControl(control));
       if (control.help) {
@@ -1120,8 +1123,8 @@ function renderFileInputs(detail) {
     const row = document.createElement("div");
     row.className = "file-row";
     row.innerHTML = `
-      <label for="file_${fieldName}">${name}${input.required === false ? "" : " *"}</label>
-      <input id="file_${fieldName}" data-field="${fieldName}" type="file" accept=".csv,.tsv,.txt,.xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ${input.required === false ? "" : "required"} />
+      <label for="file_${escapeHtml(fieldName)}">${escapeHtml(name)}${input.required === false ? "" : " *"}</label>
+      <input id="file_${escapeHtml(fieldName)}" data-field="${escapeHtml(fieldName)}" type="file" accept=".csv,.tsv,.txt,.xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ${input.required === false ? "" : "required"} />
       <small>${inputDescription(input)} (CSV / TSV / XLSX)</small>
     `;
     box.appendChild(row);
@@ -1262,7 +1265,7 @@ function appendExampleCard(grid, example, index) {
       <span class="demo-frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
       <span class="demo-frame-title"></span>
     </span>
-    <span class="example-card-image">${image ? `<img src="${image}" alt="">` : `<span class="example-placeholder">📊</span>`}</span>
+    <span class="example-card-image">${image ? `<img src="${escapeHtml(image)}" alt="">` : `<span class="example-placeholder">📊</span>`}</span>
     <span class="example-card-copy">
       <span class="example-card-label"></span>
       <span class="example-card-blurb"></span>
@@ -1291,7 +1294,7 @@ function renderExampleGallery() {
 
   const head = document.createElement("div");
   head.className = "example-gallery-head";
-  head.innerHTML = `<strong>${state.examples.length} demo cards</strong><small>Each card = one default plot setting</small>`;
+  head.innerHTML = `<strong>${escapeHtml(state.examples.length)} demo cards</strong><small>Each card = one default plot setting</small>`;
   gallery.appendChild(head);
 
   // How-to notice for switching plot types / styles
@@ -1322,7 +1325,7 @@ function renderExampleGallery() {
   if (styleIdx.length) {
     const section = document.createElement("div");
     section.className = "demo-card-section";
-    section.innerHTML = `<div class="demo-card-section-title"><span>Style presets</span><small>${styleIdx.length} cards · click to compare defaults</small></div>`;
+    section.innerHTML = `<div class="demo-card-section-title"><span>Style presets</span><small>${escapeHtml(styleIdx.length)} cards · click to compare defaults</small></div>`;
     const grid = document.createElement("div");
     grid.className = "example-gallery-grid demo-frame-grid demo-frame-grid-styles";
     styleIdx.forEach((index) => appendExampleCard(grid, state.examples[index], index));
@@ -1333,7 +1336,7 @@ function renderExampleGallery() {
   if (moreIdx.length) {
     const section = document.createElement("div");
     section.className = "demo-card-section";
-    section.innerHTML = `<div class="demo-card-section-title"><span>More examples</span><small>${moreIdx.length} cards</small></div>`;
+    section.innerHTML = `<div class="demo-card-section-title"><span>More examples</span><small>${escapeHtml(moreIdx.length)} cards</small></div>`;
     const grid = document.createElement("div");
     grid.className = "example-gallery-grid demo-frame-grid";
     moreIdx.forEach((index) => appendExampleCard(grid, state.examples[index], index));
@@ -1346,7 +1349,7 @@ function renderExampleGallery() {
     note.className = "example-selected-note";
     const selected = selectedExampleRecord();
     const howto = exampleHowto(selected);
-    note.innerHTML = `<div><strong>Selected:</strong> ${exampleLabel(selected, 0)} · ${exampleType(selected)}</div>`;
+    note.innerHTML = `<div><strong>Selected:</strong> ${escapeHtml(exampleLabel(selected, 0))} · ${escapeHtml(exampleType(selected))}</div>`;
     if (howto) {
       const h = document.createElement("div");
       h.className = "example-selected-howto";
@@ -1395,7 +1398,7 @@ function renderInputSummary() {
   Object.entries(state.inputPreview.files).forEach(([field, info]) => {
     const div = document.createElement("div");
     div.className = "input-file-summary";
-    div.innerHTML = `<strong>${field}</strong><span>${info.filename || ""}</span><small>${info.row_count_estimate || 0} rows · ${info.column_count || 0} columns · delimiter ${info.delimiter || ","}</small>`;
+    div.innerHTML = `<strong>${escapeHtml(field)}</strong><span>${escapeHtml(info.filename || "")}</span><small>${escapeHtml(info.row_count_estimate || 0)} rows · ${escapeHtml(info.column_count || 0)} columns · delimiter ${escapeHtml(info.delimiter || ",")}</small>`;
     summary.appendChild(div);
   });
 }
@@ -1530,7 +1533,7 @@ function renderColumnSelector() {
   grid.className = "check-grid";
   preview.columns.forEach((col) => {
     const label = document.createElement("label");
-    label.innerHTML = `<input type="checkbox" ${state.selectedColumns.has(col) ? "checked" : ""} /> <span>${col}</span>`;
+    label.innerHTML = `<input type="checkbox" ${state.selectedColumns.has(col) ? "checked" : ""} /> <span>${escapeHtml(col)}</span>`;
     const input = label.querySelector("input");
     input.onchange = () => {
       if (input.checked) state.selectedColumns.add(col);
@@ -1588,7 +1591,7 @@ function renderRowSelector() {
   grid.className = "check-grid rows";
   labels.slice(0, 80).forEach((id) => {
     const label = document.createElement("label");
-    label.innerHTML = `<input type="checkbox" ${state.selectedRows.has(id) ? "checked" : ""} /> <span>${id}</span>`;
+    label.innerHTML = `<input type="checkbox" ${state.selectedRows.has(id) ? "checked" : ""} /> <span>${escapeHtml(id)}</span>`;
     const input = label.querySelector("input");
     input.onchange = () => {
       if (input.checked) state.selectedRows.add(id);
@@ -1712,7 +1715,7 @@ function renderStageTablePreview() {
     <thead>
       <tr>
         <th>Filter</th>
-        ${columns.map((col) => `<th>${col}</th>`).join("")}
+        ${columns.map((col) => `<th>${escapeHtml(col)}</th>`).join("")}
       </tr>
     </thead>
     <tbody>
@@ -1721,8 +1724,8 @@ function renderStageTablePreview() {
         const isSelected = state.selectedRows.has(rowId);
         return `
           <tr class="${isSelected ? "row-selected" : ""}">
-            <td><input type="checkbox" ${isSelected ? "checked" : ""} class="stage-row-check" data-id="${rowId}" /></td>
-            ${columns.map((col) => `<td>${row[col] ?? ""}</td>`).join("")}
+            <td><input type="checkbox" ${isSelected ? "checked" : ""} class="stage-row-check" data-id="${escapeHtml(rowId)}" /></td>
+            ${columns.map((col) => `<td>${escapeHtml(row[col] ?? "")}</td>`).join("")}
           </tr>
         `;
       }).join("")}
@@ -1755,9 +1758,9 @@ function renderTablePreview() {
   const columns = preview.columns.slice(0, 16);
   const table = document.createElement("table");
   table.innerHTML = `
-    <thead><tr>${columns.map((col) => `<th>${col}</th>`).join("")}</tr></thead>
+    <thead><tr>${columns.map((col) => `<th>${escapeHtml(col)}</th>`).join("")}</tr></thead>
     <tbody>
-      ${preview.preview_rows.slice(0, 20).map((row) => `<tr>${columns.map((col) => `<td>${row[col] ?? ""}</td>`).join("")}</tr>`).join("")}
+      ${preview.preview_rows.slice(0, 20).map((row) => `<tr>${columns.map((col) => `<td>${escapeHtml(row[col] ?? "")}</td>`).join("")}</tr>`).join("")}
     </tbody>
   `;
   box.appendChild(table);
@@ -1923,13 +1926,13 @@ function renderPlotCards() {
 
     card.innerHTML = `
       <div class="card-thumb-box">
-        <span class="card-badge">${meta.badge}</span>
-        <span class="card-like-count">♡ ${likeCount}</span>
-        ${plugin.preview ? `<img src="${plugin.preview}" alt="${meta.name} preview" />` : `<div class="card-fallback-icon">${meta.icon}</div>`}
+        <span class="card-badge">${escapeHtml(meta.badge)}</span>
+        <span class="card-like-count">♡ ${escapeHtml(likeCount)}</span>
+        ${plugin.preview ? `<img src="${escapeHtml(plugin.preview)}" alt="${escapeHtml(meta.name)} preview" />` : `<div class="card-fallback-icon">${escapeHtml(meta.icon)}</div>`}
       </div>
       <div class="card-content-body">
-        <h4>${meta.name}</h4>
-        <p>${meta.desc}</p>
+        <h4>${escapeHtml(meta.name)}</h4>
+        <p>${escapeHtml(meta.desc)}</p>
         <div class="card-btn-row">
           <button type="button" class="card-btn primary">🛠️ Open Studio</button>
           <button type="button" class="card-btn secondary">⚡ Try Demo</button>
@@ -2047,6 +2050,7 @@ async function runSelectedPlugin() {
     const form = collectFormData();
     const result = await api(`/api/plugins/${state.selected}/run`, { method: "POST", body: form });
     $("jobStatus").textContent = `${result.status}: ${result.message || result.job_id}`;
+    renderValidationPanel($("validationPanel"), result.vnext);
     if (result.status === "completed") {
       renderDownloads(result.outputs);
       if (result.outputs.preview) {
@@ -2400,11 +2404,11 @@ async function renderSelectedOutputs(outputs = {}) {
   const text = await fetch(outputs[found]).then((res) => res.ok ? res.text() : "");
   const tableData = parseDelimited(text);
   if (!tableData.columns.length) return;
-  box.innerHTML = `<div class="card-head"><h3>${found.replace(/_/g, " ")}</h3><a href="${outputs[found]}" target="_blank">Download CSV</a></div>`;
+  box.innerHTML = `<div class="card-head"><h3>${escapeHtml(found.replace(/_/g, " "))}</h3><a href="${escapeHtml(outputs[found])}" target="_blank">Download CSV</a></div>`;
   const table = document.createElement("table");
   table.innerHTML = `
-    <thead><tr>${tableData.columns.map((col) => `<th>${col}</th>`).join("")}</tr></thead>
-    <tbody>${tableData.rows.map((row) => `<tr>${tableData.columns.map((col) => `<td>${row[col] ?? ""}</td>`).join("")}</tr>`).join("")}</tbody>
+    <thead><tr>${tableData.columns.map((col) => `<th>${escapeHtml(col)}</th>`).join("")}</tr></thead>
+    <tbody>${tableData.rows.map((row) => `<tr>${tableData.columns.map((col) => `<td>${escapeHtml(row[col] ?? "")}</td>`).join("")}</tr>`).join("")}</tbody>
   `;
   box.appendChild(table);
 }
@@ -2465,15 +2469,15 @@ function renderAiIntent(intent) {
   }
   box.classList.remove("hidden");
   const bits = [];
-  if (intent.analysis_goal) bits.push(`<div><strong>Analysis goal</strong> ${intent.analysis_goal}</div>`);
-  if (intent.data_type) bits.push(`<div><strong>Data type</strong> ${intent.data_type}</div>`);
-  if (intent.recommended_focus) bits.push(`<div><strong>Focus</strong> ${intent.recommended_focus}</div>`);
+  if (intent.analysis_goal) bits.push(`<div><strong>Analysis goal</strong> ${escapeHtml(intent.analysis_goal)}</div>`);
+  if (intent.data_type) bits.push(`<div><strong>Data type</strong> ${escapeHtml(intent.data_type)}</div>`);
+  if (intent.recommended_focus) bits.push(`<div><strong>Focus</strong> ${escapeHtml(intent.recommended_focus)}</div>`);
   box.innerHTML = `
     <div class="ai-intent-head">
       <strong>Intent summary</strong>
-      <span class="ai-score">${intent.source || "rules"}</span>
+      <span class="ai-score">${escapeHtml(intent.source || "rules")}</span>
     </div>
-    <p class="ai-intent-summary">${intent.summary || ""}</p>
+    <p class="ai-intent-summary">${escapeHtml(intent.summary || "")}</p>
     ${bits.join("")}
   `;
 }
@@ -2493,16 +2497,16 @@ function renderAiSkills(skills) {
       (s) => `
     <div class="ai-skill-card">
       <div class="ai-skill-title">
-        <strong>${s.name || s.skill_id}</strong>
-        <code>${s.skill_id}</code>
-        <span class="ai-score">${s.score ?? ""}</span>
+        <strong>${escapeHtml(s.name || s.skill_id)}</strong>
+        <code>${escapeHtml(s.skill_id)}</code>
+        <span class="ai-score">${escapeHtml(s.score ?? "")}</span>
       </div>
-      <p class="ai-rec-reason">${s.reason || s.description || ""}</p>
-      <div class="ai-cols muted">${s.note || "Skill = authoring guide (does not render plots)."}</div>
+      <p class="ai-rec-reason">${escapeHtml(s.reason || s.description || "")}</p>
+      <div class="ai-cols muted">${escapeHtml(s.note || "Skill = authoring guide (does not render plots).")}</div>
       ${(s.related_plugins || []).length
         ? `<div class="ai-tag-row">${(s.related_plugins || [])
             .slice(0, 6)
-            .map((p) => `<span class="ai-tag">${p}</span>`)
+            .map((p) => `<span class="ai-tag">${escapeHtml(p)}</span>`)
             .join("")}</div>`
         : ""}
     </div>`
@@ -2518,13 +2522,13 @@ function renderAiProfile(profile) {
   const box = $("aiProfileBox");
   if (!box || !profile) return;
   box.classList.remove("hidden");
-  const tags = (profile.tags || []).map((t) => `<span class="ai-tag">${t}</span>`).join(" ");
+  const tags = (profile.tags || []).map((t) => `<span class="ai-tag">${escapeHtml(t)}</span>`).join(" ");
   box.innerHTML = `
-    <div><strong>${profile.filename || "table"}</strong>
-      · ${profile.row_count_estimate ?? "?"} rows × ${profile.column_count ?? "?"} cols</div>
+    <div><strong>${escapeHtml(profile.filename || "table")}</strong>
+      · ${escapeHtml(profile.row_count_estimate ?? "?")} rows × ${escapeHtml(profile.column_count ?? "?")} cols</div>
     <div class="ai-tag-row">${tags}</div>
-    <div class="ai-cols muted">numeric: ${(profile.numeric_columns || []).slice(0, 8).join(", ") || "—"}</div>
-    <div class="ai-cols muted">categorical: ${(profile.categorical_columns || []).slice(0, 8).join(", ") || "—"}</div>
+    <div class="ai-cols muted">numeric: ${escapeHtml((profile.numeric_columns || []).slice(0, 8).join(", ") || "—")}</div>
+    <div class="ai-cols muted">categorical: ${escapeHtml((profile.categorical_columns || []).slice(0, 8).join(", ") || "—")}</div>
   `;
 }
 
@@ -2544,15 +2548,15 @@ function renderAiRecommendations(recs) {
       <div class="ai-rec-rank">#${idx + 1}</div>
       <div class="ai-rec-body">
         <div class="ai-rec-title">
-          <strong>${rec.name || rec.plugin_id}</strong>
-          <code>${rec.plugin_id}</code>
-          <span class="ai-score">score ${rec.score ?? "—"}</span>
+          <strong>${escapeHtml(rec.name || rec.plugin_id)}</strong>
+          <code>${escapeHtml(rec.plugin_id)}</code>
+          <span class="ai-score">score ${escapeHtml(rec.score ?? "—")}</span>
         </div>
-        <p class="ai-rec-reason">${rec.reason || ""}</p>
+        <p class="ai-rec-reason">${escapeHtml(rec.reason || "")}</p>
         <div class="ai-rec-actions">
-          <button type="button" class="primary compact-action" data-ai-demo="${rec.plugin_id}">Generate demo</button>
-          <button type="button" class="secondary compact-action" data-ai-demo-builtin="${rec.plugin_id}">Built-in demo</button>
-          <a class="secondary compact-action" href="${rec.editor_url || `/static/editor.html?plugin=${rec.plugin_id}`}" target="_blank">Open Editor</a>
+          <button type="button" class="primary compact-action" data-ai-demo="${escapeHtml(rec.plugin_id)}">Generate demo</button>
+          <button type="button" class="secondary compact-action" data-ai-demo-builtin="${escapeHtml(rec.plugin_id)}">Built-in demo</button>
+          <a class="secondary compact-action" href="${rec.editor_url || `/static/editor.html?plugin=${escapeHtml(rec.plugin_id)}`}" target="_blank">Open Editor</a>
         </div>
       </div>
     `;
@@ -2584,7 +2588,7 @@ function renderAiFigures(figures) {
     const dl = fig.outputs
       ? Object.entries(fig.outputs)
           .filter(([k]) => ["svg", "pdf", "png", "tiff"].includes(k))
-          .map(([k, href]) => `<a href="${href}" target="_blank" rel="noopener">${k.toUpperCase()}</a>`)
+          .map(([k, href]) => `<a href="${escapeHtml(href)}" target="_blank" rel="noopener">${escapeHtml(k.toUpperCase())}</a>`)
           .join(" ")
       : "";
     const err =
@@ -2595,32 +2599,32 @@ function renderAiFigures(figures) {
     card.className = `ai-figure-card ${ok ? "is-ok" : "is-fail"}`;
     card.innerHTML = `
       <div class="ai-figure-head">
-        <span class="ai-rec-rank">#${fig.rank ?? "?"}</span>
+        <span class="ai-rec-rank">#${escapeHtml(fig.rank ?? "?")}</span>
         <div class="ai-rec-title">
-          <strong>${fig.name || fig.plugin_id}</strong>
-          <code>${fig.plugin_id}</code>
-          <span class="ai-score">${ok ? "ok" : fig.status || "failed"}</span>
+          <strong>${escapeHtml(fig.name || fig.plugin_id)}</strong>
+          <code>${escapeHtml(fig.plugin_id)}</code>
+          <span class="ai-score">${escapeHtml(ok ? "ok" : fig.status || "failed")}</span>
         </div>
       </div>
       <div class="ai-figure-preview">
         ${
           ok && cacheBust
-            ? `<img src="${cacheBust}" alt="${fig.plugin_id}" class="ai-preview-img">`
-            : `<div class="ai-preview-empty">${err || "No preview"}</div>`
+            ? `<img src="${escapeHtml(cacheBust)}" alt="${escapeHtml(fig.plugin_id)}" class="ai-preview-img">`
+            : `<div class="ai-preview-empty">${escapeHtml(err || "No preview")}</div>`
         }
       </div>
       <div class="ai-figure-explain">
         <div class="ai-intent-head">
           <strong>AI explanation</strong>
-          <span class="ai-score">${fig.explanation_source || "rules"}</span>
+          <span class="ai-score">${escapeHtml(fig.explanation_source || "rules")}</span>
         </div>
-        <p class="ai-explain-text">${fig.explanation || fig.reason || "—"}</p>
+        <p class="ai-explain-text">${escapeHtml(fig.explanation || fig.reason || "—")}</p>
       </div>
       <div class="ai-rec-actions">
-        <a class="secondary compact-action" href="${fig.editor_url || `/static/editor.html?plugin=${fig.plugin_id}`}" target="_blank">Open Editor</a>
+        <a class="secondary compact-action" href="${fig.editor_url || `/static/editor.html?plugin=${escapeHtml(fig.plugin_id)}`}" target="_blank">Open Editor</a>
         ${dl ? `<span class="ai-dl-row">${dl}</span>` : ""}
       </div>
-      ${fig.ai?.note ? `<div class="ai-cols muted">${fig.ai.note}</div>` : ""}
+      ${fig.ai?.note ? `<div class="ai-cols muted">${escapeHtml(fig.ai.note)}</div>` : ""}
     `;
     grid.appendChild(card);
   });
@@ -2637,22 +2641,22 @@ function renderAiPalettes(pals) {
   pals.forEach((p) => {
     const colors = p.colors || [];
     const swatches = colors
-      .map((c) => `<span class="ai-swatch" style="background:${c}" title="${c}"></span>`)
+      .map((c) => `<span class="ai-swatch" style="background:${escapeHtml(c)}" title="${escapeHtml(c)}"></span>`)
       .join("");
     const hexLine = colors.join(" ");
     const card = document.createElement("div");
     card.className = "ai-palette-card";
     card.innerHTML = `
       <div class="ai-palette-head">
-        <strong>${p.name || p.id}</strong>
-        <code>${p.id}</code>
-        <span class="ai-score">${p.score ?? ""}</span>
+        <strong>${escapeHtml(p.name || p.id)}</strong>
+        <code>${escapeHtml(p.id)}</code>
+        <span class="ai-score">${escapeHtml(p.score ?? "")}</span>
       </div>
       <div class="ai-swatch-row">${swatches}</div>
-      <p class="ai-rec-reason">${p.reason || (p.research_uses || []).slice(0, 2).join(" · ") || ""}</p>
+      <p class="ai-rec-reason">${escapeHtml(p.reason || (p.research_uses || []).slice(0, 2).join(" · ") || "")}</p>
       <div class="ai-rec-actions">
-        <button type="button" class="secondary compact-action" data-copy-hex="${hexLine}">Copy HEX</button>
-        ${p.source_url ? `<a class="secondary compact-action" href="${p.source_url}" target="_blank" rel="noopener">Source</a>` : ""}
+        <button type="button" class="secondary compact-action" data-copy-hex="${escapeHtml(hexLine)}">Copy HEX</button>
+        ${p.source_url ? `<a class="secondary compact-action" href="${escapeHtml(p.source_url)}" target="_blank" rel="noopener">Source</a>` : ""}
       </div>
     `;
     list.appendChild(card);
@@ -2797,7 +2801,7 @@ async function runAiPipeline() {
     aiAppendChat(`Pipeline failed: ${err.message}`, "bot");
     if ($("aiDemoStatus")) $("aiDemoStatus").textContent = `Failed: ${err.message}`;
     if ($("aiFiguresGrid")) {
-      $("aiFiguresGrid").innerHTML = `<div class="ai-empty">Pipeline failed: ${err.message}</div>`;
+      $("aiFiguresGrid").innerHTML = `<div class="ai-empty">Pipeline failed: ${escapeHtml(err.message)}</div>`;
     }
   } finally {
     if (btn) btn.disabled = false;

@@ -1,0 +1,43 @@
+id: gsea_ridge_nes_plot
+name: GSEA Pathway Ridge + NES
+version: 1.0.0
+description: 'Pathway enrichment ridgeline of gene-level log2 fold-change, with a left-side NES bubble (color = NES, size
+  = |NES|) and ridge fill mapped to -log10(p). Uses the same GSEA file flags as other enrichment plugins: --input for the
+  ranked gene / log2FC table, --enrichment for the GSEA result table, and optional --genesets for GMT membership.
+
+  '
+language: R
+entrypoint: plot.R
+category: Set / Enrichment
+subcategory: GSEA
+status: stable
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+- id: enrichment
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+- id: genesets
+  type: file
+  formats:
+  - gmt
+  required: false
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- pathway_qc.csv
+- plot_data.csv
+- run.log
+runtime: Rscript plugins/gsea_ridge_nes_plot/plot.R --input ranks.csv --enrichment gsea.csv --params params.json --output
+  output_dir

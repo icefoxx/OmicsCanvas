@@ -565,9 +565,8 @@ tryCatch({
   }
   save_one(function() svglite::svglite(file.path(output_dir, 'result.svg'), width = W, height = H))
   save_one(function() grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = W, height = H))
-  save_one(function() grDevices::png(
-    file.path(output_dir, 'result.png'), width = W, height = H, units = 'in', res = dpi, type = 'cairo'
-  ))
+  save_one(function() (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(
+    file.path(output_dir, 'result.png'), width = W, height = H, units = 'in', res = dpi))
 
   write.csv(summary_df, file.path(output_dir, 'summary_used.csv'), row.names = FALSE)
   if (!is.null(points_df) && nrow(points_df)) {

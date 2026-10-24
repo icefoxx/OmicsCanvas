@@ -1,0 +1,1 @@
+{"id":"CAB_demo","label":"CAB_demo","plugin_id":"regression_scatter_plot","plot_type":"regression_scatter","params":"params.json","inputs":{"input":"input/example_input.csv"},"expected":"expected/result.png"}

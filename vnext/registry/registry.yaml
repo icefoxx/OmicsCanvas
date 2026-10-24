@@ -1,16 +1,23 @@
 registry_version: '1.0'
 framework: omicscanvas-vnext
-generated_from: plugins/*/config.yaml
+generated_from: plugins/*/vnext/metadata.yaml
 skills:
 - id: advanced_dim_plot
   version: 1.0.0
-  family: scatter
+  family: embedding
   name: Advanced Dimension Plot
   aliases: []
   accepts:
   - table
-  required_semantics: []
-  optional_semantics: []
+  required_semantics:
+  - x
+  - y
+  optional_semantics:
+  - feature
+  - group
+  - id
+  - split
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -18,20 +25,28 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: advanced_feature_plot
   version: 1.0.0
-  family: miscellaneous
+  family: embedding
   name: Advanced Feature Plot
   aliases: []
   accepts:
   - table
-  required_semantics: []
-  optional_semantics: []
+  required_semantics:
+  - x
+  - y
+  optional_semantics:
+  - feature
+  - group
+  - id
+  - split
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -39,11 +54,12 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: alluvial_plot
   version: 1.0.0
   family: composition
@@ -52,7 +68,13 @@ skills:
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - id
+  - source
+  - target
+  - value
+  - weight
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -60,20 +82,23 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: balloon_plot
   version: 1.0.0
-  family: miscellaneous
+  family: matrix
   name: Balloon Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - id
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -81,20 +106,25 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: classified_bar_plot
   version: 1.0.0
-  family: expression / statistics
+  family: composition
   name: Classified Bar Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - annotation
+  - category
+  - value
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -102,41 +132,59 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: cluster_dendrogram_plot
   version: 1.0.0
-  family: expression / statistics
+  family: matrix
   name: Cluster Dendrogram Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - group
+  - id
+  - sample
+  statistics:
+    clustering_method: cluster_method
+    distance_method: distance_method
   capabilities:
     interactive: false
-    statistics: false
+    statistics: true
     export_svg: true
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: combo_bar_dot_matrix
   version: 1.0.0
-  family: comparison
+  family: group_comparison
   name: Combo Bar + Dot Matrix
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - annotation
+  - ci_high
+  - ci_low
+  - color
+  - feature
+  - group
+  - se
+  - x
+  - y
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -144,20 +192,26 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: combo_bar_line_plot
   version: 1.0.0
-  family: expression / statistics
+  family: group_comparison
   name: Combo Bar + Line Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - color
+  - group
+  - sample
+  - value
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -165,62 +219,81 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: den_plot
   version: 1.0.0
-  family: miscellaneous
+  family: matrix
   name: Den Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - group
+  - id
+  - sample
+  statistics:
+    clustering_method: cluster_method
+    distance_method: distance_method
   capabilities:
     interactive: false
-    statistics: false
+    statistics: true
     export_svg: true
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: dot_plot
   version: 1.0.0
-  family: miscellaneous
+  family: matrix
   name: Dot Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - feature
+  - group
+  - id
+  - x
+  - y
+  statistics:
+    clustering_method: cluster_method
+    distance_method: distance_method
   capabilities:
     interactive: false
-    statistics: false
+    statistics: true
     export_svg: true
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: dynamic_venn_diagram
   version: 1.0.0
-  family: set
+  family: set_overlap
   name: Dynamic Venn Diagram
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - id
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -228,41 +301,54 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: experimental
 - id: exp_stat_plot
   version: 1.0.0
-  family: miscellaneous
+  family: group_comparison
   name: Expression Statistic Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - group
+  - id
+  - split
+  statistics:
+    method: pairwise_method
+    multiple_testing: multiple_method
+    comparisons: comparisons
   capabilities:
     interactive: false
-    statistics: false
+    statistics: true
     export_svg: true
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: feature_density_plot
   version: 1.0.0
-  family: miscellaneous
+  family: embedding
   name: Feature Density Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - id
+  - x
+  - y
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -270,11 +356,12 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: fgsea_enrichment_plot
   version: 2.1.0
   family: enrichment
@@ -283,7 +370,14 @@ skills:
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - adjusted_pvalue
+  - category
+  - feature
+  - group
+  - signed_effect
+  - x
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -291,20 +385,52 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: stable
+- id: go_kegg_enrichment_bar_bubble
+  version: 1.0.1
+  family: enrichment
+  name: GO / KEGG Enrichment
+  aliases: []
+  accepts:
+  - table
+  required_semantics:
+  - category
+  optional_semantics:
+  - adjusted_pvalue
+  - annotation
+  - pvalue
+  - size
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: group_heatmap
   version: 1.0.0
-  family: miscellaneous
+  family: matrix
   name: Group Heatmap
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - group
+  - id
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -312,20 +438,108 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
+- id: gsea_pathway_heatmap
+  version: 1.0.0
+  family: enrichment
+  name: GSEA Pathway Heatmap
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - adjusted_pvalue
+  - category
+  - feature
+  - pvalue
+  - signed_effect
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: experimental
+- id: gsea_ridge_nes_plot
+  version: 1.0.0
+  family: enrichment
+  name: GSEA Pathway Ridge + NES
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - adjusted_pvalue
+  - category
+  - feature
+  - pvalue
+  - signed_effect
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: stable
+- id: hierarchical_marker_panel
+  version: 1.0.0
+  family: multi_panel
+  name: Hierarchical Marker Panel
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - sample
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: false
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: highlight_effect_plot
   version: 1.0.0
-  family: comparison
+  family: group_comparison
   name: Highlight Effect (Focus + Other Cloud)
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - category
+  - ci_high
+  - ci_low
+  - pvalue
+  - se
+  - value
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -333,20 +547,26 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: interactive_arc_network_plot
   version: 1.0.0
-  family: miscellaneous
+  family: network
   name: Interactive Arc Network Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - id
+  - source
+  - target
+  - weight
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -354,11 +574,12 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: interactive_binary_plot
   version: 1.0.0
   family: matrix
@@ -367,7 +588,11 @@ skills:
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - group
+  - id
+  - value
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -375,20 +600,23 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: interactive_bubble_score_matrix
   version: 1.0.0
-  family: benchmark
+  family: matrix
   name: Interactive Bubble Score Matrix
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - value
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -396,28 +624,35 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: experimental
 - id: interactive_clustered_heatmap_plot
   version: 1.0.0
-  family: heatmap
+  family: matrix
   name: Interactive Clustered Heatmap
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - id
+  - split
+  statistics:
+    clustering_method: cluster_method
+    distance_method: distance_method
   capabilities:
     interactive: true
-    statistics: false
+    statistics: true
     export_svg: true
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
@@ -430,49 +665,65 @@ skills:
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - feature
+  - id
+  statistics:
+    correlation_method: correlation_method
+    clustering_method: cluster_method
   capabilities:
     interactive: true
-    statistics: false
+    statistics: true
     export_svg: true
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
   status: experimental
 - id: interactive_dual_triangle_heatmap_plot
   version: 1.0.0
-  family: heatmap
+  family: matrix
   name: Interactive Dual-Triangle Heatmap
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - annotation
+  statistics:
+    clustering_method: cluster_method
+    distance_method: distance_method
   capabilities:
     interactive: true
-    statistics: false
+    statistics: true
     export_svg: true
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
   status: experimental
 - id: interactive_dumbbell_plot
   version: 1.0.0
-  family: comparison
+  family: group_comparison
   name: Interactive Dumbbell Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - category
+  - group
+  - label
+  - value
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -480,7 +731,8 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
@@ -500,11 +752,39 @@ skills:
   - category
   - signed_effect
   optional_semantics:
-  - adjusted_pvalue
-  - pvalue
-  - gene_count
   - group
+  - label
+  - pvalue
   - size
+  statistics: {}
+  capabilities:
+    interactive: true
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    export_html: true
+    vnext_migrated: true
+  curated: true
+  guardrails:
+  - require_signed_metric
+  - distinguish_raw_p_and_fdr
+  - prefer_stem_to_zero
+  entrypoint: plot.R
+  language: R
+  status: stable
+- id: interactive_genomic_signal_track_plot
+  version: 1.0.0
+  family: genomic_track
+  name: Interactive Genomic Signal Track Plot
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - value
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -513,42 +793,24 @@ skills:
     export_png: true
     legacy_params: true
     vnext_migrated: true
-  guardrails:
-  - require_signed_metric
-  - distinguish_raw_p_and_fdr
-  entrypoint: plot.R
-  language: R
-  status: stable
-- id: interactive_genomic_signal_track_plot
-  version: 1.0.0
-  family: genomics
-  name: Interactive Genomic Signal Track Plot
-  aliases: []
-  accepts:
-  - table
-  required_semantics: []
-  optional_semantics: []
-  capabilities:
-    interactive: true
-    statistics: false
-    export_svg: true
-    export_pdf: true
-    export_png: true
-    legacy_params: true
-    vnext_migrated: false
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: interactive_histogram_plot
   version: 1.0.0
-  family: distribution
+  family: group_comparison
   name: Interactive Histogram Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - group
+  - id
+  - value
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -556,41 +818,48 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: interactive_mantel_correlation_network
-  version: 1.0.0
+  version: 2.0.0
   family: correlation
-  name: Interactive Mantel Correlation Network
+  name: Mantel + Pearson Correlation
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - correlation
+  - pvalue
+  statistics:
+    correlation_method: correlation_method
   capabilities:
     interactive: true
-    statistics: false
+    statistics: true
     export_svg: true
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: experimental
+  status: stable
 - id: interactive_motif_logo_plot
   version: 1.0.0
-  family: motif
+  family: genomic_track
   name: Interactive Motif Enrichment Logo
   aliases: []
   accepts:
   - table
   required_semantics: []
   optional_semantics: []
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -598,7 +867,8 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
@@ -611,7 +881,13 @@ skills:
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - group
+  - id
+  - source
+  - target
+  - weight
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -619,7 +895,8 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
@@ -632,7 +909,13 @@ skills:
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - category
+  - color
+  - group
+  - label
+  - value
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -640,20 +923,24 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: interactive_radar_plot
   version: 1.0.0
-  family: comparison
+  family: group_comparison
   name: Interactive Radar Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - group
+  - value
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -661,41 +948,53 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: interactive_ridgeline_plot
   version: 1.0.0
-  family: distribution
+  family: group_comparison
   name: Interactive Ridgeline Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - id
+  statistics:
+    method: statistic_method
   capabilities:
     interactive: true
-    statistics: false
+    statistics: true
     export_svg: true
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: interactive_sankey_plot
   version: 1.0.0
-  family: miscellaneous
+  family: network
   name: Interactive Sankey / Alluvial Flow
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - group
+  - id
+  - label
+  - source
+  - target
+  - value
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -703,20 +1002,24 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: interactive_upset_plot
   version: 1.0.0
-  family: set intersections
+  family: set_overlap
   name: Interactive UpSet Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - annotation
+  - value
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -724,20 +1027,26 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: interactive_violin_plot
   version: 1.0.0
-  family: distribution
+  family: group_comparison
   name: Interactive Violin/Box/Point Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - feature
+  - group
+  - id
+  - value
+  statistics: {}
   capabilities:
     interactive: true
     statistics: false
@@ -745,20 +1054,25 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: lineage_plot
   version: 1.0.0
-  family: miscellaneous
+  family: embedding
   name: Lineage Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - id
+  - x
+  - y
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -766,20 +1080,23 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: pie_dot_matrix
   version: 1.0.0
-  family: heatmap
+  family: matrix
   name: Pie Dot Matrix (Ratio Circles)
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - value
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -787,41 +1104,51 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: quadrant_correlation_scatter
   version: 1.0.0
-  family: scatter
+  family: correlation
   name: Quadrant Correlation Scatter
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - label
+  - x
+  - y
+  statistics:
+    correlation_method: cor_method
   capabilities:
     interactive: false
-    statistics: false
+    statistics: true
     export_svg: true
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
   status: experimental
 - id: ranked_annotation_panel
   version: 1.0.0
-  family: multi-panel
+  family: multi_panel
   name: Ranked Annotation Panel
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - annotation
+  - label
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -829,41 +1156,55 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: experimental
 - id: regression_scatter_plot
   version: 1.0.0
-  family: scatter
+  family: correlation
   name: Regression Scatter Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - group
+  - id
+  - x
+  - y
+  statistics:
+    method: regression_method
   capabilities:
     interactive: false
-    statistics: false
+    statistics: true
     export_svg: true
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: sca_volcano_plot
   version: 1.0.0
-  family: miscellaneous
+  family: differential_expression
   name: SCA Volcano Plot
   aliases: []
   accepts:
   - table
-  required_semantics: []
-  optional_semantics: []
+  required_semantics:
+  - signed_effect
+  - adjusted_pvalue
+  optional_semantics:
+  - feature
+  - group
+  - split
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -871,20 +1212,25 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: stacked_bar_plot
   version: 1.0.0
-  family: expression / statistics
+  family: composition
   name: Stacked Bar Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - group
+  - sample
+  - value
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -892,20 +1238,25 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: stable
 - id: stat_plot
   version: 1.0.0
-  family: expression / statistics
+  family: group_comparison
   name: Stat Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - category
+  - group
+  - id
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -913,20 +1264,24 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: true
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable
 - id: threshold_matrix_heatmap
   version: 1.0.0
-  family: heatmap
+  family: matrix
   name: Threshold Matrix Heatmap
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - label
+  - value
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -934,20 +1289,27 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
   status: experimental
 - id: violin_plot
   version: 1.0.0
-  family: expression / statistics
+  family: group_comparison
   name: Violin Plot
   aliases: []
   accepts:
   - table
   required_semantics: []
-  optional_semantics: []
+  optional_semantics:
+  - annotation
+  - feature
+  - group
+  - id
+  - value
+  statistics: {}
   capabilities:
     interactive: false
     statistics: false
@@ -955,8 +1317,9 @@ skills:
     export_pdf: true
     export_png: true
     legacy_params: true
-    vnext_migrated: false
+    vnext_migrated: true
+  curated: false
   guardrails: []
   entrypoint: plot.R
   language: R
-  status: unknown
+  status: stable

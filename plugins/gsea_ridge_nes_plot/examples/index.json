@@ -1,0 +1,25 @@
+{
+  "plugin_id": "gsea_ridge_nes_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Pathway Ridge + NES",
+      "plugin_id": "gsea_ridge_nes_plot",
+      "plot_type": "ridge_nes",
+      "mode": "",
+      "params": "../examples/basic/params.json",
+      "inputs": {
+        "input": "input/example_ranks.csv",
+        "enrichment": "input/example_enrichment.csv",
+        "genesets": "input/example_pathways.gmt"
+      },
+      "expected": "../examples/basic/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/gsea_ridge_nes_plot/plot.R --input plugins/gsea_ridge_nes_plot/examples/basic/input/example_ranks.csv --enrichment plugins/gsea_ridge_nes_plot/examples/basic/input/example_enrichment.csv --genesets plugins/gsea_ridge_nes_plot/examples/basic/input/example_pathways.gmt --params plugins/gsea_ridge_nes_plot/examples/basic/params.json --output /tmp/gsea_ridge_nes_plot_basic_out"
+      },
+      "bundle": "../examples/basic",
+      "gallery_png": "basic.png",
+      "params_filename": "example_basic_params.json"
+    }
+  ]
+}

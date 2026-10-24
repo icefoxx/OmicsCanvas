@@ -1,17 +1,25 @@
-name: sca_volcano_plot
-display_name: SCA Volcano Plot
-description: Standardized wrapper for SCA VocalnoPlot.R functions (volcanoPlot, avgVolcano, percentVocalno) for marker/differential volcano visualizations.
+id: sca_volcano_plot
+name: SCA Volcano Plot
+version: 1.0.0
+description: Standardized wrapper for SCA VocalnoPlot.R functions (volcanoPlot, avgVolcano, percentVocalno) for marker/differential
+  volcano visualizations.
+language: R
+entrypoint: plot.R
+category: Scatter
+subcategory: Volcano
+status: stable
+inputs:
+- id: input
+  type: table
+  required: true
+  description: Marker/differential table with gene, avg_log2FC, p_val_adj, pct.1, pct.2 (aliases autodetected). Optional cluster
+    and split.by columns.
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- selected_points.csv
 runtime:
   command: Rscript plot.R --input markers.csv --params params.json --output output_dir
-inputs:
-  - name: input
-    type: table
-    required: true
-    description: Marker/differential table with gene, avg_log2FC, p_val_adj, pct.1, pct.2 (aliases autodetected). Optional cluster and split.by columns.
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - run.log
-  - selected_points.csv

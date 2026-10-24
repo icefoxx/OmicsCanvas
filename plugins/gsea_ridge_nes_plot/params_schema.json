@@ -1,0 +1,196 @@
+{
+  "data": {
+    "gene_col": {
+      "type": "column",
+      "description": "Gene id column in the rank / log2FC table. Auto-detected when empty."
+    },
+    "stat_col": {
+      "type": "column",
+      "description": "Ranking statistic column (log2FC). Auto-detected when empty."
+    },
+    "term_col": {
+      "type": "column",
+      "description": "Pathway/term column in the GSEA table. Auto-detected when empty."
+    },
+    "nes_col": {
+      "type": "column",
+      "description": "NES column. Auto-detected when empty."
+    },
+    "pvalue_col": {
+      "type": "column",
+      "description": "Raw p-value column. Auto-detected when empty."
+    },
+    "fdr_col": {
+      "type": "column",
+      "description": "Adjusted p-value / FDR column. Auto-detected when empty."
+    },
+    "leading_genes_col": {
+      "type": "column",
+      "description": "Leading-edge or core_enrichment gene-string column."
+    },
+    "selected_terms": {
+      "type": "array",
+      "items": "string",
+      "description": "Pathway names to plot. Empty uses top_n_terms."
+    },
+    "top_n_terms": {
+      "type": "integer",
+      "default": 20,
+      "description": "Number of pathways when selected_terms is omitted."
+    }
+  },
+  "membership": {
+    "gene_scope": {
+      "type": "string",
+      "enum": [
+        "all_members",
+        "leading_edge"
+      ],
+      "default": "all_members",
+      "description": "Use full gene-set members or leading-edge genes for the ridge."
+    },
+    "min_genes": {
+      "type": "integer",
+      "default": 10,
+      "description": "Drop pathways with fewer matched genes than this."
+    },
+    "min_match_fraction": {
+      "type": "number",
+      "default": 0,
+      "description": "Optional minimum fraction of pathway genes matched to the rank table."
+    },
+    "duplicate_gene_action": {
+      "type": "string",
+      "enum": [
+        "max_abs",
+        "mean",
+        "first",
+        "error"
+      ],
+      "default": "max_abs",
+      "description": "How to collapse duplicate gene ids in the rank table."
+    },
+    "genesets_file": {
+      "type": "string",
+      "description": "Optional GMT path when --genesets is not passed."
+    }
+  },
+  "ordering": {
+    "order_by": {
+      "type": "string",
+      "enum": [
+        "NES",
+        "abs_NES",
+        "pvalue",
+        "padj",
+        "custom"
+      ],
+      "default": "NES",
+      "description": "Y-axis order. NES is descending (positive enrichment at the top)."
+    },
+    "pathway_order": {
+      "type": "array",
+      "items": "string",
+      "description": "Explicit order when order_by is custom."
+    }
+  },
+  "significance": {
+    "significance_source": {
+      "type": "string",
+      "enum": [
+        "pvalue",
+        "padj"
+      ],
+      "default": "pvalue",
+      "description": "Which p-value maps to ridge fill."
+    }
+  },
+  "axes": {
+    "xlim": {
+      "type": "array",
+      "items": "number",
+      "description": "Optional [min, max] for log2FC. Empty uses the data range."
+    },
+    "xlim_quantile": {
+      "type": "number",
+      "default": 0.01,
+      "description": "Trim this quantile from each tail when xlim is empty."
+    },
+    "xlab": {
+      "type": "string",
+      "default": "log2(Fold Change)"
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "marks": {
+    "ridge_scale": {
+      "type": "number",
+      "default": 1.05
+    },
+    "ridge_alpha": {
+      "type": "number",
+      "default": 0.88
+    },
+    "ridge_outline_color": {
+      "type": "color",
+      "default": "#111111"
+    },
+    "ridge_outline_width": {
+      "type": "number",
+      "default": 0.35
+    },
+    "zero_line_color": {
+      "type": "color",
+      "default": "#555555"
+    },
+    "zero_line_width": {
+      "type": "number",
+      "default": 0.45
+    },
+    "bubble_min_size": {
+      "type": "number",
+      "default": 2.4
+    },
+    "bubble_max_size": {
+      "type": "number",
+      "default": 8.5
+    }
+  },
+  "layout": {
+    "width": {
+      "type": "number",
+      "default": 9.2
+    },
+    "height": {
+      "type": "number",
+      "default": 7.2
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 300
+    },
+    "font_family": {
+      "type": "string",
+      "default": "sans"
+    },
+    "base_size": {
+      "type": "number",
+      "default": 11
+    },
+    "legend_position": {
+      "type": "string",
+      "default": "right"
+    },
+    "bubble_panel_width": {
+      "type": "number",
+      "default": 0.28
+    }
+  }
+}

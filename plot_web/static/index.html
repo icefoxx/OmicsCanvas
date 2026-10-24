@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Plot Studio | OmicsCanvas</title>
-  <link rel="stylesheet" href="/static/styles.css?v=discovery-4">
+  <link rel="stylesheet" href="/static/styles.css?v=vnext-1">
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -233,6 +233,7 @@
                 <strong>Status</strong>
                 <div id="jobStatus" class="job-status">Ready for run.</div>
               </div>
+              <div id="validationPanel" class="validation-panel" hidden aria-live="polite"></div>
               <!-- Secondary full file list (non-primary formats stay here) -->
               <div id="downloadLinks" class="downloads export-cta-row" hidden></div>
             </div>
@@ -336,7 +337,8 @@
     <span id="outputPathText"></span>
   </footer>
 
-  <script src="/static/discovery.js?v=discovery-4"></script>
-  <script src="/static/app.js?v=discovery-4"></script>
+  <script src="/static/html_utils.js?v=2"></script>
+  <script src="/static/discovery.js?v=migrate-stacked-bar-1"></script>
+  <script src="/static/app.js?v=vnext-1"></script>
 </body>
 </html>

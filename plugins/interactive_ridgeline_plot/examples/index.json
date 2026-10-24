@@ -20,22 +20,22 @@
       "params_filename": "example_basic_params.json"
     },
     {
-      "id": "chiplot",
-      "label": "chiplot",
+      "id": "CAB_demo",
+      "label": "CAB_demo",
       "plugin_id": "interactive_ridgeline_plot",
       "plot_type": "wide",
       "mode": "",
-      "params": "../examples/chiplot/params.json",
+      "params": "../examples/CAB_demo/params.json",
       "inputs": {
-        "input": "input/example_chiplot_input.csv"
+        "input": "input/example_CAB_demo_input.csv"
       },
-      "expected": "../examples/chiplot/expected/result.png",
+      "expected": "../examples/CAB_demo/expected/result.png",
       "reproduce": {
-        "command": "Rscript plugins/interactive_ridgeline_plot/plot.R --input plugins/interactive_ridgeline_plot/examples/chiplot/input/example_chiplot_input.csv --params plugins/interactive_ridgeline_plot/examples/chiplot/params.json --output /tmp/interactive_ridgeline_plot_chiplot_out"
+        "command": "Rscript plugins/interactive_ridgeline_plot/plot.R --input plugins/interactive_ridgeline_plot/examples/CAB_demo/input/example_CAB_demo_input.csv --params plugins/interactive_ridgeline_plot/examples/CAB_demo/params.json --output /tmp/interactive_ridgeline_plot_CAB_demo_out"
       },
-      "bundle": "../examples/chiplot",
-      "gallery_png": "chiplot.png",
-      "params_filename": "example_chiplot_params.json"
+      "bundle": "../examples/CAB_demo",
+      "gallery_png": "CAB_demo.png",
+      "params_filename": "example_CAB_demo_params.json"
     },
     {
       "id": "custom_layout",

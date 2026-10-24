@@ -1,21 +1,31 @@
-name: dot_plot
-display_name: Dot Plot
-description: Standardized SCA dot plot wrapper for jjplot2.R (custDotplot / jjDotPlot1). Supports precomputed tidy data frames and aggregate mode from an expression matrix plus annotation, with optional dendrograms.
+id: dot_plot
+name: Dot Plot
+version: 1.0.0
+description: 'Show how strongly and how widely genes are expressed across cell types or samples. Color is typical mean expression;
+  dot size is the fraction of cells that express the gene. Commonly used for marker panels, cluster annotation, and comparing
+  gene programs between groups.
+
+  '
+language: R
+entrypoint: plot.R
+category: Expression / Statistics
+subcategory: Expression
+status: stable
+inputs:
+- id: input
+  type: table
+  required: true
+  description: Tidy data frame (precomputed) or genes x cells matrix (aggregate).
+- id: annot
+  type: table
+  required: false
+  description: Cell annotation with a cluster column (required for aggregate mode).
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- selected_rows.csv
 runtime:
   command: Rscript plot.R --input data.csv [--annot annotation.csv] --params params.json --output output_dir
-inputs:
-  - name: input
-    type: table
-    required: true
-    description: Tidy data frame (precomputed) or genes x cells matrix (aggregate).
-  - name: annot
-    type: table
-    required: false
-    description: Cell annotation with a cluster column (required for aggregate mode).
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - run.log
-  - selected_rows.csv

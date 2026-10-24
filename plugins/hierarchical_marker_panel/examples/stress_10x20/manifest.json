@@ -1,0 +1,9 @@
+{
+  "id": "stress_10x20",
+  "label": "Layout stress: 10 cell types x 20 markers",
+  "plugin_id": "hierarchical_marker_panel",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {"command": "Rscript plugins/hierarchical_marker_panel/plot.R --input plugins/hierarchical_marker_panel/examples/stress_10x20/input/example_input.csv --params plugins/hierarchical_marker_panel/examples/stress_10x20/params.json --output /tmp/hierarchical_marker_panel_stress_10x20"}
+}

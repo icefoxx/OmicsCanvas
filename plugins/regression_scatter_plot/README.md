@@ -1,6 +1,6 @@
 # Regression Scatter Plot
 
-Multi-group scatter with per-group **linear** or **loess** regression, confidence band, and ChiPlot-style **formula / R² / P** annotations.
+Multi-group scatter with per-group **linear** or **loess** regression, confidence band, and CAB_demo-style **formula / R² / P** annotations.
 
 ## Check first
 
@@ -22,7 +22,7 @@ Multi-group scatter with per-group **linear** or **loess** regression, confidenc
 | `ci_show` | confidence band |
 | `formula_show` / `r2_show` / `p_show` | annotation toggles |
 | `group_colors` | named group → hex |
-| `point_size` | ChiPlot-style size (~40) |
+| `point_size` | CAB_demo-style size (~40) |
 | `stroke_as_fill` | no point outline |
 
 ## Run
@@ -30,7 +30,7 @@ Multi-group scatter with per-group **linear** or **loess** regression, confidenc
 ```bash
 Rscript plugins/regression_scatter_plot/plot.R \
   --input plugins/regression_scatter_plot/example_input.csv \
-  --params plugins/regression_scatter_plot/example_chiplot_params.json \
+  --params plugins/regression_scatter_plot/example_CAB_demo_params.json \
   --output /tmp/regression_scatter_out
 ```
 

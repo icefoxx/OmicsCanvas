@@ -10,19 +10,19 @@
     },
     "row_id_column": {
       "label": "Row Id Column",
-      "type": "string"
+      "type": "column"
     },
     "row_column": {
       "label": "Row Column",
-      "type": "string"
+      "type": "column"
     },
     "column_column": {
       "label": "Column Column",
-      "type": "string"
+      "type": "column"
     },
     "value_column": {
       "label": "Value Column",
-      "type": "string"
+      "type": "column"
     },
     "column_include": {
       "label": "Column Include",
@@ -70,7 +70,7 @@
     },
     "group_column": {
       "label": "Group Column",
-      "type": "string"
+      "type": "column"
     }
   },
   "order": {
@@ -100,7 +100,7 @@
     },
     "group_column": {
       "label": "Group Column",
-      "type": "string"
+      "type": "column"
     },
     "group_order": {
       "label": "Group Order",
@@ -158,11 +158,7 @@
     },
     "false_color": {
       "label": "False Color",
-      "type": "string"
-    },
-    "border_color": {
-      "label": "Border Color",
-      "type": "string"
+      "type": "color"
     },
     "border_width": {
       "label": "Border Width",
@@ -174,7 +170,7 @@
     },
     "missing_color": {
       "label": "Missing Color",
-      "type": "string"
+      "type": "color"
     },
     "missing_show": {
       "label": "Missing Show",
@@ -212,23 +208,22 @@
     },
     "title_color": {
       "label": "Title Color",
-      "type": "string"
+      "type": "color"
     },
     "title_face": {
       "label": "Title Face",
-      "type": "string"
+      "type": "select",
+      "options": [
+        "plain",
+        "bold",
+        "italic",
+        "bold.italic"
+      ],
+      "default": "plain"
     },
     "title_hjust": {
       "label": "Title Hjust",
       "type": "number"
-    },
-    "x_text_show": {
-      "label": "X Text Show",
-      "type": "boolean"
-    },
-    "y_text_show": {
-      "label": "Y Text Show",
-      "type": "boolean"
     },
     "x_text_size": {
       "label": "X Text Size",
@@ -248,11 +243,11 @@
     },
     "x_text_color": {
       "label": "X Text Color",
-      "type": "string"
+      "type": "color"
     },
     "y_text_color": {
       "label": "Y Text Color",
-      "type": "string"
+      "type": "color"
     },
     "axis_line_show": {
       "label": "Axis Line Show",
@@ -260,7 +255,7 @@
     },
     "axis_line_color": {
       "label": "Axis Line Color",
-      "type": "string"
+      "type": "color"
     },
     "grid_show": {
       "label": "Grid Show",
@@ -268,7 +263,7 @@
     },
     "grid_color": {
       "label": "Grid Color",
-      "type": "string"
+      "type": "color"
     },
     "grid_width": {
       "label": "Grid Width",
@@ -280,7 +275,7 @@
     },
     "panel_border_color": {
       "label": "Panel Border Color",
-      "type": "string"
+      "type": "color"
     },
     "panel_border_width": {
       "label": "Panel Border Width",
@@ -300,18 +295,6 @@
       "label": "Row Group Colors",
       "type": "object"
     },
-    "column_group_colors": {
-      "label": "Column Group Colors",
-      "type": "object"
-    },
-    "group_strip_show": {
-      "label": "Group Strip Show",
-      "type": "boolean"
-    },
-    "group_strip_size": {
-      "label": "Group Strip Size",
-      "type": "number"
-    },
     "cell_label_show": {
       "label": "Cell Label Show",
       "type": "boolean"
@@ -326,7 +309,7 @@
     },
     "cell_label_color": {
       "label": "Cell Label Color",
-      "type": "string"
+      "type": "color"
     },
     "highlight_rows": {
       "label": "Highlight Rows",
@@ -334,7 +317,7 @@
     },
     "highlight_columns": {
       "label": "Highlight Columns",
-      "type": "string_array"
+      "type": "columns"
     },
     "highlight_cells": {
       "label": "Highlight Cells",
@@ -342,7 +325,7 @@
     },
     "highlight_color": {
       "label": "Highlight Color",
-      "type": "string"
+      "type": "color"
     },
     "highlight_size": {
       "label": "Highlight Size",
@@ -377,24 +360,12 @@
     "legend_key_size": {
       "label": "Legend Key Size",
       "type": "number"
-    },
-    "legend_ncol": {
-      "label": "Legend Ncol",
-      "type": "number"
     }
   },
   "interaction": {
     "interactive": {
       "label": "Interactive",
       "type": "boolean"
-    },
-    "tooltip_columns": {
-      "label": "Tooltip Columns",
-      "type": "string_array"
-    },
-    "hover_template": {
-      "label": "Hover Template",
-      "type": "string"
     },
     "selectable": {
       "label": "Selectable",
@@ -406,14 +377,6 @@
     },
     "zoom": {
       "label": "Zoom",
-      "type": "boolean"
-    },
-    "pan": {
-      "label": "Pan",
-      "type": "boolean"
-    },
-    "reset_view": {
-      "label": "Reset View",
       "type": "boolean"
     }
   },
@@ -428,11 +391,11 @@
     },
     "panel_background": {
       "label": "Panel Background",
-      "type": "string"
+      "type": "color"
     },
     "plot_background": {
       "label": "Plot Background",
-      "type": "string"
+      "type": "color"
     },
     "aspect_ratio": {
       "label": "Aspect Ratio",
@@ -453,18 +416,6 @@
     "dpi": {
       "label": "Dpi",
       "type": "number"
-    },
-    "html_width": {
-      "label": "Html Width",
-      "type": "number"
-    },
-    "html_height": {
-      "label": "Html Height",
-      "type": "number"
-    },
-    "export_formats": {
-      "label": "Export Formats",
-      "type": "string_array"
     }
   }
 }

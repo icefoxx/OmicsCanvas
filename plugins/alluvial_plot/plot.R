@@ -493,6 +493,8 @@ tryCatch({
     aes(fill = fill_key),
     flow.alpha = flow_alpha,
     node.color = if (nzchar(stratum_border_color)) stratum_border_color else NA,
+    node.alpha = stratum_alpha,
+    node.linewidth = stratum_border_width,
     width = stratum_width,
     smooth = flow_smooth,
     type = type_geom,
@@ -572,10 +574,9 @@ tryCatch({
   }
   save_plot(function() svglite::svglite(file.path(output_dir, 'result.svg'), width = W, height = H))
   save_plot(function() grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = W, height = H))
-  save_plot(function() grDevices::png(
+  save_plot(function() (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(
     file.path(output_dir, 'result.png'),
-    width = W, height = H, units = 'in', res = dpi, type = 'cairo'
-  ))
+    width = W, height = H, units = 'in', res = dpi))
 
   # side outputs
   write.csv(long_df, file.path(output_dir, 'alluvia_used.csv'), row.names = FALSE)

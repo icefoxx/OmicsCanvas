@@ -3,7 +3,10 @@
   "y_column": "y",
   "group_column": "group",
   "id_column": "id",
-  "group_order": ["A", "B"],
+  "group_order": [
+    "A",
+    "B"
+  ],
   "group_colors": {
     "A": "#66C2A5",
     "B": "#FC8D62"
@@ -22,7 +25,7 @@
   "p_show": true,
   "formula_font_size": 14,
   "legend_show": true,
-  "legend_title": "ChiPlot",
+  "legend_title": "CAB_demo",
   "legend_title_font_weight": "bold",
   "legend_position": "right",
   "grid_show": true,

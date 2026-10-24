@@ -15,5 +15,5 @@ Static output is written as SVG, PDF, and PNG. HTML uses Plotly when installed a
 Reproduce all examples and portable bundles with:
 
 ```bash
-plugins/interactive_binary_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/interactive_binary_plot/run_all_examples.sh <repo-root>
 ```

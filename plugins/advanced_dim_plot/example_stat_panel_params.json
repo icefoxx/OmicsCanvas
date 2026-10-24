@@ -4,15 +4,18 @@
   "y_column": "dim2",
   "id_column": "cell",
   "group_column": "cluster",
-  "split_column": "sample",
+  "split_column": "orig.ident",
   "facet_split": false,
-  "stat_plot_column": "sample",
+  "stat_plot_column": "orig.ident",
   "show_stat_panel": true,
-  "stat_panel_group_column": "sample",
+  "stat_panel_group_column": "orig.ident",
   "stat_panel_stat_column": "cluster",
   "stat_plot_source": "percent",
   "stat_plot_position": "stack",
-  "stat_rel_heights": [3, 0.9],
+  "stat_rel_heights": [
+    3,
+    1.2
+  ],
   "title": "Dim Plot With Composition Bar Panel",
   "subtitle": "Lower panel mirrors advDimPlot stat.plot.by-style summaries",
   "point_size": 0.85,
@@ -21,5 +24,6 @@
   "stat_legend_position": "right",
   "theme_use": "classic",
   "width": 7.5,
-  "height": 7.2
+  "height": 7.2,
+  "stat_x_label_wrap": 10
 }

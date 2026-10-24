@@ -1,0 +1,65 @@
+{
+  "plugin_id": "hierarchical_marker_panel",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Basic hierarchical marker panel",
+      "plugin_id": "hierarchical_marker_panel",
+      "params": "../examples/basic/params.json",
+      "inputs": {"input": "input/example_input.csv"},
+      "expected": "../examples/basic/expected/result.png",
+      "bundle": "../examples/basic"
+    },
+    {
+      "id": "CAB_demo",
+      "label": "CAB_demo",
+      "plugin_id": "hierarchical_marker_panel",
+      "params": "../examples/CAB_demo/params.json",
+      "inputs": {"input": "input/example_input.csv"},
+      "expected": "../examples/CAB_demo/expected/result.png",
+      "bundle": "../examples/CAB_demo"
+    },
+    {
+      "id": "sample_percent",
+      "label": "Sample composition percent",
+      "plugin_id": "hierarchical_marker_panel",
+      "params": "../examples/sample_percent/params.json",
+      "inputs": {"input": "input/example_input.csv"},
+      "expected": "../examples/sample_percent/expected/result.png",
+      "bundle": "../examples/sample_percent"
+    },
+    {
+      "id": "stress_3x5",
+      "label": "Layout stress: 3 cell types x 5 markers",
+      "plugin_id": "hierarchical_marker_panel",
+      "params": "../examples/stress_3x5/params.json",
+      "inputs": {"input": "input/example_input.csv"},
+      "expected": "../examples/stress_3x5/expected/result.png",
+      "bundle": "../examples/stress_3x5"
+    },
+    {
+      "id": "stress_10x20",
+      "label": "Layout stress: 10 cell types x 20 markers",
+      "plugin_id": "hierarchical_marker_panel",
+      "params": "../examples/stress_10x20/params.json",
+      "inputs": {"input": "input/example_input.csv"},
+      "expected": "../examples/stress_10x20/expected/result.png",
+      "bundle": "../examples/stress_10x20"
+    },
+    {
+      "id": "stress_30x50",
+      "label": "Layout stress: 30 cell types x 50 markers",
+      "plugin_id": "hierarchical_marker_panel",
+      "params": "../examples/stress_30x50/params.json",
+      "inputs": {"input": "input/example_input.csv"},
+      "expected": "../examples/stress_30x50/expected/result.png",
+      "bundle": "../examples/stress_30x50"
+    },
+    {"id": "summary_bar", "label": "Summary: standard bar", "plugin_id": "hierarchical_marker_panel", "params": "../examples/summary_bar/params.json", "inputs": {"input": "input/example_input.csv"}, "expected": "../examples/summary_bar/expected/result.png", "bundle": "../examples/summary_bar"},
+    {"id": "summary_stacked", "label": "Summary: stacked bar", "plugin_id": "hierarchical_marker_panel", "params": "../examples/summary_stacked/params.json", "inputs": {"input": "input/example_input.csv"}, "expected": "../examples/summary_stacked/expected/result.png", "bundle": "../examples/summary_stacked"},
+    {"id": "summary_grouped", "label": "Summary: grouped bar", "plugin_id": "hierarchical_marker_panel", "params": "../examples/summary_grouped/params.json", "inputs": {"input": "input/example_input.csv"}, "expected": "../examples/summary_grouped/expected/result.png", "bundle": "../examples/summary_grouped"},
+    {"id": "summary_pie", "label": "Summary: pie per cluster", "plugin_id": "hierarchical_marker_panel", "params": "../examples/summary_pie/params.json", "inputs": {"input": "input/example_input.csv"}, "expected": "../examples/summary_pie/expected/result.png", "bundle": "../examples/summary_pie"},
+    {"id": "summary_donut", "label": "Summary: donut per cluster", "plugin_id": "hierarchical_marker_panel", "params": "../examples/summary_donut/params.json", "inputs": {"input": "input/example_input.csv"}, "expected": "../examples/summary_donut/expected/result.png", "bundle": "../examples/summary_donut"
+    }
+  ]
+}

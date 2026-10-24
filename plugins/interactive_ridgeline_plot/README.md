@@ -1,15 +1,15 @@
 # Interactive Ridgeline Plot
 
-Stacked density ridges (joyplot / ChiPlot ridge). **Do not add a second ridgeline plugin** — extend this one.
+Stacked density ridges (joyplot / CAB_demo ridge). **Do not add a second ridgeline plugin** — extend this one.
 
 Run:
 
 ```bash
-# ChiPlot-style ridges
+# CAB_demo-style ridges
 Rscript plugins/interactive_ridgeline_plot/plot.R \
-  --input plugins/interactive_ridgeline_plot/example_chiplot_input.csv \
-  --params plugins/interactive_ridgeline_plot/example_chiplot_params.json \
-  --output /tmp/ridgeline_chiplot_out
+  --input plugins/interactive_ridgeline_plot/example_CAB_demo_input.csv \
+  --params plugins/interactive_ridgeline_plot/example_CAB_demo_params.json \
+  --output /tmp/ridgeline_CAB_demo_out
 
 # Basic
 Rscript plugins/interactive_ridgeline_plot/plot.R \
@@ -24,7 +24,7 @@ Rscript plugins/interactive_ridgeline_plot/plot.R \
   --output /tmp/ridgeline_grouped_out
 ```
 
-ChiPlot aliases: `fill_opacity`, `stroke_as_fill`, `sample_count`, `point_switch` / `r`, quantile 50% via `quantile_line_show`.
+CAB_demo aliases: `fill_opacity`, `stroke_as_fill`, `sample_count`, `point_switch` / `r`, quantile 50% via `quantile_line_show`.
 
 The plugin accepts wide data (`sample,Feature A,Feature B,...`) and long data (`feature,value,group`, with optional `sample`). In auto mode, a long table is recognized from feature/value aliases. Explicit `input_mode` and column parameters are recommended for pipelines.
 
@@ -39,5 +39,5 @@ The computed `distribution_data_used.csv` is the exact normalized data used for 
 To reproduce all supplied examples and create copied-input manifests:
 
 ```bash
-plugins/interactive_ridgeline_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/interactive_ridgeline_plot/run_all_examples.sh <repo-root>
 ```

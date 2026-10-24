@@ -4,14 +4,34 @@
       "type": "select",
       "label": "Input mode",
       "default": "auto",
-      "options": ["auto", "wide", "long"]
+      "options": [
+        "auto",
+        "wide",
+        "long"
+      ]
     },
-    "row_column": { "type": "column", "label": "Row / category column", "default": null },
-    "column_column": { "type": "column", "label": "Column id (long mode)", "default": "column" },
-    "value_column": { "type": "column", "label": "Value (long mode)", "default": "value" },
-    "mark_column": { "type": "column", "label": "Mark column (long mode)", "default": "mark" },
+    "row_column": {
+      "type": "column",
+      "label": "Row / category column",
+      "default": null
+    },
+    "column_column": {
+      "type": "column",
+      "label": "Column id (long mode)",
+      "default": "column"
+    },
+    "value_column": {
+      "type": "column",
+      "label": "Value (long mode)",
+      "default": "value"
+    },
+    "mark_column": {
+      "type": "column",
+      "label": "Mark column (long mode)",
+      "default": "mark"
+    },
     "value_columns": {
-      "type": "string_array",
+      "type": "columns",
       "label": "Value columns (wide mode)",
       "default": [],
       "help": "Empty = all numeric columns except row label"
@@ -20,16 +40,50 @@
       "type": "select",
       "label": "How to map value → pie fill",
       "default": "fraction",
-      "options": ["fraction", "binary", "abs_correlation", "rescale", "percent"],
+      "options": [
+        "fraction",
+        "binary",
+        "abs_correlation",
+        "rescale",
+        "percent"
+      ],
       "help": "fraction: 0–1 ratio; binary: >0 full; abs_correlation: |r|; rescale: min–max; percent: /100"
     },
-    "min_value_show": { "type": "number", "label": "Min value to fill (else hollow)", "default": 0 },
-    "rows_include": { "type": "string_array", "label": "Rows include", "default": [] },
-    "rows_exclude": { "type": "string_array", "label": "Rows exclude", "default": [] },
-    "columns_include": { "type": "string_array", "label": "Columns include", "default": [] },
-    "columns_exclude": { "type": "string_array", "label": "Columns exclude", "default": [] },
-    "row_order": { "type": "string_array", "label": "Row order", "default": [] },
-    "column_order": { "type": "string_array", "label": "Column order", "default": [] },
+    "min_value_show": {
+      "type": "number",
+      "label": "Min value to fill (else hollow)",
+      "default": 0
+    },
+    "rows_include": {
+      "type": "string_array",
+      "label": "Rows include",
+      "default": []
+    },
+    "rows_exclude": {
+      "type": "string_array",
+      "label": "Rows exclude",
+      "default": []
+    },
+    "columns_include": {
+      "type": "string_array",
+      "label": "Columns include",
+      "default": []
+    },
+    "columns_exclude": {
+      "type": "string_array",
+      "label": "Columns exclude",
+      "default": []
+    },
+    "row_order": {
+      "type": "string_array",
+      "label": "Row order",
+      "default": []
+    },
+    "column_order": {
+      "type": "string_array",
+      "label": "Column order",
+      "default": []
+    },
     "label_duplicate_rows": {
       "type": "boolean",
       "label": "Show every duplicate row label",
@@ -37,83 +91,269 @@
     }
   },
   "circle": {
-    "circle_radius": { "type": "number", "label": "Circle radius (cell units)", "default": 0.38 },
-    "empty_fill": { "type": "color", "label": "Hollow circle fill", "default": "#FFFFFF" },
-    "circle_border_color": { "type": "color", "label": "Circle border", "default": "#222222" },
-    "circle_border_width": { "type": "number", "label": "Border width", "default": 0.45 },
-    "show_zero_circles": { "type": "boolean", "label": "Draw hollow circles for 0", "default": true },
-    "pie_start_angle": { "type": "number", "label": "Pie start angle (deg, 90=top)", "default": 90 },
-    "pie_clockwise": { "type": "boolean", "label": "Pie fills clockwise", "default": true },
-    "pie_segments": { "type": "integer", "label": "Pie polygon segments", "default": 48 }
+    "circle_radius": {
+      "type": "number",
+      "label": "Circle radius (cell units)",
+      "default": 0.38
+    },
+    "empty_fill": {
+      "type": "color",
+      "label": "Hollow circle fill",
+      "default": "#FFFFFF"
+    },
+    "circle_border_color": {
+      "type": "color",
+      "label": "Circle border",
+      "default": "#222222"
+    },
+    "circle_border_width": {
+      "type": "number",
+      "label": "Border width",
+      "default": 0.45
+    },
+    "show_zero_circles": {
+      "type": "boolean",
+      "label": "Draw hollow circles for 0",
+      "default": true
+    },
+    "pie_start_angle": {
+      "type": "number",
+      "label": "Pie start angle (deg, 90=top)",
+      "default": 90
+    },
+    "pie_clockwise": {
+      "type": "boolean",
+      "label": "Pie fills clockwise",
+      "default": true
+    },
+    "pie_segments": {
+      "type": "integer",
+      "label": "Pie polygon segments",
+      "default": 48
+    }
   },
   "color": {
     "palette": {
       "type": "select",
       "label": "Row-category palette",
       "default": "habitat",
-      "options": ["habitat", "ocean", "npg", "aaas", "soft"]
+      "options": [
+        "habitat",
+        "ocean",
+        "npg",
+        "aaas",
+        "soft"
+      ]
     },
     "row_colors": {
       "type": "object",
       "label": "Per-row colors {name: #hex}",
       "default": {}
     },
-    "row_stripe_show": { "type": "boolean", "label": "Row background stripes", "default": true },
-    "row_stripe_alpha": { "type": "number", "label": "Stripe opacity", "default": 0.12 },
-    "column_band_show": { "type": "boolean", "label": "Column group bands", "default": true },
-    "column_band_height": { "type": "number", "label": "Column band height", "default": 0.35 }
+    "row_stripe_show": {
+      "type": "boolean",
+      "label": "Row background stripes",
+      "default": true
+    },
+    "row_stripe_alpha": {
+      "type": "number",
+      "label": "Stripe opacity",
+      "default": 0.12
+    },
+    "column_band_show": {
+      "type": "boolean",
+      "label": "Column group bands",
+      "default": true
+    },
+    "column_band_height": {
+      "type": "number",
+      "label": "Column band height",
+      "default": 0.35
+    }
   },
   "marks": {
-    "mark_size": { "type": "number", "label": "Center mark size", "default": 2.8 },
-    "mark_color": { "type": "color", "label": "Center mark color", "default": "#111111" },
+    "mark_size": {
+      "type": "number",
+      "label": "Center mark size",
+      "default": 2.8
+    },
+    "mark_color": {
+      "type": "color",
+      "label": "Center mark color",
+      "default": "#111111"
+    },
     "mark_use_row_color": {
       "type": "boolean",
       "label": "Mark uses row color",
       "default": false
     },
-    "marks_row_column": { "type": "string", "label": "Marks file: row column", "default": "category" },
-    "marks_column_column": { "type": "string", "label": "Marks file: column id column", "default": "column" },
-    "marks_mark_column": { "type": "string", "label": "Marks file: mark column", "default": "mark" }
+    "marks_row_column": {
+      "type": "column",
+      "label": "Marks file: row column",
+      "default": "category"
+    },
+    "marks_column_column": {
+      "type": "column",
+      "label": "Marks file: column id column",
+      "default": "column"
+    },
+    "marks_mark_column": {
+      "type": "column",
+      "label": "Marks file: mark column",
+      "default": "mark"
+    }
   },
   "labels": {
-    "x_text_size": { "type": "number", "label": "Column label size", "default": 8 },
-    "x_text_angle": { "type": "number", "label": "Column label angle", "default": 90 },
-    "x_text_color": { "type": "color", "label": "Column label color", "default": "#222222" },
-    "x_text_hjust": { "type": "number", "label": "Column label hjust", "default": 1 },
-    "x_text_vjust": { "type": "number", "label": "Column label vjust", "default": 0.5 },
-    "y_text_size": { "type": "number", "label": "Row label size", "default": 10 },
-    "y_text_color": { "type": "color", "label": "Row label color", "default": "#222222" }
+    "x_text_size": {
+      "type": "number",
+      "label": "Column label size",
+      "default": 8
+    },
+    "x_text_angle": {
+      "type": "number",
+      "label": "Column label angle",
+      "default": 90
+    },
+    "x_text_color": {
+      "type": "color",
+      "label": "Column label color",
+      "default": "#222222"
+    },
+    "x_text_hjust": {
+      "type": "number",
+      "label": "Column label hjust",
+      "default": 1
+    },
+    "x_text_vjust": {
+      "type": "number",
+      "label": "Column label vjust",
+      "default": 0.5
+    },
+    "y_text_size": {
+      "type": "number",
+      "label": "Row label size",
+      "default": 10
+    },
+    "y_text_color": {
+      "type": "color",
+      "label": "Row label color",
+      "default": "#222222"
+    }
   },
   "title": {
-    "title_show": { "type": "boolean", "label": "Show title", "default": false },
-    "title": { "type": "string", "label": "Title", "default": "Pie Dot Matrix" },
-    "title_size": { "type": "number", "label": "Title size", "default": 14 },
-    "title_color": { "type": "color", "label": "Title color", "default": "#222222" },
+    "title_show": {
+      "type": "boolean",
+      "label": "Show title",
+      "default": false
+    },
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "default": "Pie Dot Matrix"
+    },
+    "title_size": {
+      "type": "number",
+      "label": "Title size",
+      "default": 14
+    },
+    "title_color": {
+      "type": "color",
+      "label": "Title color",
+      "default": "#222222"
+    },
     "title_face": {
       "type": "select",
       "label": "Title face",
       "default": "bold",
-      "options": ["plain", "bold", "italic"]
+      "options": [
+        "plain",
+        "bold",
+        "italic"
+      ]
     },
-    "title_hjust": { "type": "number", "label": "Title hjust", "default": 0.5 }
+    "title_hjust": {
+      "type": "number",
+      "label": "Title hjust",
+      "default": 0.5
+    }
   },
   "legend": {
-    "legend_show": { "type": "boolean", "label": "Show legend", "default": false },
-    "legend_title": { "type": "string", "label": "Legend title", "default": "Category" }
+    "legend_show": {
+      "type": "boolean",
+      "label": "Show legend",
+      "default": false
+    },
+    "legend_title": {
+      "type": "string",
+      "label": "Legend title",
+      "default": "Category"
+    }
   },
   "canvas": {
-    "width": { "type": "number", "label": "Width (in)", "default": 12 },
-    "height": { "type": "number", "label": "Height (in)", "default": 5.5 },
-    "dpi": { "type": "number", "label": "PNG DPI", "default": 300 },
-    "font_family": { "type": "string", "label": "Font family", "default": "sans" },
-    "base_size": { "type": "number", "label": "Base font size", "default": 11 },
-    "background_color": { "type": "color", "label": "Background", "default": "#FFFFFF" },
-    "panel_border": { "type": "boolean", "label": "Panel border", "default": true },
-    "panel_border_color": { "type": "color", "label": "Panel border color", "default": "#333333" },
-    "panel_border_width": { "type": "number", "label": "Panel border width", "default": 0.6 },
-    "margin_top": { "type": "number", "label": "Margin top", "default": 12 },
-    "margin_right": { "type": "number", "label": "Margin right", "default": 10 },
-    "margin_bottom": { "type": "number", "label": "Margin bottom", "default": 8 },
-    "margin_left": { "type": "number", "label": "Margin left", "default": 8 }
+    "width": {
+      "type": "number",
+      "label": "Width (in)",
+      "default": 12
+    },
+    "height": {
+      "type": "number",
+      "label": "Height (in)",
+      "default": 5.5
+    },
+    "dpi": {
+      "type": "number",
+      "label": "PNG DPI",
+      "default": 300
+    },
+    "font_family": {
+      "type": "string",
+      "label": "Font family",
+      "default": "sans"
+    },
+    "base_size": {
+      "type": "number",
+      "label": "Base font size",
+      "default": 11
+    },
+    "background_color": {
+      "type": "color",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    "panel_border": {
+      "type": "boolean",
+      "label": "Panel border",
+      "default": true
+    },
+    "panel_border_color": {
+      "type": "color",
+      "label": "Panel border color",
+      "default": "#333333"
+    },
+    "panel_border_width": {
+      "type": "number",
+      "label": "Panel border width",
+      "default": 0.6
+    },
+    "margin_top": {
+      "type": "number",
+      "label": "Margin top",
+      "default": 12
+    },
+    "margin_right": {
+      "type": "number",
+      "label": "Margin right",
+      "default": 10
+    },
+    "margin_bottom": {
+      "type": "number",
+      "label": "Margin bottom",
+      "default": 8
+    },
+    "margin_left": {
+      "type": "number",
+      "label": "Margin left",
+      "default": 8
+    }
   }
 }

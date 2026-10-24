@@ -1,47 +1,89 @@
 id: stacked_bar_plot
 name: Stacked Bar Plot
-display_name: Stacked Bar Plot
 version: 1.0.0
-author: OmicsCanvas
-description: >
-  ChiPlot-style highly customizable stacked (or dodged) composition bar chart.
-  Supports horizontal/vertical orientation, absolute or percent values, group-
-  clustered sample bars, per-category colors, full axis/tick/grid/title/legend
-  styling, and bar text labels.
+description: 'CAB_demo-style highly customizable stacked (or dodged) composition bar chart. Supports horizontal/vertical orientation,
+  absolute or percent values, group- clustered sample bars, per-category colors, full axis/tick/grid/title/legend styling,
+  and bar text labels.
+
+  '
 language: R
 entrypoint: plot.R
 category: Expression / Statistics
 subcategory: Composition
 status: stable
+inputs:
+- id: input
+  name: input
+  type: table
+  required: true
+  formats:
+  - csv
+  - tsv
+  - txt
+  description: 'Wide abundance matrix (sample + optional group + numeric category columns) or long table (sample, group, category,
+    value).
+
+    '
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- selected_rows.csv
+- matrix_used.csv
 runtime:
   command: Rscript plot.R --input input.csv --params params.json --output output_dir
-inputs:
-  - id: input
-    name: input
-    type: table
-    required: true
-    formats: [csv, tsv, txt]
-    description: >
-      Wide abundance matrix (sample + optional group + numeric category columns)
-      or long table (sample, group, category, value).
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - run.log
-  - selected_rows.csv
-  - matrix_used.csv
+author: OmicsCanvas
 parameters:
-  input_mode: {type: select, options: [auto, wide, long], default: auto}
-  orientation: {type: select, options: [horizontal, vertical], default: horizontal}
-  position: {type: select, options: [stack, dodge, fill], default: stack}
-  value_mode: {type: select, options: [absolute, percent, proportion], default: absolute}
-  sample_column: {type: column, required: false}
-  group_column: {type: column, required: false}
-  value_columns: {type: columns, required: false}
-  stack_column: {type: column, required: false}
-  value_column: {type: column, required: false}
-  width: {type: number, default: 9}
-  height: {type: number, default: 7}
-  dpi: {type: number, default: 300}
+  input_mode:
+    type: select
+    options:
+    - auto
+    - wide
+    - long
+    default: auto
+  orientation:
+    type: select
+    options:
+    - horizontal
+    - vertical
+    default: horizontal
+  position:
+    type: select
+    options:
+    - stack
+    - dodge
+    - fill
+    default: stack
+  value_mode:
+    type: select
+    options:
+    - absolute
+    - percent
+    - proportion
+    default: absolute
+  sample_column:
+    type: column
+    required: false
+  group_column:
+    type: column
+    required: false
+  value_columns:
+    type: columns
+    required: false
+  stack_column:
+    type: column
+    required: false
+  value_column:
+    type: column
+    required: false
+  width:
+    type: number
+    default: 9
+  height:
+    type: number
+    default: 7
+  dpi:
+    type: number
+    default: 300

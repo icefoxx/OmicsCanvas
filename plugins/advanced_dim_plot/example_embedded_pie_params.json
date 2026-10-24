@@ -4,15 +4,10 @@
   "y_column": "dim2",
   "id_column": "cell",
   "group_column": "cluster",
-  "stat_plot_column": "sample",
+  "stat_plot_column": "orig.ident",
   "show_stat_embedded": true,
   "stat_embedded_size": 0.045,
   "stat_embedded_alpha": 0.95,
-  "stat_color_map": {
-    "CK": "#4E79A7",
-    "DrugA": "#F28E2B",
-    "DrugB": "#59A14F"
-  },
   "title": "Embedded Composition Pies",
   "subtitle": "Pie charts at cluster centers summarize sample composition",
   "point_size": 0.65,

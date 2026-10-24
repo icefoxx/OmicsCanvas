@@ -8,4 +8,4 @@ Set `mode: "pie"` for a solid pie or `mode: "donut"` and `hole_show: true` for a
 
 The data, canvas, pie, colors, labels, legend, hole label, interaction, and output controls are documented in `params_schema.json`. HTML provides hover, legend toggling, zoom/reset controls, and Plotly selection/lasso controls.
 
-Run all three reproducible examples with `plugins/interactive_pie_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas`. This creates independent outputs, bundles, manifests, and a gallery.
+Run all three reproducible examples with `plugins/interactive_pie_plot/run_all_examples.sh <repo-root>`. This creates independent outputs, bundles, manifests, and a gallery.

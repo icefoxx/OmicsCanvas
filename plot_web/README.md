@@ -64,7 +64,17 @@ The backend:
 4. Runs `Rscript plugins/{plugin_id}/plot.R --input ... --params ... --output ...`.
 5. Stores results under `plot_web/storage/results/{job_id}/`.
 
-Optional file fields are supported when a plugin needs them:
+Extra upload fields are mapped to CLI flags from the plugin's `config.yaml`
+(`inputs[].flag` if set, otherwise a legacy alias below, otherwise `--<id>`):
+
+```yaml
+inputs:
+  - {id: signal, type: table, required: true}        # first required input -> --input
+  - {id: expression, type: table, flag: --expression}
+  - {id: features, type: table}                      # -> --features
+```
+
+Legacy aliases:
 
 ```text
 file or input  -> --input
@@ -111,3 +121,71 @@ matrix_used
 annotation_used
 enrichment_results
 ```
+
+## Storage retention
+
+Jobs, uploads and results accumulate under `plot_web/storage/`. Nothing is
+deleted automatically unless you opt in:
+
+```bash
+export PLOT_STORAGE_CLEANUP_ON_STARTUP=1   # run cleanup when the server starts
+export PLOT_STORAGE_RETENTION_DAYS=30      # remove jobs older than N days (0 = off)
+export PLOT_STORAGE_MAX_JOBS=500           # keep at most N newest jobs (0 = off)
+export PLOT_STATE_MAX_RUNS=300             # plot runs kept in the provenance map
+```
+
+```text
+GET  /api/storage/usage
+POST /api/storage/cleanup   # JSON: retention_days?, max_jobs?, dry_run? (default true)
+```
+
+## Code layout
+
+```text
+plot_web/app.py             FastAPI app: middleware, static mount, router wiring
+plot_web/server/settings.py paths, env settings, locks
+plot_web/server/storage.py  jobs, figure index, provenance state, uploads, retention
+plot_web/server/plugins.py  plugin config, schemas, example bundles, demo inputs
+plot_web/server/runner.py   CLI flag mapping + local subprocess execution
+plot_web/server/tables.py   table preview helpers
+plot_web/server/routes/     one APIRouter per area (plugins, registry, jobs, ai, ...)
+```
+
+Plugin runs, LLM calls and AI demos execute in FastAPI's thread pool, so a long
+R render no longer blocks other requests.
+
+## Smoke-testing plugins
+
+```bash
+python scripts/smoke_plugins.py --max-examples 1            # every plugin
+python scripts/smoke_plugins.py dot_plot sca_volcano_plot    # selected plugins
+```
+
+## PlotSpec, scientific validation and reproduction bundles
+
+Every job (run, run-demo, rerun, AI demos) is lifted into a vNext PlotSpec and
+checked by the scientific guardrails before the plugin runs. The job response
+carries the result under `vnext` (`valid`, `errors`, `warnings`, `infos`,
+`plotspec_hash`), and Studio / the workspace show it under the figure.
+
+```bash
+export PLOT_VALIDATION_MODE=warn      # default: render anyway, report issues
+export PLOT_VALIDATION_MODE=enforce   # do not render when there are scientific errors
+export PLOT_VALIDATION_MODE=off       # skip PlotSpec + validation
+```
+
+Every R run is seeded (`params.seed`, default 42) through
+`R/runtime/omicscanvas.Rprofile`, so jitter, label placement and permutation
+statistics are identical for identical inputs.
+
+```text
+GET  /api/figures/{figure_id}/download/plotspec   # plotspec.json
+GET  /api/figures/{figure_id}/download/validation # validation.json
+GET  /api/figures/{figure_id}/bundle              # zip: plotspec, inputs, params, figures,
+                                                  #      methods.txt, runtime.json, sha256 manifest
+POST /api/vnext/plotspec/from-params              # {plugin_id, params} -> {plotspec}
+POST /api/vnext/plotspec/to-params                # {plotspec} -> {plugin_id, params}
+```
+
+A downloaded bundle reproduces without the web app:
+`python -m vnext.cli reproduce --bundle-dir reproduction_bundle --output /tmp/r --compare`.

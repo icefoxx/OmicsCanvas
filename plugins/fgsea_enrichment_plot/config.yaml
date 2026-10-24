@@ -1,44 +1,117 @@
 id: fgsea_enrichment_plot
 name: FGSEA Enrichment Plot
 version: 2.1.0
-description: Customizable FGSEA summary, classic and gradient running curves, multi-term panels, dot summaries, and composite publication figures.
+description: Customizable FGSEA summary, classic and gradient running curves, multi-term panels, dot summaries, and composite
+  publication figures.
 language: R
 entrypoint: plot.R
-category: Enrichment
+category: Set / Enrichment
+subcategory: Enrichment
 status: stable
 inputs:
-  - id: input
-    type: table
-    formats: [csv, tsv, txt]
-  - id: genesets
-    type: table
-    formats: [gmt, csv, tsv, txt]
-    required: false
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+- id: genesets
+  type: table
+  formats:
+  - gmt
+  - csv
+  - tsv
+  - txt
+  required: false
 outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - result.html
-  - figure.json
-  - enrichment_results.csv
-  - selected_terms.csv
-  - selected_genes.csv
-  - run.log
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- enrichment_results.csv
+- selected_terms.csv
+- selected_genes.csv
+- run.log
 parameters:
-  input_mode: {type: select, options: [auto, precomputed, compute], default: auto}
-  plot_type: {type: select, options: [summary, running, faceted_running, classic_tracks, gradient_curve, grouped_curves, gradient_only, running_multi_panel, multi_group, ridge, gene_sankey, dot_summary, summary_dot, lollipop_summary, composite], default: summary}
-  running_style: {type: select, options: [classic, normal, gradient, gradient_only, multi_term], default: classic}
-  curve_style: {type: select, options: [normal, gradient, multi_term], default: multi_term}
-  selected_terms: {type: string_array, required: false}
-  selected_genes: {type: string_array, required: false}
-  term_colors: {type: color_map, required: false}
-  genesets_file: {type: file, required: false}
-  gene_col: {type: column, required: false}
-  stat_col: {type: column, required: false}
-  term_col: {type: column, required: false}
-  nes_col: {type: column, required: false}
-  fdr_col: {type: column, required: false}
-  leading_genes_col: {type: column, required: false}
-  width: {type: number, default: 8.5}
-  height: {type: number, default: 5.8}
-  dpi: {type: number, default: 300}
+  input_mode:
+    type: select
+    options:
+    - auto
+    - precomputed
+    - compute
+    default: auto
+  plot_type:
+    type: select
+    options:
+    - summary
+    - running
+    - faceted_running
+    - classic_tracks
+    - gradient_curve
+    - grouped_curves
+    - gradient_only
+    - running_multi_panel
+    - multi_group
+    - ridge
+    - gene_sankey
+    - dot_summary
+    - summary_dot
+    - lollipop_summary
+    - composite
+    default: summary
+  running_style:
+    type: select
+    options:
+    - classic
+    - normal
+    - gradient
+    - gradient_only
+    - multi_term
+    default: classic
+  curve_style:
+    type: select
+    options:
+    - normal
+    - gradient
+    - multi_term
+    default: multi_term
+  selected_terms:
+    type: string_array
+    required: false
+  selected_genes:
+    type: string_array
+    required: false
+  term_colors:
+    type: color_map
+    required: false
+  genesets_file:
+    type: file
+    required: false
+  gene_col:
+    type: column
+    required: false
+  stat_col:
+    type: column
+    required: false
+  term_col:
+    type: column
+    required: false
+  nes_col:
+    type: column
+    required: false
+  fdr_col:
+    type: column
+    required: false
+  leading_genes_col:
+    type: column
+    required: false
+  width:
+    type: number
+    default: 8.5
+  height:
+    type: number
+    default: 5.8
+  dpi:
+    type: number
+    default: 300

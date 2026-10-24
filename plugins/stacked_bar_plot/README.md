@@ -1,12 +1,12 @@
 # Stacked Bar Plot
 
-ChiPlot-style highly customizable stacked (or dodged) composition bar chart for multi-sample / multi-group abundance tables.
+CAB_demo-style highly customizable stacked (or dodged) composition bar chart for multi-sample / multi-group abundance tables.
 
 ## Description
 
 Draws horizontal or vertical stacked bars with:
 
-- Sample bars clustered by group (ChiPlot multi-replicate look)
+- Sample bars clustered by group (CAB_demo multi-replicate look)
 - Absolute counts, percent, or proportion stacking
 - Per-category colors, optional color gradient / named palette
 - Full axis styling (tick stroke/length/orientation, text rotate/size/weight, removePath/removeTick, min/max)
@@ -35,19 +35,19 @@ Set `input_mode: "long"` with `stack_column` and `value_column`.
 
 ## Key parameters
 
-See `params_schema.json` for the full ChiPlot-style control surface.
+See `params_schema.json` for the full CAB_demo-style control surface.
 
 | Param | Meaning |
 |-------|---------|
 | `orientation` | `horizontal` (default) or `vertical` |
 | `position` | `stack`, `dodge`, or `fill` |
 | `value_mode` | `absolute`, `percent`, `proportion` |
-| `y_label_mode` | `group` (ChiPlot), `sample`, or `both` |
+| `y_label_mode` | `group` (CAB_demo), `sample`, or `both` |
 | `outerPadding` / `innerPadding` | bar spacing |
 | `category_colors` | named map of category → hex color |
 | `x_axis_text_angle` | tick label rotate (default -45 for horizontal) |
 | `x_min` / `x_max` | numeric axis limits (`min-value` / `max-value`) |
-| `legend_title` | legend header (default `ChiPlot`) |
+| `legend_title` | legend header (default `CAB_demo`) |
 
 ## Output
 
@@ -62,14 +62,14 @@ See `params_schema.json` for the full ChiPlot-style control surface.
 ```bash
 Rscript plugins/stacked_bar_plot/plot.R \
   --input plugins/stacked_bar_plot/example_input.csv \
-  --params plugins/stacked_bar_plot/example_chiplot_params.json \
+  --params plugins/stacked_bar_plot/example_CAB_demo_params.json \
   --output /tmp/stacked_bar_out
 ```
 
 ## Examples
 
 - `example_basic_params.json` — minimal stacked horizontal bars
-- `example_chiplot_params.json` — multi-replicate horizontal composition (group labels)
+- `example_CAB_demo_params.json` — multi-replicate horizontal composition (group labels)
 - `example_normal_params.json` + `example_normal_input.csv` — classic vertical stacked bars (Sample-1..N)
 - `example_percent_params.json` — relative abundance with grid + title
 - `example_long_params.json` — long-format input

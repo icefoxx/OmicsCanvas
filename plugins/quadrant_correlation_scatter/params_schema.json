@@ -287,12 +287,6 @@
       "label": "Height",
       "help": "",
       "default": 6
-    },
-    "dpi": {
-      "type": "number",
-      "label": "DPI",
-      "help": "",
-      "default": 300
     }
   }
 }

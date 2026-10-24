@@ -37,7 +37,6 @@
   },
   "colors": {
     "palette": "Viridis option: turbo, viridis, plasma, magma, inferno, cividis (default turbo).",
-    "palcolor": "Reserved for explicit color mapping (not used by continuous density).",
     "point_color": "Axis text color (default black).",
     "strip_fill": "Facet strip fill color (default #ffe5cc)."
   },

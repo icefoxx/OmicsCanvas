@@ -3,7 +3,6 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -50,14 +49,25 @@ def test_scientific_validator_requires_signed_effect():
     )
     bad = json.loads(json.dumps(spec))
     bad["mapping"].pop("signed_effect", None)
-    table = (
-        ROOT
-        / "plugins/interactive_enrichment_lollipop/examples/oct4_enrichment/input/example_input.csv"
-    )
-    res = validate_scientific(bad, table_path=table, family="enrichment")
+    # No column the renderer could autodetect as an effect -> hard error.
+    columns = ["category", "group", "size"]
+    rows = [{"category": "Term A", "group": "FDR<0.05", "size": "10"}]
+    res = validate_scientific(bad, columns=columns, rows=rows, family="enrichment")
     assert not res["valid"]
-    codes = {e["code"] for e in res["errors"]}
-    assert "MISSING_SIGNED_EFFECT" in codes
+    assert "MISSING_SIGNED_EFFECT" in {e["code"] for e in res["errors"]}
+
+
+def test_unmapped_signed_effect_is_resolved_by_autodetect():
+    from vnext.plotspec.model import load
+    from vnext.validate.scientific import validate_scientific
+
+    spec = load(ROOT / "plugins/interactive_enrichment_lollipop/vnext/examples/oct4_expected_spec.json")
+    spec["mapping"].pop("signed_effect", None)
+    table = ROOT / "plugins/interactive_enrichment_lollipop/examples/oct4_enrichment/input/example_input.csv"
+    res = validate_scientific(spec, table_path=table)
+    assert res["valid"], res["errors"]
+    assert res["resolved_roles"]["signed_effect"] == "effect"
+    assert "AUTODETECTED_COLUMN" in {i["code"] for i in res["infos"]}
 
 
 def test_pipeline_accepts_oct4_spec():

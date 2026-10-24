@@ -18,22 +18,22 @@
     "params_filename": "example_basic_params.json"
   },
   {
-    "id": "chiplot",
-    "label": "chiplot",
+    "id": "CAB_demo",
+    "label": "CAB_demo",
     "plugin_id": "stacked_bar_plot",
     "plot_type": "stack",
     "mode": "horizontal",
-    "params": "../examples/chiplot/params.json",
+    "params": "../examples/CAB_demo/params.json",
     "inputs": {
       "input": "input/example_input.csv"
     },
-    "expected": "../examples/chiplot/expected/result.png",
+    "expected": "../examples/CAB_demo/expected/result.png",
     "reproduce": {
-      "command": "Rscript plugins/stacked_bar_plot/plot.R --input plugins/stacked_bar_plot/examples/chiplot/input/example_input.csv --params plugins/stacked_bar_plot/examples/chiplot/params.json --output /tmp/out"
+      "command": "Rscript plugins/stacked_bar_plot/plot.R --input plugins/stacked_bar_plot/examples/CAB_demo/input/example_input.csv --params plugins/stacked_bar_plot/examples/CAB_demo/params.json --output /tmp/out"
     },
-    "bundle": "../examples/chiplot",
-    "gallery_png": "chiplot.png",
-    "params_filename": "example_chiplot_params.json"
+    "bundle": "../examples/CAB_demo",
+    "gallery_png": "CAB_demo.png",
+    "params_filename": "example_CAB_demo_params.json"
   },
   {
     "id": "long",

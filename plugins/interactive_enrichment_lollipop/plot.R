@@ -1,12 +1,12 @@
 #!/usr/bin/env Rscript
 
-# BioFigureAI: Interactive Enrichment Lollipop (ChiPlot-compatible)
+# BioFigureAI: Interactive Enrichment Lollipop (CAB_demo-compatible)
 # ------------------------------------------------------------
 # Horizontal (default) or vertical zero-centered lollipop / Cleveland
 # plot with group colors, optional size mapping, stems, zero line,
 # labels, and full axis/title/legend/export controls.
 #
-# Also accepts ChiPlot-style aliases:
+# Also accepts CAB_demo-style aliases:
 #   min_radius / max_radius, type_colors, lollipop_*, stem/line style, etc.
 #
 # Runtime:
@@ -66,19 +66,22 @@ tryCatch({
   cn <- names(d)
   lo <- tolower(cn)
 
+  # `p` is reassigned to the ggplot object later; read params from a frozen copy
+  # so options looked up after plotting starts (subtitle, backgrounds, ...) still apply.
+  prm <- p
   val <- function(n, z = NULL) {
-    if (!is.null(p[[n]])) return(p[[n]])
+    if (!is.null(prm[[n]])) return(prm[[n]])
     z
   }
   # first matching alias
   val_any <- function(names, z = NULL) {
     for (n in names) {
-      if (!is.null(p[[n]])) return(p[[n]])
+      if (!is.null(prm[[n]])) return(prm[[n]])
     }
     z
   }
   bool <- function(names, z = FALSE) {
-    if (is.character(names) && length(names) == 1 && !names %in% names(p) && grepl('_', names)) {
+    if (is.character(names) && length(names) == 1 && !names %in% names(prm) && grepl('_', names)) {
       # single name
       x <- val(names, z)
     } else if (is.character(names) && length(names) > 1) {
@@ -197,11 +200,13 @@ tryCatch({
     z$category,
     levels = if (length(co)) unique(c(co, as.character(z$category))) else unique(z$category)
   )
-  # ChiPlot / image: first rows at top → reverse factor for horizontal
+  # CAB_demo / image: first rows at top → reverse factor for horizontal
   reverse_cat <- bool(c('reverse_categories', 'reverse_y', 'reverse_category'), TRUE)
   if (reverse_cat) z$category <- factor(z$category, levels = rev(levels(z$category)))
 
   go <- vec(val_any(c('group_order', 'type_order', 'legend_order'), NULL))
+  # Without an explicit order, follow the order the user listed colours in.
+  if (!length(go)) go <- names(named_chr(val_any(c('group_colors', 'type_colors', 'lollipop_colors', 'color_map'), NULL)))
   if (length(go)) {
     z$group <- factor(z$group, levels = unique(c(go, unique(as.character(z$group)))))
   } else {
@@ -219,7 +224,7 @@ tryCatch({
       num(c('dodge_width', 'padding'), 0.65) / max(1, nlevels(z$group))
   }
 
-  # Colors — ChiPlot type_colors / group_colors / color_map
+  # Colors — CAB_demo type_colors / group_colors / color_map
   groups <- levels(z$group)
   default_pal <- c('#66C2A5', '#FC8D62', '#8DA0CB', '#E78AC3', '#A6D854', '#FFD92F', '#B3B3B3')
   pal <- setNames(rep(default_pal, length.out = length(groups)), groups)
@@ -231,7 +236,7 @@ tryCatch({
     }
   }
 
-  # Style params (ChiPlot aliases)
+  # Style params (CAB_demo aliases)
   stem_show <- bool(c('stem_show', 'line_show', 'show_stem'), TRUE)
   stem_color <- as.character(val_any(c('stem_color', 'line_color', 'line_stroke'), '#B0B0B0')[1] %||% '#B0B0B0')
   stem_width <- num(c('stem_width', 'line_width', 'line_stroke_width'), 0.7)
@@ -247,15 +252,18 @@ tryCatch({
   zero_lty <- as.character(val_any(c('zero_line_linetype'), 'solid')[1] %||% 'solid')
 
   # Point / lollipop head
-  # ChiPlot r=8 is fixed radius when size switch off; min/max when on
+  # CAB_demo r=8 is fixed radius when size switch off; min/max when on
   size_switch <- size_map
   r_fixed <- num(c('r', 'point_size', 'lollipop_r'), 8)
   # convert CSS-ish radius to ggplot size roughly
-  pt_min <- num(c('point_size_min', 'min_radius', 'min-radius'), 4)
-  pt_max <- num(c('point_size_max', 'max_radius', 'max-radius'), 20)
-  # If values look like px radii (> 3), map to ggplot size units
-  if (pt_min > 3) pt_min <- pt_min / 2.5
-  if (pt_max > 8) pt_max <- pt_max / 2.5
+  # point_size_min/max are ggplot size units; min_radius/max_radius (and the
+  # defaults) are CAB_demo px radii, converted with the same factor at both ends
+  # so the size range is never compressed.
+  px_to_size <- function(x) x / 2.5
+  pt_min <- num('point_size_min', NA)
+  if (is.na(pt_min)) pt_min <- px_to_size(num(c('min_radius', 'min-radius'), 4))
+  pt_max <- num('point_size_max', NA)
+  if (is.na(pt_max)) pt_max <- px_to_size(num(c('max_radius', 'max-radius'), 20))
   if (!size_switch) {
     # fixed size from r
     fixed_sz <- if (r_fixed > 3) r_fixed / 2.5 else r_fixed
@@ -285,27 +293,55 @@ tryCatch({
 
   # Title / axes / legend
   title_show <- bool(c('title_show'), TRUE)
-  title <- as.character(val_any(c('title', 'title_text'), 'ChiPlot')[1] %||% 'ChiPlot')
+  title <- as.character(val_any(c('title', 'title_text'), '')[1] %||% '')
   title_size <- num(c('title_size'), 14)
   title_color <- as.character(val_any(c('title_color', 'title_fill'), '#222222')[1] %||% '#222222')
   title_face <- as.character(val_any(c('title_face', 'title_font_weight'), 'plain')[1] %||% 'plain')
   if (tolower(title_face) == 'bold') title_face <- 'bold' else if (tolower(title_face) == 'normal') title_face <- 'plain'
   title_hjust <- num(c('title_hjust'), 0.5)
 
-  xlab_show <- bool(c('x_title_show', 'xlab_show'), FALSE)
-  ylab_show <- bool(c('y_title_show', 'ylab_show'), FALSE)
   xlab <- as.character(val_any(c('xlab', 'x_title'), '')[1] %||% '')
   ylab <- as.character(val_any(c('ylab', 'y_title'), '')[1] %||% '')
+  # Axis titles are hidden by default (CAB_demo style) but shown when one is given.
+  xlab_show <- bool(c('x_title_show', 'xlab_show'), nzchar(xlab))
+  ylab_show <- bool(c('y_title_show', 'ylab_show'), nzchar(ylab))
 
   legend_show <- bool(c('legend_show'), TRUE)
-  legend_title <- as.character(val_any(c('legend_title', 'legend_name'), 'ChiPlot')[1] %||% 'ChiPlot')
+  legend_title_raw <- trimws(as.character(val_any(c('legend_title', 'legend_name'), '')[1] %||% ''))
+  if (!nzchar(legend_title_raw)) {
+    legend_title <- if (!is.null(gc)) 'Group' else NULL
+  } else {
+    legend_title <- legend_title_raw
+  }
   legend_position <- as.character(val('legend_position', 'right')[1] %||% 'right')
   legend_text_size <- num(c('legend_text_size'), 10)
   legend_title_size <- num(c('legend_title_size'), 11)
-  show_size_legend <- bool(c('show_size_legend', 'size_legend_show'), FALSE)
-  size_legend_title <- as.character(val_any(c('size_legend_title'), 'Size')[1] %||% 'Size')
+  show_size_legend <- bool(c('show_size_legend', 'size_legend_show'), TRUE) && size_switch
+  size_legend_title_raw <- trimws(as.character(val_any(c('size_legend_title'), '')[1] %||% ''))
+  if (!nzchar(size_legend_title_raw)) {
+    size_key <- tolower(as.character(sc %||% ''))
+    size_legend_title <- if (size_key %in% c('size', 'count', 'n', 'set_size', 'gene_count')) {
+      'Set size'
+    } else if (nzchar(size_key)) {
+      sc
+    } else {
+      'Size'
+    }
+  } else {
+    size_legend_title <- size_legend_title_raw
+  }
   size_legend_breaks <- suppressWarnings(as.numeric(unlist(val('size_legend_breaks', NULL))))
   size_legend_breaks <- size_legend_breaks[is.finite(size_legend_breaks)]
+  if (!length(size_legend_breaks) && show_size_legend) {
+    rng <- range(z$size, na.rm = TRUE)
+    if (all(is.finite(rng))) {
+      br <- pretty(rng, n = 4)
+      br <- br[br >= min(rng) - diff(rng) * 0.05 & br <= max(rng) + diff(rng) * 0.05]
+      if (all(abs(z$size - round(z$size)) < 1e-8)) br <- unique(round(br))
+      br <- br[is.finite(br) & br > 0]
+      if (length(br) >= 2) size_legend_breaks <- br
+    }
+  }
 
   grid_show <- bool(c('grid_show'), TRUE)
   grid_color <- as.character(val_any(c('grid_major_color', 'grid_stroke', 'grid_color'), '#E5E5E5')[1] %||% '#E5E5E5')
@@ -397,8 +433,7 @@ tryCatch({
     p <- p + scale_size_continuous(
       range = c(pt_min, pt_max),
       name = size_legend_title,
-      breaks = if (length(size_legend_breaks)) size_legend_breaks else waiver(),
-      guide = if (show_size_legend) 'legend' else 'none'
+      breaks = if (length(size_legend_breaks)) size_legend_breaks else waiver()
     )
   } else {
     p <- p + scale_size_identity(guide = 'none')
@@ -486,23 +521,32 @@ tryCatch({
     axis.title.y = if (ylab_show) element_text() else element_blank(),
     axis.text.x = element_text(size = x_axis_text_size, colour = axis_text_color),
     axis.text.y = element_text(size = y_axis_text_size, colour = axis_text_color),
-    legend.position = if (legend_show) legend_position else 'none',
+    legend.position = if (legend_show || show_size_legend) legend_position else 'none',
+    legend.box = 'vertical',
+    legend.spacing.y = grid::unit(0.35, 'cm'),
     legend.text = element_text(size = legend_text_size),
     legend.title = element_text(size = legend_title_size),
     plot.margin = grid::unit(rep(margin_cm, 4), 'cm')
   )
 
-  # Guides: only group legend by default (matches ChiPlot image)
+  size_guide <- if (show_size_legend) {
+    guide_legend(
+      title = size_legend_title,
+      override.aes = list(colour = '#555555', fill = '#555555', alpha = 1, shape = 16)
+    )
+  } else {
+    'none'
+  }
   if (point_shape %in% c(21, 22, 23, 24, 25)) {
     p <- p + guides(
-      fill = if (legend_show) guide_legend(override.aes = list(size = 4, alpha = 1)) else 'none',
-      size = if (show_size_legend && size_switch) guide_legend() else 'none',
+      fill = if (legend_show) guide_legend(title = legend_title, override.aes = list(size = 4, alpha = 1)) else 'none',
+      size = size_guide,
       colour = 'none'
     )
   } else {
     p <- p + guides(
-      colour = if (legend_show) guide_legend(override.aes = list(size = 4, alpha = 1)) else 'none',
-      size = if (show_size_legend && size_switch) guide_legend() else 'none'
+      colour = if (legend_show) guide_legend(title = legend_title, override.aes = list(size = 4, alpha = 1)) else 'none',
+      size = size_guide
     )
   }
 
@@ -510,7 +554,9 @@ tryCatch({
                  nrow(z), nlevels(z$group), orientation))
 
   ggsave(file.path(out, 'result.svg'), p, width = w, height = h, units = 'in', dpi = dpi)
-  ggsave(file.path(out, 'result.pdf'), p, width = w, height = h, units = 'in')
+  # cairo_pdf matches system fonts and falls back for unknown families (pdf() errors).
+  ggsave(file.path(out, 'result.pdf'), p, width = w, height = h, units = 'in',
+         device = if (capabilities('cairo')) grDevices::cairo_pdf else 'pdf')
   ggsave(file.path(out, 'result.png'), p, width = w, height = h, units = 'in', dpi = dpi)
 
   if (bool(c('interactive'), FALSE) && requireNamespace('plotly', quietly = TRUE)) {

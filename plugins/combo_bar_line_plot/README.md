@@ -1,6 +1,6 @@
 # Combo Bar + Line Plot
 
-Dual-axis combination chart: multi-colored categorical bars on the **primary Y** axis with an optional connected **line + points** on a **secondary Y** axis (ChiPlot-style).
+Dual-axis combination chart: multi-colored categorical bars on the **primary Y** axis with an optional connected **line + points** on a **secondary Y** axis (CAB_demo-style).
 
 ## Check before adding similar plots
 
@@ -41,7 +41,7 @@ Set `input_mode: "long"`, `metric_column`, `bar_metric`, `line_metric`.
 | `show_line_points`, `line_point_size` | Point markers on the line |
 | `y_min` / `y_max` | Primary axis limits |
 | `y2_min` / `y2_max` | Secondary axis limits |
-| Full axis / title / legend / export | Same ChiPlot-style surface as other plugins |
+| Full axis / title / legend / export | Same CAB_demo-style surface as other plugins |
 
 See `params_schema.json` for the complete control list.
 
@@ -50,7 +50,7 @@ See `params_schema.json` for the complete control list.
 ```bash
 Rscript plugins/combo_bar_line_plot/plot.R \
   --input plugins/combo_bar_line_plot/example_input.csv \
-  --params plugins/combo_bar_line_plot/example_chiplot_params.json \
+  --params plugins/combo_bar_line_plot/example_CAB_demo_params.json \
   --output /tmp/combo_bar_line_out
 ```
 

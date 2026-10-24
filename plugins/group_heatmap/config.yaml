@@ -1,16 +1,24 @@
-name: group_heatmap
-display_name: Group Heatmap
-description: Standardized SCA GroupHeatmap wrapper for grouped heatmaps, dotplots, violin heatmaps, annotations, feature groups, and clustered dotplots.
+id: group_heatmap
+name: Group Heatmap
+version: 1.0.0
+description: Standardized SCA GroupHeatmap wrapper for grouped heatmaps, dotplots, violin heatmaps, annotations, feature groups,
+  and clustered dotplots.
+language: R
+entrypoint: plot.R
+category: Heatmap
+subcategory: Grouped
+status: stable
+inputs:
+- id: input
+  type: table
+  required: true
+  description: Wide table. Rows are cells/samples; columns include metadata and numeric feature values.
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- selected_rows.csv
+- run.log
 runtime:
   command: Rscript plot.R --input input.csv --params params.json --output output_dir
-inputs:
-  - name: input
-    type: table
-    required: true
-    description: Wide table. Rows are cells/samples; columns include metadata and numeric feature values.
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - selected_rows.csv

@@ -5,18 +5,37 @@ description: Highly customizable clustered annotated heatmap with static and Plo
 language: R
 entrypoint: plot.R
 category: Heatmap
+subcategory: General
 status: experimental
 inputs:
-  - id: input
-    type: table
-    formats: [csv, tsv, txt]
-  - id: row-annot
-    type: table
-    formats: [csv, tsv, txt]
-    optional: true
-  - id: col-annot
-    type: table
-    formats: [csv, tsv, txt]
-    optional: true
-outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, matrix_data_used.csv, row_order.csv, column_order.csv]
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+- id: row-annot
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  optional: true
+- id: col-annot
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  optional: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- run.log
+- matrix_data_used.csv
+- row_order.csv
+- column_order.csv
 runtime: Rscript plugins/interactive_clustered_heatmap_plot/plot.R --input matrix.csv --params params.json --output output_dir

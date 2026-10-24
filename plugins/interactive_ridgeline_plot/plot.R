@@ -87,7 +87,7 @@ tryCatch({
   if (xlim[1] == xlim[2]) xlim <- xlim + c(-.5, .5)
   if (xlim[1] > xlim[2]) xlim <- rev(xlim)
   adjust <- max(.01, num('cloud_adjust', 1)); bw_param <- num('cloud_bandwidth', NA_real_); trim <- boo('cloud_trim', FALSE)
-  # ChiPlot sample-count controls density grid resolution
+  # CAB_demo sample-count controls density grid resolution
   dens_n <- as.integer(num('sample_count', 160, c('density_n', 'ridge_sample_count')))
   dens_n <- max(32, min(1024, dens_n * 16))  # UI 10 → ~160 bins
   density_one <- function(x) {
@@ -109,10 +109,13 @@ tryCatch({
   ridge_spacing <- num('row_spacing', num('ridge_spacing', 1)); ridge_height <- num('ridge_height', .82); overlap <- num('ridge_overlap', .15); cloud_scale <- num('cloud_scale', 1)
   bases <- (length(features):1) * ridge_spacing; names(bases) <- features
   clouds <- list(); cloud_i <- 0
+  # cloud_stat = 'count': ridge height also scales with the group size (density = each ridge peaks at full height).
+  count_key <- paste(z$feature, if (fill_mode %in% c('group','groups')) z$group else 'All')
+  max_n <- max(1, table(count_key))
   for (f in features) {
     sub <- z[as.character(z$feature) == f, , drop = FALSE]
     cloud_groups <- if (fill_mode %in% c('group','groups')) groups[groups %in% unique(as.character(sub$group))] else 'All'
-    for (g in cloud_groups) { vals <- if (g == 'All') sub$value else sub$value[as.character(sub$group) == g]; if (!length(vals)) next; den <- density_one(vals); h <- den$y / max(den$y); h <- h * ridge_height * cloud_scale * (1 + overlap); b <- bases[[f]]; if (!group_overlay && g != 'All') b <- b - (match(g, groups) - 1) * ridge_spacing * .55; cloud_i <- cloud_i + 1; clouds[[cloud_i]] <- data.frame(feature = f, group = g, baseline = b, x = den$x, y = b + h, density = den$y, colour = color_for(if (fill_mode %in% c('group','groups')) g else f, if (fill_mode %in% c('group','groups')) match(g, groups) else match(f, features)), key = if (fill_mode %in% c('group','groups')) g else f, stringsAsFactors = FALSE) }
+    for (g in cloud_groups) { vals <- if (g == 'All') sub$value else sub$value[as.character(sub$group) == g]; if (!length(vals)) next; den <- density_one(vals); h <- den$y / max(den$y); if (cloud_stat == 'count') h <- h * length(vals) / max_n; h <- h * ridge_height * cloud_scale * (1 + overlap); b <- bases[[f]]; if (!group_overlay && g != 'All') b <- b - (match(g, groups) - 1) * ridge_spacing * .55; cloud_i <- cloud_i + 1; clouds[[cloud_i]] <- data.frame(feature = f, group = g, baseline = b, x = den$x, y = b + h, density = den$y, colour = color_for(if (fill_mode %in% c('group','groups')) g else f, if (fill_mode %in% c('group','groups')) match(g, groups) else match(f, features)), key = if (fill_mode %in% c('group','groups')) g else f, stringsAsFactors = FALSE) }
   }
   cloud_df <- if (length(clouds)) do.call(rbind, clouds) else data.frame()
   set.seed(as.integer(num('point_jitter_seed', 12345))); point_df <- z
@@ -124,12 +127,12 @@ tryCatch({
   # Summary overlays are represented as simple, portable segments/rectangles.
   box_df <- data.frame(); q_df <- data.frame()
   quantile_value <- suppressWarnings(as.numeric(unlist(val('quantile', .5))[1])); if (!is.finite(quantile_value)) quantile_value <- .5; quantile_value <- max(0, min(1, quantile_value))
-  for (f in features) { x <- z$value[as.character(z$feature) == f]; qs <- quantile(x, c(.05,.25,.5,.75,.95), names = FALSE, na.rm = TRUE); b <- bases[[f]]; box_df <- rbind(box_df, data.frame(feature = f, xmin = qs[2], xmax = qs[4], ymin = b, ymax = b + num('box_height', .16) * ridge_spacing, low = qs[1], high = qs[5], median = qs[3])); qx <- quantile(x, quantile_value, names = FALSE, na.rm = TRUE); q_df <- rbind(q_df, data.frame(feature = f, x = qx, xend = qx, y = b, yend = b + num('box_height', .16) * ridge_spacing)) }
+  for (f in features) { x <- z$value[as.character(z$feature) == f]; qs <- quantile(x, c(.05,.25,.5,.75,.95), names = FALSE, na.rm = TRUE); qs <- pmin(xlim[2], pmax(xlim[1], qs)); b <- bases[[f]]; box_df <- rbind(box_df, data.frame(feature = f, xmin = qs[2], xmax = qs[4], ymin = b, ymax = b + num('box_height', .16) * ridge_spacing, low = qs[1], high = qs[5], median = qs[3])); qx <- quantile(x, quantile_value, names = FALSE, na.rm = TRUE); q_df <- rbind(q_df, data.frame(feature = f, x = qx, xend = qx, y = b, yend = b + num('box_height', .16) * ridge_spacing)) }
   br <- suppressWarnings(as.numeric(unlist(val('x_breaks', NULL)))); br <- br[is.finite(br)]
   xexpand <- suppressWarnings(as.numeric(unlist(val('x_expand', c(.04, .04))))); if (length(xexpand) != 2) xexpand <- c(.04, .04)
   yexpand <- suppressWarnings(as.numeric(unlist(val('y_expand', c(.08, .12))))); if (length(yexpand) != 2) yexpand <- c(.08, .12)
   q <- ggplot()
-  # ChiPlot aliases: fill_opacity, stroke-as-fill, ridge stroke, sample-count, quantile 50%
+  # CAB_demo aliases: fill_opacity, stroke-as-fill, ridge stroke, sample-count, quantile 50%
   cloud_alpha <- num('cloud_alpha', num('fill_opacity', .75, c('ridge_fill_opacity')))
   outline_show <- boo('cloud_outline_show', FALSE, c('ridge_outline_show', 'stroke_show'))
   stroke_as_fill <- boo('stroke_as_fill', FALSE, c('ridge_stroke_as_fill', 'stroke-as-fill'))
@@ -142,7 +145,7 @@ tryCatch({
       alpha = num('group_alpha', cloud_alpha, c('cloud_alpha', 'fill_opacity', 'ridge_fill_opacity')), linewidth = outline_width)
   }
   if (boo('baseline_show', boo('cloud_baseline', TRUE))) q <- q + geom_segment(data = data.frame(feature = features, y = unname(bases)), aes(x = xlim[1], xend = xlim[2], y = y, yend = y), colour = val('baseline_color', val('cloud_stroke', '#777777')), linewidth = num('baseline_width', .35), linetype = val('baseline_linetype', 'solid'), alpha = num('baseline_alpha', .7))
-  # point_show + fill-as-box (ChiPlot): optional rug points under ridges
+  # point_show + fill-as-box (CAB_demo): optional rug points under ridges
   if (boo('point_show', FALSE, c('point_switch')) && nrow(point_df)) {
     pt_fill_as_box <- boo('point_fill_as_box', FALSE, c('fill_as_box', 'fill-as-box'))
     pt_size <- num('point_size', 1.8, c('point_r', 'r'))
@@ -156,7 +159,7 @@ tryCatch({
   }
   if (boo('box_show', FALSE)) q <- q + geom_rect(data = box_df, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), fill = val('box_fill', '#FFFFFF'), alpha = num('box_alpha', .7), colour = val('box_stroke', '#333333'), linewidth = num('box_stroke_width', .4), inherit.aes = FALSE) + geom_segment(data = box_df, aes(x = low, xend = high, y = ymin + (ymax-ymin)/2, yend = ymin + (ymax-ymin)/2), colour = val('box_stroke', '#333333'), linewidth = num('box_stroke_width', .4))
   if (boo('median_show', TRUE) && boo('box_show', FALSE)) q <- q + geom_segment(data = box_df, aes(x = median, xend = median, y = ymin, yend = ymax), colour = val('median_color', '#222222'), linewidth = num('median_width', 1))
-  # quantile_line_show or ChiPlot "quantiles line 50%"
+  # quantile_line_show or CAB_demo "quantiles line 50%"
   q50 <- boo('quantile_line_show', FALSE, c('quantile_50', 'show_quantile_50', 'median_line_show'))
   if (q50) q <- q + geom_segment(data = q_df, aes(x = x, xend = xend, y = y, yend = yend), colour = val('quantile_line_color', '#222222', c('quantile_stroke')), linewidth = num('quantile_line_width', .7, c('quantile_stroke_width')), linetype = val('quantile_line_type', 'dashed', c('quantile_linetype')))
   if (length(vec(val('highlight_features')))) { h <- intersect(vec(val('highlight_features')), as.character(features)); if (length(h)) q <- q + geom_rect(data = data.frame(feature = h, ymin = bases[h] - ridge_spacing*.2, ymax = bases[h] + ridge_spacing, xmin = -Inf, xmax = Inf), aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), fill = val('highlight_color', '#FFD166'), alpha = num('highlight_alpha', .12), inherit.aes = FALSE) }
@@ -216,6 +219,8 @@ tryCatch({
   if (fill_mode %in% c('group', 'groups') && boo('group_legend_show', TRUE)) q <- q + theme(legend.position = val('group_legend_position', 'right'))
 
   w <- num('width', 10); h <- num('height', max(5, length(features) * .85)); if (!is.null(val('aspect_ratio', NULL))) h <- w / num('aspect_ratio', w/h); dpi <- num('dpi', 300); formats <- tolower(vec(val('export_formats', c('svg','pdf','png','html')))); if (!length(formats)) formats <- c('svg','pdf','png','html')
+  # Generic appearance parameters not handled by this plugin (R/runtime/omicscanvas_theme.R).
+  if (!exists('omicscanvas_apply_theme')) { .oc_f <- sub('^--file=', '', grep('^--file=', commandArgs(FALSE), value = TRUE)[1]); .oc_rt <- file.path(dirname(normalizePath(.oc_f, mustWork = FALSE)), '..', '..', 'R', 'runtime', 'omicscanvas_theme.R'); if (!file.exists(.oc_rt)) .oc_rt <- file.path('R', 'runtime', 'omicscanvas_theme.R'); sys.source(.oc_rt, envir = globalenv()) }; q <- omicscanvas_apply_theme(q, p, only = c('legend_key_size', 'panel_spacing'))
   if ('svg' %in% formats) ggsave(file.path(out, 'result.svg'), q, width = w, height = h, units = 'in', dpi = dpi)
   if ('pdf' %in% formats) ggsave(file.path(out, 'result.pdf'), q, width = w, height = h, units = 'in')
   if ('png' %in% formats) ggsave(file.path(out, 'result.png'), q, width = w, height = h, units = 'in', dpi = dpi)

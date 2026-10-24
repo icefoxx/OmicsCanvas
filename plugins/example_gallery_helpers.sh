@@ -32,8 +32,8 @@ run_plugin_examples() {
       lineage_plot) input="$dir/example_embedding.csv"; extra=(--lineages "$dir/example_lineages.csv");;
       sca_volcano_plot) input="$dir/example_markers.csv";;
       stat_plot) input="$dir/example_metadata.csv";;
-      interactive_enrichment_lollipop) [[ "$stem" == *chiplot* ]] && input="$dir/example_chiplot_input.csv" || input="$dir/example_input.csv";;
-      interactive_ridgeline_plot) [[ "$stem" == *chiplot* ]] && input="$dir/example_chiplot_input.csv" || input="$dir/example_input.csv";;
+      interactive_enrichment_lollipop) [[ "$stem" == *CAB_demo* ]] && input="$dir/example_CAB_demo_input.csv" || input="$dir/example_input.csv";;
+      interactive_ridgeline_plot) [[ "$stem" == *CAB_demo* ]] && input="$dir/example_CAB_demo_input.csv" || input="$dir/example_input.csv";;
       regression_scatter_plot) input="$dir/example_input.csv";;
       alluvial_plot) [[ "$stem" == *long* ]] && input="$dir/example_long.csv"; [[ "$stem" == *edges* ]] && input="$dir/example_edges.csv";;
       pie_dot_matrix) input="$dir/example_input.csv"; extra=(--col_annot "$dir/example_col_annot.csv" --marks "$dir/example_marks.csv");;

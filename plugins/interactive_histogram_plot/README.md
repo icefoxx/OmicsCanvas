@@ -8,7 +8,7 @@ Defaults are 40 fixed shared bins, `stat: count`, `position: identity`, alpha 0.
 
 ```bash
 Rscript plugins/interactive_histogram_plot/plot.R --input plugins/interactive_histogram_plot/example_input.csv --params plugins/interactive_histogram_plot/example_basic_params.json --output /tmp/histogram_out
-plugins/interactive_histogram_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/interactive_histogram_plot/run_all_examples.sh <repo-root>
 ```
 
 Outputs are `result.svg`, `result.pdf`, `result.png`, `result.html`, `figure.json`, `run.log`, `histogram_data_used.csv`, and `selected_rows.csv`. Missing and non-numeric values are dropped and logged. Failures remove stale outputs and write `error.json`.

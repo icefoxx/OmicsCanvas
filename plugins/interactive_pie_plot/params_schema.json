@@ -1,23 +1,153 @@
 {
   "plugin": "interactive_pie_plot",
   "groups": {
-    "data": ["category_column", "value_column", "group_column", "label_column", "color_column", "rows_include", "rows_exclude", "categories_include", "categories_exclude", "top_n", "sort", "sort_direction"],
-    "canvas": ["width", "height", "aspect_ratio", "margin_left", "margin_right", "margin_top", "margin_bottom", "background_color", "panel_background"],
-    "pie": ["mode", "start_angle", "direction", "clockwise", "explode", "explode_amount", "pad_angle", "expand", "hole_show", "inner_radius", "hollow_size", "hole_fill", "hole_border_color", "hole_border_width", "value_transform", "value_digits", "negative_value_policy"],
-    "colors": ["palette", "custom_colors", "color_map", "fill_alpha", "stroke_color", "stroke_width", "stroke_alpha", "missing_color"],
-    "labels": ["label_show", "label_mode", "label_size", "label_color", "label_face", "label_family", "label_radius", "label_angle", "label_repel", "title", "subtitle", "caption", "title_show", "title_size", "title_color", "title_face", "title_hjust", "subtitle_size", "subtitle_color"],
-    "legend": ["legend_show", "legend_title", "legend_position", "legend_direction", "legend_title_size", "legend_text_size", "legend_key_size", "legend_ncol", "legend_byrow"],
-    "hole_label": ["hole_label_show", "hole_label", "hole_label_size", "hole_label_color", "hole_label_face", "hole_label_family", "hole_label_x", "hole_label_y"],
-    "interaction": ["interactive", "tooltip_columns", "hover_template", "selectable", "lasso_select", "zoom", "pan", "reset_view"],
-    "output": ["dpi", "html_width", "html_height", "export_formats"]
+    "data": [
+      "category_column",
+      "value_column",
+      "group_column",
+      "label_column",
+      "color_column",
+      "rows_include",
+      "rows_exclude",
+      "categories_include",
+      "categories_exclude",
+      "top_n",
+      "sort",
+      "sort_direction"
+    ],
+    "canvas": [
+      "width",
+      "height",
+      "aspect_ratio",
+      "margin_left",
+      "margin_right",
+      "margin_top",
+      "margin_bottom",
+      "background_color",
+      "panel_background"
+    ],
+    "pie": [
+      "mode",
+      "start_angle",
+      "direction",
+      "clockwise",
+      "explode",
+      "explode_amount",
+      "hole_show",
+      "inner_radius",
+      "hollow_size",
+      "hole_fill",
+      "hole_border_color",
+      "hole_border_width",
+      "value_digits",
+      "negative_value_policy"
+    ],
+    "colors": [
+      "palette",
+      "custom_colors",
+      "color_map",
+      "fill_alpha",
+      "stroke_color",
+      "stroke_width"
+    ],
+    "labels": [
+      "label_show",
+      "label_mode",
+      "label_size",
+      "label_color",
+      "label_face",
+      "label_family",
+      "title",
+      "subtitle",
+      "caption",
+      "title_show",
+      "title_size",
+      "title_color",
+      "title_face",
+      "title_hjust",
+      "subtitle_size",
+      "subtitle_color"
+    ],
+    "legend": [
+      "legend_show",
+      "legend_title",
+      "legend_position",
+      "legend_direction",
+      "legend_title_size",
+      "legend_text_size",
+      "legend_key_size"
+    ],
+    "hole_label": [
+      "hole_label_show",
+      "hole_label",
+      "hole_label_size",
+      "hole_label_color",
+      "hole_label_face",
+      "hole_label_family",
+      "hole_label_x",
+      "hole_label_y"
+    ],
+    "interaction": [
+      "selectable",
+      "lasso_select",
+      "zoom"
+    ],
+    "output": [
+      "dpi"
+    ]
   },
   "properties": {
-    "mode": {"type":"string", "enum":["pie","donut"], "default":"pie"},
-    "hole_show": {"type":"boolean", "default":false},
-    "inner_radius": {"type":"number", "minimum":0, "exclusiveMaximum":1, "default":0},
-    "hollow_size": {"type":"number", "minimum":0, "exclusiveMaximum":1, "description":"Alias for inner_radius; values are clamped to [0, 0.99]."},
-    "negative_value_policy": {"type":"string", "enum":["exclude","absolute","zero","allow"], "default":"exclude"},
-    "custom_colors": {"type":"array"}, "color_map": {"type":"object"},
-    "interactive": {"type":"boolean", "default":true}, "width": {"type":"number", "default":8}, "height": {"type":"number", "default":6}, "dpi": {"type":"integer", "default":300}, "export_formats": {"type":"array", "default":["svg","pdf","png","html"]}
+    "mode": {
+      "type": "string",
+      "enum": [
+        "pie",
+        "donut"
+      ],
+      "default": "pie"
+    },
+    "hole_show": {
+      "type": "boolean",
+      "default": false
+    },
+    "inner_radius": {
+      "type": "number",
+      "minimum": 0,
+      "exclusiveMaximum": 1,
+      "default": 0
+    },
+    "hollow_size": {
+      "type": "number",
+      "minimum": 0,
+      "exclusiveMaximum": 1,
+      "description": "Alias for inner_radius; values are clamped to [0, 0.99]."
+    },
+    "negative_value_policy": {
+      "type": "string",
+      "enum": [
+        "exclude",
+        "absolute",
+        "zero",
+        "allow"
+      ],
+      "default": "exclude"
+    },
+    "custom_colors": {
+      "type": "array"
+    },
+    "color_map": {
+      "type": "object"
+    },
+    "width": {
+      "type": "number",
+      "default": 8
+    },
+    "height": {
+      "type": "number",
+      "default": 6
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 300
+    }
   }
 }

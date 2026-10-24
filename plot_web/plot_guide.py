@@ -5,9 +5,8 @@ import re
 from pathlib import Path
 from typing import Any
 
-import yaml
-
 from plot_web.plot_registry import get_plot, get_variant, load_registry, resolve_legacy_preset
+from plot_web.yaml_cache import load_yaml_cached
 
 REG_DIR = Path(__file__).resolve().parent / "registry"
 GUIDES_DIR = REG_DIR / "guides"
@@ -17,10 +16,8 @@ PLACEHOLDER = re.compile(r"\{([a-zA-Z0-9_]+)\}")
 
 
 def load_yaml(path: Path) -> Any:
-    if not path.is_file():
-        return None
     try:
-        return yaml.safe_load(path.read_text(encoding="utf-8"))
+        return load_yaml_cached(path)
     except Exception:
         return None
 
@@ -82,6 +79,11 @@ def attach_guides(registry: dict[str, Any]) -> dict[str, Any]:
         vg = data.get("variants") if isinstance(data.get("variants"), dict) else {}
         for variant in plot.get("variants") or []:
             extra = vg.get(str(variant.get("id")))
+            if not isinstance(extra, dict):
+                for lid in variant.get("legacy_ids") or []:
+                    extra = vg.get(str(lid))
+                    if isinstance(extra, dict):
+                        break
             if isinstance(extra, dict):
                 variant["guide"] = extra
     return registry
@@ -180,7 +182,7 @@ def current_view_explanation(family: dict[str, Any], variant: dict[str, Any] | N
             "title": "Split panels",
             "text": f"The embedding is shown separately by {values['split_column']}.",
         })
-    if values.get("composition_column") and vid in {"composition_pie", "composition_ring", "stat_panel"}:
+    if values.get("composition_column") and vid in {"composition", "composition_pie", "composition_ring", "stat_panel"}:
         group = values.get("cluster_column") or "each group"
         statements.append({
             "type": "direct",

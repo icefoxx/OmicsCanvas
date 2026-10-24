@@ -1,1 +1,23 @@
-{"input_mode":"precomputed","correlation_file":"example_corr.csv","mantel_file":"example_mantel.csv","env_points_file":"example_env_points.csv","spec_points_file":"example_spec_points.csv","title":"Environmental and Species Associations","triangle_mode":"mixed","number_show":true,"interactive":true}
+{
+  "input_mode": "precomputed",
+  "title": "Combined Mantel test and Pearson correlation",
+  "title_show": true,
+  "show_top_labels": true,
+  "correlation_method": "pearson",
+  "p_adjust": "BH",
+  "random_state": 123,
+  "p_bins": [0.001, 0.01, 0.05],
+  "p_colors": ["#E69F00", "#009E73", "#6A3D9A", "#D0D0D0"],
+  "r_bins": [0.25, 0.50],
+  "r_widths": [0.7, 2.0, 4.6],
+  "neg_color": "#B2182B",
+  "pos_color": "#2166AC",
+  "mid_color": "#FFFFFF",
+  "link_show": true,
+  "link_curvature": 0.22,
+  "legend_show": true,
+  "interactive": false,
+  "width": 10,
+  "height": 8,
+  "dpi": 300
+}

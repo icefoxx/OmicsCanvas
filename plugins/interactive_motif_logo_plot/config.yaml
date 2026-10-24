@@ -1,12 +1,27 @@
 id: interactive_motif_logo_plot
 name: Interactive Motif Enrichment Logo
 version: 1.0.0
-category: Motif
 description: DNA sequence logos from long or grouped wide motif weight matrices with static and interactive outputs.
 language: R
 entrypoint: plot.R
+category: Motif
+subcategory: General
 status: stable
 inputs:
-  - {id: input, type: table, formats: [csv, tsv, txt], required: true}
-outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, motif_data_used.csv, selected_rows.csv]
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- run.log
+- motif_data_used.csv
+- selected_rows.csv
 runtime: Rscript plugins/interactive_motif_logo_plot/plot.R --input input.csv --params params.json --output output_dir

@@ -15,7 +15,7 @@
   "bar_text_digits": 0,
   "title_show": true,
   "title": "Pathway counts by class",
-  "legend_title": "xiaoshi",
+  "legend_title": "CAB_demo",
   "x_max": 26000,
   "x_grid_show": true,
   "width": 9,

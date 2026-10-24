@@ -6,4 +6,4 @@ Run with `Rscript plugins/interactive_correlation_matrix/plot.R --input data.csv
 
 The default `triangle_mode: mixed` draws colored lower-triangle tiles and upper-triangle numbers. `both`, `lower`, and `upper` control visibility; `circle`, `tile`/`square`, and `number` are convenient full-cell modes. `diagonal_mode`, significance cutoffs/stars, palettes, borders, labels, clustering, typography, dimensions, and Plotly interaction are controlled by `params_schema.json`. HTML supports hover, zoom, pan, and Plotly selection/lasso controls; static SVG/PDF/PNG use the same ordered matrix.
 
-Examples and portable bundles are reproduced with `plugins/interactive_correlation_matrix/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas`.
+Examples and portable bundles are reproduced with `plugins/interactive_correlation_matrix/run_all_examples.sh <repo-root>`.

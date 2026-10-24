@@ -1,0 +1,15 @@
+{
+  "gene_scope": "all_members",
+  "order_by": "NES",
+  "top_n_terms": 12,
+  "min_genes": 10,
+  "significance_source": "pvalue",
+  "duplicate_gene_action": "max_abs",
+  "xlab": "log2(Fold Change)",
+  "title": "GSEA pathway ridge with NES",
+  "ridge_scale": 1.02,
+  "ridge_alpha": 0.88,
+  "width": 9.4,
+  "height": 7.6,
+  "dpi": 220
+}

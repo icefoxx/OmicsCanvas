@@ -1,0 +1,56 @@
+name: plot_web
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: |
+          python -m pip install -U pip
+          pip install -r plot_web/requirements.txt pytest httpx
+      - name: Registry validates
+        run: python -m plot_web.plot_registry validate
+      - name: vNext registry builds from metadata
+        run: python -m vnext.cli registry build
+      - name: Unit tests (plot_web + vNext; includes 208-example PlotSpec round-trip and guardrail checks)
+        run: pytest -q plot_web/tests vnext/tests
+
+  r-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - name: Install system libs
+        run: sudo apt-get update && sudo apt-get install -y libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
+      - name: Install R packages
+        run: |
+          Rscript -e 'install.packages(c("optparse","jsonlite","ggplot2","ggrepel","scales","svglite","ragg","png","plotly","htmlwidgets","patchwork","dplyr","tidyr","data.table","RColorBrewer","viridisLite","reshape2","vegan","ggh4x","cli"))'
+      - name: Install Python deps
+        run: pip install -r plot_web/requirements.txt numpy pillow
+      - name: Render representative plugin examples
+        run: |
+          python scripts/smoke_plugins.py --max-examples 1 \
+            interactive_enrichment_lollipop \
+            interactive_genomic_signal_track_plot \
+            interactive_mantel_correlation_network \
+            interactive_violin_plot
+      - name: Render from PlotSpec and reproduce from the bundle alone
+        run: |
+          python -m vnext.cli render \
+            --spec plugins/interactive_enrichment_lollipop/vnext/examples/oct4_expected_spec.json \
+            --input plugins/interactive_enrichment_lollipop/examples/oct4_enrichment/input/example_input.csv \
+            --output /tmp/vnext_out --bundle
+          python -m vnext.cli reproduce --bundle-dir /tmp/vnext_out/reproduction_bundle --output /tmp/vnext_repro --compare

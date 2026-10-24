@@ -1,6 +1,6 @@
 # Lollipop Plot (Interactive Enrichment Lollipop)
 
-ChiPlot-style **zero-centered lollipop / Cleveland plot**: category labels on Y, signed values on X, stems to zero, group colors, optional size-mapped heads.
+CAB_demo-style **zero-centered lollipop / Cleveland plot**: category labels on Y, signed values on X, stems to zero, group colors, optional size-mapped heads.
 
 ## Check first
 
@@ -21,7 +21,7 @@ Related but different:
 
 Columns autodetect or set via `category_column`, `value_column`, `group_column`, `size_column`.
 
-## ChiPlot-style controls
+## CAB_demo-style controls
 
 | UI section | Params |
 |------------|--------|
@@ -35,11 +35,11 @@ Columns autodetect or set via `category_column`, `value_column`, `group_column`,
 ## Run
 
 ```bash
-# ChiPlot-style example
+# CAB_demo-style example
 Rscript plugins/interactive_enrichment_lollipop/plot.R \
-  --input plugins/interactive_enrichment_lollipop/example_chiplot_input.csv \
-  --params plugins/interactive_enrichment_lollipop/example_chiplot_params.json \
-  --output /tmp/lollipop_chiplot_out
+  --input plugins/interactive_enrichment_lollipop/example_CAB_demo_input.csv \
+  --params plugins/interactive_enrichment_lollipop/example_CAB_demo_params.json \
+  --output /tmp/lollipop_CAB_demo_out
 
 # Basic enrichment example
 Rscript plugins/interactive_enrichment_lollipop/plot.R \

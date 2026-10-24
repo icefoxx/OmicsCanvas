@@ -19,7 +19,7 @@
   },
   "scatter": {
     "point_show": { "type": "boolean", "label": "Points switch", "default": true },
-    "point_size": { "type": "number", "label": "Point size (ChiPlot ~40)", "default": 40 },
+    "point_size": { "type": "number", "label": "Point size (CAB_demo ~40)", "default": 40 },
     "fill_opacity": { "type": "number", "label": "Point fill-opacity", "default": 1 },
     "stroke_as_fill": { "type": "boolean", "label": "stroke-as-fill", "default": true },
     "stroke": { "type": "color", "label": "Point stroke", "default": "#000000" },
@@ -82,7 +82,7 @@
   },
   "legend": {
     "legend_show": { "type": "boolean", "label": "Legend switch", "default": true },
-    "legend_title": { "type": "string", "label": "Legend title", "default": "ChiPlot" },
+    "legend_title": { "type": "string", "label": "Legend title", "default": "" },
     "legend_position": {
       "type": "select",
       "label": "Legend position",

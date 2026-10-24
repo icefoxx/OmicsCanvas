@@ -145,8 +145,9 @@ validate_columns <- function(df, cols, label = 'input') {
 load_sca_expstat_reference <- function() {
   script_arg <- grep('^--file=', commandArgs(FALSE), value = TRUE)
   script_path <- if (length(script_arg) > 0) sub('^--file=', '', script_arg[1]) else file.path(getwd(), 'plugins', 'exp_stat_plot', 'plot.R')
-  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), 'reference_sca_helpers')
-  if (!dir.exists(helper_dir)) helper_dir <- file.path('plugins', 'exp_stat_plot', 'reference_sca_helpers')
+  # Shared SCA helper library (one canonical copy for all plugins): <repo>/R/sca
+  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), '..', '..', 'R', 'sca')
+  if (!dir.exists(helper_dir)) helper_dir <- file.path('R', 'sca')
 
   `%||%` <<- function(x, y) if (is.null(x) || length(x) == 0) y else x
   ckPacsR <<- function(packages, ...) {
@@ -174,11 +175,8 @@ load_sca_expstat_reference <- function() {
   source(file.path(helper_dir, 'util.plot.R'), local = .GlobalEnv)
   source(file.path(helper_dir, 'expStatPlot.R'), local = .GlobalEnv)
 
-  old_palette <- paletteCustomize
-  palette_file <- file.path(getwd(), 'assets', 'palettes.rds')
-  paletteCustomize <<- function(..., palettePath = NULL) {
-    old_palette(..., palettePath = palettePath %||% palette_file)
-  }
+  source(file.path(helper_dir, 'omicscanvas_shims.R'), local = .GlobalEnv)
+  omicscanvas_patch_palette(helper_dir)
   invisible(TRUE)
 }
 
@@ -555,8 +553,9 @@ build_expstat_args <- function(meta, expr, params) {
     multiplegroup.comparisons = as_bool(get_param_any(params, c('multiplegroup.comparisons', 'multiplegroup_comparisons'), FALSE)),
     sig.labelsize = num_param(params, 'sig.labelsize', num_param(params, 'sig_label_size', 3.5)),
     aspect.ratio = get_param_any(params, c('aspect.ratio', 'aspect_ratio'), NULL),
-    title = get_param(params, 'title', NULL),
-    subtitle = get_param(params, 'subtitle', NULL),
+    # Titles are applied once by apply_custom_style() (labs / plot_annotation), not per panel.
+    title = NULL,
+    subtitle = NULL,
     xlab = get_param(params, 'xlab', NULL),
     ylab = get_param(params, 'ylab', 'Expression level'),
     legend.position = get_param_any(params, c('legend.position', 'legend_position'), 'right'),
@@ -590,8 +589,24 @@ normalize_plot_object <- function(plot_obj, params) {
     byrow <- as_bool(get_param(params, 'byrow', TRUE), TRUE)
     return(patchwork::wrap_plots(plotlist = plot_obj, nrow = nrow, ncol = ncol, byrow = byrow))
   }
+  # patchwork objects also inherit 'ggplot': check them first, otherwise the title
+  # (already set by expStatPlot on the composition) is added a second time.
+  if (inherits(plot_obj, 'patchwork')) {
+    title_value <- get_param(params, 'title', NULL)
+    subtitle_value <- get_param(params, 'subtitle', NULL)
+    if (!as_bool(get_param_any(params, c('title_show', 'show_title'), TRUE), TRUE)) title_value <- NULL
+    if (!as_bool(get_param_any(params, c('subtitle_show', 'show_subtitle'), TRUE), TRUE)) subtitle_value <- NULL
+    # One title for the whole composition instead of one per stacked panel.
+    plot_obj <- (plot_obj & custom_theme_from_params(params)) & ggplot2::labs(title = NULL, subtitle = NULL)
+    return(plot_obj + patchwork::plot_annotation(
+      title = title_value, subtitle = subtitle_value,
+      theme = ggplot2::theme(
+        plot.title = make_text_element(params, 'title', list(size = 14, face = 'bold', hjust = 0.5, margin = c(0, 0, 4, 0))),
+        plot.subtitle = make_text_element(params, 'subtitle', list(size = 11, hjust = 0.5, margin = c(0, 0, 5, 0)))
+      )
+    ))
+  }
   if (inherits(plot_obj, c('gg', 'ggplot'))) return(apply_custom_style_one(plot_obj, params))
-  if (inherits(plot_obj, 'patchwork')) return(plot_obj & custom_theme_from_params(params))
   plot_obj
 }
 

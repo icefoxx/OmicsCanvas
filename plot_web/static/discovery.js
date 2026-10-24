@@ -19,6 +19,7 @@ const Discovery = {
   familyPlot: null,
   familyStyles: [],
   familyStylesCache: {},
+  familyCountLabel: "",
   styleLimit: 10,
 };
 
@@ -124,8 +125,8 @@ function previewUrl(plot) {
 
 function studioUrl(plot, extra = {}) {
   const params = new URLSearchParams();
+  const engine = extra.plugin || extra.engine_plugin_id || plot.engine_plugin_id;
   const family = extra.plot || plot.id;
-  const engine = plot.engine_plugin_id || extra.plugin;
   params.set("plugin", engine);
   params.set("plot", family);
   if (extra.variant) params.set("variant", extra.variant);
@@ -163,11 +164,11 @@ function familyCard(plot, options = {}) {
       <div class="family-thumb">
         ${rec ? `<span class="card-badge rec-badge">Recommended</span>` : ""}
         <button type="button" class="fav-btn ${fav ? "is-fav" : ""}" data-fav="${plot.id}" aria-label="Favorite">★</button>
-        ${thumb ? `<img src="${thumb}" alt="${plot.name} preview">` : `<div class="card-fallback-icon">▣</div>`}
+        ${thumb ? `<img src="${escapeHtml(thumb)}" alt="${escapeHtml(plot.name)} preview">` : `<div class="card-fallback-icon">▣</div>`}
       </div>
       <div class="family-body">
-        <h4>${plot.name}</h4>
-        <p>${plot.description || "Open this visualization family in Plot Studio."}</p>
+        <h4>${escapeHtml(plot.name)}</h4>
+        <p>${escapeHtml(plot.description || "Open this visualization family in Plot Studio.")}</p>
         <div class="family-meta">
           <span>${plot.variant_count || 0} variants</span>
           ${options.compat ? `<span class="compat-ok">Compatible</span>` : ""}
@@ -465,23 +466,20 @@ function renderSearchDiscovery() {
   `;
 }
 
-function escapeHtml(value) {
-  return String(value || "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/"/g, "&quot;");
-}
-
 function styleBadge(style) {
-  if (style.card_group === "pdf_styles") return "RECOMMENDED";
+  if (style.card_group === "recommended" || style.card_group === "pdf_styles") return "RECOMMENDED";
+  if (style.variant_id) return "MORE";
   return "VARIANT";
 }
 
 function styleCard(plot, style) {
   const thumb = style.image || previewUrl(plot);
-  const blurb = style.blurb || style.howto || `Visualization style “${style.label}” for ${plot.name}.`;
+  const blurb = style.blurb || style.howto || `A ${plot.name} view for this scientific encoding.`;
+  const openId = style.example_id || style.id;
+  const variantId = style.variant_id || style.id;
+  const engineId = style.engine_plugin_id || plot.engine_plugin_id || "";
   return `
-    <article class="plot-card style-card" data-style-id="${escapeHtml(style.id)}">
+    <article class="plot-card style-card" data-style-id="${escapeHtml(style.id)}" data-example-id="${escapeHtml(openId)}" data-variant-id="${escapeHtml(variantId)}" data-engine="${escapeHtml(engineId)}">
       <div class="card-thumb-box">
         <span class="card-badge">${escapeHtml(styleBadge(style))}</span>
         ${thumb ? `<img src="${thumb}" alt="${escapeHtml(style.label)} preview">` : `<div class="card-fallback-icon">▣</div>`}
@@ -490,8 +488,8 @@ function styleCard(plot, style) {
         <h4>${escapeHtml(style.label)}</h4>
         <p>${escapeHtml(blurb)}</p>
         <div class="card-btn-row">
-          <button type="button" class="card-btn primary" data-style-open="${escapeHtml(style.id)}">Open Studio</button>
-          <button type="button" class="card-btn secondary" data-style-demo="${escapeHtml(style.id)}">Try Demo</button>
+          <button type="button" class="card-btn primary" data-style-open="${escapeHtml(openId)}" data-variant="${escapeHtml(variantId)}" data-engine="${escapeHtml(engineId)}">Open Studio</button>
+          <button type="button" class="card-btn secondary" data-style-demo="${escapeHtml(openId)}" data-variant="${escapeHtml(variantId)}" data-engine="${escapeHtml(engineId)}">Try Demo</button>
         </div>
       </div>
     </article>
@@ -511,10 +509,25 @@ function renderFamilyDiscovery() {
     `;
   }
   const total = Discovery.familyStyles.length;
-  const shown = visibleFamilyStyles();
-  const remaining = Math.max(0, total - shown.length);
-  const cards = shown.map((style) => styleCard(plot, style)).join("");
+  const recommended = Discovery.familyStyles.filter((s) => s.card_group === "recommended" || s.card_group === "pdf_styles");
+  const more = Discovery.familyStyles.filter((s) => s.card_group !== "recommended" && s.card_group !== "pdf_styles");
+  const splitSections = recommended.length > 0 && more.length > 0;
+  const shownMore = more.slice(0, Math.max(0, Discovery.styleLimit - recommended.length));
+  const shownAll = visibleFamilyStyles();
+  const remaining = splitSections
+    ? Math.max(0, more.length - shownMore.length)
+    : Math.max(0, total - shownAll.length);
   const loading = total === 0 && !Discovery.familyStylesCache[plot.id];
+  const recCards = recommended.map((style) => styleCard(plot, style)).join("");
+  const moreCards = shownMore.map((style) => styleCard(plot, style)).join("");
+  const allCards = shownAll.map((style) => styleCard(plot, style)).join("");
+  const countLabel = Discovery.familyCountLabel
+    ? `Showing <strong>${escapeHtml(Discovery.familyCountLabel)}</strong>`
+    : recommended.length
+    ? `Showing <strong>${recommended.length}</strong> recommended of <strong>${total}</strong> variants`
+    : total === 1
+      ? `Showing <strong>1 of 1</strong> styles`
+      : `Showing <strong>${Math.min(Discovery.styleLimit, total)}</strong> of <strong>${total}</strong> styles`;
   return `
     <nav class="crumbs"><a href="/plots">All Plots</a> / ${escapeHtml(plot.name)}</nav>
     <section class="discover-hero compact">
@@ -527,36 +540,61 @@ function renderFamilyDiscovery() {
     </section>
     <div class="browse-toolbar">
       <div class="tool-count-info">
-        ${loading ? "Loading visualization styles…" : `Showing <strong>${shown.length}</strong> of <strong>${total}</strong> styles`}
+        ${loading ? "Loading visualization styles…" : countLabel}
       </div>
     </div>
-    <div class="plot-cards style-grid" id="styleCards">
-      ${loading ? `<div class="empty card">Loading styles…</div>` : (cards || `<div class="empty card">No visualization styles yet for this family. Open Studio to plot from scratch.</div>`)}
-    </div>
+    ${loading ? `<div class="plot-cards style-grid" id="styleCards"><div class="empty card">Loading styles…</div></div>` : splitSections ? `
+      <section class="discover-section"><h3>Recommended</h3><div class="plot-cards style-grid" id="styleCards">${recCards}</div></section>
+      <section class="discover-section"><h3>More</h3><div class="plot-cards style-grid" id="styleCardsMore">${moreCards}</div></section>
+    ` : `
+      <div class="plot-cards style-grid" id="styleCards">
+        ${allCards || `<div class="empty card">No visualization styles yet for this family. Open Studio to plot from scratch.</div>`}
+      </div>
+    `}
     ${remaining ? `
       <div class="load-more-wrap" id="styleLoadMore">
         <button type="button" class="load-more-btn" data-load-more="1">Load more · ${Math.min(STYLE_PAGE, remaining)} of ${remaining} remaining</button>
         <p class="load-more-hint">Scroll down to load the next ${STYLE_PAGE} cards, or click Load more.</p>
-      </div>` : (total > STYLE_PAGE ? `<p class="load-more-hint done">All ${total} styles are shown.</p>` : "")}
+      </div>` : (more.length > STYLE_PAGE ? `<p class="load-more-hint done">All ${total} variants are shown.</p>` : "")}
   `;
+}
+
+function cachedFamilyStyles(plotId) {
+  const cached = Discovery.familyStylesCache[plotId];
+  if (!cached) return [];
+  return Array.isArray(cached) ? cached : cached.styles || [];
+}
+
+function cachedFamilyCountLabel(plotId) {
+  const cached = Discovery.familyStylesCache[plotId];
+  if (!cached || Array.isArray(cached)) return Discovery.familyCountLabel || "";
+  return cached.count_label || "";
 }
 
 async function loadFamilyStyles(plot) {
   if (!plot?.id) return;
   if (Discovery.familyStylesCache[plot.id]) {
-    Discovery.familyStyles = Discovery.familyStylesCache[plot.id];
+    const cached = Discovery.familyStylesCache[plot.id];
+    if (Array.isArray(cached)) {
+      Discovery.familyStyles = cached;
+    } else {
+      Discovery.familyStyles = cached.styles || [];
+      Discovery.familyCountLabel = cached.count_label || "";
+    }
     return;
   }
   const payload = await api(`/api/registry/plots/${encodeURIComponent(plot.id)}/styles`);
   Discovery.familyStyles = payload.styles || [];
-  Discovery.familyStylesCache[plot.id] = Discovery.familyStyles;
+  Discovery.familyCountLabel = payload.count_label || "";
+  Discovery.familyStylesCache[plot.id] = { styles: Discovery.familyStyles, count_label: Discovery.familyCountLabel };
 }
 
 async function openFamily(plot) {
   if (!plot) return;
   Discovery.familyPlot = plot;
   Discovery.styleLimit = STYLE_PAGE;
-  Discovery.familyStyles = Discovery.familyStylesCache[plot.id] || [];
+  Discovery.familyStyles = cachedFamilyStyles(plot.id);
+  Discovery.familyCountLabel = cachedFamilyCountLabel(plot.id);
   Discovery.view = "family";
   history.pushState({}, "", `/family/${encodeURIComponent(plot.id)}`);
   renderDiscovery();
@@ -566,28 +604,38 @@ async function openFamily(plot) {
     } catch (err) {
       console.warn("Failed to load family styles", err);
       Discovery.familyStyles = [];
-      Discovery.familyStylesCache[plot.id] = [];
+      Discovery.familyStylesCache[plot.id] = { styles: [], count_label: "" };
     }
     if (Discovery.view === "family" && Discovery.familyPlot?.id === plot.id) renderDiscovery();
   }
 }
 
 function bindStyleCardClicks(root, plot) {
-  const openStyle = (styleId) => {
-    openStudio(plot, {
+  const openStyle = (styleId, variantId, engineId) => {
+    const extra = {
       example: styleId,
+      variant: variantId || "",
       source_context: Discovery.analysisContext || "browse",
       source_task: Discovery.analysisTask || "family",
-    });
+    };
+    const nativeEngine = plot.engine_plugin_id;
+    if (engineId && engineId !== nativeEngine) {
+      extra.plugin = engineId;
+      extra.engine_plugin_id = engineId;
+      extra.plot = engineId;
+      openStudio({ id: engineId, engine_plugin_id: engineId, name: plot.name }, extra);
+      return;
+    }
+    openStudio(plot, extra);
   };
   root.querySelectorAll("[data-style-open], [data-style-demo]").forEach((btn) => {
     btn.onclick = (event) => {
       event.stopPropagation();
-      openStyle(btn.dataset.styleOpen || btn.dataset.styleDemo);
+      openStyle(btn.dataset.styleOpen || btn.dataset.styleDemo, btn.dataset.variant, btn.dataset.engine);
     };
   });
   root.querySelectorAll(".style-card").forEach((card) => {
-    card.onclick = () => openStyle(card.dataset.styleId);
+    card.onclick = () => openStyle(card.dataset.exampleId || card.dataset.styleId, card.dataset.variantId, card.dataset.engine);
   });
 }
 
@@ -596,11 +644,16 @@ function updateLoadMoreChrome(root) {
   const shown = Math.min(Discovery.styleLimit, total);
   const remaining = Math.max(0, total - shown);
   const count = root.querySelector(".browse-toolbar .tool-count-info");
-  if (count) count.innerHTML = `Showing <strong>${shown}</strong> of <strong>${total}</strong> styles`;
+  const recommended = Discovery.familyStyles.filter((s) => s.card_group === "recommended" || s.card_group === "pdf_styles").length;
+  if (count) {
+    count.innerHTML = recommended
+      ? `Showing <strong>${recommended}</strong> recommended of <strong>${total}</strong> variants`
+      : `Showing <strong>${shown}</strong> of <strong>${total}</strong> visualization variants`;
+  }
   const wrap = root.querySelector("#styleLoadMore");
   if (!wrap) return;
   if (!remaining) {
-    wrap.outerHTML = total > STYLE_PAGE ? `<p class="load-more-hint done">All ${total} style cards are shown.</p>` : "";
+    wrap.outerHTML = total > STYLE_PAGE ? `<p class="load-more-hint done">All ${total} variants are shown.</p>` : "";
     if (Discovery._styleObserver) Discovery._styleObserver.disconnect();
     return;
   }
@@ -624,9 +677,11 @@ function bindStyleCards(root) {
     if (prev >= Discovery.familyStyles.length) return;
     Discovery._loadingMore = true;
     Discovery.styleLimit += STYLE_PAGE;
-    const grid = root.querySelector("#styleCards");
+    const grid = root.querySelector("#styleCardsMore") || root.querySelector("#styleCards");
     if (grid) {
-      const extra = Discovery.familyStyles.slice(prev, Discovery.styleLimit);
+      const recommended = Discovery.familyStyles.filter((s) => s.card_group === "recommended" || s.card_group === "pdf_styles");
+      const more = Discovery.familyStyles.filter((s) => s.card_group !== "recommended" && s.card_group !== "pdf_styles");
+      const extra = more.slice(Math.max(0, prev - recommended.length), Math.max(0, Discovery.styleLimit - recommended.length));
       extra.forEach((style) => grid.insertAdjacentHTML("beforeend", styleCard(plot, style)));
       bindStyleCardClicks(grid, plot);
     }
@@ -791,7 +846,8 @@ async function applyDiscoveryRoute() {
     const plotId = decodeURIComponent(path.split("/").filter(Boolean)[1] || "");
     Discovery.familyPlot = findPlot(plotId);
     Discovery.styleLimit = STYLE_PAGE;
-    Discovery.familyStyles = (Discovery.familyPlot && Discovery.familyStylesCache[Discovery.familyPlot.id]) || [];
+    Discovery.familyStyles = Discovery.familyPlot ? cachedFamilyStyles(Discovery.familyPlot.id) : [];
+    Discovery.familyCountLabel = Discovery.familyPlot ? cachedFamilyCountLabel(Discovery.familyPlot.id) : "";
     renderDiscovery();
     if (Discovery.familyPlot && !Discovery.familyStylesCache[Discovery.familyPlot.id]) {
       try {
@@ -799,7 +855,7 @@ async function applyDiscoveryRoute() {
       } catch (err) {
         console.warn("Failed to load family styles", err);
         Discovery.familyStyles = [];
-        Discovery.familyStylesCache[Discovery.familyPlot.id] = [];
+        Discovery.familyStylesCache[Discovery.familyPlot.id] = { styles: [], count_label: "" };
       }
       if (Discovery.view === "family") renderDiscovery();
     }

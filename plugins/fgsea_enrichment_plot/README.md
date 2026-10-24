@@ -42,6 +42,6 @@ All groups and machine-readable descriptions are in `params_schema.json`. Named 
 
 ## Examples and bundles
 
-Run all examples with `plugins/fgsea_enrichment_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas`. Bundles in `examples/<id>/` contain `params.json`, copied inputs, `expected/result.png`, and `manifest.json`; each manifest records the reproducible command. The gallery is `all_examples_gallery/fgsea_enrichment_plot_gallery.png`.
+Run all examples with `plugins/fgsea_enrichment_plot/run_all_examples.sh <repo-root>`. Bundles in `examples/<id>/` contain `params.json`, copied inputs, `expected/result.png`, and `manifest.json`; each manifest records the reproducible command. The gallery is `all_examples_gallery/fgsea_enrichment_plot_gallery.png`.
 
 The root examples `example_dot_summary_params.json`, `example_multiterm_params.json`, and `example_composite_params.json` use the deterministic example data. Every render also writes `result.html`; it is a Plotly widget when Plotly/htmlwidgets are installed and an informative static-output fallback otherwise. This plugin keeps the existing FGSEA computation and is compatible with the SCA-style ranked statistic and leading-edge conventions.

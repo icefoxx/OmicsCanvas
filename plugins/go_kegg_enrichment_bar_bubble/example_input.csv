@@ -1,0 +1,21 @@
+Description,Ontology,pvalue,p.adjust,GeneCount
+defense response to virus,BP,0.00001,0.0003,31
+cell killing,BP,0.00004,0.0008,27
+response to virus,BP,0.00012,0.0015,34
+myeloid leukocyte activation,BP,0.0005,0.004,22
+immune response,BP,0.001,0.008,40
+azurophil granule,CC,0.0007,0.006,19
+primary lysosome,CC,0.0015,0.011,19
+secretory granule membrane,CC,0.003,0.02,25
+cytoplasmic vesicle,CC,0.006,0.034,28
+plasma membrane,CC,0.01,0.05,44
+antigen binding,MF,0.0009,0.009,18
+cytokine receptor activity,MF,0.002,0.016,21
+chemokine activity,MF,0.004,0.025,17
+receptor ligand activity,MF,0.009,0.045,26
+oxidoreductase activity,MF,0.02,0.08,15
+cytokine-cytokine receptor interaction,KEGG,0.00002,0.0005,36
+JAK-STAT signaling pathway,KEGG,0.0002,0.002,29
+NF-kappa B signaling pathway,KEGG,0.0008,0.007,24
+Toll-like receptor signaling pathway,KEGG,0.003,0.02,20
+Apoptosis,KEGG,0.012,0.06,18

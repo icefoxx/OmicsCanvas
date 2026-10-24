@@ -114,8 +114,9 @@ first_existing_col <- function(df, candidates, required = TRUE, label = 'column'
 load_common_reference <- function() {
   script_arg <- grep('^--file=', commandArgs(FALSE), value = TRUE)
   script_path <- if (length(script_arg) > 0) sub('^--file=', '', script_arg[1]) else file.path(getwd(), 'plugins', 'den_plot', 'plot.R')
-  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), 'reference_sca_helpers')
-  if (!dir.exists(helper_dir)) helper_dir <- file.path('plugins', 'den_plot', 'reference_sca_helpers')
+  # Shared SCA helper library (one canonical copy for all plugins): <repo>/R/sca
+  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), '..', '..', 'R', 'sca')
+  if (!dir.exists(helper_dir)) helper_dir <- file.path('R', 'sca')
   load_pkgs <<- function(pkgs) {
     missing <- pkgs[!vapply(pkgs, requireNamespace, logical(1), quietly = TRUE)]
     if (length(missing) > 0) stop('Missing required R package(s): ', paste(missing, collapse = ', '), call. = FALSE)
@@ -261,7 +262,7 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   }
   draw_with_retry(function(w, h) svglite::svglite(file.path(output_dir, 'result.svg'), width = w, height = h))
   draw_with_retry(function(w, h) grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
-  draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi, type = 'cairo'))
+  draw_with_retry(function(w, h) (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
 }
 
 main <- function() {

@@ -71,7 +71,7 @@ EGFR,5.4,5.1,4.8,5.9,5.2,4.7
 
 ## SCA Compatibility Note
 
-This plugin **rewrites** `statBalloonplot.R` from `/Users/qzhang10/workstation/development/SCA/R/plots/statBalloonplot.R`. The core visual concept (tile + balloon cells sized by value, with row/column summary stats on the margins) is preserved, but the implementation is rebuilt on ggplot2 with proper aesthetics:
+This plugin **rewrites** `statBalloonplot.R` from the upstream SCA library (`R/plots/statBalloonplot.R`). The core visual concept (tile + balloon cells sized by value, with row/column summary stats on the margins) is preserved, but the implementation is rebuilt on ggplot2 with proper aesthetics:
 
 - The gradient is correctly wired to the tile `fill` aesthetic via `scale_fill_gradient` / `scale_fill_distiller`.
 - The buggy `scale_fill_identity()` (with no fill aesthetic) is removed.
@@ -85,7 +85,7 @@ The original SCA file is **not modified**.
 Run all examples:
 
 ```bash
-plugins/balloon_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/balloon_plot/run_all_examples.sh <repo-root>
 ```
 
 This writes `/tmp/balloon_plot_*_out` and updates:

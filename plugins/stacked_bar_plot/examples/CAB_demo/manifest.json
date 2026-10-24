@@ -1,0 +1,15 @@
+{
+  "id": "CAB_demo",
+  "label": "CAB_demo",
+  "plugin_id": "stacked_bar_plot",
+  "plot_type": "stack",
+  "mode": "horizontal",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/stacked_bar_plot/plot.R --input plugins/stacked_bar_plot/examples/CAB_demo/input/example_input.csv --params plugins/stacked_bar_plot/examples/CAB_demo/params.json --output /tmp/out"
+  }
+}

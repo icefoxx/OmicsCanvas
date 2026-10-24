@@ -496,6 +496,8 @@ if (show_legend) {
   ))
 }
 
+# Generic appearance parameters not handled by this plugin (R/runtime/omicscanvas_theme.R).
+if (!exists('omicscanvas_apply_theme')) { .oc_f <- sub('^--file=', '', grep('^--file=', commandArgs(FALSE), value = TRUE)[1]); .oc_rt <- file.path(dirname(normalizePath(.oc_f, mustWork = FALSE)), '..', '..', 'R', 'runtime', 'omicscanvas_theme.R'); if (!file.exists(.oc_rt)) .oc_rt <- file.path('R', 'runtime', 'omicscanvas_theme.R'); sys.source(.oc_rt, envir = globalenv()) }; p <- omicscanvas_apply_theme(p, params, only = c('legend_show'))
 svg_file <- file.path(output_dir, 'result.svg')
 pdf_file <- file.path(output_dir, 'result.pdf')
 png_file <- file.path(output_dir, 'result.png')

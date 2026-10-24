@@ -27,6 +27,8 @@ const state = {
   isUpdating: false,
   lastOutputs: {},
   userTouchedParams: false,
+  previewSearch: "",
+  previewPage: 0,
 };
 
 const SCIENTIFIC_PALETTES = {
@@ -103,6 +105,7 @@ async function runDemoSilent() {
       body: JSON.stringify(payload),
       headers: { "Content-Type": "application/json" }
     });
+    renderValidation(result.vnext);
     if (result.status === "completed" && result.outputs) {
       renderDownloads(result.outputs);
       if (result.outputs.preview) {
@@ -250,6 +253,76 @@ function normalizeOutputMap(outputs = {}) {
   return map;
 }
 
+const EXPORT_LABELS = { plotspec: "PlotSpec (JSON)", bundle: "Reproduction bundle (ZIP)" };
+const EXPORT_FILENAMES = { plotspec: "plotspec.json", bundle: "reproduction_bundle.zip" };
+const IMPORT_STORAGE_KEY = "omicscanvas.importedPlotSpec";
+
+/** Scientific validation result returned with every run (PlotSpec layer). */
+function renderValidation(vnext) {
+  renderValidationPanel($("validationPanel"), vnext);
+}
+
+/** Load a PlotSpec file: convert to params, then apply here or open the right plot's Studio. */
+async function importPlotSpecFile(file) {
+  let spec;
+  try {
+    spec = JSON.parse(await file.text());
+  } catch (err) {
+    $("jobStatus").textContent = `Import failed: ${file.name} is not JSON.`;
+    return;
+  }
+  try {
+    const result = await api("/api/vnext/plotspec/to-params", {
+      method: "POST",
+      body: JSON.stringify({ plotspec: spec }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (result.plugin_id !== state.pluginId) {
+      sessionStorage.setItem(IMPORT_STORAGE_KEY, JSON.stringify({ plugin_id: result.plugin_id, params: result.params }));
+      window.location.href = `/static/editor.html?plugin=${encodeURIComponent(result.plugin_id)}`;
+      return;
+    }
+    applyImportedParams(result.params, result.unsupported_roles);
+    await runDemo({ reloadDemo: false });
+  } catch (err) {
+    $("jobStatus").textContent = `Import failed: ${err.message}`;
+  }
+}
+
+function applyImportedParams(params, unsupported = []) {
+  state.params = { ...params };
+  syncJsonFromParams();
+  renderParamContentArea();
+  const extra = unsupported && unsupported.length ? ` Ignored roles: ${unsupported.join(", ")}.` : "";
+  $("jobStatus").textContent = `Settings restored from PlotSpec. Load the matching dataset if it was not the demo data.${extra}`;
+}
+
+function wirePlotSpecImport() {
+  const btn = $("importPlotSpecBtn");
+  const input = $("importPlotSpecInput");
+  if (!btn || !input) return;
+  btn.onclick = () => input.click();
+  input.onchange = () => {
+    const file = input.files && input.files[0];
+    input.value = "";
+    if (file) importPlotSpecFile(file);
+  };
+}
+
+/** PlotSpec imported on another plot's page, waiting to be applied here. */
+function takePendingImport() {
+  try {
+    const raw = sessionStorage.getItem(IMPORT_STORAGE_KEY);
+    if (!raw) return null;
+    const pending = JSON.parse(raw);
+    if (pending.plugin_id !== state.pluginId) return null;
+    sessionStorage.removeItem(IMPORT_STORAGE_KEY);
+    return pending.params || null;
+  } catch (_) {
+    return null;
+  }
+}
+
 function ensureExportItems(container) {
   if (!container) return [];
   const primaryOrder = [
@@ -257,6 +330,8 @@ function ensureExportItems(container) {
     { fmt: "pdf", label: "PDF" },
     { fmt: "png", label: "PNG" },
     { fmt: "tiff", label: "TIFF" },
+    { fmt: "plotspec", label: "PlotSpec (JSON)" },
+    { fmt: "bundle", label: "Reproduction bundle (ZIP)" },
   ];
   let items = Array.from(container.querySelectorAll(".export-item[data-fmt]"));
   if (items.length < primaryOrder.length) {
@@ -291,7 +366,7 @@ function renderDownloads(outputs) {
   rows.forEach((row) => {
     const fmt = (row.dataset.fmt || "").toLowerCase();
     const item = map[fmt] || map[fmt === "tiff" ? "tif" : fmt];
-    const label = fmt === "tiff" ? "TIFF" : fmt.toUpperCase();
+    const label = EXPORT_LABELS[fmt] || (fmt === "tiff" ? "TIFF" : fmt.toUpperCase());
     row.textContent = label;
     if (item && item.url) {
       enabledCount += 1;
@@ -299,7 +374,7 @@ function renderDownloads(outputs) {
       row.href = item.url;
       row.target = "_blank";
       row.rel = "noopener noreferrer";
-      row.download = item.filename || `figure.${fmt === "tiff" ? "tiff" : fmt}`;
+      row.download = EXPORT_FILENAMES[fmt] || item.filename || `figure.${fmt === "tiff" ? "tiff" : fmt}`;
       row.title = `Download ${label}`;
       row.removeAttribute("aria-disabled");
       row.tabIndex = 0;
@@ -330,7 +405,7 @@ function renderDownloads(outputs) {
     container.innerHTML = "";
     container.hidden = true;
     const secondaryKeys = Object.keys(map).filter(
-      (k) => !["svg", "pdf", "png", "tiff", "tif"].includes(k)
+      (k) => !["svg", "pdf", "png", "tiff", "tif", "plotspec", "bundle"].includes(k)
     );
     if (secondaryKeys.length) {
       container.hidden = false;
@@ -416,6 +491,28 @@ function wireExportMenu() {
 
   // Seed SVG/PDF/PNG/TIFF rows immediately so the panel is never empty
   renderDownloads(state.lastOutputs || {});
+}
+
+function numberFieldMeta(key, control) {
+  const def = control?.default;
+  if (key.includes("alpha")) return { min: 0, max: 1, step: 0.05 };
+  if (key === "legend_x" || key === "legend_y" || key.includes("legend_just") || key.includes("hjust") || key.includes("vjust")) {
+    return { min: 0, max: 1, step: 0.01 };
+  }
+  if (key === "legend_nrow" || key === "legend_ncol") return { min: 0, max: 40, step: 1 };
+  if (key.includes("dpi")) return { min: 72, max: 600, step: 1 };
+  if (key === "width" || key === "height") return { min: 0.5, max: 40, step: 0.1 };
+  if (key === "mark_expand_mm" || key === "mark_size") return { min: 0, max: 20, step: 0.5 };
+  if (/(point_size|dot_size|label_size|mark_.*size|pie_.*size|stat_embedded_size)/.test(key)) {
+    return { min: 0, max: 20, step: 0.05 };
+  }
+  if (key.includes("angle")) return { min: 0, max: 360, step: 1 };
+  if (/(line_width|linewidth|border_width|tick_width|grid_width|minor_width)/.test(key)) {
+    return { min: 0, max: 8, step: 0.05 };
+  }
+  if (key.includes("size")) return { min: 0, max: 48, step: 0.5 };
+  if (control?.type === "integer") return { min: 0, max: 10000, step: 1 };
+  return { min: undefined, max: undefined, step: "any", default: def };
 }
 
 function labelize(name) {
@@ -690,6 +787,7 @@ function sanitizeParamsForRun(params = {}) {
   Object.entries(params || {}).forEach(([key, value]) => {
     if (value === undefined || value === null) return;
     if (value === "") return;
+    if (typeof value === "string" && /^(first column|first col)$/i.test(value.trim())) return;
     const k = key.toLowerCase();
     if (Array.isArray(value) && value.length === 0) {
       // Empty filter arrays mean "select nothing" and break many plugins
@@ -711,6 +809,11 @@ function sanitizeParamsForRun(params = {}) {
     }
     out[key] = value;
   });
+  if (out.legend_title && !out.legend_name) out.legend_name = out.legend_title;
+  if (out.legend_name && !out.legend_title) out.legend_title = out.legend_name;
+  if (out.legend_show === false) out.legend_position = "none";
+  if (out.rendering_mode === "raster") out.raster = true;
+  if (out.rendering_mode === "vector") out.raster = false;
   return out;
 }
 
@@ -755,6 +858,17 @@ function setParamsFromDemo(demo) {
   syncJsonFromParams();
 }
 
+/** CSS colour (hex or name such as "white") -> #rrggbb for <input type="color">; null if not a colour. */
+function toHexColor(value) {
+  if (typeof value !== "string" || !value.trim()) return null;
+  if (/^#[0-9a-f]{6}$/i.test(value)) return value;
+  const ctx = document.createElement("canvas").getContext("2d");
+  ctx.fillStyle = "#000001";
+  ctx.fillStyle = value;
+  const out = ctx.fillStyle;
+  return out === "#000001" && value.toLowerCase() !== "#000001" ? null : /^#[0-9a-f]{6}$/i.test(out) ? out : null;
+}
+
 function renderInputForControl(control) {
   const value = state.params[control.key] !== undefined ? state.params[control.key] : control.default;
 
@@ -764,11 +878,14 @@ function renderInputForControl(control) {
     label.innerHTML = `
       <input type="checkbox" ${value ? "checked" : ""} />
       <span class="slider"></span>
-      <span class="switch-label">${control.label}</span>
     `;
     const input = label.querySelector("input");
     input.onchange = () => {
       state.params[control.key] = input.checked;
+      if (control.key === "legend_show" && !input.checked) state.params.legend_position = "none";
+      if (control.key === "legend_show" && input.checked && state.params.legend_position === "none") {
+        state.params.legend_position = "right";
+      }
       syncJsonFromParams();
       triggerAutoUpdate(50);
     };
@@ -829,36 +946,35 @@ function renderInputForControl(control) {
     return select;
   }
 
-  if (control.type === "number") {
-    const wrap = document.createElement("div");
-    wrap.className = "range-control";
-    const range = document.createElement("input");
-    range.type = "range";
-    range.min = "0";
-    range.max = control.key.includes("dpi") ? "600" : "100";
-    range.step = control.key.includes("alpha") ? "0.05" : "1";
-    range.value = value !== "" && value !== undefined ? String(value) : "10";
-
-    const badge = document.createElement("span");
-    badge.className = "range-badge";
-    badge.textContent = range.value;
-
-    range.oninput = () => {
-      badge.textContent = range.value;
-      state.params[control.key] = parseFloat(range.value);
+  if (control.type === "number" || control.type === "integer") {
+    const key = String(control.key || "").toLowerCase();
+    const meta = numberFieldMeta(key, control);
+    const input = document.createElement("input");
+    input.type = "number";
+    input.className = "number-input";
+    if (meta.min !== undefined) input.min = String(meta.min);
+    if (meta.max !== undefined) input.max = String(meta.max);
+    input.step = String(meta.step);
+    const shown = value !== undefined && value !== null && value !== "" ? value : control.default;
+    input.value = shown !== undefined && shown !== null ? String(shown) : "";
+    input.placeholder = control.default !== undefined && control.default !== null ? String(control.default) : "";
+    input.title = control.default !== undefined ? `Default: ${control.default}` : "";
+    const commitNumber = () => {
+      const parsed = input.value === "" ? control.default : Number(input.value);
+      if (parsed === undefined || Number.isNaN(parsed)) delete state.params[control.key];
+      else state.params[control.key] = control.type === "integer" ? parseInt(parsed, 10) : parsed;
       syncJsonFromParams();
-      triggerAutoUpdate(100);
+      triggerAutoUpdate(200);
     };
-
-    wrap.appendChild(range);
-    wrap.appendChild(badge);
-    return wrap;
+    input.onchange = commitNumber;
+    input.oninput = commitNumber;
+    return input;
   }
 
   if (control.type === "color") {
     const input = document.createElement("input");
     input.type = "color";
-    input.value = typeof value === "string" && value.startsWith("#") ? value : "#3B82F6";
+    input.value = toHexColor(value) || "#3B82F6";
     input.oninput = () => {
       state.params[control.key] = input.value;
       syncJsonFromParams();
@@ -880,24 +996,94 @@ function renderInputForControl(control) {
 
 /**
  * Editor tabs (stable for every plot):
- *   data | plot | theme | axes | title | legend | canvas | export
+ *   data | plot | customize | theme | axes | title | legend | canvas | export
  *
- * - data / plot  → plot-specific (from schema)
+ * - data / plot / customize → plot-specific (from schema)
  * - theme/axes/title/legend/canvas → common UI (always present) + matching schema keys
  */
-const EDITOR_TABS = ["data", "plot", "theme", "axes", "title", "legend", "canvas", "export"];
+const EDITOR_TABS = ["data", "plot", "customize", "theme", "axes", "title", "legend", "canvas", "export"];
+
+const CUSTOMIZE_SECTIONS = new Set([
+  "marks_labels",
+  "marks labels",
+  "marks",
+  "points",
+  "density",
+  "labels",
+  "style",
+  "graphic",
+  "graphics",
+]);
+
+const CUSTOMIZE_SECTION_TITLES = {
+  marks_labels: "Cluster ellipses & labels",
+  "marks labels": "Cluster ellipses & labels",
+  marks: "Cluster ellipses & marks",
+  points: "Points",
+  density: "Density",
+  labels: "Labels",
+  style: "Style",
+  graphic: "Graphic",
+  graphics: "Graphics",
+};
 
 /** Shared aesthetic fields always shown under common tabs (written into state.params). */
 const COMMON_CONTROLS = {
+  theme: [
+    {
+      key: "theme_use",
+      label: "Base theme",
+      type: "select",
+      options: ["default", "classic", "minimal", "bw", "blank"],
+      default: "default",
+    },
+    { key: "plot_background", label: "Plot background", type: "color", default: "#FFFFFF" },
+    { key: "panel_background", label: "Panel background", type: "color", default: "#FFFFFF" },
+    { key: "panel_border_show", label: "Show panel border", type: "boolean", default: true },
+    { key: "panel_border_color", label: "Panel border color", type: "color", default: "#111111" },
+    { key: "panel_border_width", label: "Panel border width", type: "number", default: 0.6 },
+    { key: "axis_line_show", label: "Show axis lines", type: "boolean", default: false, help: "X/Y baseline. Turn off to hide." },
+    { key: "axis_line_color", label: "Axis line color", type: "color", default: "#111111" },
+    { key: "axis_line_width", label: "Axis line width", type: "number", default: 0.5 },
+    { key: "axis_line_x_show", label: "Show X axis line", type: "boolean", default: true },
+    { key: "axis_line_y_show", label: "Show Y axis line", type: "boolean", default: true },
+    { key: "axis_tick_show", label: "Show axis ticks", type: "boolean", default: true },
+    { key: "axis_tick_color", label: "Tick color", type: "color", default: "#111111" },
+    { key: "axis_tick_width", label: "Tick width", type: "number", default: 0.35 },
+    { key: "grid_show", label: "Show grid", type: "boolean", default: false },
+    { key: "grid_color", label: "Grid color", type: "color", default: "#E5E7EB" },
+    { key: "grid_line_width", label: "Grid width", type: "number", default: 0.3 },
+    {
+      key: "grid_line_type",
+      label: "Grid line type",
+      type: "select",
+      options: ["solid", "dashed", "dotted", "dotdash", "longdash", "twodash"],
+      default: "solid",
+    },
+    { key: "grid_x_show", label: "Show vertical grid", type: "boolean", default: true },
+    { key: "grid_y_show", label: "Show horizontal grid", type: "boolean", default: true },
+    { key: "grid_minor_show", label: "Show minor grid", type: "boolean", default: false },
+    { key: "grid_minor_color", label: "Minor grid color", type: "color", default: "#F3F4F6" },
+    { key: "grid_minor_width", label: "Minor grid width", type: "number", default: 0.2 },
+  ],
   axes: [
     { key: "xlab", label: "X axis title", type: "string", help: "Label for the horizontal axis" },
     { key: "xlab_show", label: "Show X title", type: "boolean", default: true },
-    { key: "x_axis_text_size", label: "X tick size", type: "number", default: 10 },
-    { key: "x_axis_text_angle", label: "X tick angle", type: "number", default: 0 },
     { key: "ylab", label: "Y axis title", type: "string", help: "Label for the vertical axis" },
     { key: "ylab_show", label: "Show Y title", type: "boolean", default: true },
+    { key: "show_x_axis", label: "Show X axis", type: "boolean", default: true },
+    { key: "show_y_axis", label: "Show Y axis", type: "boolean", default: true },
+    { key: "axis_title_size", label: "Axis title size", type: "number", default: 12 },
+    { key: "axis_text_size", label: "Axis tick text size", type: "number", default: 10 },
+    { key: "x_axis_text_size", label: "X tick size", type: "number", default: 10 },
+    { key: "x_axis_text_angle", label: "X tick angle", type: "number", default: 0 },
     { key: "y_axis_text_size", label: "Y tick size", type: "number", default: 10 },
     { key: "y_axis_text_angle", label: "Y tick angle", type: "number", default: 0 },
+    { key: "xlim", label: "X limits [min,max]", type: "string", help: "Optional, e.g. -5,10" },
+    { key: "ylim", label: "Y limits [min,max]", type: "string", help: "Optional, e.g. -5,10" },
+    { key: "axis_arrow_show", label: "Show axis arrows", type: "boolean", default: false },
+    { key: "axis_arrow_x_label", label: "X arrow label", type: "string" },
+    { key: "axis_arrow_y_label", label: "Y arrow label", type: "string" },
   ],
   title: [
     { key: "title_show", label: "Show title", type: "boolean", default: true },
@@ -915,9 +1101,75 @@ const COMMON_CONTROLS = {
       options: ["right", "left", "top", "bottom", "none"],
       default: "right",
     },
-    { key: "legend_title", label: "Legend title", type: "string" },
-    { key: "legend_text_size", label: "Legend text size", type: "number", default: 10 },
-    { key: "legend_title_size", label: "Legend title size", type: "number", default: 11 },
+    { key: "legend_inside", label: "Place legend inside plot", type: "boolean", default: false },
+    { key: "legend_x", label: "Inside X (0–1)", type: "number", default: 0.98 },
+    { key: "legend_y", label: "Inside Y (0–1)", type: "number", default: 0.5 },
+    {
+      key: "legend_direction",
+      label: "Direction",
+      type: "select",
+      options: ["vertical", "horizontal"],
+      default: "vertical",
+      help: "horizontal is the ggplot equivalent of horiz=TRUE",
+    },
+    { key: "legend_horizontal", label: "Horizontal (horiz)", type: "boolean", default: false },
+    { key: "legend_name", label: "Legend title", type: "string" },
+    { key: "legend_title_size", label: "Title size", type: "number", default: 11 },
+    { key: "legend_title_color", label: "Title color", type: "color", default: "#111111" },
+    {
+      key: "legend_title_fontface",
+      label: "Title face",
+      type: "select",
+      options: ["plain", "bold", "italic", "bold.italic"],
+      default: "plain",
+    },
+    {
+      key: "legend_title_position",
+      label: "Title position",
+      type: "select",
+      options: ["top", "left", "bottom", "right"],
+      default: "top",
+    },
+    { key: "legend_title_hjust", label: "Title hjust", type: "number", default: 0 },
+    { key: "legend_text_size", label: "Text size", type: "number", default: 10 },
+    { key: "legend_text_color", label: "Text color (text.col)", type: "color", default: "#111111" },
+    {
+      key: "legend_text_fontface",
+      label: "Text face",
+      type: "select",
+      options: ["plain", "bold", "italic", "bold.italic"],
+      default: "plain",
+    },
+    {
+      key: "legend_label_position",
+      label: "Label position",
+      type: "select",
+      options: ["right", "left", "top", "bottom"],
+      default: "right",
+    },
+    { key: "legend_nrow", label: "Legend nrow", type: "integer", help: "Leave empty for automatic rows" },
+    { key: "legend_ncol", label: "Legend ncol", type: "integer", help: "Leave empty for automatic columns" },
+    { key: "legend_byrow", label: "Fill by row", type: "boolean", default: true },
+    { key: "legend_reverse", label: "Reverse legend", type: "boolean", default: false },
+    { key: "legend_key_size_pt", label: "Key size (pt)", type: "number", default: 10 },
+    { key: "legend_key_width_pt", label: "Key width (pt)", type: "number", default: 10 },
+    { key: "legend_key_height_pt", label: "Key height (pt)", type: "number", default: 10 },
+    { key: "legend_point_size", label: "Legend point size", type: "number", default: 4 },
+    { key: "legend_key_alpha", label: "Key alpha", type: "number", default: 1 },
+    { key: "legend_key_fill", label: "Key fill", type: "color", default: "#FFFFFF" },
+    { key: "legend_background_show", label: "Legend background", type: "boolean", default: false },
+    { key: "legend_background_fill", label: "Background fill", type: "color", default: "#FFFFFF" },
+    { key: "legend_background_color", label: "Background border", type: "color", default: "#FFFFFF" },
+    {
+      key: "legend_box",
+      label: "Legend box layout",
+      type: "select",
+      options: ["vertical", "horizontal"],
+      default: "vertical",
+    },
+    { key: "legend_spacing_x", label: "Spacing X (pt)", type: "number", default: 4 },
+    { key: "legend_spacing_y", label: "Spacing Y (pt)", type: "number", default: 4 },
+    { key: "legend_margin", label: "Legend margin (pt)", type: "number", default: 4 },
   ],
   canvas: [
     { key: "width", label: "Width", type: "number", default: 8, help: "Figure width (inches unless plugin uses px)" },
@@ -925,17 +1177,61 @@ const COMMON_CONTROLS = {
     { key: "dpi", label: "DPI", type: "number", default: 300 },
     { key: "font_family", label: "Font family", type: "string", default: "sans" },
     { key: "base_size", label: "Base font size", type: "number", default: 11 },
-    { key: "panel_background", label: "Panel background", type: "color", default: "#FFFFFF" },
-    { key: "plot_background", label: "Plot background", type: "color", default: "#FFFFFF" },
-    { key: "grid_show", label: "Show grid", type: "boolean", default: true },
-    { key: "grid_color", label: "Grid color", type: "color", default: "#E5E7EB" },
+    { key: "aspect_ratio", label: "Aspect ratio", type: "number", default: 1 },
+    {
+      key: "orientation",
+      label: "Orientation",
+      type: "select",
+      options: ["horizontal", "vertical"],
+      default: "horizontal",
+    },
+    {
+      key: "rendering_mode",
+      label: "Rendering mode",
+      type: "select",
+      options: ["auto", "vector", "raster"],
+      default: "auto",
+      help: "Auto uses rasterization for very large point clouds",
+    },
   ],
 };
+
+function isCustomizeControl(control) {
+  const key = String(control.key || "").toLowerCase();
+  const section = String(control.section || "")
+    .toLowerCase()
+    .replace(/[/\-_]+/g, " ")
+    .trim();
+  if (CUSTOMIZE_SECTIONS.has(section) || CUSTOMIZE_SECTIONS.has(String(control.section || "").toLowerCase())) {
+    return true;
+  }
+  if (
+    key === "show_mark" ||
+    key.startsWith("mark_") ||
+    key.startsWith("point_") ||
+    key === "show_density" ||
+    key === "hex" ||
+    key === "hex_bins" ||
+    key === "label_show" ||
+    key === "label_groups" ||
+    key === "label_size" ||
+    key === "label_color" ||
+    key === "label_repel" ||
+    key === "highlight_fill" ||
+    key === "highlight_size" ||
+    key === "highlight_alpha" ||
+    key === "highlight_stroke" ||
+    key === "highlight_border_color"
+  ) {
+    return true;
+  }
+  return false;
+}
 
 /**
  * Bucket schema controls into editor tabs.
  * Common buckets: axes | title | legend | canvas | theme
- * Plot-specific: data | plot
+ * Plot-specific: data | plot | customize
  */
 function getControlCategory(control) {
   const key = String(control.key || "").toLowerCase();
@@ -991,14 +1287,35 @@ function getControlCategory(control) {
     }
   }
 
+  // --- Theme appearance: panel, border, axis lines, grid ---
+  if (
+    key === "theme_use" ||
+    key === "theme" ||
+    key.includes("panel_border") ||
+    key.includes("panel_background") ||
+    key.includes("plot_background") ||
+    key.includes("axis_line") ||
+    key.includes("axis_tick") ||
+    key === "grid_show" ||
+    key === "show_grid" ||
+    key.includes("grid_color") ||
+    key.includes("grid_line") ||
+    key.includes("grid_major") ||
+    key.includes("grid_minor") ||
+    key === "grid_x_show" ||
+    key === "grid_y_show" ||
+    key === "grid" ||
+    /(^|_)grid(_|$)/.test(key)
+  ) {
+    return "theme";
+  }
+
   // --- Axes (common) ---
   if (
     /column_name|col_name|column_label|column_text|column_label_position|col_label/.test(key) ||
     /row_name|row_label_position|row_text/.test(key) ||
-    /(^|_)(xlab|ylab|x_title|y_title|x_label|y_label|x_axis|y_axis|xlim|ylim|x_min|y_min|x_max|y_max|x_text|y_text|x_tick|y_tick|x_break|y_break|x_expand|y_expand|x_grid|y_grid|x_angle|y_angle)(_|$)/.test(key) ||
+    /(^|_)(xlab|ylab|x_title|y_title|x_label|y_label|x_axis|y_axis|xlim|ylim|x_min|y_min|x_max|y_max|x_text|y_text|x_tick|y_tick|x_break|y_break|x_expand|y_expand|x_angle|y_angle)(_|$)/.test(key) ||
     /^axis_/.test(key) ||
-    key.includes("axis_line") ||
-    key.includes("axis_tick") ||
     key.includes("axis_text") ||
     key.includes("axis_title") ||
     key.includes("axis_arrow") ||
@@ -1035,17 +1352,10 @@ function getControlCategory(control) {
     key === "aspect_ratio" ||
     key === "font_family" ||
     key === "base_size" ||
-    (key.includes("margin") && !key.includes("label")) ||
-    key.includes("background") ||
-    key.includes("panel_background") ||
-    key.includes("plot_background") ||
-    key.includes("panel_border") ||
-    key.includes("grid_show") ||
-    key.includes("grid_color") ||
-    key.includes("grid_major") ||
-    key.includes("grid_minor") ||
-    key === "grid" ||
-    /(^|_)grid(_|$)/.test(key)
+    key === "rendering_mode" ||
+    key === "raster" ||
+    key === "orientation" ||
+    (key.includes("margin") && !key.includes("label") && !key.includes("legend"))
   ) {
     return "canvas";
   }
@@ -1075,6 +1385,8 @@ function getControlCategory(control) {
 
   if (key.includes("format") || key.includes("export") || key === "json") return "export";
 
+  if (isCustomizeControl(control)) return "customize";
+
   // Everything else is plot-specific (cells, rules, clustering, layers, interaction…)
   return "plot";
 }
@@ -1097,6 +1409,7 @@ function refreshParamNavCounts() {
     counts[t] = (counts[t] || 0) + 1;
   });
   // common tabs always have baseline controls
+  counts.theme = (counts.theme || 0) + (COMMON_CONTROLS.theme || []).length;
   counts.axes = (counts.axes || 0) + COMMON_CONTROLS.axes.length;
   counts.title = (counts.title || 0) + COMMON_CONTROLS.title.length;
   counts.legend = (counts.legend || 0) + COMMON_CONTROLS.legend.length;
@@ -1116,7 +1429,7 @@ function refreshParamNavCounts() {
       btn.classList.remove("is-dim");
       return;
     }
-    if (tab === "plot" && !(counts.plot > 0)) btn.classList.add("is-dim");
+    if ((tab === "plot" || tab === "customize") && !(counts[tab] > 0)) btn.classList.add("is-dim");
     else btn.classList.remove("is-dim");
   });
 }
@@ -1156,8 +1469,11 @@ function mergeCommonWithSchema(tab) {
   });
   // Put baseline first, then schema (including overrides that replace baseline keys)
   const schemaByKey = Object.fromEntries(schemaControls.map((c) => [c.key, c]));
+  if (schemaByKey.legend_title && !schemaByKey.legend_name) {
+    schemaByKey.legend_name = { ...schemaByKey.legend_title, key: "legend_name" };
+  }
   const head = (COMMON_CONTROLS[tab] || []).map((spec) => schemaByKey[spec.key] || makeVirtualControl(spec));
-  const tail = orderedSchema.filter((c) => !commonFirst.includes(c.key));
+  const tail = orderedSchema.filter((c) => !commonFirst.includes(c.key) && c.key !== "legend_title");
   return [...head, ...tail];
 }
 
@@ -1166,14 +1482,12 @@ function appendControlGroup(area, title, controls, { open = true } = {}) {
   const group = document.createElement("details");
   group.className = "control-group";
   group.open = open;
-  group.innerHTML = `<summary>${title}</summary>`;
+  group.innerHTML = `<summary>${escapeHtml(title)}</summary>`;
   controls.forEach((control) => {
     const row = document.createElement("label");
     row.className = `control-row control-${control.type || "string"}`;
-    if (control.virtual) row.classList.add("is-common-control");
     const required = control.required ? `<span class="required">*</span>` : "";
-    const badge = control.virtual ? `<span class="common-badge" title="Standard field (all plots)">common</span>` : "";
-    row.innerHTML = `<span class="control-label-line"><span>${control.label}${required}</span>${badge}</span>`;
+    row.innerHTML = `<span class="control-label-line"><span>${escapeHtml(control.label)}${required}</span></span>`;
     row.appendChild(renderInputForControl(control));
     if (control.help) {
       const help = document.createElement("small");
@@ -1336,7 +1650,7 @@ function paletteCardHtml(p, { recommended = false } = {}) {
   const colors = p.colors || [];
   const swatches = colors
     .slice(0, 12)
-    .map((c) => `<span class="theme-swatch" style="background:${c}" title="${c}"></span>`)
+    .map((c) => `<span class="theme-swatch" style="background:${escapeHtml(c)}" title="${escapeHtml(c)}"></span>`)
     .join("");
   const active = themeState.activeId === p.id ? "is-active" : "";
   const badge = recommended ? `<span class="theme-badge">rec</span>` : "";
@@ -1344,13 +1658,13 @@ function paletteCardHtml(p, { recommended = false } = {}) {
     .filter(Boolean)
     .join(" · ");
   return `
-    <button type="button" class="theme-palette-card ${active}" data-palette-id="${p.id}" title="Click to apply">
+    <button type="button" class="theme-palette-card ${active}" data-palette-id="${escapeHtml(p.id)}" title="Click to apply">
       <div class="theme-palette-head">
-        <strong>${p.name || p.id}</strong>
+        <strong>${escapeHtml(p.name || p.id)}</strong>
         ${badge}
       </div>
       <div class="theme-swatch-row">${swatches}</div>
-      <div class="theme-palette-meta">${meta}${p.reason ? ` · ${p.reason}` : ""}</div>
+      <div class="theme-palette-meta">${escapeHtml(meta)}${p.reason ? ` · ${escapeHtml(p.reason)}` : ""}</div>
     </button>
   `;
 }
@@ -1490,7 +1804,7 @@ async function renderThemePanel(area) {
     .map((j) => {
       const name = j.journal || j;
       const sel = themeState.journalQuery === name ? "selected" : "";
-      return `<option value="${name}" ${sel}>${name} (${j.count || "?"})</option>`;
+      return `<option value="${escapeHtml(name)}" ${sel}>${escapeHtml(name)} (${escapeHtml(j.count || "?")})</option>`;
     })
     .join("");
 
@@ -1500,7 +1814,7 @@ async function renderThemePanel(area) {
         <strong>Palette catalog</strong>
         <p>Click a palette to apply. Sources: classic built-ins, AMFE, and
           <a href="https://github.com/lcpmgh/colors" target="_blank" rel="noopener">lcpmgh/colors</a> (MIT).
-          Catalog: ${total} palettes.</p>
+          Catalog: ${escapeHtml(total)} palettes.</p>
       </div>
 
       <div class="theme-journal-box">
@@ -1513,7 +1827,7 @@ async function renderThemePanel(area) {
           <input id="themeJournalInput" class="theme-input" placeholder="e.g. Nature, Lancet, NEJM, Cell" />
           <button type="button" id="themeRecommendBtn" class="primary compact-action">Recommend</button>
         </div>
-        ${themeState.status ? `<div class="theme-status">${themeState.status}</div>` : ""}
+        ${themeState.status ? `<div class="theme-status">${escapeHtml(themeState.status)}</div>` : ""}
       </div>
 
       ${
@@ -1532,7 +1846,7 @@ async function renderThemePanel(area) {
       </div>
 
       <div class="theme-section">
-        <div class="theme-section-title">Browse palettes (${items.length}${items.length >= 80 ? "+" : ""})</div>
+        <div class="theme-section-title">Browse palettes (${escapeHtml(items.length)}${items.length >= 80 ? "+" : ""})</div>
         <div class="theme-palette-grid">
           ${items.length ? items.map((p) => paletteCardHtml(p)).join("") : `<div class="ai-empty">No palettes match filters.</div>`}
         </div>
@@ -1553,12 +1867,14 @@ function renderParamContentArea() {
   if (tab === "theme") {
     const intro = document.createElement("div");
     intro.className = "param-tab-intro";
-    intro.innerHTML = `<strong>Theme &amp; colors</strong><p>Shared across all plots. Click a palette to apply. Plot-specific color fields (if any) are listed below.</p>`;
+    intro.innerHTML = `<strong>Theme</strong><p>Panel, axis lines, grid, and colors. Uncheck a line or grid to hide it.</p>`;
     area.appendChild(intro);
-    const colorControls = controlsForTab("theme").filter((c) => c.key !== "theme_palette_id");
-    if (colorControls.length) {
-      appendControlGroup(area, "Plot color parameters", colorControls, { open: true });
-    }
+    const merged = mergeCommonWithSchema("theme");
+    const commonKeys = new Set((COMMON_CONTROLS.theme || []).map((s) => s.key));
+    const appearance = merged.filter((c) => commonKeys.has(c.key) || c.virtual);
+    const extraTheme = merged.filter((c) => !commonKeys.has(c.key) && !c.virtual && c.key !== "theme_palette_id");
+    appendControlGroup(area, "Panel, lines & grid", appearance, { open: true });
+    if (extraTheme.length) appendControlGroup(area, "Plot color parameters", extraTheme, { open: true });
     renderThemePanel(area);
     return;
   }
@@ -1567,7 +1883,7 @@ function renderParamContentArea() {
   if (tab === "data") {
     const intro = document.createElement("div");
     intro.className = "param-tab-intro";
-    intro.innerHTML = `<strong>Data</strong><p>Upload and map columns for <code>${state.pluginId || "this plot"}</code>.</p>`;
+    intro.innerHTML = `<strong>Data</strong><p>Upload and map columns for <code>${escapeHtml(state.pluginId || "this plot")}</code>.</p>`;
     area.appendChild(intro);
 
     const dataCard = document.createElement("div");
@@ -1583,7 +1899,7 @@ function renderParamContentArea() {
           <input type="file" id="loadDataFileInput" accept=".csv,.tsv,.txt,.xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="position:absolute; inset:0; opacity:0; cursor:pointer;" />
         </label>
       </div>
-      ${selectedFile ? `<div style="font-size:11px; font-weight:700; color:#15803d; background:#f0fdf4; border:1px solid #bbf7d0; padding:6px 10px; border-radius:4px;">📁 ${selectedFile}</div>` : ""}
+      ${selectedFile ? `<div style="font-size:11px; font-weight:700; color:#15803d; background:#f0fdf4; border:1px solid #bbf7d0; padding:6px 10px; border-radius:4px;">📁 ${escapeHtml(selectedFile)}</div>` : ""}
       <div class="chi-action-row">
         <span class="chi-action-label">reload</span>
         <button type="button" class="chi-icon-btn chi-btn-mint" id="loadDataReloadBtn" title="Reload dataset">⚡</button>
@@ -1617,7 +1933,9 @@ function renderParamContentArea() {
     }
 
     const dataControls = controlsForTab("data");
-    if (dataControls.length) {
+    if (typeof renderDataMappingPanel === "function") {
+      renderDataMappingPanel(area, dataControls);
+    } else if (dataControls.length) {
       appendControlGroup(area, "Column mapping & filters", dataControls, { open: true });
     } else {
       area.insertAdjacentHTML(
@@ -1632,14 +1950,14 @@ function renderParamContentArea() {
   if (tab === "plot") {
     const intro = document.createElement("div");
     intro.className = "param-tab-intro";
-    intro.innerHTML = `<strong>Plot options</strong><p>Parameters unique to <code>${state.pluginId || "this plot"}</code> (cells, rules, layers, clustering, interaction…).</p>`;
+    intro.innerHTML = `<strong>Plot options</strong><p>Parameters unique to <code>${escapeHtml(state.pluginId || "this plot")}</code> (cells, rules, layers, clustering, interaction…).</p>`;
     area.appendChild(intro);
 
     const plotControls = controlsForTab("plot");
     if (!plotControls.length) {
       area.insertAdjacentHTML(
         "beforeend",
-        `<div class="empty muted" style="padding:12px;font-size:12px;">This plot has no extra options beyond data + common axes/title/legend/theme/canvas.</div>`
+        `<div class="empty muted" style="padding:12px;font-size:12px;">This plot has no extra options beyond data, axes, title, legend, theme, and canvas.</div>`
       );
       return;
     }
@@ -1652,6 +1970,39 @@ function renderParamContentArea() {
     });
     Object.entries(bySection).forEach(([sec, list], idx) => {
       appendControlGroup(area, labelize(sec), list, { open: idx < 2 });
+    });
+    return;
+  }
+
+  // ---- CUSTOMIZE (plot-specific visual extras: ellipses, points, density…) ----
+  if (tab === "customize") {
+    const intro = document.createElement("div");
+    intro.className = "param-tab-intro";
+    intro.innerHTML = `<strong>Customize</strong><p>Plot-specific styling for <code>${escapeHtml(state.pluginId || "this plot")}</code> — cluster ellipses, points, labels, density, and similar extras.</p>`;
+    area.appendChild(intro);
+
+    const customizeControls = controlsForTab("customize");
+    if (!customizeControls.length) {
+      area.insertAdjacentHTML(
+        "beforeend",
+        `<div class="empty muted" style="padding:12px;font-size:12px;">This plot has no extra customize options. Use plot, theme, axes, title, legend, and canvas.</div>`
+      );
+      return;
+    }
+    const bySection = {};
+    customizeControls.forEach((c) => {
+      const sec = c.section || "options";
+      if (!bySection[sec]) bySection[sec] = [];
+      bySection[sec].push(c);
+    });
+    const preferred = ["marks_labels", "points", "density", "labels", "style"];
+    const sectionNames = [
+      ...preferred.filter((name) => bySection[name]),
+      ...Object.keys(bySection).filter((name) => !preferred.includes(name)),
+    ];
+    sectionNames.forEach((sec, idx) => {
+      const title = CUSTOMIZE_SECTION_TITLES[sec] || CUSTOMIZE_SECTION_TITLES[sec.replace(/[/\-_]+/g, " ")] || labelize(sec);
+      appendControlGroup(area, title, bySection[sec], { open: idx < 2 });
     });
     return;
   }
@@ -1686,25 +2037,25 @@ function renderParamContentArea() {
     const labels = {
       axes: {
         title: "Axes",
-        blurb: "Shared X/Y labels and ticks for every plot. Extra axis fields from this plugin appear below the common block.",
+        blurb: "X/Y labels, ticks, and other axis fields for this figure.",
       },
       title: {
         title: "Title",
-        blurb: "Figure title / subtitle — same controls across plots.",
+        blurb: "Figure title and subtitle.",
       },
       legend: {
         title: "Legend",
-        blurb: "Legend visibility and placement — consistent across plots.",
+        blurb: "Legend visibility, placement, and styling.",
       },
       canvas: {
         title: "Canvas",
-        blurb: "Size, DPI, fonts, panel/grid — consistent across plots.",
+        blurb: "Figure size, DPI, fonts, and aspect ratio.",
       },
     };
     const meta = labels[tab];
     const intro = document.createElement("div");
     intro.className = "param-tab-intro";
-    intro.innerHTML = `<strong>${meta.title}</strong><p>${meta.blurb}</p>`;
+    intro.innerHTML = `<strong>${escapeHtml(meta.title)}</strong><p>${escapeHtml(meta.blurb)}</p>`;
     area.appendChild(intro);
 
     const merged = mergeCommonWithSchema(tab);
@@ -1712,14 +2063,9 @@ function renderParamContentArea() {
     const commonPart = merged.filter((c) => commonKeys.has(c.key) || c.virtual);
     const extraPart = merged.filter((c) => !commonKeys.has(c.key) && !c.virtual);
 
-    appendControlGroup(area, "Common (all plots)", commonPart, { open: true });
+    appendControlGroup(area, meta.title, commonPart, { open: true });
     if (extraPart.length) {
       appendControlGroup(area, `Extra for ${state.pluginId || "this plot"}`, extraPart, { open: true });
-    } else {
-      area.insertAdjacentHTML(
-        "beforeend",
-        `<div class="empty muted" style="padding:8px 4px;font-size:11.5px;">No plugin-specific ${tab} fields — common controls above still apply when the plot reads them.</div>`
-      );
     }
     return;
   }
@@ -1767,7 +2113,10 @@ function rowLabels() {
 }
 
 function commitRowSelection() {
-  if (state.rowMode === "exclude") {
+  if (!state.selectedRows.size) {
+    delete state.params.rows_include;
+    delete state.params.rows_exclude;
+  } else if (state.rowMode === "exclude") {
     state.params.rows_exclude = Array.from(state.selectedRows);
     delete state.params.rows_include;
   } else {
@@ -1778,6 +2127,10 @@ function commitRowSelection() {
 }
 
 function renderStageDataDrawer() {
+  if (typeof renderDatasetPreview === "function") {
+    renderDatasetPreview();
+    return;
+  }
   renderStageRowSelector();
   renderStageTablePreview();
 }
@@ -1876,7 +2229,7 @@ function renderStageTablePreview() {
     <thead>
       <tr>
         <th>Filter</th>
-        ${columns.map((col) => `<th>${col}</th>`).join("")}
+        ${columns.map((col) => `<th>${escapeHtml(col)}</th>`).join("")}
       </tr>
     </thead>
     <tbody>
@@ -1885,8 +2238,8 @@ function renderStageTablePreview() {
         const isSelected = state.selectedRows.has(rowId);
         return `
           <tr class="${isSelected ? "row-selected" : ""}">
-            <td><input type="checkbox" ${isSelected ? "checked" : ""} class="stage-row-check" data-id="${rowId}" /></td>
-            ${columns.map((col) => `<td>${row[col] ?? ""}</td>`).join("")}
+            <td><input type="checkbox" ${isSelected ? "checked" : ""} class="stage-row-check" data-id="${escapeHtml(rowId)}" /></td>
+            ${columns.map((col) => `<td>${escapeHtml(row[col] ?? "")}</td>`).join("")}
           </tr>
         `;
       }).join("")}
@@ -1918,6 +2271,8 @@ function loadDemoIntoUi() {
   });
   state.inputPreview = { plugin_id: state.pluginId, files };
   setParamsFromDemo(state.demo);
+  if (typeof applySuggestionsIfEmpty === "function") applySuggestionsIfEmpty();
+  if (typeof reconcileMappingsWithDataset === "function") reconcileMappingsWithDataset();
 
   renderParamContentArea();
   renderStageDataDrawer();
@@ -1944,6 +2299,7 @@ async function runDemo(options = {}) {
       body: JSON.stringify(payload),
       headers: { "Content-Type": "application/json" }
     });
+    renderValidation(result.vnext);
     if (result.status === "completed" && result.outputs) {
       $("jobStatus").textContent = `completed: Figure rendered.`;
       renderDownloads(result.outputs);
@@ -2174,6 +2530,7 @@ async function init() {
   setupParamNavEvents();
   setupStageTools();
   wireExportMenu();
+  wirePlotSpecImport();
   if (typeof initPlotGuide === "function") initPlotGuide();
 
   if ($("runDemoButton")) {
@@ -2209,6 +2566,18 @@ async function init() {
     } else if (STUDIO_VARIANT) {
       const match = state.examples.find((ex) => ex.id === STUDIO_VARIANT || ex.plot_type === STUDIO_VARIANT);
       if (match) state.selectedExampleId = match.id;
+      else {
+        try {
+          const resolved = await api(`/api/registry/legacy/${encodeURIComponent(state.pluginId)}/${encodeURIComponent(STUDIO_VARIANT)}`);
+          if (resolved?.example_id) {
+            const ex = state.examples.find((item) => item.id === resolved.example_id);
+            if (ex) state.selectedExampleId = ex.id;
+          }
+          if (resolved?.parameters && typeof resolved.parameters === "object") {
+            state.params = { ...state.params, ...resolved.parameters };
+          }
+        } catch (err) {}
+      }
     }
 
     $("pluginName").textContent = detail.display_name || detail.name || state.pluginId;
@@ -2219,7 +2588,11 @@ async function init() {
     renderSchema(detail.params_schema || detail.parameters);
     wireExampleSelect();
 
-    if (state.demo && Object.keys(state.demo.files || {}).length) {
+    const imported = takePendingImport();
+    if (imported) {
+      applyImportedParams(imported);
+      await runDemo({ reloadDemo: false });
+    } else if (state.demo && Object.keys(state.demo.files || {}).length) {
       await runDemo();
     } else if (state.examples.length) {
       // No default demo files but examples exist — run first example

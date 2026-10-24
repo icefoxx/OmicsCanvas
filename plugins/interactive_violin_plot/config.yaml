@@ -1,12 +1,28 @@
 id: interactive_violin_plot
 name: Interactive Violin/Box/Point Plot
 version: 1.0.0
-description: Highly-customizable vertical violin cloud + box + jitter point distribution plot with static SVG/PDF/PNG and interactive Plotly HTML outputs, supporting wide and long inputs, group faceting or grouped axes, and full layer control.
+description: Highly-customizable vertical violin cloud + box + jitter point distribution plot with static SVG/PDF/PNG and
+  interactive Plotly HTML outputs, supporting wide and long inputs, group faceting or grouped axes, and full layer control.
 language: R
 entrypoint: plot.R
 category: Distribution
+subcategory: General
 status: stable
 inputs:
-  - {id: input, type: table, formats: [csv, tsv, txt], required: true}
-outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, distribution_data_used.csv, selected_rows.csv]
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- run.log
+- distribution_data_used.csv
+- selected_rows.csv
 runtime: Rscript plugins/interactive_violin_plot/plot.R --input input.csv --params params.json --output output_dir

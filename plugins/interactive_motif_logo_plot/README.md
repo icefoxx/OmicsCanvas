@@ -18,5 +18,5 @@ It always writes `result.svg`, `result.pdf`, `result.png`, `result.html`, `figur
 Examples use the shared `example_input.csv` and can be rendered with:
 
 ```bash
-bash plugins/interactive_motif_logo_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+bash plugins/interactive_motif_logo_plot/run_all_examples.sh <repo-root>
 ```

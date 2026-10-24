@@ -1,43 +1,14 @@
 {
   "name": "omics-plot-plugins",
   "display_name": "Omics Plot Plugins",
-  "version": "1.0.0",
-  "description": "Agent-agnostic skill for building, modifying, parameterizing, documenting, and testing OmicsCanvas BioFigureAI R plot plugins.",
+  "version": "2.0.0",
+  "description": "Agent-agnostic skill for creating, modifying, classifying, documenting and testing OmicsCanvas plot plugins under the rules in docs/standards.",
   "entrypoint": "SKILL.md",
   "references": [
     "references/plugin-guide.md"
   ],
-  "supported_plugins": [
-    {
-      "id": "intragroup_correlation",
-      "path": "plugins/intragroup_correlation/plot.R",
-      "capabilities": [
-        "single_matrix_correlation",
-        "two_matrix_cross_correlation",
-        "raw_matrix_heatmap",
-        "circle_or_tile_cells",
-        "cell_values_pvalues_significance",
-        "dendrograms",
-        "group_annotation_tracks",
-        "sample_gene_label_coloring"
-      ]
-    },
-    {
-      "id": "volcano_plot",
-      "path": "plugins/volcano_plot/plot.R",
-      "capabilities": [
-        "up_down_nodiff_category_coloring",
-        "continuous_gradient_coloring",
-        "threshold_lines",
-        "selected_gene_labels",
-        "label_connector_lines",
-        "mapped_point_size",
-        "wysiwyg_title_axis_legend_controls"
-      ]
-    }
-  ],
   "runtime_contract": {
-    "command": "Rscript plot.R --input input.csv --params params.json --output output_dir",
+    "command": "Rscript plugins/<id>/plot.R --input input.csv --params params.json --output output_dir",
     "required_outputs": [
       "result.svg",
       "result.pdf",
@@ -46,5 +17,22 @@
       "run.log"
     ],
     "error_output": "error.json"
+  },
+  "standards": [
+    "docs/standards/README.md",
+    "docs/standards/01_plugin_contract.md",
+    "docs/standards/02_params_schema.md",
+    "docs/standards/03_r_implementation.md",
+    "docs/standards/04_classification.md",
+    "docs/standards/05_examples_and_gallery.md",
+    "docs/standards/06_quality_gates.md"
+  ],
+  "tools": {
+    "scaffold": "scripts/new_plugin.py",
+    "standards_check": "scripts/check_plugin_standards.py",
+    "parameter_sensitivity": "scripts/param_sensitivity.py",
+    "image_regression": "scripts/smoke_plugins.py",
+    "gallery": "scripts/sync_gallery.py",
+    "template": "templates/plugin/"
   }
 }

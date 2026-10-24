@@ -1,0 +1,9 @@
+{
+  "x_column": "x",
+  "y_column": "y",
+  "group_column": "group",
+  "title": "Basic example",
+  "trend_show": true,
+  "width": 6,
+  "height": 4.5
+}

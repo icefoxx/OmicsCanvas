@@ -9,3 +9,9 @@ plot_web/.env
 *.pyc
 .DS_Store
 Rplots.pdf
+# Debug leftovers from running plot.R at the repo root
+/error.json
+/run.log
+.pytest_cache/
+.ruff_cache/
+.slim/deepwork/

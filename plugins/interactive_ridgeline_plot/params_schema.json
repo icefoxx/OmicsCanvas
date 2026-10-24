@@ -1,37 +1,398 @@
 {
   "plugin": "interactive_ridgeline_plot",
   "groups": {
-    "data": ["input_mode", "id_column", "feature_column", "value_column", "group_column", "features_include", "features_exclude", "rows_include", "rows_exclude", "feature_order", "reverse_features", "top_n", "sort_features", "sort_by"],
-    "canvas/layout": ["width", "height", "aspect_ratio", "panel_spacing", "ridge_spacing", "row_spacing", "ridge_height", "ridge_overlap", "shared_x_scale", "x_limits", "x_breaks", "x_expand", "y_expand", "orientation", "margin_left", "margin_right", "margin_top", "margin_bottom"],
-    "cloud": ["cloud_show", "cloud_stat", "cloud_bandwidth", "cloud_adjust", "cloud_trim", "cloud_alpha", "cloud_color", "cloud_colors", "cloud_fill_mode", "fill_mode", "cloud_stroke", "cloud_stroke_width", "cloud_stroke_alpha", "cloud_baseline", "baseline_show", "baseline_color", "baseline_width", "baseline_linetype", "show_group_baseline", "cloud_scale", "cloud_outline_show", "group_overlay", "group_order", "group_colors", "group_alpha", "group_outline_show", "group_outline_color", "group_outline_width", "group_legend_show", "group_legend_title", "group_legend_position"],
-    "statistics": ["statistic_show", "statistic_method", "statistic_columns", "statistic_labels", "statistic_position", "statistic_size", "statistic_color", "statistic_digits", "statistic_x", "statistic_y_offset"],
-    "points": ["point_show", "point_data", "point_color", "point_colors", "point_size", "point_alpha", "point_shape", "point_stroke", "point_jitter_width", "point_jitter_height", "point_jitter_seed", "point_position", "point_density_sample"],
-    "box": ["box_show", "box_height", "box_width", "box_fill", "box_alpha", "box_stroke", "box_stroke_width", "box_outlier_show", "median_show", "median_color", "median_width", "quantile_line_show", "quantile", "quantile_line_color", "quantile_line_width", "quantile_line_type"],
-    "axes": ["xlab", "ylab", "title", "subtitle", "caption", "title_show", "title_size", "title_color", "title_face", "title_hjust", "subtitle_size", "subtitle_color", "subtitle_face", "x_axis_show", "x_axis_text_size", "x_axis_text_color", "x_axis_text_angle", "y_axis_show", "y_axis_text_size", "y_axis_text_color", "y_axis_text_angle", "axis_line_show", "axis_line_color", "axis_line_width", "tick_show", "tick_color", "tick_width", "grid_show", "grid_color", "grid_width", "grid_linetype", "panel_border_show", "panel_border_color", "panel_border_width"],
-    "labels/highlights": ["feature_label_show", "feature_label_size", "feature_label_color", "feature_label_face", "feature_label_family", "feature_label_angle", "feature_label_offset", "value_label_show", "value_label_size", "value_label_color", "highlight_features", "highlight_color", "highlight_alpha", "highlight_points"],
-    "legend/theme": ["legend_show", "legend_position", "legend_title", "legend_text_size", "legend_title_size", "legend_key_size", "legend_ncol", "palette", "font_family", "base_size", "panel_background", "plot_background"],
-    "interaction": ["interactive", "tooltip_columns", "hover_template", "selectable", "lasso_select", "zoom", "pan", "reset_view"],
-    "output": ["dpi", "html_width", "html_height", "export_formats"]
+    "data": [
+      "input_mode",
+      "id_column",
+      "feature_column",
+      "value_column",
+      "group_column",
+      "features_include",
+      "features_exclude",
+      "rows_include",
+      "rows_exclude",
+      "feature_order",
+      "reverse_features",
+      "top_n",
+      "sort_features",
+      "sort_by"
+    ],
+    "canvas/layout": [
+      "width",
+      "height",
+      "aspect_ratio",
+      "panel_spacing",
+      "ridge_spacing",
+      "row_spacing",
+      "ridge_height",
+      "ridge_overlap",
+      "x_limits",
+      "x_breaks",
+      "x_expand",
+      "y_expand",
+      "margin_left",
+      "margin_right",
+      "margin_top",
+      "margin_bottom"
+    ],
+    "cloud": [
+      "cloud_show",
+      "cloud_stat",
+      "cloud_bandwidth",
+      "cloud_adjust",
+      "cloud_trim",
+      "cloud_alpha",
+      "cloud_color",
+      "cloud_colors",
+      "cloud_fill_mode",
+      "fill_mode",
+      "cloud_stroke",
+      "cloud_stroke_width",
+      "cloud_stroke_alpha",
+      "cloud_baseline",
+      "baseline_show",
+      "baseline_color",
+      "baseline_width",
+      "baseline_linetype",
+      "cloud_scale",
+      "cloud_outline_show",
+      "group_overlay",
+      "group_order",
+      "group_colors",
+      "group_alpha",
+      "group_outline_show",
+      "group_outline_color",
+      "group_outline_width",
+      "group_legend_show",
+      "group_legend_title",
+      "group_legend_position"
+    ],
+    "statistics": [
+      "statistic_show",
+      "statistic_method",
+      "statistic_columns",
+      "statistic_labels",
+      "statistic_position",
+      "statistic_size",
+      "statistic_color",
+      "statistic_digits",
+      "statistic_x",
+      "statistic_y_offset"
+    ],
+    "points": [
+      "point_show",
+      "point_color",
+      "point_colors",
+      "point_size",
+      "point_alpha",
+      "point_shape",
+      "point_stroke",
+      "point_jitter_width",
+      "point_jitter_height",
+      "point_jitter_seed",
+      "point_position",
+      "point_density_sample"
+    ],
+    "box": [
+      "box_show",
+      "box_height",
+      "box_fill",
+      "box_alpha",
+      "box_stroke",
+      "box_stroke_width",
+      "median_show",
+      "median_color",
+      "median_width",
+      "quantile_line_show",
+      "quantile",
+      "quantile_line_color",
+      "quantile_line_width",
+      "quantile_line_type"
+    ],
+    "axes": [
+      "xlab",
+      "ylab",
+      "title",
+      "subtitle",
+      "caption",
+      "title_show",
+      "title_size",
+      "title_color",
+      "title_face",
+      "title_hjust",
+      "subtitle_size",
+      "subtitle_color",
+      "subtitle_face",
+      "x_axis_show",
+      "x_axis_text_size",
+      "x_axis_text_color",
+      "x_axis_text_angle",
+      "y_axis_show",
+      "y_axis_text_size",
+      "y_axis_text_color",
+      "y_axis_text_angle",
+      "axis_line_show",
+      "axis_line_color",
+      "axis_line_width",
+      "tick_show",
+      "tick_color",
+      "tick_width",
+      "grid_show",
+      "grid_color",
+      "grid_width",
+      "grid_linetype",
+      "panel_border_show",
+      "panel_border_color",
+      "panel_border_width"
+    ],
+    "labels/highlights": [
+      "feature_label_show",
+      "feature_label_size",
+      "feature_label_color",
+      "feature_label_face",
+      "feature_label_family",
+      "feature_label_angle",
+      "highlight_features",
+      "highlight_color",
+      "highlight_alpha"
+    ],
+    "legend/theme": [
+      "legend_show",
+      "legend_position",
+      "legend_title",
+      "legend_text_size",
+      "legend_title_size",
+      "legend_key_size",
+      "palette",
+      "font_family",
+      "base_size",
+      "panel_background",
+      "plot_background"
+    ],
+    "interaction": [
+      "interactive",
+      "selectable",
+      "lasso_select",
+      "zoom",
+      "reset_view"
+    ],
+    "output": [
+      "dpi",
+      "html_width",
+      "html_height",
+      "export_formats"
+    ]
   },
   "properties": {
-    "input_mode": {"type": "string", "enum": ["auto", "wide", "long"], "default": "auto"},
-    "cloud_stat": {"type": "string", "enum": ["density", "count"], "default": "density"},
-    "cloud_fill_mode": {"type": "string", "enum": ["feature", "group"], "default": "feature"},
-    "fill_mode": {"type": "string", "enum": ["feature", "group"], "default": "feature"},
-    "group_overlay": {"type": "boolean", "default": true},
-    "group_order": {"type": "array"}, "group_colors": {"type": ["array", "object"]}, "group_alpha": {"type": "number", "default": 0.75},
-    "group_outline_show": {"type": "boolean", "default": false}, "group_outline_color": {"type": "string", "default": "#333333"}, "group_outline_width": {"type": "number", "default": 0.4}, "group_legend_show": {"type": "boolean", "default": true}, "group_legend_title": {"type": "string", "default": "Group"}, "group_legend_position": {"type": "string", "default": "right"},
-    "baseline_show": {"type": "boolean", "default": true}, "baseline_color": {"type": "string", "default": "#777777"}, "baseline_width": {"type": "number", "default": 0.35}, "baseline_linetype": {"type": "string", "default": "solid"},
-    "show_group_baseline": {"type": "boolean", "default": false},
-    "statistic_show": {"type": "boolean", "default": false}, "statistic_method": {"type": "string", "enum": ["none", "cohen_d", "t_test", "wilcoxon", "supplied"], "default": "none"}, "statistic_columns": {"type": ["array", "object"], "default": ["d", "p"]}, "statistic_labels": {"type": ["array", "object"]}, "statistic_position": {"type": "string", "enum": ["right", "left", "inside"], "default": "right"}, "statistic_size": {"type": "number", "default": 3.5}, "statistic_color": {"type": "string", "default": "#333333"}, "statistic_digits": {"type": "integer", "default": 3}, "statistic_x": {"type": "number"}, "statistic_y_offset": {"type": "number", "default": 0},
-    "point_position": {"type": "string", "enum": ["below", "baseline", "on_baseline"], "default": "below"},
-    "interactive": {"type": "boolean", "default": true},
-    "shared_x_scale": {"type": "boolean", "default": true},
-    "width": {"type": "number", "default": 10}, "height": {"type": "number", "default": 6},
-    "dpi": {"type": "integer", "default": 300},
-    "export_formats": {"type": "array", "default": ["svg", "pdf", "png", "html"]},
-    "x_limits": {"type": "array"}, "x_breaks": {"type": "array"},
-    "feature_order": {"type": "array"}, "features_include": {"type": "array"}, "features_exclude": {"type": "array"},
-    "cloud_colors": {"type": ["array", "object"]}, "point_colors": {"type": ["array", "object"]}
+    "input_mode": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "wide",
+        "long"
+      ],
+      "default": "auto"
+    },
+    "cloud_stat": {
+      "type": "string",
+      "enum": [
+        "density",
+        "count"
+      ],
+      "default": "density"
+    },
+    "cloud_fill_mode": {
+      "type": "string",
+      "enum": [
+        "feature",
+        "group"
+      ],
+      "default": "feature"
+    },
+    "fill_mode": {
+      "type": "string",
+      "enum": [
+        "feature",
+        "group"
+      ],
+      "default": "feature"
+    },
+    "group_overlay": {
+      "type": "boolean",
+      "default": true
+    },
+    "group_order": {
+      "type": "array"
+    },
+    "group_colors": {
+      "type": [
+        "array",
+        "object"
+      ]
+    },
+    "group_alpha": {
+      "type": "number",
+      "default": 0.75
+    },
+    "group_outline_show": {
+      "type": "boolean",
+      "default": false
+    },
+    "group_outline_color": {
+      "type": "color",
+      "default": "#333333"
+    },
+    "group_outline_width": {
+      "type": "number",
+      "default": 0.4
+    },
+    "group_legend_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "group_legend_title": {
+      "type": "string",
+      "default": "Group"
+    },
+    "group_legend_position": {
+      "type": "string",
+      "default": "right"
+    },
+    "baseline_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "baseline_color": {
+      "type": "color",
+      "default": "#777777"
+    },
+    "baseline_width": {
+      "type": "number",
+      "default": 0.35
+    },
+    "baseline_linetype": {
+      "type": "string",
+      "default": "solid"
+    },
+    "statistic_show": {
+      "type": "boolean",
+      "default": false
+    },
+    "statistic_method": {
+      "type": "string",
+      "enum": [
+        "none",
+        "cohen_d",
+        "t_test",
+        "wilcoxon",
+        "supplied"
+      ],
+      "default": "none"
+    },
+    "statistic_columns": {
+      "type": [
+        "array",
+        "object"
+      ],
+      "default": [
+        "d",
+        "p"
+      ]
+    },
+    "statistic_labels": {
+      "type": [
+        "array",
+        "object"
+      ]
+    },
+    "statistic_position": {
+      "type": "string",
+      "enum": [
+        "right",
+        "left",
+        "inside"
+      ],
+      "default": "right"
+    },
+    "statistic_size": {
+      "type": "number",
+      "default": 3.5
+    },
+    "statistic_color": {
+      "type": "color",
+      "default": "#333333"
+    },
+    "statistic_digits": {
+      "type": "integer",
+      "default": 3
+    },
+    "statistic_x": {
+      "type": "number"
+    },
+    "statistic_y_offset": {
+      "type": "number",
+      "default": 0
+    },
+    "point_position": {
+      "type": "string",
+      "enum": [
+        "below",
+        "baseline",
+        "on_baseline"
+      ],
+      "default": "below"
+    },
+    "interactive": {
+      "type": "boolean",
+      "default": true
+    },
+    "width": {
+      "type": "number",
+      "default": 10
+    },
+    "height": {
+      "type": "number",
+      "default": 6
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 300
+    },
+    "export_formats": {
+      "type": "array",
+      "default": [
+        "svg",
+        "pdf",
+        "png",
+        "html"
+      ]
+    },
+    "x_limits": {
+      "type": "array"
+    },
+    "x_breaks": {
+      "type": "array"
+    },
+    "feature_order": {
+      "type": "array"
+    },
+    "features_include": {
+      "type": "array"
+    },
+    "features_exclude": {
+      "type": "array"
+    },
+    "cloud_colors": {
+      "type": [
+        "array",
+        "object"
+      ]
+    },
+    "point_colors": {
+      "type": [
+        "array",
+        "object"
+      ]
+    }
   }
 }

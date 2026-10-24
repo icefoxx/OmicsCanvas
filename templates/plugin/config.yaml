@@ -1,0 +1,17 @@
+id: __PLUGIN_ID__
+name: __PLUGIN_NAME__
+version: 1.0.0
+description: __DESCRIPTION__
+language: R
+entrypoint: plot.R
+category: __CATEGORY__
+subcategory: __SUBCATEGORY__
+status: beta
+inputs:
+- id: input
+  type: table
+  formats: [csv, tsv, txt]
+  required: true
+outputs: [result.svg, result.pdf, result.png, figure.json, run.log, data_used.csv]
+runtime:
+  command: Rscript plugins/__PLUGIN_ID__/plot.R --input input.csv --params params.json --output output_dir

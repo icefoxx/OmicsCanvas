@@ -4,7 +4,7 @@
 # ------------------------------------------------------------
 # Horizontal or vertical bars for categorical items, colored by a
 # classification/group column. One bar per category (not stacked).
-# Matches ChiPlot-style "classified bar chart" with full WYSIWYG
+# Matches CAB_demo-style "classified bar chart" with full WYSIWYG
 # axes, title, legend, grid, colors, and export controls.
 #
 # Runtime:
@@ -184,7 +184,7 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   }
   if (capabilities('cairo')) {
     draw_with_retry(function(w, h) grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
-    draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi, type = 'cairo'))
+    draw_with_retry(function(w, h) (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
   } else {
     draw_with_retry(function(w, h) grDevices::pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
     draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
@@ -355,7 +355,7 @@ bar_text_nudge <- num_param(params, 'bar_text_nudge', 0.02)  # fraction of max v
 
 # Title
 title_show <- as_bool(get_param_any(params, c('title_show', 'title_switch'), TRUE), TRUE)
-title_text <- as.character(get_param_any(params, c('title', 'title_text'), 'Hello world')[1] %||% 'Hello world')
+title_text <- as.character(get_param_any(params, c('title', 'title_text'), '')[1] %||% '')
 title_size <- num_param(params, 'title_size', 13)
 title_fill <- get_param_any(params, c('title_fill', 'title_color'), '#000000')
 title_weight <- get_param_any(params, c('title_font_weight', 'title_weight'), 'normal')
@@ -422,7 +422,7 @@ if (!is.finite(x_max)) {
 x_grid_show <- as_bool(get_param_any(params, c('x_grid_show', 'grid_show', 'show_grid'), TRUE), TRUE)
 y_grid_show <- as_bool(get_param_any(params, c('y_grid_show', 'grid_show', 'show_grid'), FALSE), FALSE)
 # for horizontal bars, major grid along value axis (x)
-if (horizontal && is.null(params$x_grid_show) && is.null(params$grid_show) && is.null(params$show_grid)) {
+if (horizontal && is.null(params[['x_grid_show']]) && is.null(params[['grid_show']]) && is.null(params[['show_grid']])) {
   x_grid_show <- TRUE
   y_grid_show <- FALSE
 }
@@ -441,7 +441,7 @@ panel_border_width <- num_param(params, 'panel_border_width', 0.5)
 
 # Legend
 legend_show <- as_bool(get_param_any(params, c('legend_show', 'legend_switch', 'show_legend'), TRUE), TRUE)
-legend_title <- as.character(get_param_any(params, c('legend_title', 'legend_name'), 'xiaoshi')[1] %||% 'xiaoshi')
+legend_title <- as.character(get_param_any(params, c('legend_title', 'legend_name'), type_col)[1] %||% type_col)
 legend_position <- get_param(params, 'legend_position', 'right')
 legend_direction <- get_param(params, 'legend_direction', 'vertical')
 legend_title_size <- num_param(params, 'legend_title_size', 11)
@@ -453,7 +453,7 @@ legend_title_weight <- get_param_any(params, c('legend_title_font_weight'), 'nor
 legend_columns <- as.integer(num_param(params, 'legend_columns', num_param(params, 'legend_ncol', 1)))
 legend_reverse <- as_bool(get_param(params, 'legend_reverse', FALSE), FALSE)
 # Image shows type-D on top of legend — reverse of factor order if types are A,B,C,D in data order
-if (is.null(params$legend_reverse) && length(types) > 1) {
+if (is.null(params[['legend_reverse']]) && length(types) > 1) {
   # default: reverse so last type appears first (matches image type-D top)
   legend_reverse <- TRUE
 }

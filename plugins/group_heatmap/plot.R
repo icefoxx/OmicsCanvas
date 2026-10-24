@@ -124,8 +124,9 @@ validate_columns <- function(df, cols, label = 'input') {
 load_sca_groupheatmap_reference <- function() {
   script_arg <- grep('^--file=', commandArgs(FALSE), value = TRUE)
   script_path <- if (length(script_arg) > 0) sub('^--file=', '', script_arg[1]) else file.path(getwd(), 'plugins', 'group_heatmap', 'plot.R')
-  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), 'reference_sca_helpers')
-  if (!dir.exists(helper_dir)) helper_dir <- file.path('plugins', 'group_heatmap', 'reference_sca_helpers')
+  # Shared SCA helper library (one canonical copy for all plugins): <repo>/R/sca
+  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), '..', '..', 'R', 'sca')
+  if (!dir.exists(helper_dir)) helper_dir <- file.path('R', 'sca')
 
   `%||%` <<- function(x, y) if (is.null(x) || length(x) == 0) y else x
   ckPacsR <<- function(packages, ...) {
@@ -155,11 +156,8 @@ load_sca_groupheatmap_reference <- function() {
   }
   source(file.path(helper_dir, 'util.plot.R'), local = .GlobalEnv)
   source(file.path(helper_dir, 'GroupHeatmap.R'), local = .GlobalEnv)
-  old_palette <- paletteCustomize
-  palette_file <- file.path(getwd(), 'assets', 'palettes.rds')
-  paletteCustomize <<- function(..., palettePath = NULL) {
-    old_palette(..., palettePath = palettePath %||% palette_file)
-  }
+  source(file.path(helper_dir, 'omicscanvas_shims.R'), local = .GlobalEnv)
+  omicscanvas_patch_palette(helper_dir)
   invisible(TRUE)
 }
 

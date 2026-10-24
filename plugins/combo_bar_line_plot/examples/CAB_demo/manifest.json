@@ -1,0 +1,10 @@
+{
+  "id": "CAB_demo",
+  "label": "CAB_demo",
+  "plugin_id": "combo_bar_line_plot",
+  "plot_type": "combo",
+  "mode": "dual_axis",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png"
+}

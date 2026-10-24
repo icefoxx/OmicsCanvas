@@ -1,29 +1,301 @@
 {
   "plugin": "interactive_motif_logo_plot",
   "groups": {
-    "data": ["input_mode", "motif_column", "position_column", "base_columns", "motifs_include", "motifs_exclude", "motif_order", "reverse_positions", "position_labels"],
-    "normalization": ["normalize", "input_scale", "information_content", "background_frequencies", "min_letter_height"],
-    "layout": ["width", "height", "height_per_motif", "width_per_position", "dpi"],
-    "letters": ["letter_colors", "letter_font", "letter_alpha", "outline_show", "outline_color", "outline_width"],
-    "axes": ["title", "title_show", "title_size", "title_color", "title_face", "xlab", "ylab", "show_motif_labels", "motif_label_size", "motif_label_color", "motif_label_hjust", "position_ticks", "position_text_angle"],
-    "theme": ["font_family", "base_size", "panel_background", "plot_background", "grid_show", "grid_color", "legend_show", "legend_title", "legend_position"],
-    "interaction": ["interactive", "tooltip_columns", "zoom", "pan", "selectable", "lasso_select", "reset_view"],
-    "output": ["export_formats"]
+    "data": [
+      "input_mode",
+      "motif_column",
+      "position_column",
+      "base_columns",
+      "motifs_include",
+      "motifs_exclude",
+      "motif_order",
+      "reverse_positions",
+      "position_labels"
+    ],
+    "normalization": [
+      "normalize",
+      "input_scale",
+      "information_content",
+      "background_frequencies",
+      "min_letter_height"
+    ],
+    "layout": [
+      "width",
+      "height",
+      "height_per_motif",
+      "width_per_position",
+      "dpi"
+    ],
+    "letters": [
+      "letter_colors"
+    ],
+    "highlight": [
+      "highlight_positions",
+      "highlight_loci",
+      "highlight_bases",
+      "highlight_motifs",
+      "highlight_color",
+      "highlight_alpha",
+      "highlight_border_color"
+    ],
+    "axes": [
+      "title",
+      "title_show",
+      "title_size",
+      "title_color",
+      "title_face",
+      "xlab",
+      "ylab",
+      "show_motif_labels",
+      "motif_label_size",
+      "motif_label_color",
+      "position_ticks",
+      "position_text_angle"
+    ],
+    "theme": [
+      "font_family",
+      "base_size",
+      "panel_background",
+      "plot_background",
+      "grid_show",
+      "grid_color",
+      "legend_show",
+      "legend_position"
+    ],
+    "interaction": [
+      "interactive",
+      "zoom",
+      "selectable",
+      "lasso_select"
+    ],
+    "output": []
   },
   "properties": {
-    "input_mode": {"type": "string", "enum": ["auto", "long", "wide"], "default": "auto"},
-    "normalize": {"type": "string", "enum": ["none", "probability"], "default": "probability"},
-    "input_scale": {"type": "string", "enum": ["weight", "probability"], "default": "weight"},
-    "information_content": {"type": "boolean", "default": true},
-    "background_frequencies": {"type": "object", "default": {"A": 0.25, "C": 0.25, "G": 0.25, "T": 0.25}},
-    "min_letter_height": {"type": "number", "default": 0},
-    "motifs_include": {"type": "array"}, "motifs_exclude": {"type": "array"}, "motif_order": {"type": "array"},
-    "reverse_positions": {"type": "boolean", "default": false}, "position_labels": {"type": "array"},
-    "width": {"type": "number"}, "height": {"type": "number"}, "height_per_motif": {"type": "number", "default": 1.05}, "width_per_position": {"type": "number", "default": 0.55}, "dpi": {"type": "integer", "default": 300},
-    "letter_colors": {"type": "object", "default": {"A": "#19b51b", "C": "#1737cf", "G": "#f5a300", "T": "#d60000"}}, "letter_font": {"type": "string", "default": "sans"}, "letter_alpha": {"type": "number", "default": 1}, "outline_show": {"type": "boolean", "default": false}, "outline_color": {"type": "string", "default": "#333333"}, "outline_width": {"type": "number", "default": 0.3},
-    "title": {"type": "string", "default": "Motif enrichment"}, "title_show": {"type": "boolean", "default": true}, "title_size": {"type": "number", "default": 16}, "title_color": {"type": "string", "default": "#222222"}, "title_face": {"type": "string", "default": "bold"}, "xlab": {"type": "string", "default": "Position"}, "ylab": {"type": "string", "default": "Motif"}, "show_motif_labels": {"type": "boolean", "default": true}, "motif_label_size": {"type": "number", "default": 11}, "motif_label_color": {"type": "string", "default": "#222222"}, "motif_label_hjust": {"type": "number", "default": 1}, "position_ticks": {"type": "boolean", "default": true}, "position_text_angle": {"type": "number", "default": 0},
-    "font_family": {"type": "string", "default": "sans"}, "base_size": {"type": "number", "default": 11}, "panel_background": {"type": "string", "default": "#FFFFFF"}, "plot_background": {"type": "string", "default": "#FFFFFF"}, "grid_show": {"type": "boolean", "default": false}, "grid_color": {"type": "string", "default": "#E6E6E6"}, "legend_show": {"type": "boolean", "default": false}, "legend_title": {"type": "string", "default": "Base"}, "legend_position": {"type": "string", "default": "right"},
-    "interactive": {"type": "boolean", "default": true}, "tooltip_columns": {"type": "array", "default": ["motif", "position", "base", "raw_weight", "probability", "height"]}, "zoom": {"type": "boolean", "default": true}, "pan": {"type": "boolean", "default": true}, "selectable": {"type": "boolean", "default": false}, "lasso_select": {"type": "boolean", "default": false}, "reset_view": {"type": "boolean", "default": true},
-    "export_formats": {"type": "array", "default": ["svg", "pdf", "png", "html"]}
+    "input_mode": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "long",
+        "wide"
+      ],
+      "default": "auto"
+    },
+    "normalize": {
+      "type": "string",
+      "enum": [
+        "none",
+        "probability"
+      ],
+      "default": "probability"
+    },
+    "input_scale": {
+      "type": "string",
+      "enum": [
+        "weight",
+        "probability"
+      ],
+      "default": "weight"
+    },
+    "information_content": {
+      "type": "boolean",
+      "default": true
+    },
+    "background_frequencies": {
+      "type": "object",
+      "default": {
+        "A": 0.25,
+        "C": 0.25,
+        "G": 0.25,
+        "T": 0.25
+      }
+    },
+    "min_letter_height": {
+      "type": "number",
+      "default": 0
+    },
+    "motifs_include": {
+      "type": "array"
+    },
+    "motifs_exclude": {
+      "type": "array"
+    },
+    "motif_order": {
+      "type": "array"
+    },
+    "reverse_positions": {
+      "type": "boolean",
+      "default": false
+    },
+    "position_labels": {
+      "type": "array"
+    },
+    "width": {
+      "type": "number"
+    },
+    "height": {
+      "type": "number"
+    },
+    "height_per_motif": {
+      "type": "number",
+      "default": 2.4
+    },
+    "width_per_position": {
+      "type": "number",
+      "default": 0.7
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 300
+    },
+    "letter_colors": {
+      "type": "object",
+      "default": {
+        "A": "#109649",
+        "C": "#255C99",
+        "G": "#F9BD31",
+        "T": "#D62839"
+      }
+    },
+    "title": {
+      "type": "string",
+      "default": "Motif enrichment"
+    },
+    "title_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "title_size": {
+      "type": "number",
+      "default": 16
+    },
+    "title_color": {
+      "type": "color",
+      "default": "#222222"
+    },
+    "title_face": {
+      "type": "select",
+      "default": "bold",
+      "options": [
+        "plain",
+        "bold",
+        "italic",
+        "bold.italic"
+      ]
+    },
+    "xlab": {
+      "type": "string",
+      "default": "Position"
+    },
+    "ylab": {
+      "type": "string",
+      "default": "bits"
+    },
+    "show_motif_labels": {
+      "type": "boolean",
+      "default": true
+    },
+    "motif_label_size": {
+      "type": "number",
+      "default": 11
+    },
+    "motif_label_color": {
+      "type": "color",
+      "default": "#222222"
+    },
+    "position_ticks": {
+      "type": "boolean",
+      "default": true
+    },
+    "position_text_angle": {
+      "type": "number",
+      "default": 0
+    },
+    "font_family": {
+      "type": "string",
+      "default": "sans"
+    },
+    "base_size": {
+      "type": "number",
+      "default": 11
+    },
+    "panel_background": {
+      "type": "color",
+      "default": "#FFFFFF"
+    },
+    "plot_background": {
+      "type": "color",
+      "default": "#FFFFFF"
+    },
+    "grid_show": {
+      "type": "boolean",
+      "default": false
+    },
+    "grid_color": {
+      "type": "color",
+      "default": "#E6E6E6"
+    },
+    "legend_show": {
+      "type": "boolean",
+      "default": false
+    },
+    "legend_position": {
+      "type": "string",
+      "default": "right"
+    },
+    "highlight_positions": {
+      "type": "array",
+      "label": "Highlight positions",
+      "description": "Position indices or labels to shade, e.g. [3,4,5] or [\"3-6\"].",
+      "default": []
+    },
+    "highlight_loci": {
+      "type": "array",
+      "label": "Highlight loci",
+      "description": "Specific loci such as \"4\", \"3-6\", \"4:A\", \"Seq1:4\", or \"Seq1:4:T\".",
+      "default": []
+    },
+    "highlight_bases": {
+      "type": "array",
+      "label": "Highlight bases",
+      "description": "If set, draw a box around these bases (A/C/G/T) at the highlighted positions.",
+      "default": []
+    },
+    "highlight_motifs": {
+      "type": "array",
+      "label": "Highlight motifs",
+      "description": "Limit highlighting to these sequence/motif names.",
+      "default": []
+    },
+    "highlight_color": {
+      "type": "color",
+      "label": "Highlight fill",
+      "default": "#FFE08A"
+    },
+    "highlight_alpha": {
+      "type": "number",
+      "label": "Highlight fill opacity",
+      "default": 0.38
+    },
+    "highlight_border_color": {
+      "type": "color",
+      "label": "Highlight base-box color",
+      "default": "#C47B00"
+    },
+    "interactive": {
+      "type": "boolean",
+      "default": true
+    },
+    "zoom": {
+      "type": "boolean",
+      "default": true
+    },
+    "selectable": {
+      "type": "boolean",
+      "default": false
+    },
+    "lasso_select": {
+      "type": "boolean",
+      "default": false
+    }
   }
 }

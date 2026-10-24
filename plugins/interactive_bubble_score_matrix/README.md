@@ -6,4 +6,4 @@ The wide input format uses a `method` column, numeric metric columns, and one or
 
 Static output uses labeled circles, a dotted row grid, a divider, compact adjacent score panels, and independent metric/score scales. Plotly HTML includes row, metric, value, score column, and score in hover text and supports the interaction flags in `params_schema.json`.
 
-Examples are deterministic and can be rendered with `plugins/interactive_bubble_score_matrix/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas`. Each successful example is copied into a portable `examples/` bundle by the shared gallery helper.
+Examples are deterministic and can be rendered with `plugins/interactive_bubble_score_matrix/run_all_examples.sh <repo-root>`. Each successful example is copied into a portable `examples/` bundle by the shared gallery helper.

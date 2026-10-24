@@ -81,7 +81,7 @@ The reproducible customization example is `example_regions_params.json` with `ex
 
 ## SCA compatibility notes
 
-- `VocalnoPlot.R` is copied verbatim into `reference_sca_helpers/`.
+- `VocalnoPlot.R` is copied verbatim into the shared `R/sca/` library.
 - `topMarkers.seu` (from `util.scf.R`) and `ckCols` (from `util.ck.R`) are copied locally; `topMarkers.seu` uses `group_by(.data[[selection]], .data[['UpDown']])` instead of the original `c(...)` form to work with current dplyr.
 - `paletteCustomize` / `themeDefault` are copied from `util.plot.R`; `paletteCustomize` is patched at runtime to read `assets/palettes.rds` from the OmicsCanvas root.
 - `palette_scp` is not defined in SCA source, so a local fallback maps common palette names (RdBu, Spectral, viridis options) via `RColorBrewer` / `viridisLite`.
@@ -92,7 +92,7 @@ The reproducible customization example is `example_regions_params.json` with `ex
 Run all examples:
 
 ```bash
-plugins/sca_volcano_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/sca_volcano_plot/run_all_examples.sh <repo-root>
 ```
 
 This writes `/tmp/sca_volcano_plot_*_out` and updates:

@@ -321,9 +321,31 @@ make_dot_summary_plot <- function(selected, params) {
     labs(title = get_param(params, 'title', 'FGSEA enriched terms'), x = get_param(params, 'dot_summary_xlab', 'NES'), y = get_param(params, 'dot_summary_ylab', NULL)) +
     theme_classic(base_family = get_param(params, 'font_family', 'sans')) +
     theme(legend.position = get_param(params, 'dot_summary_legend_position', 'right'), axis.text.y = element_text(size = num_param(params, 'dot_summary_label_size', 9)))
-  if (split_mode == 'sign' && as_bool(get_param(params, 'dot_summary_facet', TRUE), TRUE)) p <- p + facet_wrap(~dot_sign, scales = 'free_y')
-  if (as_bool(get_param(params, 'dot_summary_label_show', FALSE), FALSE)) p <- p + geom_text(data = d, aes(label = term), nudge_x = num_param(params, 'dot_summary_label_nudge_x', .05), color = get_param(params, 'dot_summary_label_color', '#222222'), size = num_param(params, 'dot_summary_label_size', 3), hjust = 0)
-  p + coord_cartesian(clip = 'off')
+  # Sign facets are stacked vertically so every facet keeps its own full-width term axis.
+  if (split_mode == 'sign' && as_bool(get_param(params, 'dot_summary_facet', TRUE), TRUE)) p <- p + facet_grid(rows = vars(dot_sign), scales = 'free_y', space = 'free_y')
+  if (as_bool(get_param(params, 'dot_summary_label_show', FALSE), FALSE)) {
+    # In-panel labels replace the y-axis text: placed on the outward side of each point, with the
+    # x range widened by the estimated label width so text stays inside the panel.
+    label_size <- num_param(params, 'dot_summary_label_size', 3)
+    nudge <- num_param(params, 'dot_summary_label_nudge_x', .05)
+    d$label_hjust <- ifelse(d$dot_x < 0, 1, 0)
+    span <- max(diff(range(c(0, d$dot_x), na.rm = TRUE)), 1e-6)
+    panel_in <- max(2, num_param(params, 'width', 10) * 0.55)
+    text_in <- function(lab) if (length(lab)) max(nchar(lab)) * label_size * 0.7 / 25.4 else 0
+    # Both sides share the panel: total = span + left + right, and each side's share of the
+    # panel width equals its label width share, so total = span / (1 - (tl + tr) / panel_in).
+    tl <- text_in(d$term[d$dot_x < 0]); tr <- text_in(d$term[d$dot_x >= 0])
+    frac <- min(0.75, (tl + tr) / panel_in)
+    total <- span / (1 - frac)
+    left <- if (tl + tr > 0) total * frac * tl / (tl + tr) else 0
+    right <- if (tl + tr > 0) total * frac * tr / (tl + tr) else 0
+    p <- p +
+      geom_text(data = d, aes(x = dot_x + ifelse(dot_x < 0, -1, 1) * nudge * span, label = term, hjust = label_hjust),
+                color = get_param(params, 'dot_summary_label_color', '#222222'), size = label_size) +
+      scale_x_continuous(expand = expansion(mult = 0.04, add = c(left, right))) +
+      theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
+  }
+  p
 }
 
 panel_placeholder <- function(title, detail) {
@@ -995,17 +1017,17 @@ gsea_scores <- function(gene_list, gene_set, exponent = 1) {
 }
 
 make_running_plot <- function(selected, ranks, pathways, params) {
-  if (is.null(params$selected_genes) && !is.null(params$selected_gene_labels)) params$selected_genes <- params$selected_gene_labels
-  if (is.null(params$label_size) && !is.null(params$selected_gene_label_size)) params$label_size <- params$selected_gene_label_size
-  if (is.null(params$label_color) && !is.null(params$selected_gene_label_color)) params$label_color <- params$selected_gene_label_color
-  if (is.null(params$label_nudge_x) && !is.null(params$selected_gene_label_nudge_x)) params$label_nudge_x <- params$selected_gene_label_nudge_x
-  if (is.null(params$label_nudge_y) && !is.null(params$selected_gene_label_nudge_y)) params$label_nudge_y <- params$selected_gene_label_nudge_y
-  if (is.null(params$label_arrow) && !is.null(params$selected_gene_label_arrow)) params$label_arrow <- params$selected_gene_label_arrow
-  if (is.null(params$label_line_color) && !is.null(params$selected_gene_label_arrow_color)) params$label_line_color <- params$selected_gene_label_arrow_color
-  if (is.null(params$label_line_width) && !is.null(params$selected_gene_label_arrow_width)) params$label_line_width <- params$selected_gene_label_arrow_width
-  if (is.null(params$show_peak_label) && !is.null(params$peak_label_show)) params$show_peak_label <- params$peak_label_show
-  if (is.null(params$show_zero_cross) && !is.null(params$zero_line_show)) params$show_zero_cross <- params$zero_line_show
-  if (is.null(params$rug_show) && !is.null(params$hit_rug_show)) params$rug_show <- params$hit_rug_show
+  if (is.null(params[['selected_genes']]) && !is.null(params[['selected_gene_labels']])) params[['selected_genes']] <- params[['selected_gene_labels']]
+  if (is.null(params[['label_size']]) && !is.null(params[['selected_gene_label_size']])) params[['label_size']] <- params[['selected_gene_label_size']]
+  if (is.null(params[['label_color']]) && !is.null(params[['selected_gene_label_color']])) params[['label_color']] <- params[['selected_gene_label_color']]
+  if (is.null(params[['label_nudge_x']]) && !is.null(params[['selected_gene_label_nudge_x']])) params[['label_nudge_x']] <- params[['selected_gene_label_nudge_x']]
+  if (is.null(params[['label_nudge_y']]) && !is.null(params[['selected_gene_label_nudge_y']])) params[['label_nudge_y']] <- params[['selected_gene_label_nudge_y']]
+  if (is.null(params[['label_arrow']]) && !is.null(params[['selected_gene_label_arrow']])) params[['label_arrow']] <- params[['selected_gene_label_arrow']]
+  if (is.null(params[['label_line_color']]) && !is.null(params[['selected_gene_label_arrow_color']])) params[['label_line_color']] <- params[['selected_gene_label_arrow_color']]
+  if (is.null(params[['label_line_width']]) && !is.null(params[['selected_gene_label_arrow_width']])) params[['label_line_width']] <- params[['selected_gene_label_arrow_width']]
+  if (is.null(params[['show_peak_label']]) && !is.null(params[['peak_label_show']])) params[['show_peak_label']] <- params[['peak_label_show']]
+  if (is.null(params[['show_zero_cross']]) && !is.null(params[['zero_line_show']])) params[['show_zero_cross']] <- params[['zero_line_show']]
+  if (is.null(params[['rug_show']]) && !is.null(params[['hit_rug_show']])) params[['rug_show']] <- params[['hit_rug_show']]
   if (is.null(ranks) || is.null(pathways)) {
     write_error_and_exit('Running plot requires rank stats and pathways', '', 'Use compute mode with genesets_file/--genesets.')
   }
@@ -1377,15 +1399,15 @@ make_faceted_running_plot <- function(selected, ranks, pathways, params) {
 }
 
 make_gradient_curve_plot <- function(selected, ranks, pathways, params) {
-  if (is.null(params$selected_genes) && !is.null(params$selected_gene_labels)) params$selected_genes <- params$selected_gene_labels
-  if (is.null(params$label_size) && !is.null(params$selected_gene_label_size)) params$label_size <- params$selected_gene_label_size
-  if (is.null(params$label_color) && !is.null(params$selected_gene_label_color)) params$label_color <- params$selected_gene_label_color
-  if (is.null(params$label_nudge_x) && !is.null(params$selected_gene_label_nudge_x)) params$label_nudge_x <- params$selected_gene_label_nudge_x
-  if (is.null(params$label_nudge_y) && !is.null(params$selected_gene_label_nudge_y)) params$label_nudge_y <- params$selected_gene_label_nudge_y
-  if (is.null(params$label_arrow) && !is.null(params$selected_gene_label_arrow)) params$label_arrow <- params$selected_gene_label_arrow
-  if (is.null(params$label_line_color) && !is.null(params$selected_gene_label_arrow_color)) params$label_line_color <- params$selected_gene_label_arrow_color
-  if (is.null(params$label_line_width) && !is.null(params$selected_gene_label_arrow_width)) params$label_line_width <- params$selected_gene_label_arrow_width
-  if (is.null(params$show_peak_label) && !is.null(params$peak_label_show)) params$show_peak_label <- params$peak_label_show
+  if (is.null(params[['selected_genes']]) && !is.null(params[['selected_gene_labels']])) params[['selected_genes']] <- params[['selected_gene_labels']]
+  if (is.null(params[['label_size']]) && !is.null(params[['selected_gene_label_size']])) params[['label_size']] <- params[['selected_gene_label_size']]
+  if (is.null(params[['label_color']]) && !is.null(params[['selected_gene_label_color']])) params[['label_color']] <- params[['selected_gene_label_color']]
+  if (is.null(params[['label_nudge_x']]) && !is.null(params[['selected_gene_label_nudge_x']])) params[['label_nudge_x']] <- params[['selected_gene_label_nudge_x']]
+  if (is.null(params[['label_nudge_y']]) && !is.null(params[['selected_gene_label_nudge_y']])) params[['label_nudge_y']] <- params[['selected_gene_label_nudge_y']]
+  if (is.null(params[['label_arrow']]) && !is.null(params[['selected_gene_label_arrow']])) params[['label_arrow']] <- params[['selected_gene_label_arrow']]
+  if (is.null(params[['label_line_color']]) && !is.null(params[['selected_gene_label_arrow_color']])) params[['label_line_color']] <- params[['selected_gene_label_arrow_color']]
+  if (is.null(params[['label_line_width']]) && !is.null(params[['selected_gene_label_arrow_width']])) params[['label_line_width']] <- params[['selected_gene_label_arrow_width']]
+  if (is.null(params[['show_peak_label']]) && !is.null(params[['peak_label_show']])) params[['show_peak_label']] <- params[['peak_label_show']]
   if (is.null(ranks) || is.null(pathways)) {
     write_error_and_exit('Gradient curve plot requires rank stats and pathways', '', 'Use compute mode with genesets_file/--genesets.')
   }
@@ -1575,15 +1597,15 @@ make_gradient_curve_plot <- function(selected, ranks, pathways, params) {
 # legacy renderer above so old parameter files continue to work while the
 # frontend can use the stable gradient_curve parameter group.
 make_gradient_curve_plot <- function(selected, ranks, pathways, params) {
-  if (is.null(params$selected_genes) && !is.null(params$selected_gene_labels)) params$selected_genes <- params$selected_gene_labels
-  if (is.null(params$label_size) && !is.null(params$selected_gene_label_size)) params$label_size <- params$selected_gene_label_size
-  if (is.null(params$label_color) && !is.null(params$selected_gene_label_color)) params$label_color <- params$selected_gene_label_color
-  if (is.null(params$label_nudge_x) && !is.null(params$selected_gene_label_nudge_x)) params$label_nudge_x <- params$selected_gene_label_nudge_x
-  if (is.null(params$label_nudge_y) && !is.null(params$selected_gene_label_nudge_y)) params$label_nudge_y <- params$selected_gene_label_nudge_y
-  if (is.null(params$label_arrow) && !is.null(params$selected_gene_label_arrow)) params$label_arrow <- params$selected_gene_label_arrow
-  if (is.null(params$label_line_color) && !is.null(params$selected_gene_label_arrow_color)) params$label_line_color <- params$selected_gene_label_arrow_color
-  if (is.null(params$label_line_width) && !is.null(params$selected_gene_label_arrow_width)) params$label_line_width <- params$selected_gene_label_arrow_width
-  if (is.null(params$show_peak_label) && !is.null(params$peak_label_show)) params$show_peak_label <- params$peak_label_show
+  if (is.null(params[['selected_genes']]) && !is.null(params[['selected_gene_labels']])) params[['selected_genes']] <- params[['selected_gene_labels']]
+  if (is.null(params[['label_size']]) && !is.null(params[['selected_gene_label_size']])) params[['label_size']] <- params[['selected_gene_label_size']]
+  if (is.null(params[['label_color']]) && !is.null(params[['selected_gene_label_color']])) params[['label_color']] <- params[['selected_gene_label_color']]
+  if (is.null(params[['label_nudge_x']]) && !is.null(params[['selected_gene_label_nudge_x']])) params[['label_nudge_x']] <- params[['selected_gene_label_nudge_x']]
+  if (is.null(params[['label_nudge_y']]) && !is.null(params[['selected_gene_label_nudge_y']])) params[['label_nudge_y']] <- params[['selected_gene_label_nudge_y']]
+  if (is.null(params[['label_arrow']]) && !is.null(params[['selected_gene_label_arrow']])) params[['label_arrow']] <- params[['selected_gene_label_arrow']]
+  if (is.null(params[['label_line_color']]) && !is.null(params[['selected_gene_label_arrow_color']])) params[['label_line_color']] <- params[['selected_gene_label_arrow_color']]
+  if (is.null(params[['label_line_width']]) && !is.null(params[['selected_gene_label_arrow_width']])) params[['label_line_width']] <- params[['selected_gene_label_arrow_width']]
+  if (is.null(params[['show_peak_label']]) && !is.null(params[['peak_label_show']])) params[['show_peak_label']] <- params[['peak_label_show']]
   if (is.null(ranks) || is.null(pathways)) {
     write_error_and_exit('Gradient curve plot requires rank stats and pathways', '', 'Use compute mode with genesets_file/--genesets.')
   }
@@ -1708,16 +1730,16 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   svglite::svglite(file.path(output_dir, 'result.svg'), width = width, height = height)
   print(plot)
   dev.off()
-  pdf(file.path(output_dir, 'result.pdf'), width = width, height = height, useDingbats = FALSE)
+  grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = width, height = height)
   print(plot)
   dev.off()
-  png(file.path(output_dir, 'result.png'), width = width, height = height, units = 'in', res = dpi, type = 'cairo')
+  (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = width, height = height, units = 'in', res = dpi)
   print(plot)
   dev.off()
 }
 
 save_panel_png <- function(plot, path, width, height, dpi) {
-  png(path, width = width, height = height, units = 'in', res = dpi, type = 'cairo')
+  (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(path, width = width, height = height, units = 'in', res = dpi)
   print(plot)
   dev.off()
 }
@@ -1786,7 +1808,7 @@ main <- function() {
   } else if (plot_type %in% c('classic_tracks', 'tracked_running')) {
     plot <- make_running_plot(selected, fg$ranks, fg$pathways, params)
   } else if (plot_type %in% c('grouped_curves', 'multi_curve', 'gsea_grouped')) {
-    params$curve_style <- 'multi_term'
+    params[['curve_style']] <- 'multi_term'
     plot <- make_gradient_curve_plot(selected, fg$ranks, fg$pathways, params)
   } else if (plot_type == 'composite') {
     plot <- make_composite_plot(selected, fg$ranks, fg$pathways, params)

@@ -149,8 +149,9 @@ scale01 <- function(x) {
 load_sca_volcano_reference <- function() {
   script_arg <- grep('^--file=', commandArgs(FALSE), value = TRUE)
   script_path <- if (length(script_arg) > 0) sub('^--file=', '', script_arg[1]) else file.path(getwd(), 'plugins', 'sca_volcano_plot', 'plot.R')
-  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), 'reference_sca_helpers')
-  if (!dir.exists(helper_dir)) helper_dir <- file.path('plugins', 'sca_volcano_plot', 'reference_sca_helpers')
+  # Shared SCA helper library (one canonical copy for all plugins): <repo>/R/sca
+  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), '..', '..', 'R', 'sca')
+  if (!dir.exists(helper_dir)) helper_dir <- file.path('R', 'sca')
 
   # Local palette_scp fallback (not defined in SCA source).
   palette_scp <<- function(x = NULL, palette = 'RdBu', palcolor = NULL, ...) {
@@ -209,11 +210,8 @@ load_sca_volcano_reference <- function() {
   source(file.path(helper_dir, 'util.plot.R'), local = .GlobalEnv)
 
   # Patch paletteCustomize to read palettes.rds from the OmicsCanvas assets dir.
-  old_palette <- paletteCustomize
-  palette_file <- file.path(getwd(), 'assets', 'palettes.rds')
-  paletteCustomize <<- function(..., palettePath = NULL) {
-    old_palette(..., palettePath = palettePath %||% palette_file)
-  }
+  source(file.path(helper_dir, 'omicscanvas_shims.R'), local = .GlobalEnv)
+  omicscanvas_patch_palette(helper_dir)
 
   # Source ck + scf helpers, then the VocalnoPlot functions.
   source(file.path(helper_dir, 'util.ck_helpers.R'), local = .GlobalEnv)
@@ -375,7 +373,22 @@ resolve_regions <- function(params, xlim, ylim, threshold) {
   path <- regions_arg %||% get_param(params, 'region_annotations_file', NULL)
   if (!is.null(path) && length(path) > 0) {
     path <- as.character(path)[1]
-    if (!grepl('^/', path)) path <- file.path(dirname(normalizePath(params_file, mustWork = FALSE)), path)
+    if (!grepl('^/', path) || !file.exists(path)) {
+      script_arg <- grep('^--file=', commandArgs(FALSE), value = TRUE)[1]
+      script_path <- if (!is.na(script_arg) && nzchar(script_arg)) sub('^--file=', '', script_arg) else file.path(getwd(), 'plot.R')
+      plugin_dir <- dirname(normalizePath(script_path, mustWork = FALSE))
+      params_dir <- dirname(normalizePath(params_file, mustWork = FALSE))
+      candidates <- unique(c(
+        path,
+        file.path(params_dir, path),
+        file.path(getwd(), path),
+        file.path(plugin_dir, path),
+        file.path(plugin_dir, 'examples', 'regions', path),
+        file.path(plugin_dir, 'examples', 'regions', 'input', path)
+      ))
+      found <- candidates[file.exists(candidates)]
+      path <- if (length(found)) found[1] else candidates[1]
+    }
     region_table <- read_regions_file(path)
     raw <- split(region_table, seq_len(nrow(region_table)))
   }
@@ -615,7 +628,7 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   }
   draw_with_retry(function(w, h) svglite::svglite(file.path(output_dir, 'result.svg'), width = w, height = h))
   draw_with_retry(function(w, h) grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
-  draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi, type = 'cairo'))
+  draw_with_retry(function(w, h) (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
 }
 
 export_selected_points <- function(df, params, output_dir) {
@@ -667,6 +680,8 @@ main <- function() {
   width <- num_param(params, 'width', if (plot_kind == 'percent_volcano') 10 else 8)
   height <- num_param(params, 'height', if (plot_kind == 'avg_volcano') 6 else 5.5)
   dpi <- as.numeric(get_param(params, 'dpi', 300))
+  # Generic appearance parameters not handled by this plugin (R/runtime/omicscanvas_theme.R).
+  if (!exists('omicscanvas_apply_theme')) { .oc_f <- sub('^--file=', '', grep('^--file=', commandArgs(FALSE), value = TRUE)[1]); .oc_rt <- file.path(dirname(normalizePath(.oc_f, mustWork = FALSE)), '..', '..', 'R', 'runtime', 'omicscanvas_theme.R'); if (!file.exists(.oc_rt)) .oc_rt <- file.path('R', 'runtime', 'omicscanvas_theme.R'); sys.source(.oc_rt, envir = globalenv()) }; p <- omicscanvas_apply_theme(p, params, only = c('aspect_ratio', 'axis_label_size', 'font_family', 'font_size', 'legend_direction', 'legend_position', 'legend_text_size', 'legend_title_size', 'title_size', 'x_axis_text_angle', 'x_axis_text_size'))
   save_plot(p, output_dir, width, height, dpi)
   write_log('Saved result.svg/pdf/png.')
   html_meta <- list(plugin = 'sca_volcano_plot', plot_kind = plot_kind,

@@ -86,5 +86,5 @@ list with types/defaults):
 To reproduce all bundled examples and build the gallery:
 
 ```bash
-plugins/interactive_violin_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/interactive_violin_plot/run_all_examples.sh <repo-root>
 ```

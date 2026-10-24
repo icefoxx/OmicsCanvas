@@ -510,12 +510,12 @@ save_grob_outputs <- function(grob, output_dir, width, height, dpi) {
   grid.draw(grob)
   dev.off()
 
-  pdf(pdf_file, width = width, height = height, useDingbats = FALSE)
+  grDevices::cairo_pdf(pdf_file, width = width, height = height)
   grid.newpage()
   grid.draw(grob)
   dev.off()
 
-  png(png_file, width = width, height = height, units = 'in', res = dpi, type = 'cairo')
+  (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(png_file, width = width, height = height, units = 'in', res = dpi)
   grid.newpage()
   grid.draw(grob)
   dev.off()

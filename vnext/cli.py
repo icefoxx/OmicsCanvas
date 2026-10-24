@@ -42,19 +42,32 @@ def cmd_validate(args: argparse.Namespace) -> int:
     from vnext.validate.pipeline import validate_plotspec
 
     spec = load(args.spec)
-    res = validate_plotspec(spec, table_path=args.input, skip_scientific=not args.input)
+    inputs = _parse_inputs(args.input)
+    res = validate_plotspec(spec, tables=inputs or None, skip_scientific=not inputs)
     print(json.dumps(res, indent=2))
     return 0 if res.get("valid") else 2
+
+
+def _parse_inputs(values: list[str] | None) -> dict[str, Path]:
+    """--input path (main input) or --input field=path, repeatable."""
+    out: dict[str, Path] = {}
+    for raw in values or []:
+        field, sep, path = raw.partition("=")
+        if sep and field and not Path(raw).exists():
+            out[field] = Path(path)
+        else:
+            out.setdefault("input", Path(raw))
+    return out
 
 
 def cmd_render(args: argparse.Namespace) -> int:
     from vnext.adapters.legacy_r import plotspec_to_legacy_params, run_legacy_plugin
     from vnext.plotspec.model import load, merge_defaults
-    from vnext.provenance.bundle import plotspec_hash, write_reproduction_bundle
+    from vnext.provenance.bundle import describe_inputs, plotspec_hash, write_reproduction_bundle
     from vnext.validate.pipeline import validate_plotspec
 
     spec = load(args.spec)
-    # optional skill defaults
+    inputs = _parse_inputs(args.input)
     skill_id = (spec.get("skill") or {}).get("id")
     defaults_path = ROOT / "plugins" / str(skill_id) / "vnext" / "defaults.yaml"
     if defaults_path.exists():
@@ -62,28 +75,29 @@ def cmd_render(args: argparse.Namespace) -> int:
 
         defaults = yaml.safe_load(defaults_path.read_text(encoding="utf-8")) or {}
         spec = merge_defaults(spec, defaults)
+    from plot_web.server.runner import DEFAULT_SEED
 
-    validation = validate_plotspec(spec, table_path=args.input)
+    # Always record the seed actually used, so the spec fully determines the render.
+    seed = args.seed if args.seed is not None else (spec.get("provenance") or {}).get("seed", DEFAULT_SEED)
+    spec.setdefault("provenance", {})["seed"] = int(seed)
+    spec["inputs"] = describe_inputs(inputs)
+
+    validation = validate_plotspec(spec, tables=inputs)
     if not validation.get("valid"):
-        print(json.dumps({"error": "validation_failed", "validation": validation}, indent=2))
+        print(json.dumps({"error": "validation_failed", "validation": validation}, indent=2, default=str))
         return 2
 
     # Deterministic boundary crossed — no LLM beyond this point
     params = plotspec_to_legacy_params(spec)
     out = Path(args.output)
-    result = run_legacy_plugin(
-        skill_id=str(skill_id),
-        input_path=Path(args.input),
-        params=params,
-        output_dir=out,
-    )
+    result = run_legacy_plugin(skill_id=str(skill_id), inputs=inputs, params=params, output_dir=out, seed=seed)
     bundle_meta = None
-    if args.bundle:
-        bundle_dir = out / "reproduction_bundle"
+    if args.bundle and result.get("ok"):
         bundle_meta = write_reproduction_bundle(
-            bundle_dir=bundle_dir,
+            bundle_dir=out / "reproduction_bundle",
             spec=spec,
-            input_file=Path(args.input),
+            inputs=inputs,
+            params=params,
             figure_files=result.get("figure_paths") or {},
             validation=validation,
         )
@@ -97,21 +111,62 @@ def cmd_render(args: argparse.Namespace) -> int:
                 "validation_warnings": validation.get("warnings"),
             },
             indent=2,
+            default=str,
         )
     )
     return 0 if result.get("ok") else 3
 
 
 def cmd_reproduce(args: argparse.Namespace) -> int:
-    # Alias of render with bundle forced
-    args.bundle = True
-    if args.bundle_dir:
-        # load from existing bundle
-        b = Path(args.bundle_dir)
-        args.spec = str(b / "plotspec.json")
-        man = json.loads((b / "manifest.json").read_text(encoding="utf-8"))
-        args.input = str(b / man["input"])
-    return cmd_render(args)
+    """Re-render from a bundle's plotspec.json + input/ only; optionally compare figures."""
+    if not args.bundle_dir:
+        args.bundle = True
+        return cmd_render(args)
+
+    from vnext.adapters.legacy_r import plotspec_to_legacy_params, run_legacy_plugin
+    from vnext.plotspec.model import load
+    from vnext.provenance.bundle import describe_inputs, plotspec_hash
+    from vnext.provenance.compare import DEFAULT_TOLERANCE, image_diff
+
+    bundle = Path(args.bundle_dir)
+    manifest = json.loads((bundle / "manifest.json").read_text(encoding="utf-8"))
+    spec = load(bundle / "plotspec.json")
+    inputs = {field: bundle / rel for field, rel in (manifest.get("inputs") or {}).items()}
+    if not inputs and manifest.get("input"):
+        inputs = {"input": bundle / manifest["input"]}
+
+    report: dict[str, object] = {"bundle": str(bundle)}
+    current = describe_inputs(inputs)
+    recorded = spec.get("inputs") or {}
+    report["inputs_match"] = all((recorded.get(f) or {}).get("checksum") == d["checksum"] for f, d in current.items())
+    report["plotspec_hash_match"] = plotspec_hash(spec) == manifest.get("plotspec_hash")
+
+    params = plotspec_to_legacy_params(spec)
+    if (bundle / "params.json").exists():
+        from vnext.adapters.legacy_r import RUN_CONTROL_KEYS
+
+        def semantic(p: dict) -> dict:
+            return {k: v for k, v in p.items() if k not in RUN_CONTROL_KEYS}
+
+        recorded_params = json.loads((bundle / "params.json").read_text(encoding="utf-8"))
+        report["params_match"] = semantic(params) == semantic(recorded_params)
+    seed = (spec.get("provenance") or {}).get("seed")
+    result = run_legacy_plugin(skill_id=spec["skill"]["id"], inputs=inputs, params=params, output_dir=Path(args.output), seed=seed)
+    report["rendered"] = result.get("ok")
+    ok = bool(result.get("ok")) and report["inputs_match"] and report["plotspec_hash_match"] and report.get("params_match", True)
+    if args.compare:
+        original = bundle / (manifest.get("figures") or {}).get("png", "figures/result.png")
+        new_png = Path(args.output) / "result.png"
+        if original.exists() and new_png.exists():
+            changed, note = image_diff(new_png, original)
+            report["figure_identical"] = changed <= DEFAULT_TOLERANCE
+            report["figure_diff"] = note
+            ok = ok and report["figure_identical"]
+        else:
+            report["figure_identical"] = None
+    report["ok"] = ok
+    print(json.dumps(report, indent=2))
+    return 0 if ok else 4
 
 
 def cmd_roundtrip(args: argparse.Namespace) -> int:
@@ -127,6 +182,37 @@ def cmd_roundtrip(args: argparse.Namespace) -> int:
     return 0 if ok and res.get("valid") else 1
 
 
+def cmd_migrate(args: argparse.Namespace) -> int:
+    from vnext.migrate.generator import migrate
+    from vnext.registry.loader import build_registry_from_plugins, validate_registry, write_registry
+
+    results = migrate(args.plugins or None)
+    reg = build_registry_from_plugins()
+    write_registry(reg)
+    warnings = {m["id"]: m["generated"]["warnings"] for m in results if m["generated"]["warnings"]}
+    print(json.dumps({"migrated": len(results), "curated": sum(m["generated"]["curated"] for m in results),
+                      "warnings": warnings, "registry": validate_registry(reg)}, indent=2))
+    return 0
+
+
+def cmd_benchmark(args: argparse.Namespace) -> int:
+    from vnext.benchmark.guardrails import run_benchmark, run_reproduction, summary_markdown
+
+    if args.reproduce:
+        result = run_reproduction(jobs=args.jobs)
+        if args.out:
+            Path(args.out).write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+        print(json.dumps(result["summary"], indent=2))
+        return 0 if result["summary"]["pixel_identical"] == result["summary"]["n"] else 1
+    result = run_benchmark(render=args.render, jobs=args.jobs)
+    if args.out:
+        out = Path(args.out)
+        out.write_text(json.dumps(result, indent=2, default=str) + "\n", encoding="utf-8")
+        out.with_suffix(".md").write_text(summary_markdown(result["summary"]), encoding="utf-8")
+    print(summary_markdown(result["summary"]))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="vnext", description="OmicsCanvas vNext CLI")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -140,23 +226,37 @@ def build_parser() -> argparse.ArgumentParser:
 
     v = sub.add_parser("validate")
     v.add_argument("--spec", required=True)
-    v.add_argument("--input", default=None)
+    v.add_argument("--input", default=None, action="append", help="path, or field=path (repeatable)")
     v.set_defaults(func=cmd_validate)
 
     r = sub.add_parser("render")
     r.add_argument("--spec", required=True)
-    r.add_argument("--input", required=True)
+    r.add_argument("--input", required=True, action="append", help="path, or field=path for extra inputs (repeatable)")
     r.add_argument("--output", required=True)
+    r.add_argument("--seed", type=int, default=None)
     r.add_argument("--bundle", action="store_true")
     r.set_defaults(func=cmd_render)
 
     rep = sub.add_parser("reproduce")
     rep.add_argument("--spec")
-    rep.add_argument("--input")
+    rep.add_argument("--input", action="append")
     rep.add_argument("--output", required=True)
+    rep.add_argument("--seed", type=int, default=None)
     rep.add_argument("--bundle-dir", dest="bundle_dir", default=None)
+    rep.add_argument("--compare", action="store_true", help="pixel-compare the new figure with the bundled one")
     rep.add_argument("--bundle", action="store_true", default=True)
     rep.set_defaults(func=cmd_reproduce)
+
+    mg = sub.add_parser("migrate", help="Generate plugins/*/vnext/metadata.yaml + rebuild the registry")
+    mg.add_argument("plugins", nargs="*")
+    mg.set_defaults(func=cmd_migrate)
+
+    bm = sub.add_parser("benchmark", help="Fault-injection benchmark of the scientific guardrails")
+    bm.add_argument("--render", action="store_true", help="also render each corrupted case with the legacy plugin")
+    bm.add_argument("--reproduce", action="store_true", help="re-render every example from its PlotSpec and pixel-compare")
+    bm.add_argument("--jobs", type=int, default=4)
+    bm.add_argument("--out", default=None, help="write JSON (+ .md summary) here")
+    bm.set_defaults(func=cmd_benchmark)
 
     rt = sub.add_parser("roundtrip")
     rt.add_argument("--spec", required=True)

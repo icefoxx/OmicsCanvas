@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Plot Editor | OmicsCanvas</title>
-  <link rel="stylesheet" href="/static/styles.css?v=plot-guide-1">
+  <link rel="stylesheet" href="/static/styles.css?v=vnext-1">
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +49,11 @@
             <a class="export-item is-disabled" data-fmt="pdf" role="menuitem" href="#" tabindex="-1">PDF</a>
             <a class="export-item is-disabled" data-fmt="png" role="menuitem" href="#" tabindex="-1">PNG</a>
             <a class="export-item is-disabled" data-fmt="tiff" role="menuitem" href="#" tabindex="-1">TIFF</a>
+            <a class="export-item is-disabled" data-fmt="plotspec" role="menuitem" href="#" tabindex="-1">PlotSpec (JSON)</a>
+            <a class="export-item is-disabled" data-fmt="bundle" role="menuitem" href="#" tabindex="-1">Reproduction bundle (ZIP)</a>
           </div>
+          <button type="button" class="export-menu-action" id="importPlotSpecBtn" role="menuitem">Import PlotSpec…</button>
+          <input type="file" id="importPlotSpecInput" accept=".json,application/json" hidden />
         </div>
       </div>
     </div>
@@ -110,6 +114,7 @@
             <strong>Status</strong>
             <div id="jobStatus" class="job-status">Ready.</div>
           </div>
+          <div id="validationPanel" class="validation-panel" hidden aria-live="polite"></div>
           <div id="downloadLinks" class="downloads export-cta-row" hidden></div>
         </div>
 
@@ -145,8 +150,9 @@
             <div class="param-nav-group-label">Plot</div>
             <button class="param-tab active" data-ptab="data" type="button">data <span class="param-tab-count" data-count-for="data"></span></button>
             <button class="param-tab" data-ptab="plot" type="button">plot <span class="param-tab-count" data-count-for="plot"></span></button>
+            <button class="param-tab" data-ptab="customize" type="button">customize <span class="param-tab-count" data-count-for="customize"></span></button>
             <div class="param-nav-group-label">Common</div>
-            <button class="param-tab" data-ptab="theme" type="button">theme</button>
+            <button class="param-tab" data-ptab="theme" type="button">theme <span class="param-tab-count" data-count-for="theme"></span></button>
             <button class="param-tab" data-ptab="axes" type="button">axes <span class="param-tab-count" data-count-for="axes"></span></button>
             <button class="param-tab" data-ptab="title" type="button">title <span class="param-tab-count" data-count-for="title"></span></button>
             <button class="param-tab" data-ptab="legend" type="button">legend <span class="param-tab-count" data-count-for="legend"></span></button>
@@ -175,7 +181,9 @@
     <span id="outputPathText"></span>
   </footer>
 
+  <script src="/static/html_utils.js?v=2"></script>
   <script src="/static/plot_guide.js?v=plot-guide-1"></script>
-  <script src="/static/editor.js?v=plot-guide-1"></script>
+  <script src="/static/data_mapping.js?v=data-map-1"></script>
+  <script src="/static/editor.js?v=vnext-1"></script>
 </body>
 </html>

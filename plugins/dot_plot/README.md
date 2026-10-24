@@ -140,14 +140,14 @@ Output:
 
 ## SCA compatibility
 
-The plugin copies `jjplot2.R` into `reference_sca_helpers/` and sources it locally. `custDotplot` is used for plotting; `jjDotPlot1`'s aggregation logic is reproduced in the plugin for matrix-plus-annotation input. The SCA visual style (theme_bw, black axis text, gradient fill, size legend) is preserved.
+The plugin copies `jjplot2.R` into the shared `R/sca/` library and sources it locally. `custDotplot` is used for plotting; `jjDotPlot1`'s aggregation logic is reproduced in the plugin for matrix-plus-annotation input. The SCA visual style (theme_bw, black axis text, gradient fill, size legend) is preserved.
 
 ## Examples
 
 Run all examples:
 
 ```bash
-plugins/dot_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/dot_plot/run_all_examples.sh <repo-root>
 ```
 
 This writes `/tmp/dot_plot_*_out` and updates:

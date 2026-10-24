@@ -1,38 +1,58 @@
 id: regression_scatter_plot
 name: Regression Scatter Plot
-display_name: Regression Scatter Plot
 version: 1.0.0
-author: OmicsCanvas
-description: >
-  Multi-group scatter plot with per-group linear or loess regression, confidence
-  interval band, and ChiPlot-style formula / R² / P-value annotations.
+description: 'Multi-group scatter plot with per-group linear or loess regression, confidence interval band, and CAB_demo-style
+  formula / R² / P-value annotations.
+
+  '
 language: R
 entrypoint: plot.R
 category: Scatter
 subcategory: Regression
 status: stable
+inputs:
+- id: input
+  name: input
+  type: table
+  required: true
+  formats:
+  - csv
+  - tsv
+  - txt
+  description: Table with x, y, and optional group columns.
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- selected_rows.csv
+- regression_stats.csv
 runtime:
   command: Rscript plot.R --input input.csv --params params.json --output output_dir
-inputs:
-  - id: input
-    name: input
-    type: table
-    required: true
-    formats: [csv, tsv, txt]
-    description: Table with x, y, and optional group columns.
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - run.log
-  - selected_rows.csv
-  - regression_stats.csv
+author: OmicsCanvas
 parameters:
-  x_column: {type: column, required: false}
-  y_column: {type: column, required: false}
-  group_column: {type: column, required: false}
-  regression_method: {type: select, options: [lm, loess], default: lm}
-  width: {type: number, default: 8}
-  height: {type: number, default: 6.5}
-  dpi: {type: number, default: 300}
+  x_column:
+    type: column
+    required: false
+  y_column:
+    type: column
+    required: false
+  group_column:
+    type: column
+    required: false
+  regression_method:
+    type: select
+    options:
+    - lm
+    - loess
+    default: lm
+  width:
+    type: number
+    default: 8
+  height:
+    type: number
+    default: 6.5
+  dpi:
+    type: number
+    default: 300

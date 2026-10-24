@@ -103,6 +103,11 @@ normalize_advdim_params <- function(params) {
   params <- set_if_missing(params, 'mark_alpha', 'mark.alpha')
   params <- set_if_missing(params, 'mark_linetype', 'mark.linetype')
   params <- set_if_missing(params, 'mark_line_width', 'mark.linewidth')
+  params <- set_if_missing(params, 'mark_expand_mm', 'mark.expand')
+  params <- set_if_missing(params, 'mark_expand_mm', 'mark_size')
+  params <- set_if_missing(params, 'mark_color_mode', 'ellipse_color_mode')
+  params <- set_if_missing(params, 'mark_fill', 'ellipse_color')
+  params <- set_if_missing(params, 'mark_color', 'ellipse_outline')
   params <- set_if_missing(params, 'show_density', 'add.density')
   params <- set_if_missing(params, 'density_filled', 'density.filled')
   params <- set_if_missing(params, 'density_color', 'density.color')
@@ -126,12 +131,22 @@ normalize_advdim_params <- function(params) {
   params <- set_if_missing(params, 'lineage_line_width', 'lineages_linewidth')
   params <- set_if_missing(params, 'legend_position', 'legend.position')
   params <- set_if_missing(params, 'legend_direction', 'legend.direction')
+  params <- set_if_missing(params, 'legend_name', 'legend_title')
+  params <- set_if_missing(params, 'legend_title', 'legend_name')
   params <- set_if_missing(params, 'facet_nrow', 'nrow')
   params <- set_if_missing(params, 'facet_ncol', 'ncol')
   params <- set_if_missing(params, 'font_family', 'font_type')
   params <- set_if_missing(params, 'axis_title_font_family', 'axis_label_font_type')
   params <- set_if_missing(params, 'axis_title_font_family', 'axis_label_font_family')
   params <- set_if_missing(params, 'axis_title_size', 'axis_label_size')
+  params <- set_if_missing(params, 'x_axis_title_size', 'axis_title_size')
+  params <- set_if_missing(params, 'y_axis_title_size', 'axis_title_size')
+  params <- set_if_missing(params, 'x_axis_text_size', 'axis_text_size')
+  params <- set_if_missing(params, 'y_axis_text_size', 'axis_text_size')
+  params <- set_if_missing(params, 'grid_show', 'show_grid')
+  params <- set_if_missing(params, 'show_grid', 'grid_show')
+  params <- set_if_missing(params, 'grid_minor_show', 'show_minor_grid')
+  params <- set_if_missing(params, 'show_minor_grid', 'grid_minor_show')
   params <- set_if_missing(params, 'axis_title_margin', 'axis_label_distance')
   params <- set_if_missing(params, 'x_axis_title_margin_top', 'x_axis_label_distance')
   params <- set_if_missing(params, 'y_axis_title_margin_right', 'y_axis_label_distance')
@@ -140,6 +155,35 @@ normalize_advdim_params <- function(params) {
   if (!is.null(params[['stat_plot_column']]) && is.null(params[['show_stat_embedded']]) && is.null(params[['show_stat_panel']])) {
     params[['show_stat_embedded']] <- TRUE
   }
+  density_style <- tolower(as.character(get_param(params, 'density_style', ''))[1])
+  if (nzchar(density_style)) {
+    if (density_style %in% c('hex', 'hexbin')) params[['hex']] <- TRUE
+    if (density_style %in% c('filled', 'fill')) {
+      params[['show_density']] <- TRUE
+      params[['density_filled']] <- TRUE
+    }
+    if (density_style %in% c('contours', 'contour', 'lines')) {
+      params[['show_density']] <- TRUE
+      params[['density_filled']] <- FALSE
+    }
+  }
+  glyph <- tolower(as.character(get_param_any(params, c('composition_glyph', 'glyph_style'), ''))[1])
+  if (nzchar(glyph)) {
+    params[['show_stat_embedded']] <- TRUE
+    params[['stat_embedded_ring_show']] <- glyph %in% c('ring', 'donut')
+  }
+  highlight_style <- tolower(as.character(get_param(params, 'highlight_style', ''))[1])
+  if (nzchar(highlight_style)) {
+    if (highlight_style == 'ring') params[['highlight_ring_show']] <- TRUE
+    if (highlight_style == 'outline') {
+      params[['highlight_border_color']] <- get_param(params, 'highlight_border_color', '#111111')
+      params[['highlight_stroke']] <- num_param(params, 'highlight_stroke', 0.8)
+    }
+    if (highlight_style == 'enlarge') params[['highlight_size']] <- num_param(params, 'highlight_size', 3)
+  }
+  render_mode <- tolower(as.character(get_param(params, 'rendering_mode', ''))[1])
+  if (identical(render_mode, 'raster')) params[['raster']] <- TRUE
+  if (identical(render_mode, 'vector')) params[['raster']] <- FALSE
   if (is.null(params[['label_groups']]) && as_bool(params[['label_show']], TRUE)) params[['label_groups']] <- TRUE
   if (is.null(params[['label_repel']])) params[['label_repel']] <- FALSE
   if (is.null(params[['advdim_compat']])) params[['advdim_compat']] <- TRUE
@@ -158,6 +202,385 @@ as_bool <- function(x, default = FALSE) {
 num_param <- function(params, name, default) {
   value <- suppressWarnings(as.numeric(get_param(params, name, default))[1])
   if (is.na(value)) default else value
+}
+
+legend_is_shown <- function(params) as_bool(get_param(params, 'legend_show', TRUE), TRUE)
+
+legend_position_value <- function(params, default = 'right') {
+  if (!legend_is_shown(params)) return('none')
+  if (as_bool(get_param(params, 'legend_inside', FALSE), FALSE)) {
+    return(c(num_param(params, 'legend_x', 0.98), num_param(params, 'legend_y', 0.5)))
+  }
+  get_param_any(params, c('legend_position', 'legend.position'), default)
+}
+
+legend_direction_value <- function(params) {
+  if (as_bool(get_param_any(params, c('legend_horizontal', 'legend_horiz'), FALSE), FALSE)) return('horizontal')
+  get_param_any(params, c('legend_direction', 'legend.direction'), 'vertical')
+}
+
+positive_int_or_null <- function(params, name) {
+  value <- num_param(params, name, NA_real_)
+  if (!is.finite(value) || value < 1) return(NULL)
+  as.integer(value)
+}
+
+legend_title_value <- function(params, default = NULL) {
+  value <- get_param_any(params, c('legend_name', 'legend_title'), default)
+  if (is.null(value)) return(default)
+  value <- as.character(value)[1]
+  if (is.na(value)) return(default)
+  value
+}
+
+color_legend_guide <- function(params) {
+  if (!legend_is_shown(params)) return('none')
+  title <- legend_title_value(params, NULL)
+  if (!is.null(title) && !nzchar(title)) title <- NULL
+  key_pt <- num_param(params, 'legend_key_size_pt', 10)
+  args <- list(
+    title = title,
+    title.position = get_param(params, 'legend_title_position', 'top'),
+    title.hjust = num_param(params, 'legend_title_hjust', 0),
+    title.vjust = num_param(params, 'legend_title_vjust', 0.5),
+    label.position = get_param(params, 'legend_label_position', 'right'),
+    direction = legend_direction_value(params),
+    nrow = positive_int_or_null(params, 'legend_nrow'),
+    ncol = positive_int_or_null(params, 'legend_ncol'),
+    byrow = as_bool(get_param(params, 'legend_byrow', TRUE), TRUE),
+    reverse = as_bool(get_param(params, 'legend_reverse', FALSE), FALSE),
+    keywidth = grid::unit(num_param(params, 'legend_key_width_pt', key_pt), 'pt'),
+    keyheight = grid::unit(num_param(params, 'legend_key_height_pt', key_pt), 'pt'),
+    override.aes = list(
+      size = num_param(params, 'legend_point_size', 4),
+      alpha = num_param(params, 'legend_key_alpha', 1)
+    )
+  )
+  args <- args[!vapply(args, is.null, logical(1))]
+  do.call(ggplot2::guide_legend, args)
+}
+
+legend_theme_for_plot <- function(params) {
+  ggplot2::theme(
+    legend.position = legend_position_value(params, 'right'),
+    legend.direction = legend_direction_value(params),
+    legend.justification = if (as_bool(get_param(params, 'legend_inside', FALSE), FALSE)) {
+      c(num_param(params, 'legend_just_x', 1), num_param(params, 'legend_just_y', 0.5))
+    } else {
+      get_param(params, 'legend_justification', 'center')
+    },
+    legend.box = get_param(params, 'legend_box', 'vertical'),
+    legend.box.just = get_param(params, 'legend_box_just', 'center'),
+    legend.title = ggplot2::element_text(
+      size = num_param(params, 'legend_title_size', 12),
+      face = get_param(params, 'legend_title_fontface', 'plain'),
+      color = get_param_any(params, c('legend_title_color', 'legend_text_col'), 'black'),
+      family = get_param(params, 'legend_title_font_family', get_param(params, 'font_family', 'sans')),
+      hjust = num_param(params, 'legend_title_hjust', 0),
+      vjust = num_param(params, 'legend_title_vjust', 0.5)
+    ),
+    legend.text = ggplot2::element_text(
+      size = num_param(params, 'legend_text_size', 11),
+      face = get_param(params, 'legend_text_fontface', 'plain'),
+      color = get_param_any(params, c('legend_text_color', 'legend_text_col', 'text.col'), 'black'),
+      family = get_param(params, 'legend_text_font_family', get_param(params, 'font_family', 'sans')),
+      hjust = num_param(params, 'legend_text_hjust', 0),
+      vjust = num_param(params, 'legend_text_vjust', 0.5)
+    ),
+    legend.key = ggplot2::element_rect(
+      fill = get_param(params, 'legend_key_fill', 'transparent'),
+      color = get_param(params, 'legend_key_border', 'transparent')
+    ),
+    legend.key.size = grid::unit(num_param(params, 'legend_key_size_pt', 10), 'pt'),
+    legend.key.width = grid::unit(num_param(params, 'legend_key_width_pt', num_param(params, 'legend_key_size_pt', 10)), 'pt'),
+    legend.key.height = grid::unit(num_param(params, 'legend_key_height_pt', num_param(params, 'legend_key_size_pt', 10)), 'pt'),
+    legend.background = if (as_bool(get_param(params, 'legend_background_show', FALSE), FALSE)) {
+      ggplot2::element_rect(
+        fill = get_param(params, 'legend_background_fill', '#FFFFFF'),
+        color = get_param(params, 'legend_background_color', '#FFFFFF'),
+        linewidth = num_param(params, 'legend_background_width', 0.2)
+      )
+    } else {
+      ggplot2::element_blank()
+    },
+    legend.margin = ggplot2::margin(
+      num_param(params, 'legend_margin_top', num_param(params, 'legend_margin', 4)),
+      num_param(params, 'legend_margin_right', num_param(params, 'legend_margin', 4)),
+      num_param(params, 'legend_margin_bottom', num_param(params, 'legend_margin', 4)),
+      num_param(params, 'legend_margin_left', num_param(params, 'legend_margin', 4))
+    ),
+    legend.spacing.x = grid::unit(num_param(params, 'legend_spacing_x', 4), 'pt'),
+    legend.spacing.y = grid::unit(num_param(params, 'legend_spacing_y', 4), 'pt'),
+    legend.box.spacing = grid::unit(num_param(params, 'legend_box_spacing', 6), 'pt')
+  )
+}
+
+apply_legend_layers <- function(plot, params) {
+  if (is.null(plot)) return(plot)
+  title <- legend_title_value(params, NULL)
+  guide <- color_legend_guide(params)
+  layers <- list(legend_theme_for_plot(params))
+  if (!is.null(title) && nzchar(title)) {
+    layers <- c(layers, list(ggplot2::labs(colour = title, fill = title)))
+  }
+  layers <- c(layers, list(ggplot2::guides(colour = guide, fill = guide)))
+  add_layers <- function(p) {
+    if (!inherits(p, 'ggplot')) return(p)
+    Reduce(`+`, c(list(p), layers))
+  }
+  if (inherits(plot, 'patchwork')) {
+    out <- tryCatch(plot & legend_theme_for_plot(params), error = function(e) plot)
+    if (!is.null(title) && nzchar(title)) {
+      out <- tryCatch(out & ggplot2::labs(colour = title, fill = title), error = function(e) out)
+    }
+    out <- tryCatch(out & ggplot2::guides(colour = guide, fill = guide), error = function(e) out)
+    return(out)
+  }
+  add_layers(plot)
+}
+
+numeric_limits <- function(params, names) {
+  raw <- get_param_any(params, names, NULL)
+  if (is.null(raw)) return(NULL)
+  if (is.character(raw) && length(raw) == 1) {
+    raw <- strsplit(raw, '[,; ]+', perl = TRUE)[[1]]
+  }
+  vals <- suppressWarnings(as.numeric(unlist(raw, use.names = FALSE)))
+  vals <- vals[is.finite(vals)]
+  if (length(vals) < 2) return(NULL)
+  sort(vals[1:2])
+}
+
+axis_is_blank_theme <- function(params) {
+  theme_name <- tolower(as.character(get_param(params, 'theme_use', get_param(params, 'theme', 'default')))[1])
+  theme_name %in% c('blank', 'themeblank', 'void')
+}
+
+axis_theme_for_plot <- function(params) {
+  show_x <- as_bool(get_param(params, 'show_x_axis', TRUE), TRUE)
+  show_y <- as_bool(get_param(params, 'show_y_axis', TRUE), TRUE)
+  show_xlab <- show_x && as_bool(get_param(params, 'xlab_show', TRUE), TRUE)
+  show_ylab <- show_y && as_bool(get_param(params, 'ylab_show', TRUE), TRUE)
+  title_size <- num_param(params, 'axis_title_size', 13)
+  text_size <- num_param(params, 'axis_text_size', 12)
+  out <- ggplot2::theme(
+    axis.title = ggplot2::element_text(
+      size = title_size,
+      color = get_param(params, 'axis_title_color', 'black'),
+      face = get_param(params, 'axis_title_fontface', 'plain'),
+      family = get_param(params, 'axis_title_font_family', get_param(params, 'font_family', 'sans'))
+    ),
+    axis.title.x = if (show_xlab) ggplot2::element_text(
+      size = num_param(params, 'x_axis_title_size', title_size),
+      color = get_param(params, 'x_axis_title_color', get_param(params, 'axis_title_color', 'black')),
+      face = get_param(params, 'x_axis_title_fontface', get_param(params, 'axis_title_fontface', 'plain')),
+      family = get_param(params, 'x_axis_title_font_family', get_param(params, 'axis_title_font_family', get_param(params, 'font_family', 'sans'))),
+      margin = ggplot2::margin(
+        t = num_param(params, 'x_axis_title_margin_top', num_param(params, 'axis_title_margin', 6)),
+        r = num_param(params, 'x_axis_title_margin_right', 0),
+        b = num_param(params, 'x_axis_title_margin_bottom', 0),
+        l = num_param(params, 'x_axis_title_margin_left', 0)
+      )
+    ) else ggplot2::element_blank(),
+    axis.title.y = if (show_ylab) ggplot2::element_text(
+      size = num_param(params, 'y_axis_title_size', title_size),
+      color = get_param(params, 'y_axis_title_color', get_param(params, 'axis_title_color', 'black')),
+      face = get_param(params, 'y_axis_title_fontface', get_param(params, 'axis_title_fontface', 'plain')),
+      family = get_param(params, 'y_axis_title_font_family', get_param(params, 'axis_title_font_family', get_param(params, 'font_family', 'sans'))),
+      angle = num_param(params, 'y_axis_title_angle', 90),
+      margin = ggplot2::margin(
+        t = num_param(params, 'y_axis_title_margin_top', 0),
+        r = num_param(params, 'y_axis_title_margin_right', num_param(params, 'axis_title_margin', 6)),
+        b = num_param(params, 'y_axis_title_margin_bottom', 0),
+        l = num_param(params, 'y_axis_title_margin_left', 0)
+      )
+    ) else ggplot2::element_blank(),
+    axis.text = ggplot2::element_text(
+      size = text_size,
+      color = get_param(params, 'axis_text_color', 'black'),
+      family = get_param(params, 'axis_text_font_family', get_param(params, 'font_family', 'sans')),
+      face = get_param(params, 'axis_text_fontface', 'plain')
+    ),
+    axis.text.x = if (show_x) ggplot2::element_text(
+      size = num_param(params, 'x_axis_text_size', text_size),
+      color = get_param(params, 'x_axis_text_color', get_param(params, 'axis_text_color', 'black')),
+      family = get_param(params, 'x_axis_text_font_family', get_param(params, 'axis_text_font_family', get_param(params, 'font_family', 'sans'))),
+      angle = num_param(params, 'x_axis_text_angle', 0),
+      hjust = num_param(params, 'x_axis_text_hjust', 0.5),
+      vjust = num_param(params, 'x_axis_text_vjust', 0.5),
+      margin = ggplot2::margin(t = num_param(params, 'x_axis_text_margin_top', 2))
+    ) else ggplot2::element_blank(),
+    axis.text.y = if (show_y) ggplot2::element_text(
+      size = num_param(params, 'y_axis_text_size', text_size),
+      color = get_param(params, 'y_axis_text_color', get_param(params, 'axis_text_color', 'black')),
+      family = get_param(params, 'y_axis_text_font_family', get_param(params, 'axis_text_font_family', get_param(params, 'font_family', 'sans'))),
+      angle = num_param(params, 'y_axis_text_angle', 0),
+      hjust = num_param(params, 'y_axis_text_hjust', 0.5),
+      vjust = num_param(params, 'y_axis_text_vjust', 0.5),
+      margin = ggplot2::margin(r = num_param(params, 'y_axis_text_margin_right', 2))
+    ) else ggplot2::element_blank()
+  )
+  out
+}
+
+theme_line <- function(show, color = '#111111', width = 0.4, linetype = 'solid') {
+  if (!isTRUE(show)) return(ggplot2::element_blank())
+  ggplot2::element_line(color = color, linewidth = width, linetype = linetype)
+}
+
+panel_theme_for_plot <- function(params) {
+  show_x <- as_bool(get_param(params, 'show_x_axis', TRUE), TRUE)
+  show_y <- as_bool(get_param(params, 'show_y_axis', TRUE), TRUE)
+  line_on <- as_bool(get_param(params, 'axis_line_show', FALSE), FALSE)
+  line_x <- line_on && show_x && as_bool(get_param(params, 'axis_line_x_show', TRUE), TRUE)
+  line_y <- line_on && show_y && as_bool(get_param(params, 'axis_line_y_show', TRUE), TRUE)
+  tick_on <- as_bool(get_param(params, 'axis_tick_show', TRUE), TRUE)
+  tick_x <- tick_on && show_x
+  tick_y <- tick_on && show_y
+  grid_on <- as_bool(get_param_any(params, c('grid_show', 'show_grid'), FALSE), FALSE)
+  grid_x <- grid_on && as_bool(get_param(params, 'grid_x_show', TRUE), TRUE)
+  grid_y <- grid_on && as_bool(get_param(params, 'grid_y_show', TRUE), TRUE)
+  minor_on <- as_bool(get_param_any(params, c('grid_minor_show', 'show_minor_grid'), FALSE), FALSE)
+  line_color <- get_param(params, 'axis_line_color', '#111111')
+  line_width <- num_param(params, 'axis_line_width', 0.5)
+  tick_color <- get_param(params, 'axis_tick_color', '#111111')
+  tick_width <- num_param(params, 'axis_tick_width', 0.35)
+  grid_color <- get_param(params, 'grid_color', '#E5E7EB')
+  grid_width <- num_param(params, 'grid_line_width', 0.3)
+  grid_type <- get_param(params, 'grid_line_type', 'solid')
+  minor_color <- get_param(params, 'grid_minor_color', get_param(params, 'minor_grid_color', '#F3F4F6'))
+  minor_width <- num_param(params, 'grid_minor_width', num_param(params, 'minor_grid_line_width', 0.2))
+  border_on <- as_bool(get_param(params, 'panel_border_show', TRUE), TRUE)
+  ggplot2::theme(
+    plot.background = ggplot2::element_rect(
+      fill = get_param(params, 'plot_background', 'white'),
+      color = get_param(params, 'plot_background', 'white')
+    ),
+    panel.background = ggplot2::element_rect(
+      fill = get_param(params, 'panel_background', 'white'),
+      color = get_param(params, 'panel_background', 'white')
+    ),
+    panel.border = if (border_on) {
+      ggplot2::element_rect(
+        fill = NA,
+        color = get_param(params, 'panel_border_color', 'black'),
+        linewidth = num_param(params, 'panel_border_width', 1)
+      )
+    } else {
+      ggplot2::element_blank()
+    },
+    axis.line = theme_line(line_x || line_y, line_color, line_width),
+    axis.line.x = theme_line(line_x, line_color, line_width),
+    axis.line.y = theme_line(line_y, line_color, line_width),
+    axis.ticks = theme_line(tick_x || tick_y, tick_color, tick_width),
+    axis.ticks.x = theme_line(tick_x, tick_color, tick_width),
+    axis.ticks.y = theme_line(tick_y, tick_color, tick_width),
+    panel.grid.major = theme_line(grid_x || grid_y, grid_color, grid_width, grid_type),
+    panel.grid.major.x = theme_line(grid_x, grid_color, grid_width, grid_type),
+    panel.grid.major.y = theme_line(grid_y, grid_color, grid_width, grid_type),
+    panel.grid.minor = theme_line(minor_on, minor_color, minor_width, grid_type),
+    panel.grid.minor.x = theme_line(minor_on && grid_x, minor_color, minor_width, grid_type),
+    panel.grid.minor.y = theme_line(minor_on && grid_y, minor_color, minor_width, grid_type)
+  )
+}
+
+apply_theme_layers <- function(plot, params) {
+  if (is.null(plot) || axis_is_blank_theme(params)) return(plot)
+  theme_layer <- panel_theme_for_plot(params)
+  if (inherits(plot, 'patchwork')) {
+    return(tryCatch(plot & theme_layer, error = function(e) plot))
+  }
+  if (!inherits(plot, 'ggplot')) return(plot)
+  plot + theme_layer
+}
+
+add_axis_arrows <- function(p, params, xs, ys, x_col, y_col) {
+  if (!as_bool(get_param(params, 'axis_arrow_show', FALSE), FALSE)) return(p)
+  if (axis_is_blank_theme(params)) return(p)
+  xs <- suppressWarnings(as.numeric(xs))
+  ys <- suppressWarnings(as.numeric(ys))
+  xs <- xs[is.finite(xs)]
+  ys <- ys[is.finite(ys)]
+  if (length(xs) < 1 || length(ys) < 1) return(p)
+  xlim <- numeric_limits(params, c('xlim', 'x_limits', 'x_lim'))
+  ylim <- numeric_limits(params, c('ylim', 'y_limits', 'y_lim'))
+  xr <- if (is.null(xlim)) range(xs, na.rm = TRUE) else xlim
+  yr <- if (is.null(ylim)) range(ys, na.rm = TRUE) else ylim
+  dx <- diff(xr)
+  dy <- diff(yr)
+  if (!is.finite(dx) || !is.finite(dy) || dx == 0 || dy == 0) return(p)
+  x0 <- xr[1] + dx * num_param(params, 'axis_arrow_x_npc', 0.04)
+  y0 <- yr[1] + dy * num_param(params, 'axis_arrow_y_npc', 0.06)
+  x1 <- x0 + dx * num_param(params, 'axis_arrow_x_length_npc', 0.14)
+  y1 <- y0 + dy * num_param(params, 'axis_arrow_y_length_npc', 0.14)
+  arrow_obj <- grid::arrow(length = grid::unit(num_param(params, 'axis_arrow_length_mm', 4), 'mm'), type = 'open')
+  xlab <- get_param(params, 'axis_arrow_x_label', NULL)
+  ylab <- get_param(params, 'axis_arrow_y_label', NULL)
+  if (is.null(xlab) || !nzchar(as.character(xlab)[1])) xlab <- get_param(params, 'xlab', x_col)
+  if (is.null(ylab) || !nzchar(as.character(ylab)[1])) ylab <- get_param(params, 'ylab', y_col)
+  p +
+    ggplot2::annotate('segment', x = x0, xend = x1, y = y0, yend = y0, arrow = arrow_obj, linewidth = num_param(params, 'axis_arrow_width', 0.55), color = get_param(params, 'axis_arrow_color', '#111111')) +
+    ggplot2::annotate('segment', x = x0, xend = x0, y = y0, yend = y1, arrow = arrow_obj, linewidth = num_param(params, 'axis_arrow_width', 0.55), color = get_param(params, 'axis_arrow_color', '#111111')) +
+    ggplot2::annotate(
+      'text',
+      x = x1 + dx * num_param(params, 'axis_arrow_x_label_dx_npc', 0),
+      y = y0 + dy * num_param(params, 'axis_arrow_x_label_dy_npc', -0.012),
+      label = xlab,
+      hjust = num_param(params, 'axis_arrow_x_label_hjust', 1),
+      vjust = num_param(params, 'axis_arrow_x_label_vjust', 1),
+      size = num_param(params, 'axis_arrow_x_label_size', num_param(params, 'axis_arrow_label_size', 3.2)),
+      color = get_param(params, 'axis_arrow_x_label_color', get_param(params, 'axis_arrow_label_color', '#111111')),
+      family = get_param(params, 'axis_arrow_label_font_family', get_param(params, 'font_family', 'sans')),
+      fontface = get_param(params, 'axis_arrow_label_fontface', 'plain')
+    ) +
+    ggplot2::annotate(
+      'text',
+      x = x0 + dx * num_param(params, 'axis_arrow_y_label_dx_npc', -0.012),
+      y = y1 + dy * num_param(params, 'axis_arrow_y_label_dy_npc', 0),
+      label = ylab,
+      angle = num_param(params, 'axis_arrow_y_label_angle', 90),
+      hjust = num_param(params, 'axis_arrow_y_label_hjust', 1),
+      vjust = num_param(params, 'axis_arrow_y_label_vjust', 1),
+      size = num_param(params, 'axis_arrow_y_label_size', num_param(params, 'axis_arrow_label_size', 3.2)),
+      color = get_param(params, 'axis_arrow_y_label_color', get_param(params, 'axis_arrow_label_color', '#111111')),
+      family = get_param(params, 'axis_arrow_label_font_family', get_param(params, 'font_family', 'sans')),
+      fontface = get_param(params, 'axis_arrow_label_fontface', 'plain')
+    ) +
+    ggplot2::coord_cartesian(xlim = xlim, ylim = ylim, clip = 'off')
+}
+
+apply_axis_layers <- function(plot, params, x_col = NULL, y_col = NULL, data = NULL) {
+  if (is.null(plot)) return(plot)
+  xlim <- numeric_limits(params, c('xlim', 'x_limits', 'x_lim'))
+  ylim <- numeric_limits(params, c('ylim', 'y_limits', 'y_lim'))
+  show_xlab <- as_bool(get_param(params, 'show_x_axis', TRUE), TRUE) && as_bool(get_param(params, 'xlab_show', TRUE), TRUE)
+  show_ylab <- as_bool(get_param(params, 'show_y_axis', TRUE), TRUE) && as_bool(get_param(params, 'ylab_show', TRUE), TRUE)
+  xlab <- if (show_xlab) get_param(params, 'xlab', x_col) else NULL
+  ylab <- if (show_ylab) get_param(params, 'ylab', y_col) else NULL
+  layers <- list()
+  if (!axis_is_blank_theme(params)) layers <- c(layers, list(axis_theme_for_plot(params)))
+  layers <- c(layers, list(ggplot2::labs(x = xlab, y = ylab)))
+  want_arrows <- as_bool(get_param(params, 'axis_arrow_show', FALSE), FALSE) && !axis_is_blank_theme(params)
+  if (!want_arrows && (!is.null(xlim) || !is.null(ylim))) {
+    layers <- c(layers, list(ggplot2::coord_cartesian(xlim = xlim, ylim = ylim, clip = 'off')))
+  }
+  add_layers <- function(p) {
+    if (!inherits(p, 'ggplot')) return(p)
+    p <- Reduce(`+`, c(list(p), layers))
+    xs <- NULL
+    ys <- NULL
+    if (!is.null(data)) {
+      if ('x' %in% names(data)) xs <- data$x else if (!is.null(x_col) && x_col %in% names(data)) xs <- data[[x_col]]
+      if ('y' %in% names(data)) ys <- data$y else if (!is.null(y_col) && y_col %in% names(data)) ys <- data[[y_col]]
+    }
+    add_axis_arrows(p, params, xs, ys, x_col, y_col)
+  }
+  if (inherits(plot, 'patchwork')) {
+    out <- plot
+    for (ly in layers) out <- tryCatch(out & ly, error = function(e) out)
+    return(out)
+  }
+  add_layers(plot)
 }
 
 as_string_vector <- function(x, default = character()) {
@@ -260,8 +683,9 @@ mix_colors <- function(values, colors, mode = 'blend') {
 load_sca_advdim_reference <- function() {
   script_arg <- grep('^--file=', commandArgs(FALSE), value = TRUE)
   script_path <- if (length(script_arg) > 0) sub('^--file=', '', script_arg[1]) else file.path(getwd(), 'plugins', 'advanced_dim_plot', 'plot.R')
-  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), 'reference_sca_helpers')
-  if (!dir.exists(helper_dir)) helper_dir <- file.path('plugins', 'advanced_dim_plot', 'reference_sca_helpers')
+  # Shared SCA helper library (one canonical copy for all plugins): <repo>/R/sca
+  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), '..', '..', 'R', 'sca')
+  if (!dir.exists(helper_dir)) helper_dir <- file.path('R', 'sca')
   `%||%` <<- function(x, y) if (is.null(x) || length(x) == 0) y else x
   ckPacsR <<- function(packages, ...) {
     packages <- sub('@.*$', '', packages)
@@ -282,18 +706,15 @@ load_sca_advdim_reference <- function() {
   source(file.path(helper_dir, 'statPlot.R'), local = .GlobalEnv)
   source(file.path(helper_dir, 'advDimPlot.R'), local = .GlobalEnv)
 
-  old_palette <- paletteCustomize
-  palette_file <- file.path(getwd(), 'assets', 'palettes.rds')
-  paletteCustomize <<- function(..., palettePath = NULL) {
-    old_palette(..., palettePath = palettePath %||% palette_file)
-  }
+  source(file.path(helper_dir, 'omicscanvas_shims.R'), local = .GlobalEnv)
+  omicscanvas_patch_palette(helper_dir)
   invisible(TRUE)
 }
 
 advdim_theme_args_from_params <- function(params) {
   args <- get_param_any(params, c('theme_args', 'theme.args'), list())
   if (is.null(args) || !is.list(args)) args <- list()
-  if (!is.null(get_param(params, 'axis_label_size', NULL)) && is.null(args$lab.size)) args$lab.size <- num_param(params, 'axis_label_size', 12)
+  if (is.null(args$lab.size)) args$lab.size <- num_param(params, 'axis_title_size', num_param(params, 'axis_label_size', 12))
   if (!is.null(get_param(params, 'axis_arrow_x_length_npc', NULL)) && is.null(args$xlen.npc)) args$xlen.npc <- num_param(params, 'axis_arrow_x_length_npc', 0.15)
   if (!is.null(get_param(params, 'axis_arrow_y_length_npc', NULL)) && is.null(args$ylen.npc)) args$ylen.npc <- num_param(params, 'axis_arrow_y_length_npc', 0.15)
   args
@@ -393,8 +814,8 @@ params_to_advdim_args <- function(params, df, x_col, y_col, id_col, group_col, s
       subtitle = if (as_bool(get_param(params, 'subtitle_show', TRUE), TRUE)) get_param(params, 'subtitle', NULL) else NULL,
       xlab = if (as_bool(get_param(params, 'xlab_show', TRUE), TRUE)) get_param(params, 'xlab', x_col) else NULL,
       ylab = if (as_bool(get_param(params, 'ylab_show', TRUE), TRUE)) get_param(params, 'ylab', y_col) else NULL,
-      legend.position = get_param_any(params, c('legend.position', 'legend_position'), 'right'),
-      legend.direction = get_param_any(params, c('legend.direction', 'legend_direction'), 'vertical'),
+      legend.position = legend_position_value(params, 'right'),
+      legend.direction = legend_direction_value(params),
       theme.use = normalize_theme_name(get_param_any(params, c('theme.use', 'theme_use'), 'themeDefault')),
       theme.args = advdim_theme_args_from_params(params),
       combine = TRUE,
@@ -411,16 +832,24 @@ make_sca_advdim_plot <- function(df, params, x_col, y_col, id_col, group_col, sp
   load_sca_advdim_reference()
   packed <- params_to_advdim_args(params, df, x_col, y_col, id_col, group_col, split_col)
   args <- packed$args
-  if (identical(args$theme.use, 'blank')) args$theme.use <- 'themeBlank'
-  if (identical(args$theme.use, 'default') || identical(args$theme.use, 'classic') || identical(args$theme.use, 'minimal')) args$theme.use <- 'themeDefault'
+  if (identical(args$theme.use, 'blank') || identical(args$theme.use, 'void')) args$theme.use <- 'themeBlank'
+  if (identical(args$theme.use, 'default') || identical(args$theme.use, 'classic') || identical(args$theme.use, 'minimal') || identical(args$theme.use, 'bw')) args$theme.use <- 'themeDefault'
   write_log(paste('SCA advDimPlot args:',
                   paste0('group.by=', args$group.by %||% 'NULL'),
                   paste0('split.by=', args$split.by %||% 'NULL'),
                   paste0('stat.plot.by=', args$stat.plot.by %||% 'NULL'),
                   paste0('nrow=', args$nrow %||% 'NULL'),
                   paste0('ncol=', args$ncol %||% 'NULL')))
+  # Legend titles must reach advDimPlot: with embedded stat plots it returns a composed
+  # grob, so post-hoc labs() cannot rename the legends.
+  args$legend.title <- legend_title_value(params, NULL)
+  args$stat.legend.title <- get_param_any(params, c('stat_legend_name', 'stat_legend_title'), NULL)
+  args$legend.label.wrap <- num_param(params, 'legend_label_wrap', 22)
   plot <- do.call(advDimPlot, args)
-  write_log('SCA advDimPlot upper plot completed.')
+  plot <- apply_legend_layers(plot, params)
+  plot <- apply_axis_layers(plot, params, x_col, y_col, packed$data)
+  plot <- apply_theme_layers(plot, params)
+  write_log('SCA advDimPlot upper plot completed; studio legend, axis, and theme params applied.')
   if (as_bool(get_param(params, 'show_stat_panel', FALSE), FALSE)) {
     panel_group <- get_param_any(params, c('stat_panel_group_column', 'stat.panel.group.by'), split_col %||% args$split.by %||% args$group.by)
     panel_stat <- get_param_any(params, c('stat_panel_stat_column', 'stat.panel.stat.by'), args$group.by)
@@ -444,6 +873,19 @@ make_sca_advdim_plot <- function(df, params, x_col, y_col, id_col, group_col, sp
       scale_y_continuous(expand = c(0, 0)) +
       labs(x = get_param(params, 'stat_xlab', NULL), y = ylab) +
       themeDefault(legend.position = get_param_any(params, c('stat_legend_position', 'legend_position'), 'right'), legend.direction = args$legend.direction)
+    stat_wrap <- num_param(params, 'stat_x_label_wrap', 0)
+    if (stat_wrap > 0) {
+      # Long sample ids rarely contain spaces; break them at '_' / '-' / '.' instead.
+      wrap_id <- function(x) {
+        parts <- strsplit(x, '(?<=[_.-])', perl = TRUE)[[1]]
+        lines <- character(0); cur <- ''
+        for (part in parts) {
+          if (nchar(cur) > 0 && nchar(cur) + nchar(part) > stat_wrap) { lines <- c(lines, cur); cur <- part } else cur <- paste0(cur, part)
+        }
+        paste(c(lines, cur), collapse = '\n')
+      }
+      bar <- bar + scale_x_discrete(labels = function(x) vapply(as.character(x), wrap_id, character(1)))
+    }
     rel_heights <- as.numeric(unlist(get_param(params, 'stat_rel_heights', list(3, 1))))
     write_log('Arranging upper/stat plots with cowplot.')
     plot <- cowplot::plot_grid(
@@ -463,8 +905,13 @@ apply_row_selection <- function(df, id_col, group_col, params) {
   if (length(exclude) > 0) df <- df[!df[[id_col]] %in% exclude, , drop = FALSE]
   groups_include <- as_string_vector(get_param(params, 'groups_include', NULL))
   groups_exclude <- as_string_vector(get_param(params, 'groups_exclude', NULL))
-  if (!is.null(group_col) && length(groups_include) > 0) df <- df[as.character(df[[group_col]]) %in% groups_include, , drop = FALSE]
-  if (!is.null(group_col) && length(groups_exclude) > 0) df <- df[!as.character(df[[group_col]]) %in% groups_exclude, , drop = FALSE]
+  filter_col <- get_param(params, 'filter_column', group_col)
+  if (is.null(filter_col) || !nzchar(as.character(filter_col)[1])) filter_col <- group_col
+  filter_col <- as.character(filter_col)[1]
+  if (is.null(filter_col) || !nzchar(filter_col) || !(filter_col %in% names(df))) filter_col <- group_col
+  # Include first, then exclude so a value in both is dropped (exclude wins).
+  if (!is.null(filter_col) && length(groups_include) > 0) df <- df[as.character(df[[filter_col]]) %in% groups_include, , drop = FALSE]
+  if (!is.null(filter_col) && length(groups_exclude) > 0) df <- df[!as.character(df[[filter_col]]) %in% groups_exclude, , drop = FALSE]
   df
 }
 
@@ -487,28 +934,10 @@ theme_for_plot <- function(params) {
     aspect.ratio = num_param(params, 'aspect_ratio', 1),
     plot.title = element_text(size = num_param(params, 'title_size', 14), face = get_param(params, 'title_fontface', 'plain'), color = get_param(params, 'title_color', 'black'), hjust = num_param(params, 'title_hjust', 0)),
     plot.subtitle = element_text(size = num_param(params, 'subtitle_size', 13), color = get_param(params, 'subtitle_color', 'black'), hjust = num_param(params, 'subtitle_hjust', 0), margin = margin(b = 3)),
-    axis.title = element_text(size = num_param(params, 'axis_title_size', 13), color = get_param(params, 'axis_title_color', 'black'), face = get_param(params, 'axis_title_fontface', 'plain'), family = get_param(params, 'axis_title_font_family', get_param(params, 'font_family', 'sans'))),
-    axis.title.x = element_text(size = num_param(params, 'x_axis_title_size', num_param(params, 'axis_title_size', 13)), color = get_param(params, 'x_axis_title_color', get_param(params, 'axis_title_color', 'black')), face = get_param(params, 'x_axis_title_fontface', get_param(params, 'axis_title_fontface', 'plain')), family = get_param(params, 'x_axis_title_font_family', get_param(params, 'axis_title_font_family', get_param(params, 'font_family', 'sans'))), margin = margin(t = num_param(params, 'x_axis_title_margin_top', num_param(params, 'axis_title_margin', 6)), r = num_param(params, 'x_axis_title_margin_right', 0), b = num_param(params, 'x_axis_title_margin_bottom', 0), l = num_param(params, 'x_axis_title_margin_left', 0))),
-    axis.title.y = element_text(size = num_param(params, 'y_axis_title_size', num_param(params, 'axis_title_size', 13)), color = get_param(params, 'y_axis_title_color', get_param(params, 'axis_title_color', 'black')), face = get_param(params, 'y_axis_title_fontface', get_param(params, 'axis_title_fontface', 'plain')), family = get_param(params, 'y_axis_title_font_family', get_param(params, 'axis_title_font_family', get_param(params, 'font_family', 'sans'))), angle = num_param(params, 'y_axis_title_angle', 90), margin = margin(t = num_param(params, 'y_axis_title_margin_top', 0), r = num_param(params, 'y_axis_title_margin_right', num_param(params, 'axis_title_margin', 6)), b = num_param(params, 'y_axis_title_margin_bottom', 0), l = num_param(params, 'y_axis_title_margin_left', 0))),
-    axis.text = element_text(size = num_param(params, 'axis_text_size', 12), color = get_param(params, 'axis_text_color', 'black'), family = get_param(params, 'axis_text_font_family', get_param(params, 'font_family', 'sans')), face = get_param(params, 'axis_text_fontface', 'plain')),
-    axis.text.x = element_text(size = num_param(params, 'x_axis_text_size', num_param(params, 'axis_text_size', 12)), color = get_param(params, 'x_axis_text_color', get_param(params, 'axis_text_color', 'black')), family = get_param(params, 'x_axis_text_font_family', get_param(params, 'axis_text_font_family', get_param(params, 'font_family', 'sans'))), angle = num_param(params, 'x_axis_text_angle', 0), hjust = num_param(params, 'x_axis_text_hjust', 0.5), vjust = num_param(params, 'x_axis_text_vjust', 0.5), margin = margin(t = num_param(params, 'x_axis_text_margin_top', 2))),
-    axis.text.y = element_text(size = num_param(params, 'y_axis_text_size', num_param(params, 'axis_text_size', 12)), color = get_param(params, 'y_axis_text_color', get_param(params, 'axis_text_color', 'black')), family = get_param(params, 'y_axis_text_font_family', get_param(params, 'axis_text_font_family', get_param(params, 'font_family', 'sans'))), angle = num_param(params, 'y_axis_text_angle', 0), hjust = num_param(params, 'y_axis_text_hjust', 0.5), vjust = num_param(params, 'y_axis_text_vjust', 0.5), margin = margin(r = num_param(params, 'y_axis_text_margin_right', 2))),
-    axis.line = if (as_bool(get_param(params, 'axis_line_show', FALSE), FALSE)) element_line(color = get_param(params, 'axis_line_color', '#111111'), linewidth = num_param(params, 'axis_line_width', 0.45)) else element_blank(),
-    axis.ticks = if (as_bool(get_param(params, 'axis_tick_show', TRUE), TRUE)) element_line(color = get_param(params, 'axis_tick_color', '#111111'), linewidth = num_param(params, 'axis_tick_width', 0.35)) else element_blank(),
-    panel.grid.major = if (as_bool(get_param(params, 'show_grid', FALSE), FALSE)) element_line(color = get_param(params, 'grid_color', '#E6E6E6'), linetype = get_param(params, 'grid_line_type', 'solid'), linewidth = num_param(params, 'grid_line_width', 0.25)) else element_blank(),
-    panel.grid.minor = if (as_bool(get_param(params, 'show_minor_grid', FALSE), FALSE)) element_line(color = get_param(params, 'minor_grid_color', '#F0F0F0'), linewidth = num_param(params, 'minor_grid_line_width', 0.2)) else element_blank(),
-    panel.border = if (as_bool(get_param(params, 'panel_border_show', theme_name == 'default'), theme_name == 'default')) element_rect(fill = NA, color = get_param(params, 'panel_border_color', 'black'), linewidth = num_param(params, 'panel_border_width', 1)) else element_blank(),
-    legend.position = get_param(params, 'legend_position', 'right'),
-    legend.direction = get_param(params, 'legend_direction', 'vertical'),
-    legend.title = element_text(size = num_param(params, 'legend_title_size', 12), face = get_param(params, 'legend_title_fontface', 'plain'), color = get_param(params, 'legend_title_color', 'black'), hjust = 0),
-    legend.text = element_text(size = num_param(params, 'legend_text_size', 11), color = get_param(params, 'legend_text_color', 'black')),
-    legend.key = element_rect(fill = 'transparent', color = 'transparent'),
-    legend.key.size = grid::unit(num_param(params, 'legend_key_size_pt', 10), 'pt'),
-    legend.background = element_blank(),
     strip.text = element_text(size = num_param(params, 'strip_text_size', 12.5), face = get_param(params, 'strip_text_fontface', 'plain'), color = get_param(params, 'strip_text_color', 'black'), hjust = 0.5, margin = margin(3, 3, 3, 3)),
     strip.background = element_rect(fill = 'transparent', linetype = 0),
     plot.margin = margin(num_param(params, 'plot_margin_top', 8), num_param(params, 'plot_margin_right', 8), num_param(params, 'plot_margin_bottom', 8), num_param(params, 'plot_margin_left', 8))
-  )
+  ) + panel_theme_for_plot(params) + axis_theme_for_plot(params) + legend_theme_for_plot(params)
   if (theme_name == 'blank') {
     out <- out + theme(
       axis.title = element_blank(),
@@ -526,17 +955,42 @@ mark_layer <- function(plot_df, params, group_col) {
   if (!as_bool(get_param(params, 'show_mark', FALSE), FALSE) || is.null(group_col)) return(list())
   if (!requireNamespace('ggforce', quietly = TRUE)) return(list())
   type <- tolower(as.character(get_param(params, 'mark_type', 'hull'))[1])
-  fun <- switch(type, ellipse = ggforce::geom_mark_ellipse, rect = ggforce::geom_mark_rect, circle = ggforce::geom_mark_circle, ggforce::geom_mark_hull)
-  list(fun(
-    data = plot_df[!is.na(plot_df[[group_col]]), , drop = FALSE],
-    aes(x = .data$.__x, y = .data$.__y, color = .data[[group_col]], fill = .data[[group_col]]),
-    expand = grid::unit(num_param(params, 'mark_expand_mm', 3), 'mm'),
+  if (type %in% c('none', '', 'off', 'false')) return(list())
+  fun <- switch(
+    type,
+    ellipse = ggforce::geom_mark_ellipse,
+    rect = ggforce::geom_mark_rect,
+    circle = ggforce::geom_mark_circle,
+    ggforce::geom_mark_hull
+  )
+  expand_mm <- num_param(params, 'mark_expand_mm', num_param(params, 'mark_size', 3))
+  color_mode <- tolower(as.character(get_param_any(params, c('mark_color_mode', 'ellipse_color_mode'), 'group'))[1])
+  custom_fill <- as.character(get_param_any(params, c('mark_fill', 'ellipse_color'), '')[1])
+  custom_color <- as.character(get_param_any(params, c('mark_color', 'ellipse_outline'), custom_fill)[1])
+  if (is.na(custom_fill)) custom_fill <- ''
+  if (is.na(custom_color)) custom_color <- ''
+  use_custom <- color_mode %in% c('custom', 'fixed', 'single') && nzchar(custom_fill)
+  df <- plot_df[!is.na(plot_df[[group_col]]), , drop = FALSE]
+  mapping <- if (use_custom) {
+    aes(x = .data$.__x, y = .data$.__y, group = .data[[group_col]])
+  } else {
+    aes(x = .data$.__x, y = .data$.__y, color = .data[[group_col]], fill = .data[[group_col]])
+  }
+  args <- list(
+    data = df,
+    mapping = mapping,
+    expand = grid::unit(expand_mm, 'mm'),
     alpha = num_param(params, 'mark_alpha', 0.12),
     linetype = get_param(params, 'mark_linetype', 'solid'),
     linewidth = num_param(params, 'mark_line_width', 0.4),
     show.legend = FALSE,
     inherit.aes = FALSE
-  ))
+  )
+  if (use_custom) {
+    args$fill <- custom_fill
+    args$colour <- if (nzchar(custom_color)) custom_color else custom_fill
+  }
+  list(do.call(fun, args))
 }
 
 add_lineages <- function(p, params) {
@@ -665,25 +1119,14 @@ base_plot <- function(plot_df, params, x_col, y_col) {
       y = if (as_bool(get_param(params, 'ylab_show', TRUE), TRUE)) get_param(params, 'ylab', y_col) else NULL
     ) +
     theme_for_plot(params)
-  if (!is.null(get_param(params, 'xlim', NULL))) p <- p + scale_x_continuous(limits = as.numeric(unlist(get_param(params, 'xlim'))))
-  if (!is.null(get_param(params, 'ylim', NULL))) p <- p + scale_y_continuous(limits = as.numeric(unlist(get_param(params, 'ylim'))))
-  if (as_bool(get_param(params, 'axis_arrow_show', FALSE), FALSE)) {
-    xr <- range(plot_df$.__x, na.rm = TRUE)
-    yr <- range(plot_df$.__y, na.rm = TRUE)
-    dx <- diff(xr)
-    dy <- diff(yr)
-    x0 <- xr[1] + dx * num_param(params, 'axis_arrow_x_npc', 0.04)
-    y0 <- yr[1] + dy * num_param(params, 'axis_arrow_y_npc', 0.06)
-    x1 <- x0 + dx * num_param(params, 'axis_arrow_x_length_npc', 0.14)
-    y1 <- y0 + dy * num_param(params, 'axis_arrow_y_length_npc', 0.14)
-    arrow_obj <- grid::arrow(length = grid::unit(num_param(params, 'axis_arrow_length_mm', 4), 'mm'), type = 'open')
-    p <- p +
-      annotate('segment', x = x0, xend = x1, y = y0, yend = y0, arrow = arrow_obj, linewidth = num_param(params, 'axis_arrow_width', 0.55), color = get_param(params, 'axis_arrow_color', '#111111')) +
-      annotate('segment', x = x0, xend = x0, y = y0, yend = y1, arrow = arrow_obj, linewidth = num_param(params, 'axis_arrow_width', 0.55), color = get_param(params, 'axis_arrow_color', '#111111')) +
-      annotate('text', x = x1 + dx * num_param(params, 'axis_arrow_x_label_dx_npc', 0), y = y0 + dy * num_param(params, 'axis_arrow_x_label_dy_npc', -0.012), label = get_param(params, 'axis_arrow_x_label', x_col), hjust = num_param(params, 'axis_arrow_x_label_hjust', 1), vjust = num_param(params, 'axis_arrow_x_label_vjust', 1), size = num_param(params, 'axis_arrow_x_label_size', num_param(params, 'axis_arrow_label_size', 3.2)), color = get_param(params, 'axis_arrow_x_label_color', get_param(params, 'axis_arrow_label_color', '#111111')), family = get_param(params, 'axis_arrow_label_font_family', get_param(params, 'font_family', 'sans')), fontface = get_param(params, 'axis_arrow_label_fontface', 'plain')) +
-      annotate('text', x = x0 + dx * num_param(params, 'axis_arrow_y_label_dx_npc', -0.012), y = y1 + dy * num_param(params, 'axis_arrow_y_label_dy_npc', 0), label = get_param(params, 'axis_arrow_y_label', y_col), angle = num_param(params, 'axis_arrow_y_label_angle', 90), hjust = num_param(params, 'axis_arrow_y_label_hjust', 1), vjust = num_param(params, 'axis_arrow_y_label_vjust', 1), size = num_param(params, 'axis_arrow_y_label_size', num_param(params, 'axis_arrow_label_size', 3.2)), color = get_param(params, 'axis_arrow_y_label_color', get_param(params, 'axis_arrow_label_color', '#111111')), family = get_param(params, 'axis_arrow_label_font_family', get_param(params, 'font_family', 'sans')), fontface = get_param(params, 'axis_arrow_label_fontface', 'plain')) +
-      coord_cartesian(clip = 'off')
+  xlim <- numeric_limits(params, c('xlim', 'x_limits', 'x_lim'))
+  ylim <- numeric_limits(params, c('ylim', 'y_limits', 'y_lim'))
+  if (!is.null(xlim) || !is.null(ylim)) {
+    if (!as_bool(get_param(params, 'axis_arrow_show', FALSE), FALSE)) {
+      p <- p + coord_cartesian(xlim = xlim, ylim = ylim)
+    }
   }
+  p <- add_axis_arrows(p, params, plot_df$.__x, plot_df$.__y, x_col, y_col)
   p
 }
 
@@ -764,10 +1207,10 @@ make_group_plot <- function(plot_df, params, x_col, y_col, group_col, id_col, sp
         legend_labels <- paste0(seq_along(levels), ': ', levels, '(', as.integer(counts), ')')
       }
     }
-    p <- p + scale_color_manual(values = colors, name = get_param(params, 'legend_name', paste0(group_col, ':')), labels = legend_labels, drop = FALSE, na.value = get_param(params, 'background_color', '#D0D0D0'), guide = guide_legend(title.hjust = 0, order = 1, override.aes = list(size = num_param(params, 'legend_point_size', 4), alpha = 1)))
+    p <- p + scale_color_manual(values = colors, name = get_param_any(params, c('legend_name', 'legend_title'), paste0(group_col, ':')), labels = legend_labels, drop = FALSE, na.value = get_param(params, 'background_color', '#D0D0D0'), guide = color_legend_guide(params))
   }
   if (as_bool(get_param(params, 'show_mark', FALSE), FALSE) && !as_bool(get_param(params, 'hex', FALSE), FALSE)) {
-    p <- p + scale_fill_manual(values = colors, name = get_param(params, 'legend_name', group_col), drop = FALSE)
+    p <- p + scale_fill_manual(values = colors, name = get_param_any(params, c('legend_name', 'legend_title'), group_col), drop = FALSE, guide = color_legend_guide(params))
   }
   p <- add_embedded_stat(p, plot_df[!plot_df$.__forced_bg, , drop = FALSE], params, group_col, split_col)
   label_df <- make_label_df(plot_df, params, group_col, id_col)
@@ -794,7 +1237,7 @@ make_feature_plot <- function(plot_df, params, x_col, y_col, feature_cols, id_co
       geom_point(data = fg[!fg$.__background, , drop = FALSE], aes(x = .data$.__x, y = .data$.__y, color = .data$.__feature_cap), size = num_param(params, 'point_size', 0.8), alpha = num_param(params, 'point_alpha', 0.9), shape = num_param(params, 'point_shape', 16), stroke = num_param(params, 'point_stroke', 0.2), inherit.aes = FALSE) +
       scale_color_gradientn(
         colors = as_string_vector(get_param(params, 'feature_colors', c('#E6E6E6', '#67A9CF', '#2166AC', '#B2182B'))),
-        name = get_param(params, 'legend_name', feature_col),
+        name = get_param_any(params, c('legend_name', 'legend_title'), feature_col),
         guide = guide_colorbar(
           title.position = get_param(params, 'legend_title_position', 'top'),
           barheight = grid::unit(num_param(params, 'legend_bar_height_cm', 2.4), 'cm'),
@@ -947,7 +1390,25 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   }
   draw_with_retry(function(w, h) svglite::svglite(file.path(output_dir, 'result.svg'), width = w, height = h))
   draw_with_retry(function(w, h) grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
-  draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi, type = 'cairo'))
+  draw_with_retry(function(w, h) (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
+}
+
+# A requested legend_nrow that would make the legend wider than the figure makes grid fail
+# ("Viewport has zero dimension(s)"): raise the row count until the estimated width fits.
+fit_legend_rows <- function(params, plot_df, group_col) {
+  nrow_req <- positive_int_or_null(params, 'legend_nrow')
+  if (is.null(nrow_req) || is.null(group_col) || !group_col %in% colnames(plot_df)) return(params)
+  labs <- unique(as.character(plot_df[[group_col]])); labs <- labs[!is.na(labs)]
+  if (!length(labs)) return(params)
+  text_pt <- num_param(params, 'legend_text_size', 9); key_pt <- num_param(params, 'legend_key_size_pt', 10)
+  col_in <- (key_pt + 8 + max(nchar(labs) + 4) * text_pt * 0.6) / 72
+  max_cols <- max(1, floor(num_param(params, 'width', 7.2) * 0.9 / col_in))
+  need <- ceiling(length(labs) / max_cols)
+  if (need > nrow_req) {
+    write_log(sprintf('legend_nrow=%d does not fit %d legend keys in width %.1f in; using %d rows', nrow_req, length(labs), num_param(params, 'width', 7.2), need))
+    params$legend_nrow <- need
+  }
+  params
 }
 
 main <- function() {
@@ -977,6 +1438,7 @@ main <- function() {
   plot_df <- apply_row_selection(plot_df, id_col, group_col, params)
   if (nrow(plot_df) == 0) write_error_and_exit('No rows left after filtering', '', 'Relax rows_include/rows_exclude or group selectors.')
   if (is.null(split_col)) plot_df$.__all <- 'All'
+  params <- fit_legend_rows(params, plot_df, group_col)
   mode <- tolower(as.character(get_param_any(params, c('plot_mode', 'mode'), 'group'))[1])
   feature_cols <- as_string_vector(get_param_any(params, c('feature_columns', 'features', 'feature_column'), NULL))
   if (mode %in% c('feature', 'expression', 'gradient') && length(feature_cols) == 0) {

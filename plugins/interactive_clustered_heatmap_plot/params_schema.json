@@ -1,10 +1,398 @@
 {
-  "data": {"row_id_column": {"type":"string","default":"first column"}, "matrix_start_column":{"type":"string|integer","default":2}, "transpose":{"type":"boolean","default":false}, "rows_include":{"type":"array","items":"string"}, "rows_exclude":{"type":"array","items":"string"}, "columns_include":{"type":"array","items":"string"}, "columns_exclude":{"type":"array","items":"string"}, "row_order":{"type":"array","items":"string"}, "column_order":{"type":"array","items":"string"}, "scale":{"type":"string","enum":["none","row","column"],"default":"none"}, "na_action":{"type":"string","enum":["impute","omit","error"],"default":"impute"}, "impute_value":{"type":"number","default":0}},
-  "clustering": {"cluster_rows":{"type":"boolean","default":true}, "cluster_columns":{"type":"boolean","default":true}, "distance_method":{"type":"string","enum":["euclidean","manhattan","correlation"],"default":"euclidean"}, "cluster_method":{"type":"string","enum":["complete","average","ward.D2","single","median","centroid"],"default":"complete"}, "show_row_dendrogram":{"type":"boolean","default":true}, "show_column_dendrogram":{"type":"boolean","default":true}, "dendrogram_width":{"type":"number","default":1}, "dendrogram_height":{"type":"number","default":1}, "row_split":{"type":"integer"}, "column_split":{"type":"integer"}, "row_gap":{"type":"number","default":0.02}, "column_gap":{"type":"number","default":0.02}, "row_reorder":{"type":"boolean","default":true}, "column_reorder":{"type":"boolean","default":true}},
-  "heatmap": {"palette":{"type":"string","enum":["viridis","plasma","magma","inferno","cividis","blue_white_red","custom"],"default":"viridis"}, "colors":{"type":"array","items":"string"}, "breaks":{"type":"array","items":"number"}, "limits":{"type":"array","items":"number"}, "na_color":{"type":"string","default":"#D9D9D9"}, "cell_border_show":{"type":"boolean","default":true}, "cell_border_color":{"type":"string","default":"#FFFFFF"}, "cell_border_width":{"type":"number","default":0.2}, "cell_width":{"type":"number","default":1}, "cell_height":{"type":"number","default":1}, "show_values":{"type":"boolean","default":false}, "value_digits":{"type":"integer","default":2}, "value_color":{"type":"string","default":"#111111"}, "value_size":{"type":"number","default":7}, "colorbar_show":{"type":"boolean","default":true}, "colorbar_title":{"type":"string","default":"Value"}, "colorbar_position":{"type":"string","enum":["right","left","top","bottom"],"default":"right"}, "colorbar_breaks":{"type":"array","items":"number"}, "colorbar_labels":{"type":"array","items":"string"}},
-  "panels": {"panel_groups":{"type":"array|object","description":"Group labels aligned to matrix columns, or panel name to column IDs"}, "panel_group_column":{"type":"string","description":"Column annotation field used to group panels"}, "panel_titles":{"type":"array|object"}, "panel_order":{"type":"array","items":"string"}, "panel_gap":{"type":"number","default":0.015}, "panel_header_show":{"type":"boolean","default":true}, "panel_header_height":{"type":"number","default":0.055}, "panel_header_fill":{"type":"string","default":"#EAEAEA"}, "panel_header_color":{"type":"string","default":"#222222"}, "panel_header_size":{"type":"number","default":9}, "panel_header_face":{"type":"string","default":"bold"}, "panel_label_angle":{"type":"number","default":45}, "panel_label_size":{"type":"number","default":8}, "panel_label_color":{"type":"string","default":"#222222"}, "panel_column_gap":{"type":"number","default":0.015}, "panel_border_show":{"type":"boolean","default":true}, "panel_border_color":{"type":"string","default":"#FFFFFF"}, "panel_border_width":{"type":"number","default":0.2}, "panel_scales":{"type":"string","enum":["none","shared","per_panel"],"default":"shared"}, "panel_palettes":{"type":"object"}},
-  "annotations": {"row_annotation_file":{"type":"string"}, "column_annotation_file":{"type":"string"}, "row_annotation_show":{"type":"boolean","default":true}, "column_annotation_show":{"type":"boolean","default":true}, "annotation_palette":{"type":"string","default":"Set 2"}, "annotation_colors":{"type":"object"}, "annotation_legend_show":{"type":"boolean","default":true}, "annotation_legend_position":{"type":"string","enum":["right","left","top","bottom"],"default":"right"}, "annotation_label_show":{"type":"boolean","default":true}, "annotation_label_size":{"type":"number","default":7}, "annotation_gap":{"type":"number","default":0.02}, "annotation_height":{"type":"number","default":0.16}, "annotation_width":{"type":"number","default":0.12}},
-  "labels-layout": {"row_labels_show":{"type":"boolean","default":true}, "column_labels_show":{"type":"boolean","default":true}, "row_label_size":{"type":"number","default":8}, "column_label_size":{"type":"number","default":8}, "row_label_angle":{"type":"number","default":0}, "column_label_angle":{"type":"number","default":45}, "row_label_color":{"type":"string","default":"#222222"}, "column_label_color":{"type":"string","default":"#222222"}, "row_annotation_width":{"type":"number","default":0.12}, "column_annotation_height":{"type":"number","default":0.16}, "title":{"type":"string"}, "subtitle":{"type":"string"}, "title_show":{"type":"boolean","default":true}, "title_size":{"type":"number","default":16}, "title_color":{"type":"string","default":"#222222"}, "title_face":{"type":"string","default":"bold"}, "font_family":{"type":"string","default":"sans"}, "base_size":{"type":"number","default":11}, "width":{"type":"number","default":12}, "height":{"type":"number","default":9}, "dpi":{"type":"integer","default":300}, "panel_background":{"type":"string","default":"#FFFFFF"}, "plot_background":{"type":"string","default":"#FFFFFF"}, "margin_left":{"type":"number"}, "margin_right":{"type":"number"}, "margin_top":{"type":"number"}, "margin_bottom":{"type":"number"}, "legend_show":{"type":"boolean","default":true}, "legend_title":{"type":"string"}, "legend_text_size":{"type":"number"}, "legend_key_size":{"type":"number"}, "legend_ncol":{"type":"integer"}, "legend_position":{"type":"string"}, "tree_label":{"type":"string","default":"Tree"}, "matrix_label":{"type":"string","default":"Dataset"}, "annotation_label":{"type":"string"}},
-  "interaction": {"interactive":{"type":"boolean","default":true}, "tooltip_columns":{"type":"array","items":"string"}, "zoom":{"type":"boolean","default":true}, "pan":{"type":"boolean","default":true}, "selectable":{"type":"boolean","default":false}, "lasso_select":{"type":"boolean","default":false}, "reset_view":{"type":"boolean","default":true}, "hover_show_values":{"type":"boolean","default":true}},
-  "output": {"export_formats":{"type":"array","items":"string","default":["svg","pdf","png","html"]}}
+  "data": {
+    "row_id_column": {
+      "type": "column",
+      "description": "Row identifier column. Leave empty to use the first column."
+    },
+    "matrix_start_column": {
+      "type": "number",
+      "default": 2,
+      "help": "1-based index of the first numeric column (a column name also works in params.json)."
+    },
+    "transpose": {
+      "type": "boolean",
+      "default": false
+    },
+    "rows_include": {
+      "type": "array",
+      "items": "string"
+    },
+    "rows_exclude": {
+      "type": "array",
+      "items": "string"
+    },
+    "columns_include": {
+      "type": "array",
+      "items": "string"
+    },
+    "columns_exclude": {
+      "type": "array",
+      "items": "string"
+    },
+    "row_order": {
+      "type": "array",
+      "items": "string"
+    },
+    "column_order": {
+      "type": "array",
+      "items": "string"
+    },
+    "scale": {
+      "type": "string",
+      "enum": [
+        "none",
+        "row",
+        "column"
+      ],
+      "default": "none"
+    },
+    "na_action": {
+      "type": "string",
+      "enum": [
+        "impute",
+        "omit",
+        "error"
+      ],
+      "default": "impute"
+    },
+    "impute_value": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "clustering": {
+    "cluster_rows": {
+      "type": "boolean",
+      "default": true
+    },
+    "cluster_columns": {
+      "type": "boolean",
+      "default": true
+    },
+    "distance_method": {
+      "type": "string",
+      "enum": [
+        "euclidean",
+        "manhattan",
+        "correlation"
+      ],
+      "default": "euclidean"
+    },
+    "cluster_method": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "average",
+        "ward.D2",
+        "single",
+        "median",
+        "centroid"
+      ],
+      "default": "complete"
+    },
+    "show_row_dendrogram": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "heatmap": {
+    "palette": {
+      "type": "string",
+      "enum": [
+        "viridis",
+        "plasma",
+        "magma",
+        "inferno",
+        "cividis",
+        "blue_white_red",
+        "custom"
+      ],
+      "default": "viridis"
+    },
+    "colors": {
+      "type": "array",
+      "items": "string"
+    },
+    "breaks": {
+      "type": "array",
+      "items": "number"
+    },
+    "limits": {
+      "type": "array",
+      "items": "number"
+    },
+    "na_color": {
+      "type": "color",
+      "default": "#D9D9D9"
+    },
+    "cell_border_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "cell_border_color": {
+      "type": "color",
+      "default": "#FFFFFF"
+    },
+    "cell_border_width": {
+      "type": "number",
+      "default": 0.2
+    },
+    "colorbar_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "colorbar_title": {
+      "type": "string",
+      "default": "Value"
+    },
+    "colorbar_position": {
+      "type": "string",
+      "enum": [
+        "right",
+        "left",
+        "top",
+        "bottom"
+      ],
+      "default": "right"
+    },
+    "colorbar_breaks": {
+      "type": "array",
+      "items": "number"
+    },
+    "colorbar_labels": {
+      "type": "array",
+      "items": "string"
+    }
+  },
+  "panels": {
+    "panel_groups": {
+      "type": "object",
+      "description": "Group labels aligned to matrix columns, or panel name to column IDs"
+    },
+    "panel_group_column": {
+      "type": "column",
+      "description": "Column annotation field used to group panels"
+    },
+    "panel_titles": {
+      "type": "object"
+    },
+    "panel_order": {
+      "type": "array",
+      "items": "string"
+    },
+    "panel_gap": {
+      "type": "number",
+      "default": 0.015
+    },
+    "panel_header_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "panel_header_height": {
+      "type": "number",
+      "default": 0.055
+    },
+    "panel_header_fill": {
+      "type": "color",
+      "default": "#EAEAEA"
+    },
+    "panel_header_color": {
+      "type": "color",
+      "default": "#222222"
+    },
+    "panel_header_size": {
+      "type": "number",
+      "default": 9
+    },
+    "panel_header_face": {
+      "type": "select",
+      "default": "bold",
+      "options": [
+        "plain",
+        "bold",
+        "italic",
+        "bold.italic"
+      ]
+    },
+    "panel_label_angle": {
+      "type": "number",
+      "default": 45
+    },
+    "panel_label_size": {
+      "type": "number",
+      "default": 8
+    },
+    "panel_label_color": {
+      "type": "color",
+      "default": "#222222"
+    },
+    "panel_border_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "panel_border_color": {
+      "type": "color",
+      "default": "#FFFFFF"
+    },
+    "panel_border_width": {
+      "type": "number",
+      "default": 0.2
+    },
+    "panel_scales": {
+      "type": "string",
+      "enum": [
+        "none",
+        "shared",
+        "per_panel"
+      ],
+      "default": "shared"
+    },
+    "panel_palettes": {
+      "type": "object"
+    }
+  },
+  "annotations": {
+    "row_annotation_file": {
+      "type": "string"
+    },
+    "column_annotation_file": {
+      "type": "string"
+    },
+    "row_annotation_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "column_annotation_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "annotation_colors": {
+      "type": "object"
+    },
+    "annotation_legend_position": {
+      "type": "string",
+      "enum": [
+        "right",
+        "left",
+        "top",
+        "bottom"
+      ],
+      "default": "right"
+    }
+  },
+  "labels-layout": {
+    "row_labels_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "column_labels_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "row_label_size": {
+      "type": "number",
+      "default": 8
+    },
+    "column_label_size": {
+      "type": "number",
+      "default": 8
+    },
+    "column_label_angle": {
+      "type": "number",
+      "default": 45
+    },
+    "row_label_color": {
+      "type": "color",
+      "default": "#222222"
+    },
+    "column_label_color": {
+      "type": "color",
+      "default": "#222222"
+    },
+    "row_annotation_width": {
+      "type": "number",
+      "default": 0.12
+    },
+    "column_annotation_height": {
+      "type": "number",
+      "default": 0.16
+    },
+    "title": {
+      "type": "string"
+    },
+    "title_show": {
+      "type": "boolean",
+      "default": true
+    },
+    "title_size": {
+      "type": "number",
+      "default": 16
+    },
+    "title_face": {
+      "type": "select",
+      "default": "bold",
+      "options": [
+        "plain",
+        "bold",
+        "italic",
+        "bold.italic"
+      ]
+    },
+    "font_family": {
+      "type": "string",
+      "default": "sans"
+    },
+    "width": {
+      "type": "number",
+      "default": 12
+    },
+    "height": {
+      "type": "number",
+      "default": 9
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 300
+    },
+    "plot_background": {
+      "type": "color",
+      "default": "#FFFFFF"
+    },
+    "legend_title": {
+      "type": "string"
+    },
+    "legend_position": {
+      "type": "string"
+    },
+    "tree_label": {
+      "type": "string",
+      "default": "Tree"
+    },
+    "matrix_label": {
+      "type": "string",
+      "default": "Dataset"
+    }
+  },
+  "interaction": {
+    "interactive": {
+      "type": "boolean",
+      "default": true
+    },
+    "tooltip_columns": {
+      "type": "columns",
+      "items": "string"
+    }
+  },
+  "output": {
+    "export_formats": {
+      "type": "array",
+      "items": "string",
+      "default": [
+        "svg",
+        "pdf",
+        "png",
+        "html"
+      ]
+    }
+  }
 }

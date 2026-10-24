@@ -1,0 +1,1 @@
+{"summary_plot_type": "donut", "sample_order": ["Sample 1", "Sample 2"], "visual_config": {"donut": {"outer_radius": 0.4, "inner_radius": 0.22, "center_text": "cell_count"}}, "width": 8, "height": 6}

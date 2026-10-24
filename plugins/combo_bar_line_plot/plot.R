@@ -4,7 +4,7 @@
 # ------------------------------------------------------------
 # Highly customizable combination chart: categorical bars on the
 # primary Y axis with an optional connected line (and points) on a
-# secondary Y axis — ChiPlot / publication style.
+# secondary Y axis — CAB_demo / publication style.
 #
 # Runtime:
 #   Rscript plot.R --input input.csv --params params.json --output output_dir
@@ -187,7 +187,7 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   }
   if (capabilities('cairo')) {
     draw_with_retry(function(w, h) grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
-    draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi, type = 'cairo'))
+    draw_with_retry(function(w, h) (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
   } else {
     draw_with_retry(function(w, h) grDevices::pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
     draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
@@ -377,7 +377,7 @@ margin_left <- num_param(params, 'margin_left', 8)
 bar_width <- num_param(params, 'bar_width', num_param(params, 'outerPadding', 0.65))
 if (bar_width > 1) bar_width <- 0.65
 # accept outerPadding 0-1 as gap → width = 1 - outer
-if (!is.null(params$outerPadding) || !is.null(params$outer_padding)) {
+if (!is.null(params[['outerPadding']]) || !is.null(params[['outer_padding']])) {
   op <- num_param(params, 'outerPadding', num_param(params, 'outer_padding', 0.35))
   if (op >= 0 && op < 1) bar_width <- max(0.05, 1 - op)
 }
@@ -470,7 +470,7 @@ y_text_show <- as_bool(get_param_any(params, c('y_axis_text_show', 'show_y_axis_
 y2_text_show <- as_bool(get_param_any(params, c('y2_axis_text_show', 'show_y2_axis_text'), TRUE), TRUE)
 
 x_rotate <- num_param(params, 'x_axis_text_angle', num_param(params, 'x_rotate', 45))
-if (is.null(params$x_axis_text_angle) && is.null(params$x_rotate)) x_rotate <- 45
+if (is.null(params[['x_axis_text_angle']]) && is.null(params[['x_rotate']])) x_rotate <- 45
 y_rotate <- num_param(params, 'y_axis_text_angle', 0)
 x_text_size <- num_param(params, 'x_axis_text_size', 10)
 y_text_size <- num_param(params, 'y_axis_text_size', 10)

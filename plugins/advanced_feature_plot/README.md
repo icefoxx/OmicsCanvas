@@ -16,14 +16,14 @@ It accepts a flat table with:
 - optional `group_column` and `split_column`
 - one or more numeric feature columns
 
-The original SCA implementation and helper files are copied under `reference_sca_helpers/`. The wrapper keeps the old plotting engine and adds standard input/output files, safer package checks, feature-column selection, row selection, and JSON parameter names.
+The original SCA implementation and helper files are copied under the shared `R/sca/` library. The wrapper keeps the old plotting engine and adds standard input/output files, safer package checks, feature-column selection, row selection, and JSON parameter names.
 
 ## Examples
 
 Run all examples:
 
 ```bash
-plugins/advanced_feature_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/advanced_feature_plot/run_all_examples.sh <repo-root>
 ```
 
 This writes `/tmp/advanced_feature_*_out` and a contact sheet at:

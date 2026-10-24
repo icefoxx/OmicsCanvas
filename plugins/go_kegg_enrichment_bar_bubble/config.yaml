@@ -1,0 +1,27 @@
+id: go_kegg_enrichment_bar_bubble
+name: GO / KEGG Enrichment
+version: 1.0.1
+description: Grouped horizontal GO and KEGG enrichment bars with gene-count dots and ontology strips.
+language: R
+entrypoint: plot.R
+category: Set / Enrichment
+subcategory: Enrichment
+status: stable
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- selected_rows.csv
+- run.log
+runtime:
+  command: Rscript plot.R --input input.csv --params params.json --output output_dir

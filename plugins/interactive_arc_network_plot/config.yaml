@@ -1,24 +1,96 @@
-name: interactive_arc_network_plot
-display_name: Interactive Arc Network Plot
+id: interactive_arc_network_plot
+name: Interactive Arc Network Plot
+version: 1.0.0
 description: Dense baseline arc network with deterministic geometry, static exports, and Plotly HTML interaction.
+language: R
+entrypoint: plot.R
+category: Network
+subcategory: Arc
+status: stable
+inputs:
+- id: input
+  type: table
+  required: true
+  description: Edge table with source
+  target: null
+  and optional weight/group/direction/color/label columns.: null
+- id: nodes
+  type: table
+  required: false
+  description: Optional node id
+  label: null
+  group: null
+  size: null
+  color: null
+  order: null
+  and dataset table.: null
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- run.log
+- nodes_used.csv
+- edges_used.csv
+- error.json
 runtime:
   command: Rscript plot.R --input edges.csv --params params.json --output output_dir [--nodes nodes.csv]
-inputs:
-  - {name: input, type: table, required: true, description: Edge table with source, target, and optional weight/group/direction/color/label columns.}
-  - {name: nodes, type: table, required: false, description: Optional node id, label, group, size, color, order, and dataset table.}
-outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, nodes_used.csv, edges_used.csv, error.json]
 parameters:
-  source_column: {type: string, default: source}
-  target_column: {type: string, default: target}
-  node_order: {type: string_array, default: []}
-  order_by: {type: select, options: [input, label, degree], default: input}
-  layout: {type: select, options: [baseline, circle], default: baseline}
-  arc_direction: {type: select, options: [upward, downward, both], default: upward}
-  arc_height_by: {type: select, options: [distance, weight, constant], default: distance}
-  arc_height_scale: {type: number, default: 1}
-  edge_width: {type: number, default: 0.45}
-  edge_alpha: {type: number, default: 0.55}
-  node_label_angle: {type: number, default: 60}
-  interactive: {type: boolean, default: true}
-  width: {type: number, default: 12}
-  height: {type: number, default: 7}
+  source_column:
+    type: string
+    default: source
+  target_column:
+    type: string
+    default: target
+  node_order:
+    type: string_array
+    default: []
+  order_by:
+    type: select
+    options:
+    - input
+    - label
+    - degree
+    default: input
+  layout:
+    type: select
+    options:
+    - baseline
+    - circle
+    default: baseline
+  arc_direction:
+    type: select
+    options:
+    - upward
+    - downward
+    - both
+    default: upward
+  arc_height_by:
+    type: select
+    options:
+    - distance
+    - weight
+    - constant
+    default: distance
+  arc_height_scale:
+    type: number
+    default: 1
+  edge_width:
+    type: number
+    default: 0.45
+  edge_alpha:
+    type: number
+    default: 0.55
+  node_label_angle:
+    type: number
+    default: 60
+  interactive:
+    type: boolean
+    default: true
+  width:
+    type: number
+    default: 12
+  height:
+    type: number
+    default: 7

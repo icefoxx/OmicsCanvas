@@ -1,54 +1,66 @@
 id: pie_dot_matrix
 name: Pie Dot Matrix
-display_name: Pie Dot Matrix (Ratio Circles)
 version: 1.0.0
-author: OmicsCanvas
-description: >
-  Matrix of circles where each cell is a pie-filled dot: the filled portion
-  encodes any continuous value (gene ratio, correlation, prevalence, score)
-  in that row category color. Empty cells stay as hollow circles. Optional
-  center marks (star, plus, cross, diamond, text) highlight special hits.
-  Supports column group annotation bands and row background stripes —
-  matching KO / pathway presence–ratio panels common in multi-omics papers.
+description: 'Matrix of circles where each cell is a pie-filled dot: the filled portion encodes any continuous value (gene
+  ratio, correlation, prevalence, score) in that row category color. Empty cells stay as hollow circles. Optional center marks
+  (star, plus, cross, diamond, text) highlight special hits. Supports column group annotation bands and row background stripes
+  — matching KO / pathway presence–ratio panels common in multi-omics papers.
+
+  '
 language: R
 entrypoint: plot.R
 category: Heatmap
 subcategory: Matrix
 status: stable
-runtime:
-  command: Rscript plot.R --input input.csv --params params.json --output output_dir [--col_annot col_annot.csv] [--row_annot row_annot.csv]
 inputs:
-  - id: input
-    name: input
-    type: table
-    required: true
-    formats: [csv, tsv, txt]
-    description: >
-      Wide matrix (row id + numeric feature columns) or long table
-      (row, column, value [, mark, group]).
-  - id: col_annot
-    name: col_annot
-    type: table
-    required: false
-    formats: [csv, tsv, txt]
-    description: Optional column annotation (column id, group, color).
-  - id: marks
-    name: marks
-    type: table
-    required: false
-    formats: [csv, tsv, txt]
-    description: Optional center marks (row, column, mark) e.g. star / plus.
-  - id: row_annot
-    name: row_annot
-    type: table
-    required: false
-    formats: [csv, tsv, txt]
-    description: Optional row annotation (row id, group, color).
+- id: input
+  name: input
+  type: table
+  required: true
+  formats:
+  - csv
+  - tsv
+  - txt
+  description: 'Wide matrix (row id + numeric feature columns) or long table (row, column, value [, mark, group]).
+
+    '
+- id: col_annot
+  name: col_annot
+  type: table
+  required: false
+  formats:
+  - csv
+  - tsv
+  - txt
+  description: Optional column annotation (column id, group, color).
+- id: marks
+  name: marks
+  type: table
+  required: false
+  formats:
+  - csv
+  - tsv
+  - txt
+  description: Optional center marks (row, column, mark) e.g. star / plus.
+- id: row_annot
+  name: row_annot
+  type: table
+  required: false
+  formats:
+  - csv
+  - tsv
+  - txt
+  description: Optional row annotation (row id, group, color).
 outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - run.log
-  - matrix_used.csv
-  - cells_used.csv
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- matrix_used.csv
+- cells_used.csv
+runtime:
+  command: Rscript plot.R --input input.csv --params params.json --output output_dir [--col_annot col_annot.csv] [--row_annot
+    row_annot.csv]
+display_name: Pie Dot Matrix (Ratio Circles)
+author: OmicsCanvas

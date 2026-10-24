@@ -4,13 +4,25 @@
   "y_column": "dim2",
   "id_column": "cell",
   "group_column": "cluster",
-  "split_column": "sample",
+  "split_column": "orig.ident",
   "facet_split": true,
   "facet_nrow": 1,
   "title_show": false,
   "subtitle_show": false,
-  "highlight_rows": ["Cell012", "Cell090", "Cell142", "Cell238", "Cell312"],
-  "selected_labels": ["Cell012", "Cell090", "Cell142", "Cell238", "Cell312"],
+  "highlight_rows": [
+    "AAACCCAAGATAGCTA-1_1_1",
+    "AAACGAAGTACTCAAC-1_1_1",
+    "AAACGAACAGGACTAG-1_1_1",
+    "AAACCCATCTCGTCAC-1_1_1",
+    "AAACCCACACTATGTG-1_1_1"
+  ],
+  "selected_labels": [
+    "AAACCCAAGATAGCTA-1_1_1",
+    "AAACGAAGTACTCAAC-1_1_1",
+    "AAACGAACAGGACTAG-1_1_1",
+    "AAACCCATCTCGTCAC-1_1_1",
+    "AAACCCACACTATGTG-1_1_1"
+  ],
   "highlight_fill": "#FFE45C",
   "highlight_border_color": "#111111",
   "highlight_size": 3,

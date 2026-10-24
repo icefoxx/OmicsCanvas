@@ -13,7 +13,7 @@ def test_umap_family_guide_renders():
     assert guide.get("best_for")
     assert guide.get("cautions")
     assert len(guide.get("examples") or []) >= 3
-    pie = get_variant("umap_tsne", "composition_pie")
+    pie = get_variant("umap_tsne", "composition")
     assert pie and pie.get("guide")
     payload = compose_guide("umap_tsne", variant_id="clusters")
     assert payload["available"] is True
@@ -39,7 +39,7 @@ def test_caption_omits_absent_mappings_and_includes_active():
 def test_composition_current_state_explanation():
     payload = compose_guide(
         "umap_tsne",
-        variant_id="composition_pie",
+        variant_id="composition",
         params={"group_column": "celltype", "stat_plot_column": "sample"},
     )
     text = " ".join(s["text"] for s in payload["current"]["statements"])
@@ -59,7 +59,7 @@ def test_literature_without_reuse_has_no_thumbnail():
 
 
 def test_missing_guide_is_empty_not_fabricated():
-    payload = compose_guide("interactive_dual_triangle_heatmap_plot")
+    payload = compose_guide("interactive_correlation_matrix")
     assert payload["available"] is False
     assert "not available" in (payload.get("empty_message") or "").lower()
     assert not payload.get("family_guide")

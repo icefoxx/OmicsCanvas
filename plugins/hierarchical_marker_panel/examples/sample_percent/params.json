@@ -1,0 +1,10 @@
+{
+  "title": "",
+  "bar_mode": "sample_percent",
+  "sample_order": ["Sample 1", "Sample 2"],
+  "sample_colors": {"Sample 1": "#4C78A8", "Sample 2": "#F58518"},
+  "cell_type_order": ["Astrocytes", "Microglia", "GLUT/GNB4", "GABA/SST"],
+  "marker_order": ["FLT1", "C1QB", "GNB4", "SST"],
+  "width": 8,
+  "height": 6
+}

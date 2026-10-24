@@ -1,36 +1,39 @@
 id: highlight_effect_plot
 name: Highlight Effect Plot
-display_name: Highlight Effect (Focus + Other Cloud)
 version: 1.0.0
-author: OmicsCanvas
-description: >
-  Horizontal effect / enrichment strip plot that emphasizes a few highlighted
-  categories as large points with error bars (mean ± CI), while packing all
-  non-highlighted terms into a single “Other” lane as a jittered gray point
-  cloud — matching Nature-style focus panels (e.g. key cell types vs other
-  biosamples). Optional significance stars, custom colors, and full axis control.
+description: 'Horizontal effect / enrichment strip plot that emphasizes a few highlighted categories as large points with
+  error bars (mean ± CI), while packing all non-highlighted terms into a single “Other” lane as a jittered gray point cloud
+  — matching Nature-style focus panels (e.g. key cell types vs other biosamples). Optional significance stars, custom colors,
+  and full axis control.
+
+  '
 language: R
 entrypoint: plot.R
 category: Comparison
 subcategory: Effect
 status: stable
+inputs:
+- id: input
+  name: input
+  type: table
+  required: true
+  formats:
+  - csv
+  - tsv
+  - txt
+  description: 'Long table of observations. Each row is one measurement (sample/term). Columns: category (or term), value,
+    optional group/highlight flag, se / ci_low / ci_high / pvalue / label.
+
+    '
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- summary_used.csv
+- points_used.csv
 runtime:
   command: Rscript plot.R --input input.csv --params params.json --output output_dir
-inputs:
-  - id: input
-    name: input
-    type: table
-    required: true
-    formats: [csv, tsv, txt]
-    description: >
-      Long table of observations. Each row is one measurement (sample/term).
-      Columns: category (or term), value, optional group/highlight flag,
-      se / ci_low / ci_high / pvalue / label.
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - run.log
-  - summary_used.csv
-  - points_used.csv
+display_name: Highlight Effect (Focus + Other Cloud)
+author: OmicsCanvas

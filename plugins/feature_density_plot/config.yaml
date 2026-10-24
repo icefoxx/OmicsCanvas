@@ -1,26 +1,29 @@
 id: feature_density_plot
 name: Feature Density Plot
-display_name: Feature Density Plot
-description: Standardized SCA GsDenPlot.R wrapper that computes KNN-smoothed weighted KDE density of feature expression over a 2D reduction embedding and plots a viridis-colored scatter.
+version: 1.0.0
+description: Standardized SCA GsDenPlot.R wrapper that computes KNN-smoothed weighted KDE density of feature expression over
+  a 2D reduction embedding and plots a viridis-colored scatter.
+language: R
+entrypoint: plot.R
 category: Feature
 subcategory: Density
 status: stable
+inputs:
+- id: input
+  type: table
+  required: true
+  description: Expression matrix CSV/TSV/TXT. First column = feature/gene id; remaining columns = cells.
+- id: embed
+  type: table
+  required: true
+  description: 2D embedding CSV/TSV/TXT. First column = cell id; next 2 columns = dim1, dim2.
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- selected_features.csv
+- run.log
+- error.json (on failure)
 runtime:
   command: Rscript plot.R --input expression.csv --embed embedding.csv --params params.json --output output_dir
-inputs:
-  - name: input
-    type: table
-    required: true
-    description: Expression matrix CSV/TSV/TXT. First column = feature/gene id; remaining columns = cells.
-  - name: embed
-    type: table
-    required: true
-    description: 2D embedding CSV/TSV/TXT. First column = cell id; next 2 columns = dim1, dim2.
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - selected_features.csv
-  - run.log
-  - error.json (on failure)

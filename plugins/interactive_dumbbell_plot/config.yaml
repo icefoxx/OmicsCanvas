@@ -5,8 +5,22 @@ description: High-customization horizontal Women/Men dumbbell plot with static a
 language: R
 entrypoint: plot.R
 category: Comparison
+subcategory: General
 status: stable
 inputs:
-  - {id: input, type: table, formats: [csv, tsv, txt], required: true}
-outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, selected_rows.csv]
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- run.log
+- selected_rows.csv
 runtime: Rscript plugins/interactive_dumbbell_plot/plot.R --input input.csv --params params.json --output output_dir

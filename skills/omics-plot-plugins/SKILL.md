@@ -1,118 +1,94 @@
 ---
 name: omics-plot-plugins
-description: Build, modify, parameterize, document, and test OmicsCanvas BioFigureAI R plot plugins for interactive biomedical visualizations. Use for the intragroup/cross-matrix correlation heatmap plugin and the highly customized volcano plot plugin, including params.json design, WYSIWYG controls, dendrograms, group annotation tracks, selected labels, color palettes, and standard plugin outputs.
+description: Create, modify, fix, classify, document and test OmicsCanvas plot plugins (plugins/<id>/plot.R + params_schema.json + config.yaml + examples). Use for any task that adds a new plot or chart type, adds or changes plot parameters, fixes a rendering or layout bug, updates examples, baselines or gallery images, or changes plot categories/registry entries. Enforces docs/standards.
 ---
 
-# Omics Plot Plugins
+# OmicsCanvas plot plugins
 
-This is an agent-agnostic skill. Any coding agent can use it by reading this file, then loading `references/plugin-guide.md` when exact parameters or examples are needed.
+Agent-agnostic. Every rule lives in `docs/standards/` — this file tells you what to read and do,
+in order. Do not finish a plot task without the gates in step 6.
 
-## Supported Plugins
+## 0. Read first
 
-- `plugins/intragroup_correlation/plot.R`
-- `plugins/volcano_plot/plot.R`
-- `plugins/threshold_matrix_heatmap/plot.R`
-- `plugins/ranked_annotation_panel/plot.R`
-- `plugins/quadrant_correlation_scatter/plot.R`
-- `plugins/dynamic_venn_diagram/plot.R`
-- `plugins/fgsea_enrichment_plot/plot.R`
-- `plugins/advanced_dim_plot/plot.R`
+1. `docs/standards/README.md` — the MUST list and the workflow (5 minutes).
+2. For the task at hand: 01 contract, 02 schema, 03 R rules + layout rules, 04 classification,
+   05 examples, 06 gates.
+3. The closest existing plugin (table in `docs/standards/04_classification.md#current-assignments`):
+   its `params_schema.json`, `README.md`, one example. Match its names and defaults.
 
-Both plugins follow the BioFigureAI runtime contract:
+## 1. Decide: new plugin or extend an existing one
 
-```bash
-Rscript plot.R --input input.csv --params params.json --output output_dir
-```
+Same data roles and same visual grammar as an existing plugin → extend it (new parameters, new
+example, new registry variant). Only a new visual grammar or incompatible data model justifies a
+new plugin. State the decision and the reason in your report.
 
-The correlation plugin also supports two input matrices:
+## 2. New plugin: scaffold, never copy a legacy plugin
 
 ```bash
-Rscript plugins/intragroup_correlation/plot.R \
-  --input matrix1.csv \
-  --input2 matrix2.csv \
-  --params params.json \
-  --output output_dir
+python scripts/new_plugin.py <plugin_id> --name "<Name>" --description "<what it shows>" \
+    --category <Studio category> --subcategory <Sub>
 ```
 
-Every successful run should create:
+The template (`templates/plugin/`) already satisfies the contract: CLI, `error.json`,
+`figure.json`, `run.log`, ragg/cairo devices, `params[['key']]`, theme helper, example bundle.
+Replace the drawing code; keep the structure.
 
-```text
-result.svg
-result.pdf
-result.png
-figure.json
-run.log
+## 3. Implement
+
+- Every schema parameter: typed, read by `plot.R`, visibly effective; defaults identical in schema
+  and code; `""` means automatic. Use the shared names in 02 — search before inventing a name.
+- R: `params[['key']]` only; never reuse the params variable; no `set.seed(<n>)`; no absolute
+  paths; `grDevices::cairo_pdf`; `ragg::agg_png`; shared code from `R/sca/` and
+  `R/runtime/omicscanvas_theme.R` (never copy it into the plugin).
+- Layout: legends fit, text inside the canvas, no reserved space for undrawn parts — see the ten
+  layout rules in 03; they come from real bugs.
+- Changing `R/sca/` or `R/runtime/` affects many plugins: run the full regression in step 6.
+
+## 4. Classify (all four layers, 04)
+
+`config.yaml` category/subcategory · `plot_web/registry/overrides.yaml` family (contexts, tasks,
+roles from `vocab.yaml`, variants) · `CHART_CATEGORY_TAXONOMY` in `plot_web/plot_registry.py` ·
+`vnext/migrate/rules.yaml` family. Create a new category/chart type/context only through the
+procedure in 04, never for one plugin.
+
+```bash
+python -m plot_web.plot_registry build && python -m vnext.cli migrate
 ```
 
-Failures should create:
+## 5. Examples, baselines, gallery (05)
 
-```text
-error.json
+At least `basic` plus one example per major mode. No third-party product names or placeholder
+text; demos of external reference figures are titled `CAB_demo`.
+
+```bash
+python scripts/smoke_plugins.py <id> --update-baseline   # only after viewing the new images
+python scripts/sync_gallery.py <id>
 ```
 
-## Agent Workflow
+Open every `examples/*/expected/result.png` and run the visual checklist in 06.
 
-1. Work from the repository root.
-2. Inspect the target plugin before editing.
-3. Keep user-adjustable behavior in `params.json`; do not hard-code visual settings.
-4. Preserve CSV/TSV/TXT support, column mapping, and the output contract.
-5. For UI click selectors, map selections to include/exclude arrays instead of changing uploaded data.
-6. After edits, run at least one smoke test and inspect `result.png` for visual changes.
-7. Keep `figure.json` updated with meaningful `analysis`, `style`, `data`, `layers`, and `export` metadata.
+## 6. Gates — all must pass, report their output
 
-## When To Read The Reference
+```bash
+python scripts/check_plugin_standards.py <id>        # 0 new violation(s)
+python scripts/param_sensitivity.py <id>             # no crash; no unexplained "no effect"
+python scripts/smoke_plugins.py <id> --compare       # full suite if shared code changed
+python -m plot_web.plot_registry validate            # valid, 0 errors
+pytest -q plot_web/tests vnext/tests
+```
 
-Read `references/plugin-guide.md` for:
+Never add a plugin to `scripts/plugin_standards_baseline.json`. If a gate cannot pass, say which
+and why — do not report the task as done.
 
-- exact parameter names
-- example `params.json` blocks
-- one-matrix and two-matrix correlation examples
-- dendrogram/tree customization
-- row/column group color tracks
-- sample/gene label coloring
-- volcano category/gradient color modes
-- volcano arbitrary `x_column`/`y_column` mappings and x/y transforms
-- volcano region-specific rules for color, size, shape, outline, alpha, and region legends
-- volcano brush/selection regions, selected row tables, draggable label coordinates, and label indicator styling
-- volcano selected labels and connector lines
-- threshold matrix heatmap row/column selection, row-label column mapping, semicolon cutoff rules, per-column colors, and shape/legend controls
-- ranked annotation panel left-value selection, right-panel annotation columns, mixed continuous/discrete palettes, row selection, and multi-legend controls
-- quadrant correlation scatter x/y selection, 4/9/custom regions, threshold lines, correlation labels, selected dot labels, and legend controls
-- dynamic Venn diagram element-list and abundance-matrix input modes, group include/exclude selectors, 2-5 set Venns, 6+ flower Venns, counts, percentages, bar charts, colors, borders, and subset element exports
-- fgsea enrichment plot precomputed result-table mode, rank-table compute mode, GMT/term-gene inputs, running-score curves, top/selected gene labels, leading-edge labels, and summary dot/lollipop controls
-- advanced dimension plot dim1/dim2 embeddings, group colors, feature gradients, split panels, selected labels, highlights, density/hex modes, hull/ellipse marks, coexpression color mixing, and lineage paths
-- smoke test commands
+## Fixing a bug in an existing plugin
 
-## Parameter Naming Conventions
+Reproduce with the example (or a minimal params file) → fix in the plugin or the shared helper →
+re-render and look at the image → `smoke_plugins.py --compare` for every plugin that uses the
+changed code → update only the baselines that changed intentionally → `sync_gallery.py` → gates.
+Record user-visible fixes in `docs/qa/` when doing an audit.
 
-Prefer stable UI-bindable names:
+## Reference
 
-- Visibility: `title_show`, `show_value`, `show_p_mark`, `show_row_dendrogram`
-- Sizes: `row_name_size`, `column_name_size`, `cell_text_size`, `point_size`, `label_size`
-- Colors: `up_color`, `down_color`, `row_tree_color`, `sample_label_colors`
-- Labels: `title`, `x_title`, `y_title`, `legend_name`, `color_legend_name`, `size_legend_title`
-- Axes: `x_min`, `x_max`, `y_min`, `y_max`, `show_x_axis`, `show_y_axis`, `axis_line_color`
-- Legends: `legend_position`, `legend_bar_width`, `legend_bar_height`, `legend_frame_color`, `legend_tick_color`
-- Selection: `*_include`, `*_exclude`, `selected_genes`, `highlight_rows`, `highlight_columns`
-- Threshold matrix: `row_label_column`, `value_columns`, `default_rules`, `column_rules_string`, `cell_shape`
-- Ranked annotation panel: `left_value_column`, `annotation_columns`, `annotation_settings`, `left_panel_width`, `annotation_panel_width`
-- Quadrant scatter: `x_column`, `y_column`, `quadrant_mode`, `x_thresholds`, `y_thresholds`, `quadrant_colors`
-- Dynamic Venn: `input_type`, `groups_include`, `groups_exclude`, `element_id_column`, `abundance_threshold`, `plot_mode`, `set_colors`, `show_percent`, `show_bar_chart`
-- FGSEA: `input_mode`, `plot_type`, `term_col`, `nes_col`, `fdr_col`, `leading_genes_col`, `genesets_file`, `gene_col`, `stat_col`, `selected_terms`, `selected_genes`, `label_top_x_genes`
-- Advanced dimension plot: `plot_mode`, `x_column`, `y_column`, `id_column`, `group_column`, `split_column`, `feature_columns`, `selected_labels`, `highlight_rows`, `show_mark`, `hex`
-- Volcano regions: `regions`, `condition`, `xmin`, `xmax`, `ymin`, `ymax`, `fill`, `outline_color`, `shape`, `size`
-- Volcano row selection: `selection_regions`, `selected_ids`, `selected_point_styles`, `label_x`, `label_y`, `indicator_color`
-- Layout: `width`, `height`, `label_angle`, `legend_position`
-
-Use aliases only for compatibility; document the canonical param in `references/plugin-guide.md`.
-
-## Validation Checklist
-
-Before reporting completion:
-
-- Confirm the R command exits with status 0.
-- Confirm `result.svg`, `result.pdf`, `result.png`, `figure.json`, and `run.log` exist.
-- Open or render `result.png`.
-- Check `figure.json` reflects the requested analysis and styling controls.
-- If editing dendrogram behavior, test `show_row_dendrogram` and `show_column_dendrogram`.
-- If editing two-matrix correlation, test `--input2` or `input2_file`.
+`references/plugin-guide.md` holds older, plugin-specific parameter notes (volcano, correlation,
+threshold matrix, ranked panel, quadrant scatter, Venn, fgsea, advanced dim plot). Where it
+disagrees with a plugin's `params_schema.json`, the schema wins.

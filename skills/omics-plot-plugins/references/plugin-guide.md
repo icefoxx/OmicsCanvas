@@ -7,13 +7,13 @@ Use this reference after reading `../SKILL.md`.
 Path:
 
 ```text
-plugins/intragroup_correlation/plot.R
+plugins_drafts/intragroup_correlation/plot.R
 ```
 
 Single matrix:
 
 ```bash
-Rscript plugins/intragroup_correlation/plot.R \
+Rscript plugins_drafts/intragroup_correlation/plot.R \
   --input /tmp/intragroup_corr_input.csv \
   --params /tmp/intragroup_corr_params.json \
   --output /tmp/intragroup_corr_out
@@ -22,7 +22,7 @@ Rscript plugins/intragroup_correlation/plot.R \
 Two matrices:
 
 ```bash
-Rscript plugins/intragroup_correlation/plot.R \
+Rscript plugins_drafts/intragroup_correlation/plot.R \
   --input /tmp/matrix1.csv \
   --input2 /tmp/matrix2.csv \
   --params /tmp/cross_corr_params.json \
@@ -305,13 +305,13 @@ missing=#FFFFFF|none
 Path:
 
 ```text
-plugins/volcano_plot/plot.R
+plugins_drafts/volcano_plot/plot.R
 ```
 
 Run:
 
 ```bash
-Rscript plugins/volcano_plot/plot.R \
+Rscript plugins_drafts/volcano_plot/plot.R \
   --input /tmp/volcano_input.csv \
   --params /tmp/volcano_params.json \
   --output /tmp/volcano_out

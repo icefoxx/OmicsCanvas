@@ -13,6 +13,7 @@ def validate_plotspec(
     spec: dict[str, Any],
     *,
     table_path: Path | str | None = None,
+    tables: dict[str, Path] | None = None,
     skip_scientific: bool = False,
 ) -> dict[str, Any]:
     """Full validation crossing the deterministic boundary.
@@ -47,9 +48,10 @@ def validate_plotspec(
         )
 
     sci_res: dict[str, Any] = {"valid": True, "errors": [], "warnings": [], "infos": []}
-    if not skip_scientific and table_path:
+    has_tables = bool(table_path or tables)
+    if not skip_scientific and has_tables:
         family = (skill or {}).get("family")
-        sci_res = validate_scientific(spec, table_path=Path(table_path), family=family)
+        sci_res = validate_scientific(spec, table_path=Path(table_path) if table_path else None, tables=tables, family=family)
 
     errors = list(schema_res.get("errors") or [])
     warnings = list(schema_res.get("warnings") or [])
@@ -64,7 +66,7 @@ def validate_plotspec(
     warnings.extend(sci_res.get("warnings") or [])
 
     return {
-        "valid": len(errors) == 0 and schema_res.get("valid", False) and (sci_res.get("valid", True) if table_path else True) and not any(
+        "valid": len(errors) == 0 and schema_res.get("valid", False) and (sci_res.get("valid", True) if has_tables else True) and not any(
             e.get("code") == "UNKNOWN_SKILL" for e in skill_errors
         ),
         "errors": errors,
@@ -73,7 +75,7 @@ def validate_plotspec(
         "layers": {
             "schema": schema_res,
             "registry": {"valid": reg_res.get("valid"), "n_skills": reg_res.get("n_skills")},
-            "scientific": sci_res if table_path else None,
+            "scientific": sci_res if has_tables else None,
             "skill": skill,
         },
     }

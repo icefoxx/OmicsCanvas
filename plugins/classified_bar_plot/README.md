@@ -1,6 +1,6 @@
 # Classified Bar Plot (分类柱状图)
 
-One bar per category label, colored by a type/class column. Horizontal by default (ChiPlot-style classified bar chart).
+One bar per category label, colored by a type/class column. Horizontal by default (CAB_demo-style classified bar chart).
 
 ## Check before adding similar plots
 
@@ -29,7 +29,7 @@ Columns are mappable via `category_column`, `type_column`, `value_column`.
 | `orientation` | `horizontal` (default) or `vertical` |
 | `type_colors` | map `type-A` → hex |
 | `sort_by` | `input`, `value`, `value_desc`, `category`, `type_value` |
-| `legend_title` | e.g. `xiaoshi` |
+| `legend_title` | e.g. `Group` (default: the class column name) |
 | `x_min` / `x_max` | value axis limits |
 | Full axis / title / legend / grid / export | see `params_schema.json` |
 
@@ -38,7 +38,7 @@ Columns are mappable via `category_column`, `type_column`, `value_column`.
 ```bash
 Rscript plugins/classified_bar_plot/plot.R \
   --input plugins/classified_bar_plot/example_input.csv \
-  --params plugins/classified_bar_plot/example_chiplot_params.json \
+  --params plugins/classified_bar_plot/example_CAB_demo_params.json \
   --output /tmp/classified_bar_out
 ```
 

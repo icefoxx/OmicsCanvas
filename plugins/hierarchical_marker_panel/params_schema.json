@@ -1,0 +1,84 @@
+{
+  "data_mapping": {
+    "cell_type_column": {"type": "column", "label": "Cell type column", "default": "cell_type", "help": "Cell-type labels shown as columns."},
+    "class_column": {"type": "column", "label": "Class column", "default": "class", "help": "Top-level class for hierarchy brackets and bar colors."},
+    "subclass_column": {"type": "column", "label": "Subclass column", "default": "subclass", "help": "Second-level subclass for hierarchy brackets."},
+    "cell_count_column": {"type": "column", "label": "Cell count column", "default": "cell_number", "help": "Numeric cell count repeated for each marker row."},
+    "cell_count_divisor": {"type": "number", "label": "Cell count divisor", "default": 1000, "min": 1, "max": 1000000, "step": 1, "help": "Divide raw cell counts by this value; 1000 displays counts in thousands."},
+    "marker_column": {"type": "column", "label": "Marker column", "default": "gene", "help": "Marker or gene labels shown on the dot matrix rows."},
+    "average_transcript_column": {"type": "column", "label": "Average transcript column", "default": "average_transcript", "help": "Numeric value mapped to dot color."},
+    "pct_expressed_column": {"type": "column", "label": "Percent expressed column", "default": "pct_expressed", "help": "Percent of cells expressed, mapped to dot size from 0 to 100."},
+    "sample_column": {"type": "column", "label": "Sample column", "default": "", "help": "Optional sample or batch label; empty uses one synthetic All sample for sample bars."},
+    "sample_count_column": {"type": "column", "label": "Sample cell count column", "default": "", "help": "Cell count for each cell_type/sample pair; required when sample_column is supplied."},
+    "bar_mode": {"type": "select", "label": "Bar mode", "default": "cell_number", "options": ["cell_number", "sample_number", "sample_percent"], "help": "Sample modes use mapped sample counts, or one All sample when no sample columns are supplied."},
+    "cell_type_order": {"type": "string_array", "label": "Cell type order", "default": [], "help": "Optional left-to-right order; empty uses input order."},
+    "marker_order": {"type": "string_array", "label": "Marker order", "default": [], "help": "Optional top-to-bottom order; empty uses input order."},
+    "cell_types_include": {"type": "string_array", "label": "Cell types to include", "default": [], "help": "Optional subset for layout stress tests or focused panels."},
+    "markers_include": {"type": "string_array", "label": "Markers to include", "default": [], "help": "Optional marker subset for focused panels."},
+    "sample_order": {"type": "string_array", "label": "Sample order", "default": [], "help": "Optional stack order for sample bars."}
+  },
+  "marks": {
+    "summary_plot_type": {"type": "select", "label": "Summary plot type", "default": "bar", "options": ["bar", "stacked_bar", "stacked_bar_100", "grouped_bar", "pie", "donut"], "help": "Summary chart above the dot matrix."},
+    "dot_min": {"type": "number", "label": "Minimum dot size", "default": 1.2, "min": 0.1, "max": 10, "step": 0.1},
+    "dot_max": {"type": "number", "label": "Maximum dot size", "default": 5.2, "min": 0.2, "max": 15, "step": 0.1},
+    "point_alpha": {"type": "number", "label": "Dot opacity", "default": 0.95, "min": 0, "max": 1, "step": 0.05},
+    "point_stroke": {"type": "number", "label": "Dot stroke", "default": 0.15, "min": 0, "max": 2, "step": 0.05},
+    "bar_width": {"type": "number", "label": "Count bar width", "default": 0.82, "min": 0.1, "max": 1, "step": 0.05}
+  },
+  "colors": {
+    "class_colors": {"type": "object", "label": "Class colors", "default": {}, "help": "Named colors such as {\"Glutamatergic\": \"#2C7FB8\"}."},
+    "sample_colors": {"type": "object", "label": "Sample colors", "default": {}, "help": "Named colors for sample composition bars."},
+    "average_transcript_colors": {"type": "color_array", "label": "Average transcript colors", "default": ["#F7FBFF", "#2171B5"], "help": "Low-to-high gradient colors."}
+  },
+  "labels": {
+    "title": {"type": "string", "label": "Title", "default": ""},
+    "title_show": {"type": "boolean", "label": "Show title", "default": false},
+    "title_size": {"type": "number", "label": "Title size", "default": 13},
+    "class_label_size": {"type": "number", "label": "Class label size", "default": 3.4},
+    "subclass_label_size": {"type": "number", "label": "Subclass label size", "default": 3},
+    "cell_type_label_size": {"type": "number", "label": "Cell type label size", "default": 2.7},
+    "cell_type_label_angle": {"type": "number", "label": "Cell type label angle", "default": 60, "help": "Automatic mode uses this as a lower bound and raises it for dense cell-type layouts."},
+    "label_auto": {"type": "boolean", "label": "Adapt cell type labels", "default": true, "help": "Automatically rotate, shrink, and wrap labels as cell type count grows."},
+    "label_wrap_width": {"type": "number", "label": "Label wrap width", "default": 0, "min": 0, "max": 50, "step": 1, "help": "Characters per line; 0 chooses automatically."},
+    "marker_label_size": {"type": "number", "label": "Marker label size", "default": 8},
+    "count_label": {"type": "string", "label": "Count axis label", "default": ""},
+    "average_legend_title": {"type": "string", "label": "Average transcript legend title", "default": ""},
+    "size_legend_title": {"type": "string", "label": "Size legend title", "default": ""}
+  },
+  "legend": {
+    "legend_show": {"type": "boolean", "label": "Show legends", "default": true},
+    "legend_position": {"type": "select", "label": "Legend position", "default": "right", "options": ["right", "bottom", "top", "left"]},
+    "legend_title_size": {"type": "number", "label": "Legend title size", "default": 8},
+    "legend_text_size": {"type": "number", "label": "Legend text size", "default": 7}
+  },
+  "theme": {
+    "font_family": {"type": "string", "label": "Font family", "default": "sans"},
+    "base_size": {"type": "number", "label": "Base font size", "default": 11},
+    "text_color": {"type": "color", "label": "Text color", "default": "#222222"}
+  },
+  "layout": {
+    "visual_config": {"type": "object", "label": "Visual configuration", "default": {"hierarchy": {"linker": {"class": {"color": "#555555", "linewidth": 0.45, "linetype": "solid", "alpha": 1, "vertical_length": 0.2}, "subclass": {"color": "#777777", "linewidth": 0.4, "linetype": "solid", "alpha": 0.9, "vertical_length": 0.2}, "cluster": {"color": "#777777", "linewidth": 0.35, "linetype": "solid", "alpha": 0.8, "vertical_length": 0.2}}, "text": {"class": {"fontfamily": "sans", "fontweight": "plain", "rotation": 0, "color": "#222222"}, "subclass": {"fontfamily": "sans", "fontweight": "plain", "rotation": 0, "color": "#222222"}, "cluster": {"fontfamily": "sans", "fontweight": "plain", "rotation": 60, "color": "inherit_cluster"}}, "linker_visible": true}, "summary": {"bar_width": 0.82, "alpha": 1, "edgecolor": "none", "linewidth": 0}, "pie": {"radius": 0.38, "startangle": 90, "counterclock": false, "edgecolor": "white", "linewidth": 0.6, "alpha": 1, "size_mode": "fixed"}, "donut": {"outer_radius": 0.4, "inner_radius": 0.22, "startangle": 90, "counterclock": false, "edgecolor": "white", "linewidth": 0.6, "alpha": 1, "center_text": "none", "center_fontsize": 9, "center_fontweight": "bold", "center_color": "black"}, "dotplot": {"alpha": 0.95, "linewidth": 0.15}, "layout": {"horizontal_spacing": 0.08, "vertical_spacing": 0.08}}, "help": "Nested JSON overrides for hierarchy, summary, pie, donut, dotplot, legend, and layout styling."},
+    "auto_width": {"type": "boolean", "label": "Adapt width to cell types", "default": true},
+    "auto_height": {"type": "boolean", "label": "Adapt height to markers", "default": true, "help": "When false, use height directly; automatic mode derives height from marker count."},
+    "width_per_cell_type": {"type": "number", "label": "Width per cell type", "default": 0.65, "min": 0.1, "max": 3, "step": 0.05},
+    "height_per_marker": {"type": "number", "label": "Height per marker", "default": 0.22, "min": 0.05, "max": 1, "step": 0.01},
+    "hierarchy_height": {"type": "number", "label": "Hierarchy height", "default": 1.5, "min": 0.5, "max": 4, "step": 0.1},
+    "count_height": {"type": "number", "label": "Count panel height", "default": 1.25, "min": 0.5, "max": 4, "step": 0.1},
+    "dot_height": {"type": "number", "label": "Dot matrix height", "default": 3.2, "min": 1, "max": 10, "step": 0.1},
+    "legend_panel_width": {"type": "number", "label": "Legend panel width", "default": 2.45, "min": 0.5, "max": 8, "step": 0.1},
+    "class_branch_height": {"type": "number", "label": "Class branch height", "default": 3, "min": 1, "max": 10, "step": 0.1},
+    "subclass_branch_height": {"type": "number", "label": "Subclass branch height", "default": 2, "min": 0.5, "max": 9, "step": 0.1},
+    "cell_type_branch_height": {"type": "number", "label": "Cell type branch height", "default": 0.55, "min": 0.1, "max": 8, "step": 0.05},
+    "class_branch_length": {"type": "number", "label": "Class branch length", "default": 0.2, "min": 0.01, "max": 2, "step": 0.05},
+    "subclass_branch_length": {"type": "number", "label": "Subclass branch length", "default": 0.2, "min": 0.01, "max": 2, "step": 0.05},
+    "cell_type_branch_length": {"type": "number", "label": "Cell type branch length", "default": 0.2, "min": 0.01, "max": 2, "step": 0.05},
+    "class_branch_color": {"type": "color", "label": "Class branch color", "default": "#555555"},
+    "subclass_branch_color": {"type": "color", "label": "Subclass branch color", "default": "#777777"},
+    "cell_type_branch_color": {"type": "color", "label": "Cell type branch color", "default": "#777777"}
+  },
+  "export": {
+    "width": {"type": "number", "label": "Width (in)", "default": 10, "min": 4, "max": 30, "step": 0.1, "help": "Used when auto_width is false; automatic mode derives the main width from cell type count."},
+    "height": {"type": "number", "label": "Height (in)", "default": 7, "min": 3, "max": 20, "step": 0.1, "help": "Used when auto_height is false; automatic mode derives height from marker count."},
+    "dpi": {"type": "number", "label": "PNG dpi", "default": 300, "min": 72, "max": 600, "step": 1}
+  }
+}

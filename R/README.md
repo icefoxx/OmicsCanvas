@@ -1,69 +1,57 @@
-# OmicsCanvas R Function Layout
-
-This folder organizes plotting-software functions copied from `/Users/qzhang10/workstation/development/SCA`.
-
-## Directory Tree
+# R code shared by OmicsCanvas plugins
 
 ```text
 R/
-├── data_format_validation/
-│   ├── plotdata.prep.seu.R
-│   ├── util.ck.R
-│   ├── util.ck.seu.R
-│   ├── util.fun.sc.R
-│   ├── util.mat.R
-│   └── util.scf.R
-├── basic_plots/
-│   ├── DotPlot.R
-│   ├── GsDenPlot.R
-│   ├── VocalnoPlot.R
-│   ├── add.on.layers.4.dimplot.R
-│   ├── common.plots.R
-│   ├── graphical.funs.R
-│   ├── statPlot.R
-│   ├── util.plot.R
-│   └── violinPlot.R
-├── advanced_plots/
-│   ├── GroupHeatmap.R
-│   ├── advDimPlot.R
-│   ├── advFeaPlot.R
-│   ├── expStatPlot.R
-│   └── lineagePlot.R
-└── load_plot_functions.R
+├── sca/            canonical SCA helper library, sourced by plugins (single copy)
+├── runtime/        omicscanvas.Rprofile: seeds the RNG for every plugin run
+└── upstream_sca/   unmodified snapshot of the upstream SCA sources (reference only;
+                    no plugin loads it)
 ```
 
-## Categories
+## `R/sca/`
 
-- `data_format_validation`: data extraction, matrix conversion, Seurat object checks, feature validation, package/path checks, and plot-ready data preparation.
-- `basic_plots`: reusable themes, palettes, legends, low-level grob helpers, dot plots, volcano plots, density plots, violin plots, and other direct plot builders.
-- `advanced_plots`: higher-level plotting interfaces that compose data preparation, plot layers, annotations, facets, legends, heatmaps, and multi-panel outputs.
+Plugins source the files they need into `.GlobalEnv`:
 
-## Source Map
+```r
+helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), '..', '..', 'R', 'sca')
+if (!dir.exists(helper_dir)) helper_dir <- file.path('R', 'sca')
+source(file.path(helper_dir, 'util.plot.R'), local = .GlobalEnv)
+```
 
-| Local file | Original source |
+Sourcing into `.GlobalEnv` (rather than an R package namespace) is deliberate:
+plugins install shims such as `paletteCustomize`, `ckPacsR`, `melt` and
+`theme_scp` with `<<-`, and the helpers must resolve those through global lookup.
+
+These files were consolidated from per-plugin `reference_sca_helpers/` copies.
+Where copies had diverged, the bug-fixed superset was kept (`expStatPlot.R` from
+exp_stat_plot, `statPlot.R` from stat_plot); all 88 examples of the 12 affected
+plugins rendered pixel-identically before and after.
+
+**Changing a file here affects every plugin that sources it.** Run the image
+regression suite before committing:
+
+```bash
+python scripts/smoke_plugins.py --compare --jobs 6
+```
+
+| File | Used by |
 | --- | --- |
-| `R/data_format_validation/util.ck.R` | `/Users/qzhang10/workstation/development/SCA/R/utils/util.ck.R` |
-| `R/data_format_validation/util.ck.seu.R` | `/Users/qzhang10/workstation/development/SCA/R/utils/util.ck.seu.R` |
-| `R/data_format_validation/util.scf.R` | `/Users/qzhang10/workstation/development/SCA/R/utils/util.scf.R` |
-| `R/data_format_validation/util.fun.sc.R` | `/Users/qzhang10/workstation/development/SCA/R/utils/util.fun.sc.R` |
-| `R/data_format_validation/util.mat.R` | `/Users/qzhang10/workstation/development/SCA/R/utils/util.mat.R` |
-| `R/data_format_validation/plotdata.prep.seu.R` | `/Users/qzhang10/workstation/development/SCA/R/funs/plotdata.prep.seu.R` |
-| `R/basic_plots/util.plot.R` | `/Users/qzhang10/workstation/development/SCA/R/utils/util.plot.R` |
-| `R/basic_plots/common.plots.R` | `/Users/qzhang10/workstation/development/SCA/R/plots/common.plots.R` |
-| `R/basic_plots/statPlot.R` | `/Users/qzhang10/workstation/development/SCA/R/plots/statPlot.R` |
-| `R/basic_plots/DotPlot.R` | `/Users/qzhang10/workstation/development/SCA/R/DotPlot.R` |
-| `R/basic_plots/VocalnoPlot.R` | `/Users/qzhang10/workstation/development/SCA/R/plots/VocalnoPlot.R` |
-| `R/basic_plots/violinPlot.R` | `/Users/qzhang10/workstation/development/SCA/R/plots/violinPlot.R` |
-| `R/basic_plots/GsDenPlot.R` | `/Users/qzhang10/workstation/development/SCA/R/plots/GsDenPlot.R` |
-| `R/basic_plots/graphical.funs.R` | `/Users/qzhang10/workstation/development/SCA/R/plots/graphical.funs.R` |
-| `R/basic_plots/add.on.layers.4.dimplot.R` | `/Users/qzhang10/workstation/development/SCA/R/add.on.layers.4.dimplot.R` |
-| `R/advanced_plots/advDimPlot.R` | `/Users/qzhang10/workstation/development/SCA/R/plots/advDimPlot.R` |
-| `R/advanced_plots/advFeaPlot.R` | `/Users/qzhang10/workstation/development/SCA/R/plots/advFeaPlot.R` |
-| `R/advanced_plots/GroupHeatmap.R` | `/Users/qzhang10/workstation/development/SCA/R/plots/GroupHeatmap.R` |
-| `R/advanced_plots/expStatPlot.R` | `/Users/qzhang10/workstation/development/SCA/R/plots/expStatPlot.R` |
-| `R/advanced_plots/lineagePlot.R` | `/Users/qzhang10/workstation/development/SCA/R/plots/lineagePlot.R` |
-
-## Recommended Loading Order
-
-Use `source("R/load_plot_functions.R")` from the project root. It loads helper and validation functions first, then basic plotting functions, then advanced plotting functions.
-
+| `GroupHeatmap.R` | group_heatmap |
+| `GsDenPlot.R` | feature_density_plot |
+| `Seuclu2Denplot.R` | cluster_dendrogram_plot |
+| `VocalnoPlot.R` | sca_volcano_plot |
+| `add.on.layers.4.dimplot.R` | advanced_dim_plot, advanced_feature_plot |
+| `advDimPlot.R` | advanced_dim_plot |
+| `advFeaPlot.R` | advanced_feature_plot |
+| `common.plots.R` | den_plot |
+| `expStatPlot.R` | advanced_dim_plot, advanced_feature_plot, exp_stat_plot, stat_plot |
+| `jjplot2.R` | dot_plot |
+| `lineagePlot.R` | lineage_plot |
+| `statPlot.R` | advanced_dim_plot, advanced_feature_plot, stat_plot |
+| `util.ck.R` | stat_plot |
+| `util.ck_helpers.R` | sca_volcano_plot |
+| `util.com.R` | stat_plot |
+| `util.mat.R` | stat_plot |
+| `util.plot.R` | advanced_dim_plot, advanced_feature_plot, exp_stat_plot, group_heatmap, lineage_plot, sca_volcano_plot, stat_plot |
+| `util.scf_helpers.R` | sca_volcano_plot |
+| `violinPlot.R` | (reference only) |

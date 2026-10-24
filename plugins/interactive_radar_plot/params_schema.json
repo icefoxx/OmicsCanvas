@@ -1,13 +1,132 @@
 {
-  "plugin":"interactive_radar_plot",
-  "groups":{
-    "data":["input_mode","metric_column","group_column","value_column","group_order","metrics_include","metrics_exclude","metric_order","normalize","normalization","normalization_min","normalization_max"],
-    "layout":["radial_limits","radial_breaks","reverse_metrics","grid_show","grid_color","grid_width","radial_labels"],
-    "appearance":["group_colors","fill_alpha","line_width","point_size","point_alpha","highlight_groups","highlight_metrics","highlight_color","value_labels"],
-    "text":["title","subtitle","caption","title_show","title_size","title_color","title_face","metric_label_size","metric_label_color","value_label_size"],
-    "legend":["legend_show","legend_position","legend_title","legend_text_size","legend_title_size"],
-    "interaction":["interactive","selectable","lasso_select","zoom","pan","tooltip_columns"],
-    "output":["width","height","dpi","export_formats"]
+  "plugin": "interactive_radar_plot",
+  "groups": {
+    "data": [
+      "input_mode",
+      "metric_column",
+      "group_column",
+      "value_column",
+      "group_order",
+      "metrics_include",
+      "metrics_exclude",
+      "metric_order",
+      "normalize",
+      "normalization",
+      "normalization_min",
+      "normalization_max"
+    ],
+    "layout": [
+      "radial_limits",
+      "radial_breaks",
+      "reverse_metrics",
+      "grid_show",
+      "grid_color",
+      "grid_width",
+      "radial_labels"
+    ],
+    "appearance": [
+      "group_colors",
+      "fill_alpha",
+      "line_width",
+      "point_size",
+      "point_alpha",
+      "highlight_groups",
+      "highlight_metrics",
+      "highlight_color",
+      "value_labels"
+    ],
+    "text": [
+      "title",
+      "subtitle",
+      "caption",
+      "title_show",
+      "title_size",
+      "title_color",
+      "title_face",
+      "metric_label_size",
+      "metric_label_color",
+      "value_label_size"
+    ],
+    "legend": [
+      "legend_show",
+      "legend_position",
+      "legend_title",
+      "legend_text_size",
+      "legend_title_size"
+    ],
+    "interaction": [
+      "interactive",
+      "selectable",
+      "zoom"
+    ],
+    "output": [
+      "width",
+      "height",
+      "dpi",
+      "export_formats"
+    ]
   },
-  "properties":{"input_mode":{"type":"string","enum":["auto","wide","long"]},"metric_column":{"type":"string"},"group_column":{"type":"string"},"value_column":{"type":"string"},"group_order":{"type":"array"},"group_colors":{"type":"object"},"metric_order":{"type":"array"},"radial_limits":{"type":"array"},"radial_breaks":{"type":"array"},"normalize":{"type":"boolean","default":false},"interactive":{"type":"boolean","default":true},"width":{"type":"number","default":8},"height":{"type":"number","default":7},"dpi":{"type":"integer","default":300},"export_formats":{"type":"array","default":["svg","pdf","png","html"]}}
+  "properties": {
+    "input_mode": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "wide",
+        "long"
+      ]
+    },
+    "metric_column": {
+      "type": "column"
+    },
+    "group_column": {
+      "type": "column"
+    },
+    "value_column": {
+      "type": "column"
+    },
+    "group_order": {
+      "type": "array"
+    },
+    "group_colors": {
+      "type": "object"
+    },
+    "metric_order": {
+      "type": "array"
+    },
+    "radial_limits": {
+      "type": "array"
+    },
+    "radial_breaks": {
+      "type": "array"
+    },
+    "normalize": {
+      "type": "boolean",
+      "default": false
+    },
+    "interactive": {
+      "type": "boolean",
+      "default": true
+    },
+    "width": {
+      "type": "number",
+      "default": 8
+    },
+    "height": {
+      "type": "number",
+      "default": 7
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 300
+    },
+    "export_formats": {
+      "type": "array",
+      "default": [
+        "svg",
+        "pdf",
+        "png",
+        "html"
+      ]
+    }
+  }
 }

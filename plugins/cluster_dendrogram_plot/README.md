@@ -112,14 +112,14 @@ Output:
 
 ## SCA Compatibility
 
-This plugin wraps the SCA `Seuclu2Denplot.R` helpers (`Seuclu2Denplot`, `plot.den.cols`). The original `Seuclu2Denplot` is Seurat-centric (uses `Seurat::AverageExpression`); this plugin reimplements the per-sample cluster averaging workflow using CSV inputs (`rowMeans` of expression sub-matrices) and then calls `plot.den.cols` directly. The local copy of `plot.den.cols` under `reference_sca_helpers/` is patched to accept an optional `group_colors` argument (the SCA original auto-assigns colors via RColorBrewer/rainbow). The SCA original is not modified.
+This plugin wraps the SCA `Seuclu2Denplot.R` helpers (`Seuclu2Denplot`, `plot.den.cols`). The original `Seuclu2Denplot` is Seurat-centric (uses `Seurat::AverageExpression`); this plugin reimplements the per-sample cluster averaging workflow using CSV inputs (`rowMeans` of expression sub-matrices) and then calls `plot.den.cols` directly. The local copy of `plot.den.cols` under the shared `R/sca/` library is patched to accept an optional `group_colors` argument (the SCA original auto-assigns colors via RColorBrewer/rainbow). The SCA original is not modified.
 
 ## Examples
 
 Run all examples:
 
 ```bash
-plugins/cluster_dendrogram_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/cluster_dendrogram_plot/run_all_examples.sh <repo-root>
 ```
 
 This writes `/tmp/cluster_dendrogram_plot_*_out` and updates:

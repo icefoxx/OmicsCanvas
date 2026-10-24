@@ -1,30 +1,60 @@
 id: interactive_mantel_correlation_network
-name: Interactive Mantel Correlation Network
-version: 1.0.0
-description: Triangular correlation matrix with Mantel links and environmental/species point groups.
+name: Mantel + Pearson Correlation
+version: 2.0.0
+description: 'Combined figure: upper-triangle Pearson correlations among environmental variables, diagonal variable labels,
+  and a Mantel-test network in the lower left. Edge color encodes Mantel p-value; edge width encodes |r|.
+
+  '
 language: R
 entrypoint: plot.R
 category: Correlation
-status: experimental
+subcategory: General
+status: stable
 inputs:
-  - id: input
-    type: table
-    formats: [csv, tsv, txt]
-  - id: input2
-    type: table
-    formats: [csv, tsv, txt]
-    optional: true
-  - id: mantel
-    type: table
-    formats: [csv, tsv, txt]
-    optional: true
-  - id: envpoints
-    type: table
-    formats: [csv, tsv, txt]
-    optional: true
-  - id: specpoints
-    type: table
-    formats: [csv, tsv, txt]
-    optional: true
-outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, correlation_matrix_used.csv, mantel_results.csv, env_points_used.csv, spec_points_used.csv, selected_links.csv]
-runtime: Rscript plugins/interactive_mantel_correlation_network/plot.R --input correlation.csv --params params.json --output output_dir --mantel mantel.csv --envpoints env_points.csv --specpoints spec_points.csv
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+- id: input2
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  optional: true
+- id: mantel
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  optional: true
+- id: envpoints
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  optional: true
+- id: specpoints
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  optional: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- run.log
+- correlation_matrix_used.csv
+- mantel_results.csv
+runtime: 'Rscript plot.R --input env_or_corr.csv --params params.json --output output_dir [--input2 community.csv] [--mantel
+  mantel.csv]
+
+  '

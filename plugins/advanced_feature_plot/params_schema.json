@@ -39,9 +39,44 @@
     },
     "global_split": {
       "type": "boolean",
-      "label": "Global split panels",
-      "help": "",
+      "label": "Shared coordinates when split",
+      "help": "When true, split panels share the same embedding axes.",
+      "default": true
+    },
+    "feature_layout": {
+      "type": "select",
+      "label": "Feature layout",
+      "default": "",
+      "options": ["", "single", "side_by_side", "grid"]
+    },
+    "scale_by": {
+      "type": "select",
+      "label": "Feature scaling",
+      "default": "feature",
+      "options": ["feature", "all"],
+      "help": "Per feature or shared across features"
+    },
+    "feature_comp": {
+      "type": "boolean",
+      "label": "Coexpression color mix",
       "default": false
+    },
+    "color_mix_mode": {
+      "type": "select",
+      "label": "Combination / mix method",
+      "default": "blend",
+      "options": ["blend", "average", "screen", "multiply"]
+    },
+    "aggregation_style": {
+      "type": "select",
+      "label": "Aggregation style",
+      "default": "",
+      "options": ["", "hexbin", "density"]
+    },
+    "facet_ncol": {
+      "type": "integer",
+      "label": "Columns per row",
+      "help": "Grid columns for multi-feature or split layouts"
     }
   },
   "axes": {
@@ -147,8 +182,8 @@
     },
     "hex": {
       "type": "boolean",
-      "label": "Hex mode",
-      "help": "",
+      "label": "Hexbin aggregation",
+      "help": "Mean feature value per hexagonal bin",
       "default": false
     },
     "show_density": {

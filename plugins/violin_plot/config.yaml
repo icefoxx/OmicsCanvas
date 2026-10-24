@@ -1,24 +1,30 @@
-name: violin_plot
+id: violin_plot
+name: Violin Plot
+version: 1.0.0
+description: Standardized SCA violinPlot.R::classicVlnPlot wrapper for customizable violin plots with optional boxplot/median/dot
+  overlays and annotation strip, operating on long or wide expression tables.
+language: R
+entrypoint: plot.R
 category: Expression / Statistics
 subcategory: Distribution
-display_name: Violin Plot
-description: Standardized SCA violinPlot.R::classicVlnPlot wrapper for customizable violin plots with optional boxplot/median/dot overlays and annotation strip, operating on long or wide expression tables.
+status: stable
+inputs:
+- id: input
+  type: table
+  required: true
+  description: Expression table in long, wide_matrix (features x cells), or wide_cells (cells x features) format. Mode selected
+    by params input_mode.
+- id: annot
+  type: table
+  required: false
+  description: Cell metadata with cell id and group columns. Required for wide_matrix and wide_cells modes.
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- selected_rows.csv
+- run.log
+- error.json (on failure)
 runtime:
   command: Rscript plot.R --input expression.csv --annot metadata.csv --params params.json --output output_dir
-inputs:
-  - name: input
-    type: table
-    required: true
-    description: Expression table in long, wide_matrix (features x cells), or wide_cells (cells x features) format. Mode selected by params input_mode.
-  - name: annot
-    type: table
-    required: false
-    description: Cell metadata with cell id and group columns. Required for wide_matrix and wide_cells modes.
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - selected_rows.csv
-  - run.log
-  - error.json (on failure)

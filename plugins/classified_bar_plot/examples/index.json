@@ -1,20 +1,28 @@
 {
   "examples": [
     {
-      "id": "basic",
-      "label": "basic"
-    },
-    {
-      "id": "chiplot",
-      "label": "chiplot"
-    },
-    {
-      "id": "labeled",
-      "label": "labeled"
+      "id": "CAB_demo",
+      "label": "Horizontal classified bars",
+      "blurb": "Default horizontal classified bars.",
+      "card_group": "more"
     },
     {
       "id": "vertical",
-      "label": "vertical"
+      "label": "Vertical classified bars",
+      "blurb": "Same classified bars in vertical orientation.",
+      "card_group": "more"
+    },
+    {
+      "id": "basic",
+      "label": "Basic classified bars",
+      "blurb": "Minimal horizontal classified bar example.",
+      "card_group": "more"
+    },
+    {
+      "id": "labeled",
+      "label": "Labeled classified bars",
+      "blurb": "Horizontal bars with value labels.",
+      "card_group": "more"
     }
   ]
 }

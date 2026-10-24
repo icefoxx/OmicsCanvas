@@ -1,0 +1,20 @@
+{
+  "hierarchy": {
+    "linker_visible": true,
+    "linker": {
+      "class": {"color": "#555555", "linewidth": 0.45, "linetype": "solid", "alpha": 1.0, "vertical_length": 0.2},
+      "subclass": {"color": "#777777", "linewidth": 0.4, "linetype": "solid", "alpha": 0.9, "vertical_length": 0.2},
+      "cluster": {"color": "#777777", "linewidth": 0.35, "linetype": "solid", "alpha": 0.8, "vertical_length": 0.2}
+    },
+    "text": {
+      "class": {"fontfamily": "sans", "fontweight": "plain", "rotation": 0, "color": "#222222"},
+      "subclass": {"fontfamily": "sans", "fontweight": "plain", "rotation": 0, "color": "#222222"},
+      "cluster": {"fontfamily": "sans", "fontweight": "plain", "rotation": 60, "color": "inherit_cluster"}
+    }
+  },
+  "summary": {"bar_width": 0.82, "alpha": 1.0, "edgecolor": "none", "linewidth": 0.0},
+  "pie": {"radius": 0.38, "startangle": 90, "counterclock": false, "edgecolor": "white", "linewidth": 0.6, "alpha": 1.0, "size_mode": "fixed"},
+  "donut": {"outer_radius": 0.40, "inner_radius": 0.22, "startangle": 90, "counterclock": false, "edgecolor": "white", "linewidth": 0.6, "alpha": 1.0, "center_text": "none", "center_fontsize": 9, "center_fontweight": "bold", "center_color": "black"},
+  "dotplot": {"dot_min_size": 1.2, "dot_max_size": 5.2, "dot_alpha": 0.95, "dot_linewidth": 0.15},
+  "layout": {"horizontal_spacing": 0.08, "vertical_spacing": 0.08}
+}

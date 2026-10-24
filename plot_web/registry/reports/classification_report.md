@@ -1,54 +1,54 @@
 # Classification report
 
-Counts: demo=50, export_template=3, parameter=24, preset=2, variant=127
+Counts: demo=67, export=2, legacy_alias=21, parameter=24, preset=2, rendering=1, variant=98
 
 | plugin | example | class | maps_to | notes |
 |---|---|---|---|---|
 | `advanced_dim_plot` | `pdf_repro_basic_umap` | demo | clusters/recommended | Basic UMAP (clusters) |
 | `advanced_dim_plot` | `pdf_repro_ellipse_mark` | demo | ellipse/recommended | Ellipse marks |
 | `advanced_dim_plot` | `pdf_repro_split_samples` | demo | split_samples/recommended | Split by sample |
-| `advanced_dim_plot` | `pdf_repro_composition_ring` | demo | composition_ring/recommended | Composition rings |
+| `advanced_dim_plot` | `pdf_repro_composition_ring` | demo | composition/recommended | Composition rings |
 | `advanced_dim_plot` | `pdf_repro_highlight_cells` | demo | highlight_cells/recommended | Highlight cells |
-| `advanced_dim_plot` | `pdf_repro_bg_cutoff_mito` | parameter | background | Background by mito cutoff |
-| `advanced_dim_plot` | `pdf_repro_bg_condition` | parameter | background | Background by samples |
-| `advanced_dim_plot` | `axis_label_controls` | parameter | axes | axis_label_controls |
-| `advanced_dim_plot` | `background_mask` | parameter | background | background_mask |
-| `advanced_dim_plot` | `basic_umap` | variant | clusters/recommended | basic_umap |
-| `advanced_dim_plot` | `bg_condition` | parameter | background | bg_condition |
-| `advanced_dim_plot` | `bg_cutoff` | parameter | background | bg_cutoff |
-| `advanced_dim_plot` | `blank_theme` | preset | clusters/minimal | blank_theme |
-| `advanced_dim_plot` | `cluster_composition_ring` | variant | composition_ring/recommended | cluster_composition_ring |
-| `advanced_dim_plot` | `coexpression` | variant | coexpression/recommended | coexpression |
-| `advanced_dim_plot` | `coexpression_screen` | variant | coexpression/recommended | coexpression_screen |
-| `advanced_dim_plot` | `density_filled` | variant | density/recommended | density_filled |
-| `advanced_dim_plot` | `density_hex` | variant | density/recommended | density_hex |
-| `advanced_dim_plot` | `ellipse_mark` | variant | ellipse/recommended | ellipse_mark |
-| `advanced_dim_plot` | `embedded_pie` | variant | composition_pie/recommended | embedded_pie |
-| `advanced_dim_plot` | `feature` | variant | feature_expression/recommended | feature |
-| `advanced_dim_plot` | `group` | variant | clusters/recommended | group |
-| `advanced_dim_plot` | `highlight_cells` | variant | highlight_cells/recommended | highlight_cells |
-| `advanced_dim_plot` | `highlight_ring` | variant | highlight_cells/recommended | highlight_ring |
-| `advanced_dim_plot` | `lineage` | variant | lineage/recommended | lineage |
-| `advanced_dim_plot` | `mark_shapes` | variant | mark_shapes/recommended | mark_shapes |
-| `advanced_dim_plot` | `pdf_basic_umap` | export_template | clusters/publication | pdf_basic_umap |
-| `advanced_dim_plot` | `pdf_ellipse_mark` | export_template | ellipse/publication | pdf_ellipse_mark |
-| `advanced_dim_plot` | `raster` | export_template | clusters/large_dataset | raster |
-| `advanced_dim_plot` | `split_highlight` | variant | highlight_cells/recommended | split_highlight |
-| `advanced_dim_plot` | `split_samples` | variant | split_samples/recommended | split_samples |
-| `advanced_dim_plot` | `stat_panel` | variant | stat_panel/recommended | stat_panel |
-| `advanced_feature_plot` | `pdf_repro_basic_two_features` | demo | multi_feature/recommended | Basic · Atoh1 + Neurod1 |
-| `advanced_feature_plot` | `pdf_repro_multi_feature_scaled` | demo | multi_feature/recommended | Multi · 4 genes scaled |
-| `advanced_feature_plot` | `pdf_repro_split_by_sample` | demo | split_samples/recommended | Split by sample |
-| `advanced_feature_plot` | `pdf_repro_feature_comp_multiply` | demo | coexpression/recommended | Composite multiply |
-| `advanced_feature_plot` | `pdf_repro_highlight_cells` | demo | highlight_cells/recommended | Highlight cells |
-| `advanced_feature_plot` | `pdf_repro_split_global_blank` | preset | split_samples/minimal | Split · shared coords |
-| `advanced_feature_plot` | `pdf_repro_hexbin` | demo | density/recommended | Hexbin features |
-| `advanced_feature_plot` | `density_hex` | variant | density/recommended | density_hex |
-| `advanced_feature_plot` | `feature_comp` | variant | coexpression/recommended | feature_comp |
-| `advanced_feature_plot` | `highlight_blank` | variant | highlight_cells/minimal | highlight_blank |
-| `advanced_feature_plot` | `multi_feature` | variant | multi_feature/recommended | multi_feature |
-| `advanced_feature_plot` | `single_feature` | variant | single_feature/recommended | single_feature |
-| `advanced_feature_plot` | `split_feature` | variant | split_samples/recommended | split_feature |
+| `advanced_dim_plot` | `pdf_repro_bg_cutoff_mito` | demo | background_mask/recommended | Background by mito cutoff |
+| `advanced_dim_plot` | `pdf_repro_bg_condition` | demo | background_mask/recommended | Background by samples |
+| `advanced_dim_plot` | `axis_label_controls` | parameter | clusters/recommended | axis_label_controls |
+| `advanced_dim_plot` | `background_mask` | legacy_alias | background_mask/recommended | background_mask |
+| `advanced_dim_plot` | `basic_umap` | legacy_alias | clusters/recommended | basic_umap |
+| `advanced_dim_plot` | `bg_condition` | legacy_alias | background_mask/recommended | bg_condition |
+| `advanced_dim_plot` | `bg_cutoff` | legacy_alias | background_mask/recommended | bg_cutoff |
+| `advanced_dim_plot` | `blank_theme` | preset | clusters/blank | blank_theme |
+| `advanced_dim_plot` | `cluster_composition_ring` | legacy_alias | composition/recommended | cluster_composition_ring |
+| `advanced_dim_plot` | `coexpression` | demo | coexpression/recommended | coexpression |
+| `advanced_dim_plot` | `coexpression_screen` | legacy_alias | coexpression/recommended | coexpression_screen |
+| `advanced_dim_plot` | `density_filled` | legacy_alias | density/recommended | density_filled |
+| `advanced_dim_plot` | `density_hex` | legacy_alias | density/recommended | density_hex |
+| `advanced_dim_plot` | `ellipse_mark` | legacy_alias | ellipse/recommended | ellipse_mark |
+| `advanced_dim_plot` | `embedded_pie` | legacy_alias | composition/recommended | embedded_pie |
+| `advanced_dim_plot` | `feature` | demo | feature_expression/recommended | feature |
+| `advanced_dim_plot` | `group` | legacy_alias | clusters/recommended | group |
+| `advanced_dim_plot` | `highlight_cells` | legacy_alias | highlight_cells/recommended | highlight_cells |
+| `advanced_dim_plot` | `highlight_ring` | legacy_alias | highlight_cells/recommended | highlight_ring |
+| `advanced_dim_plot` | `lineage` | demo | lineage/recommended | lineage |
+| `advanced_dim_plot` | `mark_shapes` | parameter | ellipse/recommended | mark_shapes |
+| `advanced_dim_plot` | `pdf_basic_umap` | export | clusters/publication | pdf_basic_umap |
+| `advanced_dim_plot` | `pdf_ellipse_mark` | export | ellipse/publication | pdf_ellipse_mark |
+| `advanced_dim_plot` | `raster` | rendering | clusters/large_dataset | raster |
+| `advanced_dim_plot` | `split_highlight` | variant | split_highlight/recommended | split_highlight |
+| `advanced_dim_plot` | `split_samples` | legacy_alias | split_samples/recommended | split_samples |
+| `advanced_dim_plot` | `stat_panel` | demo | stat_panel/recommended | stat_panel |
+| `advanced_feature_plot` | `pdf_repro_basic_two_features` | demo | feature_expression/recommended | Basic · Atoh1 + Neurod1 |
+| `advanced_feature_plot` | `pdf_repro_multi_feature_scaled` | demo | feature_expression/recommended | Multi · 4 genes scaled |
+| `advanced_feature_plot` | `pdf_repro_split_by_sample` | demo | split_feature_expression/recommended | Split by sample |
+| `advanced_feature_plot` | `pdf_repro_feature_comp_multiply` | demo | feature_coexpression/recommended | Composite multiply |
+| `advanced_feature_plot` | `pdf_repro_highlight_cells` | demo | feature_expression/recommended | Highlight cells |
+| `advanced_feature_plot` | `pdf_repro_split_global_blank` | preset | split_feature_expression/blank | Split · shared coords |
+| `advanced_feature_plot` | `pdf_repro_hexbin` | demo | aggregated_feature_expression/recommended | Hexbin features |
+| `advanced_feature_plot` | `density_hex` | legacy_alias | aggregated_feature_expression/recommended | density_hex |
+| `advanced_feature_plot` | `feature_comp` | legacy_alias | feature_coexpression/recommended | feature_comp |
+| `advanced_feature_plot` | `highlight_blank` | legacy_alias | feature_expression/blank | highlight_blank |
+| `advanced_feature_plot` | `multi_feature` | legacy_alias | feature_expression/recommended | multi_feature |
+| `advanced_feature_plot` | `single_feature` | legacy_alias | feature_expression/recommended | single_feature |
+| `advanced_feature_plot` | `split_feature` | legacy_alias | split_feature_expression/recommended | split_feature |
 | `alluvial_plot` | `basic` | demo | basic/recommended | basic |
 | `alluvial_plot` | `edges` | variant | edges/recommended | edges |
 | `alluvial_plot` | `hx_lineage` | variant | hx_lineage/recommended | hx_lineage |
@@ -56,10 +56,10 @@ Counts: demo=50, export_template=3, parameter=24, preset=2, variant=127
 | `balloon_plot` | `basic` | demo | basic/recommended | basic |
 | `balloon_plot` | `gradient` | variant | gradient/recommended | gradient |
 | `balloon_plot` | `no_stats` | variant | no_stats/recommended | no_stats |
-| `classified_bar_plot` | `basic` | demo | basic/recommended | basic |
-| `classified_bar_plot` | `chiplot` | variant | chiplot/recommended | chiplot |
-| `classified_bar_plot` | `labeled` | parameter | labels | labeled |
-| `classified_bar_plot` | `vertical` | variant | vertical/recommended | vertical |
+| `classified_bar_plot` | `CAB_demo` | variant | cab_demo/recommended | Horizontal classified bars |
+| `classified_bar_plot` | `vertical` | variant | vertical/recommended | Vertical classified bars |
+| `classified_bar_plot` | `basic` | demo | basic/recommended | Basic classified bars |
+| `classified_bar_plot` | `labeled` | parameter | labels | Labeled classified bars |
 | `cluster_dendrogram_plot` | `basic` | demo | basic/recommended | basic |
 | `cluster_dendrogram_plot` | `colored_labels` | parameter | labels | colored_labels |
 | `cluster_dendrogram_plot` | `subset` | variant | subset/recommended | subset |
@@ -67,24 +67,24 @@ Counts: demo=50, export_template=3, parameter=24, preset=2, variant=127
 | `combo_bar_dot_matrix` | `basic` | demo | basic/recommended | basic |
 | `combo_bar_dot_matrix` | `heatmap_dots` | variant | heatmap_dots/recommended | heatmap_dots |
 | `combo_bar_line_plot` | `basic` | demo | basic/recommended | basic |
-| `combo_bar_line_plot` | `chiplot` | variant | chiplot/recommended | chiplot |
+| `combo_bar_line_plot` | `CAB_demo` | variant | cab_demo/recommended | CAB_demo |
 | `combo_bar_line_plot` | `labeled` | parameter | labels | labeled |
 | `combo_bar_line_plot` | `long` | variant | long/recommended | long |
 | `den_plot` | `basic` | demo | basic/recommended | basic |
 | `den_plot` | `colored_labels` | parameter | labels | colored_labels |
 | `den_plot` | `subset` | variant | subset/recommended | subset |
-| `dot_plot` | `aggregate` | variant | aggregate/recommended | aggregate |
-| `dot_plot` | `basic` | demo | basic/recommended | basic |
-| `dot_plot` | `dendro` | variant | dendro/recommended | dendro |
+| `dot_plot` | `aggregate` | demo | marker_dot/recommended | From expression matrix |
+| `dot_plot` | `basic` | demo | marker_dot/recommended | Marker expression by cluster |
+| `dot_plot` | `dendro` | legacy_alias | marker_dot/recommended | With gene and cluster dendrograms |
 | `dynamic_venn_diagram` | `abundance` | variant | abundance/recommended | abundance |
 | `dynamic_venn_diagram` | `params` | demo | params/recommended | params |
-| `exp_stat_plot` | `bar` | variant | bar/recommended | bar |
-| `exp_stat_plot` | `box_split` | variant | box_split/recommended | box_split |
-| `exp_stat_plot` | `col_flip` | variant | col_flip/recommended | col_flip |
-| `exp_stat_plot` | `custom_style` | variant | custom_style/recommended | custom_style |
-| `exp_stat_plot` | `dot_stack` | variant | dot_stack/recommended | dot_stack |
-| `exp_stat_plot` | `highlight` | variant | highlight/recommended | highlight |
-| `exp_stat_plot` | `violin` | variant | violin/recommended | violin |
+| `exp_stat_plot` | `bar` | demo | grouped_bar/recommended | bar |
+| `exp_stat_plot` | `box_split` | parameter | marks | box_split |
+| `exp_stat_plot` | `col_flip` | demo | flipped_bar/recommended | col_flip |
+| `exp_stat_plot` | `custom_style` | parameter | theme | custom_style |
+| `exp_stat_plot` | `dot_stack` | parameter | marks | dot_stack |
+| `exp_stat_plot` | `highlight` | parameter | marks | highlight |
+| `exp_stat_plot` | `violin` | parameter | marks | violin |
 | `feature_density_plot` | `basic` | demo | basic/recommended | basic |
 | `feature_density_plot` | `coexpression` | variant | coexpression/recommended | coexpression |
 | `feature_density_plot` | `scale01` | variant | scale01/recommended | scale01 |
@@ -98,14 +98,27 @@ Counts: demo=50, export_template=3, parameter=24, preset=2, variant=127
 | `fgsea_enrichment_plot` | `summary` | variant | summary/recommended | summary |
 | `fgsea_enrichment_plot` | `ridge` | variant | ridge/recommended | Enrichment ridge (log2FC density) |
 | `fgsea_enrichment_plot` | `gene_sankey` | variant | gene_sankey/recommended | Gene-pathway Sankey + bubble |
-| `group_heatmap` | `cell_heatmap` | variant | heatmap/recommended | cell_heatmap |
-| `group_heatmap` | `clustered_dotplot` | variant | clustered_dotplot/recommended | clustered_dotplot |
-| `group_heatmap` | `dotplot` | variant | dotplot/recommended | dotplot |
-| `group_heatmap` | `heatmap` | variant | heatmap/recommended | heatmap |
-| `group_heatmap` | `violin` | variant | violin/recommended | violin |
+| `go_kegg_enrichment_bar_bubble` | `go_kegg` | demo | grouped_bar_dot/recommended | GO / KEGG Bar + Count Dots |
+| `group_heatmap` | `cell_heatmap` | demo | cell_heatmap/recommended | cell_heatmap |
+| `group_heatmap` | `clustered_dotplot` | demo | clustered_dotplot/recommended | clustered_dotplot |
+| `group_heatmap` | `dotplot` | demo | dotplot/recommended | dotplot |
+| `group_heatmap` | `heatmap` | demo | heatmap/recommended | heatmap |
+| `group_heatmap` | `violin` | parameter | marks | violin |
 | `gsea_pathway_heatmap` | `basic` | demo | basic/recommended | basic |
 | `gsea_pathway_heatmap` | `precomputed` | variant | precomputed/recommended | precomputed |
 | `gsea_pathway_heatmap` | `with_annotation` | variant | with_annotation/recommended | with_annotation |
+| `gsea_ridge_nes_plot` | `basic` | demo | basic/recommended | Pathway Ridge + NES |
+| `hierarchical_marker_panel` | `basic` | demo | basic/recommended | Basic hierarchical marker panel |
+| `hierarchical_marker_panel` | `CAB_demo` | variant | cab_demo/recommended | CAB_demo |
+| `hierarchical_marker_panel` | `sample_percent` | variant | sample_percent/recommended | Sample composition percent |
+| `hierarchical_marker_panel` | `stress_3x5` | variant | stress_3x5/recommended | Layout stress: 3 cell types x 5 markers |
+| `hierarchical_marker_panel` | `stress_10x20` | variant | stress_10x20/recommended | Layout stress: 10 cell types x 20 markers |
+| `hierarchical_marker_panel` | `stress_30x50` | variant | stress_30x50/recommended | Layout stress: 30 cell types x 50 markers |
+| `hierarchical_marker_panel` | `summary_bar` | variant | summary_bar/recommended | Summary: standard bar |
+| `hierarchical_marker_panel` | `summary_stacked` | variant | summary_stacked/recommended | Summary: stacked bar |
+| `hierarchical_marker_panel` | `summary_grouped` | variant | summary_grouped/recommended | Summary: grouped bar |
+| `hierarchical_marker_panel` | `summary_pie` | variant | summary_pie/recommended | Summary: pie per cluster |
+| `hierarchical_marker_panel` | `summary_donut` | variant | summary_donut/recommended | Summary: donut per cluster |
 | `highlight_effect_plot` | `basic` | demo | basic/recommended | basic |
 | `highlight_effect_plot` | `no_collapse` | variant | no_collapse/recommended | no_collapse |
 | `highlight_effect_plot` | `summary` | variant | summary/recommended | summary |
@@ -132,19 +145,15 @@ Counts: demo=50, export_template=3, parameter=24, preset=2, variant=127
 | `interactive_dumbbell_plot` | `basic` | demo | basic/recommended | basic |
 | `interactive_dumbbell_plot` | `custom_layout` | parameter | layout | custom_layout |
 | `interactive_dumbbell_plot` | `interactive` | variant | interactive/recommended | interactive |
-| `interactive_enrichment_lollipop` | `basic` | demo | basic/recommended | basic |
-| `interactive_enrichment_lollipop` | `custom_layout` | parameter | layout | custom_layout |
-| `interactive_enrichment_lollipop` | `interactive` | variant | interactive/recommended | interactive |
-| `interactive_enrichment_lollipop` | `oct4_enrichment` | variant | oct4_enrichment/recommended | OCT4 enrichment |
+| `interactive_enrichment_lollipop` | `basic` | demo | lollipop/recommended | basic |
+| `interactive_enrichment_lollipop` | `oct4_enrichment` | demo | oct4_enrichment/recommended | OCT4 enrichment |
 | `interactive_genomic_signal_track_plot` | `basic` | demo | basic/recommended | basic |
 | `interactive_genomic_signal_track_plot` | `custom_layout` | parameter | layout | custom_layout |
 | `interactive_genomic_signal_track_plot` | `interactive` | variant | interactive/recommended | interactive |
 | `interactive_histogram_plot` | `basic` | demo | basic/recommended | basic |
 | `interactive_histogram_plot` | `custom_layout` | parameter | layout | custom_layout |
 | `interactive_histogram_plot` | `interactive` | variant | interactive/recommended | interactive |
-| `interactive_mantel_correlation_network` | `basic` | demo | basic/recommended | basic |
-| `interactive_mantel_correlation_network` | `interactive` | variant | interactive/recommended | interactive |
-| `interactive_mantel_correlation_network` | `custom_layout` | parameter | layout | custom_layout |
+| `interactive_mantel_correlation_network` | `basic` | demo | mantel_pearson/recommended | basic |
 | `interactive_motif_logo_plot` | `basic` | demo | basic/recommended | basic |
 | `interactive_motif_logo_plot` | `custom` | variant | custom/recommended | custom |
 | `interactive_motif_logo_plot` | `interactive` | variant | interactive/recommended | interactive |
@@ -158,7 +167,7 @@ Counts: demo=50, export_template=3, parameter=24, preset=2, variant=127
 | `interactive_radar_plot` | `custom_layout` | parameter | layout | custom_layout |
 | `interactive_radar_plot` | `interactive` | variant | interactive/recommended | interactive |
 | `interactive_ridgeline_plot` | `basic` | demo | basic/recommended | basic |
-| `interactive_ridgeline_plot` | `chiplot` | variant | chiplot/recommended | chiplot |
+| `interactive_ridgeline_plot` | `CAB_demo` | variant | cab_demo/recommended | CAB_demo |
 | `interactive_ridgeline_plot` | `custom_layout` | parameter | layout | custom_layout |
 | `interactive_ridgeline_plot` | `grouped` | variant | grouped/recommended | grouped |
 | `interactive_ridgeline_plot` | `interactive` | variant | interactive/recommended | interactive |
@@ -186,13 +195,13 @@ Counts: demo=50, export_template=3, parameter=24, preset=2, variant=127
 | `quadrant_correlation_scatter` | `params` | demo | params/recommended | params |
 | `ranked_annotation_panel` | `params` | demo | params/recommended | params |
 | `regression_scatter_plot` | `basic` | demo | basic/recommended | basic |
-| `regression_scatter_plot` | `chiplot` | variant | chiplot/recommended | chiplot |
+| `regression_scatter_plot` | `CAB_demo` | variant | cab_demo/recommended | CAB_demo |
 | `sca_volcano_plot` | `avg` | variant | avg/recommended | avg |
 | `sca_volcano_plot` | `basic` | demo | basic/recommended | basic |
 | `sca_volcano_plot` | `percent` | variant | percent/recommended | percent |
 | `sca_volcano_plot` | `regions` | variant | regions/recommended | regions |
 | `stacked_bar_plot` | `basic` | demo | basic/recommended | basic |
-| `stacked_bar_plot` | `chiplot` | variant | chiplot/recommended | chiplot |
+| `stacked_bar_plot` | `CAB_demo` | variant | cab_demo/recommended | CAB_demo |
 | `stacked_bar_plot` | `long` | variant | long/recommended | long |
 | `stacked_bar_plot` | `normal` | variant | normal/recommended | normal |
 | `stacked_bar_plot` | `percent` | variant | percent/recommended | percent |

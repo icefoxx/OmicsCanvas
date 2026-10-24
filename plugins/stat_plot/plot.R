@@ -140,8 +140,9 @@ validate_columns <- function(df, cols, label = 'input') {
 load_sca_stat_reference <- function() {
   script_arg <- grep('^--file=', commandArgs(FALSE), value = TRUE)
   script_path <- if (length(script_arg) > 0) sub('^--file=', '', script_arg[1]) else file.path(getwd(), 'plugins', 'stat_plot', 'plot.R')
-  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), 'reference_sca_helpers')
-  if (!dir.exists(helper_dir)) helper_dir <- file.path('plugins', 'stat_plot', 'reference_sca_helpers')
+  # Shared SCA helper library (one canonical copy for all plugins): <repo>/R/sca
+  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), '..', '..', 'R', 'sca')
+  if (!dir.exists(helper_dir)) helper_dir <- file.path('R', 'sca')
 
   # Attach packages that statPlot() expects to be library()-attached.
   attach_pkgs <- function(pkgs) {
@@ -174,12 +175,8 @@ load_sca_stat_reference <- function() {
   theme_scp <<- function(...) themeDefault(...)
 
   # Patch paletteCustomize to read the OmicsCanvas asset palettes.rds by default.
-  old_palette <- paletteCustomize
-  palette_file <- file.path(getwd(), 'assets', 'palettes.rds')
-  if (!file.exists(palette_file)) palette_file <- '/Users/qzhang10/Documents/OmicsCanvas/assets/palettes.rds'
-  paletteCustomize <<- function(..., palettePath = NULL) {
-    old_palette(..., palettePath = palettePath %||% palette_file)
-  }
+  source(file.path(helper_dir, 'omicscanvas_shims.R'), local = .GlobalEnv)
+  omicscanvas_patch_palette(helper_dir)
 
   # Override ckPacsR with a non-installing stub so CLI runs never trigger
   # interactive package installation prompts.
@@ -233,7 +230,7 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   }
   draw_with_retry(function(w, h) svglite::svglite(file.path(output_dir, 'result.svg'), width = w, height = h))
   draw_with_retry(function(w, h) grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
-  draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi, type = 'cairo'))
+  draw_with_retry(function(w, h) (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
 }
 
 # ------------------------------------------------------------
@@ -386,6 +383,8 @@ main <- function() {
   width <- num_param(params, 'width', 8)
   height <- num_param(params, 'height', 6)
   dpi <- as.numeric(get_param(params, 'dpi', 300))
+  # Generic appearance parameters not handled by this plugin (R/runtime/omicscanvas_theme.R).
+  if (!exists('omicscanvas_apply_theme')) { .oc_f <- sub('^--file=', '', grep('^--file=', commandArgs(FALSE), value = TRUE)[1]); .oc_rt <- file.path(dirname(normalizePath(.oc_f, mustWork = FALSE)), '..', '..', 'R', 'runtime', 'omicscanvas_theme.R'); if (!file.exists(.oc_rt)) .oc_rt <- file.path('R', 'runtime', 'omicscanvas_theme.R'); sys.source(.oc_rt, envir = globalenv()) }; plot_obj <- omicscanvas_apply_theme(plot_obj, params, only = c('axis_label_size', 'font_family', 'font_size', 'legend_key_size', 'legend_text_size', 'legend_title_size', 'panel_fill', 'plot_fill', 'title_size', 'x_axis_text_angle', 'x_axis_text_size', 'y_axis_text_size'))
   save_plot(plot_obj, output_dir, width, height, dpi)
   write_log('Saved result.svg/pdf/png.')
 

@@ -1,10 +1,75 @@
 {
-  "data": {"source_column":"source", "target_column":"target", "value_column":"value", "stage_column":"stage", "source_stage_column":"source_stage", "target_stage_column":"target_stage", "node_id_column":"id", "label_column":"label", "group_column":"group", "color_column":"color", "rows_include":[], "rows_exclude":[], "nodes_include":[], "nodes_exclude":[]},
-  "layout": {"layout_mode":"snap", "node_order":[], "stage_order":[], "node_x_column":"x", "node_y_column":"y", "node_width":18, "node_padding":15, "node_spacing":0.04, "curve_type":"bezier", "curve_tension":0.5, "iterations":32, "seed":1, "orientation":"h", "align":"justify", "sort_nodes":true},
-  "nodes": {"node_color":"", "node_colors":{}, "node_border_color":"#555555", "node_border_width":0.5, "node_alpha":1, "node_label_show":true, "node_label_color":"#222222", "node_label_size":3.5, "node_label_face":"plain", "node_label_position":"outside", "node_label_angle":0, "node_size_by":"flow", "node_highlight":false, "highlight_color":"#FFD166", "highlight_nodes":[], "node_tooltip_columns":[]},
-  "links": {"link_color_mode":"source", "link_colors":{}, "link_alpha":0.42, "link_border_color":"", "link_border_width":0, "link_label_show":false, "link_label_color":"#333333", "link_label_size":3, "link_tooltip_columns":[], "min_link_value":0, "link_order":"input"},
-  "legend": {"legend_show":false, "legend_position":"right", "legend_title":"", "legend_text_size":10, "legend_title_size":11, "legend_ncol":1},
-  "title/theme": {"title":"", "subtitle":"", "caption":"", "title_show":true, "title_size":16, "title_color":"#222222", "title_face":"plain", "title_hjust":0.5, "xlab":"", "ylab":"", "background_color":"white", "panel_background":"white", "grid_show":false, "font_family":"sans", "base_size":12, "margin":10},
-  "interaction": {"interactive":true, "drag_nodes":true, "drag_links":false, "zoom":true, "pan":true, "selectable":true, "highlight_neighbors":true, "hover_tooltip":true, "navigation_buttons":true, "physics_enabled":false, "save_positions":true},
-  "output": {"width":10, "height":7, "dpi":150, "html_width":1000, "html_height":700, "export_formats":["svg","pdf","png","html"]}
+  "data": {
+    "source_column": "source",
+    "target_column": "target",
+    "value_column": "value",
+    "stage_column": "stage",
+    "source_stage_column": "source_stage",
+    "target_stage_column": "target_stage",
+    "node_id_column": "id",
+    "label_column": "label",
+    "group_column": "group",
+    "rows_include": [],
+    "rows_exclude": []
+  },
+  "layout": {
+    "layout_mode": "snap",
+    "stage_order": [],
+    "node_x_column": "x",
+    "node_y_column": "y",
+    "node_width": 18,
+    "node_padding": 15,
+    "orientation": "h"
+  },
+  "nodes": {
+    "node_color": "",
+    "node_border_color": "#555555",
+    "node_border_width": 0.5,
+    "node_alpha": 1,
+    "node_label_show": true,
+    "node_label_color": "#222222",
+    "node_label_size": 3.5,
+    "node_label_face": "plain",
+    "node_label_angle": 0,
+    "node_highlight": false,
+    "highlight_nodes": []
+  },
+  "links": {
+    "link_color_mode": "source",
+    "link_alpha": 0.42,
+    "link_border_color": "",
+    "link_border_width": 0
+  },
+  "legend": {
+    "legend_show": false,
+    "legend_position": "right",
+    "legend_text_size": 10,
+    "legend_title_size": 11
+  },
+  "title/theme": {
+    "title": "",
+    "subtitle": "",
+    "caption": "",
+    "title_show": true,
+    "title_size": 16,
+    "title_color": "#222222",
+    "title_face": "plain",
+    "title_hjust": 0.5,
+    "xlab": "",
+    "ylab": "",
+    "background_color": "white",
+    "panel_background": "white",
+    "grid_show": false,
+    "font_family": "sans",
+    "base_size": 12,
+    "margin": 10
+  },
+  "interaction": {
+    "interactive": true
+  },
+  "output": {
+    "width": 10,
+    "height": 7,
+    "dpi": 150
+  }
 }

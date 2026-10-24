@@ -3,7 +3,7 @@
   "examples": [
     {
       "id": "aggregate",
-      "label": "aggregate",
+      "label": "From expression matrix",
       "plugin_id": "dot_plot",
       "plot_type": "aggregate",
       "mode": "",
@@ -22,7 +22,7 @@
     },
     {
       "id": "basic",
-      "label": "basic",
+      "label": "Marker expression by cluster",
       "plugin_id": "dot_plot",
       "plot_type": "precomputed",
       "mode": "",
@@ -40,7 +40,7 @@
     },
     {
       "id": "dendro",
-      "label": "dendro",
+      "label": "With gene and cluster dendrograms",
       "plugin_id": "dot_plot",
       "plot_type": "precomputed",
       "mode": "",

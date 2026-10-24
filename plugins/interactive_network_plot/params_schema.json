@@ -20,10 +20,6 @@
       "type": "column",
       "label": "Node Id Column"
     },
-    "label_column": {
-      "type": "column",
-      "label": "Label Column"
-    },
     "group_column": {
       "type": "column",
       "label": "Group Column"
@@ -40,14 +36,6 @@
       "type": "boolean",
       "label": "Directed"
     },
-    "rows_include": {
-      "type": "string_array",
-      "label": "Rows Include"
-    },
-    "rows_exclude": {
-      "type": "string_array",
-      "label": "Rows Exclude"
-    },
     "nodes_include": {
       "type": "string_array",
       "label": "Nodes Include"
@@ -55,14 +43,6 @@
     "nodes_exclude": {
       "type": "string_array",
       "label": "Nodes Exclude"
-    },
-    "groups_include": {
-      "type": "string_array",
-      "label": "Groups Include"
-    },
-    "groups_exclude": {
-      "type": "string_array",
-      "label": "Groups Exclude"
     }
   },
   "layout": {
@@ -81,54 +61,6 @@
     "seed": {
       "type": "number",
       "label": "Seed"
-    },
-    "iterations": {
-      "type": "number",
-      "label": "Iterations"
-    },
-    "layout_width": {
-      "type": "number",
-      "label": "Layout Width"
-    },
-    "layout_height": {
-      "type": "number",
-      "label": "Layout Height"
-    },
-    "x_column": {
-      "type": "column",
-      "label": "X Column"
-    },
-    "y_column": {
-      "type": "column",
-      "label": "Y Column"
-    },
-    "level_column": {
-      "type": "column",
-      "label": "Level Column"
-    },
-    "node_spacing": {
-      "type": "number",
-      "label": "Node Spacing"
-    },
-    "component_layout": {
-      "type": "string",
-      "label": "Component Layout"
-    },
-    "flip_x": {
-      "type": "boolean",
-      "label": "Flip X"
-    },
-    "flip_y": {
-      "type": "boolean",
-      "label": "Flip Y"
-    },
-    "curved_edges": {
-      "type": "boolean",
-      "label": "Curved Edges"
-    },
-    "edge_curvature": {
-      "type": "number",
-      "label": "Edge Curvature"
     }
   },
   "nodes": {
@@ -144,10 +76,6 @@
       "type": "number",
       "label": "Node Size Max"
     },
-    "node_shape": {
-      "type": "string",
-      "label": "Node Shape"
-    },
     "node_alpha": {
       "type": "number",
       "label": "Node Alpha"
@@ -159,10 +87,6 @@
     "node_stroke_color": {
       "type": "color",
       "label": "Node Stroke Color"
-    },
-    "node_color": {
-      "type": "color",
-      "label": "Node Color"
     },
     "node_colors": {
       "type": "object",
@@ -176,10 +100,6 @@
       "type": "boolean",
       "label": "Label Show"
     },
-    "label_column": {
-      "type": "column",
-      "label": "Label Column"
-    },
     "label_size": {
       "type": "number",
       "label": "Label Size"
@@ -188,49 +108,9 @@
       "type": "color",
       "label": "Label Color"
     },
-    "label_family": {
-      "type": "string",
-      "label": "Label Family"
-    },
-    "label_face": {
-      "type": "string",
-      "label": "Label Face"
-    },
-    "label_angle": {
-      "type": "number",
-      "label": "Label Angle"
-    },
-    "label_repel": {
-      "type": "boolean",
-      "label": "Label Repel"
-    },
-    "label_nudge_x": {
-      "type": "number",
-      "label": "Label Nudge X"
-    },
-    "label_nudge_y": {
-      "type": "number",
-      "label": "Label Nudge Y"
-    },
-    "tooltip_columns": {
-      "type": "string_array",
-      "label": "Tooltip Columns"
-    },
     "highlight_nodes": {
       "type": "string_array",
       "label": "Highlight Nodes"
-    },
-    "highlight_color": {
-      "type": "color",
-      "label": "Highlight Color"
-    },
-    "highlight_size": {
-      "type": "number",
-      "label": "Highlight Size"
-    },
-    "highlight_alpha": {
-      "type": "number",
-      "label": "Highlight Alpha"
     },
     "selected_nodes": {
       "type": "string_array",
@@ -241,14 +121,6 @@
     "edge_color": {
       "type": "color",
       "label": "Edge Color"
-    },
-    "edge_colors": {
-      "type": "object",
-      "label": "Edge Colors"
-    },
-    "edge_width": {
-      "type": "number",
-      "label": "Edge Width"
     },
     "edge_width_min": {
       "type": "number",
@@ -261,34 +133,6 @@
     "edge_alpha": {
       "type": "number",
       "label": "Edge Alpha"
-    },
-    "edge_linetype": {
-      "type": "string",
-      "label": "Edge Linetype"
-    },
-    "edge_arrow": {
-      "type": "boolean",
-      "label": "Edge Arrow"
-    },
-    "edge_arrow_size": {
-      "type": "number",
-      "label": "Edge Arrow Size"
-    },
-    "edge_label_show": {
-      "type": "boolean",
-      "label": "Edge Label Show"
-    },
-    "edge_label_column": {
-      "type": "column",
-      "label": "Edge Label Column"
-    },
-    "edge_label_size": {
-      "type": "number",
-      "label": "Edge Label Size"
-    },
-    "edge_label_color": {
-      "type": "color",
-      "label": "Edge Label Color"
     }
   },
   "legend": {
@@ -299,10 +143,6 @@
     "legend_position": {
       "type": "string",
       "label": "Legend Position"
-    },
-    "legend_title": {
-      "type": "string",
-      "label": "Legend Title"
     },
     "legend_text_size": {
       "type": "number",
@@ -315,28 +155,12 @@
     "legend_key_size": {
       "type": "number",
       "label": "Legend Key Size"
-    },
-    "legend_ncol": {
-      "type": "number",
-      "label": "Legend Ncol"
     }
   },
   "canvas_theme": {
     "title": {
       "type": "string",
       "label": "Title"
-    },
-    "subtitle": {
-      "type": "string",
-      "label": "Subtitle"
-    },
-    "caption": {
-      "type": "string",
-      "label": "Caption"
-    },
-    "title_show": {
-      "type": "boolean",
-      "label": "Title Show"
     },
     "title_size": {
       "type": "number",
@@ -347,8 +171,15 @@
       "label": "Title Color"
     },
     "title_face": {
-      "type": "string",
-      "label": "Title Face"
+      "type": "select",
+      "label": "Title Face",
+      "options": [
+        "plain",
+        "bold",
+        "italic",
+        "bold.italic"
+      ],
+      "default": "plain"
     },
     "title_hjust": {
       "type": "number",
@@ -361,14 +192,6 @@
     "ylab": {
       "type": "string",
       "label": "Ylab"
-    },
-    "x_axis_show": {
-      "type": "boolean",
-      "label": "X Axis Show"
-    },
-    "y_axis_show": {
-      "type": "boolean",
-      "label": "Y Axis Show"
     },
     "grid_show": {
       "type": "boolean",
@@ -412,10 +235,6 @@
     }
   },
   "interaction": {
-    "interactive": {
-      "type": "boolean",
-      "label": "Interactive"
-    },
     "drag_nodes": {
       "type": "boolean",
       "label": "Drag Nodes"
@@ -423,14 +242,6 @@
     "zoom_view": {
       "type": "boolean",
       "label": "Zoom View"
-    },
-    "pan_view": {
-      "type": "boolean",
-      "label": "Pan View"
-    },
-    "hover_neighborhood": {
-      "type": "boolean",
-      "label": "Hover Neighborhood"
     },
     "highlight_neighborhood": {
       "type": "boolean",
@@ -451,10 +262,6 @@
     "physics_enabled": {
       "type": "boolean",
       "label": "Physics Enabled"
-    },
-    "physics_solver": {
-      "type": "string",
-      "label": "Physics Solver"
     },
     "stabilize": {
       "type": "boolean",
@@ -478,17 +285,9 @@
       "type": "number",
       "label": "Dpi"
     },
-    "html_width": {
-      "type": "number",
-      "label": "Html Width"
-    },
     "html_height": {
       "type": "number",
       "label": "Html Height"
-    },
-    "export_formats": {
-      "type": "string_array",
-      "label": "Export Formats"
     }
   }
 }

@@ -1,0 +1,12 @@
+{
+  "id":"go_kegg",
+  "label":"GO / KEGG Bar + Count Dots",
+  "plugin_id":"go_kegg_enrichment_bar_bubble",
+  "plot_type":"grouped_bar_dot",
+  "mode":"top 5 per ontology",
+  "params":"params.json",
+  "inputs":{"input":"input/example_enrichment.csv"},
+  "gallery_png":"go_kegg.png",
+  "expected":"expected/result.png",
+  "reproduce":{"command":"Rscript plugins/go_kegg_enrichment_bar_bubble/plot.R --input plugins/go_kegg_enrichment_bar_bubble/examples/go_kegg/input/example_enrichment.csv --params plugins/go_kegg_enrichment_bar_bubble/examples/go_kegg/params.json --output /tmp/go_kegg_enrichment_bar_bubble"}
+}

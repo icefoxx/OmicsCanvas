@@ -1,6 +1,6 @@
 # Plot registry (v1.0)
 
-Implements `01_plot_registry_refactor_v1.0.md`. Metadata only — plotting engines are unchanged.
+Implements `docs/design/01_plot_registry_refactor_v1.0.md`. Metadata only — plotting engines are unchanged.
 
 ## Layout
 

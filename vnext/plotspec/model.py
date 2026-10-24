@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from vnext import __version__
+
 SCHEMA_PATH = Path(__file__).with_name("schema.json")
 
 
@@ -141,7 +143,7 @@ def empty_spec(skill_id: str, skill_version: str = "1.0.0") -> dict[str, Any]:
         "provenance": {
             "generated_by_ai": False,
             "user_modified": False,
-            "framework_version": "0.1.0",
+            "framework_version": __version__,
         },
     }
 

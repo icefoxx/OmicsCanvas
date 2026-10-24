@@ -1,0 +1,13 @@
+{
+  "title": "CAB_demo",
+  "title_show": true,
+  "cell_type_order": ["Astrocytes", "Microglia", "Oligo", "OPC", "GLUT/GNB4", "GLUT/RGS6", "GABA/PVALB", "GABA/SST"],
+  "marker_order": ["FLT1", "SLC1A2", "C1QB", "MOBP", "GNB4", "RGS6", "GAD1", "SST"],
+  "class_colors": {"Non-neuronal": "#8DA0CB", "Glutamatergic": "#377EB8", "GABAergic": "#E41A1C"},
+  "average_transcript_colors": ["#FFF7EC", "#D7301F"],
+  "count_label": "Cell Number (x10^3)",
+  "average_legend_title": "Average transcript",
+  "size_legend_title": "% cell expressed",
+  "width": 10,
+  "height": 7
+}

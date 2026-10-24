@@ -64,14 +64,14 @@ When more than one feature is supplied, densities are multiplied across features
 
 ## SCA Compatibility
 
-The SCA helper functions are copied verbatim into `reference_sca_helpers/GsDenPlot.R` and sourced locally. The original SCA files under `/Users/qzhang10/workstation/development/SCA/` are not modified. The Seurat-specific `GsDenPlot()` wrapper is not used by the CLI; only `plotFeatureDen`, `densityPlot`, `calDensity`, and `scale01` are invoked.
+The SCA helper functions are copied verbatim into `R/sca/GsDenPlot.R` and sourced locally. The original SCA files in the upstream SCA library (snapshot in `R/upstream_sca/`) are not modified. The Seurat-specific `GsDenPlot()` wrapper is not used by the CLI; only `plotFeatureDen`, `densityPlot`, `calDensity`, and `scale01` are invoked.
 
 ## Examples
 
 Run all examples:
 
 ```bash
-plugins/feature_density_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/feature_density_plot/run_all_examples.sh <repo-root>
 ```
 
 This writes `/tmp/feature_density_plot_*_out` and updates:

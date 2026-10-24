@@ -2,7 +2,7 @@
 
 This plugin standardizes the SCA `violinPlot.R::classicVlnPlot()` visual style for CLI use.
 
-The original `classicVlnPlot` is Seurat-centric (it uses `ckFeas`, which reads `seu@assays`), so it cannot be called directly on CSV inputs. This plugin REIMPLEMENTS the same ggplot2 layers and SCA visual style (right-side y axis with the SCA label trick, blank panel with black border, bold strip text, optional boxplot/median/dot overlays, optional annotation tile strip via patchwork) operating directly on a long-format data frame. The original SCA source is preserved under `reference_sca_helpers/violinPlot.R` for reference only.
+The original `classicVlnPlot` is Seurat-centric (it uses `ckFeas`, which reads `seu@assays`), so it cannot be called directly on CSV inputs. This plugin REIMPLEMENTS the same ggplot2 layers and SCA visual style (right-side y axis with the SCA label trick, blank panel with black border, bold strip text, optional boxplot/median/dot overlays, optional annotation tile strip via patchwork) operating directly on a long-format data frame. The original SCA source is preserved in `R/sca/violinPlot.R` for reference only.
 
 ## Runtime
 
@@ -103,7 +103,7 @@ A cells x features expression table (first column is the cell id) plus an annota
 Run all examples:
 
 ```bash
-plugins/violin_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/violin_plot/run_all_examples.sh <repo-root>
 ```
 
 This writes `/tmp/violin_plot_*_out` and updates:

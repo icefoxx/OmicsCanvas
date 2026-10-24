@@ -16,41 +16,5 @@
     "bundle": "../examples/basic",
     "gallery_png": "basic.png",
     "params_filename": "example_basic_params.json"
-  },
-  {
-    "id": "custom_layout",
-    "label": "custom_layout",
-    "plugin_id": "interactive_enrichment_lollipop",
-    "plot_type": "custom_layout",
-    "mode": "",
-    "params": "../examples/custom_layout/params.json",
-    "inputs": {
-      "input": "input/example_input.csv"
-    },
-    "expected": "../examples/custom_layout/expected/result.png",
-    "reproduce": {
-      "command": "Rscript plugins/interactive_enrichment_lollipop/plot.R --input plugins/interactive_enrichment_lollipop/examples/custom_layout/input/example_input.csv --params plugins/interactive_enrichment_lollipop/examples/custom_layout/params.json --output /tmp/interactive_enrichment_lollipop_custom_layout_out"
-    },
-    "bundle": "../examples/custom_layout",
-    "gallery_png": "custom_layout.png",
-    "params_filename": "example_custom_layout_params.json"
-  },
-  {
-    "id": "interactive",
-    "label": "interactive",
-    "plugin_id": "interactive_enrichment_lollipop",
-    "plot_type": "interactive",
-    "mode": "",
-    "params": "../examples/interactive/params.json",
-    "inputs": {
-      "input": "input/example_input.csv"
-    },
-    "expected": "../examples/interactive/expected/result.png",
-    "reproduce": {
-      "command": "Rscript plugins/interactive_enrichment_lollipop/plot.R --input plugins/interactive_enrichment_lollipop/examples/interactive/input/example_input.csv --params plugins/interactive_enrichment_lollipop/examples/interactive/params.json --output /tmp/interactive_enrichment_lollipop_interactive_out"
-    },
-    "bundle": "../examples/interactive",
-    "gallery_png": "interactive.png",
-    "params_filename": "example_interactive_params.json"
   }
 ]

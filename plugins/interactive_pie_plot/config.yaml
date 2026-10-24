@@ -5,8 +5,23 @@ description: Highly customizable pie and donut plot with static ggplot2 and inte
 language: R
 entrypoint: plot.R
 category: Composition
+subcategory: General
 status: stable
 inputs:
-  - {id: input, type: table, formats: [csv, tsv, txt], required: true}
-outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, pie_data_used.csv, selected_rows.csv]
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- run.log
+- pie_data_used.csv
+- selected_rows.csv
 runtime: Rscript plugins/interactive_pie_plot/plot.R --input input.csv --params params.json --output output_dir

@@ -96,7 +96,7 @@
   },
   "xAxis": {
     "xlab": { "type": "string", "label": "X axis label", "default": "" },
-    "x_title_show": { "type": "boolean", "label": "Show x title", "default": false },
+    "x_title_show": { "type": "boolean", "label": "Show x title (default: shown when an x title is set)", "default": null },
     "x_axis_text_size": { "type": "number", "label": "X tick font-size", "default": 10 },
     "x_min": { "type": "number", "label": "X min-value", "default": null },
     "x_max": { "type": "number", "label": "X max-value", "default": null },
@@ -106,13 +106,13 @@
   },
   "yAxis": {
     "ylab": { "type": "string", "label": "Y axis label", "default": "" },
-    "y_title_show": { "type": "boolean", "label": "Show y title", "default": false },
+    "y_title_show": { "type": "boolean", "label": "Show y title (default: shown when a y title is set)", "default": null },
     "y_axis_text_size": { "type": "number", "label": "Y tick font-size", "default": 10 },
     "axis_text_color": { "type": "color", "label": "Axis text color", "default": "#333333" }
   },
   "title": {
     "title_show": { "type": "boolean", "label": "Title switch", "default": true },
-    "title": { "type": "string", "label": "Title text", "default": "ChiPlot" },
+    "title": { "type": "string", "label": "Title text", "default": "" },
     "title_size": { "type": "number", "label": "Title font-size", "default": 14 },
     "title_color": { "type": "color", "label": "Title fill", "default": "#222222" },
     "title_face": {
@@ -126,7 +126,7 @@
   },
   "legend": {
     "legend_show": { "type": "boolean", "label": "Legend switch", "default": true },
-    "legend_title": { "type": "string", "label": "Legend title", "default": "ChiPlot" },
+    "legend_title": { "type": "string", "label": "Legend title", "default": "" },
     "legend_position": {
       "type": "select",
       "label": "Legend position",
@@ -135,9 +135,9 @@
     },
     "legend_text_size": { "type": "number", "label": "Legend text size", "default": 10 },
     "legend_title_size": { "type": "number", "label": "Legend title size", "default": 11 },
-    "size_legend_title": { "type": "string", "label": "Size legend title", "default": "Size" },
+    "size_legend_title": { "type": "string", "label": "Size legend title", "default": "Set size" },
     "size_legend_breaks": { "type": "number_array", "label": "Size legend breaks", "default": [] },
-    "show_size_legend": { "type": "boolean", "label": "Show size legend", "default": false }
+    "show_size_legend": { "type": "boolean", "label": "Show size legend", "default": true }
   },
   "export": {
     "interactive": { "type": "boolean", "label": "Write interactive HTML", "default": false },

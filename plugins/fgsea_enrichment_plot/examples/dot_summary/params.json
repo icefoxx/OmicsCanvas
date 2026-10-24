@@ -8,7 +8,7 @@
   "dot_summary_split": "sign",
   "dot_summary_facet": true,
   "dot_summary_top_n": 12,
-  "dot_summary_label_show": true,
+  "dot_summary_label_show": false,
   "dot_summary_xlab": "Normalized Enrichment Score",
   "dot_summary_ylab": "Enriched term",
   "title": "Activated and suppressed pathways",

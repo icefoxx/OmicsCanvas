@@ -1,0 +1,15 @@
+{
+  "term_column":"Description",
+  "category_column":"Ontology",
+  "pvalue_column":"pvalue",
+  "adjusted_pvalue_column":"p.adjust",
+  "count_column":"GeneCount",
+  "significance_column":"pvalue",
+  "top_n":5,
+  "title":"GO + KEGG Enrichment",
+  "width":11,
+  "height":7,
+  "row_height":0.42,
+  "category_gap":0.35,
+  "category_colors":{"Biological Process":"#F4B6B8","Cellular Component":"#A9D6E5","Molecular Function":"#C7B8EA","KEGG Pathway":"#B8D8BA"}
+}

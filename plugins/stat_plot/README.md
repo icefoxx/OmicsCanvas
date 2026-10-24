@@ -75,7 +75,7 @@ C0003,T,S3,Disease,G2M,Lymphoid
 Run all examples:
 
 ```bash
-plugins/stat_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/stat_plot/run_all_examples.sh <repo-root>
 ```
 
 This writes `/tmp/stat_plot_*_out` and updates:
@@ -86,12 +86,12 @@ plugins/stat_plot/all_examples_gallery/stat_plot_gallery.png
 
 ## SCA Compatibility Notes
 
-- Wraps `statPlot.R::statPlot()` plus SCA helpers `formatDF4statPlot`, `paletteCustomize`, `themeDefault`, `blendcolors`, `toUpperX`, `get_legend.local`, `add_grob.local`, `ckPacsR` (copied locally under `reference_sca_helpers/`).
+- Wraps `statPlot.R::statPlot()` plus SCA helpers `formatDF4statPlot`, `paletteCustomize`, `themeDefault`, `blendcolors`, `toUpperX`, `get_legend.local`, `add_grob.local`, `ckPacsR` (copied locally under the shared `R/sca/` library).
 - `paletteCustomize` is patched to read `assets/palettes.rds` by default.
 - `ckPacsR` is overridden with a non-installing stub so CLI runs never trigger interactive package installation.
 - `force` is always `TRUE` in CLI mode to avoid the interactive `>100 levels` prompt.
 - `chord` uses base graphics via `recordPlot()`; the wrapper replays the recorded plot onto each output device (svg/pdf/png).
-- One local compatibility patch was applied to the copied `statPlot.R`: a dead, erroring line in the sankey legend block (`legend <- do.call(cbind, .legend.sankey)` after `rbind`, where the `legend` variable is never used downstream) was removed so sankey renders standalone. The original SCA files under `/Users/qzhang10/workstation/development/SCA/` are not modified.
+- One local compatibility patch was applied to the copied `statPlot.R`: a dead, erroring line in the sankey legend block (`legend <- do.call(cbind, .legend.sankey)` after `rbind`, where the `legend` variable is never used downstream) was removed so sankey renders standalone. The original SCA files in the upstream SCA library (snapshot in `R/upstream_sca/`) are not modified.
 ## Reproducible examples
 
 Bundles are in `plugins/stat_plot/examples/<id>/`. Each contains `params.json`, copied command inputs under `input/`, and `expected/result.png`. `manifest.json` is the machine-readable entry point and records how to rerun the example.

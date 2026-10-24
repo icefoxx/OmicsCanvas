@@ -4,4 +4,4 @@ Use `plot_kind: volcano` for custom regions and point groups. Region definitions
 
 `avg_volcano` and `percent_volcano` remain on the SCA reference renderer. Volcano point-group colors take precedence over ordinary gradient/DE rendering, and region rectangles are drawn before points by default.
 
-Run `plugins/sca_volcano_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas` to regenerate bundles and gallery assets. A successful run must produce SVG, PDF, PNG, figure metadata, and the run log.
+Run `plugins/sca_volcano_plot/run_all_examples.sh <repo-root>` to regenerate bundles and gallery assets. A successful run must produce SVG, PDF, PNG, figure metadata, and the run log.

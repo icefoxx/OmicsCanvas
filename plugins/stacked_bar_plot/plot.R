@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 
-# BioFigureAI Plot Plugin: Stacked Bar Plot (ChiPlot-style)
+# BioFigureAI Plot Plugin: Stacked Bar Plot (CAB_demo-style)
 # ------------------------------------------------------------
 # Highly customizable stacked / dodged bar composition chart.
-# Matches ChiPlot-style controls: canvas, x/y axes (ticks, grid,
+# Matches CAB_demo-style controls: canvas, x/y axes (ticks, grid,
 # labels, text style), title, background, bar style/orientation,
 # per-category colors, bar text, and legend layout.
 #
@@ -221,7 +221,7 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   }
   if (capabilities('cairo')) {
     draw_with_retry(function(w, h) grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
-    draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi, type = 'cairo'))
+    draw_with_retry(function(w, h) (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
   } else {
     draw_with_retry(function(w, h) grDevices::pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
     draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
@@ -429,7 +429,7 @@ fill_cols <- resolve_palette(n_cat, params, categories)
 names(fill_cols) <- categories
 
 # ------------------------------------------------------------
-# Plot parameters (ChiPlot-style controls)
+# Plot parameters (CAB_demo-style controls)
 # ------------------------------------------------------------
 
 orientation <- tolower(as.character(get_param_any(params, c('orientation', 'bar_orientation', 'type'), 'horizontal')[1]))
@@ -459,7 +459,7 @@ bar_stroke_opacity <- num_param(params, 'bar_stroke_opacity', num_param(params, 
 
 # Bar text
 bar_text_show <- as_bool(get_param_any(params, c('bar_text_show', 'show_bar_text', 'show_value', 'show_label'), FALSE), FALSE)
-# Accept either ggplot size (~3–5) or CSS-like pt sizes (~12–16 from ChiPlot UI)
+# Accept either ggplot size (~3–5) or CSS-like pt sizes (~12–16 from CAB_demo UI)
 bar_text_size_raw <- num_param(params, 'bar_text_size', num_param(params, 'font_size_bar_text', 10))
 bar_text_size <- if (bar_text_size_raw > 8) bar_text_size_raw / ggplot2::.pt else bar_text_size_raw
 bar_text_fill <- get_param_any(params, c('bar_text_fill', 'bar_text_color'), '#000000')
@@ -472,7 +472,7 @@ bar_text_min <- num_param(params, 'bar_text_min_value', 0)
 
 # Title
 title_show <- as_bool(get_param_any(params, c('title_show', 'title_switch'), FALSE), FALSE)
-title_text <- as.character(get_param_any(params, c('title', 'title_text', 'text'), 'ChiPlot')[1] %||% 'ChiPlot')
+title_text <- as.character(get_param_any(params, c('title', 'title_text', 'text'), '')[1] %||% '')
 title_size <- num_param(params, 'title_size', num_param(params, 'title_font_size', 14))
 title_fill <- get_param_any(params, c('title_fill', 'title_color'), '#000000')
 title_weight <- get_param_any(params, c('title_font_weight', 'title_weight'), 'normal')
@@ -487,7 +487,7 @@ right_title_text <- as.character(get_param_any(params, c('right_title', 'right_t
 right_title_size <- num_param(params, 'right_title_size', 12)
 right_title_fill <- get_param_any(params, c('right_title_fill', 'right_title_color'), '#000000')
 
-# Title background strip (ChiPlot-style)
+# Title background strip (CAB_demo-style)
 title_bg_show <- as_bool(get_param_any(params, c('title_background_show', 'title_bg_switch'), FALSE), FALSE)
 title_bg_height <- num_param(params, 'title_background_height', 30)
 title_bg_fill <- get_param_any(params, c('title_background_fill', 'title_bg_fill'), '#E8E8E8')
@@ -517,8 +517,8 @@ y_text_show <- as_bool(get_param_any(params, c('y_axis_text_show', 'yaxis_text_s
 
 x_rotate <- num_param(params, 'x_axis_text_angle', num_param(params, 'x_rotate', num_param(params, 'rotate', 0)))
 y_rotate <- num_param(params, 'y_axis_text_angle', num_param(params, 'y_rotate', 0))
-# ChiPlot defaults: horizontal value-axis labels -45; vertical sample labels 45
-if (is.null(params$x_axis_text_angle) && is.null(params$x_rotate) && is.null(params$rotate)) {
+# CAB_demo defaults: horizontal value-axis labels -45; vertical sample labels 45
+if (is.null(params[['x_axis_text_angle']]) && is.null(params[['x_rotate']]) && is.null(params[['rotate']])) {
   x_rotate <- if (horizontal) -45 else 45
 }
 
@@ -589,7 +589,12 @@ grid_stroke_opacity <- num_param(params, 'grid_stroke_opacity', 0.1)
 
 # Legend
 legend_show <- as_bool(get_param_any(params, c('legend_show', 'legend_switch', 'show_legend'), TRUE), TRUE)
-legend_title <- as.character(get_param_any(params, c('legend_title', 'legend_name', 'legend_text'), 'ChiPlot')[1] %||% 'ChiPlot')
+legend_title_raw <- trimws(as.character(get_param_any(params, c('legend_title', 'legend_name', 'legend_text'), '')[1] %||% ''))
+if (!nzchar(legend_title_raw)) {
+  legend_title <- NULL
+} else {
+  legend_title <- legend_title_raw
+}
 legend_title_size <- num_param(params, 'legend_title_size', 16)
 legend_title_fill <- get_param_any(params, c('legend_title_fill', 'legend_title_color'), '#000000')
 legend_title_weight <- get_param_any(params, c('legend_title_font_weight', 'legend_title_weight'), 'bold')
@@ -611,7 +616,7 @@ legend_ncol <- as.integer(num_param(params, 'legend_columns', num_param(params, 
 legend_spacing <- num_param(params, 'legend_spacing', 20)
 legend_reverse <- as_bool(get_param(params, 'legend_reverse', FALSE), FALSE)
 
-# Color-row annotation strip (ChiPlot "Color row")
+# Color-row annotation strip (CAB_demo "Color row")
 color_row_show <- as_bool(get_param_any(params, c('color_row_show', 'color_row_switch', 'show_color_row'), FALSE), FALSE)
 color_row_colors <- as_named_character(get_param(params, 'color_row_colors', NULL))
 
@@ -648,7 +653,7 @@ plot_df$sample <- factor(plot_df$sample, levels = ordered_samples)
 # For display labels: show group only once (mid of block) if multiple samples share a group
 show_group_labels <- as_bool(get_param_any(params, c('show_group_labels', 'group_label_mode'), TRUE), TRUE)
 y_label_mode <- tolower(as.character(get_param_any(params, c('y_label_mode', 'categorical_label_mode'), 'group')[1]))
-# group: label by group (ChiPlot style) | sample: every sample | both
+# group: label by group (CAB_demo style) | sample: every sample | both
 
 if (y_label_mode %in% c('sample', 'id', 'row')) {
   plot_df$axis_label <- as.character(plot_df$sample)
@@ -685,7 +690,7 @@ if (position_mode == 'dodge') {
 }
 
 # Position object.
-# ChiPlot stacks the first legend category at the origin (left for horizontal bars).
+# CAB_demo stacks the first legend category at the origin (left for horizontal bars).
 # ggplot2 position_stack draws the first factor level last along the stack unless reverse=TRUE.
 stack_reverse <- as_bool(get_param_any(params, c('stack_reverse', 'reverse_position_stack'), TRUE), TRUE)
 if (as_bool(get_param(params, 'reverse_stack', FALSE), FALSE)) {
@@ -724,6 +729,8 @@ p <- p +
 
 # Bar text
 if (bar_text_show) {
+  # bar_text_anchor: start / middle / end along the bar direction
+  text_just <- switch(tolower(as.character(bar_text_anchor)[1]), start = 0, end = 1, 0.5)
   label_df <- plot_df[plot_df$label_value > bar_text_min, , drop = FALSE]
   if (nrow(label_df) > 0) {
     label_df$label_str <- paste0(
@@ -740,7 +747,7 @@ if (bar_text_show) {
           colour = bar_text_fill,
           fontface = face_from_style(bar_text_weight, bar_text_style),
           family = font_family,
-          hjust = 0.5, vjust = 0.5,
+          hjust = text_just, vjust = 0.5,
           inherit.aes = FALSE
         )
       } else {
@@ -751,7 +758,7 @@ if (bar_text_show) {
           colour = bar_text_fill,
           fontface = face_from_style(bar_text_weight, bar_text_style),
           family = font_family,
-          hjust = 0.5, vjust = 0.5,
+          hjust = text_just, vjust = 0.5,
           inherit.aes = FALSE
         )
       }
@@ -765,7 +772,7 @@ if (bar_text_show) {
           colour = bar_text_fill,
           fontface = face_from_style(bar_text_weight, bar_text_style),
           family = font_family,
-          hjust = 0.5, vjust = 0.5,
+          hjust = 0.5, vjust = text_just,
           inherit.aes = FALSE
         )
       } else {
@@ -776,7 +783,7 @@ if (bar_text_show) {
           colour = bar_text_fill,
           fontface = face_from_style(bar_text_weight, bar_text_style),
           family = font_family,
-          hjust = 0.5, vjust = 0.5,
+          hjust = 0.5, vjust = text_just,
           inherit.aes = FALSE
         )
       }
@@ -807,7 +814,27 @@ if (horizontal) {
 sample_to_group <- setNames(as.character(plot_df$group), as.character(plot_df$sample))
 sample_to_group <- sample_to_group[!duplicated(names(sample_to_group))]
 reverse_y <- as_bool(get_param(params, 'reverse_y', TRUE), TRUE)
+reverse_x <- as_bool(get_param(params, 'reverse_x', FALSE), FALSE)
 cat_limits <- if (horizontal && reverse_y) rev(levels(plot_df$sample)) else levels(plot_df$sample)
+x_cat_limits <- if (reverse_x) rev(levels(plot_df$sample)) else levels(plot_df$sample)
+cat_axis_levels <- if (horizontal) cat_limits else x_cat_limits
+
+# Group-centered labels when multiple samples share a group (CAB_demo style)
+use_group_labels <- (
+  y_label_mode %in% c('group', 'group_center', 'auto', '') &&
+  show_group_labels &&
+  length(unique(sample_to_group)) < length(ordered_samples)
+)
+mid_breaks <- character()
+mid_labels <- character()
+if (use_group_labels) {
+  for (g in levels(plot_df$group)) {
+    smps <- ordered_samples[ordered_samples %in% names(sample_to_group)[sample_to_group == g]]
+    if (length(smps) == 0) next
+    mid_breaks <- c(mid_breaks, smps[ceiling(length(smps) / 2)])
+    mid_labels <- c(mid_labels, g)
+  }
+}
 
 if (horizontal) {
   if (position_mode == 'fill') {
@@ -817,31 +844,18 @@ if (horizontal) {
   } else {
     p <- p + scale_x_continuous(expand = expansion(mult = c(0, 0.02)))
   }
-
-  # Group-centered labels when multiple samples share a group (ChiPlot style)
-  use_group_labels <- (
-    y_label_mode %in% c('group', 'group_center', 'auto', '') &&
-    show_group_labels &&
-    length(unique(sample_to_group)) < length(ordered_samples)
-  )
   if (use_group_labels) {
-    mid_breaks <- character()
-    mid_labels <- character()
-    for (g in levels(plot_df$group)) {
-      smps <- ordered_samples[ordered_samples %in% names(sample_to_group)[sample_to_group == g]]
-      if (length(smps) == 0) next
-      mid_breaks <- c(mid_breaks, smps[ceiling(length(smps) / 2)])
-      mid_labels <- c(mid_labels, g)
-    }
     p <- p + scale_y_discrete(limits = cat_limits, breaks = mid_breaks, labels = mid_labels)
   } else {
     p <- p + scale_y_discrete(limits = cat_limits)
   }
 } else {
   # Vertical bars: discrete samples on x, numeric stack on y
-  reverse_x <- as_bool(get_param(params, 'reverse_x', FALSE), FALSE)
-  x_cat_limits <- if (reverse_x) rev(levels(plot_df$sample)) else levels(plot_df$sample)
-  p <- p + scale_x_discrete(limits = x_cat_limits)
+  if (use_group_labels) {
+    p <- p + scale_x_discrete(limits = x_cat_limits, breaks = mid_breaks, labels = mid_labels)
+  } else {
+    p <- p + scale_x_discrete(limits = x_cat_limits)
+  }
   if (position_mode == 'fill') {
     p <- p + scale_y_continuous(expand = expansion(mult = c(0, 0.02)), labels = scales::percent_format(accuracy = 1))
   } else if (!is.null(num_limits)) {
@@ -851,10 +865,47 @@ if (horizontal) {
   }
 }
 
+# Dashed separators between group blocks (multiple samples per group)
+group_sep_show <- as_bool(get_param_any(params, c('group_sep_show', 'show_group_separators', 'group_dash_lines'), TRUE), TRUE)
+group_sep_color <- as.character(get_param_any(params, c('group_sep_color', 'group_separator_color'), '#888888')[1] %||% '#888888')
+group_sep_width <- num_param(params, 'group_sep_width', 0.35)
+group_sep_linetype <- as.character(get_param_any(params, c('group_sep_linetype'), 'dashed')[1] %||% 'dashed')
+group_ids <- unname(sample_to_group[as.character(cat_axis_levels)])
+group_sep_pos <- numeric(0)
+if (
+  group_sep_show &&
+  length(cat_axis_levels) >= 2 &&
+  length(unique(na.omit(group_ids))) > 1 &&
+  length(unique(na.omit(group_ids))) < length(cat_axis_levels)
+) {
+  group_sep_pos <- which(
+    group_ids[-1] != group_ids[-length(group_ids)] &
+      !is.na(group_ids[-1]) &
+      !is.na(group_ids[-length(group_ids)])
+  ) + 0.5
+}
+if (length(group_sep_pos) > 0) {
+  if (horizontal) {
+    p <- p + geom_hline(
+      yintercept = group_sep_pos,
+      linetype = group_sep_linetype,
+      colour = group_sep_color,
+      linewidth = group_sep_width
+    )
+  } else {
+    p <- p + geom_vline(
+      xintercept = group_sep_pos,
+      linetype = group_sep_linetype,
+      colour = group_sep_color,
+      linewidth = group_sep_width
+    )
+  }
+}
+
 # Labs
 xlab_final <- if (x_label_show) x_label else NULL
 ylab_final <- if (y_label_show) y_label else NULL
-title_final <- if (title_show) title_text else NULL
+title_final <- if (title_show && nzchar(title_text)) title_text else NULL
 
 p <- p + labs(title = title_final, x = xlab_final, y = ylab_final)
 
@@ -926,7 +977,7 @@ p <- p + theme_classic(base_family = font_family) + theme(
   panel.grid.minor = element_blank(),
   legend.position = if (legend_show) legend_position else 'none',
   legend.direction = legend_direction,
-  legend.title = element_text(
+  legend.title = if (is.null(legend_title)) element_blank() else element_text(
     size = legend_title_size,
     colour = legend_title_fill,
     face = face_from_style(legend_title_weight, legend_title_style),

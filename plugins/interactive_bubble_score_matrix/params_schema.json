@@ -1,12 +1,286 @@
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "title":"Interactive Bubble Score Matrix parameters",
-  "type":"object",
-  "properties":{
-    "row_column":{"type":"string"},"metric_columns":{"type":"array","items":{"type":"string"}},"score_column":{"type":"string"},"score_columns":{"type":"array","items":{"type":"string"}},"row_order":{"type":"array","items":{"type":"string"}},"rows_include":{"type":"array","items":{"type":"string"}},"rows_exclude":{"type":"array","items":{"type":"string"}},"sort_rows":{"type":"boolean"},"sort_by_score":{"type":"boolean"},"transpose":{"type":"boolean"},"na_action":{"enum":["keep","drop"]},
-    "left_geom":{"enum":["circle","diamond","square"]},"left_color_scale":{"type":"string"},"left_colors":{"type":"array","items":{"type":"string"}},"left_limits":{"type":"array","items":{"type":"number"}},"left_breaks":{"type":"array","items":{"type":"number"}},"left_na_color":{"type":"string"},"left_size":{"type":"number"},"left_size_range":{"type":"array","items":{"type":"number"}},"left_alpha":{"type":"number"},"left_stroke":{"type":"string"},"left_stroke_width":{"type":"number"},"left_label_show":{"type":"boolean"},"left_label_digits":{"type":"integer"},"left_label_color":{"type":"string"},"left_label_size":{"type":"number"},"left_panel_title":{"type":"string"},"left_panel_width":{"type":"number"},"metric_header_show":{"type":"boolean"},"metric_header_angle":{"type":"number"},"metric_header_size":{"type":"number"},"metric_order":{"type":"array","items":{"type":"string"}},
-    "score_show":{"type":"boolean"},"score_titles":{"oneOf":[{"type":"array","items":{"type":"string"}},{"type":"object","additionalProperties":{"type":"string"}}]},"score_geoms":{"oneOf":[{"type":"array","items":{"type":"string"}},{"type":"object","additionalProperties":{"type":"string"}}]},"score_colors":{"type":"array","items":{"type":"string"}},"score_color_sets":{"type":"array"},"score_limits":{"type":"array"},"score_breaks":{"type":"array"},"score_fills":{"type":"array"},"score_alphas":{"type":"array"},"score_borders":{"type":"array"},"score_fill":{"type":"string"},"score_alpha":{"type":"number"},"score_border":{"type":"string"},"score_border_width":{"type":"number"},"score_label_show":{"type":"boolean"},"score_label_digits":{"type":"integer"},"score_label_color":{"type":"string"},"score_label_size":{"type":"number"},"score_panel_title":{"type":"string"},"score_panel_title_show":{"type":"boolean"},"score_panel_title_size":{"type":"number"},"score_panel_title_angle":{"type":"number"},"score_panel_width":{"type":"number"},"score_panel_widths":{"type":"array"},"score_panel_gap":{"type":"number"},"score_panel_border_show":{"type":"boolean"},"score_zero":{"type":"number"},"score_direction":{"type":"string"},"score_column_order":{"type":"array","items":{"type":"string"}},"score_scale_independent":{"type":"boolean"},"score_axis_show":{"type":"boolean"},"score_axis_labels":{"type":"array"},"score_axis_label":{"type":"string"},
-    "row_separator_show":{"type":"boolean"},"row_separator_color":{"type":"string"},"row_separator_linetype":{"type":"string"},"left_right_gap":{"type":"number"},"panel_border_show":{"type":"boolean"},"background":{"type":"string"},"title":{"type":"string"},"subtitle":{"type":"string"},"title_show":{"type":"boolean"},"xlab":{"type":"string"},"ylab":{"type":"string"},"width":{"type":"number"},"height":{"type":"number"},"dpi":{"type":"number"},"font_family":{"type":"string"},"base_size":{"type":"number"},"legend_show":{"type":"boolean"},"legend_position":{"type":"string"},"legend_text_size":{"type":"number"},"legend_key_size":{"type":"number"},"legend_ncol":{"type":"integer"},
-    "interactive":{"type":"boolean"},"tooltip_columns":{"type":"array","items":{"type":"string"}},"zoom":{"type":"boolean"},"pan":{"type":"boolean"},"selectable":{"type":"boolean"},"lasso_select":{"type":"boolean"},"reset_view":{"type":"boolean"},"hover_show_metric":{"type":"boolean"},"hover_show_score":{"type":"boolean"}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Interactive Bubble Score Matrix parameters",
+  "type": "object",
+  "properties": {
+    "row_column": {
+      "type": "column"
+    },
+    "metric_columns": {
+      "type": "columns",
+      "items": {
+        "type": "string"
+      }
+    },
+    "score_column": {
+      "type": "column"
+    },
+    "score_columns": {
+      "type": "columns",
+      "items": {
+        "type": "string"
+      }
+    },
+    "row_order": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rows_include": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rows_exclude": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sort_rows": {
+      "type": "boolean"
+    },
+    "sort_by_score": {
+      "type": "boolean"
+    },
+    "transpose": {
+      "type": "boolean"
+    },
+    "na_action": {
+      "enum": [
+        "keep",
+        "drop"
+      ]
+    },
+    "left_geom": {
+      "enum": [
+        "circle",
+        "diamond",
+        "square"
+      ]
+    },
+    "left_colors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "left_limits": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "left_na_color": {
+      "type": "color"
+    },
+    "left_size": {
+      "type": "number"
+    },
+    "left_alpha": {
+      "type": "number"
+    },
+    "left_stroke_width": {
+      "type": "number"
+    },
+    "left_label_show": {
+      "type": "boolean"
+    },
+    "left_label_digits": {
+      "type": "integer"
+    },
+    "left_label_color": {
+      "type": "color"
+    },
+    "left_label_size": {
+      "type": "number"
+    },
+    "left_panel_width": {
+      "type": "number"
+    },
+    "metric_header_angle": {
+      "type": "number"
+    },
+    "metric_header_size": {
+      "type": "number"
+    },
+    "metric_order": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "score_titles": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "score_geoms": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "score_colors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "score_color_sets": {
+      "type": "array"
+    },
+    "score_limits": {
+      "type": "array"
+    },
+    "score_alphas": {
+      "type": "array"
+    },
+    "score_borders": {
+      "type": "array"
+    },
+    "score_alpha": {
+      "type": "number"
+    },
+    "score_border": {
+      "type": "string"
+    },
+    "score_border_width": {
+      "type": "number"
+    },
+    "score_label_show": {
+      "type": "boolean"
+    },
+    "score_label_digits": {
+      "type": "integer"
+    },
+    "score_label_color": {
+      "type": "color"
+    },
+    "score_label_size": {
+      "type": "number"
+    },
+    "score_panel_title_show": {
+      "type": "boolean"
+    },
+    "score_panel_title_size": {
+      "type": "number"
+    },
+    "score_panel_title_angle": {
+      "type": "number"
+    },
+    "score_panel_width": {
+      "type": "number"
+    },
+    "score_panel_widths": {
+      "type": "array"
+    },
+    "score_panel_gap": {
+      "type": "number"
+    },
+    "score_direction": {
+      "type": "string"
+    },
+    "score_column_order": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "score_scale_independent": {
+      "type": "boolean"
+    },
+    "row_separator_show": {
+      "type": "boolean"
+    },
+    "row_separator_color": {
+      "type": "color"
+    },
+    "row_separator_linetype": {
+      "type": "string"
+    },
+    "left_right_gap": {
+      "type": "number"
+    },
+    "panel_border_show": {
+      "type": "boolean"
+    },
+    "background": {
+      "type": "color"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "title_show": {
+      "type": "boolean"
+    },
+    "xlab": {
+      "type": "string"
+    },
+    "ylab": {
+      "type": "string"
+    },
+    "width": {
+      "type": "number"
+    },
+    "height": {
+      "type": "number"
+    },
+    "dpi": {
+      "type": "number"
+    },
+    "font_family": {
+      "type": "string"
+    },
+    "base_size": {
+      "type": "number"
+    },
+    "legend_show": {
+      "type": "boolean"
+    },
+    "legend_position": {
+      "type": "string"
+    },
+    "legend_text_size": {
+      "type": "number"
+    },
+    "legend_key_size": {
+      "type": "number"
+    },
+    "interactive": {
+      "type": "boolean"
+    },
+    "zoom": {
+      "type": "boolean"
+    },
+    "lasso_select": {
+      "type": "boolean"
+    }
   }
 }

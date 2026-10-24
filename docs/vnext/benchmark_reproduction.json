@@ -1,0 +1,1466 @@
+{
+  "rows": [
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "axis_label_controls",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "background_mask",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "basic_umap",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "bg_condition",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "bg_cutoff",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "blank_theme",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "cluster_composition_ring",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "coexpression",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "coexpression_screen",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "density_filled",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "density_hex",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "ellipse_mark",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "embedded_pie",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "feature",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "group",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "highlight_cells",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "highlight_ring",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "lineage",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "mark_shapes",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_basic_umap",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_ellipse_mark",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_basic_umap",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_bg_condition",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_bg_cutoff_mito",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_composition_ring",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_ellipse_mark",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_highlight_cells",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "pdf_repro_split_samples",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "raster",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "split_highlight",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "split_samples",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_dim_plot",
+      "example_id": "stat_panel",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "density_hex",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "feature_comp",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "highlight_blank",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "multi_feature",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_basic_two_features",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_feature_comp_multiply",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_hexbin",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_highlight_cells",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_multi_feature_scaled",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_split_by_sample",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "pdf_repro_split_global_blank",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "single_feature",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "advanced_feature_plot",
+      "example_id": "split_feature",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0009525641025641025,
+      "identical": true
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "edges",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "hx_lineage",
+      "rendered": true,
+      "changed_fraction": 0.0017837055417700579,
+      "identical": true
+    },
+    {
+      "plugin_id": "alluvial_plot",
+      "example_id": "long",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "balloon_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "balloon_plot",
+      "example_id": "gradient",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "balloon_plot",
+      "example_id": "no_stats",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "CAB_demo",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "labeled",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "classified_bar_plot",
+      "example_id": "vertical",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "cluster_dendrogram_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "cluster_dendrogram_plot",
+      "example_id": "colored_labels",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "cluster_dendrogram_plot",
+      "example_id": "subset",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "combo_bar_dot_matrix",
+      "example_id": "bar_only",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "combo_bar_dot_matrix",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "combo_bar_dot_matrix",
+      "example_id": "heatmap_dots",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "combo_bar_line_plot",
+      "example_id": "CAB_demo",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "combo_bar_line_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "combo_bar_line_plot",
+      "example_id": "labeled",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "combo_bar_line_plot",
+      "example_id": "long",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "den_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "den_plot",
+      "example_id": "colored_labels",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "den_plot",
+      "example_id": "subset",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "dot_plot",
+      "example_id": "aggregate",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "dot_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "dot_plot",
+      "example_id": "dendro",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "dynamic_venn_diagram",
+      "example_id": "abundance",
+      "rendered": true,
+      "changed_fraction": 0.001823138469479933,
+      "identical": true
+    },
+    {
+      "plugin_id": "dynamic_venn_diagram",
+      "example_id": "params",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "bar",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "box_split",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "col_flip",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "custom_style",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "dot_stack",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "highlight",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "exp_stat_plot",
+      "example_id": "violin",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "coexpression",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "feature_density_plot",
+      "example_id": "scale01",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "dot_summary",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "gene_sankey",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "gradient_curve",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "image_like",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "multigroup",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "multiterm",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "ridge",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "running",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "fgsea_enrichment_plot",
+      "example_id": "summary",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "go_kegg_enrichment_bar_bubble",
+      "example_id": "go_kegg",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "group_heatmap",
+      "example_id": "cell_heatmap",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "group_heatmap",
+      "example_id": "clustered_dotplot",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "group_heatmap",
+      "example_id": "dotplot",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "group_heatmap",
+      "example_id": "heatmap",
+      "rendered": true,
+      "changed_fraction": 0.0018688593717056715,
+      "identical": true
+    },
+    {
+      "plugin_id": "group_heatmap",
+      "example_id": "violin",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "gsea_pathway_heatmap",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.00012918871252204586,
+      "identical": true
+    },
+    {
+      "plugin_id": "gsea_pathway_heatmap",
+      "example_id": "precomputed",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "gsea_pathway_heatmap",
+      "example_id": "with_annotation",
+      "rendered": true,
+      "changed_fraction": 0.00022922212363206152,
+      "identical": true
+    },
+    {
+      "plugin_id": "gsea_ridge_nes_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "no_collapse",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "highlight_effect_plot",
+      "example_id": "summary",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_arc_network_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_arc_network_plot",
+      "example_id": "custom",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_arc_network_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_binary_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_binary_plot",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_binary_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_bubble_score_matrix",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_bubble_score_matrix",
+      "example_id": "custom",
+      "rendered": true,
+      "changed_fraction": 0.00182010582010582,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_bubble_score_matrix",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_bubble_score_matrix",
+      "example_id": "multi_score",
+      "rendered": true,
+      "changed_fraction": 0.0016822954822954823,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_clustered_heatmap_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_clustered_heatmap_plot",
+      "example_id": "custom",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_clustered_heatmap_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_clustered_heatmap_plot",
+      "example_id": "panels",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_correlation_matrix",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_correlation_matrix",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_correlation_matrix",
+      "example_id": "lower_triangle",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_dual_triangle_heatmap_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0018213131313131313,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_dual_triangle_heatmap_plot",
+      "example_id": "custom",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_dual_triangle_heatmap_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0017049074074074074,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_dumbbell_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_dumbbell_plot",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_dumbbell_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "example_id": "oct4_enrichment",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_genomic_signal_track_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_genomic_signal_track_plot",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_genomic_signal_track_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_histogram_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_histogram_plot",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_histogram_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_mantel_correlation_network",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_motif_logo_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_motif_logo_plot",
+      "example_id": "custom",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_motif_logo_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_network_plot",
+      "example_id": "manual_layout",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_network_plot",
+      "example_id": "membership",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_network_plot",
+      "example_id": "network",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.0007675485008818342,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_pie_plot",
+      "example_id": "donut",
+      "rendered": true,
+      "changed_fraction": 0.00012037037037037037,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_radar_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_radar_plot",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_radar_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_ridgeline_plot",
+      "example_id": "CAB_demo",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_ridgeline_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_ridgeline_plot",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.00011878306878306878,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_ridgeline_plot",
+      "example_id": "grouped",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_ridgeline_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_sankey_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0018008658008658008,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_sankey_plot",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_sankey_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "all_intersections",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "annotated_categorical",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "annotated_numeric",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "grouped",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "intersection_size",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "query_highlight",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_upset_plot",
+      "example_id": "ratio",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_violin_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_violin_plot",
+      "example_id": "custom_layout",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_violin_plot",
+      "example_id": "interactive",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "interactive_violin_plot",
+      "example_id": "long",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "lineage_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "lineage_plot",
+      "example_id": "single",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "lineage_plot",
+      "example_id": "whiskers",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "pie_dot_matrix",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "pie_dot_matrix",
+      "example_id": "binary",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "pie_dot_matrix",
+      "example_id": "correlation",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "quadrant_correlation_scatter",
+      "example_id": "params",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "ranked_annotation_panel",
+      "example_id": "params",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "regression_scatter_plot",
+      "example_id": "CAB_demo",
+      "rendered": true,
+      "changed_fraction": 0.0005321030372933487,
+      "identical": true
+    },
+    {
+      "plugin_id": "regression_scatter_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0006732905982905983,
+      "identical": true
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "avg",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "percent",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "sca_volcano_plot",
+      "example_id": "regions",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "CAB_demo",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "long",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "normal",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "percent",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stacked_bar_plot",
+      "example_id": "vertical_labels",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "bar",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "chord",
+      "rendered": true,
+      "changed_fraction": 0.0014333333333333333,
+      "identical": true
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "dot",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "pie",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "rose",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "sankey",
+      "rendered": true,
+      "changed_fraction": 0.0013025462962962962,
+      "identical": true
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "upset",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "stat_plot",
+      "example_id": "venn",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "threshold_matrix_heatmap",
+      "example_id": "params",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "violin_plot",
+      "example_id": "anno",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "violin_plot",
+      "example_id": "basic",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "violin_plot",
+      "example_id": "dot",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    },
+    {
+      "plugin_id": "violin_plot",
+      "example_id": "matrix",
+      "rendered": true,
+      "changed_fraction": 0.0,
+      "identical": true
+    }
+  ],
+  "summary": {
+    "n": 208,
+    "rendered": 208,
+    "pixel_identical": 208,
+    "plugins": 48
+  }
+}

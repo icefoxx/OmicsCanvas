@@ -47,9 +47,5 @@
     "width": "Output width in inches.",
     "height": "Output height in inches.",
     "dpi": "PNG resolution."
-  },
-  "selectors": {
-    "highlight_samples": "Reserved for future sample highlighting.",
-    "highlight_color": "Reserved highlight color."
   }
 }

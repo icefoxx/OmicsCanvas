@@ -1,12 +1,104 @@
 {
-  "data": {"input_mode":"wide or long", "item_column":"Item ID column", "set_columns":"Membership columns", "value_column":"Long value column", "set_column":"Long set column", "sets_include":"Sets to keep", "sets_exclude":"Sets to remove", "set_order":"Exact set order", "item_filter":"include/exclude item object", "na_action":"zero or keep", "empty_set_handling":"keep or drop"},
-  "intersections": {"plot_subclass":"basic, intersection_size, set_size, matrix_only, ratio, annotated_numeric, annotated_categorical, query_highlight, grouped, all_intersections", "mode":"exclusive_intersection, inclusive_intersection, exclusive_union, inclusive_union", "intersections":"observed or all", "intersection_order":"Explicit set-name arrays", "min_size":"Minimum cardinality", "max_size":"Maximum cardinality", "min_degree":"Minimum degree", "max_degree":"Maximum degree", "n_intersections":"Maximum displayed intersections", "sort_intersections":"ascending, descending, or false", "sort_intersections_by":"cardinality, degree, or ratio", "keep_empty_groups":"Retain empty groups", "group_by":"none, sets, or custom"},
-  "panels": {"set_sizes_show":"Show set-size bars", "intersection_size_show":"Show intersection-size bars", "matrix_show":"Show matrix", "ratio_show":"Show ratio panel", "panel_order":"Panel ordering", "width_ratio":"Set/matrix width hint", "height_ratio":"Annotation height hint", "panel_spacing":"Panel spacing"},
-  "matrix": {"matrix_point_size":"Point size", "matrix_active_color":"Active color", "matrix_inactive_color":"Inactive color", "matrix_segment_color":"Segment color", "matrix_segment_width":"Segment width", "matrix_shape":"circle, square, or diamond", "matrix_outline_color":"Outline color", "matrix_outline_width":"Outline width"},
-  "bars": {"intersection_bar_fill":"Default fill", "intersection_bar_alpha":"Bar alpha", "intersection_bar_width":"Bar width", "intersection_bar_color_by":"constant, set, query, or group", "intersection_bar_colors":"Bar colors", "intersection_count_show":"Show count labels", "intersection_count_digits":"Count digits", "intersection_count_color":"Count color", "intersection_count_position":"Count position", "intersection_percent_show":"Show percentages", "intersection_percent_digits":"Percentage digits", "intersection_bar_baseline":"Bar baseline", "set_bar_fill":"Set fill", "set_bar_alpha":"Set alpha", "set_bar_width":"Set width", "set_bar_colors":"Set colors", "ratio_limits":"Ratio limits", "ratio_palette":"Ratio palette"},
-  "annotations": {"annotation_columns":"Item annotation columns", "annotation_types":"numeric or categorical", "annotation_geoms":"box, violin, jitter, point, bar, label", "annotation_titles":"Panel titles", "annotation_colors":"Annotation colors", "annotation_alpha":"Annotation alpha", "annotation_size":"Annotation size", "annotation_y_limits":"Y limits", "annotation_mode":"Global or per annotation mode", "annotation_order":"Panel order", "annotation_show":"Show annotations"},
-  "queries": {"queries":"Array of set/intersect query objects", "highlight_items":"Item IDs to highlight", "highlight_item_color":"Item highlight color", "highlight_set_color":"Set highlight color", "highlight_intersection_color":"Intersection highlight color", "inactive_alpha":"Inactive alpha"},
-  "theme": {"stripes":"Show stripes", "stripe_colors":"Stripe colors", "stripe_alpha":"Stripe alpha", "background":"Plot background", "panel_background":"Panel background", "grid_show":"Show grid", "grid_color":"Grid color", "grid_width":"Grid width", "font_family":"Font family", "base_size":"Base font size", "title":"Title", "subtitle":"Subtitle", "caption":"Caption", "title_size":"Title size", "axis_label_size":"Axis label size", "set_label_angle":"Set label angle", "set_label_size":"Set label size", "intersection_label_angle":"Intersection label angle", "intersection_label_size":"Intersection label size", "legend_position":"Legend position", "legend_text_size":"Legend text size", "legend_title":"Legend title", "legend_ncol":"Legend columns"},
-  "interaction": {"interactive":"Enable HTML", "tooltip_columns":"Hover columns", "zoom":"Enable zoom", "pan":"Enable pan", "selectable":"Enable selection", "lasso_select":"Enable lasso", "reset_view":"Enable reset"},
-  "output": {"width":"Width in inches", "height":"Height in inches", "dpi":"PNG DPI"}
+  "data": {
+    "input_mode": "wide or long",
+    "item_column": "Item ID column",
+    "set_columns": "Membership columns",
+    "value_column": "Long value column",
+    "set_column": "Long set column",
+    "sets_include": "Sets to keep",
+    "sets_exclude": "Sets to remove",
+    "set_order": "Exact set order",
+    "item_filter": "include/exclude item object",
+    "na_action": "zero or keep",
+    "empty_set_handling": "keep or drop"
+  },
+  "intersections": {
+    "plot_subclass": "basic, intersection_size, set_size, matrix_only, ratio, annotated_numeric, annotated_categorical, query_highlight, grouped, all_intersections",
+    "mode": "exclusive_intersection, inclusive_intersection, exclusive_union, inclusive_union",
+    "intersections": "observed or all",
+    "intersection_order": "Explicit set-name arrays",
+    "min_size": "Minimum cardinality",
+    "max_size": "Maximum cardinality",
+    "min_degree": "Minimum degree",
+    "max_degree": "Maximum degree",
+    "n_intersections": "Maximum displayed intersections",
+    "sort_intersections": "ascending, descending, or false",
+    "sort_intersections_by": "cardinality, degree, or ratio"
+  },
+  "panels": {
+    "set_sizes_show": "Show set-size bars",
+    "intersection_size_show": "Show intersection-size bars",
+    "matrix_show": "Show matrix",
+    "ratio_show": "Show ratio panel",
+    "panel_spacing": "Panel spacing"
+  },
+  "matrix": {
+    "matrix_point_size": "Point size",
+    "matrix_active_color": "Active color",
+    "matrix_inactive_color": "Inactive color",
+    "matrix_segment_color": "Segment color",
+    "matrix_segment_width": "Segment width",
+    "matrix_shape": "circle, square, or diamond",
+    "matrix_outline_color": "Outline color"
+  },
+  "bars": {
+    "intersection_bar_fill": "Default fill",
+    "intersection_bar_alpha": "Bar alpha",
+    "intersection_bar_width": "Bar width",
+    "intersection_bar_color_by": "constant, set, query, or group",
+    "intersection_bar_colors": "Bar colors",
+    "intersection_count_show": "Show count labels",
+    "intersection_count_digits": "Count digits",
+    "intersection_count_color": "Count color",
+    "intersection_percent_show": "Show percentages",
+    "intersection_percent_digits": "Percentage digits",
+    "set_bar_alpha": "Set alpha",
+    "set_bar_width": "Set width",
+    "set_bar_colors": "Set colors",
+    "ratio_limits": "Ratio limits",
+    "ratio_palette": "Ratio palette"
+  },
+  "annotations": {
+    "annotation_columns": "Item annotation columns",
+    "annotation_types": "numeric or categorical",
+    "annotation_geoms": "box, violin, jitter, point, bar, label",
+    "annotation_titles": "Panel titles",
+    "annotation_colors": "Annotation colors",
+    "annotation_alpha": "Annotation alpha",
+    "annotation_size": "Annotation size"
+  },
+  "queries": {
+    "queries": "Array of set/intersect query objects",
+    "highlight_items": "Item IDs to highlight"
+  },
+  "theme": {
+    "background": "Plot background",
+    "panel_background": "Panel background",
+    "grid_show": "Show grid",
+    "grid_color": "Grid color",
+    "grid_width": "Grid width",
+    "font_family": "Font family",
+    "base_size": "Base font size",
+    "title": "Title",
+    "subtitle": "Subtitle",
+    "caption": "Caption",
+    "title_size": "Title size",
+    "axis_label_size": "Axis label size",
+    "set_label_angle": "Set label angle",
+    "set_label_size": "Set label size",
+    "intersection_label_angle": "Intersection label angle",
+    "intersection_label_size": "Intersection label size",
+    "legend_position": "Legend position",
+    "legend_text_size": "Legend text size"
+  },
+  "interaction": {
+    "zoom": "Enable zoom",
+    "selectable": "Enable selection",
+    "lasso_select": "Enable lasso"
+  },
+  "output": {
+    "width": "Width in inches",
+    "height": "Height in inches",
+    "dpi": "PNG DPI"
+  }
 }

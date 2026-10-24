@@ -10,8 +10,7 @@
     "stat_level": "For venn/upset: the level within each stat_by column considered 'present'. A single value (applied to all) or one per stat_by column.",
     "keep_na": "Keep NA as an explicit level (statPlot keep.na).",
     "keep_empty": "Keep empty factor levels (statPlot keep.empty).",
-    "each": "Make one plot per group element instead of one combined plot (statPlot each).",
-    "force": "Skip the >100-levels interactive prompt. Always TRUE in CLI mode."
+    "each": "Make one plot per group element instead of one combined plot (statPlot each)."
   },
   "plot_mode": {
     "plot_type": "bar, rose, ring, pie, trend, area, dot, sankey, chord, venn, or upset.",
@@ -32,7 +31,6 @@
     "subtitle_show": "Show/hide subtitle.",
     "xlab_show": "Show/hide x axis title.",
     "ylab_show": "Show/hide y axis title.",
-    "legend_name": "Override fill legend title (best-effort for single-panel ggplot outputs).",
     "show_label": "Show value labels on the plot (statPlot label)."
   },
   "typography": {
@@ -62,10 +60,6 @@
   },
   "layers": {
     "aspect_ratio": "Panel aspect ratio (statPlot aspect.ratio). Auto-set to 1 for rose/ring/pie."
-  },
-  "annotations": {
-    "highlight_levels": "Reserved selector: levels to highlight (best-effort, applied where supported).",
-    "highlight_color": "Reserved selector: highlight color."
   },
   "legends": {
     "legend_position": "right, left, bottom, top, or none.",

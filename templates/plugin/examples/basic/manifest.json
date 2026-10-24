@@ -1,0 +1,11 @@
+{
+  "id": "basic",
+  "label": "Basic",
+  "plugin_id": "__PLUGIN_ID__",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/__PLUGIN_ID__/plot.R --input plugins/__PLUGIN_ID__/examples/basic/input/example_input.csv --params plugins/__PLUGIN_ID__/examples/basic/params.json --output /tmp/__PLUGIN_ID___basic"
+  }
+}

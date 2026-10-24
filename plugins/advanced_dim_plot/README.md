@@ -13,7 +13,7 @@ It accepts a flat embedding table with one row/cell ID column, two numeric embed
 Run the full advDimPlot-like gallery:
 
 ```bash
-plugins/advanced_dim_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/advanced_dim_plot/run_all_examples.sh <repo-root>
 ```
 
 This writes one output directory per figure family under `/tmp/advanced_dim_*_out`.
@@ -28,7 +28,7 @@ they are therefore not represented by fabricated PNGs.
 Run the examples that specifically mirror the figures shown in `advDimPlot.pdf`:
 
 ```bash
-plugins/advanced_dim_plot/run_pdf_matched_examples.sh /Users/qzhang10/Documents/OmicsCanvas
+plugins/advanced_dim_plot/run_pdf_matched_examples.sh <repo-root>
 ```
 
 These use `example_pdf_like_input.csv` and write `/tmp/advanced_dim_pdf_*_out`.
@@ -44,7 +44,7 @@ PDF-matched parameter files:
 - `example_pdf_bg_cutoff_params.json`
 - `example_pdf_bg_condition_params.json`
 
-The original SCA source/helper files used as implementation reference are copied under `reference_sca_helpers/`.
+The original SCA source/helper files used as implementation reference are copied under the shared `R/sca/` library.
 
 Run a direct old-argument compatibility example. This params file intentionally uses SCA-style names such as `group.by`, `split.by`, `pt.size`, `theme.use`, `show.mark`, `stat.plot.by`, and `cells.highlight`; the plugin translates them to the standardized BioFigureAI controls at runtime.
 

@@ -1,0 +1,33 @@
+cell_type,class,subclass,cell_number,sample,sample_cell_number,gene,average_transcript,pct_expressed
+Astrocytes,Non-neuronal,Astrocytes,1200,Sample 1,700,FLT1,2.8,82
+Astrocytes,Non-neuronal,Astrocytes,1200,Sample 1,700,C1QB,0.2,8
+Astrocytes,Non-neuronal,Astrocytes,1200,GNB4,0.1,3
+Astrocytes,Non-neuronal,Astrocytes,1200,SST,0.1,2
+Astrocytes,Non-neuronal,Astrocytes,1200,Sample 2,500,FLT1,2.8,82
+Astrocytes,Non-neuronal,Astrocytes,1200,Sample 2,500,C1QB,0.2,8
+Astrocytes,Non-neuronal,Astrocytes,1200,Sample 2,500,GNB4,0.1,3
+Astrocytes,Non-neuronal,Astrocytes,1200,Sample 2,500,SST,0.1,2
+Microglia,Non-neuronal,Microglia,3800,Sample 1,2300,FLT1,1.2,35
+Microglia,Non-neuronal,Microglia,3800,Sample 1,2300,C1QB,2.7,84
+Microglia,Non-neuronal,Microglia,3800,Sample 1,2300,GNB4,0.1,4
+Microglia,Non-neuronal,Microglia,3800,Sample 1,2300,SST,0.1,2
+Microglia,Non-neuronal,Microglia,3800,Sample 2,1500,FLT1,1.2,35
+Microglia,Non-neuronal,Microglia,3800,Sample 2,1500,C1QB,2.7,84
+Microglia,Non-neuronal,Microglia,3800,Sample 2,1500,GNB4,0.1,4
+Microglia,Non-neuronal,Microglia,3800,Sample 2,1500,SST,0.1,2
+GLUT/GNB4,Glutamatergic,Glutamatergic,7200,Sample 1,4000,FLT1,0.2,7
+GLUT/GNB4,Glutamatergic,Glutamatergic,7200,Sample 1,4000,C1QB,0.1,3
+GLUT/GNB4,Glutamatergic,Glutamatergic,7200,Sample 1,4000,GNB4,3.0,88
+GLUT/GNB4,Glutamatergic,Glutamatergic,7200,Sample 1,4000,SST,0.1,2
+GLUT/GNB4,Glutamatergic,Glutamatergic,7200,Sample 2,3200,FLT1,0.2,7
+GLUT/GNB4,Glutamatergic,Glutamatergic,7200,Sample 2,3200,C1QB,0.1,3
+GLUT/GNB4,Glutamatergic,Glutamatergic,7200,Sample 2,3200,GNB4,3.0,88
+GLUT/GNB4,Glutamatergic,Glutamatergic,7200,Sample 2,3200,SST,0.1,2
+GABA/SST,GABAergic,SST,1800,Sample 1,900,FLT1,0.1,3
+GABA/SST,GABAergic,SST,1800,Sample 1,900,C1QB,0.1,2
+GABA/SST,GABAergic,SST,1800,Sample 1,900,GNB4,0.2,6
+GABA/SST,GABAergic,SST,1800,Sample 1,900,SST,3.0,92
+GABA/SST,GABAergic,SST,1800,Sample 2,900,FLT1,0.1,3
+GABA/SST,GABAergic,SST,1800,Sample 2,900,C1QB,0.1,2
+GABA/SST,GABAergic,SST,1800,Sample 2,900,GNB4,0.2,6
+GABA/SST,GABAergic,SST,1800,Sample 2,900,SST,3.0,92

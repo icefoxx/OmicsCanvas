@@ -130,7 +130,7 @@
   },
   "title": {
     "title_show": { "type": "boolean", "label": "Title switch", "default": true },
-    "title": { "type": "string", "label": "Title text", "default": "Hello world" },
+    "title": { "type": "string", "label": "Title text", "default": "" },
     "title_size": { "type": "number", "label": "Title font-size", "default": 13 },
     "title_fill": { "type": "color", "label": "Title fill", "default": "#000000" },
     "title_font_weight": {
@@ -159,7 +159,7 @@
   },
   "legend": {
     "legend_show": { "type": "boolean", "label": "Legend switch", "default": true },
-    "legend_title": { "type": "string", "label": "Legend title", "default": "xiaoshi" },
+    "legend_title": { "type": "string", "label": "Legend title", "default": "" },
     "legend_position": {
       "type": "select",
       "label": "Legend position",

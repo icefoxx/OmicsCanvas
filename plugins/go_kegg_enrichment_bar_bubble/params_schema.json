@@ -1,0 +1,27 @@
+{
+  "data": {
+    "term_column": {"type":"column","label":"Term / Description column","default":null},
+    "category_column": {"type":"column","label":"Ontology / Category column","default":null},
+    "pvalue_column": {"type":"column","label":"Raw p-value column","default":null},
+    "adjusted_pvalue_column": {"type":"column","label":"Adjusted p-value column","default":null},
+    "count_column": {"type":"column","label":"Gene Count column","default":null},
+    "significance_column": {"type":"select","label":"Significance metric","default":"auto","options":["auto","pvalue","adjusted"]},
+    "top_n": {"type":"integer","label":"Top terms per category (0 = all)","default":5}
+  },
+  "style": {
+    "category_colors": {"type":"object","label":"Ontology colors","default":{}},
+    "bubble_size_range": {"type":"number_array","label":"Bubble size range","default":[5,12]},
+    "row_height": {"type":"number","label":"Row height (in)","default":0.42},
+    "category_gap": {"type":"number","label":"Category gap","default":0.35},
+    "term_label_size": {"type":"number","label":"Term label size","default":3.1},
+    "count_label_size": {"type":"number","label":"Count label size","default":3}
+  },
+  "canvas": {
+    "title": {"type":"string","label":"Title","default":"GO + KEGG Enrichment"},
+    "width": {"type":"number","label":"Width (in)","default":11},
+    "height": {"type":"number","label":"Minimum height (in)","default":7},
+    "dpi": {"type":"number","label":"PNG DPI","default":300},
+    "font_family": {"type":"string","label":"Font family","default":"sans"},
+    "legend_position": {"type":"select","label":"Legend position","default":"right","options":["right","left","top","bottom","none"]}
+  }
+}

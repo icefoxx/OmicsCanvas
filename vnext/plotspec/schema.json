@@ -4,7 +4,12 @@
   "title": "OmicsCanvas PlotSpec",
   "type": "object",
   "additionalProperties": false,
-  "required": ["spec_version", "skill", "mapping", "export"],
+  "required": [
+    "spec_version",
+    "skill",
+    "mapping",
+    "export"
+  ],
   "properties": {
     "spec_version": {
       "type": "string",
@@ -14,29 +19,73 @@
     "skill": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "version"],
+      "required": [
+        "id",
+        "version"
+      ],
       "properties": {
-        "id": { "type": "string", "minLength": 1 },
-        "version": { "type": "string", "minLength": 1 }
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "input": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "dataset_id": { "type": ["string", "null"] },
-        "source_file": { "type": "string" },
-        "checksum": { "type": ["string", "null"] },
+        "dataset_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_file": {
+          "type": "string"
+        },
+        "checksum": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "format": {
           "type": "string",
-          "enum": ["csv", "tsv", "txt", "xlsx", "unknown"]
+          "enum": [
+            "csv",
+            "tsv",
+            "txt",
+            "xlsx",
+            "gmt",
+            "json",
+            "unknown"
+          ]
         }
       }
     },
     "mapping": {
       "type": "object",
-      "description": "Semantic role → column name. Keys are semantic roles.",
-      "additionalProperties": { "type": ["string", "null"] }
+      "description": "Semantic role -> column name (or list of column names). Keys are semantic roles.",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
     },
     "transform": {
       "type": "object",
@@ -47,41 +96,120 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["field", "op", "value"],
+            "required": [
+              "field",
+              "op",
+              "value"
+            ],
             "properties": {
-              "field": { "type": "string" },
+              "field": {
+                "type": "string"
+              },
               "op": {
                 "type": "string",
-                "enum": ["<", "<=", ">", ">=", "==", "!=", "in", "not_in", "contains"]
+                "enum": [
+                  "<",
+                  "<=",
+                  ">",
+                  ">=",
+                  "==",
+                  "!=",
+                  "in",
+                  "not_in",
+                  "contains"
+                ]
               },
               "value": {}
             }
           }
         },
-        "top_n": { "type": ["integer", "null"], "minimum": 1 },
+        "top_n": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
         "ranking": {
-          "type": ["object", "null"],
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false,
           "properties": {
-            "field": { "type": "string" },
+            "field": {
+              "type": "string"
+            },
             "method": {
               "type": "string",
-              "enum": ["asc", "desc", "abs_asc", "abs_desc"]
+              "enum": [
+                "asc",
+                "desc",
+                "abs_asc",
+                "abs_desc"
+              ]
             }
           }
         },
-        "preserve_order": { "type": "boolean" }
+        "preserve_order": {
+          "type": "boolean"
+        }
       }
     },
     "statistics": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "method": { "type": ["string", "null"] },
-        "multiple_testing": { "type": ["string", "null"] },
+        "method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "multiple_testing": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "uncertainty": {
-          "type": ["string", "null"],
-          "enum": [null, "sd", "sem", "ci95", "ci99", "none"]
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            null,
+            "sd",
+            "sem",
+            "ci95",
+            "ci99",
+            "none"
+          ]
+        },
+        "correlation_method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "clustering_method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "distance_method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "comparisons": {
+          "type": [
+            "array",
+            "string",
+            "null"
+          ]
         }
       }
     },
@@ -89,36 +217,108 @@
       "type": "object",
       "additionalProperties": true,
       "properties": {
-        "orientation": { "type": "string", "enum": ["horizontal", "vertical"] },
-        "zero_line": { "type": "boolean" },
-        "stem_to_zero": { "type": "boolean" },
-        "palette_id": { "type": ["string", "null"] },
-        "title": { "type": ["string", "null"] },
-        "subtitle": { "type": ["string", "null"] },
-        "xlab": { "type": ["string", "null"] },
-        "ylab": { "type": ["string", "null"] },
-        "legend_show": { "type": "boolean" },
-        "interactive": { "type": "boolean" }
+        "orientation": {
+          "type": "string",
+          "enum": [
+            "horizontal",
+            "vertical"
+          ]
+        },
+        "zero_line": {
+          "type": "boolean"
+        },
+        "stem_to_zero": {
+          "type": "boolean"
+        },
+        "palette_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "subtitle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "xlab": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ylab": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "legend_show": {
+          "type": "boolean"
+        },
+        "interactive": {
+          "type": "boolean"
+        }
       }
     },
     "export": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["format"],
+      "required": [
+        "format"
+      ],
       "properties": {
         "format": {
           "type": "string",
-          "enum": ["svg", "pdf", "png", "tiff", "html"]
+          "enum": [
+            "svg",
+            "pdf",
+            "png",
+            "tiff",
+            "html"
+          ]
         },
         "formats": {
           "type": "array",
-          "items": { "type": "string", "enum": ["svg", "pdf", "png", "tiff", "html"] }
+          "items": {
+            "type": "string",
+            "enum": [
+              "svg",
+              "pdf",
+              "png",
+              "tiff",
+              "html"
+            ]
+          }
         },
-        "width_mm": { "type": "number", "minimum": 10 },
-        "height_mm": { "type": "number", "minimum": 10 },
-        "width_in": { "type": "number", "minimum": 0.5 },
-        "height_in": { "type": "number", "minimum": 0.5 },
-        "dpi": { "type": "integer", "minimum": 72, "maximum": 1200 }
+        "width_mm": {
+          "type": "number",
+          "minimum": 10
+        },
+        "height_mm": {
+          "type": "number",
+          "minimum": 10
+        },
+        "width_in": {
+          "type": "number",
+          "minimum": 0.5
+        },
+        "height_in": {
+          "type": "number",
+          "minimum": 0.5
+        },
+        "dpi": {
+          "type": "integer",
+          "minimum": 72,
+          "maximum": 1200
+        }
       }
     },
     "legacy_params": {
@@ -130,12 +330,79 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "generated_by_ai": { "type": "boolean" },
-        "user_modified": { "type": "boolean" },
-        "intent_text": { "type": ["string", "null"] },
-        "created_at": { "type": ["string", "null"] },
-        "plotspec_hash": { "type": ["string", "null"] },
-        "framework_version": { "type": ["string", "null"] }
+        "generated_by_ai": {
+          "type": "boolean"
+        },
+        "user_modified": {
+          "type": "boolean"
+        },
+        "intent_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "plotspec_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "framework_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "engine": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "description": "Every uploaded input file by plugin field (multi-input skills).",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source_file": {
+            "type": "string"
+          },
+          "checksum": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "csv",
+              "tsv",
+              "txt",
+              "xlsx",
+              "gmt",
+              "json",
+              "unknown"
+            ]
+          }
+        }
       }
     }
   }

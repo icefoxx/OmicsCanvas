@@ -161,7 +161,7 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   }
   draw_with_retry(function(w, h) svglite::svglite(file.path(output_dir, 'result.svg'), width = w, height = h))
   draw_with_retry(function(w, h) grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
-  draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi, type = 'cairo'))
+  draw_with_retry(function(w, h) (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
 }
 
 # ---------------------------------------------------------------------------
@@ -171,11 +171,12 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
 load_sca_reference <- function() {
   script_arg <- grep('^--file=', commandArgs(FALSE), value = TRUE)
   script_path <- if (length(script_arg) > 0) sub('^--file=', '', script_arg[1]) else file.path(getwd(), 'plugins', 'feature_density_plot', 'plot.R')
-  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), 'reference_sca_helpers')
-  if (!dir.exists(helper_dir)) helper_dir <- file.path('plugins', 'feature_density_plot', 'reference_sca_helpers')
+  # Shared SCA helper library (one canonical copy for all plugins): <repo>/R/sca
+  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), '..', '..', 'R', 'sca')
+  if (!dir.exists(helper_dir)) helper_dir <- file.path('R', 'sca')
   helper_file <- file.path(helper_dir, 'GsDenPlot.R')
   if (!file.exists(helper_file)) {
-    write_error_and_exit('SCA helper missing', paste('Expected:', helper_file), 'Restore reference_sca_helpers/GsDenPlot.R.')
+    write_error_and_exit('SCA helper missing', paste('Expected:', helper_file), 'Restore R/sca/GsDenPlot.R.')
   }
   # Ensure required packages are available before sourcing.
   required_pkgs <- c('ks', 'Matrix', 'ggplot2', 'ggrastr', 'viridis')

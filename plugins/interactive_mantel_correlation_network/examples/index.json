@@ -5,61 +5,14 @@
       "id": "basic",
       "label": "basic",
       "plugin_id": "interactive_mantel_correlation_network",
-      "plot_type": "precomputed",
+      "plot_type": "mantel_pearson",
       "params": "params.json",
       "inputs": {
         "input": "input/example_corr.csv",
-        "mantel": "input/example_mantel.csv",
-        "envpoints": "input/example_env_points.csv",
-        "specpoints": "input/example_spec_points.csv"
+        "mantel": "input/example_mantel.csv"
       },
       "expected": "expected/result.png",
-      "reproduce": {
-        "command": "Rscript plugins/interactive_mantel_correlation_network/examples/basic/../plot.R --input plugins/interactive_mantel_correlation_network/examples/basic/input/example_corr.csv --params plugins/interactive_mantel_correlation_network/examples/basic/params.json --output /tmp/mantel_basic --mantel plugins/interactive_mantel_correlation_network/examples/basic/input/example_mantel.csv --envpoints plugins/interactive_mantel_correlation_network/examples/basic/input/example_env_points.csv --specpoints plugins/interactive_mantel_correlation_network/examples/basic/input/example_spec_points.csv"
-      },
-      "bundle": "../examples/basic",
-      "gallery_png": "basic.png",
-      "params_filename": "example_basic_params.json"
-    },
-    {
-      "id": "interactive",
-      "label": "interactive",
-      "plugin_id": "interactive_mantel_correlation_network",
-      "plot_type": "precomputed",
-      "params": "params.json",
-      "inputs": {
-        "input": "input/example_corr.csv",
-        "mantel": "input/example_mantel.csv",
-        "envpoints": "input/example_env_points.csv",
-        "specpoints": "input/example_spec_points.csv"
-      },
-      "expected": "expected/result.png",
-      "reproduce": {
-        "command": "Rscript plugins/interactive_mantel_correlation_network/examples/interactive/../plot.R --input plugins/interactive_mantel_correlation_network/examples/interactive/input/example_corr.csv --params plugins/interactive_mantel_correlation_network/examples/interactive/params.json --output /tmp/mantel_interactive --mantel plugins/interactive_mantel_correlation_network/examples/interactive/input/example_mantel.csv --envpoints plugins/interactive_mantel_correlation_network/examples/interactive/input/example_env_points.csv --specpoints plugins/interactive_mantel_correlation_network/examples/interactive/input/example_spec_points.csv"
-      },
-      "bundle": "../examples/interactive",
-      "gallery_png": "interactive.png",
-      "params_filename": "example_interactive_params.json"
-    },
-    {
-      "id": "custom_layout",
-      "label": "custom_layout",
-      "plugin_id": "interactive_mantel_correlation_network",
-      "plot_type": "precomputed",
-      "params": "params.json",
-      "inputs": {
-        "input": "input/example_corr.csv",
-        "mantel": "input/example_mantel.csv",
-        "envpoints": "input/example_env_points.csv",
-        "specpoints": "input/example_spec_points.csv"
-      },
-      "expected": "expected/result.png",
-      "reproduce": {
-        "command": "Rscript plugins/interactive_mantel_correlation_network/examples/custom_layout/../plot.R --input plugins/interactive_mantel_correlation_network/examples/custom_layout/input/example_corr.csv --params plugins/interactive_mantel_correlation_network/examples/custom_layout/params.json --output /tmp/mantel_custom_layout --mantel plugins/interactive_mantel_correlation_network/examples/custom_layout/input/example_mantel.csv --envpoints plugins/interactive_mantel_correlation_network/examples/custom_layout/input/example_env_points.csv --specpoints plugins/interactive_mantel_correlation_network/examples/custom_layout/input/example_spec_points.csv"
-      },
-      "bundle": "../examples/custom_layout",
-      "gallery_png": "custom_layout.png",
-      "params_filename": "example_custom_layout_params.json"
+      "gallery_png": "basic.png"
     }
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "id": "basic",
+  "label": "Basic hierarchical marker panel",
+  "plugin_id": "hierarchical_marker_panel",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/hierarchical_marker_panel/plot.R --input plugins/hierarchical_marker_panel/examples/basic/input/example_input.csv --params plugins/hierarchical_marker_panel/examples/basic/params.json --output /tmp/hierarchical_marker_panel_basic"
+  }
+}

@@ -15,7 +15,7 @@
 # The original classicVlnPlot is Seurat-centric (uses ckFeas which reads seu@assays).
 # For CLI use we REIMPLEMENT the same ggplot2 layers and SCA visual style operating
 # directly on a long-format data frame. The original SCA source is preserved in
-# reference_sca_helpers/violinPlot.R for reference only.
+# R/sca/violinPlot.R for reference only.
 
 suppressPackageStartupMessages({
   library(optparse)
@@ -170,7 +170,7 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   }
   draw_with_retry(function(w, h) svglite::svglite(file.path(output_dir, 'result.svg'), width = w, height = h))
   draw_with_retry(function(w, h) grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
-  draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi, type = 'cairo'))
+  draw_with_retry(function(w, h) (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
 }
 
 # --------------------------------------------------------------------
@@ -376,7 +376,8 @@ build_main_plot <- function(long, params) {
 
   # SCA right-side y axis label trick
   p <- p + scale_y_continuous(
-    expand = c(0, 0),
+    # A little headroom per row so violins never run into the neighbouring facet row.
+    expand = expansion(mult = c(0.04, 0.06)),
     position = 'right',
     labels = function(x) c(rep('', length(x) - 2), x[length(x) - 1], '')
   )
@@ -500,6 +501,8 @@ main <- function() {
   width <- num_param(params, 'width', 8)
   height <- num_param(params, 'height', 6)
   dpi <- num_param(params, 'dpi', 300)
+  # Generic appearance parameters not handled by this plugin (R/runtime/omicscanvas_theme.R).
+  if (!exists('omicscanvas_apply_theme')) { .oc_f <- sub('^--file=', '', grep('^--file=', commandArgs(FALSE), value = TRUE)[1]); .oc_rt <- file.path(dirname(normalizePath(.oc_f, mustWork = FALSE)), '..', '..', 'R', 'runtime', 'omicscanvas_theme.R'); if (!file.exists(.oc_rt)) .oc_rt <- file.path('R', 'runtime', 'omicscanvas_theme.R'); sys.source(.oc_rt, envir = globalenv()) }; final_plot <- omicscanvas_apply_theme(final_plot, params, only = c('axis_label_size', 'title_size', 'x_axis_text_size', 'y_axis_text_size'))
   save_plot(final_plot, output_dir, width, height, dpi)
   write_log('Saved result.svg/pdf/png.')
 

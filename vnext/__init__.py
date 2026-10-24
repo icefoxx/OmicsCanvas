@@ -3,4 +3,4 @@
 LLM may propose a PlotSpec; after validation the renderer is deterministic.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

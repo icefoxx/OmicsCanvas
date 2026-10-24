@@ -10,7 +10,7 @@
 # colored paths with arrows, optional whiskers, background stroke) but
 # operates on plain CSV inputs (an embedding matrix + a lineage/pseudotime
 # table) instead of a Seurat object. The core fitting/plotting algorithm is
-# reimplemented from reference_sca_helpers/lineagePlot.R::lineagePlot
+# reimplemented from R/sca/lineagePlot.R::lineagePlot
 # (.curve.layer block) to work on data frames/matrices directly.
 
 suppressPackageStartupMessages({
@@ -146,8 +146,9 @@ validate_columns <- function(df, cols, label = 'input') {
 load_sca_reference <- function() {
   script_arg <- grep('^--file=', commandArgs(FALSE), value = TRUE)
   script_path <- if (length(script_arg) > 0) sub('^--file=', '', script_arg[1]) else file.path(getwd(), 'plugins', 'lineage_plot', 'plot.R')
-  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), 'reference_sca_helpers')
-  if (!dir.exists(helper_dir)) helper_dir <- file.path('plugins', 'lineage_plot', 'reference_sca_helpers')
+  # Shared SCA helper library (one canonical copy for all plugins): <repo>/R/sca
+  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), '..', '..', 'R', 'sca')
+  if (!dir.exists(helper_dir)) helper_dir <- file.path('R', 'sca')
 
   # Locally define helpers that lineagePlot.R / util.plot.R expect.
   `%||%` <<- function(x, y) if (is.null(x) || length(x) == 0) y else x
@@ -175,11 +176,8 @@ load_sca_reference <- function() {
            error = function(e) write_log(paste('Note: lineagePlot.R sourced with warning:', conditionMessage(e))))
 
   # Patch paletteCustomize to read the OmicsCanvas palettes.rds asset.
-  old_palette <- paletteCustomize
-  palette_file <- file.path(getwd(), 'assets', 'palettes.rds')
-  paletteCustomize <<- function(..., palettePath = NULL) {
-    old_palette(..., palettePath = palettePath %||% palette_file)
-  }
+  source(file.path(helper_dir, 'omicscanvas_shims.R'), local = .GlobalEnv)
+  omicscanvas_patch_palette(helper_dir)
   invisible(TRUE)
 }
 
@@ -385,7 +383,7 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   }
   draw_with_retry(function(w, h) svglite::svglite(file.path(output_dir, 'result.svg'), width = w, height = h))
   draw_with_retry(function(w, h) grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
-  draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi, type = 'cairo'))
+  draw_with_retry(function(w, h) (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
 }
 
 # ------------------------------------------------------------
@@ -505,6 +503,8 @@ main <- function() {
   width <- num_param(params, 'width', 7)
   height <- num_param(params, 'height', 6)
   dpi <- num_param(params, 'dpi', 300)
+  # Generic appearance parameters not handled by this plugin (R/runtime/omicscanvas_theme.R).
+  if (!exists('omicscanvas_apply_theme')) { .oc_f <- sub('^--file=', '', grep('^--file=', commandArgs(FALSE), value = TRUE)[1]); .oc_rt <- file.path(dirname(normalizePath(.oc_f, mustWork = FALSE)), '..', '..', 'R', 'runtime', 'omicscanvas_theme.R'); if (!file.exists(.oc_rt)) .oc_rt <- file.path('R', 'runtime', 'omicscanvas_theme.R'); sys.source(.oc_rt, envir = globalenv()) }; p <- omicscanvas_apply_theme(p, params, only = c('font_size'))
   save_plot(p, output_dir, width, height, dpi)
   write_log('Saved result.svg/pdf/png.')
 

@@ -1,0 +1,9 @@
+{
+  "id": "CAB_demo",
+  "label": "CAB_demo",
+  "plugin_id": "hierarchical_marker_panel",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {"command": "Rscript plugins/hierarchical_marker_panel/plot.R --input plugins/hierarchical_marker_panel/examples/CAB_demo/input/example_input.csv --params plugins/hierarchical_marker_panel/examples/CAB_demo/params.json --output /tmp/hierarchical_marker_panel_CAB_demo"}
+}

@@ -1,6 +1,6 @@
 """Central plot registry: scan plugins, overlay curated metadata, query, validate.
 
-This is the metadata layer from 01_plot_registry_refactor_v1.0.md.
+This is the metadata layer from docs/design/01_plot_registry_refactor_v1.0.md.
 It does not change plotting engines.
 """
 from __future__ import annotations
@@ -12,6 +12,8 @@ from pathlib import Path
 from typing import Any
 
 import yaml
+
+from plot_web.yaml_cache import load_yaml_cached
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN_DIR = ROOT / "plugins"
@@ -25,6 +27,7 @@ DEFAULT_PRESETS = [
     {"id": "recommended", "name": "Recommended"},
     {"id": "publication", "name": "Publication"},
     {"id": "minimal", "name": "Minimal"},
+    {"id": "blank", "name": "Blank"},
     {"id": "large_dataset", "name": "Large dataset"},
 ]
 
@@ -43,9 +46,7 @@ DEFAULT_PARAMETER_GROUPS = [
 
 
 def _read_yaml(path: Path) -> dict[str, Any]:
-    if not path.exists():
-        return {}
-    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    data = load_yaml_cached(path) or {}
     return data if isinstance(data, dict) else {}
 
 
@@ -105,8 +106,10 @@ def _heuristic_class(example_id: str) -> dict[str, Any]:
     eid = example_id.lower()
     if eid.startswith("pdf_repro_"):
         return {"class": "demo"}
-    if eid.startswith("pdf_") or eid in {"raster"}:
-        return {"class": "export_template"}
+    if eid.startswith("pdf_"):
+        return {"class": "export"}
+    if eid in {"raster"}:
+        return {"class": "rendering"}
     if any(tok in eid for tok in ("blank", "theme", "minimal", "publication")):
         return {"class": "preset"}
     if any(tok in eid for tok in ("axis", "label", "legend", "font", "margin")):
@@ -253,6 +256,9 @@ def build_registry(plugin_dir: Path | None = None) -> dict[str, Any]:
             "data_requirements",
             "recommendation_rules",
             "legacy_presets",
+            "gallery",
+            "status",
+            "extra_gallery",
         ):
             if overlay.get(key) not in (None, [], {}):
                 family[key] = overlay[key]
@@ -297,41 +303,51 @@ def build_registry(plugin_dir: Path | None = None) -> dict[str, Any]:
                     "preview_asset": preview,
                 }
             )
-            if kind == "variant" and variant_id not in variants:
-                variants[variant_id] = {
-                    "id": variant_id,
-                    "name": str(rec.get("label") or variant_id).replace("_", " ").title(),
+            maps = info.get("maps_to") if isinstance(info.get("maps_to"), dict) else None
+            dest_variant = (maps or {}).get("variant") or variant_id
+            if dest_variant in variants:
+                variants[dest_variant].setdefault("legacy_ids", [])
+                if eid not in variants[dest_variant]["legacy_ids"]:
+                    variants[dest_variant]["legacy_ids"].append(eid)
+                if preview and not variants[dest_variant].get("preview_asset"):
+                    variants[dest_variant]["preview_asset"] = preview
+            elif kind == "variant":
+                variants[dest_variant] = {
+                    "id": dest_variant,
+                    "name": str(rec.get("label") or dest_variant).replace("_", " ").title(),
                     "description": rec.get("blurb") or rec.get("description") or "",
                     "preview_asset": preview,
                     "recommended_for": [],
                     "parameter_groups": list(DEFAULT_PARAMETER_GROUPS),
                     "legacy_ids": [eid],
                 }
-            elif kind == "variant" and variant_id in variants:
-                variants[variant_id].setdefault("legacy_ids", [])
-                if eid not in variants[variant_id]["legacy_ids"]:
-                    variants[variant_id]["legacy_ids"].append(eid)
-                if preview and not variants[variant_id].get("preview_asset"):
-                    variants[variant_id]["preview_asset"] = preview
-            if kind in {"demo", "variant", "export_template"}:
+            if maps or kind in {"demo", "variant", "export_template", "export", "legacy_alias", "preset", "rendering"}:
                 demos.append(
                     {
                         "id": eid,
                         "name": rec.get("label") or eid,
-                        "variant": (info.get("maps_to") or {}).get("variant") or variant_id,
-                        "preset": (info.get("maps_to") or {}).get("preset") or "recommended",
+                        "variant": dest_variant,
+                        "preset": (maps or {}).get("preset") or "recommended",
                         "example_id": eid,
                         "plugin_id": plugin_id,
                         "preview_asset": preview,
+                        "parameters": (maps or {}).get("parameters") or {},
+                        "gallery_visible": kind in {"demo", "variant"},
                     }
                 )
-            if kind in {"preset", "export_template"} and info.get("maps_to"):
+            if maps and kind in {"preset", "export_template", "export", "rendering", "legacy_alias", "parameter"}:
                 family.setdefault("legacy_presets", {})
-                family["legacy_presets"].setdefault(eid, info["maps_to"])
+                family["legacy_presets"].setdefault(eid, maps)
 
         if overlay.get("legacy_presets"):
             family.setdefault("legacy_presets", {})
             family["legacy_presets"].update(overlay["legacy_presets"])
+
+        for variant in variants.values():
+            example_id = str(variant.get("representative_example") or "")
+            if example_id and not variant.get("preview_asset"):
+                variant["preview_asset"] = _gallery_png(plugin_id, example_id)
+            variant.setdefault("legacy_ids", [])
 
         family["variants"] = list(variants.values())
         family["demos"] = demos
@@ -363,8 +379,26 @@ def load_registry(rebuild: bool = False) -> dict[str, Any]:
     return attach_guides(reg)
 
 
-def get_all_plots(registry: dict[str, Any] | None = None) -> list[dict[str, Any]]:
-    return list((registry or load_registry()).get("plots") or [])
+def plot_is_listed(plot: dict[str, Any] | None, hidden_ids: set[str] | None = None) -> bool:
+    if not plot:
+        return False
+    if str(plot.get("status") or "").lower() in {"hidden", "retired", "deleted"}:
+        return False
+    gallery = plot.get("gallery") if isinstance(plot.get("gallery"), dict) else {}
+    if gallery.get("visible") is False:
+        return False
+    hid = hidden_ids if hidden_ids is not None else {str(x).lower() for x in (load_overrides().get("hidden_families") or [])}
+    pid = str(plot.get("id") or "").lower()
+    engine = str(plot.get("engine_plugin_id") or "").lower()
+    return pid not in hid and engine not in hid
+
+
+def get_all_plots(registry: dict[str, Any] | None = None, *, include_hidden: bool = False) -> list[dict[str, Any]]:
+    plots = list((registry or load_registry()).get("plots") or [])
+    if include_hidden:
+        return plots
+    hidden = {str(x).lower() for x in (load_overrides().get("hidden_families") or [])}
+    return [p for p in plots if plot_is_listed(p, hidden)]
 
 
 def get_plot(plot_id: str, registry: dict[str, Any] | None = None) -> dict[str, Any] | None:
@@ -385,14 +419,46 @@ def get_variants(plot_id: str, registry: dict[str, Any] | None = None) -> list[d
     return list((plot or {}).get("variants") or [])
 
 
+def variant_is_gallery_visible(variant: dict[str, Any] | None) -> bool:
+    if not variant:
+        return False
+    gallery = variant.get("gallery")
+    if not isinstance(gallery, dict):
+        return False
+    return bool(gallery.get("visible", True))
+
+
+def visible_variants(plot: dict[str, Any] | str, registry: dict[str, Any] | None = None) -> list[dict[str, Any]]:
+    record = plot if isinstance(plot, dict) else get_plot(str(plot), registry)
+    variants = list((record or {}).get("variants") or [])
+    visible = [v for v in variants if variant_is_gallery_visible(v)]
+
+    def _section_rank(item: dict[str, Any]) -> tuple[int, int, str]:
+        gallery = item.get("gallery") or {}
+        section = str(gallery.get("section") or "more")
+        try:
+            order = int(gallery.get("order") or 99)
+        except (TypeError, ValueError):
+            order = 99
+        return (0 if section == "recommended" else 1, order, str(item.get("name") or item.get("id") or ""))
+
+    return sorted(visible, key=_section_rank)
+
+
 def get_variant(plot_id: str, variant_id: str, registry: dict[str, Any] | None = None) -> dict[str, Any] | None:
     vid = (variant_id or "").strip().lower()
+    plot = get_plot(plot_id, registry)
     for variant in get_variants(plot_id, registry):
         if str(variant.get("id")).lower() == vid:
             return variant
         legacy = [str(x).lower() for x in variant.get("legacy_ids") or []]
         if vid in legacy:
             return variant
+    mapping = ((plot or {}).get("legacy_presets") or {}).get(variant_id) or ((plot or {}).get("legacy_presets") or {}).get(vid)
+    if isinstance(mapping, dict) and mapping.get("variant"):
+        dest = str(mapping.get("variant")).lower()
+        if dest != vid:
+            return get_variant(plot_id, dest, registry)
     return None
 
 
@@ -406,7 +472,8 @@ def _blob(plot: dict[str, Any]) -> str:
         " ".join(plot.get("aliases") or []),
         " ".join(plot.get("analysis_contexts") or []),
         " ".join(plot.get("tasks") or []),
-        " ".join(v.get("id", "") + " " + v.get("name", "") for v in plot.get("variants") or []),
+        " ".join(v.get("id", "") + " " + v.get("name", "") + " " + " ".join(v.get("legacy_ids") or []) for v in plot.get("variants") or []),
+        " ".join((plot.get("legacy_presets") or {}).keys()),
     ]
     return " ".join(str(p or "") for p in parts).lower()
 
@@ -430,6 +497,9 @@ def search_plots(query: str, registry: dict[str, Any] | None = None) -> list[dic
         }
         variant_names = {str(v.get("id") or "").lower() for v in plot.get("variants") or []}
         variant_names.update(str(v.get("name") or "").lower() for v in plot.get("variants") or [])
+        for variant in plot.get("variants") or []:
+            variant_names.update(str(x).lower() for x in variant.get("legacy_ids") or [])
+        variant_names.update(str(k).lower() for k in (plot.get("legacy_presets") or {}).keys())
         variant_names.update(re.sub(r"[_\-]+", " ", n) for n in list(variant_names))
         score = 0
         exact = False
@@ -462,7 +532,7 @@ def search_plots(query: str, registry: dict[str, Any] | None = None) -> list[dic
                         task_hit = True
         if score:
             kind = "exact" if exact else ("recommended" if task_hit else "related")
-            hits.append({**plot, "_score": score, "match_kind": kind})
+            hits.append({**plot, "_score": score, "match_kind": kind, "variant_count": len(visible_variants(plot))})
     hits.sort(key=lambda x: ({"exact": 0, "recommended": 1, "related": 2}[x["match_kind"]], -x["_score"], x.get("name") or ""))
     return hits
 
@@ -557,23 +627,20 @@ def resolve_legacy_preset(plot_id: str, legacy_preset_id: str, registry: dict[st
     if not plot:
         return None
     key = (legacy_preset_id or "").strip()
-    mapping = (plot.get("legacy_presets") or {}).get(key)
-    if mapping:
-        return {
-            "legacy_id": key,
-            "plot_id": plot.get("id"),
-            "variant": mapping.get("variant"),
-            "preset": mapping.get("preset") or "recommended",
-            "deprecated": True,
-        }
+    mapping = (plot.get("legacy_presets") or {}).get(key) or (plot.get("legacy_presets") or {}).get(key.lower())
     variant = get_variant(plot_id, key, registry)
-    if variant:
+    if mapping or variant:
+        dest_id = (mapping or {}).get("variant") if mapping else variant.get("id")
+        dest = get_variant(plot_id, str(dest_id or ""), registry) or variant
         return {
             "legacy_id": key,
             "plot_id": plot.get("id"),
-            "variant": variant.get("id"),
-            "preset": "recommended",
-            "deprecated": False,
+            "variant": (dest or {}).get("id") or dest_id,
+            "preset": (mapping or {}).get("preset") or "recommended",
+            "parameters": (mapping or {}).get("parameters") or {},
+            "export_format": (mapping or {}).get("export_format"),
+            "example_id": (mapping or {}).get("example_id") or (dest or {}).get("representative_example"),
+            "deprecated": bool(mapping) and key != str((dest or {}).get("id") or ""),
         }
     return None
 
@@ -638,13 +705,47 @@ def validate_registry(registry: dict[str, Any] | None = None) -> dict[str, Any]:
             for g in variant.get("parameter_groups") or []:
                 if groups and str(g) not in groups:
                     warnings.append({"code": "UNKNOWN_PARAM_GROUP", "field": f"{field}.variants[{j}]", "message": str(g)})
+        visible = visible_variants(plot)
+        if pid == "umap_tsne":
+            if not visible:
+                errors.append({"code": "NO_VISIBLE_VARIANTS", "field": f"{field}.variants", "message": "UMAP gallery needs visible variants"})
+            hidden_ids = {str(v.get("id")) for v in (plot.get("variants") or []) if not variant_is_gallery_visible(v)}
+            for banned in ("axis_label_controls", "blank_theme", "pdf_basic_umap", "raster", "mark_shapes"):
+                if any(str(v.get("id")) == banned and variant_is_gallery_visible(v) for v in plot.get("variants") or []):
+                    errors.append({"code": "LEGACY_VISIBLE", "field": f"{field}.variants", "message": banned})
+            for variant in visible:
+                if not variant.get("name") or str(variant.get("name")).find("_") >= 0 and str(variant.get("name")) == str(variant.get("id")):
+                    warnings.append({"code": "INTERNAL_ID_TITLE", "field": f"{field}.variants", "message": str(variant.get("id"))})
+                if not (variant.get("short_description") or variant.get("description")):
+                    warnings.append({"code": "MISSING_VARIANT_COPY", "field": f"{field}.variants", "message": str(variant.get("id"))})
+        seen_legacy: set[str] = set()
+        for variant in plot.get("variants") or []:
+            for lid in variant.get("legacy_ids") or []:
+                low = str(lid).lower()
+                if low in seen_legacy:
+                    warnings.append({"code": "DUPLICATE_LEGACY_ID", "field": f"{field}.variants", "message": lid})
+                seen_legacy.add(low)
         preset_ids = {str(p.get("id")) for p in plot.get("presets") or []}
         for legacy_id, mapping in (plot.get("legacy_presets") or {}).items():
             if not isinstance(mapping, dict):
                 errors.append({"code": "BAD_LEGACY", "field": f"{field}.legacy_presets.{legacy_id}", "message": "must be object"})
                 continue
-            if mapping.get("variant") and mapping["variant"] not in v_ids and v_ids:
-                warnings.append({"code": "ORPHAN_LEGACY_VARIANT", "field": f"{field}.legacy_presets.{legacy_id}", "message": str(mapping.get("variant"))})
+            dest = mapping.get("variant")
+            if dest and dest not in v_ids and v_ids:
+                hops = 0
+                seen_chain = {str(legacy_id), str(dest)}
+                cursor = dest
+                while cursor and cursor not in v_ids and hops < 20:
+                    nxt = (plot.get("legacy_presets") or {}).get(cursor) or {}
+                    cursor = nxt.get("variant") if isinstance(nxt, dict) else None
+                    hops += 1
+                    if cursor and cursor in seen_chain:
+                        errors.append({"code": "ALIAS_CYCLE", "field": f"{field}.legacy_presets.{legacy_id}", "message": str(dest)})
+                        break
+                    if cursor:
+                        seen_chain.add(str(cursor))
+                if cursor not in v_ids:
+                    warnings.append({"code": "ORPHAN_LEGACY_VARIANT", "field": f"{field}.legacy_presets.{legacy_id}", "message": str(mapping.get("variant"))})
             if mapping.get("preset") and mapping["preset"] not in preset_ids and preset_ids:
                 errors.append({"code": "ORPHAN_PRESET", "field": f"{field}.legacy_presets.{legacy_id}", "message": str(mapping.get("preset"))})
         for alias in plot.get("aliases") or []:
@@ -709,7 +810,7 @@ def write_reports(registry: dict[str, Any] | None = None) -> None:
     if not uncertain:
         unres.append("No `uncertain` or `deprecated` example classifications remain after heuristic + override mapping.")
         unres.append("\nOpen questions:")
-        unres.append("- `stat_plot` bundles many chart types (bar/rose/sankey/venn). They stay one family until a later split.")
+        unres.append("- `stat_plot` encodings are filed on pie/rose, stacked bar, dot, sankey, chord, venn, and upset families.")
         unres.append("- `interactive_sankey_plot` examples/index.json was empty at scan time; variants come from folder names if present.")
         unres.append("- PDF repro examples are classified as `demo` (and export-like when `pdf_*` without `repro`).")
     else:
@@ -753,7 +854,7 @@ ANALYSIS_TAXONOMY = [
             {"id": "gene_expression", "name": "Gene expression", "blurb": "Visualize feature expression across cells or groups.", "match_tasks": ["gene_expression", "feature_expression", "marker_visualization"]},
             {"id": "cell_composition", "name": "Cell composition", "blurb": "Compare proportions across clusters, samples or conditions.", "match_tasks": ["cell_composition", "composition"]},
             {"id": "marker_genes", "name": "Marker genes", "blurb": "Inspect and compare marker patterns.", "match_tasks": ["marker_visualization", "differential_expression"]},
-            {"id": "sample_differences", "name": "Sample differences", "blurb": "Compare conditions, samples or batches.", "match_tasks": ["sample_comparison", "group_comparison"], "family_ids": ["umap_tsne", "feature_embedding", "stacked_bar_plot"]},
+            {"id": "sample_differences", "name": "Sample differences", "blurb": "Compare conditions, samples or batches.", "match_tasks": ["sample_comparison", "group_comparison"], "family_ids": ["umap_tsne", "feature_embedding", "exp_stat_plot"]},
             {"id": "trajectory", "name": "Trajectory", "blurb": "Explore pseudotime, lineage and dynamic changes.", "match_tasks": ["trajectory"]},
         ],
     },
@@ -828,7 +929,7 @@ ANALYSIS_TAXONOMY = [
         "tasks": [
             {"id": "set_overlap", "name": "Set overlap", "blurb": "Shared and unique members of sets.", "match_tasks": ["overlap"]},
             {"id": "feature_relationships", "name": "Feature relationships", "blurb": "Links between features or samples.", "match_tasks": ["correlation"]},
-            {"id": "flow_relationships", "name": "Flow relationships", "blurb": "Movement between categories.", "match_tasks": ["network", "composition"], "family_ids": ["sankey", "alluvial", "gsea"]},
+            {"id": "flow_relationships", "name": "Flow relationships", "blurb": "Movement between categories.", "match_tasks": ["network", "composition"], "family_ids": ["alluvial", "gsea"]},
             {"id": "network", "name": "Network relationships", "blurb": "Graph structure among entities.", "match_tasks": ["network"]},
             {"id": "correlation", "name": "Correlation", "blurb": "Pairwise association matrices.", "match_tasks": ["correlation"]},
         ],
@@ -852,9 +953,9 @@ CHART_CATEGORY_TAXONOMY = [
         "name": "Distribution",
         "charts": [
             {"id": "violin", "name": "Violin", "family_ids": ["violin_plot", "interactive_violin_plot"]},
-            {"id": "density", "name": "Density", "family_ids": ["den_plot", "feature_density_plot"]},
+            {"id": "density", "name": "Density", "family_ids": ["den_plot", "feature_embedding"]},
             {"id": "histogram", "name": "Histogram", "family_ids": ["interactive_histogram_plot"]},
-            {"id": "boxplot", "name": "Boxplot", "family_ids": ["interactive_violin_plot", "violin_plot", "exp_stat_plot", "stat_plot"]},
+            {"id": "boxplot", "name": "Boxplot", "family_ids": ["interactive_violin_plot", "violin_plot"]},
             {"id": "ridgeline", "name": "Ridgeline", "family_ids": ["ridgeline", "gsea"]},
             {"id": "beeswarm", "name": "Beeswarm", "family_ids": ["interactive_violin_plot", "violin_plot", "highlight_effect_plot"]},
         ],
@@ -863,8 +964,8 @@ CHART_CATEGORY_TAXONOMY = [
         "id": "comparison",
         "name": "Comparison",
         "charts": [
-            {"id": "barplot", "name": "Barplot", "family_ids": ["classified_bar_plot", "stacked_bar_plot", "combo_bar_dot_matrix", "combo_bar_line_plot"]},
-            {"id": "dot", "name": "Dot plot", "family_ids": ["dot_plot", "combo_bar_dot_matrix", "balloon_plot"]},
+            {"id": "barplot", "name": "Barplot", "family_ids": ["combo_bar_dot_matrix", "exp_stat_plot", "go_kegg_enrichment_bar_bubble", "hierarchical_marker_panel"]},
+            {"id": "dot", "name": "Dot plot", "family_ids": ["dot_plot", "combo_bar_dot_matrix", "hierarchical_marker_panel"]},
             {"id": "lollipop", "name": "Lollipop", "family_ids": ["enrichment_lollipop", "ranked_annotation_panel", "interactive_dumbbell_plot"]},
             {"id": "radar", "name": "Radar / Spider", "family_ids": ["interactive_radar_plot"]},
             {"id": "parallel", "name": "Parallel coordinates", "family_ids": ["ranked_annotation_panel"]},
@@ -874,28 +975,28 @@ CHART_CATEGORY_TAXONOMY = [
         "id": "relationship",
         "name": "Relationship",
         "charts": [
-            {"id": "scatter", "name": "Scatter", "family_ids": ["regression_scatter_plot", "quadrant_correlation_scatter", "volcano", "umap_tsne", "feature_embedding"]},
-            {"id": "bubble", "name": "Bubble", "family_ids": ["balloon_plot", "interactive_bubble_score_matrix", "pie_dot_matrix"]},
-            {"id": "connected_scatter", "name": "Connected scatter", "family_ids": ["combo_bar_line_plot", "interactive_dumbbell_plot"]},
-            {"id": "density_2d", "name": "2D density", "family_ids": ["feature_density_plot", "umap_tsne", "feature_embedding"]},
+            {"id": "scatter", "name": "Scatter", "family_ids": ["regression_scatter_plot", "quadrant_correlation_scatter", "volcano", "umap_tsne", "feature_embedding", "trajectory"]},
+            {"id": "bubble", "name": "Bubble", "family_ids": ["dot_plot", "interactive_bubble_score_matrix"]},
+            {"id": "connected_scatter", "name": "Connected scatter", "family_ids": ["interactive_dumbbell_plot"]},
+            {"id": "density_2d", "name": "2D density", "family_ids": ["feature_embedding", "umap_tsne"]},
         ],
     },
     {
         "id": "matrix",
         "name": "Matrix",
         "charts": [
-            {"id": "heatmap", "name": "Heatmap", "family_ids": ["grouped_heatmap", "gsea_heatmap", "interactive_clustered_heatmap_plot", "interactive_dual_triangle_heatmap_plot", "threshold_matrix_heatmap"]},
-            {"id": "correlogram", "name": "Correlogram", "family_ids": ["interactive_correlation_matrix", "interactive_dual_triangle_heatmap_plot"]},
-            {"id": "dot_matrix", "name": "Dot / Balloon matrix", "family_ids": ["balloon_plot", "pie_dot_matrix", "combo_bar_dot_matrix", "dot_plot"]},
+            {"id": "heatmap", "name": "Heatmap", "family_ids": ["grouped_heatmap", "threshold_matrix_heatmap"]},
+            {"id": "correlogram", "name": "Correlogram", "family_ids": ["interactive_correlation_matrix"]},
+            {"id": "dot_matrix", "name": "Dot / Balloon matrix", "family_ids": ["dot_plot", "combo_bar_dot_matrix", "hierarchical_marker_panel"]},
         ],
     },
     {
         "id": "composition",
         "name": "Composition",
         "charts": [
-            {"id": "pie", "name": "Pie", "family_ids": ["interactive_pie_plot", "umap_tsne", "pie_dot_matrix"]},
+            {"id": "pie", "name": "Pie / Rose", "family_ids": ["interactive_pie_plot", "umap_tsne"]},
             {"id": "doughnut", "name": "Donut", "family_ids": ["interactive_pie_plot"]},
-            {"id": "stacked_bar", "name": "Stacked bar", "family_ids": ["stacked_bar_plot", "classified_bar_plot"]},
+            {"id": "stacked_bar", "name": "Stacked bar", "family_ids": ["exp_stat_plot"]},
             {"id": "treemap", "name": "Treemap", "family_ids": []},
         ],
     },
@@ -903,7 +1004,7 @@ CHART_CATEGORY_TAXONOMY = [
         "id": "flow",
         "name": "Flow & Network",
         "charts": [
-            {"id": "sankey", "name": "Sankey", "family_ids": ["sankey", "gsea"]},
+            {"id": "sankey", "name": "Sankey", "family_ids": ["alluvial", "gsea"]},
             {"id": "alluvial", "name": "Alluvial", "family_ids": ["alluvial"]},
             {"id": "network", "name": "Network", "family_ids": ["interactive_network_plot", "interactive_mantel_correlation_network"]},
             {"id": "chord", "name": "Chord", "family_ids": ["alluvial"]},
@@ -922,8 +1023,8 @@ CHART_CATEGORY_TAXONOMY = [
         "id": "tables",
         "name": "Tables",
         "charts": [
-            {"id": "table", "name": "Table", "family_ids": ["interactive_binary_plot"]},
-            {"id": "summary_table", "name": "Summary table", "family_ids": ["ranked_annotation_panel", "stat_plot"]},
+            {"id": "table", "name": "Table", "family_ids": []},
+            {"id": "summary_table", "name": "Summary table", "family_ids": ["ranked_annotation_panel"]},
         ],
     },
     {
@@ -932,7 +1033,7 @@ CHART_CATEGORY_TAXONOMY = [
         "charts": [
             {"id": "genomic_track", "name": "Genomic track", "family_ids": ["interactive_genomic_signal_track_plot"]},
             {"id": "motif", "name": "Motif logo", "family_ids": ["interactive_motif_logo_plot"]},
-            {"id": "dendrogram", "name": "Dendrogram", "family_ids": ["cluster_dendrogram_plot"]},
+            {"id": "dendrogram", "name": "Dendrogram", "family_ids": ["cluster_dendrogram_plot", "hierarchical_marker_panel"]},
         ],
     },
 ]
@@ -1008,7 +1109,7 @@ def _card_payload(plot: dict[str, Any], extra: dict[str, Any] | None = None) -> 
         "analysis_contexts": plot.get("analysis_contexts") or [],
         "tasks": plot.get("tasks") or [],
         "preview_asset": preview,
-        "variant_count": len(plot.get("variants") or []),
+        "variant_count": len(visible_variants(plot)),
         "studio_path": f"/plot/{plot.get('id')}",
     }
     if extra:

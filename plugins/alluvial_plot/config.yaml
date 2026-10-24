@@ -1,41 +1,56 @@
 id: alluvial_plot
 name: Alluvial Plot
-display_name: Alluvial / Multi-Stage Flow
 version: 1.0.0
-author: OmicsCanvas
-description: >
-  Highly customizable multi-stage alluvial / Sankey-flow chart (冲积图):
-  vertical strata bars at each stage with flowing ribbons between them.
-  Ideal for clone tracking, lineage transitions, sample reclassification,
-  and any sequential categorical state (e.g. HX_001 → HX_002 → HX_003).
-  Built with ggsankey for publication-ready SVG/PDF/PNG.
+description: 'Highly customizable multi-stage alluvial / Sankey-flow chart: vertical strata bars at each stage with flowing
+  ribbons between them. Ideal for clone tracking, lineage transitions, sample reclassification, and any sequential categorical
+  state (e.g. HX_001 → HX_002 → HX_003). Built with ggsankey for publication-ready SVG/PDF/PNG.
+
+  '
 language: R
 entrypoint: plot.R
 category: Composition
 subcategory: Flow
 status: stable
+inputs:
+- id: input
+  name: input
+  type: table
+  required: true
+  formats:
+  - csv
+  - tsv
+  - txt
+  description: 'Wide table (id + stage columns with category labels) or long table (id, stage, node [, weight]). Edge-list
+    (source, target, value) is also supported for two-stage flows.
+
+    '
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- alluvia_used.csv
+- nodes_used.csv
 runtime:
   command: Rscript plot.R --input input.csv --params params.json --output output_dir
-inputs:
-  - id: input
-    name: input
-    type: table
-    required: true
-    formats: [csv, tsv, txt]
-    description: >
-      Wide table (id + stage columns with category labels) or long table
-      (id, stage, node [, weight]). Edge-list (source, target, value) is also supported
-      for two-stage flows.
-outputs:
-  - result.svg
-  - result.pdf
-  - result.png
-  - figure.json
-  - run.log
-  - alluvia_used.csv
-  - nodes_used.csv
+display_name: Alluvial / Multi-Stage Flow
+author: OmicsCanvas
 parameters:
-  input_mode: {type: select, options: [auto, wide, long, edges], default: auto}
-  width: {type: number, default: 12}
-  height: {type: number, default: 7}
-  dpi: {type: number, default: 300}
+  input_mode:
+    type: select
+    options:
+    - auto
+    - wide
+    - long
+    - edges
+    default: auto
+  width:
+    type: number
+    default: 12
+  height:
+    type: number
+    default: 7
+  dpi:
+    type: number
+    default: 300

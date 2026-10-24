@@ -1,0 +1,17 @@
+id: hierarchical_marker_panel
+name: Hierarchical Marker Panel
+version: 1.0.0
+description: Show hierarchical cell-type labels, cell counts, and marker expression in one publication-style panel.
+language: R
+entrypoint: plot.R
+category: Multi-panel
+subcategory: Annotation
+status: beta
+inputs:
+- id: input
+  type: table
+  formats: [csv, tsv, txt]
+  required: true
+outputs: [result.svg, result.pdf, result.png, figure.json, run.log, data_used.csv, visual_config_used.json]
+runtime:
+  command: Rscript plugins/hierarchical_marker_panel/plot.R --input input.csv --params params.json --output output_dir

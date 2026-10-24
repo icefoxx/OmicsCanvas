@@ -1,1 +1,1 @@
-{"input_mode":"wide","input_scale":"probability","normalize":"probability","title":"Motif enrichment","interactive":true,"legend_show":false}
+{"input_mode":"wide","input_scale":"probability","normalize":"probability","title":"Motif enrichment","interactive":true,"legend_show":false,"width_per_position":0.65,"height_per_motif":1.9,"highlight_positions":["3-6"],"highlight_loci":["Seq1:4:T","Seq2:4:T"],"highlight_color":"#FFE08A","highlight_alpha":0.4}

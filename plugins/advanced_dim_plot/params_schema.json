@@ -15,6 +15,60 @@
         "feature_mix"
       ]
     },
+    "density_style": {
+      "type": "select",
+      "label": "Density style",
+      "default": "",
+      "options": [
+        "",
+        "filled",
+        "contours",
+        "hexbin"
+      ]
+    },
+    "composition_glyph": {
+      "type": "select",
+      "label": "Composition display style",
+      "default": "",
+      "options": [
+        "",
+        "pie",
+        "ring"
+      ]
+    },
+    "highlight_style": {
+      "type": "select",
+      "label": "Highlight style",
+      "default": "",
+      "options": [
+        "",
+        "color",
+        "ring",
+        "outline",
+        "enlarge"
+      ]
+    },
+    "background_mode": {
+      "type": "select",
+      "label": "Background mode",
+      "default": "",
+      "options": [
+        "",
+        "category",
+        "cutoff",
+        "selected"
+      ]
+    },
+    "rendering_mode": {
+      "type": "select",
+      "label": "Rendering mode",
+      "default": "auto",
+      "options": [
+        "auto",
+        "vector",
+        "raster"
+      ]
+    },
     "x_column": {
       "type": "column",
       "label": "X embedding column",
@@ -157,7 +211,7 @@
     },
     "panel_border_show": {
       "type": "boolean",
-      "label": "Panel border",
+      "label": "Show panel border",
       "help": "",
       "default": true
     },
@@ -166,6 +220,12 @@
       "label": "Show grid",
       "help": "",
       "default": false
+    },
+    "stat_x_label_wrap": {
+      "type": "number",
+      "label": "Composition panel label wrap width",
+      "help": "Wrap sample labels under the composition bar panel at '_', '-' or '.' to at most this many characters per line (0 = off).",
+      "default": 0
     }
   },
   "title": {
@@ -278,26 +338,76 @@
   "marks_labels": {
     "show_mark": {
       "type": "boolean",
-      "label": "Show cluster marks",
-      "help": "",
+      "label": "Show cluster ellipse / hull",
+      "help": "Draw a region around each cluster (UMAP/t-SNE group mode).",
       "default": false
     },
     "mark_type": {
       "type": "select",
-      "label": "Mark type",
-      "help": "",
-      "default": "hull",
+      "label": "Ellipse / mark type",
+      "help": "ellipse is a confidence ellipse; hull follows the cluster outline.",
+      "default": "ellipse",
       "options": [
-        "hull",
         "ellipse",
+        "hull",
+        "rect",
+        "circle",
         "none"
       ]
     },
+    "mark_color_mode": {
+      "type": "select",
+      "label": "Ellipse color mode",
+      "help": "Follow group colors, or use a single custom fill/outline.",
+      "default": "group",
+      "options": [
+        "group",
+        "custom"
+      ]
+    },
+    "mark_fill": {
+      "type": "color",
+      "label": "Ellipse fill",
+      "help": "Used when ellipse color mode is custom.",
+      "default": "#94A3B8"
+    },
+    "mark_color": {
+      "type": "color",
+      "label": "Ellipse outline",
+      "help": "Used when ellipse color mode is custom.",
+      "default": "#334155"
+    },
+    "mark_expand_mm": {
+      "type": "number",
+      "label": "Ellipse size (expand, mm)",
+      "help": "Padding around the cluster region in millimeters.",
+      "default": 3
+    },
     "mark_alpha": {
       "type": "number",
-      "label": "Mark alpha",
-      "help": "",
+      "label": "Ellipse alpha",
+      "help": "Fill transparency from 0 (invisible) to 1 (opaque).",
       "default": 0.12
+    },
+    "mark_line_width": {
+      "type": "number",
+      "label": "Ellipse outline width",
+      "help": "",
+      "default": 0.4
+    },
+    "mark_linetype": {
+      "type": "select",
+      "label": "Ellipse outline type",
+      "help": "",
+      "default": "solid",
+      "options": [
+        "solid",
+        "dashed",
+        "dotted",
+        "dotdash",
+        "longdash",
+        "twodash"
+      ]
     },
     "label_show": {
       "type": "boolean",
@@ -378,19 +488,16 @@
     "legend_show": {
       "type": "boolean",
       "label": "Show legend",
-      "help": "",
       "default": true
     },
     "legend_name": {
       "type": "string",
       "label": "Legend title",
-      "help": "",
       "default": ""
     },
     "legend_position": {
       "type": "select",
       "label": "Legend position",
-      "help": "",
       "default": "right",
       "options": [
         "right",
@@ -400,31 +507,298 @@
         "none"
       ]
     },
-    "legend_text_size": {
+    "legend_inside": {
+      "type": "boolean",
+      "label": "Place legend inside plot",
+      "default": false
+    },
+    "legend_x": {
       "type": "number",
-      "label": "Legend text size",
-      "help": "",
-      "default": 10
+      "label": "Inside X (0–1)",
+      "default": 0.98
+    },
+    "legend_y": {
+      "type": "number",
+      "label": "Inside Y (0–1)",
+      "default": 0.5
+    },
+    "legend_direction": {
+      "type": "select",
+      "label": "Direction",
+      "default": "vertical",
+      "options": [
+        "vertical",
+        "horizontal"
+      ]
+    },
+    "legend_horizontal": {
+      "type": "boolean",
+      "label": "Horizontal (horiz)",
+      "default": false
     },
     "legend_title_size": {
       "type": "number",
-      "label": "Legend title size",
-      "help": "",
+      "label": "Title size",
       "default": 11
+    },
+    "legend_title_color": {
+      "type": "color",
+      "label": "Title color",
+      "default": "#111111"
+    },
+    "legend_title_fontface": {
+      "type": "select",
+      "label": "Title face",
+      "default": "plain",
+      "options": [
+        "plain",
+        "bold",
+        "italic",
+        "bold.italic"
+      ]
+    },
+    "legend_title_position": {
+      "type": "select",
+      "label": "Title position",
+      "default": "top",
+      "options": [
+        "top",
+        "left",
+        "bottom",
+        "right"
+      ]
+    },
+    "legend_title_hjust": {
+      "type": "number",
+      "label": "Title hjust",
+      "default": 0
+    },
+    "legend_text_size": {
+      "type": "number",
+      "label": "Text size",
+      "default": 10
+    },
+    "legend_text_color": {
+      "type": "color",
+      "label": "Text color (text.col)",
+      "default": "#111111"
+    },
+    "legend_text_fontface": {
+      "type": "select",
+      "label": "Text face",
+      "default": "plain",
+      "options": [
+        "plain",
+        "bold",
+        "italic",
+        "bold.italic"
+      ]
+    },
+    "legend_label_position": {
+      "type": "select",
+      "label": "Label position",
+      "default": "right",
+      "options": [
+        "right",
+        "left",
+        "top",
+        "bottom"
+      ]
+    },
+    "legend_nrow": {
+      "type": "integer",
+      "label": "Legend nrow"
+    },
+    "legend_ncol": {
+      "type": "integer",
+      "label": "Legend ncol"
+    },
+    "legend_byrow": {
+      "type": "boolean",
+      "label": "Fill by row",
+      "default": true
+    },
+    "legend_reverse": {
+      "type": "boolean",
+      "label": "Reverse legend",
+      "default": false
+    },
+    "legend_key_size_pt": {
+      "type": "number",
+      "label": "Key size (pt)",
+      "default": 10
+    },
+    "legend_key_width_pt": {
+      "type": "number",
+      "label": "Key width (pt)",
+      "default": 10
+    },
+    "legend_key_height_pt": {
+      "type": "number",
+      "label": "Key height (pt)",
+      "default": 10
+    },
+    "legend_point_size": {
+      "type": "number",
+      "label": "Legend point size",
+      "default": 4
+    },
+    "legend_key_alpha": {
+      "type": "number",
+      "label": "Key alpha",
+      "default": 1
+    },
+    "legend_background_show": {
+      "type": "boolean",
+      "label": "Legend background",
+      "default": false
+    },
+    "legend_box": {
+      "type": "select",
+      "label": "Legend box layout",
+      "default": "vertical",
+      "options": [
+        "vertical",
+        "horizontal"
+      ]
+    },
+    "legend_spacing_x": {
+      "type": "number",
+      "label": "Spacing X (pt)",
+      "default": 4
+    },
+    "legend_spacing_y": {
+      "type": "number",
+      "label": "Spacing Y (pt)",
+      "default": 4
+    },
+    "advdim_numbered_legend": {
+      "type": "boolean",
+      "label": "Numbered legend labels",
+      "default": true
     }
   },
   "theme_export": {
     "theme_use": {
       "type": "select",
-      "label": "Theme",
+      "label": "Base theme",
       "help": "",
-      "default": "classic",
+      "default": "default",
       "options": [
+        "default",
         "classic",
         "minimal",
         "bw",
-        "void"
+        "blank"
       ]
+    },
+    "plot_background": {
+      "type": "color",
+      "label": "Plot background",
+      "default": "#FFFFFF"
+    },
+    "panel_background": {
+      "type": "color",
+      "label": "Panel background",
+      "default": "#FFFFFF"
+    },
+    "panel_border_color": {
+      "type": "color",
+      "label": "Panel border color",
+      "default": "#111111"
+    },
+    "panel_border_width": {
+      "type": "number",
+      "label": "Panel border width",
+      "default": 0.6
+    },
+    "axis_line_show": {
+      "type": "boolean",
+      "label": "Show axis lines",
+      "default": false
+    },
+    "axis_line_color": {
+      "type": "color",
+      "label": "Axis line color",
+      "default": "#111111"
+    },
+    "axis_line_width": {
+      "type": "number",
+      "label": "Axis line width",
+      "default": 0.5
+    },
+    "axis_line_x_show": {
+      "type": "boolean",
+      "label": "Show X axis line",
+      "default": true
+    },
+    "axis_line_y_show": {
+      "type": "boolean",
+      "label": "Show Y axis line",
+      "default": true
+    },
+    "axis_tick_show": {
+      "type": "boolean",
+      "label": "Show axis ticks",
+      "default": true
+    },
+    "axis_tick_color": {
+      "type": "color",
+      "label": "Tick color",
+      "default": "#111111"
+    },
+    "axis_tick_width": {
+      "type": "number",
+      "label": "Tick width",
+      "default": 0.35
+    },
+    "grid_color": {
+      "type": "color",
+      "label": "Grid color",
+      "default": "#E5E7EB"
+    },
+    "grid_line_width": {
+      "type": "number",
+      "label": "Grid width",
+      "default": 0.3
+    },
+    "grid_line_type": {
+      "type": "select",
+      "label": "Grid line type",
+      "default": "solid",
+      "options": [
+        "solid",
+        "dashed",
+        "dotted",
+        "dotdash",
+        "longdash",
+        "twodash"
+      ]
+    },
+    "grid_x_show": {
+      "type": "boolean",
+      "label": "Show vertical grid",
+      "default": true
+    },
+    "grid_y_show": {
+      "type": "boolean",
+      "label": "Show horizontal grid",
+      "default": true
+    },
+    "grid_minor_show": {
+      "type": "boolean",
+      "label": "Show minor grid",
+      "default": false
+    },
+    "grid_minor_color": {
+      "type": "color",
+      "label": "Minor grid color",
+      "default": "#F3F4F6"
+    },
+    "grid_minor_width": {
+      "type": "number",
+      "label": "Minor grid width",
+      "default": 0.2
     },
     "width": {
       "type": "number",

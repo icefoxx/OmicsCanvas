@@ -1,7 +1,6 @@
 """Skill registry loader + validator."""
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any
 
@@ -101,65 +100,54 @@ def validate_registry(registry: dict[str, Any] | None = None) -> dict[str, Any]:
 
 
 def build_registry_from_plugins(plugin_dir: Path | None = None) -> dict[str, Any]:
-    """Generate registry entries from plugins/*/config.yaml (incremental migration helper)."""
+    """Build the skill registry from plugins/*/vnext/metadata.yaml (see `vnext.cli migrate`)."""
     plugin_dir = plugin_dir or PLUGIN_DIR
     skills: list[dict[str, Any]] = []
     for path in sorted(plugin_dir.iterdir()):
-        if not path.is_dir() or path.name.startswith("."):
-            continue
-        cfg_path = path / "config.yaml"
-        if not cfg_path.exists():
+        if not path.is_dir() or path.name.startswith(".") or not (path / "config.yaml").exists():
             continue
         try:
-            cfg = yaml.safe_load(cfg_path.read_text(encoding="utf-8")) or {}
+            cfg = yaml.safe_load((path / "config.yaml").read_text(encoding="utf-8")) or {}
         except Exception:
             continue
-        if not isinstance(cfg, dict):
-            continue
-        sid = str(cfg.get("id") or path.name)
-        family = str(cfg.get("category") or cfg.get("family") or "miscellaneous").lower()
-        entry = {
-            "id": sid,
-            "version": str(cfg.get("version") or "1.0.0"),
-            "family": family,
-            "name": cfg.get("display_name") or cfg.get("name") or sid,
-            "aliases": [],
-            "accepts": ["table"],
-            "required_semantics": [],
-            "optional_semantics": [],
-            "capabilities": {
-                "interactive": "interactive" in sid,
-                "statistics": False,
-                "export_svg": True,
-                "export_pdf": True,
-                "export_png": True,
-                "legacy_params": True,
-                "vnext_migrated": (path / "vnext" / "metadata.yaml").exists(),
-            },
-            "guardrails": [],
-            "entrypoint": cfg.get("entrypoint") or "plot.R",
-            "language": cfg.get("language") or "R",
-            "status": cfg.get("status") or "unknown",
-        }
-        # Enrich known reference skill
-        if sid == "interactive_enrichment_lollipop":
-            entry["aliases"] = [
-                "enrichment lollipop",
-                "signed enrichment plot",
-                "Cleveland enrichment plot",
-                "pathway lollipop",
-            ]
-            entry["accepts"] = ["enrichment_table"]
-            entry["required_semantics"] = ["category", "signed_effect"]
-            entry["optional_semantics"] = ["adjusted_pvalue", "pvalue", "gene_count", "group", "size"]
-            entry["guardrails"] = ["require_signed_metric", "distinguish_raw_p_and_fdr"]
-            entry["capabilities"]["vnext_migrated"] = True
-        skills.append(entry)
+        meta_path = path / "vnext" / "metadata.yaml"
+        meta = (yaml.safe_load(meta_path.read_text(encoding="utf-8")) or {}) if meta_path.exists() else {}
+        sid = str(meta.get("id") or cfg.get("id") or path.name)
+        roles = meta.get("roles") or {}
+        required = list(meta.get("required_roles") or [])
+        skills.append(
+            {
+                "id": sid,
+                "version": str(meta.get("version") or cfg.get("version") or "1.0.0"),
+                "family": str(meta.get("family") or cfg.get("category") or "other").lower(),
+                "name": meta.get("name") or cfg.get("display_name") or cfg.get("name") or sid,
+                "aliases": list(meta.get("aliases") or []),
+                "accepts": list(meta.get("accepts") or ["table"]),
+                "required_semantics": required,
+                "optional_semantics": sorted(r for r, e in roles.items() if e.get("canonical") and r not in required),
+                "statistics": dict(meta.get("statistics") or {}),
+                "capabilities": {
+                    "interactive": "interactive" in sid,
+                    "statistics": bool(meta.get("statistics")),
+                    "export_svg": True,
+                    "export_pdf": True,
+                    "export_png": True,
+                    "legacy_params": True,
+                    **(meta.get("capabilities") or {}),
+                    "vnext_migrated": bool(meta),
+                },
+                "curated": bool((meta.get("generated") or {}).get("curated")),
+                "guardrails": list(meta.get("guardrails") or []),
+                "entrypoint": cfg.get("entrypoint") or "plot.R",
+                "language": cfg.get("language") or "R",
+                "status": cfg.get("status") or "unknown",
+            }
+        )
 
     return {
         "registry_version": "1.0",
         "framework": "omicscanvas-vnext",
-        "generated_from": "plugins/*/config.yaml",
+        "generated_from": "plugins/*/vnext/metadata.yaml",
         "skills": skills,
     }
 

@@ -6,10 +6,11 @@
   "mode": "",
   "params": "params.json",
   "inputs": {
-    "input": "input/example_markers.csv"
+    "input": "input/example_markers.csv",
+    "regions": "example_regions.csv"
   },
   "expected": "expected/result.png",
   "reproduce": {
-    "command": "Rscript plugins/sca_volcano_plot/plot.R --input plugins/sca_volcano_plot/examples/regions/input/example_markers.csv --params plugins/sca_volcano_plot/examples/regions/params.json --output /tmp/sca_volcano_plot_regions_out"
+    "command": "Rscript plugins/sca_volcano_plot/plot.R --input plugins/sca_volcano_plot/examples/regions/input/example_markers.csv --params plugins/sca_volcano_plot/examples/regions/params.json --output /tmp/sca_volcano_plot_regions_out --regions plugins/sca_volcano_plot/examples/regions/example_regions.csv"
   }
 }

@@ -1,6 +1,6 @@
 {
   "data": {
-    "input_mode": "precomputed or aggregate. precomputed feeds a tidy data frame directly to custDotplot; aggregate computes avg.exp + pct.exp from an expression matrix plus annotation.",
+    "input_mode": "precomputed summary table, or aggregate from an expression matrix plus cell annotation.",
     "x_column": "Column mapped to x axis (e.g. gene).",
     "y_column": "Column mapped to y axis (e.g. cluster).",
     "size_by": "Column mapped to point size (e.g. pct.exp).",
@@ -28,7 +28,6 @@
     "rescale_min": "Rescale lower bound.",
     "rescale_max": "Rescale upper bound.",
     "coord_fixed": "Fix coordinate aspect ratio.",
-    "coord_ratio": "Fixed ratio (reserved; uses aspect_ratio).",
     "flip": "Flip x/y orientation.",
     "clip": "ggplot clip setting: on or off."
   },
@@ -55,7 +54,6 @@
   "colors": {
     "dot_col": "2 or 3 color vector for gradient/gradient2 fill.",
     "midpoint": "Midpoint for gradient2.",
-    "palette": "Reserved palette name alias of dot_col.",
     "fill_limits": "Numeric limits for fill scale.",
     "fill_na_color": "Color for NA fill values.",
     "group_colors": "Reserved named group colors."
@@ -69,7 +67,6 @@
     "dot_max": "Maximum point size range value.",
     "dot_size": "Fixed point size when size_by is null.",
     "shape_values": "Manual shape values for shape_by.",
-    "bar_width": "Reserved alias of colorbar_width.",
     "size_width": "Size legend key width in cm."
   },
   "legends": {

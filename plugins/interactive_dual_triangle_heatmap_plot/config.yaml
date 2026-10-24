@@ -1,43 +1,106 @@
 id: interactive_dual_triangle_heatmap_plot
 name: Interactive Dual-Triangle Heatmap
 version: 1.0.0
-description: Combine independent upper and lower square matrices with separate scales, palettes, legends, annotations, and clustering.
+description: Combine independent upper and lower square matrices with separate scales, palettes, legends, annotations, and
+  clustering.
 language: R
 entrypoint: plot.R
 category: Heatmap
+subcategory: General
 status: experimental
 inputs:
-  - id: upper
-    type: table
-    formats: [csv, tsv, txt]
-    required: true
-  - id: lower
-    type: table
-    formats: [csv, tsv, txt]
-    required: true
-  - id: annotation
-    type: table
-    formats: [csv, tsv, txt]
-    optional: true
-outputs: [result.svg, result.pdf, result.png, result.html, figure.json, run.log, upper_matrix_used.csv, lower_matrix_used.csv, row_order.csv, column_order.csv]
-runtime: Rscript plugins/interactive_dual_triangle_heatmap_plot/plot.R --upper upper.csv --lower lower.csv --params params.json --output output_dir
+- id: upper
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+- id: lower
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+- id: annotation
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  optional: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- result.html
+- figure.json
+- run.log
+- upper_matrix_used.csv
+- lower_matrix_used.csv
+- row_order.csv
+- column_order.csv
+runtime: Rscript plugins/interactive_dual_triangle_heatmap_plot/plot.R --upper upper.csv --lower lower.csv --params params.json
+  --output output_dir
 parameters:
-  upper_label: {type: string, default: Jaccard similarity}
-  lower_label: {type: string, default: Pearson correlation}
-  upper_metric: {type: string, default: jaccard}
-  lower_metric: {type: string, default: pearson}
-  upper_palette: {type: string, default: red}
-  lower_palette: {type: string, default: blue}
-  upper_colors: {type: array}
-  lower_colors: {type: array}
-  upper_limits: {type: array}
-  lower_limits: {type: array}
-  upper_breaks: {type: array}
-  lower_breaks: {type: array}
-  upper_triangle_show: {type: boolean, default: true}
-  lower_triangle_show: {type: boolean, default: true}
-  diagonal_mode: {type: select, default: none, options: [none, upper, lower, average, label]}
-  cluster_features: {type: boolean, default: false}
-  cluster_source: {type: select, default: mean, options: [upper, lower, mean]}
-  feature_order: {type: array}
-  interactive: {type: boolean, default: true}
+  upper_label:
+    type: string
+    default: Jaccard similarity
+  lower_label:
+    type: string
+    default: Pearson correlation
+  upper_metric:
+    type: string
+    default: jaccard
+  lower_metric:
+    type: string
+    default: pearson
+  upper_palette:
+    type: string
+    default: red
+  lower_palette:
+    type: string
+    default: blue
+  upper_colors:
+    type: array
+  lower_colors:
+    type: array
+  upper_limits:
+    type: array
+  lower_limits:
+    type: array
+  upper_breaks:
+    type: array
+  lower_breaks:
+    type: array
+  upper_triangle_show:
+    type: boolean
+    default: true
+  lower_triangle_show:
+    type: boolean
+    default: true
+  diagonal_mode:
+    type: select
+    default: none
+    options:
+    - none
+    - upper
+    - lower
+    - average
+    - label
+  cluster_features:
+    type: boolean
+    default: false
+  cluster_source:
+    type: select
+    default: mean
+    options:
+    - upper
+    - lower
+    - mean
+  feature_order:
+    type: array
+  interactive:
+    type: boolean
+    default: true

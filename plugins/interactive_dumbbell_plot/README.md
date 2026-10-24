@@ -6,4 +6,4 @@ The CSV may be wide (`category`, `group1_value`, `group2_value`, here `school,Wo
 
 **layout** controls orientation/order, limits, breaks, expansion, and spacing. **stem** controls the connecting grey line. **points** controls shapes, sizes, alpha, borders, named `group_colors`, and highlights. **labels** controls title strip, axis text, labels, and typography. **legend** and **theme** control placement, grids, backgrounds, borders, fonts, and margins. **interaction** enables Plotly hover, zoom/pan, reset, box/lasso selection controls; static SVG/PDF/PNG are made with ggplot2. `selected_rows.csv` records the rows used after filtering.
 
-Three runnable examples are supplied. Reproduce all examples and portable bundles with `plugins/interactive_dumbbell_plot/run_all_examples.sh /Users/qzhang10/Documents/OmicsCanvas`; bundles are written under `examples/` and the gallery under `all_examples_gallery/`.
+Three runnable examples are supplied. Reproduce all examples and portable bundles with `plugins/interactive_dumbbell_plot/run_all_examples.sh <repo-root>`; bundles are written under `examples/` and the gallery under `all_examples_gallery/`.

@@ -1,15 +1,173 @@
 {
-  "plugin":"interactive_dumbbell_plot",
-  "groups":{
-    "data":["input_mode","category_column","group_column","value_column","group1","group2","group1_value","group2_value","group_order","label_column","rows_include","rows_exclude","categories_include","categories_exclude","top_n","sort","sort_by"],
-    "layout":["orientation","dodge_width","category_order","reverse_categories","x_limits","x_breaks","y_breaks","x_expand","y_expand","aspect_ratio","panel_spacing"],
-    "stem":["stem_show","stem_color","stem_width","stem_linetype","stem_alpha","stem_cap","stem_position"],
-    "points":["point_shape","point_size","point_size_min","point_size_max","point_alpha","point_stroke","point_border_color","group_colors","positive_color","negative_color","highlight_groups","highlight_categories","highlight_color","highlight_size","highlight_alpha"],
-    "labels":["title","subtitle","caption","title_show","title_size","title_color","title_face","title_hjust","subtitle_size","subtitle_color","subtitle_face","xlab","ylab","x_title_show","y_title_show","axis_text_size","axis_text_color","axis_text_angle","label_show","label_column","label_size","label_color","label_face","label_nudge_x","label_nudge_y","label_repel"],
-    "legend":["legend_show","legend_position","legend_title","legend_text_size","legend_title_size","legend_key_size","legend_ncol"],
-    "theme":["grid_show","grid_major_color","grid_minor_color","grid_linetype","panel_background","plot_background","panel_border_show","panel_border_color","panel_border_width","axis_line_show","axis_line_color","axis_line_width","font_family","base_size","margin"],
-    "interaction":["interactive","tooltip_columns","hover_template","selectable","lasso_select","zoom","pan","reset_view"],
-    "output":["width","height","dpi","html_width","html_height","export_formats"]
+  "plugin": "interactive_dumbbell_plot",
+  "groups": {
+    "data": [
+      "input_mode",
+      "category_column",
+      "group_column",
+      "value_column",
+      "group1",
+      "group2",
+      "group1_value",
+      "group2_value",
+      "label_column",
+      "rows_include",
+      "rows_exclude",
+      "categories_include",
+      "categories_exclude",
+      "top_n",
+      "sort",
+      "sort_by"
+    ],
+    "layout": [
+      "dodge_width",
+      "category_order",
+      "reverse_categories",
+      "x_limits",
+      "x_breaks",
+      "x_expand",
+      "y_expand",
+      "aspect_ratio",
+      "panel_spacing"
+    ],
+    "stem": [
+      "stem_show",
+      "stem_color",
+      "stem_width",
+      "stem_linetype",
+      "stem_alpha"
+    ],
+    "points": [
+      "point_shape",
+      "point_size",
+      "point_alpha",
+      "point_stroke",
+      "group_colors",
+      "positive_color",
+      "negative_color"
+    ],
+    "labels": [
+      "title",
+      "subtitle",
+      "caption",
+      "title_show",
+      "title_size",
+      "title_color",
+      "title_face",
+      "title_hjust",
+      "subtitle_size",
+      "subtitle_color",
+      "subtitle_face",
+      "xlab",
+      "ylab",
+      "x_title_show",
+      "y_title_show",
+      "axis_text_size",
+      "axis_text_color",
+      "axis_text_angle",
+      "label_show",
+      "label_column",
+      "label_size",
+      "label_color",
+      "label_nudge_y"
+    ],
+    "legend": [
+      "legend_show",
+      "legend_position",
+      "legend_title",
+      "legend_text_size",
+      "legend_title_size",
+      "legend_key_size"
+    ],
+    "theme": [
+      "grid_show",
+      "grid_major_color",
+      "grid_minor_color",
+      "grid_linetype",
+      "panel_background",
+      "plot_background",
+      "panel_border_show",
+      "panel_border_color",
+      "panel_border_width",
+      "axis_line_show",
+      "axis_line_color",
+      "axis_line_width",
+      "font_family",
+      "base_size",
+      "margin"
+    ],
+    "interaction": [
+      "interactive",
+      "zoom"
+    ],
+    "output": [
+      "width",
+      "height",
+      "dpi"
+    ]
   },
-  "properties":{"input_mode":{"type":"string","enum":["auto","wide","long"]},"category_column":{"type":"string"},"group_column":{"type":"string"},"value_column":{"type":"string"},"group1":{"type":"string","default":"Women"},"group2":{"type":"string","default":"Men"},"group_colors":{"type":"object"},"x_limits":{"type":"array"},"category_order":{"type":"array"},"rows_include":{"type":"array"},"rows_exclude":{"type":"array"},"categories_include":{"type":"array"},"categories_exclude":{"type":"array"},"interactive":{"type":"boolean","default":true},"width":{"type":"number","default":9},"height":{"type":"number","default":6},"dpi":{"type":"integer","default":300},"export_formats":{"type":"array","default":["svg","pdf","png","html"]}}
+  "properties": {
+    "input_mode": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "wide",
+        "long"
+      ]
+    },
+    "category_column": {
+      "type": "column"
+    },
+    "group_column": {
+      "type": "column"
+    },
+    "value_column": {
+      "type": "column"
+    },
+    "group1": {
+      "type": "string",
+      "default": "Women"
+    },
+    "group2": {
+      "type": "string",
+      "default": "Men"
+    },
+    "group_colors": {
+      "type": "object"
+    },
+    "x_limits": {
+      "type": "array"
+    },
+    "category_order": {
+      "type": "array"
+    },
+    "rows_include": {
+      "type": "array"
+    },
+    "rows_exclude": {
+      "type": "array"
+    },
+    "categories_include": {
+      "type": "array"
+    },
+    "categories_exclude": {
+      "type": "array"
+    },
+    "interactive": {
+      "type": "boolean",
+      "default": true
+    },
+    "width": {
+      "type": "number",
+      "default": 9
+    },
+    "height": {
+      "type": "number",
+      "default": 6
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 300
+    }
+  }
 }

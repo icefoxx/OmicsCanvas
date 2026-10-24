@@ -53,10 +53,6 @@
     "legend_text_size": "Legend item text size.",
     "legend_key_size": "Legend key size in points."
   },
-  "selectors": {
-    "highlight_lineages": "Lineages to emphasize (reserved for highlight styling).",
-    "highlight_color": "Color used for highlighted lineages."
-  },
   "output": {
     "width": "Output width in inches. Default 7.",
     "height": "Output height in inches. Default 6.",

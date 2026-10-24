@@ -130,8 +130,9 @@ normalize_theme_name <- function(x) {
 load_sca_advfea_reference <- function() {
   script_arg <- grep('^--file=', commandArgs(FALSE), value = TRUE)
   script_path <- if (length(script_arg) > 0) sub('^--file=', '', script_arg[1]) else file.path(getwd(), 'plugins', 'advanced_feature_plot', 'plot.R')
-  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), 'reference_sca_helpers')
-  if (!dir.exists(helper_dir)) helper_dir <- file.path('plugins', 'advanced_feature_plot', 'reference_sca_helpers')
+  # Shared SCA helper library (one canonical copy for all plugins): <repo>/R/sca
+  helper_dir <- file.path(dirname(normalizePath(script_path, mustWork = FALSE)), '..', '..', 'R', 'sca')
+  if (!dir.exists(helper_dir)) helper_dir <- file.path('R', 'sca')
 
   `%||%` <<- function(x, y) if (is.null(x) || length(x) == 0) y else x
   ckPacsR <<- function(packages, ...) {
@@ -155,11 +156,8 @@ load_sca_advfea_reference <- function() {
   source(file.path(helper_dir, 'statPlot.R'), local = .GlobalEnv)
   source(file.path(helper_dir, 'advFeaPlot.R'), local = .GlobalEnv)
 
-  old_palette <- paletteCustomize
-  palette_file <- file.path(getwd(), 'assets', 'palettes.rds')
-  paletteCustomize <<- function(..., palettePath = NULL) {
-    old_palette(..., palettePath = palettePath %||% palette_file)
-  }
+  source(file.path(helper_dir, 'omicscanvas_shims.R'), local = .GlobalEnv)
+  omicscanvas_patch_palette(helper_dir)
   invisible(TRUE)
 }
 
@@ -222,6 +220,23 @@ build_advfea_args <- function(df, params, x_col, y_col, id_col, group_col, split
   if (!is.null(value_scale_range)) value_scale_range <- as.numeric(unlist(value_scale_range, use.names = FALSE))[1:2]
   value_scale_breaks <- get_param_any(params, c('value.scale.breaks', 'value_scale_breaks'), NULL)
   if (!is.null(value_scale_breaks)) value_scale_breaks <- as.numeric(unlist(value_scale_breaks, use.names = FALSE))
+
+  layout <- tolower(as.character(get_param(params, 'feature_layout', ''))[1])
+  if (identical(layout, 'single')) {
+    params[['facet_ncol']] <- 1
+    params[['facet_nrow']] <- 1
+  } else if (layout %in% c('side_by_side', 'side by side')) {
+    params[['facet_nrow']] <- 1
+  }
+  agg <- tolower(as.character(get_param(params, 'aggregation_style', ''))[1])
+  if (agg %in% c('hex', 'hexbin')) params[['hex']] <- TRUE
+  if (agg %in% c('density', 'contour', 'contours')) params[['show_density']] <- TRUE
+  render_mode <- tolower(as.character(get_param(params, 'rendering_mode', ''))[1])
+  if (identical(render_mode, 'raster')) params[['raster']] <- TRUE
+  if (identical(render_mode, 'vector')) params[['raster']] <- FALSE
+  if (as_bool(get_param(params, 'feature_comp', FALSE), FALSE) || as_bool(get_param(params, 'feature_composition', FALSE), FALSE)) {
+    params[['feature_comp']] <- TRUE
+  }
 
   list(
     data = data,
@@ -347,7 +362,7 @@ save_plot <- function(plot, output_dir, width, height, dpi) {
   }
   draw_with_retry(function(w, h) svglite::svglite(file.path(output_dir, 'result.svg'), width = w, height = h))
   draw_with_retry(function(w, h) grDevices::cairo_pdf(file.path(output_dir, 'result.pdf'), width = w, height = h, onefile = TRUE))
-  draw_with_retry(function(w, h) png(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi, type = 'cairo'))
+  draw_with_retry(function(w, h) (if (requireNamespace('ragg', quietly = TRUE)) ragg::agg_png else function(...) grDevices::png(..., type = 'cairo'))(file.path(output_dir, 'result.png'), width = w, height = h, units = 'in', res = dpi))
 }
 
 main <- function() {
@@ -389,6 +404,8 @@ main <- function() {
   width <- num_param(params, 'width', ifelse(length(feature_cols) > 1, 9.0, 6.5))
   height <- num_param(params, 'height', ifelse(length(feature_cols) > 2, 7.0, 5.5))
   dpi <- num_param(params, 'dpi', 300)
+  # Generic appearance parameters not handled by this plugin (R/runtime/omicscanvas_theme.R).
+  if (!exists('omicscanvas_apply_theme')) { .oc_f <- sub('^--file=', '', grep('^--file=', commandArgs(FALSE), value = TRUE)[1]); .oc_rt <- file.path(dirname(normalizePath(.oc_f, mustWork = FALSE)), '..', '..', 'R', 'runtime', 'omicscanvas_theme.R'); if (!file.exists(.oc_rt)) .oc_rt <- file.path('R', 'runtime', 'omicscanvas_theme.R'); sys.source(.oc_rt, envir = globalenv()) }; plot <- omicscanvas_apply_theme(plot, params, only = c('legend_show', 'panel_border_show', 'show_x_axis', 'show_y_axis'))
   save_plot(plot, output_dir, width, height, dpi)
 
   figure <- list(
