@@ -1,0 +1,9 @@
+{
+  "category_column": "category",
+  "value_column": "value",
+  "title": "Score contributions",
+  "total_show": true,
+  "connector_show": true,
+  "width": 8,
+  "height": 5
+}

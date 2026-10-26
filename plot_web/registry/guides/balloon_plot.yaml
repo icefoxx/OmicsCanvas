@@ -1,0 +1,85 @@
+summary: Summarize a numeric matrix with sized bubbles and optional marginal statistics.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare sample-feature intensities
+- Inspect cross-category counts
+- Check row and column summaries
+common_uses: []
+input_requirements: A row identifier and numeric matrix, or supported long-format
+  column mappings.
+learn_more: 'Input: A row identifier and numeric matrix, or supported long-format
+  column mappings. Interpretation: Bubble size encodes values; gradient mode also
+  uses color for intensity. Check mappings, order and transformations before adjusting
+  labels, colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Bubble size encodes values; gradient mode also uses color for intensity.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Read the size legend rather than estimating ratios from diameters
+- id: caution_2
+  title: Caution 2
+  text: Marginal statistics depend on the selected rows, columns and aggregation
+examples:
+- id: basic
+  title: Matrix and marginal summaries
+  description: 'Use case: Compare sample-feature intensities. This preset illustrates
+    matrix and marginal summaries. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare sample-feature intensities
+  input_requirements: A row identifier and numeric matrix, or supported long-format
+    column mappings.
+  preview_asset: plugins/balloon_plot/all_examples_gallery/basic.png
+  mappings:
+    row_id_column: gene
+- id: gradient
+  title: Continuous color alongside size
+  description: 'Use case: Inspect cross-category counts. This preset illustrates continuous
+    color alongside size. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: gradient
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect cross-category counts
+  input_requirements: A row identifier and numeric matrix, or supported long-format
+    column mappings.
+  preview_asset: plugins/balloon_plot/all_examples_gallery/gradient.png
+  variant_id: gradient
+  mappings:
+    row_id_column: gene
+    highlight_columns:
+    - S04
+- id: no_stats
+  title: Matrix without marginal summaries
+  description: 'Use case: Check row and column summaries. This preset illustrates
+    matrix without marginal summaries. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: no_stats
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Check row and column summaries
+  input_requirements: A row identifier and numeric matrix, or supported long-format
+    column mappings.
+  preview_asset: plugins/balloon_plot/all_examples_gallery/no_stats.png
+  variant_id: no_stats
+  mappings:
+    row_id_column: gene
+literature_ids:
+- hao_dnt_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  gradient:
+    summary: 'Use case: Inspect cross-category counts. This preset illustrates continuous
+      color alongside size. Replace its input with your data while retaining the appropriate
+      view settings.'
+  no_stats:
+    summary: 'Use case: Check row and column summaries. This preset illustrates matrix
+      without marginal summaries. Replace its input with your data while retaining
+      the appropriate view settings.'
+customization: []

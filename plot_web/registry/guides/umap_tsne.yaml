@@ -1,216 +1,372 @@
-summary: >
-  Visualizes high-dimensional observations in a two-dimensional embedding
+summary: 'Visualizes high-dimensional observations in a two-dimensional embedding
   while approximately preserving aspects of neighborhood structure.
+
+  '
 observation_type: single-cell profiles
 best_for:
-  - Cell clusters
-  - Cell states
-  - Feature-expression patterns
-  - Sample mixing
-  - Annotation overview
+- Cell clusters
+- Cell states
+- Feature-expression patterns
+- Sample mixing
+- Annotation overview
 common_uses:
-  - Visualize cell populations
-  - Compare annotations
-  - Overlay feature expression
-  - Explore composition within clusters
-learn_more: >
-  Nearby points often come from observations with more similar high-dimensional
-  profiles. The 2D layout is a visualization of neighborhood structure, not a
-  calibrated map of biological distance. Use complementary quantitative analyses
-  for abundance, differential expression, and statistical tests.
+- Visualize cell populations
+- Compare annotations
+- Overlay feature expression
+- Explore composition within clusters
+learn_more: 'Nearby points often come from observations with more similar high-dimensional
+  profiles. The 2D layout is a visualization of neighborhood structure, not a calibrated
+  map of biological distance. Use complementary quantitative analyses for abundance,
+  differential expression, and statistical tests.
+
+  '
 interpretation:
-  - id: cluster_structure
-    type: interpretation
-    title: Cluster structure
-    text: >
-      Dense or separated regions may indicate groups of observations with
-      similar profiles. This is a visual pattern, not a statistical test.
-  - id: local_neighborhood
-    type: interpretation
-    title: Local neighborhood
-    text: >
-      Nearby observations often have more similar high-dimensional profiles
-      than distant observations.
+- id: cluster_structure
+  type: interpretation
+  title: Cluster structure
+  text: 'Dense or separated regions may indicate groups of observations with similar
+    profiles. This is a visual pattern, not a statistical test.
+
+    '
+- id: local_neighborhood
+  type: interpretation
+  title: Local neighborhood
+  text: 'Nearby observations often have more similar high-dimensional profiles than
+    distant observations.
+
+    '
 cautions:
-  - id: global_distance
-    title: Global distances
-    text: >
-      Distances between widely separated regions should not automatically be
-      interpreted as quantitative biological distances.
-  - id: cluster_area
-    title: Cluster area
-    text: >
-      The visual area occupied by a cluster is not necessarily proportional
-      to biological abundance.
-  - id: statistical_inference
-    title: Statistical inference
-    text: >
-      Visual separation alone does not establish statistical significance.
+- id: global_distance
+  title: Global distances
+  text: 'Distances between widely separated regions should not automatically be interpreted
+    as quantitative biological distances.
+
+    '
+- id: cluster_area
+  title: Cluster area
+  text: 'The visual area occupied by a cluster is not necessarily proportional to
+    biological abundance.
+
+    '
+- id: statistical_inference
+  title: Statistical inference
+  text: 'Visual separation alone does not establish statistical significance.
+
+    '
 examples:
-  - id: basic_clusters
-    title: Basic clusters
-    description: Color cells by cluster or cell type.
-    preview_asset: plugins/advanced_dim_plot/all_examples_gallery/pdf_repro_basic_umap.png
-    demo_id: pdf_repro_basic_umap
-    variant_id: clusters
-  - id: feature_expression
-    title: Feature expression
-    description: Map a numeric feature onto the embedding.
-    preview_asset: plugins/advanced_dim_plot/all_examples_gallery/feature.png
-    demo_id: feature
-    variant_id: feature_expression
-  - id: composition
-    title: Sample composition
-    description: Compare group fractions within clusters using pies or rings.
-    preview_asset: plugins/advanced_dim_plot/all_examples_gallery/pdf_repro_composition_ring.png
-    demo_id: pdf_repro_composition_ring
-    variant_id: composition
+- id: basic_clusters
+  title: Basic clusters
+  description: Color cells by cluster or cell type.
+  preview_asset: plugins/advanced_dim_plot/all_examples_gallery/pdf_repro_basic_umap.png
+  demo_id: pdf_repro_basic_umap
+  variant_id: clusters
+  scenario: Inspect annotated cell populations
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+- id: feature_expression
+  title: Feature expression
+  description: Map a numeric feature onto the embedding.
+  preview_asset: plugins/advanced_dim_plot/all_examples_gallery/feature.png
+  demo_id: feature
+  variant_id: feature_expression
+  scenario: Locate marker features in the same coordinates
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+- id: composition
+  title: Sample composition
+  description: Compare group fractions within clusters using pies or rings.
+  preview_asset: plugins/advanced_dim_plot/all_examples_gallery/pdf_repro_composition_ring.png
+  demo_id: pdf_repro_composition_ring
+  variant_id: composition
+  scenario: Check sample composition within populations
+  data_note: Local demonstration bundle, not the original data of a cited paper.
 literature_ids:
-  - umap_mcinnes_2018
-  - umap_becht_2019
+- umap_mcinnes_2018
+- umap_becht_2019
+- hao_dnt_2026
+- tan_spacec_2025
+- blair_phospho_2025
 reporting:
-  base_template: >
-    {family_name} visualization of {observation_type}.
+  base_template: '{family_name} visualization of {observation_type}.
+
+    '
   mappings:
-    group: >
-      Points are colored according to {group_column}.
-    split: >
-      Panels are separated by {split_column}.
-    feature: >
-      Color intensity represents {feature_column}.
-    composition: >
-      Pie or ring slices represent the relative composition of {composition_column}.
+    group: 'Points are colored according to {group_column}.
+
+      '
+    split: 'Panels are separated by {split_column}.
+
+      '
+    feature: 'Color intensity represents {feature_column}.
+
+      '
+    composition: 'Pie or ring slices represent the relative composition of {composition_column}.
+
+      '
 variants:
   clusters:
-    summary: >
-      Colors each observation by a categorical annotation such as cluster or cell type.
+    summary: 'Colors each observation by a categorical annotation such as cluster
+      or cell type.
+
+      '
     best_for:
-      - Inspecting annotated populations on the embedding
+    - Inspecting annotated populations on the embedding
     interpretation:
-      - title: Color
-        type: direct
-        text: >
-          Point color encodes the selected grouping variable.
+    - title: Color
+      type: direct
+      text: 'Point color encodes the selected grouping variable.
+
+        '
     cautions:
-      - title: Cluster labels
-        text: >
-          Colors show assigned labels. They do not by themselves prove that
-          groups are biologically distinct.
+    - title: Cluster labels
+      text: 'Colors show assigned labels. They do not by themselves prove that groups
+        are biologically distinct.
+
+        '
     reporting:
-      template: >
-        Each point represents one observation and is colored by {group_column}.
+      template: 'Each point represents one observation and is colored by {group_column}.
+
+        '
   feature_expression:
-    summary: >
-      Maps a numeric feature onto the embedding with a continuous color scale.
+    summary: 'Maps a numeric feature onto the embedding with a continuous color scale.
+
+      '
     best_for:
-      - Inspecting marker or gene expression patterns
+    - Inspecting marker or gene expression patterns
     interpretation:
-      - title: Color intensity
-        type: direct
-        text: >
-          Color intensity represents the mapped feature value after any
-          configured transform.
+    - title: Color intensity
+      type: direct
+      text: 'Color intensity represents the mapped feature value after any configured
+        transform.
+
+        '
     cautions:
-      - title: Expression vs state
-        text: >
-          Local enrichment of a feature is a visual pattern and is not a
-          differential-expression test.
+    - title: Expression vs state
+      text: 'Local enrichment of a feature is a visual pattern and is not a differential-expression
+        test.
+
+        '
     reporting:
-      template: >
-        Color intensity represents {feature_column} on the embedding.
+      template: 'Color intensity represents {feature_column} on the embedding.
+
+        '
   split_samples:
-    summary: >
-      Repeats the same embedding in panels split by sample or condition.
+    summary: 'Repeats the same embedding in panels split by sample or condition.
+
+      '
     best_for:
-      - Comparing occupancy of regions across samples
+    - Comparing occupancy of regions across samples
     interpretation:
-      - title: Shared coordinates
-        type: direct
-        text: >
-          Panels share the same embedding coordinates and are separated by
-          the split variable.
+    - title: Shared coordinates
+      type: direct
+      text: 'Panels share the same embedding coordinates and are separated by the
+        split variable.
+
+        '
     cautions:
-      - title: Missing cells
-        text: >
-          An empty region in one panel means those observations are absent
-          from that split, not that the embedding changed.
+    - title: Missing cells
+      text: 'An empty region in one panel means those observations are absent from
+        that split, not that the embedding changed.
+
+        '
     reporting:
-      template: >
-        Embeddings are shown separately by {split_column}.
+      template: 'Embeddings are shown separately by {split_column}.
+
+        '
   composition:
-    summary: >
-      Displays categorical composition within embedding-defined groups using pie or ring glyphs.
+    summary: 'Displays categorical composition within embedding-defined groups using
+      pie or ring glyphs.
+
+      '
     best_for:
-      - Comparing sample composition across clusters
+    - Comparing sample composition across clusters
     interpretation:
-      - title: Glyph slices
-        type: direct
-        text: >
-          Slice or ring segments represent the selected composition variable within each group.
-      - title: Position
-        type: direct
-        text: >
-          Each glyph is placed at the centroid of its group on the embedding.
+    - title: Glyph slices
+      type: direct
+      text: 'Slice or ring segments represent the selected composition variable within
+        each group.
+
+        '
+    - title: Position
+      type: direct
+      text: 'Each glyph is placed at the centroid of its group on the embedding.
+
+        '
     cautions:
-      - title: Glyph size
-        text: >
-          Pie or ring area should only be interpreted as abundance when size is
-          explicitly mapped to an abundance metric.
+    - title: Glyph size
+      text: 'Pie or ring area should only be interpreted as abundance when size is
+        explicitly mapped to an abundance metric.
+
+        '
     reporting:
-      template: >
-        Pie or ring slices represent the relative composition of {composition_column}
+      template: 'Pie or ring slices represent the relative composition of {composition_column}
         within each {cluster_column}.
+
+        '
   density:
-    summary: >
-      Summarizes local observation density on the embedding with filled or hexbin regions.
+    summary: 'Summarizes local observation density on the embedding with filled or
+      hexbin regions.
+
+      '
     best_for:
-      - Seeing crowded regions without overplotting
+    - Seeing crowded regions without overplotting
     interpretation:
-      - title: Density
-        type: interpretation
-        text: >
-          Darker or larger bins indicate more observations in that embedding region.
+    - title: Density
+      type: interpretation
+      text: 'Darker or larger bins indicate more observations in that embedding region.
+
+        '
     cautions:
-      - title: Bandwidth
-        text: >
-          Density appearance depends on binning or kernel settings and can hide
-          or exaggerate local structure.
+    - title: Bandwidth
+      text: 'Density appearance depends on binning or kernel settings and can hide
+        or exaggerate local structure.
+
+        '
     reporting:
-      template: >
-        Density summarizes local observation counts on the embedding.
+      template: 'Density summarizes local observation counts on the embedding.
+
+        '
   highlight_cells:
-    summary: >
-      Emphasizes a selected subset of observations and fades the remainder.
+    summary: 'Emphasizes a selected subset of observations and fades the remainder.
+
+      '
     best_for:
-      - Locating a gene-positive or manually selected subset
+    - Locating a gene-positive or manually selected subset
     interpretation:
-      - title: Emphasis
-        type: direct
-        text: >
-          Highlighted observations are drawn more prominently than the background set.
+    - title: Emphasis
+      type: direct
+      text: 'Highlighted observations are drawn more prominently than the background
+        set.
+
+        '
     cautions:
-      - title: Selection
-        text: >
-          Highlight membership is defined by the selected rule or list, not by
-          unsupervised clustering on this plot.
+    - title: Selection
+      text: 'Highlight membership is defined by the selected rule or list, not by
+        unsupervised clustering on this plot.
+
+        '
     reporting:
-      template: >
-        A selected subset of observations is highlighted on the embedding.
+      template: 'A selected subset of observations is highlighted on the embedding.
+
+        '
   ellipse:
-    summary: >
-      Overlays spread ellipses for groups on the embedding.
+    summary: 'Overlays spread ellipses for groups on the embedding.
+
+      '
     best_for:
-      - Summarizing group spread without showing every point
+    - Summarizing group spread without showing every point
     interpretation:
-      - title: Ellipse
-        type: interpretation
-        text: >
-          Ellipses summarize the spread of a group in embedding coordinates.
+    - title: Ellipse
+      type: interpretation
+      text: 'Ellipses summarize the spread of a group in embedding coordinates.
+
+        '
     cautions:
-      - title: Not a test
-        text: >
-          Overlapping or separated ellipses are not a statistical comparison
-          of groups.
+    - title: Not a test
+      text: 'Overlapping or separated ellipses are not a statistical comparison of
+        groups.
+
+        '
     reporting:
-      template: >
-        Group spread on the embedding is summarized with ellipses.
+      template: 'Group spread on the embedding is summarized with ellipses.
+
+        '
+customization:
+- parameter: group_column
+  label: Group / cluster column
+  default: cluster
+- parameter: feature_columns
+  label: Feature columns (expression mode)
+  default: []
+- parameter: x_column
+  label: X embedding column
+  default: dim1
+- parameter: y_column
+  label: Y embedding column
+  default: dim2
+- parameter: label_show
+  label: Show labels
+  default: false
+- parameter: width
+  label: Width (in)
+  default: 7.2
+- parameter: height
+  label: Height (in)
+  default: 6.1
+input_requirements: Observation IDs, two embedding coordinates and group annotations;
+  numeric features for feature maps, and sample or condition labels for composition
+  views.
+source_modules:
+- title: FigureYa27tSNE_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa27tSNE_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa38PCA
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa38PCA
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa93UMAP
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa93UMAP
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa101PCA
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa101PCA
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa154immuneSubtypes
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa154immuneSubtypes
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa185sciATAC
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa185sciATAC
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa203ComBat
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa203ComBat
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa222PCAgene
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa222PCAgene
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa229PCOA
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa229PCOA
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa231scScore
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa231scScore
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa244PCAPlot
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa244PCAPlot
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa252mclust
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa252mclust
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa269scMetabolism
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa269scMetabolism
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa275scAUCell
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa275scAUCell
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa304MAGIC
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa304MAGIC
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

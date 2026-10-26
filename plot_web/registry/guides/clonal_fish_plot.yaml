@@ -1,0 +1,167 @@
+summary: Show supplied nested clone fractions across time.
+observation_type: observations or supplied summaries described in the input contract
+input_requirements: Long table of clone, parent (0 for virtual root), time and inclusive
+  clone fraction. Child fractions may not exceed their parent; root fractions may
+  not sum above one.
+best_for:
+- Summarize nested clone fractions over time
+- Show expanding and disappearing subclones
+- Display supplied parent relationships without inferring ancestry
+learn_more: Choose the intended data mapping and statistical mode before styling.
+  Parent fractions include descendants. Do not sum nested parents and children as
+  independent populations.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Show supplied nested clone fractions across time. Long table of clone, parent
+    (0 for virtual root), time and inclusive clone fraction. Child fractions may not
+    exceed their parent; root fractions may not sum above one.
+cautions:
+- id: caution_1
+  title: Interpretation limit 1
+  text: Parent fractions include descendants. Do not sum nested parents and children
+    as independent populations.
+- id: caution_2
+  title: Interpretation limit 2
+  text: Parent relationships are supplied, not inferred; linear interpolation between
+    time points does not establish clone dynamics.
+examples:
+- id: basic
+  title: Nested clone fractions
+  description: Summarize nested clone fractions over time
+  scenario: Summarize nested clone fractions over time
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/clonal_fish_plot/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    group_column: clone
+    parent_column: parent
+    x_column: time
+    value_column: fraction
+- id: percent
+  title: Clone fractions in percent
+  description: Show expanding and disappearing subclones
+  scenario: Show expanding and disappearing subclones
+  demo_id: percent
+  variant_id: percent
+  preview_asset: plugins/clonal_fish_plot/all_examples_gallery/percent.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    group_column: clone
+    parent_column: parent
+    x_column: time
+    value_column: fraction
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source. Local demos use independently
+  generated data and are not reproductions of its analyses.
+- Additional verified published figure/panel examples remain to be curated.
+customization:
+- parameter: group_column
+  label: Group column
+  default: clone
+  help: ''
+- parameter: parent_column
+  label: Parent column
+  default: parent
+  help: ''
+- parameter: x_column
+  label: X column
+  default: time
+  help: ''
+- parameter: value_column
+  label: Value column
+  default: fraction
+  help: ''
+- parameter: fraction_unit
+  label: Fraction unit
+  default: fraction
+  help: ''
+- parameter: timepoint_show
+  label: Timepoint show
+  default: true
+  help: ''
+- parameter: fill_alpha
+  label: Fill alpha
+  default: 0.9
+  help: ''
+- parameter: line_width
+  label: Line width
+  default: 0.6
+  help: ''
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: grid_show
+  label: Grid show
+  default: false
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report input mappings, units, preprocessing and all
+    selected statistical or display modes.'
+source_modules:
+- title: FigureYa87fish
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa87fish
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

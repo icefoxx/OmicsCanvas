@@ -1,0 +1,4211 @@
+{
+  "repository": "https://github.com/ying-ge/FigureYa",
+  "commit": "8d7a02c7d00467c45471139b63620571afebbeba",
+  "reviewed_on": "2026-10-25",
+  "scope": "Source text and requirements review; upstream code was not executed.",
+  "modules": [
+    {
+      "module": "FigureYa000ContributionTemplate",
+      "number": 0,
+      "status": "utility / presentation limitation",
+      "engines": [],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa000ContributionTemplate",
+      "reviewed_text_files": [
+        "FigureYa000ContributionTemplate/README.md"
+      ],
+      "limits": "Contribution template, not a plotting module."
+    },
+    {
+      "module": "FigureYa1survivalCurve_update",
+      "number": 1,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa1survivalCurve_update",
+      "reviewed_text_files": [
+        "FigureYa1survivalCurve_update/FigureYa1survivalCurve_update.Rmd",
+        "FigureYa1survivalCurve_update/improvement_suggestions.md"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa2ggtree+pheatmap+msa",
+      "number": 2,
+      "status": "new renderer",
+      "engines": [
+        "sequence_alignment_plot",
+        "annotated_tree_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa2ggtree%2Bpheatmap%2Bmsa",
+      "reviewed_text_files": [
+        "FigureYa2ggtree+pheatmap+msa/FigureYa2ggtree+pheatmap+msa.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa3genomeView",
+      "number": 3,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_genomic_signal_track_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa3genomeView",
+      "reviewed_text_files": [
+        "FigureYa3genomeView/FigureYa3genomeView.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa4bestSeparation",
+      "number": 4,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa4bestSeparation",
+      "reviewed_text_files": [
+        "FigureYa4bestSeparation/FigureYa4bestSeparation.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa5bubbles",
+      "number": 5,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa5bubbles",
+      "reviewed_text_files": [
+        "FigureYa5bubbles/FigureYa5bubbles.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa6rHRsV2",
+      "number": 6,
+      "status": "new renderer",
+      "engines": [
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa6rHRsV2",
+      "reviewed_text_files": [
+        "FigureYa6rHRsV2/FigureYa6rHRsV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa7PSM",
+      "number": 7,
+      "status": "utility / presentation limitation",
+      "engines": [
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa7PSM",
+      "reviewed_text_files": [
+        "FigureYa7PSM/FigureYa7PSM.Rmd"
+      ],
+      "limits": "Propensity-score matching and balance analysis require upstream estimation; supplied balance summaries can be drawn with comparison/forest plots."
+    },
+    {
+      "module": "FigureYa8radar",
+      "number": 8,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_radar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa8radar",
+      "reviewed_text_files": [
+        "FigureYa8radar/FigureYa8radarChart.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa9heatmap",
+      "number": 9,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa9heatmap",
+      "reviewed_text_files": [
+        "FigureYa9heatmap/FigureYa9heatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa10chromosomeV2_update",
+      "number": 10,
+      "status": "new renderer",
+      "engines": [
+        "circular_genomic_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa10chromosomeV2_update",
+      "reviewed_text_files": [
+        "FigureYa10chromosomeV2_update/FigureYa10chromosomeV2_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa11bubble",
+      "number": 11,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa11bubble",
+      "reviewed_text_files": [
+        "FigureYa11bubble/FigureYa11bubbles.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa12box",
+      "number": 12,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa12box",
+      "reviewed_text_files": [
+        "FigureYa12box/FigureYa12box.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa13GSEA_Java_update",
+      "number": 13,
+      "status": "existing renderer",
+      "engines": [
+        "fgsea_enrichment_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa13GSEA_Java_update",
+      "reviewed_text_files": [
+        "FigureYa13GSEA_Java_update/FigureYa13GSEA_Java_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa14circos",
+      "number": 14,
+      "status": "new renderer",
+      "engines": [
+        "circular_genomic_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa14circos",
+      "reviewed_text_files": [
+        "FigureYa14circos/FigureYa14circos.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa15WGCNA",
+      "number": 15,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa15WGCNA",
+      "reviewed_text_files": [
+        "FigureYa15WGCNA/FigureYa15WGCNA.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa16fitting",
+      "number": 16,
+      "status": "existing renderer",
+      "engines": [
+        "regression_scatter_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa16fitting",
+      "reviewed_text_files": [
+        "FigureYa16fitting/FigureYa16WGCNA_fitting.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa17WGCNA_heatmap",
+      "number": 17,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa17WGCNA_heatmap",
+      "reviewed_text_files": [
+        "FigureYa17WGCNA_heatmap/FigureYa17WGCNA_heatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa18oncoplot_update",
+      "number": 18,
+      "status": "new renderer",
+      "engines": [
+        "oncoprint_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa18oncoplot_update",
+      "reviewed_text_files": [
+        "FigureYa18oncoplot_update/FigureYa18oncoplot_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa19Lollipop",
+      "number": 19,
+      "status": "new renderer",
+      "engines": [
+        "protein_variant_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa19Lollipop",
+      "reviewed_text_files": [
+        "FigureYa19Lollipop/FigureYa19Lollipop.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa20mortality",
+      "number": 20,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa20mortality",
+      "reviewed_text_files": [
+        "FigureYa20mortality/FigureYa20mortalityV2.Rmd"
+      ],
+      "limits": "Supplied lower/upper interval bands are available in line_plot; survival/spline/Bayesian model fitting remains upstream."
+    },
+    {
+      "module": "FigureYa21TCGA2table",
+      "number": 21,
+      "status": "utility / presentation limitation",
+      "engines": [],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa21TCGA2table",
+      "reviewed_text_files": [
+        "FigureYa21TCGA2table/FigureYa21TCGA2table.Rmd",
+        "FigureYa21TCGA2table/FigureYa21TCGA2table_latex.Rmd"
+      ],
+      "limits": "Clinical-table extraction; not a new plotting grammar."
+    },
+    {
+      "module": "FigureYa22FPKM2TPM",
+      "number": 22,
+      "status": "utility / presentation limitation",
+      "engines": [],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa22FPKM2TPM",
+      "reviewed_text_files": [
+        "FigureYa22FPKM2TPM/FigureYa22FPKM2TPM.Rmd"
+      ],
+      "limits": "Expression-unit conversion, not a plotting grammar."
+    },
+    {
+      "module": "FigureYa23count2TPM",
+      "number": 23,
+      "status": "utility / presentation limitation",
+      "engines": [],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa23count2TPM",
+      "reviewed_text_files": [
+        "FigureYa23count2TPM/FigureYa23count2TPMv2.Rmd"
+      ],
+      "limits": "Count normalization and gene-length calculation; not a plotting grammar."
+    },
+    {
+      "module": "FigureYa24ROC",
+      "number": 24,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa24ROC",
+      "reviewed_text_files": [
+        "FigureYa24ROC/FigureYa24ROC.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa25Sankey_update",
+      "number": 25,
+      "status": "existing renderer",
+      "engines": [
+        "alluvial_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa25Sankey_update",
+      "reviewed_text_files": [
+        "FigureYa25Sankey_update/FigureYa25Sankey_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa26circos_R",
+      "number": 26,
+      "status": "new renderer",
+      "engines": [
+        "circular_genomic_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa26circos_R",
+      "reviewed_text_files": [
+        "FigureYa26circos_R/FigureYa26circos_R.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa27tSNE_update",
+      "number": 27,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa27tSNE_update",
+      "reviewed_text_files": [
+        "FigureYa27tSNE_update/FIgureYa27tSNE_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa28color",
+      "number": 28,
+      "status": "utility / presentation limitation",
+      "engines": [],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa28color",
+      "reviewed_text_files": [
+        "FigureYa28color/FigureYa28color.Rmd"
+      ],
+      "limits": "Palette utility, not a new chart type."
+    },
+    {
+      "module": "FigureYa30Plus_nomogram_app",
+      "number": 30,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot",
+        "nomogram_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa30Plus_nomogram_app",
+      "reviewed_text_files": [
+        "FigureYa30Plus_nomogram_app/README.md",
+        "FigureYa30Plus_nomogram_app/\u4f7f\u7528\u6307\u5357.md",
+        "FigureYa30Plus_nomogram_app/\u5f00\u59cb\u4f7f\u7528.md",
+        "FigureYa30Plus_nomogram_app/\u66f4\u65b0\u8bf4\u660e_v2.1.md",
+        "FigureYa30Plus_nomogram_app/\u672c\u5730\u90e8\u7f72\u6307\u5357.md",
+        "FigureYa30Plus_nomogram_app/\u6d4b\u8bd5\u6e05\u5355.md"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa30nomogram_update",
+      "number": 30,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot",
+        "nomogram_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa30nomogram_update",
+      "reviewed_text_files": [
+        "FigureYa30nomogram_update/FigureYa30nomogram_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa31lasso_update",
+      "number": 31,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa31lasso_update",
+      "reviewed_text_files": [
+        "FigureYa31lasso_update/FigureYa31lasso_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa32ID_table",
+      "number": 32,
+      "status": "utility / presentation limitation",
+      "engines": [],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa32ID_table",
+      "reviewed_text_files": [
+        "FigureYa32ID_table/FigureYa32ID_table.Rmd"
+      ],
+      "limits": "Identifier conversion, not a plotting grammar."
+    },
+    {
+      "module": "FigureYa33DCA_update",
+      "number": 33,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa33DCA_update",
+      "reviewed_text_files": [
+        "FigureYa33DCA_update/FigureYa33DCA_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa34count2FPKMv2",
+      "number": 34,
+      "status": "utility / presentation limitation",
+      "engines": [],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa34count2FPKMv2",
+      "reviewed_text_files": [
+        "FigureYa34count2FPKMv2/FigureYa34count2FPKMv2.Rmd"
+      ],
+      "limits": "Expression-unit conversion, not a plotting grammar."
+    },
+    {
+      "module": "FigureYa35batch_bestSeparationV3_update",
+      "number": 35,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa35batch_bestSeparationV3_update",
+      "reviewed_text_files": [
+        "FigureYa35batch_bestSeparationV3_update/FigureYa35batch_bestSeparationV3_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa36nSurvV3",
+      "number": 36,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa36nSurvV3",
+      "reviewed_text_files": [
+        "FigureYa36nSurvV3/FigureYa36nSurvV3.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa37correlationV2_update",
+      "number": 37,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa37correlationV2_update",
+      "reviewed_text_files": [
+        "FigureYa37correlationV2_update/FigureYa37correlationV2_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa38PCA",
+      "number": 38,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa38PCA",
+      "reviewed_text_files": [
+        "FigureYa38PCA/FigureYa38PCA.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa39bar",
+      "number": 39,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa39bar",
+      "reviewed_text_files": [
+        "FigureYa39bar/FigureYa39bar.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa40lineage",
+      "number": 40,
+      "status": "existing renderer",
+      "engines": [
+        "alluvial_plot",
+        "lineage_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa40lineage",
+      "reviewed_text_files": [
+        "FigureYa40lineage/FigureYa40lineage.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa41GEO2lncRNA_update",
+      "number": 41,
+      "status": "utility / presentation limitation",
+      "engines": [],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa41GEO2lncRNA_update",
+      "reviewed_text_files": [
+        "FigureYa41GEO2lncRNA_update/FigureYa41GEO2lncRNA_update.Rmd"
+      ],
+      "limits": "Transcript annotation/extraction, not a plotting grammar."
+    },
+    {
+      "module": "FigureYa42oncoprintV2_update",
+      "number": 42,
+      "status": "new renderer",
+      "engines": [
+        "oncoprint_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa42oncoprintV2_update",
+      "reviewed_text_files": [
+        "FigureYa42oncoprintV2_update/FigureYa42oncoprintV2_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa43ManhattanV2",
+      "number": 43,
+      "status": "new renderer",
+      "engines": [
+        "manhattan_qq_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa43ManhattanV2",
+      "reviewed_text_files": [
+        "FigureYa43ManhattanV2/FigureYa43ManhattanV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa44profile",
+      "number": 44,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa44profile",
+      "reviewed_text_files": [
+        "FigureYa44profile/FigureYa44profile.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa45V2",
+      "number": 45,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa45V2",
+      "reviewed_text_files": [
+        "FigureYa45V2/FigureYa45iClusterV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa47HRtable",
+      "number": 47,
+      "status": "new renderer",
+      "engines": [
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa47HRtable",
+      "reviewed_text_files": [
+        "FigureYa47HRtable/FigureYa47HRtable.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa48Adonis",
+      "number": 48,
+      "status": "existing renderer",
+      "engines": [
+        "regression_scatter_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa48Adonis",
+      "reviewed_text_files": [
+        "FigureYa48Adonis/FigureYa48Adonis.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa51TMB_update",
+      "number": 51,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa51TMB_update",
+      "reviewed_text_files": [
+        "FigureYa51TMB_update/FigureYa51TMB_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa52GOplot",
+      "number": 52,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa52GOplot",
+      "reviewed_text_files": [
+        "FigureYa52GOplot/FigureYa52GOplot.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa53PPImodule",
+      "number": 53,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa53PPImodule",
+      "reviewed_text_files": [
+        "FigureYa53PPImodule/FigureYa53PPImodule.rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa55panCancer_violinV2",
+      "number": 55,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa55panCancer_violinV2",
+      "reviewed_text_files": [
+        "FigureYa55panCancer_violinV2/FigureYa55panCancer_violinV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa55plus_pancancer_boxplot",
+      "number": 55,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa55plus_pancancer_boxplot",
+      "reviewed_text_files": [
+        "FigureYa55plus_pancancer_boxplot/FigureYa55plus_pancancer_boxplot.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa56immune_inflitrationV3",
+      "number": 56,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa56immune_inflitrationV3",
+      "reviewed_text_files": [
+        "FigureYa56immune_inflitrationV3/FigureYa56immune_inflitrationV3.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa57profile_1bw",
+      "number": 57,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_genomic_signal_track_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa57profile_1bw",
+      "reviewed_text_files": [
+        "FigureYa57profile_1bw/FigureYa57profile_1bw.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa58lncRNAreannotation",
+      "number": 58,
+      "status": "utility / presentation limitation",
+      "engines": [],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa58lncRNAreannotation",
+      "reviewed_text_files": [
+        "FigureYa58lncRNAreannotation/FigureYa58lncRNAreannotation.Rmd"
+      ],
+      "limits": "Transcript reannotation, not a plotting grammar."
+    },
+    {
+      "module": "FigureYa59Plus_GEO2DEG",
+      "number": 59,
+      "status": "existing renderer",
+      "engines": [
+        "sca_volcano_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa59Plus_GEO2DEG",
+      "reviewed_text_files": [
+        "FigureYa59Plus_GEO2DEG/FigureYa59Plus_GEO2DEG.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa59Plus_volcano_shiny",
+      "number": 59,
+      "status": "existing renderer",
+      "engines": [
+        "sca_volcano_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa59Plus_volcano_shiny",
+      "reviewed_text_files": [
+        "FigureYa59Plus_volcano_shiny/README.md",
+        "FigureYa59Plus_volcano_shiny/USER_GUIDE.md"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa59volcanoV2",
+      "number": 59,
+      "status": "existing renderer",
+      "engines": [
+        "sca_volcano_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa59volcanoV2",
+      "reviewed_text_files": [
+        "FigureYa59volcanoV2/FigureYa59volcanoV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa60GSEA_clusterProfilerV2",
+      "number": 60,
+      "status": "existing renderer",
+      "engines": [
+        "fgsea_enrichment_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa60GSEA_clusterProfilerV2",
+      "reviewed_text_files": [
+        "FigureYa60GSEA_clusterProfilerV2/FigureYa60GSEA_clusterProfilerV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa61GSVA",
+      "number": 61,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa61GSVA",
+      "reviewed_text_files": [
+        "FigureYa61GSVA/FigureYa61GSVA.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa62twoAxis",
+      "number": 62,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa62twoAxis",
+      "reviewed_text_files": [
+        "FigureYa62twoAxis/FigureYa62twoAxis.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa63pubmedMiningV2",
+      "number": 63,
+      "status": "utility / presentation limitation",
+      "engines": [],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa63pubmedMiningV2",
+      "reviewed_text_files": [
+        "FigureYa63pubmedMiningV2/FigureYa63pubmedMiningV2.Rmd"
+      ],
+      "limits": "Literature mining and count extraction require upstream work; supplied counts can use bar plots."
+    },
+    {
+      "module": "FigureYa64triangle",
+      "number": 64,
+      "status": "existing renderer",
+      "engines": [
+        "ternary_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa64triangle",
+      "reviewed_text_files": [
+        "FigureYa64triangle/FigureYa64triangle.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa65SVM",
+      "number": 65,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa65SVM",
+      "reviewed_text_files": [
+        "FigureYa65SVM/FigureYa65SVM.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa66UnivariateCox",
+      "number": 66,
+      "status": "new renderer",
+      "engines": [
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa66UnivariateCox",
+      "reviewed_text_files": [
+        "FigureYa66UnivariateCox/FigureYa66UnivariateCox.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa67phastCons",
+      "number": 67,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_genomic_signal_track_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa67phastCons",
+      "reviewed_text_files": [
+        "FigureYa67phastCons/FigureYa67phastCons.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa68friendsV2",
+      "number": 68,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa68friendsV2",
+      "reviewed_text_files": [
+        "FigureYa68friendsV2/FigureYa68friendsV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa69cancerSubtype",
+      "number": 69,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa69cancerSubtype",
+      "reviewed_text_files": [
+        "FigureYa69cancerSubtype/FigureYa69cancerSubtype.Rmd",
+        "FigureYa69cancerSubtype/How to get easy input from xena pan-cancer file.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa70mutationEvents",
+      "number": 70,
+      "status": "new renderer",
+      "engines": [
+        "oncoprint_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa70mutationEvents",
+      "reviewed_text_files": [
+        "FigureYa70mutationEvents/FigureYa70mutationEvents.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa71ssGSEA_update",
+      "number": 71,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa71ssGSEA_update",
+      "reviewed_text_files": [
+        "FigureYa71ssGSEA_update/FigureYa71ssGSEA_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa72biomarker",
+      "number": 72,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa72biomarker",
+      "reviewed_text_files": [
+        "FigureYa72biomarker/FigureYa72biomarker.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa73batchCorrelation",
+      "number": 73,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa73batchCorrelation",
+      "reviewed_text_files": [
+        "FigureYa73batchCorrelation/FigureYa73batchCorrelation.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa74OmicCircos",
+      "number": 74,
+      "status": "new renderer",
+      "engines": [
+        "circular_genomic_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa74OmicCircos",
+      "reviewed_text_files": [
+        "FigureYa74OmicCircos/FigureYa74OmicCircos.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa75bubble_volcano",
+      "number": 75,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot",
+        "sca_volcano_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa75bubble_volcano",
+      "reviewed_text_files": [
+        "FigureYa75bubble_volcano/FigureYa75bubble_volcano.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa76corrgram",
+      "number": 76,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa76corrgram",
+      "reviewed_text_files": [
+        "FigureYa76corrgram/FigureYa76corrgram.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa77baseZoom",
+      "number": 77,
+      "status": "utility / presentation limitation",
+      "engines": [
+        "line_plot",
+        "regression_scatter_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa77baseZoom",
+      "reviewed_text_files": [
+        "FigureYa77baseZoom/FigureYa77baseZoom.Rmd"
+      ],
+      "limits": "Inset magnification is a presentation treatment; independent panels can be exported, but an arbitrary nested-inset editor is not implemented."
+    },
+    {
+      "module": "FigureYa78gganatogram",
+      "number": 78,
+      "status": "new renderer",
+      "engines": [
+        "spatial_region_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa78gganatogram",
+      "reviewed_text_files": [
+        "FigureYa78gganatogram/FigureYa78gganatogram.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa79CNV",
+      "number": 79,
+      "status": "new renderer",
+      "engines": [
+        "circular_genomic_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa79CNV",
+      "reviewed_text_files": [
+        "FigureYa79CNV/FigureYa79CNV.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa80GOclustering",
+      "number": 80,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot",
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa80GOclustering",
+      "reviewed_text_files": [
+        "FigureYa80GOclustering/FigureYa80GOclustering.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa81immune_network",
+      "number": 81,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa81immune_network",
+      "reviewed_text_files": [
+        "FigureYa81immune_network/FigureYa81immune_network.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa82IGVzoom",
+      "number": 82,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_genomic_signal_track_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa82IGVzoom",
+      "reviewed_text_files": [
+        "FigureYa82IGVzoom/FigureYa82IGVzoom.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa83enrichment",
+      "number": 83,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa83enrichment",
+      "reviewed_text_files": [
+        "FigureYa83enrichment/FigureYa83enrichment.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa84roast",
+      "number": 84,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa84roast",
+      "reviewed_text_files": [
+        "FigureYa84roast/FigureYa84roast.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa85timeROC",
+      "number": 85,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa85timeROC",
+      "reviewed_text_files": [
+        "FigureYa85timeROC/FigureYa85timeROC.Rmd"
+      ],
+      "limits": "Plot supplied time-dependent ROC coordinates. Censoring-aware ROC estimation is not implemented by ordinary binary prediction evaluation."
+    },
+    {
+      "module": "FigureYa86SNPmotif",
+      "number": 86,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_motif_logo_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa86SNPmotif",
+      "reviewed_text_files": [
+        "FigureYa86SNPmotif/FigureYa86SNPmotif.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa87fish",
+      "number": 87,
+      "status": "new renderer",
+      "engines": [
+        "clonal_fish_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa87fish",
+      "reviewed_text_files": [
+        "FigureYa87fish/FigureYa87fish.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa88DAVIDkappa",
+      "number": 88,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa88DAVIDkappa",
+      "reviewed_text_files": [
+        "FigureYa88DAVIDkappa/FigureYa88DAVIDkappa.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa89ggplotCirco",
+      "number": 89,
+      "status": "existing renderer",
+      "engines": [
+        "circular_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa89ggplotCirco",
+      "reviewed_text_files": [
+        "FigureYa89ggplotCirco/FigureYa89ggplotCirco.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa90subgroup",
+      "number": 90,
+      "status": "new renderer",
+      "engines": [
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa90subgroup",
+      "reviewed_text_files": [
+        "FigureYa90subgroup/FigureYa90subgroup.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa91cluster_heatmap",
+      "number": 91,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa91cluster_heatmap",
+      "reviewed_text_files": [
+        "FigureYa91cluster_heatmap/FigureYa91cluster_heatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa92immune_gene_update",
+      "number": 92,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa92immune_gene_update",
+      "reviewed_text_files": [
+        "FigureYa92immune_gene_update/FigureYa92immune_gene_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa93UMAP",
+      "number": 93,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa93UMAP",
+      "reviewed_text_files": [
+        "FigureYa93UMAP/FigureYa93UMAP.Rmd",
+        "FigureYa93UMAP/install_UMAP.md"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa94STEMbox_update",
+      "number": 94,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa94STEMbox_update",
+      "reviewed_text_files": [
+        "FigureYa94STEMbox_update/FigureYa94STEMbox_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa95pairwise",
+      "number": 95,
+      "status": "existing renderer",
+      "engines": [
+        "regression_scatter_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa95pairwise",
+      "reviewed_text_files": [
+        "FigureYa95pairwise/FigureYa95pairwise.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa96R2",
+      "number": 96,
+      "status": "existing renderer",
+      "engines": [
+        "regression_scatter_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa96R2",
+      "reviewed_text_files": [
+        "FigureYa96R2/FigureYa96R2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa97correlationV3",
+      "number": 97,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa97correlationV3",
+      "reviewed_text_files": [
+        "FigureYa97correlationV3/FigureYa97correlationV3.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa98STEMheatmapV2",
+      "number": 98,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa98STEMheatmapV2",
+      "reviewed_text_files": [
+        "FigureYa98STEMheatmapV2/FigureYa98STEMheatmapV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa99smoothHRv2",
+      "number": 99,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa99smoothHRv2",
+      "reviewed_text_files": [
+        "FigureYa99smoothHRv2/FigureYa99smoothHRv2.Rmd"
+      ],
+      "limits": "Supplied lower/upper interval bands are available in line_plot; survival/spline/Bayesian model fitting remains upstream."
+    },
+    {
+      "module": "FigureYa101PCA",
+      "number": 101,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa101PCA",
+      "reviewed_text_files": [
+        "FigureYa101PCA/FigureYa101PCA.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa102multipanelROC",
+      "number": 102,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa102multipanelROC",
+      "reviewed_text_files": [
+        "FigureYa102multipanelROC/FigureYa102multipanelROC.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa103coAbundant",
+      "number": 103,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa103coAbundant",
+      "reviewed_text_files": [
+        "FigureYa103coAbundant/FigureYa103coAbundant.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa105GDSC",
+      "number": 105,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa105GDSC",
+      "reviewed_text_files": [
+        "FigureYa105GDSC/FigureYa105GDSC.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa106immunotherapy",
+      "number": 106,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa106immunotherapy",
+      "reviewed_text_files": [
+        "FigureYa106immunotherapy/FigureYa106immunotherapy.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa109SubtypeGSEA_update",
+      "number": 109,
+      "status": "existing renderer",
+      "engines": [
+        "fgsea_enrichment_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa109SubtypeGSEA_update",
+      "reviewed_text_files": [
+        "FigureYa109SubtypeGSEA_update/FigureYa109SubtypeGSEA_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa110mutationSignature",
+      "number": 110,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot",
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa110mutationSignature",
+      "reviewed_text_files": [
+        "FigureYa110mutationSignature/FigureYa110mutationSignature.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa112Plus_venn",
+      "number": 112,
+      "status": "existing renderer",
+      "engines": [
+        "dynamic_venn_diagram"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa112Plus_venn",
+      "reviewed_text_files": [
+        "FigureYa112Plus_venn/FigureYa112Plus_venn.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa112venn",
+      "number": 112,
+      "status": "existing renderer",
+      "engines": [
+        "dynamic_venn_diagram"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa112venn",
+      "reviewed_text_files": [
+        "FigureYa112venn/FigureYa112venn.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa113MutSigCV",
+      "number": 113,
+      "status": "new renderer",
+      "engines": [
+        "oncoprint_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa113MutSigCV",
+      "reviewed_text_files": [
+        "FigureYa113MutSigCV/FigureYa113MutSigCV.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa114ternaryCluster",
+      "number": 114,
+      "status": "existing renderer",
+      "engines": [
+        "ternary_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa114ternaryCluster",
+      "reviewed_text_files": [
+        "FigureYa114ternaryCluster/FigureYa114ternaryCluster.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa115cofactor",
+      "number": 115,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa115cofactor",
+      "reviewed_text_files": [
+        "FigureYa115cofactor/FigureYa115cofactor.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa116supervisedCluster",
+      "number": 116,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa116supervisedCluster",
+      "reviewed_text_files": [
+        "FigureYa116supervisedCluster/FigureYa116supervisedCluster.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa117multilinearDE",
+      "number": 117,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot",
+        "sca_volcano_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa117multilinearDE",
+      "reviewed_text_files": [
+        "FigureYa117multilinearDE/FigureYa117multilinearDE.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa118MulticlassDESeq2",
+      "number": 118,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot",
+        "sca_volcano_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa118MulticlassDESeq2",
+      "reviewed_text_files": [
+        "FigureYa118MulticlassDESeq2/FigureYa118MulticlassDESeq2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa119Multiclasslimma",
+      "number": 119,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot",
+        "sca_volcano_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa119Multiclasslimma",
+      "reviewed_text_files": [
+        "FigureYa119Multiclasslimma/FigureYa119Multiclasslimma.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa120MulticlassedgeR",
+      "number": 120,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot",
+        "sca_volcano_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa120MulticlassedgeR",
+      "reviewed_text_files": [
+        "FigureYa120MulticlassedgeR/FigureYa120MulticlassedgeR.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa121MethCGIcluster",
+      "number": 121,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa121MethCGIcluster",
+      "reviewed_text_files": [
+        "FigureYa121MethCGIcluster/FigureYa121MethCGIcluster.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa122mut2expr",
+      "number": 122,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa122mut2expr",
+      "reviewed_text_files": [
+        "FigureYa122mut2expr/FigureYa122mut2expr.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa123mutVSexpr",
+      "number": 123,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa123mutVSexpr",
+      "reviewed_text_files": [
+        "FigureYa123mutVSexpr/FigureYa123mutVSexpr.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa124AssociationHeatmap",
+      "number": 124,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa124AssociationHeatmap",
+      "reviewed_text_files": [
+        "FigureYa124AssociationHeatmap/FigureYa124AssociationHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa125FishertestV2",
+      "number": 125,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa125FishertestV2",
+      "reviewed_text_files": [
+        "FigureYa125FishertestV2/FigureYa125FishertestV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa126CorrelationHeatmap",
+      "number": 126,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa126CorrelationHeatmap",
+      "reviewed_text_files": [
+        "FigureYa126CorrelationHeatmap/FigureYa126CorrelationHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa127HeatmapPie",
+      "number": 127,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa127HeatmapPie",
+      "reviewed_text_files": [
+        "FigureYa127HeatmapPie/FigureYa127HeatmapPie.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa128Prognostic",
+      "number": 128,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot",
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa128Prognostic",
+      "reviewed_text_files": [
+        "FigureYa128Prognostic/FigureYa128Prognostic.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa129TCGAbox",
+      "number": 129,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa129TCGAbox",
+      "reviewed_text_files": [
+        "FigureYa129TCGAbox/FigureYa129TCGAbox.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa131CMap_update",
+      "number": 131,
+      "status": "new renderer",
+      "engines": [
+        "oncoprint_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa131CMap_update",
+      "reviewed_text_files": [
+        "FigureYa131CMap_update/FigureYa131CMap_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa132alteration",
+      "number": 132,
+      "status": "new renderer",
+      "engines": [
+        "oncoprint_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa132alteration",
+      "reviewed_text_files": [
+        "FigureYa132alteration/FigureYa132alteration.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa133m6Apeak_update",
+      "number": 133,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_genomic_signal_track_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa133m6Apeak_update",
+      "reviewed_text_files": [
+        "FigureYa133m6Apeak_update/FigureYa133m6Apeak_update.html",
+        "FigureYa133m6Apeak_update/callPeak.R",
+        "FigureYa133m6Apeak_update/longest.trans.R"
+      ],
+      "limits": "Text-only HTML and R source review; peak calling/annotation remains upstream. Plot supplied intervals/signals with genomic tracks."
+    },
+    {
+      "module": "FigureYa135multiVolcano",
+      "number": 135,
+      "status": "existing renderer",
+      "engines": [
+        "sca_volcano_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa135multiVolcano",
+      "reviewed_text_files": [
+        "FigureYa135multiVolcano/FigureYa135multiVolcano.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa136fgsea",
+      "number": 136,
+      "status": "existing renderer",
+      "engines": [
+        "fgsea_enrichment_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa136fgsea",
+      "reviewed_text_files": [
+        "FigureYa136fgsea/FigureYa136fgsea.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa138NiceCalibration",
+      "number": 138,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa138NiceCalibration",
+      "reviewed_text_files": [
+        "FigureYa138NiceCalibration/FigureYa138NiceCalibration.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa139TMB_titv",
+      "number": 139,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa139TMB_titv",
+      "reviewed_text_files": [
+        "FigureYa139TMB_titv/FigureYa139TMB_titv.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa140mosaicpie",
+      "number": 140,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa140mosaicpie",
+      "reviewed_text_files": [
+        "FigureYa140mosaicpie/FigureYa140mosaicpie.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa141risk",
+      "number": 141,
+      "status": "new renderer",
+      "engines": [
+        "risk_stratification_panel"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa141risk",
+      "reviewed_text_files": [
+        "FigureYa141risk/FigureYa141risk.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa142circosBar",
+      "number": 142,
+      "status": "existing renderer",
+      "engines": [
+        "circular_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa142circosBar",
+      "reviewed_text_files": [
+        "FigureYa142circosBar/FigureYa142circosBar.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa143survCor_update",
+      "number": 143,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa143survCor_update",
+      "reviewed_text_files": [
+        "FigureYa143survCor_update/FigureYa143survCor_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa144DiagHeatmap",
+      "number": 144,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa144DiagHeatmap",
+      "reviewed_text_files": [
+        "FigureYa144DiagHeatmap/FigureYa144DiagHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa145target",
+      "number": 145,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_genomic_signal_track_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa145target",
+      "reviewed_text_files": [
+        "FigureYa145target/FigureYa145target.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa146TMEbox",
+      "number": 146,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa146TMEbox",
+      "reviewed_text_files": [
+        "FigureYa146TMEbox/FigureYa146TMEbox.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa147Plus_STRING",
+      "number": 147,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa147Plus_STRING",
+      "reviewed_text_files": [
+        "FigureYa147Plus_STRING/FigureYa147Plus_STRING.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa147interaction",
+      "number": 147,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa147interaction",
+      "reviewed_text_files": [
+        "FigureYa147interaction/FigureYa147interaction.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa148SimpleDendrogram",
+      "number": 148,
+      "status": "new renderer",
+      "engines": [
+        "annotated_tree_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa148SimpleDendrogram",
+      "reviewed_text_files": [
+        "FigureYa148SimpleDendrogram/FigureYa148SimpleDendrogram.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa149rankHeatmap",
+      "number": 149,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa149rankHeatmap",
+      "reviewed_text_files": [
+        "FigureYa149rankHeatmap/FigureYa149rankHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa150diversityScore",
+      "number": 150,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot",
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa150diversityScore",
+      "reviewed_text_files": [
+        "FigureYa150diversityScore/FigureYa150diversityScore.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa151pathifier",
+      "number": 151,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa151pathifier",
+      "reviewed_text_files": [
+        "FigureYa151pathifier/FigureYa151pathifier.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa152DouleCorPlot",
+      "number": 152,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa152DouleCorPlot",
+      "reviewed_text_files": [
+        "FigureYa152DouleCorPlot/FigureYa152DouleCorPlot.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa153ccgraph",
+      "number": 153,
+      "status": "new renderer",
+      "engines": [
+        "annotated_tree_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa153ccgraph",
+      "reviewed_text_files": [
+        "FigureYa153ccgraph/FigureYa153ccgraph.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa154immuneSubtypes",
+      "number": 154,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "group_heatmap",
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa154immuneSubtypes",
+      "reviewed_text_files": [
+        "FigureYa154immuneSubtypes/FigureYa154immuneSubtypes.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa155ATAC",
+      "number": 155,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_genomic_signal_track_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa155ATAC",
+      "reviewed_text_files": [
+        "FigureYa155ATAC/FigureYa155ATAC.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa156enrichSimulation",
+      "number": 156,
+      "status": "existing renderer",
+      "engines": [
+        "fgsea_enrichment_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa156enrichSimulation",
+      "reviewed_text_files": [
+        "FigureYa156enrichSimulation/FigureYa156enrichSimulation.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa157ChIPpvalue",
+      "number": 157,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa157ChIPpvalue",
+      "reviewed_text_files": [
+        "FigureYa157ChIPpvalue/FigureYa157ChIPpvalue.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa158MutationPattern",
+      "number": 158,
+      "status": "new renderer",
+      "engines": [
+        "oncoprint_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa158MutationPattern",
+      "reviewed_text_files": [
+        "FigureYa158MutationPattern/FigureYa158MutationPattern.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa159LR_RF_V2",
+      "number": 159,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa159LR_RF_V2",
+      "reviewed_text_files": [
+        "FigureYa159LR_RF_V2/FigureYa159LR_RF_V2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa160scGSVA",
+      "number": 160,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa160scGSVA",
+      "reviewed_text_files": [
+        "FigureYa160scGSVA/FigureYa160scGSVA.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa161stemness",
+      "number": 161,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa161stemness",
+      "reviewed_text_files": [
+        "FigureYa161stemness/FigureYa161stemness.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa162boxViolin",
+      "number": 162,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa162boxViolin",
+      "reviewed_text_files": [
+        "FigureYa162boxViolin/FigureYa162boxViolin.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa163twoVarCor_update",
+      "number": 163,
+      "status": "existing renderer",
+      "engines": [
+        "regression_scatter_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa163twoVarCor_update",
+      "reviewed_text_files": [
+        "FigureYa163twoVarCor_update/FigureYa163twoVarCor_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa164PCA3D",
+      "number": 164,
+      "status": "new renderer",
+      "engines": [
+        "interactive_3d_scatter"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa164PCA3D",
+      "reviewed_text_files": [
+        "FigureYa164PCA3D/FigureYa164PCA3D.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa165heatmapPvalue",
+      "number": 165,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa165heatmapPvalue",
+      "reviewed_text_files": [
+        "FigureYa165heatmapPvalue/FigureYa165heatmapPvalue.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa166scCNV",
+      "number": 166,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa166scCNV",
+      "reviewed_text_files": [
+        "FigureYa166scCNV/FigureYa166scCNV.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa167TumorIndex",
+      "number": 167,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot",
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa167TumorIndex",
+      "reviewed_text_files": [
+        "FigureYa167TumorIndex/FigureYa167TumorIndex.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa168legoplot",
+      "number": 168,
+      "status": "new renderer",
+      "engines": [
+        "bar3d_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa168legoplot",
+      "reviewed_text_files": [
+        "FigureYa168legoplot/FigureYa168legoplot.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa169sigHeatmap",
+      "number": 169,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa169sigHeatmap",
+      "reviewed_text_files": [
+        "FigureYa169sigHeatmap/FigureYa169sigHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa170ImmuLncRNA",
+      "number": 170,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa170ImmuLncRNA",
+      "reviewed_text_files": [
+        "FigureYa170ImmuLncRNA/FigureYa170ImmuLncRNA.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa171subgroupSurv",
+      "number": 171,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot",
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa171subgroupSurv",
+      "reviewed_text_files": [
+        "FigureYa171subgroupSurv/FigureYa171subgroupSurv.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa172ggplot2Gviz",
+      "number": 172,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_genomic_signal_track_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa172ggplot2Gviz",
+      "reviewed_text_files": [
+        "FigureYa172ggplot2Gviz/FigureYa172ggplot2Gviz.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa173fancybar",
+      "number": 173,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa173fancybar",
+      "reviewed_text_files": [
+        "FigureYa173fancybar/FigureYa173fancybar.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa174squareCross",
+      "number": 174,
+      "status": "new renderer",
+      "engines": [
+        "linked_matrix_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa174squareCross",
+      "reviewed_text_files": [
+        "FigureYa174squareCross/FigureYa174squareCross.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa175quadrant",
+      "number": 175,
+      "status": "existing renderer",
+      "engines": [
+        "regression_scatter_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa175quadrant",
+      "reviewed_text_files": [
+        "FigureYa175quadrant/FigureYa175quadrant.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa176BlandAltman",
+      "number": 176,
+      "status": "new renderer",
+      "engines": [
+        "bland_altman_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa176BlandAltman",
+      "reviewed_text_files": [
+        "FigureYa176BlandAltman/FigureYa176BlandAltman.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa177RNAvelocity",
+      "number": 177,
+      "status": "new renderer",
+      "engines": [
+        "embedding_vector_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa177RNAvelocity",
+      "reviewed_text_files": [
+        "FigureYa177RNAvelocity/FigureYa177RNAvelocity.Rmd",
+        "FigureYa177RNAvelocity/scripts/s0_createEnv.Rmd",
+        "FigureYa177RNAvelocity/scripts/s1_prepare.Rmd",
+        "FigureYa177RNAvelocity/scripts/s2_runCCA.Rmd",
+        "FigureYa177RNAvelocity/scripts/s3_tsen_clustering.Rmd",
+        "FigureYa177RNAvelocity/scripts/s4_annotateCellType.Rmd",
+        "FigureYa177RNAvelocity/scripts/s5_DEG.Rmd",
+        "FigureYa177RNAvelocity/scripts/s6_trajectory.Rmd",
+        "FigureYa177RNAvelocity/scripts/s7_RNAVelocity.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa178receptorLigand",
+      "number": 178,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot",
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa178receptorLigand",
+      "reviewed_text_files": [
+        "FigureYa178receptorLigand/FigureYa178receptorLigand.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa179AMDAplot",
+      "number": 179,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa179AMDAplot",
+      "reviewed_text_files": [
+        "FigureYa179AMDAplot/FigureYa179AMDAplot.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa180FGAplotV2",
+      "number": 180,
+      "status": "new renderer",
+      "engines": [
+        "oncoprint_plot",
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa180FGAplotV2",
+      "reviewed_text_files": [
+        "FigureYa180FGAplotV2/FigureYa180FGAplotV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa181multiCorrelation",
+      "number": 181,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa181multiCorrelation",
+      "reviewed_text_files": [
+        "FigureYa181multiCorrelation/FigureYa181multiCorrelation.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa182RFSurvV2",
+      "number": 182,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa182RFSurvV2",
+      "reviewed_text_files": [
+        "FigureYa182RFSurvV2/FigureYa182RFSurvV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa183condSurv",
+      "number": 183,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa183condSurv",
+      "reviewed_text_files": [
+        "FigureYa183condSurv/FigureYa183condSurv.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa184ranger",
+      "number": 184,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa184ranger",
+      "reviewed_text_files": [
+        "FigureYa184ranger/FigureYa184ranger.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa185sciATAC",
+      "number": 185,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa185sciATAC",
+      "reviewed_text_files": [
+        "FigureYa185sciATAC/FigureYa185sciATAC.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa186swimmerplot",
+      "number": 186,
+      "status": "new renderer",
+      "engines": [
+        "swimmer_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa186swimmerplot",
+      "reviewed_text_files": [
+        "FigureYa186swimmerplot/FigureYa186swimmerplot.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa187RMS",
+      "number": 187,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa187RMS",
+      "reviewed_text_files": [
+        "FigureYa187RMS/FigureYa187RMS.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa188CNVload",
+      "number": 188,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa188CNVload",
+      "reviewed_text_files": [
+        "FigureYa188CNVload/FigureYa188CNVload.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa189timeCindex",
+      "number": 189,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa189timeCindex",
+      "reviewed_text_files": [
+        "FigureYa189timeCindex/FigureYa189timeCindex.Rmd"
+      ],
+      "limits": "Plot supplied time-dependent concordance estimates as lines; concordance estimation remains upstream."
+    },
+    {
+      "module": "FigureYa190batchLogistic",
+      "number": 190,
+      "status": "new renderer",
+      "engines": [
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa190batchLogistic",
+      "reviewed_text_files": [
+        "FigureYa190batchLogistic/FigureYa190batchLogistic.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa191bestLogistic",
+      "number": 191,
+      "status": "new renderer",
+      "engines": [
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa191bestLogistic",
+      "reviewed_text_files": [
+        "FigureYa191bestLogistic/FigureYa191bestLogistic.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa192breakpoint",
+      "number": 192,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa192breakpoint",
+      "reviewed_text_files": [
+        "FigureYa192breakpoint/FigureYa192breakpoint.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa193RiskTable",
+      "number": 193,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "forest_plot",
+        "risk_stratification_panel"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa193RiskTable",
+      "reviewed_text_files": [
+        "FigureYa193RiskTable/FigureYa193RiskTable.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa194pySCENIC",
+      "number": 194,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa194pySCENIC",
+      "reviewed_text_files": [
+        "FigureYa194pySCENIC/FigureYa194pySCENIC.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa195PanPaire",
+      "number": 195,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa195PanPaire",
+      "reviewed_text_files": [
+        "FigureYa195PanPaire/FigureYa195PanPaire.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa196PanPie",
+      "number": 196,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa196PanPie",
+      "reviewed_text_files": [
+        "FigureYa196PanPie/FigureYa196PanPie.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa196Plus_PanPie",
+      "number": 196,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa196Plus_PanPie",
+      "reviewed_text_files": [
+        "FigureYa196Plus_PanPie/FigureYa196Plus_PanPie.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa197SmoothHaz",
+      "number": 197,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa197SmoothHaz",
+      "reviewed_text_files": [
+        "FigureYa197SmoothHaz/FigureYa197SmoothHaz.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa198SignatureCombinationV2",
+      "number": 198,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot",
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa198SignatureCombinationV2",
+      "reviewed_text_files": [
+        "FigureYa198SignatureCombinationV2/FigureYa198SignatureCombinationV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa199crosslink",
+      "number": 199,
+      "status": "new renderer",
+      "engines": [
+        "linked_matrix_network_plot",
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa199crosslink",
+      "reviewed_text_files": [
+        "FigureYa199crosslink/FigureYa199crosslink.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa200pairwiseAUC",
+      "number": 200,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa200pairwiseAUC",
+      "reviewed_text_files": [
+        "FigureYa200pairwiseAUC/FigureYa200pairwiseAUC.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa201ClusterCorrelation",
+      "number": 201,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa201ClusterCorrelation",
+      "reviewed_text_files": [
+        "FigureYa201ClusterCorrelation/FigureYa201ClusterCorrelation.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa202consensusGene",
+      "number": 202,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa202consensusGene",
+      "reviewed_text_files": [
+        "FigureYa202consensusGene/FigureYa202consensusGene.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa203ComBat",
+      "number": 203,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa203ComBat",
+      "reviewed_text_files": [
+        "FigureYa203ComBat/FigureYa203ComBat.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa204PCAscore",
+      "number": 204,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa204PCAscore",
+      "reviewed_text_files": [
+        "FigureYa204PCAscore/FigureYa204PCAscore.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa205immunophenoscore_update",
+      "number": 205,
+      "status": "existing renderer",
+      "engines": [
+        "circular_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa205immunophenoscore_update",
+      "reviewed_text_files": [
+        "FigureYa205immunophenoscore_update/FigureYa205immunophenoscore_update.Rmd"
+      ],
+      "limits": "Related concentric heatmap grammar; provide precomputed immune scores. The source variable-width immunophenogram and its scoring algorithm are not reproduced exactly."
+    },
+    {
+      "module": "FigureYa206scHeatmap",
+      "number": 206,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa206scHeatmap",
+      "reviewed_text_files": [
+        "FigureYa206scHeatmap/FigureYa206scHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa207Randomization",
+      "number": 207,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa207Randomization",
+      "reviewed_text_files": [
+        "FigureYa207Randomization/FigureYa207Randomization.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa208FPI",
+      "number": 208,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa208FPI",
+      "reviewed_text_files": [
+        "FigureYa208FPI/FigureYa208FPI.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa209batchEnrich",
+      "number": 209,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa209batchEnrich",
+      "reviewed_text_files": [
+        "FigureYa209batchEnrich/FigureYa209batchEnrich.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa210survivalScape",
+      "number": 210,
+      "status": "existing renderer",
+      "engines": [
+        "regression_scatter_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa210survivalScape",
+      "reviewed_text_files": [
+        "FigureYa210survivalScape/FigureYa210survivalScape.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa211multiCohortImmSubtype",
+      "number": 211,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot",
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa211multiCohortImmSubtype",
+      "reviewed_text_files": [
+        "FigureYa211multiCohortImmSubtype/FigureYa211multiCohortImmSubtype.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa212drugTargetV2",
+      "number": 212,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa212drugTargetV2",
+      "reviewed_text_files": [
+        "FigureYa212drugTargetV2/FigureYa212drugTargetV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa213customizeHeatmap",
+      "number": 213,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa213customizeHeatmap",
+      "reviewed_text_files": [
+        "FigureYa213customizeHeatmap/FigureYa213customizeHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa214KEGG_hierarchyV2",
+      "number": 214,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa214KEGG_hierarchyV2",
+      "reviewed_text_files": [
+        "FigureYa214KEGG_hierarchyV2/FigureYa214KEGG_hierarchyV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa215DNAage",
+      "number": 215,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot",
+        "regression_scatter_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa215DNAage",
+      "reviewed_text_files": [
+        "FigureYa215DNAage/FigureYa215DNAage.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa216MetaREM",
+      "number": 216,
+      "status": "new renderer",
+      "engines": [
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa216MetaREM",
+      "reviewed_text_files": [
+        "FigureYa216MetaREM/FigureYa216MetaREM.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa217RMR",
+      "number": 217,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa217RMR",
+      "reviewed_text_files": [
+        "FigureYa217RMR/FigureYa217RMR.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa218Elasticnet",
+      "number": 218,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot",
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa218Elasticnet",
+      "reviewed_text_files": [
+        "FigureYa218Elasticnet/FigureYa218Elasticnet.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa219GMM",
+      "number": 219,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot",
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa219GMM",
+      "reviewed_text_files": [
+        "FigureYa219GMM/FigureYa219GMM.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa220repeatedLasso",
+      "number": 220,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot",
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa220repeatedLasso",
+      "reviewed_text_files": [
+        "FigureYa220repeatedLasso/FigureYa220repeatedLasso.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa221tenFoldRF",
+      "number": 221,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa221tenFoldRF",
+      "reviewed_text_files": [
+        "FigureYa221tenFoldRF/FigureYa221tenFoldRF.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa222PCAgene",
+      "number": 222,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa222PCAgene",
+      "reviewed_text_files": [
+        "FigureYa222PCAgene/FigureYa222PCAgene.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa223scNMF",
+      "number": 223,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa223scNMF",
+      "reviewed_text_files": [
+        "FigureYa223scNMF/FigureYa223scNMF.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa224scMarker",
+      "number": 224,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa224scMarker",
+      "reviewed_text_files": [
+        "FigureYa224scMarker/FigureYa224scMarker.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa225GiViTl",
+      "number": 225,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa225GiViTl",
+      "reviewed_text_files": [
+        "FigureYa225GiViTl/FigureYa225GiViTl.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa227boxdensity",
+      "number": 227,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa227boxdensity",
+      "reviewed_text_files": [
+        "FigureYa227boxdensity/FigureYa227boxdensity.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa228linkCor",
+      "number": 228,
+      "status": "new renderer",
+      "engines": [
+        "linked_matrix_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa228linkCor",
+      "reviewed_text_files": [
+        "FigureYa228linkCor/FigureYa228linkCor.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa229PCOA",
+      "number": 229,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa229PCOA",
+      "reviewed_text_files": [
+        "FigureYa229PCOA/FigureYa229PCOA.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa230immunelandscape",
+      "number": 230,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa230immunelandscape",
+      "reviewed_text_files": [
+        "FigureYa230immunelandscape/FigureYa230immunelandscape.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa231scScore",
+      "number": 231,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa231scScore",
+      "reviewed_text_files": [
+        "FigureYa231scScore/FigureYa231scScore.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa232scRankHeatmap",
+      "number": 232,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa232scRankHeatmap",
+      "reviewed_text_files": [
+        "FigureYa232scRankHeatmap/FigureYa232scRankHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa233genepair",
+      "number": 233,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa233genepair",
+      "reviewed_text_files": [
+        "FigureYa233genepair/FigureYa233genepair.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa234panImmune",
+      "number": 234,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa234panImmune",
+      "reviewed_text_files": [
+        "FigureYa234panImmune/FigureYa234panImmune.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa235scDEG",
+      "number": 235,
+      "status": "existing renderer",
+      "engines": [
+        "sca_volcano_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa235scDEG",
+      "reviewed_text_files": [
+        "FigureYa235scDEG/FigureYa235scDEG.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa236circGroup",
+      "number": 236,
+      "status": "extended existing renderer",
+      "engines": [
+        "circular_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa236circGroup",
+      "reviewed_text_files": [
+        "FigureYa236circGroup/FigureYa236circGroup.Rmd"
+      ],
+      "limits": "Categorical concentric annotation rings are available in circular_heatmap; upstream association tests remain separate."
+    },
+    {
+      "module": "FigureYa237circVenn",
+      "number": 237,
+      "status": "existing renderer",
+      "engines": [
+        "circular_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa237circVenn",
+      "reviewed_text_files": [
+        "FigureYa237circVenn/FigureYa237circVenn.Rmd"
+      ],
+      "limits": "Related polar composition grammar with supplied overlap counts. This source uses concentric proportional sectors, not a conventional Venn diagram; its exact independent-ring layout needs adaptation."
+    },
+    {
+      "module": "FigureYa238corRiskMut",
+      "number": 238,
+      "status": "new renderer",
+      "engines": [
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa238corRiskMut",
+      "reviewed_text_files": [
+        "FigureYa238corRiskMut/FigureYa238corRiskMut.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa239ST_PDAC",
+      "number": 239,
+      "status": "new renderer",
+      "engines": [
+        "spatial_region_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa239ST_PDAC",
+      "reviewed_text_files": [
+        "FigureYa239ST_PDAC/FigureYa239ST_PDAC.Rmd"
+      ],
+      "limits": "Supplied spatial spots/polygons and optional PNG tissue backgrounds; no spatial deconvolution, segmentation or microbial read classification."
+    },
+    {
+      "module": "FigureYa240CRISPR",
+      "number": 240,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa240CRISPR",
+      "reviewed_text_files": [
+        "FigureYa240CRISPR/FigureYa240CRISPR.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa241scRNA_NMI",
+      "number": 241,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa241scRNA_NMI",
+      "reviewed_text_files": [
+        "FigureYa241scRNA_NMI/FigureYa241scRNA_NMI.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa242corMethExpr",
+      "number": 242,
+      "status": "existing renderer",
+      "engines": [
+        "regression_scatter_plot",
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa242corMethExpr",
+      "reviewed_text_files": [
+        "FigureYa242corMethExpr/FigureYa242corMethExpr.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa243scMarkerGroupHeatmap",
+      "number": 243,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa243scMarkerGroupHeatmap",
+      "reviewed_text_files": [
+        "FigureYa243scMarkerGroupHeatmap/FigureYa243scMarkerGroupHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa244PCAPlot",
+      "number": 244,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa244PCAPlot",
+      "reviewed_text_files": [
+        "FigureYa244PCAPlot/FigureYa244PCAPlot.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa245Plus_VarDecompose",
+      "number": 245,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa245Plus_VarDecompose",
+      "reviewed_text_files": [
+        "FigureYa245Plus_VarDecompose/README.md"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa245VarDecompose_update",
+      "number": 245,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa245VarDecompose_update",
+      "reviewed_text_files": [
+        "FigureYa245VarDecompose_update/FigureYa245VarDecompose_update.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa246supervisedGDSC",
+      "number": 246,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa246supervisedGDSC",
+      "reviewed_text_files": [
+        "FigureYa246supervisedGDSC/FigureYa246supervisedGDSC.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa247oncoPredict",
+      "number": 247,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa247oncoPredict",
+      "reviewed_text_files": [
+        "FigureYa247oncoPredict/FigureYa247oncoPredict.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa248MutLandscape",
+      "number": 248,
+      "status": "new renderer",
+      "engines": [
+        "oncoprint_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa248MutLandscape",
+      "reviewed_text_files": [
+        "FigureYa248MutLandscape/FigureYa248MutLandscape.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa249Regulon",
+      "number": 249,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa249Regulon",
+      "reviewed_text_files": [
+        "FigureYa249Regulon/FigureYa249Regulon.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa250ImmGenePair",
+      "number": 250,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa250ImmGenePair",
+      "reviewed_text_files": [
+        "FigureYa250ImmGenePair/FigureYa250ImmGenePair.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa251NPHSurv",
+      "number": 251,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa251NPHSurv",
+      "reviewed_text_files": [
+        "FigureYa251NPHSurv/FigureYa251NPHSurv.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa252mclust",
+      "number": 252,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa252mclust",
+      "reviewed_text_files": [
+        "FigureYa252mclust/FigureYa252mclust.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa253panGSEA",
+      "number": 253,
+      "status": "existing renderer",
+      "engines": [
+        "fgsea_enrichment_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa253panGSEA",
+      "reviewed_text_files": [
+        "FigureYa253panGSEA/FigureYa253panGSEA.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa254scViolin",
+      "number": 254,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa254scViolin",
+      "reviewed_text_files": [
+        "FigureYa254scViolin/FigureYa254scViolin.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa255TIME",
+      "number": 255,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa255TIME",
+      "reviewed_text_files": [
+        "FigureYa255TIME/FigureYa255TIME.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa256panelLink",
+      "number": 256,
+      "status": "new renderer",
+      "engines": [
+        "linked_matrix_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa256panelLink",
+      "reviewed_text_files": [
+        "FigureYa256panelLink/FigureYa256panelLink.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa257armCNV",
+      "number": 257,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_genomic_signal_track_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa257armCNV",
+      "reviewed_text_files": [
+        "FigureYa257armCNV/FigureYa257armCNV.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa258SNF",
+      "number": 258,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa258SNF",
+      "reviewed_text_files": [
+        "FigureYa258SNF/FigureYa258SNF.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa259circLink",
+      "number": 259,
+      "status": "existing renderer",
+      "engines": [
+        "alluvial_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa259circLink",
+      "reviewed_text_files": [
+        "FigureYa259circLink/FigureYa259circLink.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa260CNV",
+      "number": 260,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa260CNV",
+      "reviewed_text_files": [
+        "FigureYa260CNV/FigureYa260CNV.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa261circGene",
+      "number": 261,
+      "status": "new renderer",
+      "engines": [
+        "circular_genomic_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa261circGene",
+      "reviewed_text_files": [
+        "FigureYa261circGene/FigureYa261circGene.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa262GDC",
+      "number": 262,
+      "status": "utility / presentation limitation",
+      "engines": [],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa262GDC",
+      "reviewed_text_files": [
+        "FigureYa262GDC/FigureYa262GDC.Rmd"
+      ],
+      "limits": "Dataset download workflow, not a plotting grammar."
+    },
+    {
+      "module": "FigureYa263panDiff",
+      "number": 263,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa263panDiff",
+      "reviewed_text_files": [
+        "FigureYa263panDiff/FigureYa263panDiff.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa264epiImmune",
+      "number": 264,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa264epiImmune",
+      "reviewed_text_files": [
+        "FigureYa264epiImmune/FigureYa264epiImmune.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa265panCNV",
+      "number": 265,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap",
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa265panCNV",
+      "reviewed_text_files": [
+        "FigureYa265panCNV/FigureYa265panCNV.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa266panHeatmap",
+      "number": 266,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa266panHeatmap",
+      "reviewed_text_files": [
+        "FigureYa266panHeatmap/FigureYa266panHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa267scCellChat",
+      "number": 267,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot",
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa267scCellChat",
+      "reviewed_text_files": [
+        "FigureYa267scCellChat/FigureYa267scCellChat.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa268panCNVexpr",
+      "number": 268,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa268panCNVexpr",
+      "reviewed_text_files": [
+        "FigureYa268panCNVexpr/FigureYa268panCNVexpr.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa269scMetabolism",
+      "number": 269,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa269scMetabolism",
+      "reviewed_text_files": [
+        "FigureYa269scMetabolism/FigureYa269scMetabolism.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa270panMeth",
+      "number": 270,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa270panMeth",
+      "reviewed_text_files": [
+        "FigureYa270panMeth/FigureYa270panMeth.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa271panMethExpr",
+      "number": 271,
+      "status": "existing renderer",
+      "engines": [
+        "regression_scatter_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa271panMethExpr",
+      "reviewed_text_files": [
+        "FigureYa271panMethExpr/FigureYa271panMethExpr.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa272scBulkCCCI",
+      "number": 272,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa272scBulkCCCI",
+      "reviewed_text_files": [
+        "FigureYa272scBulkCCCI/FigureYa272scBulkCCCI.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa273BAPC",
+      "number": 273,
+      "status": "existing renderer",
+      "engines": [
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa273BAPC",
+      "reviewed_text_files": [
+        "FigureYa273BAPC/FigureYa273BAPC.Rmd"
+      ],
+      "limits": "Supplied lower/upper interval bands are available in line_plot; survival/spline/Bayesian model fitting remains upstream."
+    },
+    {
+      "module": "FigureYa274MuSiCbulkProop",
+      "number": 274,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa274MuSiCbulkProop",
+      "reviewed_text_files": [
+        "FigureYa274MuSiCbulkProop/FigureYa274MuSiCbulkProop.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa275scAUCell",
+      "number": 275,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa275scAUCell",
+      "reviewed_text_files": [
+        "FigureYa275scAUCell/FigureYa275scAUCell.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa276panSNV",
+      "number": 276,
+      "status": "new renderer",
+      "engines": [
+        "oncoprint_plot",
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa276panSNV",
+      "reviewed_text_files": [
+        "FigureYa276panSNV/FigureYa276panSNV.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa277Immunomodulator",
+      "number": 277,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa277Immunomodulator",
+      "reviewed_text_files": [
+        "FigureYa277Immunomodulator/FigureYa277Immunomodulator.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa278heatmapPoints",
+      "number": 278,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa278heatmapPoints",
+      "reviewed_text_files": [
+        "FigureYa278heatmapPoints/FigureYa278heatmapPoints.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa279panGeneGSEA",
+      "number": 279,
+      "status": "existing renderer",
+      "engines": [
+        "fgsea_enrichment_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa279panGeneGSEA",
+      "reviewed_text_files": [
+        "FigureYa279panGeneGSEA/FigureYa279panGeneGSEA.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa280TMEofSTS",
+      "number": 280,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa280TMEofSTS",
+      "reviewed_text_files": [
+        "FigureYa280TMEofSTS/FigureYa280TMEofSTS.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa281wheel",
+      "number": 281,
+      "status": "new renderer",
+      "engines": [
+        "radviz_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa281wheel",
+      "reviewed_text_files": [
+        "FigureYa281wheel/FigureYa281wheel.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa282CMAP_XSum",
+      "number": 282,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa282CMAP_XSum",
+      "reviewed_text_files": [
+        "FigureYa282CMAP_XSum/FigureYa282CMAP_XSum.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa283vennyPvalue",
+      "number": 283,
+      "status": "existing renderer",
+      "engines": [
+        "dynamic_venn_diagram"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa283vennyPvalue",
+      "reviewed_text_files": [
+        "FigureYa283vennyPvalue/FigureYa283vennyPvalue.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa284pairwiseLogrank",
+      "number": 284,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa284pairwiseLogrank",
+      "reviewed_text_files": [
+        "FigureYa284pairwiseLogrank/FigureYa284pairwiseLogrank.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa285scRNA_monocle",
+      "number": 285,
+      "status": "existing renderer",
+      "engines": [
+        "lineage_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa285scRNA_monocle",
+      "reviewed_text_files": [
+        "FigureYa285scRNA_monocle/FigureYa285scRNA_monocle.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa286ExprCorORR",
+      "number": 286,
+      "status": "existing renderer",
+      "engines": [
+        "regression_scatter_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa286ExprCorORR",
+      "reviewed_text_files": [
+        "FigureYa286ExprCorORR/FigureYa286ExprCorORR.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa287L2logV2",
+      "number": 287,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa287L2logV2",
+      "reviewed_text_files": [
+        "FigureYa287L2logV2/FigureYa287L2log.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa288MutualExclusivity",
+      "number": 288,
+      "status": "new renderer",
+      "engines": [
+        "oncoprint_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa288MutualExclusivity",
+      "reviewed_text_files": [
+        "FigureYa288MutualExclusivity/FigureYa288MutualExclusivity.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa289TILSig",
+      "number": 289,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot",
+        "line_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa289TILSig",
+      "reviewed_text_files": [
+        "FigureYa289TILSig/FigureYa289TILSig.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa290BarGraph",
+      "number": 290,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa290BarGraph",
+      "reviewed_text_files": [
+        "FigureYa290BarGraph/FigureYa290BarGraph.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa291PancanProgSigatureV2",
+      "number": 291,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "binary_evaluation_plot",
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa291PancanProgSigatureV2",
+      "reviewed_text_files": [
+        "FigureYa291PancanProgSigatureV2/FigureYa291PancanProgSigatureV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa292HCCsubtype",
+      "number": 292,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa292HCCsubtype",
+      "reviewed_text_files": [
+        "FigureYa292HCCsubtype/FigureYa292HCCsubtype.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa293Plus_BinaryClassificationML",
+      "number": 293,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa293Plus_BinaryClassificationML",
+      "reviewed_text_files": [
+        "FigureYa293Plus_BinaryClassificationML/FigureYa293Plus_BinaryClassificationML.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa293machineLearning",
+      "number": 293,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa293machineLearning",
+      "reviewed_text_files": [
+        "FigureYa293machineLearning/FigureYa293machineLearning.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa294HCCdrug",
+      "number": 294,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa294HCCdrug",
+      "reviewed_text_files": [
+        "FigureYa294HCCdrug/FigureYa294HCCdrug.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa295ClassDiscovery",
+      "number": 295,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa295ClassDiscovery",
+      "reviewed_text_files": [
+        "FigureYa295ClassDiscovery/FigureYa295ClassDiscovery.Rmd",
+        "FigureYa295ClassDiscovery/Readme.md"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa296VIPER",
+      "number": 296,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa296VIPER",
+      "reviewed_text_files": [
+        "FigureYa296VIPER/Codes/ARACNe-AP/LICENSE.md",
+        "FigureYa296VIPER/Codes/ARACNe-AP/README.md",
+        "FigureYa296VIPER/FigureYa296VIPER.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa297Rbar",
+      "number": 297,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa297Rbar",
+      "reviewed_text_files": [
+        "FigureYa297Rbar/FigureYa297Rbar.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa298ecdfPvalue",
+      "number": 298,
+      "status": "new renderer",
+      "engines": [
+        "ecdf_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa298ecdfPvalue",
+      "reviewed_text_files": [
+        "FigureYa298ecdfPvalue/FigureYa298ecdfPvalue.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa299pancanSurv",
+      "number": 299,
+      "status": "new renderer",
+      "engines": [
+        "survival_plot",
+        "forest_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa299pancanSurv",
+      "reviewed_text_files": [
+        "FigureYa299pancanSurv/FigureYa299pancanSurv.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa300pancanCor",
+      "number": 300,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_correlation_matrix"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa300pancanCor",
+      "reviewed_text_files": [
+        "FigureYa300pancanCor/FigureYa300pancanCor.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa301scCoExpr",
+      "number": 301,
+      "status": "existing renderer",
+      "engines": [
+        "interactive_network_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa301scCoExpr",
+      "reviewed_text_files": [
+        "FigureYa301scCoExpr/FigureYa301scCoExpr.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa302NTPPAM",
+      "number": 302,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa302NTPPAM",
+      "reviewed_text_files": [
+        "FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa303panCircos",
+      "number": 303,
+      "status": "extended existing renderer",
+      "engines": [
+        "circular_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa303panCircos",
+      "reviewed_text_files": [
+        "FigureYa303panCircos/FigureYa303panCircos.Rmd"
+      ],
+      "limits": "Categorical concentric annotation rings are available in circular_heatmap; upstream association tests remain separate."
+    },
+    {
+      "module": "FigureYa304MAGIC",
+      "number": 304,
+      "status": "existing renderer",
+      "engines": [
+        "advanced_dim_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa304MAGIC",
+      "reviewed_text_files": [
+        "FigureYa304MAGIC/FigureYa304MAGIC.Rmd",
+        "FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa305PMAPscore",
+      "number": 305,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa305PMAPscore",
+      "reviewed_text_files": [
+        "FigureYa305PMAPscore/FigureYa305PMAPscore.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa306slingshot",
+      "number": 306,
+      "status": "existing renderer",
+      "engines": [
+        "lineage_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa306slingshot",
+      "reviewed_text_files": [
+        "FigureYa306slingshot/FigureYa306slingshot.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa307CNVHeatmap",
+      "number": 307,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa307CNVHeatmap",
+      "reviewed_text_files": [
+        "FigureYa307CNVHeatmap/FigureYa307CNVHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa308IHS",
+      "number": 308,
+      "status": "existing renderer",
+      "engines": [
+        "violin_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa308IHS",
+      "reviewed_text_files": [
+        "FigureYa308IHS/FigureYa308IHS.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa310CPDBChordGramV2",
+      "number": 310,
+      "status": "existing renderer",
+      "engines": [
+        "alluvial_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa310CPDBChordGramV2",
+      "reviewed_text_files": [
+        "FigureYa310CPDBChordGramV2/FigureYa310CPDBChordGramV2.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa311PAM50Heatmap",
+      "number": 311,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa311PAM50Heatmap",
+      "reviewed_text_files": [
+        "FigureYa311PAM50Heatmap/FigureYa311PAM50Heatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa312CellPreference",
+      "number": 312,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa312CellPreference",
+      "reviewed_text_files": [
+        "FigureYa312CellPreference/FigureYa312CellPreference.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa313CircularPlot",
+      "number": 313,
+      "status": "new renderer",
+      "engines": [
+        "circular_distribution_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa313CircularPlot",
+      "reviewed_text_files": [
+        "FigureYa313CircularPlot/FigureYa313CircularPlot.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa314SingleRScore",
+      "number": 314,
+      "status": "existing renderer",
+      "engines": [
+        "quadrant_correlation_scatter"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa314SingleRScore",
+      "reviewed_text_files": [
+        "FigureYa314SingleRScore/FigureYa314SingleRScore.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa315SingleRFraction",
+      "number": 315,
+      "status": "existing renderer",
+      "engines": [
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa315SingleRFraction",
+      "reviewed_text_files": [
+        "FigureYa315SingleRFraction/FigureYa315SingleRFraction.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa316RF_XGBoost_Boruta",
+      "number": 316,
+      "status": "new renderer",
+      "engines": [
+        "binary_evaluation_plot",
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa316RF_XGBoost_Boruta",
+      "reviewed_text_files": [
+        "FigureYa316RF_XGBoost_Boruta/FigureYa316RF_XGBoost_Boruta.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa317RoeDot",
+      "number": 317,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa317RoeDot",
+      "reviewed_text_files": [
+        "FigureYa317RoeDot/FigureYa317RoeDot.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa318GenesetDEDotplot",
+      "number": 318,
+      "status": "existing renderer",
+      "engines": [
+        "dot_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa318GenesetDEDotplot",
+      "reviewed_text_files": [
+        "FigureYa318GenesetDEDotplot/FigureYa318GenesetDEDotplot.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa319ContribScore",
+      "number": 319,
+      "status": "existing renderer",
+      "engines": [
+        "regression_scatter_plot",
+        "classified_bar_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa319ContribScore",
+      "reviewed_text_files": [
+        "FigureYa319ContribScore/FigureYa319ContribScore.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa320ClontypeHeatmap",
+      "number": 320,
+      "status": "existing renderer",
+      "engines": [
+        "group_heatmap"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa320ClontypeHeatmap",
+      "reviewed_text_files": [
+        "FigureYa320ClontypeHeatmap/FigureYa320ClontypeHeatmap.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa321volcanoSE",
+      "number": 321,
+      "status": "existing renderer",
+      "engines": [
+        "sca_volcano_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa321volcanoSE",
+      "reviewed_text_files": [
+        "FigureYa321volcanoSE/FigureYa321volcanoSE.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa322SSEA",
+      "number": 322,
+      "status": "existing renderer",
+      "engines": [
+        "fgsea_enrichment_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa322SSEA",
+      "reviewed_text_files": [
+        "FigureYa322SSEA/FigureYa322SSEA.Rmd"
+      ],
+      "limits": "Coverage refers to supplied plot-ready tables and the listed visual grammar. Upstream analysis, exact publication styling and every original composite are not automatically reproduced."
+    },
+    {
+      "module": "FigureYa323STpathseq",
+      "number": 323,
+      "status": "new renderer",
+      "engines": [
+        "spatial_region_plot"
+      ],
+      "source": "https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa323STpathseq",
+      "reviewed_text_files": [
+        "FigureYa323STpathseq/FigureYa323STpathseq.Rmd"
+      ],
+      "limits": "Supplied spatial spots/polygons and optional PNG tissue backgrounds; no spatial deconvolution, segmentation or microbial read classification."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "plugin_id": "protein_variant_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Protein variants and domains",
+      "plugin_id": "protein_variant_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv",
+        "domains": "basic/input/domains.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "variants_only",
+      "label": "Variant count profile",
+      "plugin_id": "protein_variant_plot",
+      "params": "variants_only/params.json",
+      "inputs": {
+        "input": "variants_only/input/data.csv",
+        "domains": "variants_only/input/domains.csv"
+      },
+      "expected": "variants_only/expected/result.png"
+    }
+  ]
+}

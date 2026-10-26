@@ -1,0 +1,11 @@
+{
+  "row_column": "row",
+  "column_column": "column",
+  "value_column": "value",
+  "cluster_rows": true,
+  "cluster_columns": true,
+  "title": "Clustered circular heatmap",
+  "inner_radius": 0.2,
+  "width": 7,
+  "height": 7
+}

@@ -1,0 +1,42 @@
+id: circular_genomic_plot
+name: Circular Genome Tracks
+version: 1.0.0
+description: Arrange supplied genomic intervals, values and optional links on a circular
+  genome.
+language: R
+entrypoint: plot.R
+category: Genomics
+subcategory: General
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+- id: chromosomes
+  type: table
+  formats:
+  - csv
+  - tsv
+  required: false
+- id: links
+  type: table
+  formats:
+  - csv
+  - tsv
+  required: false
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+- chromosome_lengths_used.csv
+- links_used.csv
+runtime:
+  command: Rscript plugins/circular_genomic_plot/plot.R --input input.csv --params
+    params.json --output output_dir

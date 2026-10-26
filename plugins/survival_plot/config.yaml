@@ -1,0 +1,30 @@
+id: survival_plot
+name: Survival Curve
+version: 1.0.0
+description: "Kaplan\u2013Meier curves with censor marks, confidence bands and numbers\
+  \ at risk."
+language: R
+entrypoint: plot.R
+category: Comparison
+subcategory: Survival
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+- risk_table_used.csv
+- group_counts_used.csv
+runtime:
+  command: Rscript plugins/survival_plot/plot.R --input input.csv --params params.json
+    --output output_dir

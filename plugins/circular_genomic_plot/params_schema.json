@@ -1,0 +1,263 @@
+{
+  "data_mapping": {
+    "chromosome_column": {
+      "type": "column",
+      "default": "chromosome",
+      "label": "Chromosome column",
+      "help": ""
+    },
+    "start_column": {
+      "type": "column",
+      "default": "start",
+      "label": "Start column",
+      "help": ""
+    },
+    "end_column": {
+      "type": "column",
+      "default": "end",
+      "label": "End column",
+      "help": ""
+    },
+    "value_column": {
+      "type": "column",
+      "default": "value",
+      "label": "Value column",
+      "help": ""
+    },
+    "group_column": {
+      "type": "column",
+      "default": "track",
+      "label": "Group column",
+      "help": ""
+    }
+  },
+  "layout": {
+    "layout": {
+      "type": "select",
+      "default": "circular",
+      "label": "Layout",
+      "help": "",
+      "options": [
+        "circular",
+        "linear"
+      ]
+    },
+    "track_type": {
+      "type": "select",
+      "default": "heatmap",
+      "label": "Track type",
+      "help": "Circular layout only; linear layout uses interval rectangles.",
+      "options": [
+        "heatmap",
+        "bar",
+        "point"
+      ]
+    },
+    "gap_angle": {
+      "type": "number",
+      "default": 2,
+      "label": "Gap angle",
+      "help": "Circular layout only; total chromosome gaps must remain below 180 degrees.",
+      "min": 0.1,
+      "max": 12
+    }
+  },
+  "marks": {
+    "link_show": {
+      "type": "boolean",
+      "default": true,
+      "label": "Link show",
+      "help": ""
+    },
+    "link_alpha": {
+      "type": "number",
+      "default": 0.4,
+      "label": "Link alpha",
+      "help": "Only with a supplied links table and link_show enabled.",
+      "min": 0.05,
+      "max": 1
+    },
+    "point_size": {
+      "type": "number",
+      "default": 2,
+      "label": "Point size",
+      "help": "Circular point track only.",
+      "min": 0.1,
+      "max": 10
+    },
+    "line_width": {
+      "type": "number",
+      "default": 0.6,
+      "label": "Line width",
+      "help": "Only for supplied links.",
+      "min": 0.1,
+      "max": 3
+    }
+  },
+  "colors": {
+    "link_color": {
+      "type": "color",
+      "default": "#627D96",
+      "label": "Link color",
+      "help": "Only when links are drawn."
+    },
+    "low_color": {
+      "type": "color",
+      "default": "#397DA3",
+      "label": "Low color",
+      "help": ""
+    },
+    "high_color": {
+      "type": "color",
+      "default": "#CD5865",
+      "label": "High color",
+      "help": ""
+    },
+    "palette": {
+      "type": "select",
+      "default": "Set 2",
+      "label": "Palette",
+      "help": "",
+      "options": [
+        "Set 2",
+        "Dark 3",
+        "Viridis"
+      ]
+    },
+    "group_colors": {
+      "type": "object",
+      "default": {},
+      "label": "Named colors",
+      "help": "Named categorical colors override the palette."
+    }
+  },
+  "legend": {
+    "legend_title": {
+      "type": "string",
+      "default": "",
+      "label": "Legend title",
+      "help": ""
+    },
+    "legend_show": {
+      "type": "boolean",
+      "default": true,
+      "label": "Legend show",
+      "help": ""
+    },
+    "legend_position": {
+      "type": "select",
+      "default": "right",
+      "label": "Legend position",
+      "help": "",
+      "options": [
+        "right",
+        "bottom",
+        "top",
+        "left"
+      ]
+    },
+    "legend_text_size": {
+      "type": "number",
+      "default": 9,
+      "label": "Legend text size",
+      "help": "",
+      "min": 5,
+      "max": 20
+    }
+  },
+  "labels": {
+    "label_size": {
+      "type": "number",
+      "default": 2.8,
+      "label": "Label size",
+      "help": "Circular chromosome labels only.",
+      "min": 1,
+      "max": 6
+    },
+    "title": {
+      "type": "string",
+      "default": "",
+      "label": "Title",
+      "help": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "",
+      "label": "Subtitle",
+      "help": "Empty uses the automatic description."
+    },
+    "caption": {
+      "type": "string",
+      "default": "",
+      "label": "Caption",
+      "help": ""
+    },
+    "title_size": {
+      "type": "number",
+      "default": 13,
+      "label": "Title size",
+      "help": "Only when a nonempty title is supplied.",
+      "min": 6,
+      "max": 30
+    }
+  },
+  "theme": {
+    "font_family": {
+      "type": "select",
+      "default": "sans",
+      "label": "Font family",
+      "help": "",
+      "options": [
+        "sans",
+        "serif",
+        "mono"
+      ]
+    },
+    "base_size": {
+      "type": "number",
+      "default": 11,
+      "label": "Base size",
+      "help": "",
+      "min": 6,
+      "max": 22
+    },
+    "plot_background": {
+      "type": "color",
+      "default": "#FFFFFF",
+      "label": "Plot background",
+      "help": ""
+    },
+    "grid_show": {
+      "type": "boolean",
+      "default": false,
+      "label": "Grid show",
+      "help": ""
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "default": 8,
+      "label": "Width",
+      "help": "Inches.",
+      "min": 3,
+      "max": 20
+    },
+    "height": {
+      "type": "number",
+      "default": 6,
+      "label": "Height",
+      "help": "Inches.",
+      "min": 3,
+      "max": 20
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 150,
+      "label": "Dpi",
+      "help": "",
+      "min": 72,
+      "max": 600
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "basic",
+  "label": "Protein variants and domains",
+  "plugin_id": "protein_variant_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv",
+    "domains": "input/domains.csv"
+  },
+  "expected": "expected/result.png"
+}

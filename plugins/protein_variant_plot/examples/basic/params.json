@@ -1,0 +1,8 @@
+{
+  "position_column": "position",
+  "value_column": "count",
+  "label_column": "variant",
+  "group_column": "group",
+  "title": "Protein variants and domains",
+  "protein_length": 800
+}

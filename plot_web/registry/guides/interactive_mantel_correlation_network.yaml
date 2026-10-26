@@ -1,0 +1,63 @@
+summary: Distinguish Pearson correlations among variables from Mantel associations
+  between distance matrices.
+observation_type: observations or summary items in the input table
+best_for:
+- Relate community differences to environmental gradients
+- Compare biological and phenotypic distances
+- Survey multivariable associations
+common_uses: []
+input_requirements: Precomputed correlation matrix and Mantel-result edges with matching
+  variable names.
+learn_more: 'Input: Precomputed correlation matrix and Mantel-result edges with matching
+  variable names. Interpretation: The triangle encodes Pearson r; network edge styles
+  encode Mantel results according to their legend. Check mappings, order and transformations
+  before adjusting labels, colors and canvas dimensions. Confirm legends and units
+  before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: The triangle encodes Pearson r; network edge styles encode Mantel results
+    according to their legend.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Mantel r and Pearson r are different statistics
+- id: caution_2
+  title: Caution 2
+  text: Handle permutation design and nonindependence upstream
+examples:
+- id: basic
+  title: Pearson matrix alongside Mantel links
+  description: 'Use case: Relate community differences to environmental gradients.
+    This preset illustrates pearson matrix alongside mantel links. Replace its input
+    with your data while retaining the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Relate community differences to environmental gradients
+  input_requirements: Precomputed correlation matrix and Mantel-result edges with
+    matching variable names.
+  preview_asset: plugins/interactive_mantel_correlation_network/all_examples_gallery/basic.png
+  variant_id: mantel_pearson
+literature_ids:
+- sanchez_wheat_2025
+- li_freeze_thaw_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes:
+- Only one independent demonstration bundle is available. Three application scenarios
+  are listed, but a second input or mode-specific bundle is still needed.
+variants:
+  mantel_pearson:
+    summary: Pearson triangle of env variables plus Mantel links from community distances.
+customization:
+- parameter: input_mode
+  label: Input mode
+  default: auto
+- parameter: width
+  label: width
+  default: 9.2
+- parameter: height
+  label: height
+  default: 7.2

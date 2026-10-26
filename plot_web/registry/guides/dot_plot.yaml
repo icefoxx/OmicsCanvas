@@ -1,0 +1,166 @@
+summary: Summarize feature expression across groups using both color and point size,
+  optionally with a dendrogram.
+observation_type: observations or summary items in the input table
+best_for:
+- Screen cell-type markers
+- Compare expression and detection rates
+- Inspect groups with similar marker profiles
+common_uses: []
+input_requirements: Expression matrix and cell annotations, or feature/group means
+  and detection fractions.
+learn_more: 'Input: Expression matrix and cell annotations, or feature/group means
+  and detection fractions. Interpretation: Color and size encode different statistics
+  and require separate legends. Check mappings, order and transformations before adjusting
+  labels, colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Color and size encode different statistics and require separate legends.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Feature-wise scaling prevents absolute comparisons between genes
+- id: caution_2
+  title: Caution 2
+  text: Summary dots hide observation-level distributions
+examples:
+- id: aggregate
+  title: Aggregate an expression matrix
+  description: 'Use case: Screen cell-type markers. This preset illustrates aggregate
+    an expression matrix. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: aggregate
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Screen cell-type markers
+  input_requirements: Expression matrix and cell annotations, or feature/group means
+    and detection fractions.
+  preview_asset: plugins/dot_plot/all_examples_gallery/aggregate.png
+  variant_id: marker_dot
+  mappings:
+    row_id_column: gene
+    cluster_column: cluster
+    cell_column: cell
+    x_column: gene
+    y_column: cluster
+- id: basic
+  title: Read a precomputed marker summary
+  description: 'Use case: Compare expression and detection rates. This preset illustrates
+    read a precomputed marker summary. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare expression and detection rates
+  input_requirements: Expression matrix and cell annotations, or feature/group means
+    and detection fractions.
+  preview_asset: plugins/dot_plot/all_examples_gallery/basic.png
+  variant_id: marker_dot
+  mappings:
+    x_column: gene
+    y_column: cluster
+- id: dendro
+  title: Cluster groups by marker profiles
+  description: 'Use case: Inspect groups with similar marker profiles. This preset
+    illustrates cluster groups by marker profiles. Replace its input with your data
+    while retaining the appropriate view settings.'
+  demo_id: dendro
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect groups with similar marker profiles
+  input_requirements: Expression matrix and cell annotations, or feature/group means
+    and detection fractions.
+  preview_asset: plugins/dot_plot/all_examples_gallery/dendro.png
+  variant_id: marker_dot
+  mappings:
+    x_column: gene
+    y_column: cluster
+literature_ids:
+- hao_dnt_2026
+- yang_projection_2025
+- jing_auditory_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  marker_dot:
+    summary: 'Compare gene expression across clusters or samples using color for mean
+      expression and size for detection rate.
+
+      '
+customization: []
+source_modules:
+- title: FigureYa5bubbles
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa5bubbles
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa11bubble
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa11bubble
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa75bubble_volcano
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa75bubble_volcano
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa127HeatmapPie
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa127HeatmapPie
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa140mosaicpie
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa140mosaicpie
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa178receptorLigand
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa178receptorLigand
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa196PanPie
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa196PanPie
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa196Plus_PanPie
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa196Plus_PanPie
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa206scHeatmap
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa206scHeatmap
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa224scMarker
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa224scMarker
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa234panImmune
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa234panImmune
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa267scCellChat
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa267scCellChat
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa278heatmapPoints
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa278heatmapPoints
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa317RoeDot
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa317RoeDot
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa318GenesetDEDotplot
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa318GenesetDEDotplot
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

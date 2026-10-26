@@ -1,0 +1,25 @@
+{
+  "plugin_id": "oncoprint_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Multi-hit alteration matrix",
+      "plugin_id": "oncoprint_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "input_order",
+      "label": "Input-order alteration matrix",
+      "plugin_id": "oncoprint_plot",
+      "params": "input_order/params.json",
+      "inputs": {
+        "input": "input_order/input/data.csv"
+      },
+      "expected": "input_order/expected/result.png"
+    }
+  ]
+}

@@ -13,6 +13,23 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+// Static pages and example previews do not need to download a charting runtime.
+let plotlyLoadPromise = null;
+function ensurePlotly() {
+  if (window.Plotly) return Promise.resolve(true);
+  if (plotlyLoadPromise) return plotlyLoadPromise;
+  plotlyLoadPromise = new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.plot.ly/plotly-2.35.2.min.js";
+    script.async = true;
+    const timer = setTimeout(() => { resolve(false); plotlyLoadPromise = null; }, 8000);
+    script.onload = () => { clearTimeout(timer); resolve(Boolean(window.Plotly)); };
+    script.onerror = () => { clearTimeout(timer); plotlyLoadPromise = null; resolve(false); };
+    document.head.appendChild(script);
+  });
+  return plotlyLoadPromise;
+}
+
 /** Scientific validation result returned with every run (PlotSpec layer). */
 function renderValidationPanel(box, vnext) {
   if (!box) return;

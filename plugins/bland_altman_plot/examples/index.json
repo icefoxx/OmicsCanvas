@@ -1,0 +1,25 @@
+{
+  "plugin_id": "bland_altman_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Paired measurement agreement",
+      "plugin_id": "bland_altman_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "percent",
+      "label": "Relative measurement agreement",
+      "plugin_id": "bland_altman_plot",
+      "params": "percent/params.json",
+      "inputs": {
+        "input": "percent/input/data.csv"
+      },
+      "expected": "percent/expected/result.png"
+    }
+  ]
+}

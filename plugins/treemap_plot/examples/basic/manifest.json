@@ -1,0 +1,11 @@
+{
+  "id": "basic",
+  "label": "Basic",
+  "plugin_id": "treemap_plot",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/treemap_plot/plot.R --input plugins/treemap_plot/examples/basic/input/example_input.csv --params plugins/treemap_plot/examples/basic/params.json --output /tmp/treemap_plot_basic"
+  }
+}

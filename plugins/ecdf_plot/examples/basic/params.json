@@ -1,0 +1,7 @@
+{
+  "value_column": "value",
+  "group_column": "group",
+  "title": "Cumulative score distributions",
+  "confidence_show": true,
+  "stat_method": "wilcoxon"
+}

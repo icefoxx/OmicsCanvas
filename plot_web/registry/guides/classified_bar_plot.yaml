@@ -1,0 +1,266 @@
+summary: Rank categories with one bar per item, colored by its class.
+observation_type: observations or summary items in the input table
+best_for:
+- Rank enrichment terms by class
+- Compare feature scores
+- Highlight a functional category
+common_uses: []
+input_requirements: Category labels, numeric values and a class/type column.
+learn_more: 'Input: Category labels, numeric values and a class/type column. Interpretation:
+  Bar length encodes the value and color identifies the class. Check mappings, order
+  and transformations before adjusting labels, colors and canvas dimensions. Confirm
+  legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Bar length encodes the value and color identifies the class.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Classes are annotations rather than extra numeric series
+- id: caution_2
+  title: Caution 2
+  text: Sorting and top-N filters change the displayed universe
+examples:
+- id: basic
+  title: Category score overview
+  description: 'Use case: Rank enrichment terms by class. This preset illustrates
+    category score overview. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Rank enrichment terms by class
+  input_requirements: Category labels, numeric values and a class/type column.
+  preview_asset: plugins/classified_bar_plot/all_examples_gallery/basic.png
+  mappings:
+    category_column: category
+    type_column: type
+    value_column: value
+- id: vertical
+  title: Vertical category comparison
+  description: 'Use case: Compare feature scores. This preset illustrates vertical
+    category comparison. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: vertical
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare feature scores
+  input_requirements: Category labels, numeric values and a class/type column.
+  preview_asset: plugins/classified_bar_plot/all_examples_gallery/vertical.png
+  variant_id: vertical
+  mappings:
+    category_column: category
+    type_column: type
+    value_column: value
+- id: labeled
+  title: Rankings with numeric labels
+  description: 'Use case: Highlight a functional category. This preset illustrates
+    rankings with numeric labels. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: labeled
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Highlight a functional category
+  input_requirements: Category labels, numeric values and a class/type column.
+  preview_asset: plugins/classified_bar_plot/all_examples_gallery/labeled.png
+  mappings:
+    category_column: category
+    type_column: type
+    value_column: value
+literature_ids:
+- hao_dnt_2026
+- liu_cellres_2025
+- sanchez_wheat_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  cab_demo:
+    summary: Default horizontal classified bars.
+  vertical:
+    summary: Same classified bars in vertical orientation.
+customization:
+- parameter: value_column
+  label: Value column
+  default: null
+- parameter: category_column
+  label: Category / label column
+  default: null
+- parameter: sort_by
+  label: Sort bars by
+  default: input
+- parameter: palette
+  label: Named palette
+  default: ''
+- parameter: width
+  label: Export width (in)
+  default: 8
+- parameter: height
+  label: Export height (in)
+  default: 7
+source_modules:
+- title: FigureYa39bar
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa39bar
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa51TMB_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa51TMB_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa56immune_inflitrationV3
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa56immune_inflitrationV3
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa80GOclustering
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa80GOclustering
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa83enrichment
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa83enrichment
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa84roast
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa84roast
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa110mutationSignature
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa110mutationSignature
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa125FishertestV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa125FishertestV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa139TMB_titv
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa139TMB_titv
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa150diversityScore
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa150diversityScore
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa157ChIPpvalue
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa157ChIPpvalue
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa167TumorIndex
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa167TumorIndex
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa173fancybar
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa173fancybar
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa180FGAplotV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa180FGAplotV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa188CNVload
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa188CNVload
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa207Randomization
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa207Randomization
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa209batchEnrich
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa209batchEnrich
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa217RMR
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa217RMR
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa240CRISPR
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa240CRISPR
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa245Plus_VarDecompose
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa245Plus_VarDecompose
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa245VarDecompose_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa245VarDecompose_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa263panDiff
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa263panDiff
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa265panCNV
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa265panCNV
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa274MuSiCbulkProop
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa274MuSiCbulkProop
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa276panSNV
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa276panSNV
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa282CMAP_XSum
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa282CMAP_XSum
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa287L2logV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa287L2logV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa290BarGraph
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa290BarGraph
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa297Rbar
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa297Rbar
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa312CellPreference
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa312CellPreference
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa315SingleRFraction
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa315SingleRFraction
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa316RF_XGBoost_Boruta
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa316RF_XGBoost_Boruta
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa319ContribScore
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa319ContribScore
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

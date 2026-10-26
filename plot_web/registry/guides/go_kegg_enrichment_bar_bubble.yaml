@@ -1,0 +1,70 @@
+summary: Combine ontology-grouped bars and bubbles to show enrichment evidence and
+  gene counts.
+observation_type: observations or summary items in the input table
+best_for:
+- Summarize functional ontologies
+- Compare gene coverage of enriched terms
+- Show top terms within each ontology
+common_uses: []
+input_requirements: Precomputed term names, ontology classes, enrichment statistics
+  and gene counts.
+learn_more: 'Input: Precomputed term names, ontology classes, enrichment statistics
+  and gene counts. Interpretation: Read bar length, point size and color against their
+  separate legends. Check mappings, order and transformations before adjusting labels,
+  colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Read bar length, point size and color against their separate legends.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: State the background gene universe and correction method
+- id: caution_2
+  title: Caution 2
+  text: Top-N selection is a display filter rather than a statistical test
+examples:
+- id: go_kegg
+  title: Ontology enrichment and gene counts
+  description: 'Use case: Summarize functional ontologies. This preset illustrates
+    ontology enrichment and gene counts. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: go_kegg
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Summarize functional ontologies
+  input_requirements: Precomputed term names, ontology classes, enrichment statistics
+    and gene counts.
+  preview_asset: plugins/go_kegg_enrichment_bar_bubble/all_examples_gallery/go_kegg.png
+  variant_id: grouped_bar_dot
+  mappings:
+    term_column: Description
+    category_column: Ontology
+    pvalue_column: pvalue
+    adjusted_pvalue_column: p.adjust
+    count_column: GeneCount
+    significance_column: pvalue
+literature_ids:
+- hao_dnt_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes:
+- Only one independent demonstration bundle is available. Three application scenarios
+  are listed, but a second input or mode-specific bundle is still needed.
+variants:
+  grouped_bar_dot:
+    summary: Top GO and KEGG terms as grouped bars; dot size is gene count.
+customization:
+- parameter: category_column
+  label: Ontology / Category column
+  default: null
+- parameter: top_n
+  label: Top terms per category (0 = all)
+  default: 5
+- parameter: width
+  label: Width (in)
+  default: 11
+- parameter: height
+  label: Minimum height (in)
+  default: 7

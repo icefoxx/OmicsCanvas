@@ -1,0 +1,25 @@
+{
+  "plugin_id": "bar3d_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Mutation-context count grid",
+      "plugin_id": "bar3d_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "free_scale",
+      "label": "Grid heights with independent panel scales",
+      "plugin_id": "bar3d_plot",
+      "params": "free_scale/params.json",
+      "inputs": {
+        "input": "free_scale/input/data.csv"
+      },
+      "expected": "free_scale/expected/result.png"
+    }
+  ]
+}

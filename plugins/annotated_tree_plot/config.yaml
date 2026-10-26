@@ -1,0 +1,36 @@
+id: annotated_tree_plot
+name: Annotated Tree
+version: 1.0.0
+description: Draw a supplied weighted tree with leaf metadata or a linked feature
+  heatmap.
+language: R
+entrypoint: plot.R
+category: Expression / Statistics
+subcategory: Dendrogram
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+- id: annot
+  type: table
+  formats:
+  - csv
+  - tsv
+  required: false
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+- tree_edges_used.csv
+- annotation_used.csv
+runtime:
+  command: Rscript plugins/annotated_tree_plot/plot.R --input input.csv --params params.json
+    --output output_dir

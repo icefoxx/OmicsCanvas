@@ -1,0 +1,9 @@
+{
+  "row_column": "row",
+  "column_column": "column",
+  "value_column": "value",
+  "title": "Marker z-scores around samples",
+  "inner_radius": 0.25,
+  "width": 7,
+  "height": 7
+}

@@ -1,0 +1,14 @@
+id,label,group,type
+HUB1,Hub 1,Core,Node
+HUB2,Hub 2,Core,Node
+HUB3,Hub 3,Core,Node
+REC1,Receptor 1,Signal,Node
+REC2,Receptor 2,Signal,Node
+REC3,Receptor 3,Signal,Node
+REC4,Receptor 4,Signal,Node
+ENZ1,Enzyme 1,Metabolic,Node
+ENZ2,Enzyme 2,Metabolic,Node
+ENZ3,Enzyme 3,Metabolic,Node
+ENZ4,Enzyme 4,Metabolic,Node
+ENZ5,Enzyme 5,Metabolic,Node
+ENZ6,Enzyme 6,Metabolic,Node

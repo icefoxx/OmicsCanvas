@@ -1,0 +1,7 @@
+{
+  "pvalue_column": "pvalue",
+  "chromosome_column": "chromosome",
+  "position_column": "position",
+  "label_column": "label",
+  "title": "Association overview"
+}

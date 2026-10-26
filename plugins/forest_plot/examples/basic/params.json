@@ -1,0 +1,9 @@
+{
+  "label_column": "label",
+  "effect_column": "effect",
+  "lower_column": "lower",
+  "upper_column": "upper",
+  "group_column": "group",
+  "title": "Effect estimates and confidence intervals",
+  "null_value": 1
+}

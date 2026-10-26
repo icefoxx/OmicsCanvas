@@ -1,0 +1,11 @@
+{
+  "id": "staggered",
+  "label": "Staggered observation windows",
+  "plugin_id": "swimmer_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv",
+    "events": "input/events.csv"
+  },
+  "expected": "expected/result.png"
+}

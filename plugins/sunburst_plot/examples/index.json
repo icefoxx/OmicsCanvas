@@ -1,0 +1,7 @@
+{
+  "plugin_id": "sunburst_plot",
+  "examples": [
+    {"id": "basic", "label": "Basic", "plugin_id": "sunburst_plot", "params": "basic/params.json", "inputs": {"input": "basic/input/example_input.csv"}, "expected": "basic/expected/result.png", "bundle": "basic"},
+    {"id": "three_level", "label": "Three rings", "plugin_id": "sunburst_plot", "params": "three_level/params.json", "inputs": {"input": "three_level/input/example_input.csv"}, "expected": "three_level/expected/result.png", "bundle": "three_level"}
+  ]
+}

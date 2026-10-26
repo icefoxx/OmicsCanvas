@@ -1,0 +1,7 @@
+{
+  "group_column": "clone",
+  "parent_column": "parent",
+  "x_column": "time",
+  "value_column": "fraction",
+  "title": "Nested clone fractions"
+}

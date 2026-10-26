@@ -1,0 +1,7 @@
+{
+  "id_column": "subject",
+  "start_column": "start",
+  "end_column": "end",
+  "group_column": "group",
+  "title": "Observation intervals and events"
+}

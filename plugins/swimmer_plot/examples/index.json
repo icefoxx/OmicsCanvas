@@ -1,0 +1,27 @@
+{
+  "plugin_id": "swimmer_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Observation intervals and events",
+      "plugin_id": "swimmer_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv",
+        "events": "basic/input/events.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "staggered",
+      "label": "Staggered observation windows",
+      "plugin_id": "swimmer_plot",
+      "params": "staggered/params.json",
+      "inputs": {
+        "input": "staggered/input/data.csv",
+        "events": "staggered/input/events.csv"
+      },
+      "expected": "staggered/expected/result.png"
+    }
+  ]
+}

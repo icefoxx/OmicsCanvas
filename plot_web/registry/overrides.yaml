@@ -537,9 +537,9 @@ families:
 
   enrichment_lollipop:
     name: Enrichment lollipop
-    aliases: [lollipop, signed enrichment, cleveland enrichment]
-    analysis_contexts: [functional_enrichment]
-    tasks: [ora, gsea]
+    aliases: [lollipop, signed enrichment, cleveland enrichment, transcription factor, regulon, diverging TF]
+    analysis_contexts: [functional_enrichment, single_cell, differential_expression]
+    tasks: [ora, gsea, differential_expression, ranking]
     variants:
       - id: lollipop
         name: Enrichment Lollipop
@@ -551,11 +551,17 @@ families:
         short_description: Signed NES lollipops for an OCT4 enrichment table.
         gallery: {visible: true, section: more, order: 2}
         representative_example: oct4_enrichment
+      - id: diverging_tf
+        name: Diverging TF Lollipop
+        short_description: Signed transcription-factor effects with central labels, a continuous gradient, and p-value-sized heads.
+        gallery: {visible: true, section: recommended, order: 3}
+        representative_example: CAB_demo
     example_classifications:
       basic: {class: demo, maps_to: {variant: lollipop, preset: recommended}}
       custom_layout: {class: parameter, parameter_group: layout, maps_to: {variant: lollipop, preset: recommended}}
       interactive: {class: parameter, parameter_group: export, maps_to: {variant: lollipop, preset: recommended, parameters: {interactive: true}}}
       oct4_enrichment: {class: demo, maps_to: {variant: oct4_enrichment, preset: recommended}}
+      CAB_demo: {class: demo, maps_to: {variant: diverging_tf, preset: recommended}}
     legacy_presets:
       custom_layout: {variant: lollipop, preset: recommended}
       interactive: {variant: lollipop, preset: recommended, parameters: {interactive: true}}
@@ -813,6 +819,49 @@ families:
     status: hidden
     gallery: {visible: false}
 
+  interactive_network_plot:
+    name: Interactive Network
+    short_name: Network
+    description: >
+      Edge-list and membership graphs with preset layouts (force-directed,
+      circle, concentric, radial, hierarchical) and a draggable HTML view.
+    aliases:
+      - network
+      - graph
+      - interaction network
+      - membership network
+      - circular network
+      - concentric network
+    analysis_contexts: [relationships_overlap, network, general_statistics]
+    tasks: [network, overlap]
+    variants:
+      - id: network
+        name: Force-directed network
+        short_description: Weighted interaction graph with a Fruchterman–Reingold layout.
+        gallery: {visible: true, section: recommended, order: 1}
+        representative_example: network
+      - id: circle
+        name: Circular network
+        short_description: Nodes on one ring, optionally sorted by degree or size.
+        gallery: {visible: true, section: recommended, order: 2}
+        representative_example: circle
+      - id: concentric
+        name: Concentric network
+        short_description: One ring per group, with optional size sorting.
+        gallery: {visible: true, section: recommended, order: 3}
+        representative_example: concentric
+      - id: membership
+        name: Membership radial
+        short_description: Group nodes inside, members on an outer ring, with membership edges.
+        gallery: {visible: true, section: recommended, order: 4}
+        representative_example: membership
+    example_classifications:
+      network: {class: variant, maps_to: {variant: network, preset: recommended}}
+      circle: {class: variant, maps_to: {variant: circle, preset: recommended}}
+      concentric: {class: variant, maps_to: {variant: concentric, preset: recommended}}
+      membership: {class: variant, maps_to: {variant: membership, preset: recommended}}
+      manual_layout: {class: parameter, parameter_group: layout, maps_to: {variant: network, preset: recommended}}
+
   interactive_mantel_correlation_network:
     name: Mantel + Pearson Correlation
     short_name: Mantel + Pearson
@@ -991,3 +1040,1168 @@ families:
         short_description: Reference-style hierarchical marker panel.
         representative_example: CAB_demo
         gallery: {visible: true, section: more, order: 2}
+
+  raincloud_plot:
+    name: Raincloud Plot
+    short_name: Raincloud
+    description: Half-violin, box, and jittered points for group distributions of a numeric value.
+    aliases: [raincloud, half violin, cloud plot]
+    analysis_contexts: [general_statistics, single_cell, bulk_expression]
+    tasks: [distribution, group_comparison, gene_expression]
+    data_requirements:
+      required_roles: [expression]
+      optional_roles: [group]
+      accepted_types: {expression: numeric, group: categorical}
+    variants:
+      - id: basic
+        name: Horizontal
+        short_description: Horizontal raincloud of expression by group.
+        representative_example: basic
+        gallery: {visible: true, section: recommended, order: 1}
+      - id: vertical
+        name: Vertical
+        short_description: Vertical raincloud with the same layers.
+        representative_example: vertical
+        gallery: {visible: true, section: more, order: 2}
+
+  circular_bar_plot:
+    name: Circular Bar Plot
+    short_name: Circular Bar
+    description: Radial bars for ranked categories, stacked or single-series, around a polar axis.
+    aliases: [circular bar, polar bar, radial bar]
+    analysis_contexts: [composition, general_statistics, gene_expression]
+    tasks: [group_comparison, composition, ranking]
+    data_requirements:
+      required_roles: [group]
+      optional_roles: [size]
+      accepted_types: {group: categorical, size: numeric}
+    variants:
+      - id: basic
+        name: Stacked
+        short_description: Stacked polar bars by category and group.
+        representative_example: basic
+        gallery: {visible: true, section: recommended, order: 1}
+      - id: single
+        name: Single series
+        short_description: One polar bar per category, summed across groups.
+        representative_example: single
+        gallery: {visible: true, section: more, order: 2}
+
+  line_plot:
+    name: Line Plot
+    short_name: Line
+    description: Multi-series lines with optional points, error bars, a loess smooth, and a second y axis.
+    aliases: [line chart, time series, connected line]
+    analysis_contexts: [general_statistics, bulk_expression]
+    tasks: [group_comparison, expression_pattern]
+    data_requirements:
+      required_roles: [x, y]
+      optional_roles: [group]
+      accepted_types: {x: numeric, y: numeric, group: categorical}
+    variants:
+      - id: basic
+        name: Basic
+        short_description: Grouped lines with points and error bars.
+        representative_example: basic
+        gallery: {visible: true, section: recommended, order: 1}
+      - id: smooth
+        name: Smooth
+        short_description: Loess smooth over numeric x.
+        representative_example: smooth
+        gallery: {visible: true, section: more, order: 2}
+      - id: interval_band
+        name: Supplied interval band
+        short_description: Supplied interval band
+        representative_example: interval_band
+        gallery: {visible: true, section: more, order: 9}
+
+
+  waterfall_plot:
+    name: Waterfall Plot
+    short_name: Waterfall
+    description: Cumulative signed bars that show how sequential contributions add to a total.
+    aliases: [waterfall, cascade, running total]
+    analysis_contexts: [general_statistics]
+    tasks: [group_comparison, ranking]
+    data_requirements:
+      required_roles: [group]
+      optional_roles: [size]
+      accepted_types: {group: categorical, size: numeric}
+    variants:
+      - id: basic
+        name: Basic
+        short_description: Signed steps plus a total bar.
+        representative_example: basic
+        gallery: {visible: true, section: recommended, order: 1}
+      - id: no_total
+        name: Without total
+        short_description: Signed steps without the closing total bar.
+        representative_example: no_total
+        gallery: {visible: true, section: more, order: 2}
+
+  sunburst_plot:
+    name: Sunburst Plot
+    short_name: Sunburst
+    description: Hierarchical category shares as concentric rings.
+    aliases: [sunburst, multi-level donut, concentric composition]
+    analysis_contexts: [composition, single_cell, cell_composition]
+    tasks: [composition, cell_composition]
+    data_requirements:
+      required_roles: [group]
+      optional_roles: [size]
+      accepted_types: {group: categorical, size: numeric}
+    variants:
+      - id: basic
+        name: Two rings
+        short_description: Parent and child rings of category shares.
+        representative_example: basic
+        gallery: {visible: true, section: recommended, order: 1}
+      - id: three_level
+        name: Three rings
+        short_description: Three nested rings of category shares.
+        representative_example: three_level
+        gallery: {visible: true, section: more, order: 2}
+
+  treemap_plot:
+    name: Treemap Plot
+    short_name: Treemap
+    description: Hierarchical category shares as nested rectangles.
+    aliases: [treemap, nested rectangles, mosaic composition]
+    analysis_contexts: [composition, single_cell, cell_composition]
+    tasks: [composition, cell_composition]
+    data_requirements:
+      required_roles: [group]
+      optional_roles: [size]
+      accepted_types: {group: categorical, size: numeric}
+    variants:
+      - id: basic
+        name: Nested
+        short_description: Parent tiles split into child rectangles.
+        representative_example: basic
+        gallery: {visible: true, section: recommended, order: 1}
+
+  ternary_plot:
+    name: Ternary Plot
+    short_name: Ternary
+    description: Three-part compositions on a simplex, with optional grouping and size mapping.
+    aliases: [ternary, simplex, three-part composition]
+    analysis_contexts: [composition, cell_composition, general_statistics]
+    tasks: [composition, cell_composition]
+    data_requirements:
+      required_roles: [group]
+      optional_roles: [size]
+      accepted_types: {group: categorical, size: numeric}
+    variants:
+      - id: basic
+        name: Basic
+        short_description: Grouped points on an A–B–C simplex.
+        representative_example: basic
+        gallery: {visible: true, section: recommended, order: 1}
+
+  circular_heatmap:
+    name: Circular Heatmap
+    short_name: Circular Heatmap
+    description: Matrix values drawn as tiles around a polar axis.
+    aliases: [circular heatmap, polar heatmap, radial heatmap]
+    analysis_contexts: [gene_expression, bulk_expression, single_cell]
+    tasks: [heatmap, gene_expression, gene_clustering]
+    data_requirements:
+      required_roles: [feature, group]
+      optional_roles: [expression]
+      accepted_types: {feature: categorical, group: categorical, expression: numeric}
+    variants:
+      - id: basic
+        name: Basic
+        short_description: Feature rings around sample angles.
+        representative_example: basic
+        gallery: {visible: true, section: recommended, order: 1}
+      - id: clustered
+        name: Clustered
+        short_description: Rows and columns reordered by hierarchical clustering.
+        representative_example: clustered
+        gallery: {visible: true, section: more, order: 2}
+      - id: categorical
+        name: Categorical annotation rings
+        short_description: Categorical annotation rings
+        representative_example: categorical
+        gallery: {visible: true, section: more, order: 9}
+
+
+  circular_tree_embedding:
+    name: Circular Tree + Embedding
+    short_name: Tree + Embedding
+    description: A radial hierarchy and annotation rings surrounding a linked cell embedding.
+    aliases: [circular dendrogram, radial tree, tree embedding, taxonomy embedding, cell atlas]
+    analysis_contexts: [single_cell, cell_clustering, gene_expression]
+    tasks: [cell_clustering, clustering, marker_visualization]
+    data_requirements:
+      required_roles: [x_embedding, y_embedding, cluster, group]
+      optional_roles: [feature, metadata]
+      accepted_types: {x_embedding: numeric, y_embedding: numeric, cluster: categorical, group: categorical, feature: numeric, metadata: categorical}
+    variants:
+      - id: basic
+        name: Annotation hierarchy
+        short_description: Known class-to-subtype hierarchy around an embedding.
+        representative_example: basic
+        gallery: {visible: true, section: recommended, order: 1}
+      - id: similarity
+        name: Feature similarity
+        short_description: Cluster leaf mean feature profiles independently of the embedding coordinates.
+        representative_example: similarity
+        gallery: {visible: true, section: more, order: 2}
+      - id: CAB_demo
+        name: Atlas overview
+        short_description: Broad annotation colors in a reference-inspired composition with synthetic cells.
+        representative_example: CAB_demo
+        gallery: {visible: true, section: more, order: 3}
+
+  survival_plot:
+    name: Survival Curve
+    short_name: Survival Curve
+    description: "Kaplan\u2013Meier curves with censor marks, confidence bands and numbers\
+      \ at risk."
+    aliases:
+    - survival curve
+    - survival plot
+    analysis_contexts:
+    - general_statistics
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - x
+      - condition
+      optional_roles:
+      - group
+      accepted_types:
+        x: numeric
+        condition: numeric
+        group: categorical
+    variants:
+    - id: basic
+      name: Survival by cohort
+      short_description: Survival by cohort
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: conditional
+      name: Conditional survival
+      short_description: Conditional survival
+      representative_example: conditional
+      gallery:
+        visible: true
+        section: more
+        order: 2
+    - id: event_probability
+      name: Event probability
+      short_description: Event probability
+      representative_example: event_probability
+      gallery:
+        visible: true
+        section: more
+        order: 3
+  binary_evaluation_plot:
+    name: Binary Model Evaluation
+    short_name: Binary Model Evaluation
+    description: "ROC, precision\u2013recall, calibration and decision curves from supplied\
+      \ predictions."
+    aliases:
+    - binary model evaluation
+    - binary evaluation plot
+    analysis_contexts:
+    - general_statistics
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - x
+      - condition
+      optional_roles:
+      - group
+      accepted_types:
+        x: numeric
+        condition: any
+        group: categorical
+    variants:
+    - id: basic
+      name: Receiver operating characteristic
+      short_description: Receiver operating characteristic
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: precision_recall
+      name: Precision and recall
+      short_description: Precision and recall
+      representative_example: precision_recall
+      gallery:
+        visible: true
+        section: more
+        order: 2
+    - id: calibration
+      name: Probability calibration
+      short_description: Probability calibration
+      representative_example: calibration
+      gallery:
+        visible: true
+        section: more
+        order: 3
+    - id: decision_curve
+      name: Net benefit by threshold
+      short_description: Net benefit by threshold
+      representative_example: decision_curve
+      gallery:
+        visible: true
+        section: more
+        order: 4
+    - id: supplied_curve
+      name: Supplied evaluation curves
+      short_description: Supplied evaluation curves
+      representative_example: supplied_curve
+      gallery:
+        visible: true
+        section: more
+        order: 5
+  forest_plot:
+    name: Forest Plot
+    short_name: Forest Plot
+    description: Compare supplied effect estimates and confidence intervals.
+    aliases:
+    - forest plot
+    - forest plot
+    analysis_contexts:
+    - general_statistics
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - effect
+      - feature
+      optional_roles:
+      - group
+      accepted_types:
+        effect: numeric
+        feature: categorical
+        group: categorical
+    variants:
+    - id: basic
+      name: Effect estimates and confidence intervals
+      short_description: Effect estimates and confidence intervals
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: log_ratio
+      name: Ratios on a logarithmic axis
+      short_description: Ratios on a logarithmic axis
+      representative_example: log_ratio
+      gallery:
+        visible: true
+        section: more
+        order: 2
+    - id: signed_effects
+      name: Signed differences
+      short_description: Signed differences
+      representative_example: signed_effects
+      gallery:
+        visible: true
+        section: more
+        order: 3
+  oncoprint_plot:
+    name: Mutation Matrix
+    short_name: Mutation Matrix
+    description: Show multiple alteration types per gene and sample with marginal frequencies.
+    aliases:
+    - mutation matrix
+    - oncoprint plot
+    analysis_contexts:
+    - genomics
+    - gene_expression
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - feature
+      - sample
+      optional_roles:
+      - group
+      accepted_types:
+        feature: categorical
+        sample: categorical
+        group: categorical
+    variants:
+    - id: basic
+      name: Multi-hit alteration matrix
+      short_description: Multi-hit alteration matrix
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: input_order
+      name: Input-order alteration matrix
+      short_description: Input-order alteration matrix
+      representative_example: input_order
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  manhattan_qq_plot:
+    name: Manhattan / QQ
+    short_name: Manhattan / QQ
+    description: Display genomic association probabilities and their expected-quantile
+      comparison.
+    aliases:
+    - manhattan / qq
+    - manhattan qq plot
+    analysis_contexts:
+    - genomics
+    - gene_expression
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - pvalue
+      optional_roles:
+      - x
+      - feature
+      accepted_types:
+        pvalue: numeric
+        x: numeric
+        feature: categorical
+    variants:
+    - id: basic
+      name: Association overview
+      short_description: Association overview
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: manhattan
+      name: Genomic association signals
+      short_description: Genomic association signals
+      representative_example: manhattan
+      gallery:
+        visible: true
+        section: more
+        order: 2
+    - id: qq
+      name: Expected and observed probabilities
+      short_description: Expected and observed probabilities
+      representative_example: qq
+      gallery:
+        visible: true
+        section: more
+        order: 3
+  bland_altman_plot:
+    name: "Bland\u2013Altman Agreement"
+    short_name: "Bland\u2013Altman Agreement"
+    description: Compare paired measurements using mean differences and limits of agreement.
+    aliases:
+    - "bland\u2013altman agreement"
+    - bland altman plot
+    analysis_contexts:
+    - general_statistics
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - x
+      - y
+      optional_roles:
+      - group
+      accepted_types:
+        x: numeric
+        y: numeric
+        group: categorical
+    variants:
+    - id: basic
+      name: Paired measurement agreement
+      short_description: Paired measurement agreement
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: percent
+      name: Relative measurement agreement
+      short_description: Relative measurement agreement
+      representative_example: percent
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  swimmer_plot:
+    name: Swimmer Timeline
+    short_name: Swimmer Timeline
+    description: Show observation intervals and dated events for individual subjects.
+    aliases:
+    - swimmer timeline
+    - swimmer plot
+    analysis_contexts:
+    - general_statistics
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - id
+      - x
+      - y
+      optional_roles:
+      - group
+      accepted_types:
+        id: categorical
+        x: numeric
+        y: numeric
+        group: categorical
+    variants:
+    - id: basic
+      name: Observation intervals and events
+      short_description: Observation intervals and events
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: staggered
+      name: Staggered observation windows
+      short_description: Staggered observation windows
+      representative_example: staggered
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  protein_variant_plot:
+    name: Protein Variant Map
+    short_name: Protein Variant Map
+    description: Place variant counts and annotated domains on a protein coordinate.
+    aliases:
+    - protein variant map
+    - protein variant plot
+    analysis_contexts:
+    - genomics
+    - gene_expression
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - x
+      - size
+      optional_roles:
+      - group
+      accepted_types:
+        x: numeric
+        size: numeric
+        group: categorical
+    variants:
+    - id: basic
+      name: Protein variants and domains
+      short_description: Protein variants and domains
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: variants_only
+      name: Variant count profile
+      short_description: Variant count profile
+      representative_example: variants_only
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  clonal_fish_plot:
+    name: Clonal Evolution
+    short_name: Clonal Evolution
+    description: Show supplied nested clone fractions across time.
+    aliases:
+    - clonal evolution
+    - clonal fish plot
+    analysis_contexts:
+    - general_statistics
+    tasks:
+    - composition
+    data_requirements:
+      required_roles:
+      - source
+      - target
+      - x
+      - weight
+      optional_roles: []
+      accepted_types:
+        source: categorical
+        target: categorical
+        x: numeric
+        weight: numeric
+    variants:
+    - id: basic
+      name: Nested clone fractions
+      short_description: Nested clone fractions
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: percent
+      name: Clone fractions in percent
+      short_description: Clone fractions in percent
+      representative_example: percent
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  sequence_alignment_plot:
+    name: Sequence Alignment
+    short_name: Sequence Alignment
+    description: Display aligned DNA or protein sequences with consensus conservation.
+    aliases:
+    - sequence alignment
+    - sequence alignment plot
+    analysis_contexts:
+    - genomics
+    - gene_expression
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - id
+      - metadata
+      optional_roles: []
+      accepted_types:
+        id: categorical
+        metadata: categorical
+    variants:
+    - id: basic
+      name: Aligned nucleotide sequences
+      short_description: Aligned nucleotide sequences
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: protein
+      name: Aligned protein sequences
+      short_description: Aligned protein sequences
+      representative_example: protein
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  circular_genomic_plot:
+    name: Circular Genome Tracks
+    short_name: Circular Genome Tracks
+    description: Arrange supplied genomic intervals, values and optional links on a
+      circular genome.
+    aliases:
+    - circular genome tracks
+    - circular genomic plot
+    analysis_contexts:
+    - genomics
+    - gene_expression
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - feature
+      - x
+      - y
+      - expression
+      optional_roles:
+      - group
+      accepted_types:
+        feature: categorical
+        x: numeric
+        y: numeric
+        expression: numeric
+        group: categorical
+    variants:
+    - id: basic
+      name: Circular interval heatmap
+      short_description: Circular interval heatmap
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: bars
+      name: Circular interval magnitudes
+      short_description: Circular interval magnitudes
+      representative_example: bars
+      gallery:
+        visible: true
+        section: more
+        order: 2
+    - id: points
+      name: Circular interval points
+      short_description: Circular interval points
+      representative_example: points
+      gallery:
+        visible: true
+        section: more
+        order: 3
+    - id: linear
+      name: Linear chromosome overview
+      short_description: Linear chromosome overview
+      representative_example: linear
+      gallery:
+        visible: true
+        section: more
+        order: 4
+  nomogram_plot:
+    name: Nomogram Scales
+    short_name: Nomogram Scales
+    description: Display supplied predictor point scales and total-point outcome mappings.
+    aliases:
+    - nomogram scales
+    - nomogram plot
+    analysis_contexts:
+    - general_statistics
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - group
+      - x
+      - feature
+      optional_roles: []
+      accepted_types:
+        group: categorical
+        x: numeric
+        feature: categorical
+    variants:
+    - id: basic
+      name: Supplied predictor point scales
+      short_description: Supplied predictor point scales
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: compact
+      name: Supplied total-point outcome mapping
+      short_description: Supplied total-point outcome mapping
+      representative_example: compact
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  interactive_3d_scatter:
+    name: 3D Embedding
+    short_name: 3D Embedding
+    description: View supplied three-dimensional coordinates with an interactive scene
+      and vector projection.
+    aliases:
+    - 3d embedding
+    - interactive 3d scatter
+    analysis_contexts:
+    - single_cell
+    - cell_clustering
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - x
+      - y
+      - z
+      optional_roles:
+      - group
+      accepted_types:
+        x: numeric
+        y: numeric
+        z: numeric
+        group: categorical
+    variants:
+    - id: basic
+      name: Three-dimensional sample coordinates
+      short_description: Three-dimensional sample coordinates
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: alternate_view
+      name: Alternate viewing angle
+      short_description: Alternate viewing angle
+      representative_example: alternate_view
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  bar3d_plot:
+    name: 3D Bar / Lego
+    short_name: 3D Bar / Lego
+    description: Display a supplied two-dimensional grid of counts as projected three-dimensional
+      bars.
+    aliases:
+    - 3d bar / lego
+    - bar3d plot
+    analysis_contexts:
+    - general_statistics
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - x
+      - y
+      - size
+      optional_roles:
+      - group
+      accepted_types:
+        x: categorical
+        y: categorical
+        size: numeric
+        group: categorical
+    variants:
+    - id: basic
+      name: Mutation-context count grid
+      short_description: Mutation-context count grid
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: free_scale
+      name: Grid heights with independent panel scales
+      short_description: Grid heights with independent panel scales
+      representative_example: free_scale
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  radviz_plot:
+    name: Wheel / RadViz
+    short_name: Wheel / RadViz
+    description: Project nonnegative feature weights toward labeled vertices of a wheel.
+    aliases:
+    - wheel / radviz
+    - radviz plot
+    analysis_contexts:
+    - single_cell
+    - cell_clustering
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - expression
+      optional_roles:
+      - group
+      accepted_types:
+        expression: numeric
+        group: categorical
+    variants:
+    - id: basic
+      name: Feature-weight wheel
+      short_description: Feature-weight wheel
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: minmax
+      name: Feature-scaled wheel
+      short_description: Feature-scaled wheel
+      representative_example: minmax
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  ecdf_plot:
+    name: Empirical CDF
+    short_name: Empirical CDF
+    description: Compare cumulative distributions with optional distribution-free confidence
+      bands.
+    aliases:
+    - empirical cdf
+    - ecdf plot
+    analysis_contexts:
+    - general_statistics
+    tasks:
+    - distribution
+    data_requirements:
+      required_roles:
+      - x
+      optional_roles:
+      - group
+      accepted_types:
+        x: numeric
+        group: categorical
+    variants:
+    - id: basic
+      name: Cumulative score distributions
+      short_description: Cumulative score distributions
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: steps
+      name: Empirical distribution steps
+      short_description: Empirical distribution steps
+      representative_example: steps
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  spatial_region_plot:
+    name: Spatial Region Map
+    short_name: Spatial Region Map
+    description: Color supplied anatomical or tissue-region polygons by numeric measurements.
+    aliases:
+    - spatial region map
+    - spatial region plot
+    analysis_contexts:
+    - genomics
+    - gene_expression
+    tasks:
+    - feature_expression
+    data_requirements:
+      required_roles:
+      - x
+      - y
+      - group
+      - expression
+      optional_roles: []
+      accepted_types:
+        x: numeric
+        y: numeric
+        group: categorical
+        expression: numeric
+    variants:
+    - id: basic
+      name: Measured tissue regions
+      short_description: Measured tissue regions
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: tissue
+      name: Regions over a synthetic tissue background
+      short_description: Regions over a synthetic tissue background
+      representative_example: tissue
+      gallery:
+        visible: true
+        section: more
+        order: 2
+    - id: spots
+      name: Measured spatial spots
+      short_description: Measured spatial spots
+      representative_example: spots
+      gallery: {visible: true, section: more, order: 9}
+
+
+  annotated_tree_plot:
+    name: Annotated Tree
+    short_name: Annotated Tree
+    description: Draw a supplied weighted tree with leaf metadata or a linked feature
+      heatmap.
+    aliases:
+    - annotated tree
+    - annotated tree plot
+    analysis_contexts:
+    - general_statistics
+    tasks:
+    - clustering
+    data_requirements:
+      required_roles:
+      - source
+      - target
+      - weight
+      optional_roles:
+      - group
+      - size
+      accepted_types:
+        source: categorical
+        target: categorical
+        weight: numeric
+        group: categorical
+        size: numeric
+    variants:
+    - id: basic
+      name: Supplied tree and feature heatmap
+      short_description: Supplied tree and feature heatmap
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: circular
+      name: Circular tree with weighted nodes
+      short_description: Circular tree with weighted nodes
+      representative_example: circular
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  circular_distribution_plot:
+    name: Circular Score Distribution
+    short_name: Circular Score Distribution
+    description: Compare numeric score distributions and highlighted observations on
+      concentric arcs.
+    aliases:
+    - circular score distribution
+    - circular distribution plot
+    analysis_contexts:
+    - general_statistics
+    tasks:
+    - distribution
+    data_requirements:
+      required_roles:
+      - x
+      - feature
+      optional_roles:
+      - group
+      - id
+      accepted_types:
+        x: numeric
+        feature: categorical
+        group: categorical
+        id: categorical
+    variants:
+    - id: basic
+      name: Scores across reference groups
+      short_description: Scores across reference groups
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: shared_range
+      name: Scores on a common scale
+      short_description: Scores on a common scale
+      representative_example: shared_range
+      gallery:
+        visible: true
+        section: more
+        order: 2
+  embedding_vector_plot:
+    name: Embedding Vector Field
+    short_name: Embedding Vector Field
+    description: Overlay supplied displacement vectors on an embedding without inferring
+      velocities.
+    aliases:
+    - embedding vector field
+    - embedding vector plot
+    analysis_contexts:
+    - single_cell
+    - cell_clustering
+    tasks:
+    - group_comparison
+    data_requirements:
+      required_roles:
+      - x
+      - y
+      - metadata
+      optional_roles:
+      - group
+      accepted_types:
+        x: numeric
+        y: numeric
+        metadata: numeric
+        group: categorical
+    variants:
+    - id: basic
+      name: Supplied vector field
+      short_description: Supplied vector field
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: radial
+      name: Supplied outward displacement field
+      short_description: Supplied outward displacement field
+      representative_example: radial
+      gallery:
+        visible: true
+        section: more
+        order: 2
+
+  linked_matrix_network_plot:
+    name: Linked Heatmap + Network
+    short_name: Linked Heatmap + Network
+    description: Link a numeric feature matrix to supplied weighted relationships.
+    aliases:
+    - linked matrix network plot
+    analysis_contexts:
+    - general_statistics
+    - gene_expression
+    tasks:
+    - summary
+    data_requirements:
+      required_roles:
+      - feature
+      - sample
+      - expression
+      optional_roles: []
+      accepted_types:
+        feature: categorical
+        sample: categorical
+        expression: numeric
+    variants:
+    - id: basic
+      name: Linked matrix and relationships
+      short_description: Linked matrix and relationships
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: dot_matrix
+      name: Dot matrix and relationships
+      short_description: Dot matrix and relationships
+      representative_example: dot_matrix
+      gallery:
+        visible: true
+        section: more
+        order: 2
+
+  risk_stratification_panel:
+    name: Risk Stratification Panel
+    short_name: Risk Stratification Panel
+    description: Align supplied risk ranks, event follow-up and selected numeric features.
+    aliases:
+    - risk stratification panel
+    analysis_contexts:
+    - general_statistics
+    - gene_expression
+    tasks:
+    - summary
+    data_requirements:
+      required_roles:
+      - id
+      - x
+      - y
+      - condition
+      optional_roles:
+      - group
+      - expression
+      accepted_types:
+        id: categorical
+        x: numeric
+        y: numeric
+        condition: numeric
+        group: categorical
+        expression: numeric
+    variants:
+    - id: basic
+      name: Aligned risk and follow-up
+      short_description: Aligned risk and follow-up
+      representative_example: basic
+      gallery:
+        visible: true
+        section: recommended
+        order: 1
+    - id: scores_only
+      name: Scores and follow-up
+      short_description: Scores and follow-up
+      representative_example: scores_only
+      gallery:
+        visible: true
+        section: more
+        order: 2

@@ -1,0 +1,100 @@
+summary: Align cell-type hierarchy labels, abundance and marker expression in one
+  panel.
+observation_type: observations or summary items in the input table
+best_for:
+- Explain cell-annotation hierarchies
+- Check marker evidence alongside abundance
+- Compare population composition across samples
+common_uses: []
+input_requirements: One row per cell-type/marker pair with hierarchy labels, counts,
+  mean expression and detection fractions.
+learn_more: 'Input: One row per cell-type/marker pair with hierarchy labels, counts,
+  mean expression and detection fractions. Interpretation: Hierarchy labels describe
+  annotations; color and point size follow their respective marker legends. Check
+  mappings, order and transformations before adjusting labels, colors and canvas dimensions.
+  Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Hierarchy labels describe annotations; color and point size follow their respective
+    marker legends.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Do not sum duplicated cell counts across marker rows
+- id: caution_2
+  title: Caution 2
+  text: Use consistent denominators for sample fractions and total counts
+examples:
+- id: basic
+  title: Hierarchy and marker evidence
+  description: 'Use case: Explain cell-annotation hierarchies. This preset illustrates
+    hierarchy and marker evidence. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Explain cell-annotation hierarchies
+  input_requirements: One row per cell-type/marker pair with hierarchy labels, counts,
+    mean expression and detection fractions.
+  preview_asset: plugins/hierarchical_marker_panel/all_examples_gallery/basic.png
+  variant_id: basic
+- id: sample_percent
+  title: Sample composition fractions
+  description: 'Use case: Check marker evidence alongside abundance. This preset illustrates
+    sample composition fractions. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: sample_percent
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Check marker evidence alongside abundance
+  input_requirements: One row per cell-type/marker pair with hierarchy labels, counts,
+    mean expression and detection fractions.
+  preview_asset: plugins/hierarchical_marker_panel/all_examples_gallery/sample_percent.png
+  variant_id: sample_percent
+- id: summary_bar
+  title: Marker panel with count summaries
+  description: 'Use case: Compare population composition across samples. This preset
+    illustrates marker panel with count summaries. Replace its input with your data
+    while retaining the appropriate view settings.'
+  demo_id: summary_bar
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare population composition across samples
+  input_requirements: One row per cell-type/marker pair with hierarchy labels, counts,
+    mean expression and detection fractions.
+  preview_asset: plugins/hierarchical_marker_panel/all_examples_gallery/summary_bar.png
+  variant_id: summary_bar
+literature_ids:
+- hao_dnt_2026
+- li_cerebrum_2021
+- jing_auditory_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  basic:
+    summary: Hierarchy, cell counts, and marker dot matrix.
+  CAB_demo:
+    summary: Reference-style hierarchical marker panel.
+  sample_percent:
+    summary: 'Use case: Check marker evidence alongside abundance. This preset illustrates
+      sample composition fractions. Replace its input with your data while retaining
+      the appropriate view settings.'
+  summary_bar:
+    summary: 'Use case: Compare population composition across samples. This preset
+      illustrates marker panel with count summaries. Replace its input with your data
+      while retaining the appropriate view settings.'
+customization:
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Width (in)
+  default: 10
+  help: Used when auto_width is false; automatic mode derives the main width from
+    cell type count.
+- parameter: height
+  label: Height (in)
+  default: 7
+  help: Used when auto_height is false; automatic mode derives height from marker
+    count.

@@ -1,0 +1,88 @@
+summary: Show signed additive contributions as cumulative steps, optionally ending
+  with a total.
+observation_type: observations or summary items in the input table
+best_for:
+- Explain sources of a net change
+- Show sequential gains and losses
+- Decompose a model score or quantity
+common_uses: []
+input_requirements: Ordered category labels and signed increments.
+learn_more: 'Input: Ordered category labels and signed increments. Interpretation:
+  Each increment starts at the current cumulative value; an optional last bar gives
+  the total. Check mappings, order and transformations before adjusting labels, colors
+  and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Each increment starts at the current cumulative value; an optional last bar
+    gives the total.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: This is an additive bridge chart, not a patient-response ranking
+- id: caution_2
+  title: Caution 2
+  text: Ordering changes the intermediate path, not the sum
+examples:
+- id: basic
+  title: Signed contributions with a total
+  description: 'Use case: Explain sources of a net change. This preset illustrates
+    signed contributions with a total. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Explain sources of a net change
+  input_requirements: Ordered category labels and signed increments.
+  preview_asset: plugins/waterfall_plot/all_examples_gallery/basic.png
+  variant_id: basic
+  mappings:
+    category_column: category
+    value_column: value
+- id: no_total
+  title: Contributions without the total bar
+  description: 'Use case: Show sequential gains and losses. This preset illustrates
+    contributions without the total bar. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: no_total
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Show sequential gains and losses
+  input_requirements: Ordered category labels and signed increments.
+  preview_asset: plugins/waterfall_plot/all_examples_gallery/no_total.png
+  variant_id: no_total
+  mappings:
+    category_column: category
+    value_column: value
+literature_ids:
+- prabhu_ampylation_2024
+- pieszko_cardiac_2023
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  basic:
+    summary: Signed steps plus a total bar.
+  no_total:
+    summary: Signed steps without the closing total bar.
+customization:
+- parameter: value_column
+  label: Value column
+  default: value
+  help: Signed contribution. Positive increases the running total.
+- parameter: category_column
+  label: Step column
+  default: category
+  help: Sequential contribution labels.
+- parameter: label_show
+  label: Value labels
+  default: true
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Width (in)
+  default: 8
+- parameter: height
+  label: Height (in)
+  default: 5

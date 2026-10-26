@@ -1,0 +1,9 @@
+{
+  "id_column": "subject",
+  "start_column": "start",
+  "end_column": "end",
+  "group_column": "group",
+  "title": "Staggered observation windows",
+  "sort_by": "input",
+  "end_marker_show": false
+}

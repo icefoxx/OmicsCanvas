@@ -1,0 +1,269 @@
+summary: Compare supplied effect estimates and confidence intervals.
+observation_type: observations or supplied summaries described in the input contract
+input_requirements: 'One row per effect: unique label, estimate, lower/upper interval
+  bounds and optional group. Log axes require positive estimates/bounds and a positive
+  null value.'
+best_for:
+- Compare effect estimates across cohorts
+- Summarize subgroup confidence intervals
+- Display supplied ratio estimates on a logarithmic axis
+learn_more: Choose the intended data mapping and statistical mode before styling.
+  Confidence intervals and effect units are supplied, not estimated. Ratio estimates
+  and signed differences use different reference values.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: 'Compare supplied effect estimates and confidence intervals. One row per effect:
+    unique label, estimate, lower/upper interval bounds and optional group. Log axes
+    require positive estimates/bounds and a positive null value.'
+cautions:
+- id: caution_1
+  title: Interpretation limit 1
+  text: Confidence intervals and effect units are supplied, not estimated. Ratio estimates
+    and signed differences use different reference values.
+- id: caution_2
+  title: Interpretation limit 2
+  text: A forest display does not fit a random-effects meta-analysis or establish
+    subgroup interactions.
+examples:
+- id: basic
+  title: Effect estimates and confidence intervals
+  description: Compare effect estimates across cohorts
+  scenario: Compare effect estimates across cohorts
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/forest_plot/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    label_column: label
+    effect_column: effect
+    lower_column: lower
+    upper_column: upper
+    group_column: group
+- id: log_ratio
+  title: Ratios on a logarithmic axis
+  description: Summarize subgroup confidence intervals
+  scenario: Summarize subgroup confidence intervals
+  demo_id: log_ratio
+  variant_id: log_ratio
+  preview_asset: plugins/forest_plot/all_examples_gallery/log_ratio.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    label_column: label
+    effect_column: effect
+    lower_column: lower
+    upper_column: upper
+    group_column: group
+- id: signed_effects
+  title: Signed differences
+  description: Display supplied ratio estimates on a logarithmic axis
+  scenario: Display supplied ratio estimates on a logarithmic axis
+  demo_id: signed_effects
+  variant_id: signed_effects
+  preview_asset: plugins/forest_plot/all_examples_gallery/signed_effects.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    label_column: label
+    effect_column: effect
+    lower_column: lower
+    upper_column: upper
+    group_column: group
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source. Local demos use independently
+  generated data and are not reproductions of its analyses.
+- Additional verified published figure/panel examples remain to be curated.
+customization:
+- parameter: label_column
+  label: Label column
+  default: label
+  help: ''
+- parameter: effect_column
+  label: Effect column
+  default: effect
+  help: ''
+- parameter: lower_column
+  label: Lower column
+  default: lower
+  help: ''
+- parameter: upper_column
+  label: Upper column
+  default: upper
+  help: ''
+- parameter: group_column
+  label: Group column
+  default: group
+  help: ''
+- parameter: x_scale
+  label: X scale
+  default: linear
+  help: Log10 requires positive effects, bounds and null value.
+- parameter: null_value
+  label: Null value
+  default: 1
+  help: 'Reference value: 1 for ratios, 0 for signed differences.'
+- parameter: estimate_show
+  label: Estimate show
+  default: true
+  help: ''
+- parameter: label_size
+  label: Label size
+  default: 2.8
+  help: ''
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: point_size
+  label: Point size
+  default: 2
+  help: ''
+- parameter: line_width
+  label: Line width
+  default: 0.6
+  help: ''
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: grid_show
+  label: Grid show
+  default: false
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report input mappings, units, preprocessing and all
+    selected statistical or display modes.'
+source_modules:
+- title: FigureYa6rHRsV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa6rHRsV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa7PSM
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa7PSM
+  scope: Propensity-score matching and balance analysis require upstream estimation;
+    supplied balance summaries can be drawn with comparison/forest plots.
+- title: FigureYa47HRtable
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa47HRtable
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa66UnivariateCox
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa66UnivariateCox
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa90subgroup
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa90subgroup
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa128Prognostic
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa128Prognostic
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa143survCor_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa143survCor_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa171subgroupSurv
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa171subgroupSurv
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa190batchLogistic
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa190batchLogistic
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa191bestLogistic
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa191bestLogistic
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa193RiskTable
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa193RiskTable
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa198SignatureCombinationV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa198SignatureCombinationV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa216MetaREM
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa216MetaREM
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa238corRiskMut
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa238corRiskMut
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa291PancanProgSigatureV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa291PancanProgSigatureV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa299pancanSurv
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa299pancanSurv
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

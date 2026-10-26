@@ -1,0 +1,126 @@
+summary: Show gene-set enrichment along a ranked gene list, with hit positions and
+  pathway summaries.
+observation_type: observations or summary items in the input table
+best_for:
+- Inspect enrichment direction
+- Compare gene-set hit distributions
+- Summarize pathway effects and evidence
+common_uses: []
+input_requirements: Gene IDs and signed ranking scores, plus GMT or term-gene sets.
+learn_more: 'Input: Gene IDs and signed ranking scores, plus GMT or term-gene sets.
+  Interpretation: The running curve tracks cumulative enrichment along the supplied
+  ranking. Check mappings, order and transformations before adjusting labels, colors
+  and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: The running curve tracks cumulative enrichment along the supplied ranking.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Use consistent gene identifiers and gene-set versions
+- id: caution_2
+  title: Caution 2
+  text: ES, NES and adjusted probabilities are different quantities
+examples:
+- id: running
+  title: Single-pathway running enrichment
+  description: 'Use case: Inspect enrichment direction. This preset illustrates single-pathway
+    running enrichment. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: running
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect enrichment direction
+  input_requirements: Gene IDs and signed ranking scores, plus GMT or term-gene sets.
+  preview_asset: plugins/fgsea_enrichment_plot/all_examples_gallery/running.png
+  variant_id: running
+- id: multiterm
+  title: Multiple-pathway hit comparison
+  description: 'Use case: Compare gene-set hit distributions. This preset illustrates
+    multiple-pathway hit comparison. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: multiterm
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare gene-set hit distributions
+  input_requirements: Gene IDs and signed ranking scores, plus GMT or term-gene sets.
+  preview_asset: plugins/fgsea_enrichment_plot/all_examples_gallery/multiterm.png
+  variant_id: running
+  mappings:
+    stats_columns:
+    - NES
+    - pvalue
+    - padj
+- id: dot_summary
+  title: Pathway statistic summary
+  description: 'Use case: Summarize pathway effects and evidence. This preset illustrates
+    pathway statistic summary. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: dot_summary
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Summarize pathway effects and evidence
+  input_requirements: Gene IDs and signed ranking scores, plus GMT or term-gene sets.
+  preview_asset: plugins/fgsea_enrichment_plot/all_examples_gallery/dot_summary.png
+  variant_id: dot_summary
+literature_ids:
+- gsea_subramanian_2005
+- chen_ibd_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  summary:
+    summary: Bar/lollipop of NES or signed scores.
+  running:
+    summary: Classic GSEA running-score tracks for one or more terms.
+  multi_group:
+    summary: Independent ES curves per group for one pathway.
+  ridge:
+    summary: Density of gene log2FC within each enriched term.
+  gene_sankey:
+    summary: Alluvial gene-to-term links with enrichment bubbles.
+  dot_summary:
+    summary: Bubble/lollipop summary of NES, count, and FDR.
+customization: []
+source_modules:
+- title: FigureYa13GSEA_Java_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa13GSEA_Java_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa60GSEA_clusterProfilerV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa60GSEA_clusterProfilerV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa109SubtypeGSEA_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa109SubtypeGSEA_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa136fgsea
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa136fgsea
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa156enrichSimulation
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa156enrichSimulation
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa253panGSEA
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa253panGSEA
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa279panGeneGSEA
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa279panGeneGSEA
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa322SSEA
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa322SSEA
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

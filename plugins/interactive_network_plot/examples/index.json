@@ -2,26 +2,65 @@
   "plugin_id": "interactive_network_plot",
   "examples": [
     {
-      "id": "manual_layout",
-      "label": "manual_layout",
+      "id": "network",
+      "label": "Force-directed network",
       "plugin_id": "interactive_network_plot",
       "plot_type": "edge_list",
       "mode": "",
-      "params": "../examples/manual_layout/params.json",
+      "params": "../examples/network/params.json",
       "inputs": {
-        "input": "input/example_input.csv"
+        "input": "input/example_input.csv",
+        "nodes": "input/example_nodes.csv"
       },
-      "expected": "../examples/manual_layout/expected/result.png",
+      "expected": "../examples/network/expected/result.png",
       "reproduce": {
-        "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/manual_layout/input/example_input.csv --params plugins/interactive_network_plot/examples/manual_layout/params.json --output /tmp/interactive_network_plot_manual_layout_out"
+        "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/network/input/example_input.csv --params plugins/interactive_network_plot/examples/network/params.json --output /tmp/interactive_network_plot_network_out --nodes plugins/interactive_network_plot/examples/network/input/example_nodes.csv"
       },
-      "bundle": "../examples/manual_layout",
-      "gallery_png": "manual_layout.png",
-      "params_filename": "example_manual_layout_params.json"
+      "bundle": "../examples/network",
+      "gallery_png": "network.png",
+      "params_filename": "example_network_params.json"
+    },
+    {
+      "id": "circle",
+      "label": "Circular layout",
+      "plugin_id": "interactive_network_plot",
+      "plot_type": "edge_list",
+      "mode": "circle",
+      "params": "../examples/circle/params.json",
+      "inputs": {
+        "input": "input/example_input.csv",
+        "nodes": "input/example_nodes.csv"
+      },
+      "expected": "../examples/circle/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/circle/input/example_input.csv --params plugins/interactive_network_plot/examples/circle/params.json --output /tmp/interactive_network_plot_circle_out --nodes plugins/interactive_network_plot/examples/circle/input/example_nodes.csv"
+      },
+      "bundle": "../examples/circle",
+      "gallery_png": "circle.png",
+      "params_filename": "example_circle_params.json"
+    },
+    {
+      "id": "concentric",
+      "label": "Concentric layout",
+      "plugin_id": "interactive_network_plot",
+      "plot_type": "edge_list",
+      "mode": "concentric",
+      "params": "../examples/concentric/params.json",
+      "inputs": {
+        "input": "input/example_input.csv",
+        "nodes": "input/example_nodes.csv"
+      },
+      "expected": "../examples/concentric/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/concentric/input/example_input.csv --params plugins/interactive_network_plot/examples/concentric/params.json --output /tmp/interactive_network_plot_concentric_out --nodes plugins/interactive_network_plot/examples/concentric/input/example_nodes.csv"
+      },
+      "bundle": "../examples/concentric",
+      "gallery_png": "concentric.png",
+      "params_filename": "example_concentric_params.json"
     },
     {
       "id": "membership",
-      "label": "membership",
+      "label": "Membership radial",
       "plugin_id": "interactive_network_plot",
       "plot_type": "membership",
       "mode": "",
@@ -38,23 +77,23 @@
       "params_filename": "example_membership_params.json"
     },
     {
-      "id": "network",
-      "label": "network",
+      "id": "manual_layout",
+      "label": "Manual layout",
       "plugin_id": "interactive_network_plot",
       "plot_type": "edge_list",
       "mode": "",
-      "params": "../examples/network/params.json",
+      "params": "../examples/manual_layout/params.json",
       "inputs": {
         "input": "input/example_input.csv",
         "nodes": "input/example_nodes.csv"
       },
-      "expected": "../examples/network/expected/result.png",
+      "expected": "../examples/manual_layout/expected/result.png",
       "reproduce": {
-        "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/network/input/example_input.csv --params plugins/interactive_network_plot/examples/network/params.json --output /tmp/interactive_network_plot_network_out --nodes plugins/interactive_network_plot/examples/network/input/example_nodes.csv"
+        "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/manual_layout/input/example_input.csv --params plugins/interactive_network_plot/examples/manual_layout/params.json --output /tmp/interactive_network_plot_manual_layout_out --nodes plugins/interactive_network_plot/examples/manual_layout/input/example_nodes.csv"
       },
-      "bundle": "../examples/network",
-      "gallery_png": "network.png",
-      "params_filename": "example_network_params.json"
+      "bundle": "../examples/manual_layout",
+      "gallery_png": "manual_layout.png",
+      "params_filename": "example_manual_layout_params.json"
     }
   ]
 }

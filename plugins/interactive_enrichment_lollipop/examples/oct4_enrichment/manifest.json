@@ -5,6 +5,7 @@
   "plot_type": "enrichment",
   "mode": "signed NES",
   "params": "params.json",
+  "expected": "expected/result.png",
   "inputs": {
     "input": "input/example_input.csv"
   },

@@ -137,13 +137,21 @@ function applySuggestionsIfEmpty() {
 function reconcileMappingsWithDataset() {
   const cols = new Set(datasetColumns());
   if (!cols.size) return;
-  ["x_column", "y_column", "id_column", "group_column", "split_column", "stat_plot_column", "composition_column", "filter_column", "feature"].forEach((key) => {
+  const columnKeys = new Set(["x_column", "y_column", "id_column", "group_column", "split_column", "stat_plot_column", "composition_column", "filter_column", "feature"]);
+  if (typeof allSchemaControls === "function") {
+    allSchemaControls().forEach((control) => {
+      if (control.type === "column" || control.key.endsWith("_column")) columnKeys.add(control.key);
+    });
+  }
+  columnKeys.forEach((key) => {
     const value = state.params[key];
     if (typeof value === "string" && value && !cols.has(value)) state.params[key] = "";
   });
-  if (Array.isArray(state.params.feature_columns)) {
-    state.params.feature_columns = state.params.feature_columns.filter((name) => cols.has(String(name)));
-  }
+  ["feature_columns", "features", "markers", "genes", "group_columns", "cluster_columns", "cell_annotation"].forEach((key) => {
+    if (Array.isArray(state.params[key])) {
+      state.params[key] = state.params[key].filter((name) => cols.has(String(name)));
+    }
+  });
   const filterCol = state.params.filter_column || state.params.group_column;
   const levels = new Set(columnMetaMap()[filterCol]?.levels || []);
   const keep = (list) => (Array.isArray(list) ? list.filter((v) => !levels.size || levels.has(String(v))) : []);
@@ -411,9 +419,10 @@ function renderDataMappingPanel(area, dataControls) {
   const ds = primaryDataset();
   const nRows = ds?.row_count_estimate || ds?.preview_rows?.length || 0;
   const nCols = ds?.column_count || datasetColumns().length;
-  const fileLabel = state.customFileName || ds?.filename || "Demo dataset";
+  const sourceField = Object.keys(state.inputPreview?.files || {}).find((key) => state.inputPreview.files[key] === ds);
+  const fileLabel = state.customFiles?.[sourceField]?.name || ds?.filename || "Example dataset";
 
-  const datasetCard = area.querySelector(".chi-card-body");
+  const datasetCard = area.querySelector(".dataset-inputs");
   if (datasetCard && nCols) {
     const stats = document.createElement("div");
     stats.className = "dataset-stats";

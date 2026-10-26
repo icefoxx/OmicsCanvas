@@ -33,6 +33,7 @@ from plot_web.server.plugins import (
     read_yaml,
 )
 from plot_web.server.runner import build_command, run_local_job
+from plot_web.server.render_tasks import submit_render
 from plot_web.server.settings import (
     DEFAULT_DISPATCH_MODE,
     JOBS_DIR,
@@ -151,12 +152,19 @@ def get_plugin_example(plugin_id: str, example_id: str) -> dict[str, Any]:
     reproduce = manifest.get("reproduce")
     command = reproduce.get("command") if isinstance(reproduce, dict) else None
     command = command or f"curl -X POST /api/plugins/{plugin_id}/run-demo -H 'Content-Type: application/json' -d '{{\"example_id\":\"{record['id']}\"}}'"
+    previews = {}
+    for field, info in record["inputs"].items():
+        try:
+            previews[field] = preview_table(example_file(bundle, info["path"]))
+        except Exception as exc:
+            previews[field] = {"filename": info["filename"], "error": str(exc), "columns": [], "preview_rows": []}
     return {
         "id": record["id"],
         "manifest": manifest,
         "params": record["params"],
         "params_url": record["params_url"],
         "inputs": record["inputs"],
+        "input_preview": {"plugin_id": plugin_id, "files": previews},
         "expected": record["expected"],
         "plot_type": manifest.get("plot_type"),
         "mode": manifest.get("mode"),
@@ -282,6 +290,8 @@ async def run_plugin_demo(plugin_id: str, request: Request) -> JSONResponse:
     if example_id is not None:
         job["example_id"] = str(example_id)
         job["bundle_manifest"] = bundle_manifest
+    if payload.get("render_channel"):
+        job["render_channel"] = str(payload["render_channel"])[:160]
     with state_transaction() as state:
         upsert_node(state, {"id": job["dataset_id"], "type": "dataset", "label": f"{plugin_id} demo", "created_at": job["created_at"], "demo": True})
     save_job(job)
@@ -292,6 +302,8 @@ async def run_plugin_demo(plugin_id: str, request: Request) -> JSONResponse:
         return JSONResponse(job)
 
     cmd = build_command(plugin_id, config, saved_files, params_path, output_dir)
+    if payload.get("background") is True:
+        return JSONResponse(submit_render(job, cmd, plugin_path(plugin_id), output_dir, run_local_job), status_code=202)
     completed = await run_in_threadpool(run_local_job, job, cmd, plugin_path(plugin_id), output_dir)
     completed["demo"] = demo
     save_job(completed)
@@ -329,6 +341,8 @@ async def run_plugin(plugin_id: str, request: Request) -> JSONResponse:
         "params_path": str(params_path),
         "uploaded_files": {k: str(v) for k, v in saved_files.items()},
     }
+    if text_fields.get("render_channel"):
+        job["render_channel"] = text_fields["render_channel"][:160]
     save_job(job)
 
     if job["dispatch_mode"] != "local":
@@ -337,5 +351,7 @@ async def run_plugin(plugin_id: str, request: Request) -> JSONResponse:
         return JSONResponse(job)
 
     cmd = build_command(plugin_id, config, saved_files, params_path, output_dir)
+    if text_fields.get("background") == "1":
+        return JSONResponse(submit_render(job, cmd, plugin_path(plugin_id), output_dir, run_local_job), status_code=202)
     completed = await run_in_threadpool(run_local_job, job, cmd, plugin_path(plugin_id), output_dir)
     return JSONResponse(completed)

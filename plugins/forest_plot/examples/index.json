@@ -1,0 +1,35 @@
+{
+  "plugin_id": "forest_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Effect estimates and confidence intervals",
+      "plugin_id": "forest_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "log_ratio",
+      "label": "Ratios on a logarithmic axis",
+      "plugin_id": "forest_plot",
+      "params": "log_ratio/params.json",
+      "inputs": {
+        "input": "log_ratio/input/data.csv"
+      },
+      "expected": "log_ratio/expected/result.png"
+    },
+    {
+      "id": "signed_effects",
+      "label": "Signed differences",
+      "plugin_id": "forest_plot",
+      "params": "signed_effects/params.json",
+      "inputs": {
+        "input": "signed_effects/input/data.csv"
+      },
+      "expected": "signed_effects/expected/result.png"
+    }
+  ]
+}

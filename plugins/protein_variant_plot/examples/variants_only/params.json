@@ -1,0 +1,10 @@
+{
+  "position_column": "position",
+  "value_column": "count",
+  "label_column": "variant",
+  "group_column": "group",
+  "title": "Variant count profile",
+  "protein_length": 800,
+  "domain_show": false,
+  "label_show": false
+}

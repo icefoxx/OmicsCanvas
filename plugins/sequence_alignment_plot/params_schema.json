@@ -1,0 +1,182 @@
+{
+  "data_mapping": {
+    "id_column": {
+      "type": "column",
+      "default": "sequence_id",
+      "label": "Id column",
+      "help": ""
+    },
+    "sequence_column": {
+      "type": "column",
+      "default": "sequence",
+      "label": "Sequence column",
+      "help": ""
+    },
+    "alphabet": {
+      "type": "select",
+      "default": "dna",
+      "label": "Alphabet",
+      "help": "",
+      "options": [
+        "dna",
+        "protein"
+      ]
+    }
+  },
+  "marks": {
+    "residue_show": {
+      "type": "boolean",
+      "default": true,
+      "label": "Residue show",
+      "help": "Characters automatically omitted above 80 aligned positions."
+    },
+    "conservation_show": {
+      "type": "boolean",
+      "default": true,
+      "label": "Conservation show",
+      "help": ""
+    }
+  },
+  "colors": {
+    "conservation_color": {
+      "type": "color",
+      "default": "#4D7189",
+      "label": "Conservation color",
+      "help": "Only when conservation_show is enabled."
+    },
+    "palette": {
+      "type": "select",
+      "default": "Set 2",
+      "label": "Palette",
+      "help": "",
+      "options": [
+        "Set 2",
+        "Dark 3",
+        "Viridis"
+      ]
+    },
+    "group_colors": {
+      "type": "object",
+      "default": {},
+      "label": "Named colors",
+      "help": "Named categorical colors override the palette."
+    }
+  },
+  "labels": {
+    "label_size": {
+      "type": "number",
+      "default": 2.8,
+      "label": "Label size",
+      "help": "",
+      "min": 1,
+      "max": 6
+    },
+    "title": {
+      "type": "string",
+      "default": "",
+      "label": "Title",
+      "help": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "",
+      "label": "Subtitle",
+      "help": "Empty uses the automatic description."
+    },
+    "caption": {
+      "type": "string",
+      "default": "",
+      "label": "Caption",
+      "help": ""
+    },
+    "title_size": {
+      "type": "number",
+      "default": 13,
+      "label": "Title size",
+      "help": "Only when a nonempty title is supplied.",
+      "min": 6,
+      "max": 30
+    }
+  },
+  "legend": {
+    "legend_show": {
+      "type": "boolean",
+      "default": true,
+      "label": "Legend show",
+      "help": ""
+    },
+    "legend_position": {
+      "type": "select",
+      "default": "right",
+      "label": "Legend position",
+      "help": "",
+      "options": [
+        "right",
+        "bottom",
+        "top",
+        "left"
+      ]
+    },
+    "legend_text_size": {
+      "type": "number",
+      "default": 9,
+      "label": "Legend text size",
+      "help": "",
+      "min": 5,
+      "max": 20
+    }
+  },
+  "theme": {
+    "font_family": {
+      "type": "select",
+      "default": "sans",
+      "label": "Font family",
+      "help": "",
+      "options": [
+        "sans",
+        "serif",
+        "mono"
+      ]
+    },
+    "base_size": {
+      "type": "number",
+      "default": 11,
+      "label": "Base size",
+      "help": "",
+      "min": 6,
+      "max": 22
+    },
+    "plot_background": {
+      "type": "color",
+      "default": "#FFFFFF",
+      "label": "Plot background",
+      "help": ""
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "default": 8,
+      "label": "Width",
+      "help": "Inches.",
+      "min": 3,
+      "max": 20
+    },
+    "height": {
+      "type": "number",
+      "default": 6,
+      "label": "Height",
+      "help": "Inches.",
+      "min": 3,
+      "max": 20
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 150,
+      "label": "Dpi",
+      "help": "",
+      "min": 72,
+      "max": 600
+    }
+  }
+}

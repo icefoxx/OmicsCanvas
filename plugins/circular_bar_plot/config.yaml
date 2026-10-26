@@ -1,0 +1,17 @@
+id: circular_bar_plot
+name: Circular Bar Plot
+version: 1.0.0
+description: Radial or polar bars for ranked categories, including stacked polar bars.
+language: R
+entrypoint: plot.R
+category: Comparison
+subcategory: Polar
+status: beta
+inputs:
+- id: input
+  type: table
+  formats: [csv, tsv, txt]
+  required: true
+outputs: [result.svg, result.pdf, result.png, figure.json, run.log, data_used.csv]
+runtime:
+  command: Rscript plugins/circular_bar_plot/plot.R --input input.csv --params params.json --output output_dir

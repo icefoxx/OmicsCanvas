@@ -1,0 +1,260 @@
+{
+  "data_mapping": {
+    "outcome_column": {
+      "type": "column",
+      "default": "outcome",
+      "label": "Outcome column",
+      "help": ""
+    },
+    "score_column": {
+      "type": "column",
+      "default": "score",
+      "label": "Score column",
+      "help": ""
+    },
+    "group_column": {
+      "type": "column",
+      "default": "group",
+      "label": "Group column",
+      "help": ""
+    },
+    "x_column": {
+      "type": "column",
+      "default": "x",
+      "label": "X column",
+      "help": "X/Y are used only for input_mode = curve."
+    },
+    "y_column": {
+      "type": "column",
+      "default": "y",
+      "label": "Y column",
+      "help": "X/Y are used only for input_mode = curve."
+    },
+    "input_mode": {
+      "type": "select",
+      "default": "predictions",
+      "label": "Input mode",
+      "help": "Supplied curve coordinates support upstream time-dependent analyses without fitting censoring models here.",
+      "options": [
+        "predictions",
+        "curve"
+      ]
+    }
+  },
+  "statistics": {
+    "plot_type": {
+      "type": "select",
+      "default": "roc",
+      "label": "Plot type",
+      "help": "",
+      "options": [
+        "roc",
+        "precision_recall",
+        "calibration",
+        "decision_curve"
+      ]
+    },
+    "positive_class": {
+      "type": "string",
+      "default": "",
+      "label": "Positive class",
+      "help": "Empty uses the observed label 1; otherwise enter the positive outcome label. Predictions mode only."
+    },
+    "calibration_bins": {
+      "type": "integer",
+      "default": 8,
+      "label": "Calibration bins",
+      "help": "Equal-width probability bins; calibration predictions mode only.",
+      "min": 2,
+      "max": 20
+    },
+    "threshold_min": {
+      "type": "number",
+      "default": 0.01,
+      "label": "Threshold min",
+      "help": "Decision-curve predictions mode only; min must remain below max.",
+      "min": 0.001,
+      "max": 0.999
+    },
+    "threshold_max": {
+      "type": "number",
+      "default": 0.8,
+      "label": "Threshold max",
+      "help": "Decision-curve predictions mode only; min must remain below max.",
+      "min": 0.001,
+      "max": 0.999
+    }
+  },
+  "marks": {
+    "point_size": {
+      "type": "number",
+      "default": 2,
+      "label": "Point size",
+      "help": "Only for calibration plots.",
+      "min": 0.1,
+      "max": 10
+    },
+    "line_width": {
+      "type": "number",
+      "default": 0.6,
+      "label": "Line width",
+      "help": "",
+      "min": 0.1,
+      "max": 3
+    }
+  },
+  "colors": {
+    "palette": {
+      "type": "select",
+      "default": "Set 2",
+      "label": "Palette",
+      "help": "",
+      "options": [
+        "Set 2",
+        "Dark 3",
+        "Viridis"
+      ]
+    },
+    "group_colors": {
+      "type": "object",
+      "default": {},
+      "label": "Named colors",
+      "help": "Named categorical colors override the palette."
+    }
+  },
+  "labels": {
+    "title": {
+      "type": "string",
+      "default": "",
+      "label": "Title",
+      "help": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "",
+      "label": "Subtitle",
+      "help": "Empty uses the automatic description."
+    },
+    "caption": {
+      "type": "string",
+      "default": "",
+      "label": "Caption",
+      "help": ""
+    },
+    "title_size": {
+      "type": "number",
+      "default": 13,
+      "label": "Title size",
+      "help": "Only when a nonempty title is supplied.",
+      "min": 6,
+      "max": 30
+    }
+  },
+  "legend": {
+    "legend_show": {
+      "type": "boolean",
+      "default": true,
+      "label": "Legend show",
+      "help": ""
+    },
+    "legend_position": {
+      "type": "select",
+      "default": "right",
+      "label": "Legend position",
+      "help": "",
+      "options": [
+        "right",
+        "bottom",
+        "top",
+        "left"
+      ]
+    },
+    "legend_text_size": {
+      "type": "number",
+      "default": 9,
+      "label": "Legend text size",
+      "help": "",
+      "min": 5,
+      "max": 20
+    },
+    "metric_show": {
+      "type": "boolean",
+      "label": "Show AUC / AP / Brier in legend",
+      "default": true,
+      "help": "Predictions mode only; applies to ROC, precision\u2013recall and calibration."
+    }
+  },
+  "theme": {
+    "font_family": {
+      "type": "select",
+      "default": "sans",
+      "label": "Font family",
+      "help": "",
+      "options": [
+        "sans",
+        "serif",
+        "mono"
+      ]
+    },
+    "base_size": {
+      "type": "number",
+      "default": 11,
+      "label": "Base size",
+      "help": "",
+      "min": 6,
+      "max": 22
+    },
+    "plot_background": {
+      "type": "color",
+      "default": "#FFFFFF",
+      "label": "Plot background",
+      "help": ""
+    },
+    "grid_show": {
+      "type": "boolean",
+      "default": false,
+      "label": "Grid show",
+      "help": ""
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "default": 8,
+      "label": "Width",
+      "help": "Inches.",
+      "min": 3,
+      "max": 20
+    },
+    "height": {
+      "type": "number",
+      "default": 6,
+      "label": "Height",
+      "help": "Inches.",
+      "min": 3,
+      "max": 20
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 150,
+      "label": "Dpi",
+      "help": "",
+      "min": 72,
+      "max": 600
+    }
+  },
+  "axes": {
+    "x_limits": {
+      "type": "number_array",
+      "label": "X limits",
+      "default": [],
+      "help": "Optional two-number display limits; empty = automatic. Data outside the viewport remain exported."
+    },
+    "y_limits": {
+      "type": "number_array",
+      "label": "Y limits",
+      "default": [],
+      "help": "Optional two-number display limits; empty = automatic. Data outside the viewport remain exported."
+    }
+  }
+}

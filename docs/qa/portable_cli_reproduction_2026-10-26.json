@@ -1,0 +1,30 @@
+{
+  "direct_r": {
+    "returncode": 0,
+    "png_identical": true,
+    "command": [
+      "Rscript",
+      "/Users/johnchang/workstation/development/OmicsCanvas/plugins/survival_plot/plot.R",
+      "--input",
+      "/Users/johnchang/workstation/development/OmicsCanvas/docs/qa/fixtures/ai_survival_named_columns.csv",
+      "--params",
+      "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/named-survival/params.json",
+      "--output",
+      "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/direct-survival"
+    ],
+    "seed": "42"
+  },
+  "bundle_reproduction": {
+    "returncode": 0,
+    "result": {
+      "bundle": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/named-survival/reproduction_bundle",
+      "inputs_match": true,
+      "plotspec_hash_match": true,
+      "params_match": true,
+      "rendered": true,
+      "figure_identical": true,
+      "figure_diff": "0.000% pixels changed",
+      "ok": true
+    }
+  }
+}

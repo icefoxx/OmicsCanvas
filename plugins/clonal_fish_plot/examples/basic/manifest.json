@@ -1,0 +1,10 @@
+{
+  "id": "basic",
+  "label": "Nested clone fractions",
+  "plugin_id": "clonal_fish_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

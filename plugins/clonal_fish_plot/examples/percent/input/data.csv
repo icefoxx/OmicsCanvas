@@ -1,0 +1,21 @@
+clone,parent,time,fraction
+Clone A,0,0,84.0
+Clone B,Clone A,0,32.0
+Clone C,Clone A,0,28.000000000000004
+Clone D,Clone B,0,0
+Clone A,0,6,80.0
+Clone B,Clone A,6,34.5
+Clone C,Clone A,6,24.500000000000004
+Clone D,Clone B,6,0
+Clone A,0,12,76.0
+Clone B,Clone A,12,37.0
+Clone C,Clone A,12,21.000000000000004
+Clone D,Clone B,12,6.0
+Clone A,0,18,72.0
+Clone B,Clone A,18,39.5
+Clone C,Clone A,18,17.5
+Clone D,Clone B,18,12.0
+Clone A,0,24,68.0
+Clone B,Clone A,24,42.00000000000001
+Clone C,Clone A,24,14.000000000000002
+Clone D,Clone B,24,18.0

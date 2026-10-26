@@ -1,0 +1,139 @@
+summary: 'Compare named pathways or transcription factors using signed effects. Stems
+  connect each effect to zero; point size can summarize a second statistic.
+
+  '
+observation_type: pathways or transcription factors
+best_for:
+- Comparing transcription-factor signatures between two cell states
+- Ranking signed pathway enrichment scores
+- Showing effect direction and significance together
+common_uses:
+- Compare regulon activity between cell states after differential analysis
+- Summarize positive and negative pathway effects
+learn_more: 'Prepare one row per item with its name, signed effect and optional probability.
+  Decide the biological contrast before naming the two directions. This renderer displays
+  supplied statistics; it does not infer regulatory networks or run tests.
+
+  '
+interpretation:
+- title: Stem direction
+  type: direct
+  text: Left and right show negative and positive values in the supplied effect column.
+- title: Color and size
+  type: interpretation
+  text: The legend defines whether color denotes a group or effect, and whether size
+    denotes a supplied value or transformed probability.
+cautions:
+- title: Association is not causation
+  text: A differential regulon signature does not by itself establish causal transcription-factor
+    regulation.
+- title: Probability provenance
+  text: Distinguish raw p-values from adjusted p-values; the plot performs no multiple-testing
+    correction.
+- title: Reference data
+  text: CAB_demo uses synthetic illustrative effects and probabilities, not measurements
+    recovered from the publication.
+examples:
+- id: dnt_grm_tf_comparison
+  title: 'Published use case: Grm1 versus Grm2 transcription factors'
+  description: 'Hao et al. compare transcription-factor signatures of two gut-resident
+    gamma-delta T-cell states in Figure 6L. Use this layout when a two-state comparison
+    supplies TF/regulon names, a signed effect and p-values. The demo colors effects
+    green-to-pink, sizes points by -log10(p value), and places names opposite the
+    stems around zero.
+
+    '
+  data_note: Synthetic demonstration, not the paper's original data. Replace the input
+    table for your own analysis.
+  literature_id: hao_dnt_2026
+  preview_asset: plugins/interactive_enrichment_lollipop/all_examples_gallery/CAB_demo.png
+  demo_id: CAB_demo
+  variant_id: diverging_tf
+- id: signed_pathways
+  title: Signed pathway enrichment
+  description: Compare pathway effect direction with group colors and a separately
+    labelled size statistic.
+  preview_asset: plugins/interactive_enrichment_lollipop/all_examples_gallery/basic.png
+  demo_id: basic
+  variant_id: lollipop
+- id: oct4_enrichment
+  demo_id: oct4_enrichment
+  title: Rank candidate enrichment effects
+  description: Compare signed scores for candidate items in one contrast. Confirm
+    the supplied statistic before assigning colors and sizes.
+  scenario: Compare candidate enrichment effects
+  data_note: Local demonstration configuration, not original paper data.
+  preview_asset: plugins/interactive_enrichment_lollipop/all_examples_gallery/oct4_enrichment.png
+literature_ids:
+- hao_dnt_2026
+- puig_oud_2023
+reporting:
+  base_template: Signed-effect lollipop visualization of {observation_type}.
+variants:
+  diverging_tf:
+    summary: 'Uses a zero-centered continuous effect gradient and central category
+      labels for a two-state transcription-factor comparison, as illustrated by Figure
+      6L.
+
+      '
+    best_for:
+    - Comparing TF/regulon signatures with signed effects and probability estimates
+    interpretation:
+    - title: Signed effect gradient
+      type: direct
+      text: In the reference preset, green denotes negative effects and pink denotes
+        positive effects; group names depend on the defined contrast.
+    - title: Significance-sized points
+      type: direct
+      text: In the reference preset, larger points have larger -log10(p value), corresponding
+        to smaller supplied p-values.
+    cautions:
+    - title: Supplied statistics
+      text: This view does not calculate TF activity, differential effects or enrichment
+        tests from a single-cell count matrix.
+    reporting:
+      template: Each point represents {category_column}; the effect axis shows {value_column}.
+customization:
+- parameter: group_column
+  label: Group / type column (color)
+  default: null
+- parameter: value_column
+  label: Value / effect column (x)
+  default: null
+- parameter: category_column
+  label: Category / y label column
+  default: null
+- parameter: sort_by
+  label: Sort by
+  default: input
+  help: Input keeps file order, which can match a previously sorted example; top_n
+    is applied after sorting.
+- parameter: top_n
+  label: Keep top N (0 = all)
+  default: 0
+- parameter: group_colors
+  label: Alias of type_colors
+  default: {}
+  help: Only for color_mode = group; value mode uses a continuous effect gradient.
+- parameter: color_low
+  label: Negative effect color
+  default: '#879B39'
+  help: Only for color_mode = value, or negative enrichment arrows.
+- parameter: color_high
+  label: Positive effect color
+  default: '#CB6582'
+  help: Only for color_mode = value, or positive enrichment arrows.
+- parameter: label_show
+  label: Lollipop text switch
+  default: false
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Export width (in)
+  default: 9
+- parameter: height
+  label: Export height (in)
+  default: 7
+input_requirements: One row per pathway or TF, with a name, signed effect and optional
+  p-value or FDR; specify the contrast direction.

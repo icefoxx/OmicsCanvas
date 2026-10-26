@@ -1,0 +1,17 @@
+source,target,weight,group
+Gene_1,Target_5,0.9138462031405241,Association B
+Gene_1,Target_2,1.1936037067050675,Association B
+Gene_2,Target_1,1.0473700587380244,Association A
+Gene_2,Target_5,1.3091424657222996,Association A
+Gene_3,Target_4,0.822157940807279,Association B
+Gene_3,Target_4,0.26057382082764724,Association B
+Gene_4,Target_4,1.4006763133001923,Association A
+Gene_4,Target_5,1.4565404883076545,Association A
+Gene_5,Target_1,0.3892878211335319,Association B
+Gene_5,Target_4,0.2501237156844546,Association B
+Gene_6,Target_2,0.27997142138800085,Association A
+Gene_6,Target_5,1.0436894092669307,Association A
+Gene_7,Target_1,0.22607233931716697,Association B
+Gene_7,Target_2,0.8401056881444446,Association B
+Gene_8,Target_3,0.9329228073209217,Association A
+Gene_8,Target_5,1.2209918429112927,Association A

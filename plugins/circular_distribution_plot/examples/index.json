@@ -1,0 +1,25 @@
+{
+  "plugin_id": "circular_distribution_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Scores across reference groups",
+      "plugin_id": "circular_distribution_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "shared_range",
+      "label": "Scores on a common scale",
+      "plugin_id": "circular_distribution_plot",
+      "params": "shared_range/params.json",
+      "inputs": {
+        "input": "shared_range/input/data.csv"
+      },
+      "expected": "shared_range/expected/result.png"
+    }
+  ]
+}

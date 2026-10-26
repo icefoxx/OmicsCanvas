@@ -1,0 +1,32 @@
+id: spatial_region_plot
+name: Spatial Region Map
+version: 1.0.0
+description: Color supplied anatomical or tissue-region polygons by numeric measurements.
+language: R
+entrypoint: plot.R
+category: Feature
+subcategory: Expression map
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+- id: image
+  type: file
+  formats:
+  - png
+  required: false
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+runtime:
+  command: Rscript plugins/spatial_region_plot/plot.R --input input.csv --params params.json
+    --output output_dir

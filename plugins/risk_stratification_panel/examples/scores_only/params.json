@@ -1,0 +1,15 @@
+{
+  "heatmap_show": false,
+  "sort_by": "input",
+  "feature_columns": [
+    "Gene_A",
+    "Gene_B",
+    "Gene_C"
+  ],
+  "id_column": "subject",
+  "value_column": "risk_score",
+  "time_column": "time",
+  "event_column": "event",
+  "group_column": "group",
+  "title": "Scores and follow-up"
+}

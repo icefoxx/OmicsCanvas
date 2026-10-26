@@ -1,0 +1,25 @@
+{
+  "plugin_id": "interactive_3d_scatter",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Three-dimensional sample coordinates",
+      "plugin_id": "interactive_3d_scatter",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "alternate_view",
+      "label": "Alternate viewing angle",
+      "plugin_id": "interactive_3d_scatter",
+      "params": "alternate_view/params.json",
+      "inputs": {
+        "input": "alternate_view/input/data.csv"
+      },
+      "expected": "alternate_view/expected/result.png"
+    }
+  ]
+}

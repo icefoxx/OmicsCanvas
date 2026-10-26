@@ -1,0 +1,38 @@
+{
+  "data_mapping": {
+    "level1_column": {"type": "column", "label": "Inner ring column", "default": "level1"},
+    "level2_column": {"type": "column", "label": "Middle ring column", "default": "level2"},
+    "level3_column": {"type": "column", "label": "Outer ring column", "default": "", "help": "Optional third ring. Empty = two rings."},
+    "value_column": {"type": "column", "label": "Value column", "default": "value"}
+  },
+  "marks": {
+    "inner_radius": {"type": "number", "label": "Inner hole", "default": 0.2, "min": 0, "max": 0.8, "step": 0.05},
+    "label_show": {"type": "boolean", "label": "Slice labels", "default": true},
+    "label_size": {"type": "number", "label": "Label size", "default": 7},
+    "label_min_share": {"type": "number", "label": "Min share to label", "default": 0.04, "min": 0, "max": 0.5, "step": 0.01, "help": "Skip labels smaller than this fraction of the ring."},
+    "border_width": {"type": "number", "label": "Slice border width", "default": 0.2, "min": 0, "max": 1, "step": 0.05}
+  },
+  "colors": {
+    "palette": {"type": "select", "label": "Palette", "default": "Set 2", "options": ["Set 2", "Dark 3", "Viridis", "Zissou 1"]}
+  },
+  "labels": {
+    "title": {"type": "string", "label": "Title", "default": ""},
+    "subtitle": {"type": "string", "label": "Subtitle", "default": ""},
+    "title_size": {"type": "number", "label": "Title size", "default": 13}
+  },
+  "legend": {
+    "legend_show": {"type": "boolean", "label": "Show legend", "default": true},
+    "legend_position": {"type": "select", "label": "Legend position", "default": "right", "options": ["right", "bottom", "top", "left"]},
+    "legend_title": {"type": "string", "label": "Legend title", "default": "Inner ring"},
+    "legend_text_size": {"type": "number", "label": "Legend text size", "default": 9}
+  },
+  "theme": {
+    "font_family": {"type": "string", "label": "Font family", "default": "sans"},
+    "base_size": {"type": "number", "label": "Base font size", "default": 11}
+  },
+  "export": {
+    "width": {"type": "number", "label": "Width (in)", "default": 7},
+    "height": {"type": "number", "label": "Height (in)", "default": 7},
+    "dpi": {"type": "number", "label": "PNG dpi", "default": 300}
+  }
+}

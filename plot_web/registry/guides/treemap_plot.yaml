@@ -1,0 +1,72 @@
+summary: Use nested rectangle areas to encode nonnegative parent-child quantities.
+observation_type: observations or summary items in the input table
+best_for:
+- Survey functional-category totals
+- Show hierarchical composition
+- Locate dominant child categories
+common_uses: []
+input_requirements: Parent labels, child labels and nonnegative values.
+learn_more: 'Input: Parent labels, child labels and nonnegative values. Interpretation:
+  Rectangle area represents values; position and aspect ratio follow the layout algorithm.
+  Check mappings, order and transformations before adjusting labels, colors and canvas
+  dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Rectangle area represents values; position and aspect ratio follow the layout
+    algorithm.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Aspect ratio has no biological meaning
+- id: caution_2
+  title: Caution 2
+  text: Small tiles are unsuitable for precise label-based comparisons
+examples:
+- id: basic
+  title: Parent-child composition by area
+  description: 'Use case: Survey functional-category totals. This preset illustrates
+    parent-child composition by area. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Survey functional-category totals
+  input_requirements: Parent labels, child labels and nonnegative values.
+  preview_asset: plugins/treemap_plot/all_examples_gallery/basic.png
+  variant_id: basic
+  mappings:
+    level1_column: level1
+    level2_column: level2
+    value_column: value
+literature_ids:
+- chen_ibd_2025
+- schormair_rls_2024
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes:
+- Only one independent demonstration bundle is available. Three application scenarios
+  are listed, but a second input or mode-specific bundle is still needed.
+variants:
+  basic:
+    summary: Parent tiles split into child rectangles.
+customization:
+- parameter: value_column
+  label: Value column
+  default: value
+- parameter: palette
+  label: Palette
+  default: Set 2
+- parameter: label_show
+  label: Tile labels
+  default: true
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Width (in)
+  default: 8
+- parameter: height
+  label: Height (in)
+  default: 6

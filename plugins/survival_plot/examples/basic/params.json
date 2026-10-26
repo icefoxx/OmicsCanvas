@@ -1,0 +1,7 @@
+{
+  "time_column": "time",
+  "event_column": "event",
+  "group_column": "group",
+  "title": "Survival by cohort",
+  "stat_method": "logrank"
+}

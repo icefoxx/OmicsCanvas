@@ -1,7 +1,7 @@
 id: interactive_network_plot
 name: Interactive Network Plot
-version: 1.0.0
-description: Interactive edge-list and membership/network-Venn graph with static exports.
+version: 1.1.0
+description: Interactive edge-list and membership graph with preset layouts and a draggable HTML view.
 language: R
 entrypoint: plot.R
 category: Network
@@ -39,10 +39,45 @@ parameters:
     - fr
     - kk
     - circle
+    - concentric
+    - radial
     - stress
     - hierarchical
     - manual
     default: fr
+  layout_sort:
+    type: select
+    options:
+    - none
+    - degree
+    - size
+    - label
+    default: none
+  ring_gap:
+    type: number
+    default: 1
+  edge_weighted:
+    type: boolean
+    default: true
+  edge_style:
+    type: select
+    options:
+    - link
+    - arc
+    default: link
+  node_size_by:
+    type: select
+    options:
+    - degree
+    - constant
+    - size_column
+    default: degree
+  node_color_mode:
+    type: select
+    options:
+    - group
+    - gradient
+    default: group
   interactive:
     type: boolean
     default: true

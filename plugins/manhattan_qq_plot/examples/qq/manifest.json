@@ -1,0 +1,10 @@
+{
+  "id": "qq",
+  "label": "Expected and observed probabilities",
+  "plugin_id": "manhattan_qq_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

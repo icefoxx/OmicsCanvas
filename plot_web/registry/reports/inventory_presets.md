@@ -58,6 +58,66 @@ Legacy:
 - `minimal` — Minimal
 - `blank` — Blank
 - `large_dataset` — Large dataset
+## annotated_tree_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## bar3d_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## binary_evaluation_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## bland_altman_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## circular_bar_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## circular_distribution_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## circular_genomic_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## circular_heatmap
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## circular_tree_embedding
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## clonal_fish_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
 ## cluster_dendrogram_plot
 - `recommended` — Recommended
 - `publication` — Publication
@@ -86,6 +146,18 @@ Legacy:
 - `minimal` — Minimal
 - `blank` — Blank
 - `large_dataset` — Large dataset
+## ecdf_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## embedding_vector_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
 ## exp_stat_plot
 - `recommended` — Recommended
 - `publication` — Publication
@@ -105,6 +177,12 @@ Legacy:
 - `grouped_curves` → variant `running` preset `recommended`
 - `classic_tracks` → variant `running` preset `recommended`
 - `faceted_running` → variant `running` preset `recommended`
+## forest_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
 ## go_kegg_enrichment_bar_bubble
 - `recommended` — Recommended
 - `publication` — Publication
@@ -124,6 +202,12 @@ Legacy:
 - `blank` — Blank
 - `large_dataset` — Large dataset
 ## highlight_effect_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## interactive_3d_scatter
 - `recommended` — Recommended
 - `publication` — Publication
 - `minimal` — Minimal
@@ -195,6 +279,8 @@ Legacy:
 - `minimal` — Minimal
 - `blank` — Blank
 - `large_dataset` — Large dataset
+Legacy:
+- `manual_layout` → variant `network` preset `recommended`
 ## interactive_pie_plot
 - `recommended` — Recommended
 - `publication` — Publication
@@ -225,13 +311,61 @@ Legacy:
 - `minimal` — Minimal
 - `blank` — Blank
 - `large_dataset` — Large dataset
+## line_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
 ## trajectory
 - `recommended` — Recommended
 - `publication` — Publication
 - `minimal` — Minimal
 - `blank` — Blank
 - `large_dataset` — Large dataset
+## linked_matrix_network_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## manhattan_qq_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## nomogram_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## oncoprint_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## protein_variant_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
 ## quadrant_correlation_scatter
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## radviz_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## raincloud_plot
 - `recommended` — Recommended
 - `publication` — Publication
 - `minimal` — Minimal
@@ -249,7 +383,49 @@ Legacy:
 - `minimal` — Minimal
 - `blank` — Blank
 - `large_dataset` — Large dataset
+## risk_stratification_panel
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
 ## volcano
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## sequence_alignment_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## spatial_region_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## sunburst_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## survival_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## swimmer_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## ternary_plot
 - `recommended` — Recommended
 - `publication` — Publication
 - `minimal` — Minimal
@@ -261,7 +437,19 @@ Legacy:
 - `minimal` — Minimal
 - `blank` — Blank
 - `large_dataset` — Large dataset
+## treemap_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
 ## violin_plot
+- `recommended` — Recommended
+- `publication` — Publication
+- `minimal` — Minimal
+- `blank` — Blank
+- `large_dataset` — Large dataset
+## waterfall_plot
 - `recommended` — Recommended
 - `publication` — Publication
 - `minimal` — Minimal

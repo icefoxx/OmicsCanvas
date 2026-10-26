@@ -1,0 +1,94 @@
+summary: Overlay externally supplied lineage paths on an existing embedding.
+observation_type: observations or summary items in the input table
+best_for:
+- Show previously inferred differentiation paths
+- Focus on one lineage
+- Inspect observation-to-path assignments
+common_uses: []
+input_requirements: Embedding coordinates, observation annotations and a separate
+  lineage/path table.
+learn_more: 'Input: Embedding coordinates, observation annotations and a separate
+  lineage/path table. Interpretation: Paths come from input or upstream inference
+  rather than proof from point positions. Check mappings, order and transformations
+  before adjusting labels, colors and canvas dimensions. Confirm legends and units
+  before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Paths come from input or upstream inference rather than proof from point positions.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Pseudotime is not elapsed time
+- id: caution_2
+  title: Caution 2
+  text: Biological direction and branching require independent validation
+examples:
+- id: basic
+  title: Overview of branching paths
+  description: 'Use case: Show previously inferred differentiation paths. This preset
+    illustrates overview of branching paths. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Show previously inferred differentiation paths
+  input_requirements: Embedding coordinates, observation annotations and a separate
+    lineage/path table.
+  preview_asset: plugins/lineage_plot/all_examples_gallery/basic.png
+- id: single
+  title: Focus on one lineage
+  description: 'Use case: Focus on one lineage. This preset illustrates focus on one
+    lineage. Replace its input with your data while retaining the appropriate view
+    settings.'
+  demo_id: single
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Focus on one lineage
+  input_requirements: Embedding coordinates, observation annotations and a separate
+    lineage/path table.
+  preview_asset: plugins/lineage_plot/all_examples_gallery/single.png
+  variant_id: single
+- id: whiskers
+  title: Observation-to-path correspondence
+  description: 'Use case: Inspect observation-to-path assignments. This preset illustrates
+    observation-to-path correspondence. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: whiskers
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect observation-to-path assignments
+  input_requirements: Embedding coordinates, observation annotations and a separate
+    lineage/path table.
+  preview_asset: plugins/lineage_plot/all_examples_gallery/whiskers.png
+  variant_id: whiskers
+literature_ids:
+- hao_dnt_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  single:
+    summary: 'Use case: Focus on one lineage. This preset illustrates focus on one
+      lineage. Replace its input with your data while retaining the appropriate view
+      settings.'
+  whiskers:
+    summary: 'Use case: Inspect observation-to-path assignments. This preset illustrates
+      observation-to-path correspondence. Replace its input with your data while retaining
+      the appropriate view settings.'
+customization: []
+source_modules:
+- title: FigureYa40lineage
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa40lineage
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa285scRNA_monocle
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa285scRNA_monocle
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa306slingshot
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa306slingshot
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

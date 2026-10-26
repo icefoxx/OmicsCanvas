@@ -1,0 +1,7 @@
+{
+  "group_column": "scale",
+  "position_column": "position",
+  "label_column": "label",
+  "title": "Supplied total-point outcome mapping",
+  "line_color": "#725D8B"
+}

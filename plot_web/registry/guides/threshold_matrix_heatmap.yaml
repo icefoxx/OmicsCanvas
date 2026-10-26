@@ -1,0 +1,67 @@
+summary: Color matrix cells using explicit threshold rules to summarize multiple comparisons.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare enrichment evidence across conditions
+- Survey multiple differential contrasts
+- Check threshold-category consistency
+common_uses: []
+input_requirements: Row labels and numeric comparison columns, with shared or per-column
+  rules and missing-value colors.
+learn_more: 'Input: Row labels and numeric comparison columns, with shared or per-column
+  rules and missing-value colors. Interpretation: Colors identify rule-defined bins
+  rather than necessarily representing continuous distances. Check mappings, order
+  and transformations before adjusting labels, colors and canvas dimensions. Confirm
+  legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Colors identify rule-defined bins rather than necessarily representing continuous
+    distances.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Use comparable probability definitions and corrections
+- id: caution_2
+  title: Caution 2
+  text: Failing a threshold does not imply zero effect or no expression
+examples:
+- id: params
+  title: Threshold categories across comparisons
+  description: 'Use case: Compare enrichment evidence across conditions. This preset
+    illustrates threshold categories across comparisons. Replace its input with your
+    data while retaining the appropriate view settings.'
+  demo_id: params
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare enrichment evidence across conditions
+  input_requirements: Row labels and numeric comparison columns, with shared or per-column
+    rules and missing-value colors.
+  preview_asset: plugins/threshold_matrix_heatmap/all_examples_gallery/params.png
+  mappings:
+    row_label_column: term
+    value_columns:
+    - CK-vs-M1
+    - CK-vs-M2
+    - CK-vs-M3
+    - M1-vs-M2
+    - M1-vs-M3
+    - M2-vs-M3
+literature_ids:
+- hao_dnt_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes:
+- Only one independent demonstration bundle is available. Three application scenarios
+  are listed, but a second input or mode-specific bundle is still needed.
+variants: {}
+customization:
+- parameter: row_label_column
+  label: Row label column
+  default: null
+- parameter: width
+  label: Width
+  default: 7
+- parameter: height
+  label: Height
+  default: 6

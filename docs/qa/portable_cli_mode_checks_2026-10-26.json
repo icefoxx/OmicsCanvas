@@ -1,0 +1,52 @@
+[
+  {
+    "plugin": "binary_evaluation_plot",
+    "example": "calibration",
+    "parameter": "calibration_bins",
+    "to": 16,
+    "both_rendered": true,
+    "image_changed": true,
+    "baseline": "/private/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/oc_cli_modes_fmrm0l81/calibration_bins/base/result.png",
+    "changed": "/private/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/oc_cli_modes_fmrm0l81/calibration_bins/changed/result.png"
+  },
+  {
+    "plugin": "binary_evaluation_plot",
+    "example": "calibration",
+    "parameter": "point_size",
+    "to": 4,
+    "both_rendered": true,
+    "image_changed": true,
+    "baseline": "/private/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/oc_cli_modes_fmrm0l81/point_size/base/result.png",
+    "changed": "/private/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/oc_cli_modes_fmrm0l81/point_size/changed/result.png"
+  },
+  {
+    "plugin": "binary_evaluation_plot",
+    "example": "decision_curve",
+    "parameter": "threshold_min",
+    "to": 0.02,
+    "both_rendered": true,
+    "image_changed": true,
+    "baseline": "/private/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/oc_cli_modes_fmrm0l81/threshold_min/base/result.png",
+    "changed": "/private/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/oc_cli_modes_fmrm0l81/threshold_min/changed/result.png"
+  },
+  {
+    "plugin": "binary_evaluation_plot",
+    "example": "decision_curve",
+    "parameter": "threshold_max",
+    "to": 0.95,
+    "both_rendered": true,
+    "image_changed": true,
+    "baseline": "/private/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/oc_cli_modes_fmrm0l81/threshold_max/base/result.png",
+    "changed": "/private/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/oc_cli_modes_fmrm0l81/threshold_max/changed/result.png"
+  },
+  {
+    "plugin": "linked_matrix_network_plot",
+    "example": "dot_matrix",
+    "parameter": "dot_size",
+    "to": 10,
+    "both_rendered": true,
+    "image_changed": true,
+    "baseline": "/private/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/oc_cli_modes_fmrm0l81/dot_size/base/result.png",
+    "changed": "/private/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/oc_cli_modes_fmrm0l81/dot_size/changed/result.png"
+  }
+]

@@ -4,8 +4,9 @@ const Discovery = {
   browse: { categories: [], all_plots: [] },
   chartCategories: { groups: [] },
   pluginsById: {},
-  view: "home", // home | browse | analysis | category | search | family
+  view: "browse", // browse | analysis | category | search | family
   browseCategory: "all",
+  browseChartType: "all",
   analysisContext: null,
   analysisTask: null,
   chartId: null,
@@ -76,6 +77,14 @@ function chartIcon(id) {
     genomic_track: `<path d="M8 24h32M12 18v12M20 14v20M28 20v8M36 16v16" ${stroke}/>`,
     venn: `<circle cx="19" cy="24" r="10" ${stroke}/><circle cx="29" cy="24" r="10" ${stroke}/>`,
     upset: `<path d="M10 28V16h4v12M18 28V10h4v18M26 28v-8h4v8" ${stroke}/><circle cx="12" cy="34" r="2" fill="currentColor"/><circle cx="20" cy="34" r="2" fill="currentColor"/><circle cx="28" cy="34" r="2" fill="currentColor" opacity=".3"/>`,
+    all: `<path d="M10 10h12v12H10zM26 10h12v12H26zM10 26h12v12H10zM26 26h12v12H26z" ${stroke}/>`,
+    sunburst: `<path d="M24 24L38 16A16 16 0 0 0 24 8z" fill="currentColor" opacity=".9"/><path d="M24 24L40 28A16 16 0 0 1 30 38z" fill="currentColor" opacity=".45"/><circle cx="24" cy="24" r="16" ${stroke}/><circle cx="24" cy="24" r="5" ${stroke}/>`,
+    ternary: `<path d="M24 8l16 28H8z" ${stroke}/><circle cx="24" cy="22" r="2.2" fill="currentColor"/>`,
+    dot: `<circle cx="12" cy="24" r="3.2" fill="currentColor"/><circle cx="24" cy="24" r="5.2" fill="currentColor"/><circle cx="36" cy="24" r="4" fill="currentColor"/>`,
+    dot_matrix: `<circle cx="12" cy="12" r="3.2" fill="currentColor"/><circle cx="24" cy="12" r="2.2" fill="currentColor" opacity=".45"/><circle cx="36" cy="12" r="3.6" fill="currentColor"/><circle cx="12" cy="24" r="2.4" fill="currentColor" opacity=".5"/><circle cx="24" cy="24" r="3.4" fill="currentColor"/><circle cx="36" cy="24" r="2.2" fill="currentColor" opacity=".4"/><circle cx="12" cy="36" r="3" fill="currentColor"/><circle cx="24" cy="36" r="2.6" fill="currentColor" opacity=".55"/><circle cx="36" cy="36" r="3.4" fill="currentColor"/>`,
+    alluvial: `<path d="M8 12h6c12 0 10 20 20 20h6M8 36h6c12 0 10-8 20-8h6M8 24h6" ${stroke}/>`,
+    motif: `<path d="M10 36V20h5v16M17 36V10h6v26M25 36V24h5v12M32 36V16h6v20" fill="currentColor"/>`,
+    summary_table: `<rect x="8" y="10" width="32" height="28" rx="2" ${stroke}/><rect x="8" y="10" width="32" height="8" fill="currentColor" opacity=".28"/><path d="M8 26h32M20 18v20" ${stroke}/>`,
   };
   const inner = icons[id] || `<circle cx="24" cy="24" r="10" ${stroke}/>`;
   return `<svg class="chart-icon-svg" viewBox="0 0 48 48" aria-hidden="true">${inner}</svg>`;
@@ -149,6 +158,12 @@ function toggleFavorite(plotId, event) {
   renderDiscovery();
 }
 
+const PLOT_SUMMARIES = {
+  sca_volcano_plot: "Find genes with large changes and strong statistical evidence in differential expression results.",
+  group_heatmap: "Compare expression patterns across groups, with clustering and sample annotations.",
+  violin_plot: "Compare value distributions between groups, with optional points and box plots.",
+};
+
 function familyCard(plot, options = {}) {
   const rec = options.recommended;
   const variant = options.recommended_variant;
@@ -168,7 +183,7 @@ function familyCard(plot, options = {}) {
       </div>
       <div class="family-body">
         <h4>${escapeHtml(plot.name)}</h4>
-        <p>${escapeHtml(plot.description || "Open this visualization family in Plot Studio.")}</p>
+        <p>${escapeHtml(PLOT_SUMMARIES[plot.engine_plugin_id] || plot.description || "Open this visualization family in Plot Studio.")}</p>
         <div class="family-meta">
           <span>${plot.variant_count || 0} variants</span>
           ${options.compat ? `<span class="compat-ok">Compatible</span>` : ""}
@@ -222,88 +237,131 @@ function setDiscoveryView(view) {
   document.querySelectorAll(".cat-nav-item").forEach((btn) => {
     const match = (view === "browse" && btn.dataset.browse === Discovery.browseCategory)
       || (view === "analysis" && btn.dataset.analysis === (Discovery.analysisContext || "root"))
-      || (view === "home" && btn.dataset.nav === "home")
       || (view === "browse" && btn.dataset.nav === "browse" && Discovery.browseCategory === "all");
     btn.classList.toggle("active", Boolean(match));
   });
 }
 
-function renderHomeDiscovery() {
-  const recCards = Discovery.recommendations.map((item) => {
-    const plot = findPlot(item.plot_id);
-    if (!plot) return "";
-    return familyCard(plot, { recommended: true, recommended_variant: item.variant, source_context: "data" });
-  }).join("");
-  const recentCards = Discovery.recent.map((item) => {
-    const plot = findPlot(item.id) || item;
-    return familyCard(plot, { source_context: "recent" });
-  }).join("");
-  const launchTiles = `
-    <div class="analysis-grid">
-      <button type="button" class="analysis-tile" data-entry="scenario">
-        <strong>Explore by Scenario</strong>
-        <span>Start from your scientific question.</span>
-      </button>
-      <button type="button" class="analysis-tile" data-entry="category">
-        <strong>Browse by Chart Type</strong>
-        <span>Start from the visual form you want.</span>
-      </button>
-      <button type="button" class="analysis-tile" data-entry="browse">
-        <strong>All Plots</strong>
-        <span>Search every visualization family.</span>
-      </button>
-    </div>
-  `;
+function browsePlotsPath(category, chart) {
+  const params = new URLSearchParams();
+  if (category && category !== "all") params.set("category", category);
+  if (chart && chart !== "all") params.set("chart", chart);
+  const qs = params.toString();
+  return qs ? `/plots?${qs}` : "/plots";
+}
+
+function browseListByCategory() {
+  const cats = Discovery.browse.categories || [];
+  const active = Discovery.browseCategory;
+  if (active === "favorites") {
+    return (Discovery.browse.all_plots || []).filter((p) => Discovery.favorites.has(p.id));
+  }
+  if (active && active !== "all") {
+    return cats.find((c) => c.id === active)?.plots || [];
+  }
+  return Discovery.browse.all_plots || [];
+}
+
+function filterPlotsByChart(list, chartId) {
+  if (!chartId || chartId === "all") return list || [];
+  const found = findChart(chartId);
+  if (!found) return list || [];
+  const ids = new Set((found.chart.plots || []).map((p) => p.id));
+  return (list || []).filter((p) => ids.has(p.id));
+}
+
+function chartTypeChip(id, name, icon, count, extraClass) {
+  const on = (Discovery.browseChartType || "all") === id;
+  const empty = id !== "all" && !count;
   return `
-    <section class="discover-hero">
-      <p class="eyebrow">Scientific Plot Studio</p>
-      <h2>Find the right plot for your question</h2>
-      <p>Search by name, start from a scientific scenario, or pick a chart type. Every path opens the same Studio.</p>
-      <label class="hero-search">
-        <input id="pluginSearch" class="hero-search-input" placeholder="Search plots or describe what you need…" value="${escapeHtml(Discovery.searchQuery)}">
-      </label>
-    </section>
-    <section class="discover-section">${launchTiles}</section>
-    ${Discovery.recommendations.length ? `
-      <section class="discover-section">
-        <h3>Recommended for your data</h3>
-        <div class="family-grid">${recCards}</div>
-      </section>` : `
-      <section class="discover-section muted-panel">
-        <h3>Recommended for your data</h3>
-        <p>Upload a dataset (Datasets tab) to see registry-based suggestions such as UMAP by cluster or split-by-sample.</p>
-      </section>`}
-    <section class="discover-section">
-      <h3>Recently used</h3>
-      ${recentCards ? `<div class="family-grid">${recentCards}</div>` : `<p class="empty-inline">No recent plots yet.</p>`}
-    </section>
-  `;
+    <button type="button" class="chart-type-chip ${on ? "active" : ""} ${empty ? "is-empty" : ""} ${extraClass || ""}" data-browse-chart="${id}" title="${escapeHtml(name)}">
+      <span class="chart-type-chip-icon">${chartIcon(icon)}</span>
+      <strong>${escapeHtml(name)}</strong>
+    </button>`;
+}
+
+function renderChartTypePanel(byCat) {
+  const groups = Discovery.chartCategories.groups || [];
+  const charts = groups.flatMap((group) => group.charts || []);
+  if (!charts.length) return "";
+  const byCatIds = new Set((byCat || []).map((p) => p.id));
+  const chips = [chartTypeChip("all", "All", "all", byCat.length, "is-all")]
+    .concat(charts.map((chart) => {
+      const count = (chart.plots || []).filter((p) => byCatIds.has(p.id)).length;
+      return chartTypeChip(chart.id, chart.name, chart.icon || chart.id, count);
+    }))
+    .join("");
+  return `
+    <div class="chart-type-panel" aria-label="Browse by chart type">
+      <div class="chart-type-strip">
+        <span class="filter-label">Chart type</span>
+        ${chips}
+      </div>
+    </div>`;
+}
+
+function browseStylesReady(plots) {
+  return (plots || []).every((plot) => Boolean(Discovery.familyStylesCache[plot.id]));
+}
+
+function renderBrowseStyleSections(plots) {
+  if (!plots.length) return `<div class="empty card">No plots match this chart type and filter.</div>`;
+  return plots.map((plot) => {
+    const cached = Discovery.familyStylesCache[plot.id];
+    const styles = cachedFamilyStyles(plot.id);
+    const cards = styles.map((style) => styleCard(plot, style)).join("");
+    let body;
+    if (!cached) body = `<div class="empty card">Loading styles…</div>`;
+    else if (!cards) body = `<div class="empty card">No visualization styles yet for this family.</div>`;
+    else body = cards;
+    return `
+      <section class="discover-section chart-subclass">
+        <h3>${escapeHtml(plot.name)}</h3>
+        <div class="plot-cards style-grid">${body}</div>
+      </section>`;
+  }).join("");
 }
 
 function renderBrowseDiscovery() {
   const cats = Discovery.browse.categories || [];
   const active = Discovery.browseCategory;
-  const list = active === "all"
-    ? Discovery.browse.all_plots
-    : active === "favorites"
-      ? Discovery.browse.all_plots.filter((p) => Discovery.favorites.has(p.id))
-      : (cats.find((c) => c.id === active)?.plots || []);
+  const chartActive = Discovery.browseChartType || "all";
+  const byCat = browseListByCategory();
+  const list = filterPlotsByChart(byCat, chartActive);
   const pills = [`<button type="button" class="filter-pill ${active === "all" ? "active" : ""}" data-browse="all">All</button>`]
     .concat(cats.map((c) => `<button type="button" class="filter-pill ${active === c.id ? "active" : ""}" data-browse="${c.id}">${c.name}</button>`))
     .join("");
+  const emptyMsg = chartActive !== "all"
+    ? "No plots match this chart type and filter."
+    : "No plots in this filter.";
+  const showStyles = chartActive !== "all";
+  const nStyles = showStyles
+    ? list.reduce((n, plot) => n + cachedFamilyStyles(plot.id).length, 0)
+    : 0;
+  const loadingStyles = showStyles && list.length && !browseStylesReady(list);
+  let countHtml;
+  if (!showStyles) {
+    countHtml = `Showing <strong id="toolCount">${list.length}</strong> families`;
+  } else if (loadingStyles) {
+    countHtml = "Loading visualization styles…";
+  } else if (!list.length) {
+    countHtml = `Showing <strong id="toolCount">0</strong> styles`;
+  } else {
+    countHtml = `Showing <strong id="toolCount">${nStyles}</strong> styles in <strong>${list.length}</strong> ${list.length === 1 ? "family" : "families"}`;
+  }
+  const grid = showStyles
+    ? `<div id="plotCards">${renderBrowseStyleSections(list)}</div>`
+    : `<div class="family-grid" id="plotCards">${list.map((p) => familyCard(p, { source_context: "browse" })).join("") || `<div class="empty card">${emptyMsg}</div>`}</div>`;
   return `
-    <section class="discover-hero compact">
-      <h2>Browse all plots</h2>
-      <p>Search visualization families directly.</p>
-      <label class="hero-search">
-        <input id="pluginSearch" class="hero-search-input" placeholder="Search plots…" value="${escapeHtml(Discovery.searchQuery)}">
-      </label>
-    </section>
+    ${renderChartTypePanel(byCat)}
     <div class="browse-toolbar">
+      <label class="browse-search">
+        <input id="pluginSearch" type="search" class="hero-search-input" aria-label="Search plots" placeholder="Search plots…" value="${escapeHtml(Discovery.searchQuery)}">
+      </label>
       <div class="filter-pills"><span class="filter-label">Filter:</span>${pills}</div>
-      <div class="tool-count-info">Showing <strong id="toolCount">${list.length}</strong> families</div>
+      <div class="tool-count-info">${countHtml}</div>
     </div>
-    <div class="family-grid" id="plotCards">${list.map((p) => familyCard(p, { source_context: "browse" })).join("") || `<div class="empty card">No plots in this filter.</div>`}</div>
+    ${grid}
   `;
 }
 
@@ -479,7 +537,7 @@ function styleCard(plot, style) {
   const variantId = style.variant_id || style.id;
   const engineId = style.engine_plugin_id || plot.engine_plugin_id || "";
   return `
-    <article class="plot-card style-card" data-style-id="${escapeHtml(style.id)}" data-example-id="${escapeHtml(openId)}" data-variant-id="${escapeHtml(variantId)}" data-engine="${escapeHtml(engineId)}">
+    <article class="plot-card style-card" data-plot-id="${escapeHtml(plot.id)}" data-style-id="${escapeHtml(style.id)}" data-example-id="${escapeHtml(openId)}" data-variant-id="${escapeHtml(variantId)}" data-engine="${escapeHtml(engineId)}">
       <div class="card-thumb-box">
         <span class="card-badge">${escapeHtml(styleBadge(style))}</span>
         ${thumb ? `<img src="${thumb}" alt="${escapeHtml(style.label)} preview">` : `<div class="card-fallback-icon">▣</div>`}
@@ -571,22 +629,48 @@ function cachedFamilyCountLabel(plotId) {
   return cached.count_label || "";
 }
 
-async function loadFamilyStyles(plot) {
-  if (!plot?.id) return;
+async function loadFamilyStyles(plot, options = {}) {
+  const applyActive = options.applyActive !== false;
+  if (!plot?.id) return [];
   if (Discovery.familyStylesCache[plot.id]) {
-    const cached = Discovery.familyStylesCache[plot.id];
-    if (Array.isArray(cached)) {
-      Discovery.familyStyles = cached;
-    } else {
-      Discovery.familyStyles = cached.styles || [];
-      Discovery.familyCountLabel = cached.count_label || "";
+    const styles = cachedFamilyStyles(plot.id);
+    if (applyActive) {
+      Discovery.familyStyles = styles;
+      Discovery.familyCountLabel = cachedFamilyCountLabel(plot.id);
     }
-    return;
+    return styles;
   }
   const payload = await api(`/api/registry/plots/${encodeURIComponent(plot.id)}/styles`);
-  Discovery.familyStyles = payload.styles || [];
-  Discovery.familyCountLabel = payload.count_label || "";
-  Discovery.familyStylesCache[plot.id] = { styles: Discovery.familyStyles, count_label: Discovery.familyCountLabel };
+  const styles = payload.styles || [];
+  Discovery.familyStylesCache[plot.id] = { styles, count_label: payload.count_label || "" };
+  if (applyActive) {
+    Discovery.familyStyles = styles;
+    Discovery.familyCountLabel = payload.count_label || "";
+  }
+  return styles;
+}
+
+async function loadBrowseChartStyles(plots, chartId) {
+  const key = `${chartId}:${(plots || []).map((p) => p.id).join(",")}`;
+  if (Discovery._browseStyleKey === key && Discovery._loadingBrowseStyles) return;
+  Discovery._browseStyleKey = key;
+  Discovery._loadingBrowseStyles = true;
+  const token = (Discovery._browseStyleToken = (Discovery._browseStyleToken || 0) + 1);
+  await Promise.all((plots || []).map(async (plot) => {
+    try {
+      await loadFamilyStyles(plot, { applyActive: false });
+    } catch (err) {
+      console.warn("Failed to load styles", plot.id, err);
+      if (!Discovery.familyStylesCache[plot.id]) {
+        Discovery.familyStylesCache[plot.id] = { styles: [], count_label: "" };
+      }
+    }
+  }));
+  Discovery._loadingBrowseStyles = false;
+  if (token !== Discovery._browseStyleToken) return;
+  if (Discovery.view === "browse" && Discovery.browseChartType === chartId) {
+    renderDiscovery();
+  }
 }
 
 async function openFamily(plot) {
@@ -610,8 +694,15 @@ async function openFamily(plot) {
   }
 }
 
-function bindStyleCardClicks(root, plot) {
-  const openStyle = (styleId, variantId, engineId) => {
+function bindStyleCardClicks(root, plotFallback) {
+  const resolvePlot = (el) => {
+    const card = el.closest ? (el.closest(".style-card") || el) : el;
+    const plotId = card.dataset && card.dataset.plotId;
+    return (plotId && findPlot(plotId)) || plotFallback;
+  };
+  const openStyle = (el, styleId, variantId, engineId) => {
+    const plot = resolvePlot(el);
+    if (!plot) return;
     const extra = {
       example: styleId,
       variant: variantId || "",
@@ -631,11 +722,11 @@ function bindStyleCardClicks(root, plot) {
   root.querySelectorAll("[data-style-open], [data-style-demo]").forEach((btn) => {
     btn.onclick = (event) => {
       event.stopPropagation();
-      openStyle(btn.dataset.styleOpen || btn.dataset.styleDemo, btn.dataset.variant, btn.dataset.engine);
+      openStyle(btn, btn.dataset.styleOpen || btn.dataset.styleDemo, btn.dataset.variant, btn.dataset.engine);
     };
   });
   root.querySelectorAll(".style-card").forEach((card) => {
-    card.onclick = () => openStyle(card.dataset.exampleId || card.dataset.styleId, card.dataset.variantId, card.dataset.engine);
+    card.onclick = () => openStyle(card, card.dataset.exampleId || card.dataset.styleId, card.dataset.variantId, card.dataset.engine);
   });
 }
 
@@ -722,10 +813,20 @@ function renderDiscovery() {
   else if (Discovery.view === "analysis") html = renderAnalysisDiscovery();
   else if (Discovery.view === "category") html = renderCategoryDiscovery();
   else if (Discovery.view === "family") html = renderFamilyDiscovery();
-  else html = renderHomeDiscovery();
+  else html = renderBrowseDiscovery();
   host.innerHTML = html;
   bindFamilyCards(host);
+  host.querySelectorAll("[data-upload-start]").forEach((button) => {
+    button.onclick = () => { setMode("dataUpload"); $("datasetName")?.focus(); };
+  });
   if (Discovery.view === "family") bindStyleCards(host);
+  if (Discovery.view === "browse" && Discovery.browseChartType && Discovery.browseChartType !== "all") {
+    bindStyleCardClicks(host, null);
+    const plots = filterPlotsByChart(browseListByCategory(), Discovery.browseChartType);
+    if (plots.length && !browseStylesReady(plots)) {
+      loadBrowseChartStyles(plots, Discovery.browseChartType);
+    }
+  }
   host.querySelectorAll(".crumbs a, .load-more-hint a").forEach((link) => {
     link.onclick = (event) => {
       const href = link.getAttribute("href") || "";
@@ -755,7 +856,18 @@ function renderDiscovery() {
     btn.onclick = () => {
       Discovery.browseCategory = btn.dataset.browse;
       Discovery.view = "browse";
-      history.pushState({}, "", `/plots?category=${encodeURIComponent(btn.dataset.browse)}`);
+      history.pushState({}, "", browsePlotsPath(Discovery.browseCategory, Discovery.browseChartType));
+      renderDiscovery();
+      highlightSidebar();
+    };
+  });
+  host.querySelectorAll("[data-browse-chart]").forEach((btn) => {
+    btn.onclick = () => {
+      let chart = btn.dataset.browseChart || "all";
+      if (chart === Discovery.browseChartType && chart !== "all") chart = "all";
+      Discovery.browseChartType = chart;
+      Discovery.view = "browse";
+      history.pushState({}, "", browsePlotsPath(Discovery.browseCategory, chart));
       renderDiscovery();
       highlightSidebar();
     };
@@ -782,11 +894,9 @@ function renderDiscovery() {
 function highlightSidebar() {
   document.querySelectorAll(".cat-nav-item").forEach((btn) => {
     let on = false;
-    if (btn.dataset.nav === "home") on = Discovery.view === "home";
     if (btn.dataset.nav === "browse") on = ((Discovery.view === "browse" && Discovery.browseCategory !== "favorites") || Discovery.view === "family" || Discovery.view === "search");
     if (btn.dataset.nav === "category") on = Discovery.view === "category";
     if (btn.dataset.nav === "favorites") on = Discovery.view === "browse" && Discovery.browseCategory === "favorites";
-    if (btn.dataset.nav === "recent") on = Discovery.view === "home";
     if (btn.dataset.analysis === "root") on = Discovery.view === "analysis";
     btn.classList.toggle("active", on);
   });
@@ -795,8 +905,7 @@ function highlightSidebar() {
 async function runDiscoverySearch(query) {
   Discovery.searchQuery = (query || "").trim();
   if (!Discovery.searchQuery) {
-    Discovery.view = "home";
-    renderDiscovery();
+    navigateDiscovery("/");
     return;
   }
   const result = await api(`/api/registry/search?q=${encodeURIComponent(Discovery.searchQuery)}`);
@@ -822,15 +931,17 @@ async function applyDiscoveryRoute() {
   Discovery.analysisTask = null;
   Discovery.chartId = null;
   Discovery.chartGroup = null;
+  Discovery.browseChartType = "all";
   if (params.get("q")) {
     runDiscoverySearch(params.get("q"));
     return;
   }
-  if (path === "/" || path === "") {
-    Discovery.view = "home";
-  } else if (path === "/plots") {
+  Discovery.searchQuery = "";
+  if (path === "/" || path === "/plots") {
     Discovery.view = "browse";
     Discovery.browseCategory = params.get("category") || "all";
+    const chart = params.get("chart") || "all";
+    Discovery.browseChartType = (chart !== "all" && findChart(chart)) ? chart : "all";
   } else if (path.startsWith("/analysis") || path.startsWith("/scenario")) {
     Discovery.view = "analysis";
     const parts = path.split("/").filter(Boolean);
@@ -861,7 +972,8 @@ async function applyDiscoveryRoute() {
     }
     return;
   } else {
-    Discovery.view = "home";
+    Discovery.view = "browse";
+    Discovery.browseCategory = "all";
   }
   renderDiscovery();
 }
@@ -893,7 +1005,6 @@ function renderSidebarDiscovery() {
   if (!nav) return;
   nav.innerHTML = `
     <div class="sidebar-sep">Discover</div>
-    <button class="cat-nav-item" data-nav="home"><span class="cat-icon">⌂</span><span class="cat-label">Home</span></button>
     <button class="cat-nav-item" data-nav="browse"><span class="cat-icon">▦</span><span class="cat-label">All Plots</span></button>
     <button class="cat-nav-item" data-analysis="root"><span class="cat-icon">◎</span><span class="cat-label">Explore by Scenario</span></button>
     <button class="cat-nav-item" data-nav="category"><span class="cat-icon">▣</span><span class="cat-label">Browse by Chart Type</span></button>
@@ -901,12 +1012,12 @@ function renderSidebarDiscovery() {
   `;
   nav.querySelectorAll("[data-nav]").forEach((btn) => {
     btn.onclick = () => {
-      if (btn.dataset.nav === "home") navigateDiscovery("/");
-      if (btn.dataset.nav === "browse") navigateDiscovery("/plots");
+      if (btn.dataset.nav === "browse") navigateDiscovery("/");
       if (btn.dataset.nav === "category") navigateDiscovery("/category");
       if (btn.dataset.nav === "favorites") {
         Discovery.view = "browse";
         Discovery.browseCategory = "favorites";
+        Discovery.browseChartType = "all";
         history.pushState({}, "", "/plots?category=favorites");
         renderDiscovery();
         highlightSidebar();

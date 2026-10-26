@@ -1,0 +1,142 @@
+summary: Plot differential effects against statistical evidence, with configurable
+  regions and highlights.
+observation_type: observations or summary items in the input table
+best_for:
+- Find large well-supported changes
+- Compare upregulated and downregulated features
+- Explain differential-selection thresholds
+common_uses: []
+input_requirements: Upstream differential-analysis results containing features, effects
+  and raw or adjusted probabilities.
+learn_more: 'Input: Upstream differential-analysis results containing features, effects
+  and raw or adjusted probabilities. Interpretation: The x-axis shows an effect; the
+  y-axis generally shows a negative-log probability, as labelled. Check mappings,
+  order and transformations before adjusting labels, colors and canvas dimensions.
+  Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: The x-axis shows an effect; the y-axis generally shows a negative-log probability,
+    as labelled.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: State the contrast direction and whether probabilities are adjusted
+- id: caution_2
+  title: Caution 2
+  text: Display filters cannot replace an appropriate replicate design and model
+examples:
+- id: avg
+  title: Average-expression differential effects
+  description: 'Use case: Find large well-supported changes. This preset illustrates
+    average-expression differential effects. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: avg
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Find large well-supported changes
+  input_requirements: Upstream differential-analysis results containing features,
+    effects and raw or adjusted probabilities.
+  preview_asset: plugins/sca_volcano_plot/all_examples_gallery/avg.png
+  variant_id: avg
+- id: percent
+  title: Detection-fraction differential view
+  description: 'Use case: Compare upregulated and downregulated features. This preset
+    illustrates detection-fraction differential view. Replace its input with your
+    data while retaining the appropriate view settings.'
+  demo_id: percent
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare upregulated and downregulated features
+  input_requirements: Upstream differential-analysis results containing features,
+    effects and raw or adjusted probabilities.
+  preview_asset: plugins/sca_volcano_plot/all_examples_gallery/percent.png
+  variant_id: percent
+- id: regions
+  title: Threshold regions and candidate labels
+  description: 'Use case: Explain differential-selection thresholds. This preset illustrates
+    threshold regions and candidate labels. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: regions
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Explain differential-selection thresholds
+  input_requirements: Upstream differential-analysis results containing features,
+    effects and raw or adjusted probabilities.
+  preview_asset: plugins/sca_volcano_plot/all_examples_gallery/regions.png
+  variant_id: regions
+literature_ids:
+- chen_ibd_2025
+- dondi_isoforms_2023
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  avg:
+    summary: 'Use case: Find large well-supported changes. This preset illustrates
+      average-expression differential effects. Replace its input with your data while
+      retaining the appropriate view settings.'
+  percent:
+    summary: 'Use case: Compare upregulated and downregulated features. This preset
+      illustrates detection-fraction differential view. Replace its input with your
+      data while retaining the appropriate view settings.'
+  regions:
+    summary: 'Use case: Explain differential-selection thresholds. This preset illustrates
+      threshold regions and candidate labels. Replace its input with your data while
+      retaining the appropriate view settings.'
+customization: []
+source_modules:
+- title: FigureYa59Plus_GEO2DEG
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa59Plus_GEO2DEG
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa59Plus_volcano_shiny
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa59Plus_volcano_shiny
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa59volcanoV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa59volcanoV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa75bubble_volcano
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa75bubble_volcano
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa117multilinearDE
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa117multilinearDE
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa118MulticlassDESeq2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa118MulticlassDESeq2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa119Multiclasslimma
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa119Multiclasslimma
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa120MulticlassedgeR
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa120MulticlassedgeR
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa135multiVolcano
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa135multiVolcano
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa235scDEG
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa235scDEG
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa321volcanoSE
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa321volcanoSE
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

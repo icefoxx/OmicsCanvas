@@ -1,0 +1,37 @@
+{
+  "plugin_id": "line_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Basic",
+      "plugin_id": "line_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/example_input.csv"
+      },
+      "expected": "basic/expected/result.png",
+      "bundle": "basic"
+    },
+    {
+      "id": "smooth",
+      "label": "Smooth",
+      "plugin_id": "line_plot",
+      "params": "smooth/params.json",
+      "inputs": {
+        "input": "smooth/input/example_input.csv"
+      },
+      "expected": "smooth/expected/result.png",
+      "bundle": "smooth"
+    },
+    {
+      "id": "interval_band",
+      "label": "Supplied confidence or credible bounds",
+      "plugin_id": "line_plot",
+      "inputs": {
+        "input": "interval_band/input/data.csv"
+      },
+      "params": "interval_band/params.json",
+      "expected": "interval_band/expected/result.png"
+    }
+  ]
+}

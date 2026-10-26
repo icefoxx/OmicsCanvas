@@ -12,7 +12,7 @@ const state = {
   selectedRows: new Set(),
   pointPickMode: "highlight",
   rowMode: "include",
-  mode: "workspace",
+  mode: "plotLibrary",
   serverState: null,
   datasets: [],
   results: [],
@@ -128,12 +128,13 @@ async function updateInstantPreview(outputs = {}) {
 async function renderPlotlyPreview(outputs = {}) {
   const plotlyBox = $("plotlyPreview");
   const img = $("preview");
-  if (!plotlyBox || !outputs.json || !window.Plotly) return false;
+  if (!plotlyBox || !outputs.json) return false;
   try {
     const sep = outputs.json.includes("?") ? "&" : "?";
     const figure = await api(`${outputs.json}${sep}t=${Date.now()}`);
     const spec = figure?.plotly;
     if (!spec?.data?.length) return false;
+    if (typeof ensurePlotly === "function" && !(await ensurePlotly())) return false;
     if (img) img.style.display = "none";
     plotlyBox.classList.remove("hidden");
     const config = {
@@ -2427,6 +2428,7 @@ async function loadLogs(jobId) {
 // ---------------------------------------------------------------------------
 const aiState = {
   sessionId: null,
+  revision: 0,
   file: null,
   recommendations: [],
   figures: [],
@@ -2434,6 +2436,23 @@ const aiState = {
   skills: [],
   lastJob: null,
 };
+
+function invalidateAiSession() {
+  aiState.revision += 1;
+  aiState.sessionId = null;
+  aiState.lastJob = null;
+  renderAiIntent(null);
+  if ($("aiProfileBox")) { $("aiProfileBox").innerHTML = ""; $("aiProfileBox").classList.add("hidden"); }
+  renderAiSkills([]);
+  renderAiRecommendations([]);
+  renderAiFigures([]);
+  renderAiPalettes([]);
+  if ($("aiDemoStatus")) $("aiDemoStatus").textContent = "Inputs changed. Recommend again before generating a figure.";
+}
+
+function setAiBusy(busy) {
+  document.querySelectorAll('#aiRecommendBtn, #aiPipelineBtn, [data-ai-demo], [data-ai-demo-builtin]').forEach((button) => { button.disabled = busy || button.dataset.invalidDraft === "true"; });
+}
 
 function aiAppendChat(text, who = "bot") {
   const log = $("aiChatLog");
@@ -2502,9 +2521,10 @@ function renderAiSkills(skills) {
         <span class="ai-score">${escapeHtml(s.score ?? "")}</span>
       </div>
       <p class="ai-rec-reason">${escapeHtml(s.reason || s.description || "")}</p>
-      <div class="ai-cols muted">${escapeHtml(s.note || "Skill = authoring guide (does not render plots).")}</div>
+      <div class="ai-cols muted">${escapeHtml(s.note || "Plot workflow guide.")}</div>
+      <div class="ai-cols muted">${s.role === "plot_workflow" ? "Plotting workflow" : "Plugin authoring guide"}${s.workflow_url ? ` · <a href="${escapeHtml(s.workflow_url)}" target="_blank" rel="noopener noreferrer">View workflow</a>` : ""}</div>
       ${(s.related_plugins || []).length
-        ? `<div class="ai-tag-row">${(s.related_plugins || [])
+        ? `<div class="ai-tag-row">${(s.matched_plugins?.length ? s.matched_plugins : s.related_plugins || [])
             .slice(0, 6)
             .map((p) => `<span class="ai-tag">${escapeHtml(p)}</span>`)
             .join("")}</div>`
@@ -2553,10 +2573,11 @@ function renderAiRecommendations(recs) {
           <span class="ai-score">score ${escapeHtml(rec.score ?? "—")}</span>
         </div>
         <p class="ai-rec-reason">${escapeHtml(rec.reason || "")}</p>
+        ${rec.draft ? `<div class="ai-draft-summary"><strong>Render plan</strong><p>${rec.draft.error ? escapeHtml(rec.draft.error) : `${escapeHtml(rec.draft.mode)} · All ${escapeHtml(rec.draft.rows ?? "uploaded")} observations`}</p><p class="ai-cols muted">${Object.entries(rec.draft.mappings || {}).map(([key, value]) => `${escapeHtml(key.replace(/_column$/, ""))}: ${escapeHtml(Array.isArray(value) ? value.join(", ") : value)}`).join(" · ")}</p></div>` : ""}
         <div class="ai-rec-actions">
-          <button type="button" class="primary compact-action" data-ai-demo="${escapeHtml(rec.plugin_id)}">Generate demo</button>
+          <button type="button" class="primary compact-action" ${rec.draft?.error ? 'disabled data-invalid-draft="true"' : ''} data-ai-demo="${escapeHtml(rec.plugin_id)}">Generate demo</button>
           <button type="button" class="secondary compact-action" data-ai-demo-builtin="${escapeHtml(rec.plugin_id)}">Built-in demo</button>
-          <a class="secondary compact-action" href="${rec.editor_url || `/static/editor.html?plugin=${escapeHtml(rec.plugin_id)}`}" target="_blank">Open Editor</a>
+          <a class="secondary compact-action" href="${rec.editor_url || `/static/editor.html?plugin=${escapeHtml(rec.plugin_id)}`}" target="_blank" rel="noopener noreferrer">Open example</a>
         </div>
       </div>
     `;
@@ -2621,7 +2642,7 @@ function renderAiFigures(figures) {
         <p class="ai-explain-text">${escapeHtml(fig.explanation || fig.reason || "—")}</p>
       </div>
       <div class="ai-rec-actions">
-        <a class="secondary compact-action" href="${fig.editor_url || `/static/editor.html?plugin=${escapeHtml(fig.plugin_id)}`}" target="_blank">Open Editor</a>
+        <a class="secondary compact-action" href="${fig.editor_url || `/static/editor.html?plugin=${escapeHtml(fig.plugin_id)}`}" target="_blank" rel="noopener noreferrer">${fig.job_id ? "Open Editor" : "Open example"}</a>
         ${dl ? `<span class="ai-dl-row">${dl}</span>` : ""}
       </div>
       ${fig.ai?.note ? `<div class="ai-cols muted">${escapeHtml(fig.ai.note)}</div>` : ""}
@@ -2687,18 +2708,18 @@ function applyAiSessionResult(result, { withFigures = false } = {}) {
 }
 
 async function runAiRecommend() {
+  const revision = aiState.revision;
   const fileInput = $("aiFileInput");
   const file = fileInput?.files?.[0] || aiState.file;
   if (!file) {
-    aiAppendChat("Please choose a CSV/TSV file first.", "bot");
+    aiAppendChat("Please choose a CSV, TSV or XLSX table first.", "bot");
     return;
   }
   aiState.file = file;
   const goal = $("aiGoalInput")?.value || "";
   const btn = $("aiRecommendBtn");
   const pipeBtn = $("aiPipelineBtn");
-  if (btn) btn.disabled = true;
-  if (pipeBtn) pipeBtn.disabled = true;
+  setAiBusy(true);
   if ($("aiDemoStatus")) $("aiDemoStatus").textContent = "Profiling table + ranking plots…";
   aiAppendChat(`Recommend only · ${file.name}${goal ? `; goal: ${goal}` : ""}`, "user");
   try {
@@ -2707,6 +2728,8 @@ async function runAiRecommend() {
     form.append("goal", goal);
     form.append("top_k", "3");
     const result = await api("/api/ai/recommend", { method: "POST", body: form });
+    if (revision !== aiState.revision) return;
+    renderAiFigures([]);
     applyAiSessionResult(result, { withFigures: false });
     const engine = result.engine || "rules";
     const intentLine = result.intent?.summary ? `\nIntent: ${result.intent.summary}` : "";
@@ -2727,15 +2750,16 @@ async function runAiRecommend() {
         "Recommendations ready. Use “Run top 3 & explain” to render demos, or generate one demo from a card.";
     }
   } catch (err) {
+    if (revision !== aiState.revision) return;
     aiAppendChat(`Analysis failed: ${err.message}`, "bot");
     if ($("aiDemoStatus")) $("aiDemoStatus").textContent = `Failed: ${err.message}`;
   } finally {
-    if (btn) btn.disabled = false;
-    if (pipeBtn) pipeBtn.disabled = false;
+    setAiBusy(false);
   }
 }
 
 async function runAiPipeline() {
+  const revision = aiState.revision;
   const fileInput = $("aiFileInput");
   const file = fileInput?.files?.[0] || aiState.file;
   const goal = $("aiGoalInput")?.value || "";
@@ -2745,15 +2769,14 @@ async function runAiPipeline() {
   // Prefer reusing session if we already recommended; else need a file
   const hasSession = Boolean(aiState.sessionId);
   if (!file && !hasSession) {
-    aiAppendChat("Please choose a CSV/TSV file first.", "bot");
+    aiAppendChat("Please choose a CSV, TSV or XLSX table first.", "bot");
     return;
   }
 
-  if (btn) btn.disabled = true;
-  if (recBtn) recBtn.disabled = true;
+  setAiBusy(true);
   if ($("aiDemoStatus")) {
     $("aiDemoStatus").textContent =
-      "Full pipeline: summarize intent → match plots/skills → render top 3 → AI explain… (may take 1–3 min)";
+      "Preparing full-data plot drafts and rendering compatible matches…";
   }
   if ($("aiFiguresGrid")) {
     $("aiFiguresGrid").innerHTML = `<div class="ai-empty">Rendering top 3 demos…</div>`;
@@ -2784,6 +2807,7 @@ async function runAiPipeline() {
         }),
       });
     }
+    if (revision !== aiState.revision) return;
     applyAiSessionResult(result, { withFigures: true });
     const figs = result.figures || [];
     const okN = figs.filter((f) => f.status === "completed").length;
@@ -2798,23 +2822,25 @@ async function runAiPipeline() {
         `Pipeline complete · engine=${engine} · ${okN}/${figs.length} demos OK`;
     }
   } catch (err) {
+    if (revision !== aiState.revision) return;
     aiAppendChat(`Pipeline failed: ${err.message}`, "bot");
     if ($("aiDemoStatus")) $("aiDemoStatus").textContent = `Failed: ${err.message}`;
     if ($("aiFiguresGrid")) {
       $("aiFiguresGrid").innerHTML = `<div class="ai-empty">Pipeline failed: ${escapeHtml(err.message)}</div>`;
     }
   } finally {
-    if (btn) btn.disabled = false;
-    if (recBtn) recBtn.disabled = false;
+    setAiBusy(false);
   }
 }
 
-async function runAiBuildDemo(pluginId, preferBuiltin) {
+async function runAiBuildDemo(pluginId, preferBuiltin, customParams = null) {
+  const revision = aiState.revision;
   if (!aiState.sessionId) {
     aiAppendChat("Please run “Recommend only” or “Run top 3 & explain” first.", "bot");
     return;
   }
   if (!pluginId) return;
+  setAiBusy(true);
   if ($("aiDemoStatus")) $("aiDemoStatus").textContent = `Generating and rendering demo for ${pluginId}…`;
   aiAppendChat(
     `Generate demo: ${pluginId}${preferBuiltin ? " (built-in sample data)" : " (adapt your data)"}`,
@@ -2828,8 +2854,10 @@ async function runAiBuildDemo(pluginId, preferBuiltin) {
         session_id: aiState.sessionId,
         plugin_id: pluginId,
         prefer_builtin_demo: Boolean(preferBuiltin),
+        params: customParams || undefined,
       }),
     });
+    if (revision !== aiState.revision) return;
     aiState.lastJob = result;
     const ok = result.status === "completed";
     const note = result.ai?.note || result.message || "";
@@ -2855,10 +2883,11 @@ async function runAiBuildDemo(pluginId, preferBuiltin) {
       /* optional */
     }
 
+    if (revision !== aiState.revision) return;
     const fig = {
       rank: 1,
       plugin_id: pluginId,
-      name: pluginId,
+      name: aiState.recommendations.find((rec) => rec.plugin_id === pluginId)?.name || pluginId,
       reason: note,
       status: result.status,
       outputs: result.outputs,
@@ -2889,12 +2918,16 @@ async function runAiBuildDemo(pluginId, preferBuiltin) {
       } catch (_) {}
     }
   } catch (err) {
+    if (revision !== aiState.revision) return;
     if ($("aiDemoStatus")) $("aiDemoStatus").textContent = `Failed: ${err.message}`;
     aiAppendChat(`Generation failed: ${err.message}`, "bot");
+  } finally {
+    setAiBusy(false);
   }
 }
 
 async function runAiChat() {
+  const revision = aiState.revision;
   const input = $("aiChatInput");
   const message = (input?.value || "").trim();
   if (!message) return;
@@ -2904,10 +2937,25 @@ async function runAiChat() {
     const result = await api("/api/ai/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message, session_id: aiState.sessionId }),
+      body: JSON.stringify({ message, session_id: aiState.sessionId, plugin_id: aiState.lastJob?.plugin_id }),
     });
+    if (revision !== aiState.revision) return;
     aiAppendChat(result.reply || "(empty reply)", "bot");
+    if (result.render_action) {
+      const action = result.render_action;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "primary compact-action";
+      button.textContent = "Apply & render";
+      button.onclick = () => {
+        if (revision !== aiState.revision) return;
+        button.disabled = true;
+        runAiBuildDemo(action.plugin_id, false, { ...(aiState.lastJob?.params_used || {}), ...action.params });
+      };
+      $("aiChatLog")?.appendChild(button);
+    }
   } catch (err) {
+    if (revision !== aiState.revision) return;
     aiAppendChat(`Chat failed: ${err.message}`, "bot");
   }
 }
@@ -2918,10 +2966,12 @@ function wireAiStudio() {
     fileInput.onchange = () => {
       const f = fileInput.files?.[0];
       aiState.file = f || null;
+      invalidateAiSession();
       const label = $("aiFileLabel");
       if (label) label.textContent = f ? f.name : "Choose CSV / TSV / XLSX";
     };
   }
+  if ($("aiGoalInput")) $("aiGoalInput").oninput = invalidateAiSession;
   if ($("aiRecommendBtn")) $("aiRecommendBtn").onclick = runAiRecommend;
   if ($("aiPipelineBtn")) $("aiPipelineBtn").onclick = runAiPipeline;
   if ($("aiChatSend")) $("aiChatSend").onclick = runAiChat;
@@ -3007,7 +3057,7 @@ async function init() {
   await refreshState();
   await refreshDatasets();
   await refreshReports();
-  setMode("plotLibrary");
+  setMode(state.mode);
   $("paramsText").addEventListener("blur", () => {
     try {
       state.params = JSON.parse($("paramsText").value || "{}");

@@ -1,0 +1,99 @@
+summary: Compare multimetric profiles along radial axes, with optional normalization.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare multidimensional method performance
+- Inspect sample score profiles
+- Identify trade-offs across metrics
+common_uses: []
+input_requirements: Metric/group/value long data or a wide metric-by-group table.
+learn_more: 'Input: Metric/group/value long data or a wide metric-by-group table.
+  Interpretation: Each axis represents a metric with its own configured scale and
+  normalization. Check mappings, order and transformations before adjusting labels,
+  colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Each axis represents a metric with its own configured scale and normalization.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Polygon area depends on axis order and is not an overall score
+- id: caution_2
+  title: Caution 2
+  text: Different units require a defensible normalization strategy
+examples:
+- id: basic
+  title: Multigroup metric profiles
+  description: 'Use case: Compare multidimensional method performance. This preset
+    illustrates multigroup metric profiles. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare multidimensional method performance
+  input_requirements: Metric/group/value long data or a wide metric-by-group table.
+  preview_asset: plugins/interactive_radar_plot/all_examples_gallery/basic.png
+  mappings:
+    metric_column: metric
+- id: custom_layout
+  title: Axis order and ranges
+  description: 'Use case: Inspect sample score profiles. This preset illustrates axis
+    order and ranges. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: custom_layout
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect sample score profiles
+  input_requirements: Metric/group/value long data or a wide metric-by-group table.
+  preview_asset: plugins/interactive_radar_plot/all_examples_gallery/custom_layout.png
+  mappings:
+    metric_column: metric
+- id: interactive
+  title: Inspect metric values on hover
+  description: 'Use case: Identify trade-offs across metrics. This preset illustrates
+    inspect metric values on hover. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: interactive
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Identify trade-offs across metrics
+  input_requirements: Metric/group/value long data or a wide metric-by-group table.
+  preview_asset: plugins/interactive_radar_plot/all_examples_gallery/interactive.png
+  variant_id: interactive
+  mappings:
+    metric_column: metric
+literature_ids:
+- hao_dnt_2026
+- nimo_opendvp_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  interactive:
+    summary: 'Use case: Identify trade-offs across metrics. This preset illustrates
+      inspect metric values on hover. Replace its input with your data while retaining
+      the appropriate view settings.'
+customization:
+- parameter: input_mode
+  label: input_mode
+  default: null
+- parameter: group_column
+  label: group_column
+  default: null
+- parameter: value_column
+  label: value_column
+  default: null
+- parameter: group_colors
+  label: group_colors
+  default: null
+- parameter: width
+  label: width
+  default: 8
+- parameter: height
+  label: height
+  default: 7
+source_modules:
+- title: FigureYa8radar
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa8radar
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

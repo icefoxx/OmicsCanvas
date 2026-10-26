@@ -10,7 +10,7 @@ from typing import Any
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.concurrency import run_in_threadpool
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, PlainTextResponse
 
 from plot_web import ai_assistant
 from plot_web import palettes as palette_catalog
@@ -178,18 +178,33 @@ def _execute_ai_demo(
     saved_files: dict[str, Path] = {}
     params: dict[str, Any] = {}
     use_builtin = prefer_builtin
+    goal = str(session.get("goal") or "")
+    selected = next((r for r in session.get("recommendations", []) if r.get("plugin_id") == plugin_id), {})
 
     if not use_builtin:
         try:
             saved_files, params, note = ai_assistant.prepare_demo_files(
-                plugin_id, source, profile, work_dir
+                plugin_id, source, profile, work_dir, goal=goal, custom_params=custom_params
             )
-        except Exception as exc:
-            use_builtin = True
-            note = f"Adapt failed ({exc}); falling back to plugin built-in demo."
+        except (ValueError, KeyError) as exc:
+            return {"plugin_id": plugin_id, "status": "failed",
+                    "error": {"error": "Input mapping needs attention", "detail": str(exc),
+                              "suggestion": "Check the required columns. Built-in examples are available as a separate action."},
+                    "ai": {"mode": "adapted_user_data", "note": "Your uploaded data was not replaced.", "goal": goal}}
 
     if use_builtin or not saved_files:
-        demo = demo_payload(plugin_id, config)
+        examples = list((plugin_path(plugin_id) / "examples").glob("*/manifest.json"))
+        example_id = selected.get("example_id") or ("basic" if any(p.parent.name == "basic" for p in examples) else None)
+        from plot_web.ai_plot_draft import intent_params
+        try:
+            requested = intent_params(plugin_id, goal)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        # Keep the example's title and statistical settings consistent with its mode.
+        requested_example = requested.get("plot_type") or requested.get("curve_type")
+        if requested_example and any(p.parent.name == requested_example for p in examples):
+            example_id = requested_example
+        demo = demo_payload(plugin_id, config, example_id=example_id)
         saved_files = demo.pop("_file_paths", {}) or {}
         demo_params = demo.get("params") or {}
         if isinstance(demo_params, dict) and isinstance(demo_params.get("params"), dict):
@@ -201,8 +216,13 @@ def _execute_ai_demo(
         for k in ("name", "path"):
             params.pop(k, None)
         mode_used = "builtin_demo"
+        primary = saved_files.get("input") or saved_files.get("file") or next(iter(saved_files.values()), None)
+        if primary and primary.suffix.lower() in {".csv", ".tsv", ".txt", ".xlsx", ".xlsm"}:
+            profile = ai_assistant.profile_table(primary)
+        else:
+            profile = {"row_count_estimate": None, "columns": []}
         if not note:
-            note = "Used plugin built-in demo data (safest path). Your upload informed the plugin choice."
+            note = "Built-in synthetic example selected explicitly. These are not results from your upload."
         if not saved_files:
             return {
                 "plugin_id": plugin_id,
@@ -212,6 +232,12 @@ def _execute_ai_demo(
                 "editor_url": f"/static/editor.html?plugin={plugin_id}",
             }
 
+    if use_builtin:
+        from plot_web.ai_plot_draft import intent_params
+        try:
+            params.update(intent_params(plugin_id, goal))
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
     if isinstance(custom_params, dict):
         params.update(custom_params)
     params["plugin_id"] = plugin_id
@@ -247,44 +273,20 @@ def _execute_ai_demo(
         save_job(job)
         return job
 
-    cmd = build_command(plugin_id, config, saved_files, params_path, output_dir)
-    completed = run_local_job(job, cmd, plugin_path(plugin_id), output_dir)
-
-    if completed.get("status") != "completed" and mode_used == "adapted_user_data":
-        demo = demo_payload(plugin_id, config)
-        fb_files = demo.pop("_file_paths", {}) or {}
-        demo_params = demo.get("params") or {}
-        if isinstance(demo_params, dict) and isinstance(demo_params.get("params"), dict):
-            fb_params = dict(demo_params["params"])
-        elif isinstance(demo_params, dict):
-            fb_params = dict(demo_params.get("params") or demo_params)
-        else:
-            fb_params = {}
-        for k in ("name", "path"):
-            fb_params.pop(k, None)
-        if fb_files:
-            fb_params["plugin_id"] = plugin_id
-            fb_params.setdefault("dispatch_mode", DEFAULT_DISPATCH_MODE)
-            params_path.write_text(json.dumps(fb_params, indent=2, ensure_ascii=False), encoding="utf-8")
-            job["ai"] = {
-                "session_id": session_id,
-                "mode": "builtin_demo_fallback",
-                "note": (
-                    f"Adapted data failed ({(completed.get('error') or {}).get('detail') or completed.get('status')}); "
-                    "retried with plugin built-in demo."
-                ),
-                "goal": session.get("goal"),
-            }
-            job["uploaded_files"] = {k: str(v) for k, v in fb_files.items()}
-            job["status"] = "queued"
-            save_job(job)
-            cmd2 = build_command(plugin_id, config, fb_files, params_path, output_dir)
-            completed = run_local_job(job, cmd2, plugin_path(plugin_id), output_dir)
-            completed["ai"] = job["ai"]
-            params = fb_params
+    required = [item.get("id") or item.get("name") or "input" for item in config.get("inputs", []) if item.get("required")]
+    missing = [key for key in required if key not in saved_files and not (key == "input" and "file" in saved_files)]
+    try:
+        if missing:
+            raise ValueError("Upload required input file(s): " + ", ".join(missing) + ". Use the editor to supply auxiliary tables.")
+        cmd = build_command(plugin_id, config, saved_files, params_path, output_dir)
+        completed = run_local_job(job, cmd, plugin_path(plugin_id), output_dir)
+    except Exception as exc:
+        completed = {**job, "status": "failed", "message": "Check input mappings before rendering.",
+                     "error": {"error": "Input validation failed", "detail": f"{exc}. Available columns: {', '.join(profile.get('columns') or [])}.",
+                               "suggestion": "Map the required roles in the editor. Your upload has not been replaced."}}
 
     completed["ai"] = completed.get("ai") or job.get("ai")
-    completed["editor_url"] = f"/static/editor.html?plugin={plugin_id}"
+    completed["editor_url"] = f"/static/editor.html?plugin={plugin_id}&job={job_id}"
     completed["params_used"] = params
     completed["plugin_id"] = plugin_id
     # attach figure.json meta if present
@@ -294,6 +296,11 @@ def _execute_ai_demo(
             completed["figure_meta"] = json.loads(fj.read_text(encoding="utf-8"))
     except Exception:
         pass
+    from plot_web.ai_plot_draft import draft_summary
+    completed['draft'] = draft_summary(plugin_id, profile, params)
+    completed['draft']['data_scope'] = 'builtin_example' if use_builtin else 'all_rows'
+    completed['draft']['mode'] = params.get('plot_type') or params.get('curve_type') or params.get('layout') or 'default'
+    completed['draft']['params'] = params
     save_job(completed)
     return completed
 
@@ -609,11 +616,18 @@ async def ai_chat(request: Request) -> JSONResponse:
             except Exception:
                 context = {}
 
+    from plot_web.ai_plot_draft import chat_draft
+    try:
+        proposed = chat_draft(context, message, str(body.get('plugin_id') or ''))
+    except (ValueError, KeyError) as exc:
+        return JSONResponse({'reply': str(exc), 'engine': 'rules'})
+    if proposed:
+        return JSONResponse(proposed)
     recs = context.get("recommendations") or []
     system = (
         "You are OmicsCanvas Plot Studio AI assistant. Help users choose bioinformatics plots. "
         "Be concise. Always reply in English only (never use Chinese characters in the reply). "
-        "If recommending plugins, use only existing plugin_ids from context."
+        "If recommending plugins, use only existing plugin_ids from context. You can explain but cannot execute edits; never claim data or colors were changed."
     )
     user_payload = {
         "message": message,
@@ -643,7 +657,8 @@ async def ai_chat(request: Request) -> JSONResponse:
             fallback + "Based on your uploaded table, recommendations:",
             *[f"• **{r.get('name')}** (`{r.get('plugin_id')}`) — {r.get('reason')}" for r in recs[:3]],
             "",
-            "Click “Generate demo” on a card to render a small subsample (or the plugin’s built-in demo).",
+            "Uploaded-data plots use every observation. Use a built-in example only through its separate button.",
+            "In rules mode I can explain workflows, confirm the data scope, or prepare named group colors for Apply & render. Other edits are available in the editor.",
             "You can also open the Editor to fine-tune parameters.",
         ]
         return JSONResponse({"reply": "\n".join(lines), "engine": "rules"})
@@ -651,7 +666,19 @@ async def ai_chat(request: Request) -> JSONResponse:
     return JSONResponse(
         {
             "reply": fallback
-            + "Please upload a table and click “Analyze & Recommend”. I will suggest plot types from column types and your goal, then generate a small demo.",
+            + "Please upload a table and click “Recommend only”. I will suggest plot types from column types and your goal, then generate a small demo.",
             "engine": "rules",
         }
     )
+
+
+@router.get("/api/ai/skills/{skill_id}")
+def read_plot_workflow(skill_id: str) -> PlainTextResponse:
+    import re
+    if not re.fullmatch(r"[a-z0-9][a-z0-9_-]*", skill_id):
+        raise HTTPException(status_code=404, detail="Workflow not found")
+    root = (ROOT_DIR / 'skills').resolve()
+    path = (root / skill_id / 'SKILL.md').resolve()
+    if not path.is_relative_to(root) or not path.is_file():
+        raise HTTPException(status_code=404, detail="Workflow not found")
+    return PlainTextResponse(path.read_text(encoding='utf-8'))

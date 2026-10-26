@@ -1,0 +1,10 @@
+{
+  "value_column": "value",
+  "group_column": "group",
+  "group_order": ["Control", "Treated", "Rescue"],
+  "title": "Expression by treatment",
+  "orientation": "vertical",
+  "x_axis_text_angle": 30,
+  "width": 6,
+  "height": 5
+}

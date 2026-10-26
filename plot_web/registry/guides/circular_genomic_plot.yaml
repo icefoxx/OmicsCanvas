@@ -1,0 +1,260 @@
+summary: Arrange supplied genomic intervals, values and optional links on a circular
+  genome.
+observation_type: observations or supplied summaries described in the input contract
+input_requirements: 'Intervals: chromosome, start, end, value and optional track.
+  Coordinates are 0-based, half-open. Optional chromosome/length and source_chr/source_pos/target_chr/target_pos
+  link tables.'
+best_for:
+- Compare supplied genomic interval tracks
+- Show chromosome-spanning associations
+- Compare circular and linear coordinate layouts
+learn_more: Choose the intended data mapping and statistical mode before styling.
+  Use chromosome lengths from the correct genome assembly. Inferred maximum interval
+  ends are not a complete genome.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: 'Arrange supplied genomic intervals, values and optional links on a circular
+    genome. Intervals: chromosome, start, end, value and optional track. Coordinates
+    are 0-based, half-open. Optional chromosome/length and source_chr/source_pos/target_chr/target_pos
+    link tables.'
+cautions:
+- id: caution_1
+  title: Interpretation limit 1
+  text: Use chromosome lengths from the correct genome assembly. Inferred maximum
+    interval ends are not a complete genome.
+- id: caution_2
+  title: Interpretation limit 2
+  text: Assembly conversion, peak calling and BigWig extraction are upstream operations.
+    Track heights use within-track numeric ranges.
+examples:
+- id: basic
+  title: Circular interval heatmap
+  description: Compare supplied genomic interval tracks
+  scenario: Compare supplied genomic interval tracks
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/circular_genomic_plot/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    chromosome_column: chromosome
+    start_column: start
+    end_column: end
+    value_column: value
+    group_column: track
+- id: bars
+  title: Circular interval magnitudes
+  description: Show chromosome-spanning associations
+  scenario: Show chromosome-spanning associations
+  demo_id: bars
+  variant_id: bars
+  preview_asset: plugins/circular_genomic_plot/all_examples_gallery/bars.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    chromosome_column: chromosome
+    start_column: start
+    end_column: end
+    value_column: value
+    group_column: track
+- id: points
+  title: Circular interval points
+  description: Compare circular and linear coordinate layouts
+  scenario: Compare circular and linear coordinate layouts
+  demo_id: points
+  variant_id: points
+  preview_asset: plugins/circular_genomic_plot/all_examples_gallery/points.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    chromosome_column: chromosome
+    start_column: start
+    end_column: end
+    value_column: value
+    group_column: track
+- id: linear
+  title: Linear chromosome overview
+  description: Compare circular and linear coordinate layouts
+  scenario: Compare circular and linear coordinate layouts
+  demo_id: linear
+  variant_id: linear
+  preview_asset: plugins/circular_genomic_plot/all_examples_gallery/linear.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    chromosome_column: chromosome
+    start_column: start
+    end_column: end
+    value_column: value
+    group_column: track
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source. Local demos use independently
+  generated data and are not reproductions of its analyses.
+- Additional verified published figure/panel examples remain to be curated.
+customization:
+- parameter: chromosome_column
+  label: Chromosome column
+  default: chromosome
+  help: ''
+- parameter: start_column
+  label: Start column
+  default: start
+  help: ''
+- parameter: end_column
+  label: End column
+  default: end
+  help: ''
+- parameter: value_column
+  label: Value column
+  default: value
+  help: ''
+- parameter: group_column
+  label: Group column
+  default: track
+  help: ''
+- parameter: layout
+  label: Layout
+  default: circular
+  help: ''
+- parameter: track_type
+  label: Track type
+  default: heatmap
+  help: Circular layout only; linear layout uses interval rectangles.
+- parameter: gap_angle
+  label: Gap angle
+  default: 2
+  help: Circular layout only; total chromosome gaps must remain below 180 degrees.
+- parameter: link_show
+  label: Link show
+  default: true
+  help: ''
+- parameter: link_alpha
+  label: Link alpha
+  default: 0.4
+  help: Only with a supplied links table and link_show enabled.
+- parameter: point_size
+  label: Point size
+  default: 2
+  help: Circular point track only.
+- parameter: line_width
+  label: Line width
+  default: 0.6
+  help: Only for supplied links.
+- parameter: link_color
+  label: Link color
+  default: '#627D96'
+  help: Only when links are drawn.
+- parameter: low_color
+  label: Low color
+  default: '#397DA3'
+  help: ''
+- parameter: high_color
+  label: High color
+  default: '#CD5865'
+  help: ''
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: legend_title
+  label: Legend title
+  default: ''
+  help: ''
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: label_size
+  label: Label size
+  default: 2.8
+  help: Circular chromosome labels only.
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: grid_show
+  label: Grid show
+  default: false
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report input mappings, units, preprocessing and all
+    selected statistical or display modes.'
+source_modules:
+- title: FigureYa10chromosomeV2_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa10chromosomeV2_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa14circos
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa14circos
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa26circos_R
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa26circos_R
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa74OmicCircos
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa74OmicCircos
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa79CNV
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa79CNV
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa261circGene
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa261circGene
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

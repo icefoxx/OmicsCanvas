@@ -1,0 +1,10 @@
+{
+  "id": "decision_curve",
+  "label": "Net benefit by threshold",
+  "plugin_id": "binary_evaluation_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

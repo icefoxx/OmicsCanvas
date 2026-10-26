@@ -1,0 +1,10 @@
+{
+  "id": "radial",
+  "label": "Supplied outward displacement field",
+  "plugin_id": "embedding_vector_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

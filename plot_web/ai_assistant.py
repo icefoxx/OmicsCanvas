@@ -186,7 +186,7 @@ def profile_table(path: Path, max_rows: int = 80, sheet: str | int | None = 0) -
         tags.append("de_stats")
     if any(re.search(r"nes|pathway|term|enrich", c, re.I) for c in columns):
         tags.append("enrichment")
-    if any(re.search(r"stage|time|visit|t\d", c, re.I) for c in columns):
+    if sum(bool(re.search(r"^(?:stage|time|visit|t)[_ -]?\d+$", c, re.I)) for c in columns) >= 2:
         tags.append("stages")
     if n_num >= 3 and n_cat >= 1 and n_col <= 20:
         tags.append("multi_metric")
@@ -220,6 +220,48 @@ def profile_table(path: Path, max_rows: int = 80, sheet: str | int | None = 0) -
 
 # plugin_id -> (priority keywords/tags, reason template, default param hints)
 RULES: list[dict[str, Any]] = [
+    {'plugin_id': 'survival_plot', 'required_goal_keywords': ['kaplan', 'survival curve', '生存曲线'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['kaplan', 'survival curve', '生存曲线'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'binary_evaluation_plot', 'required_goal_keywords': ['roc curve', 'precision recall', 'calibration curve', 'decision curve', 'auc curve'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['roc curve', 'precision recall', 'calibration curve', 'decision curve', 'auc curve'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'forest_plot', 'required_goal_keywords': ['forest plot', '森林图'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['forest plot', '森林图'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'oncoprint_plot', 'required_goal_keywords': ['oncoprint', 'mutation matrix', '突变矩阵'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['oncoprint', 'mutation matrix', '突变矩阵'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'manhattan_qq_plot', 'required_goal_keywords': ['manhattan', 'qq plot'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['manhattan', 'qq plot'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'bland_altman_plot', 'required_goal_keywords': ['bland altman', 'bland-altman'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['bland altman', 'bland-altman'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'swimmer_plot', 'required_goal_keywords': ['swimmer', '泳道图'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['swimmer', '泳道图'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'protein_variant_plot', 'required_goal_keywords': ['protein variant', 'protein mutation', '蛋白突变'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['protein variant', 'protein mutation', '蛋白突变'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'clonal_fish_plot', 'required_goal_keywords': ['clonal fish', 'clone fraction', 'fish plot'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['clonal fish', 'clone fraction', 'fish plot'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'sequence_alignment_plot', 'required_goal_keywords': ['sequence alignment', '序列比对图'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['sequence alignment', '序列比对图'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'circular_genomic_plot', 'required_goal_keywords': ['circular genome', 'circular genomic'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['circular genome', 'circular genomic'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'nomogram_plot', 'required_goal_keywords': ['nomogram', '列线图'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['nomogram', '列线图'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'interactive_3d_scatter', 'required_goal_keywords': ['3d embedding', '3d scatter', '三维散点'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['3d embedding', '3d scatter', '三维散点'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'bar3d_plot', 'required_goal_keywords': ['lego plot', '3d bar'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['lego plot', '3d bar'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'radviz_plot', 'required_goal_keywords': ['radviz', 'feature wheel'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['radviz', 'feature wheel'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'ecdf_plot', 'required_goal_keywords': ['ecdf', 'empirical cdf'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['ecdf', 'empirical cdf'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'spatial_region_plot', 'required_goal_keywords': ['spatial region', 'spatial spot', '空间区域', '空间点'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['spatial region', 'spatial spot', '空间区域', '空间点'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'annotated_tree_plot', 'required_goal_keywords': ['annotated tree', 'weighted tree'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['annotated tree', 'weighted tree'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'circular_distribution_plot', 'required_goal_keywords': ['circular score', 'circular distribution'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['circular score', 'circular distribution'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'embedding_vector_plot', 'required_goal_keywords': ['embedding vector', 'velocity arrows'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['embedding vector', 'velocity arrows'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'linked_matrix_network_plot', 'required_goal_keywords': ['linked heatmap', 'linked matrix'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['linked heatmap', 'linked matrix'], 'variant_id': 'basic', 'example_id': 'basic'},
+    {'plugin_id': 'risk_stratification_panel', 'required_goal_keywords': ['risk stratification panel', 'risk score panel', '风险评分面板'], 'score_tags': {}, 'score_cols': [], 'reason': 'Use the specialty renderer with supplied analysis-ready data; consult its input contract and scientific cautions.', 'goal_keywords': ['risk stratification panel', 'risk score panel', '风险评分面板'], 'variant_id': 'basic', 'example_id': 'basic'},
+
+    {
+        "plugin_id": "circular_tree_embedding",
+        "required_goal_keywords": ["circular tree", "radial tree", "tree + embedding", "tree embedding", "树状图+降维", "树状图＋降维", "环形树"],
+        "score_tags": {"embedding": 15},
+        "score_cols": [r"^class$", r"^subclass$", r"^subtype$"],
+        "reason": "Link the supplied embedding to a circular annotation hierarchy with matching colors.",
+        "goal_keywords": ["circular tree", "radial tree", "tree + embedding", "tree embedding", "树状图+降维", "树状图＋降维", "环形树"],
+        "variant_id": "basic",
+        "example_id": "basic",
+    },
+    {
+        "plugin_id": "interactive_enrichment_lollipop",
+        "score_tags": {},
+        "score_cols": [r"^(tf|regulon|transcription_factor)$", r"^(effect|log2?fc|avg_log2fc|nes)$"],
+        "reason": "A signed TF/regulon comparison can use a diverging lollipop with explicit probability-size mapping.",
+        "goal_keywords": ["lollipop", "regulon", "transcription factor", "transcription-factor", "转录因子", "棒棒糖"],
+        "variant_id": "diverging_tf",
+        "example_id": "CAB_demo",
+    },
     {
         "plugin_id": "sca_volcano_plot",
         "score_tags": {"de_stats": 8},
@@ -388,8 +430,13 @@ RULES: list[dict[str, Any]] = [
 
 def _plugin_catalog(plugin_dir: Path) -> dict[str, dict[str, Any]]:
     catalog: dict[str, dict[str, Any]] = {}
+    from plot_web.plot_registry import load_registry, plot_is_listed
+    registry = load_registry()
+    listed = {p['engine_plugin_id'] for p in registry['plots'] if plot_is_listed(p)}
     for config_path in sorted(plugin_dir.glob("*/config.yaml")):
         pid = config_path.parent.name
+        if pid not in listed:
+            continue
         try:
             import yaml
 
@@ -403,7 +450,7 @@ def _plugin_catalog(plugin_dir: Path) -> dict[str, dict[str, Any]]:
             "name": cfg.get("display_name") or cfg.get("name") or pid,
             "description": (cfg.get("description") or "")[:280],
             "category": cfg.get("category") or "",
-            "has_demo": bool(list(config_path.parent.glob("example*.csv"))),
+            "has_demo": bool(list(config_path.parent.glob("example*.csv")) or list(config_path.parent.glob("examples/*/manifest.json"))),
         }
     return catalog
 
@@ -421,12 +468,16 @@ def recommend_plugins(
     n_num = len(profile.get("numeric_columns") or [])
     scores: dict[str, float] = {pid: 0.0 for pid in catalog}
     reasons: dict[str, str] = {}
+    views: dict[str, dict[str, str]] = {}
 
     for rule in RULES:
         pid = rule["plugin_id"]
         if pid not in catalog:
             continue
-        score = 0.0
+        required_goal = rule.get("required_goal_keywords") or []
+        if required_goal and not any(kw.lower() in goal_l for kw in required_goal):
+            continue
+        score = 100.0 if required_goal else 0.0
         for tag, w in (rule.get("score_tags") or {}).items():
             if tag in tags:
                 score += float(w)
@@ -445,6 +496,8 @@ def recommend_plugins(
         if score > 0:
             scores[pid] = scores.get(pid, 0) + score
             reasons[pid] = rule.get("reason") or catalog[pid]["description"]
+            if rule.get("variant_id") and rule.get("example_id"):
+                views[pid] = {"variant_id": rule["variant_id"], "example_id": rule["example_id"]}
 
     # mild prior for plugins with demos
     for pid, meta in catalog.items():
@@ -475,11 +528,20 @@ def recommend_plugins(
                 "score": round(sc, 2),
                 "reason": reasons.get(pid) or meta["description"] or "Matches table structure.",
                 "has_demo": meta["has_demo"],
-                "editor_url": f"/static/editor.html?plugin={pid}",
+                "editor_url": f"/static/editor.html?plugin={pid}" + (
+                    f"&variant={views[pid]['variant_id']}&example={views[pid]['example_id']}" if pid in views else ""),
+                **views.get(pid, {}),
             }
         )
         if len(out) >= top_k:
             break
+    from plot_web.ai_plot_draft import draft_summary
+    for rec in out:
+        try:
+            params = build_params_for_plugin(rec['plugin_id'], profile, goal)
+            rec['draft'] = draft_summary(rec['plugin_id'], profile, params)
+        except ValueError as exc:
+            rec['draft'] = {'data_scope': 'all_rows', 'rows': profile.get('row_count_estimate'), 'error': str(exc)}
     return out
 
 
@@ -574,6 +636,11 @@ def refine_with_spacexai(
                 pass
         base["source"] = "llm"
         refined.append(base)
+    # Explicit scientific intent remains authoritative even when an LLM reorders candidates.
+    explicit = [c for c in candidates if c.get('score', 0) >= 100]
+    if explicit:
+        seen = {c['plugin_id'] for c in explicit}
+        refined = explicit + [c for c in refined if c['plugin_id'] not in seen]
     return refined or None
 
 
@@ -599,7 +666,7 @@ def _subsample_rows(rows: list[dict[str, Any]], max_n: int = 60) -> list[dict[st
     return out
 
 
-def build_params_for_plugin(plugin_id: str, profile: dict[str, Any]) -> dict[str, Any]:
+def build_params_for_plugin(plugin_id: str, profile: dict[str, Any], goal: str = "", custom_params: dict[str, Any] | None = None) -> dict[str, Any]:
     """Heuristic params so adapted user data can run."""
     cols = profile.get("columns") or []
     num = profile.get("numeric_columns") or []
@@ -651,6 +718,25 @@ def build_params_for_plugin(plugin_id: str, profile: dict[str, Any]) -> dict[str
                 params["pvalue_column"] = c
             elif re.search(r"p_?val|pvalue", c, re.I) and "pvalue_column" not in params:
                 params["pvalue_column"] = c
+    elif plugin_id == "interactive_enrichment_lollipop":
+        normalized = {re.sub(r"[^a-z0-9]", "", str(c).lower()): c for c in cols}
+        def mapped(*names):
+            return next((normalized[name] for name in names if name in normalized), None)
+        category = mapped("tf", "regulon", "regulonname", "transcriptionfactor", "category", "term", "pathway", "name", "gene")
+        effect = mapped("log2fc", "logfc", "avglog2fc", "avglogfc", "log2foldchange", "signedeffect", "effect", "nes")
+        probability = mapped("padj", "pvaladj", "adjustedpvalue", "adjpvalue", "fdr", "qvalue", "qval", "pvalue", "pval", "p")
+        if not category or not effect:
+            raise ValueError("Map a TF/regulon/category column and a signed effect/logFC/NES column before plotting.")
+        params.update(category_column=category, value_column=effect, color_mode="value",
+                      category_label_position="zero_opposite", sort_by="value", sort="descending",
+                      legend_position="right", legend_title=effect, grid_show=False, panel_border_show=False,
+                      zero_line_show=False, direction_labels_show=False, title="Transcription factor comparison",
+                      height=max(5.5, min(60, int(profile.get("row_count_estimate") or 20)) * 0.20 + 1.5))
+        if probability:
+            params.update(pvalue_column=probability, size_transform="neg_log10_pvalue", size_switch=True,
+                          size_legend_title=f"-log10({probability})")
+        else:
+            params.update(size_transform="identity", size_switch=False, show_size_legend=False)
     elif plugin_id in {"group_heatmap", "balloon_plot", "threshold_matrix_heatmap", "pie_dot_matrix"}:
         if cat:
             params["row_column"] = cat[0]
@@ -662,8 +748,8 @@ def build_params_for_plugin(plugin_id: str, profile: dict[str, Any]) -> dict[str
             params["x_column"] = cat[0]
         if num:
             params["y_column"] = num[0]
-        if len(num) > 1:
-            params["se_column"] = num[1]
+        # A second numeric measurement is not evidence of a standard error.
+        params["se_column"] = next((c for c in num if re.fullmatch(r"se|sem|std_error|standard_error", c, re.I)), "")
         params["matrix_show"] = False
     elif plugin_id == "alluvial_plot":
         stage_like = [c for c in cols if re.search(r"stage|time|t\d|visit", c, re.I)]
@@ -679,6 +765,18 @@ def build_params_for_plugin(plugin_id: str, profile: dict[str, Any]) -> dict[str
         params["target_column"] = tgt
         if num:
             params["value_column"] = num[0]
+    elif plugin_id == "circular_tree_embedding":
+        def named(pattern):
+            return next((c for c in cols if re.fullmatch(pattern, c, re.I)), None)
+        x = named(r"umap_?1|tsne_?1|dim1|pc1")
+        y = named(r"umap_?2|tsne_?2|dim2|pc2")
+        leaf = named(r"subtype|cell_type|cluster")
+        hierarchy = [c for c in (named(r"class"), named(r"subclass")) if c and c != leaf]
+        if not x or not y or not leaf or not hierarchy:
+            raise ValueError("Circular tree + embedding needs supplied embedding coordinates, a leaf subtype/cluster and class/subclass hierarchy columns. Map other column names explicitly in the editor.")
+        params.update(x_column=x, y_column=y, cluster_column=leaf, hierarchy_columns=hierarchy,
+                      group_column=hierarchy[-1], tree_mode="annotation", feature_columns=[], width=10, height=10)
+
     elif plugin_id == "advanced_dim_plot":
         x = next((c for c in cols if re.search(r"umap_1|dim1|pc1|tsne_1", c, re.I)), num[0] if num else None)
         y = next((c for c in cols if re.search(r"umap_2|dim2|pc2|tsne_2", c, re.I)), num[1] if len(num) > 1 else None)
@@ -689,7 +787,8 @@ def build_params_for_plugin(plugin_id: str, profile: dict[str, Any]) -> dict[str
         if cat:
             params["group_column"] = cat[0]
 
-    return params
+    from plot_web.ai_plot_draft import complete_params
+    return complete_params(plugin_id, profile, {**params, **(custom_params or {})}, goal)
 
 
 def prepare_demo_files(
@@ -697,7 +796,9 @@ def prepare_demo_files(
     source_path: Path,
     profile: dict[str, Any],
     work_dir: Path,
-    max_rows: int = 60,
+    max_rows: int | None = None,
+    goal: str = "",
+    custom_params: dict[str, Any] | None = None,
 ) -> tuple[dict[str, Path], dict[str, Any], str]:
     """Write adapted input + params into work_dir.
 
@@ -705,26 +806,27 @@ def prepare_demo_files(
     """
     work_dir.mkdir(parents=True, exist_ok=True)
     preview = profile.get("preview_rows") or []
-    # re-read more rows for subsample (CSV/TSV or converted Excel)
+    # Read the complete statistical input (CSV/TSV or converted Excel).
     from plot_web.table_io import ensure_tabular_csv, read_table_as_dicts
 
     tabular = ensure_tabular_csv(Path(profile.get("converted_csv") or source_path))
     columns, all_rows, _meta = read_table_as_dicts(tabular, max_rows=None)
     if not columns:
         columns = list(profile.get("columns") or [])
-    rows = _subsample_rows(all_rows or preview, max_rows)
+    # Statistical results always use the complete upload; display sampling is a renderer concern.
+    rows = all_rows or preview
     if not columns and rows:
         columns = list(rows[0].keys())
 
     out_csv = work_dir / "ai_demo_input.csv"
     _write_csv(out_csv, columns, rows)
-    params = build_params_for_plugin(plugin_id, profile)
+    params = build_params_for_plugin(plugin_id, profile, goal=goal, custom_params=custom_params)
     params["plugin_id"] = plugin_id
     params_path = work_dir / "params.json"
     params_path.write_text(json.dumps(params, indent=2, ensure_ascii=False), encoding="utf-8")
 
     note = (
-        f"Sampled {len(rows)} / ~{profile.get('row_count_estimate', '?')} rows "
+        f"Using all {len(rows)} rows "
         f"from {source_path.name}; mapped columns heuristically for {plugin_id}."
     )
     return {"file": out_csv, "input": out_csv}, params, note
@@ -837,7 +939,7 @@ def match_skills(
     skills_dir: Path,
     goal: str = "",
 ) -> list[dict[str, Any]]:
-    """Match repo skills (and plugin capabilities) to the request. Skills are authoring guides, not plot engines."""
+    """Match repo authoring/workflow skills to requests; plugins remain the render engines."""
     matches: list[dict[str, Any]] = []
     goal_l = (goal or "").lower()
     rec_ids = {r.get("plugin_id") for r in recommendations if r.get("plugin_id")}
@@ -858,6 +960,8 @@ def match_skills(
         m = re.search(r"^description:\s*(.+)$", text, re.M)
         if m:
             desc = m.group(1).strip()
+        frontmatter = text.split("---", 2)[1] if text.startswith("---") else ""
+        workflow = bool(re.search(r"^\s+role:\s*plot_workflow\s*$", frontmatter, re.M))
         # plugins mentioned in skill
         mentioned = set(re.findall(r"plugins/([a-z0-9_]+)", text))
         score = 0.0
@@ -866,7 +970,10 @@ def match_skills(
         if overlap:
             score += 5.0 * len(overlap)
             reasons.append(f"Covers recommended plugins: {', '.join(sorted(overlap))}")
-        for kw in ("heatmap", "volcano", "venn", "enrichment", "dimension", "correlation", "plot"):
+        for kw in ("heatmap", "volcano", "venn", "enrichment", "dimension", "correlation", "plot",
+                   "lollipop", "regulon", "transcription factor", "转录因子", "棒棒糖"):
+            if kw == "plot" and mentioned and not overlap:
+                continue  # A scoped skill is not relevant merely because the goal says "plot".
             if kw in text.lower() and (kw in goal_l or any(kw in t for t in tags)):
                 score += 1.5
         if score <= 0 and skill_id == "omics-plot-plugins":
@@ -880,11 +987,14 @@ def match_skills(
                     "name": name,
                     "description": (desc or text[:180].replace("\n", " "))[:240],
                     "path": str(skill_path.relative_to(skills_dir.parent)) if skills_dir.parent.exists() else str(skill_path),
-                    "related_plugins": sorted(mentioned)[:12],
+                    "related_plugins": sorted(overlap) + sorted(mentioned - overlap)[:max(0, 12 - len(overlap))],
+                    "matched_plugins": sorted(overlap),
+                    "workflow_url": f"/api/ai/skills/{skill_id}",
                     "score": round(score, 2),
                     "reason": "; ".join(reasons) or "Related to plotting workflow",
-                    "role": "authoring_guide",
-                    "note": "Skills guide how agents build/edit plugins; they do not render figures themselves.",
+                    "role": "plot_workflow" if workflow else "authoring_guide",
+                    "note": ("Guides choosing a plot, mapping data, and invoking its plugin; the plugin renders the figure."
+                             if workflow else "Skills guide how agents build/edit plugins; they do not render figures themselves."),
                 }
             )
     matches.sort(key=lambda x: -x["score"])
@@ -905,6 +1015,8 @@ def explain_figure(
     """Explain a generated figure in English (LLM if available, else template)."""
     profile = profile or {}
     figure_meta = figure_meta or {}
+    if run_status != "completed":
+        return {"explanation": "The figure was not generated. Check the reported input mappings or missing files, then retry. You can load a built-in example explicitly to inspect the plot type.", "source": "rules"}
     template = (
         f"Plot type: {plugin_name or plugin_id}. "
         f"Why suggested: {reason or 'Matched table structure and goal'}. "

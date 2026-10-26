@@ -1,0 +1,7 @@
+{
+  "row_column": "feature",
+  "column_column": "condition",
+  "value_column": "value",
+  "edge_group_column": "group",
+  "title": "Linked matrix and relationships"
+}

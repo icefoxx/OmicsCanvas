@@ -1,0 +1,10 @@
+{
+  "level1_column": "level1",
+  "level2_column": "level2",
+  "level3_column": "level3",
+  "value_column": "value",
+  "title": "Three-ring cell-type composition",
+  "inner_radius": 0.15,
+  "width": 7,
+  "height": 7
+}

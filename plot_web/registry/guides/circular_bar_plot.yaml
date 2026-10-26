@@ -1,0 +1,119 @@
+summary: Arrange category bars around a circle, with optional grouped stacks.
+observation_type: observations or summary items in the input table
+best_for:
+- Survey many category counts
+- Compare components within categories
+- Create a compact category ranking
+common_uses: []
+input_requirements: Category labels, nonnegative values and an optional group column.
+learn_more: 'Input: Category labels, nonnegative values and an optional group column.
+  Interpretation: Radial bar length encodes values; color can distinguish stacked
+  groups. Check mappings, order and transformations before adjusting labels, colors
+  and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Radial bar length encodes values; color can distinguish stacked groups.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: 'The inner radius changes apparent area: compare lengths and ticks'
+- id: caution_2
+  title: Caution 2
+  text: Use Cartesian bars when long labels or precise comparisons dominate
+examples:
+- id: basic
+  title: Grouped category composition
+  description: 'Use case: Survey many category counts. This preset illustrates grouped
+    category composition. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Survey many category counts
+  input_requirements: Category labels, nonnegative values and an optional group column.
+  preview_asset: plugins/circular_bar_plot/all_examples_gallery/basic.png
+  variant_id: basic
+  mappings:
+    category_column: category
+    value_column: value
+    group_column: group
+- id: single
+  title: Single-series category ranking
+  description: 'Use case: Compare components within categories. This preset illustrates
+    single-series category ranking. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: single
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare components within categories
+  input_requirements: Category labels, nonnegative values and an optional group column.
+  preview_asset: plugins/circular_bar_plot/all_examples_gallery/single.png
+  variant_id: single
+  mappings:
+    category_column: category
+    value_column: value
+    group_column: group
+literature_ids:
+- zhernakova_age_sex_2022
+- celik_crc_age_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  basic:
+    summary: Stacked polar bars by category and group.
+  single:
+    summary: One polar bar per category, summed across groups.
+customization:
+- parameter: plot_type
+  label: Bar mode
+  default: stacked
+  help: single ignores group and sums values per category.
+- parameter: group_column
+  label: Group column
+  default: group
+  help: Stack fill; empty = one series.
+- parameter: value_column
+  label: Value column
+  default: value
+  help: Bar height (numeric).
+- parameter: category_column
+  label: Category column
+  default: category
+  help: Labels around the circle.
+- parameter: palette
+  label: Palette
+  default: Set 2
+- parameter: group_colors
+  label: Colour per group
+  default: {}
+  help: '{"group": "#hex"}; overrides the palette.'
+- parameter: label_show
+  label: Category labels
+  default: true
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Width (in)
+  default: 7
+- parameter: height
+  label: Height (in)
+  default: 7
+source_modules:
+- title: FigureYa89ggplotCirco
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa89ggplotCirco
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa142circosBar
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa142circosBar
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa237circVenn
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa237circVenn
+  scope: Related polar composition grammar with supplied overlap counts. This source
+    uses concentric proportional sectors, not a conventional Venn diagram; its exact
+    independent-ring layout needs adaptation.

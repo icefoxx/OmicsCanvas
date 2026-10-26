@@ -1,0 +1,568 @@
+[
+  {
+    "job_id": "job_ai_20261025_231946_d6b42828",
+    "plugin": "survival_plot",
+    "status": "completed",
+    "data_mode": "adapted_user_data",
+    "editor_url": "/static/editor.html?plugin=survival_plot&job=job_ai_20261025_231946_d6b42828",
+    "params": {
+      "title": "AI demo \u00b7 survival_plot",
+      "title_show": true,
+      "width": 8,
+      "height": 5.5,
+      "dpi": 150,
+      "time_column": "time",
+      "event_column": "event",
+      "group_column": "group",
+      "curve_type": "survival",
+      "plugin_id": "survival_plot",
+      "dispatch_mode": "local"
+    },
+    "figure_meta": {
+      "plugin": "survival_plot",
+      "version": "1.0.0",
+      "data": {
+        "input_rows": 130,
+        "rows": 132
+      },
+      "statistics": {
+        "method": "none",
+        "confidence_level": 0.95,
+        "confidence_type": "log-log",
+        "landmark_time": 0,
+        "outcome": "survival"
+      },
+      "export": {
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "files": [
+          "result.svg",
+          "result.pdf",
+          "result.png",
+          "data_used.csv",
+          "risk_table_used.csv",
+          "group_counts_used.csv"
+        ]
+      }
+    },
+    "group_counts_used.csv": [
+      {
+        "group": "Cohort A",
+        "n": "65",
+        "events": "48",
+        "censored": "17"
+      },
+      {
+        "group": "Cohort B",
+        "n": "65",
+        "events": "56",
+        "censored": "9"
+      }
+    ]
+  },
+  {
+    "job_id": "job_ai_20261025_232130_5d8096d0",
+    "plugin": "survival_plot",
+    "status": "completed",
+    "data_mode": "adapted_user_data",
+    "editor_url": "/static/editor.html?plugin=survival_plot&job=job_ai_20261025_232130_5d8096d0",
+    "params": {
+      "title": "AI demo \u00b7 survival_plot",
+      "title_show": true,
+      "width": 8,
+      "height": 5.5,
+      "dpi": 150,
+      "time_column": "followup_months",
+      "event_column": "event_status",
+      "group_column": "cohort",
+      "curve_type": "survival",
+      "plugin_id": "survival_plot",
+      "dispatch_mode": "local"
+    },
+    "figure_meta": {
+      "plugin": "survival_plot",
+      "version": "1.0.0",
+      "data": {
+        "input_rows": 12,
+        "rows": 14
+      },
+      "statistics": {
+        "method": "none",
+        "confidence_level": 0.95,
+        "confidence_type": "log-log",
+        "landmark_time": 0,
+        "outcome": "survival"
+      },
+      "export": {
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "files": [
+          "result.svg",
+          "result.pdf",
+          "result.png",
+          "data_used.csv",
+          "risk_table_used.csv",
+          "group_counts_used.csv"
+        ]
+      }
+    },
+    "group_counts_used.csv": [
+      {
+        "group": "Cohort A",
+        "n": "6",
+        "events": "4",
+        "censored": "2"
+      },
+      {
+        "group": "Cohort B",
+        "n": "6",
+        "events": "6",
+        "censored": "0"
+      }
+    ]
+  },
+  {
+    "job_id": "job_ai_20261025_232444_0264417d",
+    "plugin": "binary_evaluation_plot",
+    "status": "completed",
+    "data_mode": "adapted_user_data",
+    "editor_url": "/static/editor.html?plugin=binary_evaluation_plot&job=job_ai_20261025_232444_0264417d",
+    "params": {
+      "title": "AI demo \u00b7 binary_evaluation_plot",
+      "title_show": true,
+      "width": 8,
+      "height": 5.5,
+      "dpi": 150,
+      "outcome_column": "outcome",
+      "score_column": "score",
+      "group_column": "group",
+      "x_column": "x",
+      "y_column": "y",
+      "plot_type": "calibration",
+      "plugin_id": "binary_evaluation_plot",
+      "dispatch_mode": "local"
+    },
+    "figure_meta": {
+      "plugin": "binary_evaluation_plot",
+      "version": "1.0.0",
+      "data": {
+        "input_rows": 160,
+        "rows": 15
+      },
+      "statistics": {
+        "input_mode": "predictions",
+        "mode": "calibration",
+        "positive_class": "1",
+        "score_direction": "higher_is_positive",
+        "method": "empirical; tied scores grouped; no model fitting",
+        "performance": [
+          {
+            "group": "Model A",
+            "brier_score": 0.1153,
+            "n": 80,
+            "_row": "Model A"
+          },
+          {
+            "group": "Model B",
+            "brier_score": 0.2028,
+            "n": 80,
+            "_row": "Model B"
+          }
+        ],
+        "display_limits": {
+          "x": null,
+          "y": null
+        }
+      },
+      "export": {
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "files": [
+          "result.svg",
+          "result.pdf",
+          "result.png",
+          "data_used.csv",
+          "metrics_used.csv"
+        ]
+      }
+    },
+    "metrics_used.csv": [
+      {
+        "group": "Model A",
+        "brier_score": "0.115342273627763",
+        "n": "80"
+      },
+      {
+        "group": "Model B",
+        "brier_score": "0.202808238151267",
+        "n": "80"
+      }
+    ]
+  },
+  {
+    "job_id": "job_ai_20261025_232621_31579174",
+    "plugin": "interactive_3d_scatter",
+    "status": "completed",
+    "data_mode": "adapted_user_data",
+    "editor_url": "/static/editor.html?plugin=interactive_3d_scatter&job=job_ai_20261025_232621_31579174",
+    "params": {
+      "title": "AI demo \u00b7 interactive_3d_scatter",
+      "title_show": true,
+      "width": 8,
+      "height": 5.5,
+      "dpi": 150,
+      "x_column": "PC1",
+      "y_column": "PC2",
+      "z_column": "PC3",
+      "group_column": "group",
+      "plugin_id": "interactive_3d_scatter",
+      "dispatch_mode": "local"
+    },
+    "figure_meta": {
+      "plugin": "interactive_3d_scatter",
+      "version": "1.0.0",
+      "data": {
+        "input_rows": 225,
+        "rows": 225
+      },
+      "statistics": {
+        "method": "supplied_3d_coordinates",
+        "static_projection": "orthographic; one isotropic coordinate scale",
+        "azimuth": 40,
+        "elevation": 25
+      },
+      "export": {
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "files": [
+          "result.svg",
+          "result.pdf",
+          "result.png",
+          "data_used.csv",
+          "result.html"
+        ]
+      }
+    }
+  },
+  {
+    "job_id": "job_ai_20261025_232715_7a4b1962",
+    "plugin": "interactive_3d_scatter",
+    "status": "completed",
+    "data_mode": "builtin_demo",
+    "editor_url": "/static/editor.html?plugin=interactive_3d_scatter&job=job_ai_20261025_232715_7a4b1962",
+    "params": {
+      "x_column": "PC1",
+      "y_column": "PC2",
+      "z_column": "PC3",
+      "group_column": "group",
+      "title": "Three-dimensional sample coordinates",
+      "plugin_id": "interactive_3d_scatter",
+      "dispatch_mode": "local"
+    },
+    "figure_meta": {
+      "plugin": "interactive_3d_scatter",
+      "version": "1.0.0",
+      "data": {
+        "input_rows": 225,
+        "rows": 225
+      },
+      "statistics": {
+        "method": "supplied_3d_coordinates",
+        "static_projection": "orthographic; one isotropic coordinate scale",
+        "azimuth": 40,
+        "elevation": 25
+      },
+      "export": {
+        "width": 8,
+        "height": 6,
+        "dpi": 150,
+        "files": [
+          "result.svg",
+          "result.pdf",
+          "result.png",
+          "data_used.csv",
+          "result.html"
+        ]
+      }
+    }
+  },
+  {
+    "job_id": "job_ai_20261025_232034_25098cc7",
+    "plugin": "survival_plot",
+    "status": "completed",
+    "data_mode": "adapted_user_data",
+    "editor_url": "/static/editor.html?plugin=survival_plot&job=job_ai_20261025_232034_25098cc7",
+    "params": {
+      "title": "AI demo \u00b7 survival_plot",
+      "title_show": true,
+      "width": 8,
+      "height": 5.5,
+      "dpi": 150,
+      "time_column": "time",
+      "event_column": "event",
+      "group_column": "group",
+      "curve_type": "survival",
+      "plugin_id": "survival_plot",
+      "dispatch_mode": "local",
+      "group_colors": {
+        "Cohort A": "#0072B2",
+        "Cohort B": "#E69F00"
+      }
+    },
+    "figure_meta": {
+      "plugin": "survival_plot",
+      "version": "1.0.0",
+      "data": {
+        "input_rows": 130,
+        "rows": 132
+      },
+      "statistics": {
+        "method": "none",
+        "confidence_level": 0.95,
+        "confidence_type": "log-log",
+        "landmark_time": 0,
+        "outcome": "survival"
+      },
+      "export": {
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "files": [
+          "result.svg",
+          "result.pdf",
+          "result.png",
+          "data_used.csv",
+          "risk_table_used.csv",
+          "group_counts_used.csv"
+        ]
+      }
+    },
+    "group_counts_used.csv": [
+      {
+        "group": "Cohort A",
+        "n": "65",
+        "events": "48",
+        "censored": "17"
+      },
+      {
+        "group": "Cohort B",
+        "n": "65",
+        "events": "56",
+        "censored": "9"
+      }
+    ]
+  },
+  {
+    "job_id": "job_ai_20261025_232959_0663ab7c",
+    "plugin": "binary_evaluation_plot",
+    "status": "completed",
+    "data_mode": "adapted_user_data",
+    "editor_url": "/static/editor.html?plugin=binary_evaluation_plot&job=job_ai_20261025_232959_0663ab7c",
+    "params": {
+      "title": "AI demo \u00b7 binary_evaluation_plot",
+      "title_show": true,
+      "width": 8,
+      "height": 5.5,
+      "dpi": 150,
+      "outcome_column": "outcome",
+      "score_column": "score",
+      "group_column": "group",
+      "x_column": "x",
+      "y_column": "y",
+      "plot_type": "calibration",
+      "plugin_id": "binary_evaluation_plot",
+      "dispatch_mode": "local"
+    },
+    "figure_meta": {
+      "plugin": "binary_evaluation_plot",
+      "version": "1.0.0",
+      "data": {
+        "input_rows": 160,
+        "rows": 15
+      },
+      "statistics": {
+        "input_mode": "predictions",
+        "mode": "calibration",
+        "positive_class": "1",
+        "score_direction": "higher_is_positive",
+        "method": "empirical; tied scores grouped; no model fitting",
+        "performance": [
+          {
+            "group": "Model A",
+            "brier_score": 0.1153,
+            "n": 80,
+            "_row": "Model A"
+          },
+          {
+            "group": "Model B",
+            "brier_score": 0.2028,
+            "n": 80,
+            "_row": "Model B"
+          }
+        ],
+        "display_limits": {
+          "x": null,
+          "y": null
+        }
+      },
+      "export": {
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "files": [
+          "result.svg",
+          "result.pdf",
+          "result.png",
+          "data_used.csv",
+          "metrics_used.csv"
+        ]
+      }
+    }
+  },
+  {
+    "job_id": "job_ai_20261025_232959_f4c21be6",
+    "plugin": "combo_bar_dot_matrix",
+    "status": "completed",
+    "data_mode": "adapted_user_data",
+    "editor_url": "/static/editor.html?plugin=combo_bar_dot_matrix&job=job_ai_20261025_232959_f4c21be6",
+    "params": {
+      "title": "AI demo \u00b7 combo_bar_dot_matrix",
+      "title_show": true,
+      "width": 8,
+      "height": 5.5,
+      "dpi": 150,
+      "x_column": "group",
+      "y_column": "outcome",
+      "se_column": "",
+      "matrix_show": false,
+      "group_column": "group",
+      "plugin_id": "combo_bar_dot_matrix",
+      "dispatch_mode": "local"
+    },
+    "figure_meta": {
+      "plugin": "combo_bar_dot_matrix",
+      "engine": "ggplot2 + patchwork",
+      "n_bars": 160,
+      "n_x": 2,
+      "matrix_show": false,
+      "n_matrix_cells": 0,
+      "n_comparisons": 0,
+      "n_hlines": 0,
+      "outputs": [
+        "result.svg",
+        "result.pdf",
+        "result.png",
+        "bars_used.csv",
+        "matrix_used.csv"
+      ]
+    }
+  },
+  {
+    "job_id": "job_ai_20261025_233001_5f040c58",
+    "plugin": "highlight_effect_plot",
+    "status": "completed",
+    "data_mode": "adapted_user_data",
+    "editor_url": "/static/editor.html?plugin=highlight_effect_plot&job=job_ai_20261025_233001_5f040c58",
+    "params": {
+      "title": "AI demo \u00b7 highlight_effect_plot",
+      "title_show": true,
+      "width": 8,
+      "height": 5.5,
+      "dpi": 150,
+      "category_column": "group",
+      "value_column": "outcome",
+      "auto_highlight_n": 4,
+      "collapse_others": true,
+      "plugin_id": "highlight_effect_plot",
+      "dispatch_mode": "local"
+    },
+    "figure_meta": {
+      "plugin": "highlight_effect_plot",
+      "engine": "ggplot2",
+      "input_mode": "points",
+      "n_highlight": 2,
+      "highlight_terms": [
+        "Model A",
+        "Model B"
+      ],
+      "other_label": "Other biosamples",
+      "collapse_others": true,
+      "n_other_points": 0,
+      "ci_level": 0.95,
+      "outputs": [
+        "result.svg",
+        "result.pdf",
+        "result.png",
+        "summary_used.csv",
+        "points_used.csv"
+      ]
+    }
+  },
+  {
+    "job_id": "job_ai_20261025_233404_d451e918",
+    "plugin": "binary_evaluation_plot",
+    "status": "completed",
+    "data_mode": "builtin_demo",
+    "editor_url": "/static/editor.html?plugin=binary_evaluation_plot&job=job_ai_20261025_233404_d451e918",
+    "params": {
+      "outcome_column": "outcome",
+      "score_column": "score",
+      "group_column": "group",
+      "x_column": "x",
+      "y_column": "y",
+      "title": "Probability calibration",
+      "plot_type": "calibration",
+      "plugin_id": "binary_evaluation_plot",
+      "dispatch_mode": "local"
+    },
+    "figure_meta": {
+      "plugin": "binary_evaluation_plot",
+      "version": "1.0.0",
+      "data": {
+        "input_rows": 160,
+        "rows": 16
+      },
+      "statistics": {
+        "input_mode": "predictions",
+        "mode": "calibration",
+        "positive_class": "1",
+        "score_direction": "higher_is_positive",
+        "method": "empirical; tied scores grouped; no model fitting",
+        "performance": [
+          {
+            "group": "Model A",
+            "brier_score": 0.0951,
+            "n": 80,
+            "_row": "Model A"
+          },
+          {
+            "group": "Model B",
+            "brier_score": 0.1843,
+            "n": 80,
+            "_row": "Model B"
+          }
+        ],
+        "display_limits": {
+          "x": null,
+          "y": null
+        }
+      },
+      "export": {
+        "width": 8,
+        "height": 6,
+        "dpi": 150,
+        "files": [
+          "result.svg",
+          "result.pdf",
+          "result.png",
+          "data_used.csv",
+          "metrics_used.csv"
+        ]
+      }
+    }
+  }
+]

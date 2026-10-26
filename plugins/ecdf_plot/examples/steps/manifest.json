@@ -1,0 +1,10 @@
+{
+  "id": "steps",
+  "label": "Empirical distribution steps",
+  "plugin_id": "ecdf_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

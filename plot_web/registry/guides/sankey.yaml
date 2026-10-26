@@ -1,0 +1,50 @@
+summary: Show weighted source-to-target flows using nodes and variable-width links.
+observation_type: observations or summary items in the input table
+best_for:
+- Inspect category flows
+- Track quantities between stages
+- Summarize origins and destinations
+common_uses: []
+input_requirements: Source, target and nonnegative flow values.
+learn_more: 'Input: Source, target and nonnegative flow values. Interpretation: Link
+  width encodes the supplied flow, while node positions follow the layout. Check mappings,
+  order and transformations before adjusting labels, colors and canvas dimensions.
+  Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Link width encodes the supplied flow, while node positions follow the layout.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Correspondence does not prove lineage
+- id: caution_2
+  title: Caution 2
+  text: Explain filtering or external flows when totals are not conserved
+examples:
+- id: basic
+  title: Overview of origins and destinations
+  description: 'Use case: Inspect category flows. This preset illustrates overview
+    of origins and destinations. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect category flows
+  input_requirements: Source, target and nonnegative flow values.
+  preview_asset: plugins/interactive_sankey_plot/all_examples_gallery/basic.png
+  mappings:
+    source_stage_column: source_stage
+    target_stage_column: target_stage
+    group_column: group
+literature_ids:
+- blair_phospho_2025
+- dondi_isoforms_2023
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes:
+- Only one independent demonstration bundle is available. Three application scenarios
+  are listed, but a second input or mode-specific bundle is still needed.
+variants: {}
+customization: []

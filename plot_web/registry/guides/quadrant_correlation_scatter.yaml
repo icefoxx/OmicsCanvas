@@ -1,0 +1,74 @@
+summary: Add threshold regions, correlation summaries and selected labels to a two-variable
+  scatter plot.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare directions of two effects
+- Find concordant and opposing changes
+- Locate selected candidates
+common_uses: []
+input_requirements: Two numeric columns and optional item IDs; configure thresholds
+  or custom regions.
+learn_more: 'Input: Two numeric columns and optional item IDs; configure thresholds
+  or custom regions. Interpretation: Coordinates encode the two input values; regions
+  are defined by explicit thresholds. Check mappings, order and transformations before
+  adjusting labels, colors and canvas dimensions. Confirm legends and units before
+  export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Coordinates encode the two input values; regions are defined by explicit thresholds.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Threshold regions are not significance tests
+- id: caution_2
+  title: Caution 2
+  text: Overall correlation does not describe every region separately
+examples:
+- id: params
+  title: Two-effect threshold regions and candidate labels
+  description: 'Use case: Compare directions of two effects. This preset illustrates
+    two-effect threshold regions and candidate labels. Replace its input with your
+    data while retaining the appropriate view settings.'
+  demo_id: params
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare directions of two effects
+  input_requirements: Two numeric columns and optional item IDs; configure thresholds
+    or custom regions.
+  preview_asset: plugins/quadrant_correlation_scatter/all_examples_gallery/params.png
+  mappings:
+    label_column: gene
+    x_column: x_ratio
+    y_column: y_ratio
+literature_ids:
+- hao_dnt_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes:
+- Only one independent demonstration bundle is available. Three application scenarios
+  are listed, but a second input or mode-specific bundle is still needed.
+variants: {}
+customization:
+- parameter: x_column
+  label: X column
+  default: null
+- parameter: y_column
+  label: Y column
+  default: null
+- parameter: label_show
+  label: Show selected labels
+  default: true
+- parameter: width
+  label: Width
+  default: 7
+- parameter: height
+  label: Height
+  default: 6
+source_modules:
+- title: FigureYa314SingleRScore
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa314SingleRScore
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

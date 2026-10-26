@@ -78,5 +78,5 @@ generated:
   by: vnext.migrate
   generator_version: '1.0'
   curated: false
-  n_examples_scanned: 3
+  n_examples_scanned: 5
   warnings: []

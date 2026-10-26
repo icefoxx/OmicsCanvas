@@ -1,0 +1,182 @@
+summary: Align supplied risk ranks, event follow-up and selected numeric features.
+observation_type: supplied measurements, scores or weighted relationships
+input_requirements: One row per unique subject with supplied risk_score, nonnegative
+  follow-up time, event 0/1 and optional group. Optional numeric feature_columns form
+  the aligned heatmap.
+best_for:
+- Inspect supplied scores in risk order
+- Align event follow-up with subject scores
+- Compare selected feature profiles across the same ranked subjects
+learn_more: Risk scores and groups are supplied. No survival model, optimal cutoff
+  or group assignment is inferred.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Align supplied risk ranks, event follow-up and selected numeric features.
+cautions:
+- id: caution_0
+  title: Interpretation limit
+  text: Risk scores and groups are supplied. No survival model, optimal cutoff or
+    group assignment is inferred.
+- id: caution_1
+  title: Interpretation limit
+  text: Displayed follow-up points are not survival estimates. Per-feature Z-scores
+    are a display transform, not a differential-expression test.
+examples:
+- id: basic
+  title: Aligned risk and follow-up
+  description: Inspect supplied scores in risk order
+  scenario: Inspect supplied scores in risk order
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/risk_stratification_panel/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+- id: scores_only
+  title: Scores and follow-up
+  description: Align event follow-up with subject scores
+  scenario: Align event follow-up with subject scores
+  demo_id: scores_only
+  variant_id: scores_only
+  preview_asset: plugins/risk_stratification_panel/all_examples_gallery/scores_only.png
+  data_note: Independent synthetic demonstration, not original publication data.
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source; its upstream analyses
+  are not reproduced.
+customization:
+- parameter: id_column
+  label: Id column
+  default: subject
+  help: ''
+- parameter: value_column
+  label: Value column
+  default: risk_score
+  help: ''
+- parameter: time_column
+  label: Time column
+  default: time
+  help: ''
+- parameter: event_column
+  label: Event column
+  default: event
+  help: ''
+- parameter: group_column
+  label: Group column
+  default: group
+  help: ''
+- parameter: feature_columns
+  label: Feature columns
+  default: []
+  help: ''
+- parameter: sort_by
+  label: Sort by
+  default: risk
+  help: ''
+- parameter: heatmap_show
+  label: Heatmap show
+  default: true
+  help: Only when feature_columns are selected.
+- parameter: scale_features
+  label: Scale features
+  default: true
+  help: Only for selected features in the visible heatmap.
+- parameter: subject_label_show
+  label: Subject label show
+  default: false
+  help: ''
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: point_alpha
+  label: Point alpha
+  default: 0.8
+  help: ''
+- parameter: point_size
+  label: Point size
+  default: 2
+  help: ''
+- parameter: low_color
+  label: Low color
+  default: '#397DA3'
+  help: Selected-feature heatmap only.
+- parameter: high_color
+  label: High color
+  default: '#D16472'
+  help: Selected-feature heatmap only.
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: grid_show
+  label: Grid show
+  default: false
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report supplied mappings, score definitions, relationship
+    definitions and all display transformations.'
+source_modules:
+- title: FigureYa141risk
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa141risk
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa193RiskTable
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa193RiskTable
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

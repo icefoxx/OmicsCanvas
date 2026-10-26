@@ -1,0 +1,16 @@
+{
+  "id": "circle",
+  "label": "Circular layout",
+  "plugin_id": "interactive_network_plot",
+  "plot_type": "edge_list",
+  "mode": "circle",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv",
+    "nodes": "input/example_nodes.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/circle/input/example_input.csv --params plugins/interactive_network_plot/examples/circle/params.json --output /tmp/interactive_network_plot_circle_out --nodes plugins/interactive_network_plot/examples/circle/input/example_nodes.csv"
+  }
+}

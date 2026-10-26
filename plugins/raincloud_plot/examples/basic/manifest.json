@@ -1,0 +1,11 @@
+{
+  "id": "basic",
+  "label": "Basic",
+  "plugin_id": "raincloud_plot",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/raincloud_plot/plot.R --input plugins/raincloud_plot/examples/basic/input/example_input.csv --params plugins/raincloud_plot/examples/basic/params.json --output /tmp/raincloud_plot_basic"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "plugin_id": "treemap_plot",
+  "examples": [
+    {"id": "basic", "label": "Basic", "plugin_id": "treemap_plot", "params": "basic/params.json", "inputs": {"input": "basic/input/example_input.csv"}, "expected": "basic/expected/result.png", "bundle": "basic"}
+  ]
+}

@@ -43,9 +43,11 @@ def load_family_guide(plot_id: str) -> dict[str, Any]:
     return data if isinstance(data, dict) else {}
 
 
-def public_literature(entry: dict[str, Any]) -> dict[str, Any]:
+def public_literature(entry: dict[str, Any], family_id: str | None = None) -> dict[str, Any]:
     allowed = bool(entry.get("thumbnail_reuse_allowed"))
     thumb = entry.get("thumbnail_asset") if allowed else None
+    figures = [dict(item) for item in entry.get("figure_examples") or []
+               if isinstance(item, dict) and (not family_id or family_id in (item.get("plot_families") or []))]
     return {
         "id": entry.get("id"),
         "title": entry.get("title") or "",
@@ -55,14 +57,30 @@ def public_literature(entry: dict[str, Any]) -> dict[str, Any]:
         "year": entry.get("year"),
         "doi": entry.get("doi") or "",
         "url": entry.get("url") or "",
-        "figure": entry.get("figure") or "",
+        "figure": "; ".join(item["figure"] for item in figures) if figures else entry.get("figure") or "",
         "license": entry.get("license") or "",
         "thumbnail_reuse_allowed": allowed,
         "thumbnail_asset": thumb,
         "description": entry.get("description") or "",
         "relevance": entry.get("relevance") or entry.get("why") or "",
         "use_case": entry.get("use_case") or entry.get("use_cases") or [],
+        "reference_type": entry.get("reference_type") or "published_use_case",
+        "publication_status": entry.get("publication_status") or "published",
+        "figure_examples": figures,
     }
+
+
+def published_figure_examples(guide: dict[str, Any]) -> list[dict[str, Any]]:
+    """Expand only the figure panels curated for this family, retaining provenance."""
+    out = []
+    for paper in guide.get("literature") or []:
+        for figure in paper.get("figure_examples") or []:
+            out.append({**figure, "literature_id": paper["id"],
+                        "paper_title": paper["title"], "authors": paper["authors"],
+                        "journal": paper["journal"], "year": paper["year"],
+                        "doi": paper["doi"], "paper_url": paper["url"],
+                        "publication_status": paper.get("publication_status") or "published"})
+    return out
 
 
 def attach_guides(registry: dict[str, Any]) -> dict[str, Any]:
@@ -74,7 +92,7 @@ def attach_guides(registry: dict[str, Any]) -> dict[str, Any]:
             continue
         family_guide = {k: v for k, v in data.items() if k != "variants"}
         ids = list(family_guide.pop("literature_ids", []) or [])
-        family_guide["literature"] = [public_literature(lit[i]) for i in ids if i in lit]
+        family_guide["literature"] = [public_literature(lit[i], pid) for i in ids if i in lit]
         plot["guide"] = family_guide
         vg = data.get("variants") if isinstance(data.get("variants"), dict) else {}
         for variant in plot.get("variants") or []:
@@ -112,6 +130,9 @@ def mapping_values(params: dict[str, Any] | None, family: dict[str, Any] | None 
         "highlight_column": first("highlight_column", "highlight_rows"),
         "x_column": first("x_column", "dim1"),
         "y_column": first("y_column", "dim2"),
+        "category_column": first("category_column"),
+        "value_column": first("value_column"),
+        "pvalue_column": first("pvalue_column"),
     }
 
 
@@ -164,25 +185,27 @@ def current_view_explanation(family: dict[str, Any], variant: dict[str, Any] | N
     if not summary:
         summary = str((family.get("guide") or {}).get("summary") or family.get("description") or "")
 
-    if values.get("group_column"):
+    lollipop = family.get("id") == "enrichment_lollipop"
+    embedding = family.get("id") in {"umap_tsne", "feature_embedding", "feature_density_plot", "trajectory"}
+    if embedding and values.get("group_column"):
         statements.append({
             "type": "direct",
             "title": "Group color",
             "text": f"Points or marks are colored according to {values['group_column']}.",
         })
-    if values.get("feature_column"):
+    if embedding and values.get("feature_column"):
         statements.append({
             "type": "direct",
             "title": "Feature mapping",
-            "text": f"Color intensity represents {values['feature_column']}.",
+            "text": f"The selected feature mapping is {values['feature_column']}; read its scale and transformation in the legend.",
         })
     if values.get("split_column"):
         statements.append({
             "type": "direct",
             "title": "Split panels",
-            "text": f"The embedding is shown separately by {values['split_column']}.",
+            "text": f"The {'embedding' if embedding else 'view'} is shown separately by {values['split_column']}.",
         })
-    if values.get("composition_column") and vid in {"composition", "composition_pie", "composition_ring", "stat_panel"}:
+    if embedding and values.get("composition_column") and vid in {"composition", "composition_pie", "composition_ring", "stat_panel"}:
         group = values.get("cluster_column") or "each group"
         statements.append({
             "type": "direct",
@@ -194,19 +217,29 @@ def current_view_explanation(family: dict[str, Any], variant: dict[str, Any] | N
             "title": "Pie size",
             "text": "Pie or ring area should be treated as a visual scale unless size is explicitly mapped to an abundance metric.",
         })
-    if vid == "density":
+    if lollipop:
+        if values.get("value_column"):
+            statements.append({"type": "direct", "title": "Signed effect",
+                               "text": f"Horizontal position shows {values['value_column']}; zero separates the supplied effect directions."})
+        if params.get("color_mode") == "value":
+            statements.append({"type": "direct", "title": "Effect color",
+                               "text": "Color follows the signed effect on a continuous scale centered at zero."})
+        if params.get("size_transform") == "neg_log10_pvalue" and params.get("size_switch", True) and values.get("pvalue_column"):
+            statements.append({"type": "direct", "title": "Probability-sized points",
+                               "text": f"Point size shows -log10({values['pvalue_column']}); smaller supplied probabilities give larger points. No testing or correction is performed here."})
+    if embedding and vid == "density":
         statements.append({
             "type": "interpretation",
             "title": "Density",
             "text": "Filled or hex regions summarize local observation density on the embedding.",
         })
-    if vid == "ellipse":
+    if embedding and vid == "ellipse":
         statements.append({
             "type": "interpretation",
             "title": "Ellipses",
             "text": "Ellipses summarize the spread of a group on the embedding; they are not a statistical test.",
         })
-    if vid == "highlight_cells":
+    if embedding and vid == "highlight_cells":
         statements.append({
             "type": "direct",
             "title": "Highlight",
@@ -291,6 +324,7 @@ def compose_guide(
             "guide": variant_guide or None,
         } if variant else None,
         "examples": examples,
+        "published_examples": published_figure_examples(family_guide),
         "literature": literature,
         "current": current,
         "caption": caption,

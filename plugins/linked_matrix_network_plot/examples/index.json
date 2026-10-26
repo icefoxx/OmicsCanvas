@@ -1,0 +1,27 @@
+{
+  "plugin_id": "linked_matrix_network_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Linked matrix and relationships",
+      "plugin_id": "linked_matrix_network_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv",
+        "links": "basic/input/links.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "dot_matrix",
+      "label": "Dot matrix and relationships",
+      "plugin_id": "linked_matrix_network_plot",
+      "params": "dot_matrix/params.json",
+      "inputs": {
+        "input": "dot_matrix/input/data.csv",
+        "links": "dot_matrix/input/links.csv"
+      },
+      "expected": "dot_matrix/expected/result.png"
+    }
+  ]
+}

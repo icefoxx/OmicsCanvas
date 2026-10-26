@@ -2,6 +2,7 @@ const $ = (id) => document.getElementById(id);
 
 const urlParams = new URLSearchParams(window.location.search);
 const PLUGIN_ID = urlParams.get("plugin") || "group_heatmap";
+const SAVED_JOB = urlParams.get("job") || "";
 const STUDIO_VARIANT = urlParams.get("variant") || "";
 const STUDIO_EXAMPLE = urlParams.get("example") || "";
 const SOURCE_CONTEXT = urlParams.get("source_context") || "";
@@ -26,9 +27,21 @@ const state = {
   autoUpdateTimer: null,
   isUpdating: false,
   lastOutputs: {},
+  preferHtmlPreview: false,
   userTouchedParams: false,
   previewSearch: "",
   previewPage: 0,
+  customFiles: {},
+  uploadVersion: 0,
+  isUploading: false,
+  isLoadingPreset: false,
+  revision: 0,
+  renderedRevision: -1,
+  pendingRender: false,
+  invalidFields: new Map(),
+  parameterSearch: "",
+  previewRevision: -1,
+  renderChannel: `editor-${Date.now()}-${Math.random().toString(36).slice(2)}`,
 };
 
 const SCIENTIFIC_PALETTES = {
@@ -75,11 +88,160 @@ async function api(path, options = {}) {
 
 function triggerAutoUpdate(delayMs = 300) {
   state.userTouchedParams = true;
+  markFigureDirty();
   if (!state.autoUpdateEnabled) return;
   if (state.autoUpdateTimer) clearTimeout(state.autoUpdateTimer);
   state.autoUpdateTimer = setTimeout(() => {
     runDemoSilent();
   }, delayMs);
+}
+
+function setEditorStatus(message) {
+  if ($("editorStateText")) $("editorStateText").textContent = message;
+  if ($("readyDot")) $("readyDot").classList.toggle("is-pending", message !== "Synced");
+}
+
+function markFigureDirty() {
+  state.revision += 1;
+  setEditorStatus("Unapplied changes");
+  if ($("validationPanel")) $("validationPanel").hidden = true;
+  // Keep the last successful image visible, but never export it as the current version.
+  renderDownloads(state.lastOutputs);
+}
+
+function inputDefinitions() {
+  const inputs = (state.detail?.inputs || []).filter((item) => item.id);
+  return inputs.length ? inputs : [{ id: "input", required: true, type: "table" }];
+}
+
+function missingUserInputs() {
+  return inputDefinitions().filter((item) => item.required && !state.customFiles[item.id]);
+}
+
+function renderDataSource() {
+  const box = $("dataSource");
+  if (!box) return;
+  const names = Object.values(state.customFiles).map((file) => file.name);
+  const files = state.inputPreview?.files || {};
+  const first = files.file || files.input || Object.values(files)[0];
+  box.textContent = state.isUploading ? "Checking selected files…"
+    : names.length ? `Your data: ${names.join(" · ")}`
+    : `Example data${state.selectedExampleId ? `: ${state.selectedExampleId}` : ""}${first?.filename ? ` · ${first.filename}` : ""}`;
+  if (first?.row_count_estimate !== undefined) box.textContent += ` · ${first.row_count_estimate} rows × ${first.columns?.length || 0} columns`;
+  box.dataset.source = names.length ? "user" : "example";
+}
+
+async function loadUserFile(field, file) {
+  if (!file) return;
+  const version = ++state.uploadVersion;
+  state.isUploading = true;
+  markFigureDirty();
+  renderDataSource();
+  document.querySelectorAll('.dataset-input input[type="file"]').forEach((input) => { input.disabled = true; });
+  const candidate = { ...state.customFiles, [field]: file };
+  const form = new FormData();
+  Object.entries(candidate).forEach(([key, value]) => form.append(key, value));
+  try {
+    const preview = await api(`/api/plugins/${state.pluginId}/preview-input`, { method: "POST", body: form });
+    if (version !== state.uploadVersion) return;
+    const errors = Object.entries(preview.files || {}).flatMap(([key, item]) => {
+      const definition = inputDefinitions().find((input) => input.id === key);
+      if (definition?.type === "file") return [];
+      if (item.error) return [item];
+      return !item.columns?.length || !item.row_count_estimate
+        ? [{ filename: item.filename, error: "The table needs column headers and at least one data row." }] : [];
+    });
+    if (errors.length || !Object.keys(preview.files || {}).length) {
+      throw new Error(errors.map((item) => `${item.filename}: ${item.error}`).join("; ") || "No readable input files.");
+    }
+    state.customFiles = candidate;
+    state.userTouchedParams = true;
+    state.inputPreview = preview;
+    state.selectedRows = new Set();
+    state.selectedColumns = new Set();
+    ["rows_include", "rows_exclude", "selected_ids", "groups_include", "groups_exclude"].forEach((key) => delete state.params[key]);
+    if (typeof reconcileMappingsWithDataset === "function") reconcileMappingsWithDataset();
+    if (typeof applySuggestionsIfEmpty === "function") applySuggestionsIfEmpty();
+    syncJsonFromParams();
+    $("jobStatus").textContent = "Your data loaded. Check column mappings before plotting.";
+  } catch (err) {
+    if (version !== state.uploadVersion) return;
+    $("jobStatus").textContent = `File was not loaded: ${err.message}. Previous data is still selected.`;
+    setEditorStatus("Upload failed");
+  } finally {
+    if (version === state.uploadVersion) {
+      state.isUploading = false;
+      renderDataSource();
+      renderParamContentArea();
+      renderStageDataDrawer();
+    }
+  }
+}
+
+async function requestFigure() {
+  const params = sanitizeParamsForRun(state.params);
+  if (Object.keys(state.customFiles).length) {
+    const missing = missingUserInputs();
+    if (missing.length) throw new Error(`Upload required data: ${missing.map((item) => item.id).join(", ")}.`);
+    const form = new FormData();
+    Object.entries(state.customFiles).forEach(([field, file]) => form.append(field, file));
+    form.append("params", JSON.stringify(params));
+    form.append("background", "1");
+    form.append("render_channel", state.renderChannel);
+    return api(`/api/plugins/${state.pluginId}/run`, { method: "POST", body: form });
+  }
+  const payload = { params, background: true, render_channel: state.renderChannel };
+  if (state.selectedExampleId) payload.example_id = state.selectedExampleId;
+  return api(`/api/plugins/${state.pluginId}/run-demo`, {
+    method: "POST", body: JSON.stringify(payload), headers: { "Content-Type": "application/json" },
+  });
+}
+
+async function waitForRender(result, revision) {
+  let preview = "";
+  const deadline = Date.now() + 20 * 60 * 1000;
+  while (["queued", "running"].includes(result.status) && result.poll_url) {
+    if (revision !== state.revision) return result;
+    if (Date.now() > deadline) throw new Error("Rendering is taking too long. Check Runs for the job status.");
+    const pollUrl = result.poll_url;
+    const next = await api(pollUrl);
+    result = { ...next, poll_url: pollUrl };
+    if (revision !== state.revision) return result;
+    if (result.live_preview && result.live_preview !== preview) {
+      preview = result.live_preview;
+      updatePreviewImage(preview);
+      state.previewRevision = revision;
+      renderDownloads(state.lastOutputs);
+      // Keep the render lock until exports finish; only hide the visual overlay.
+      $("stageOverlay")?.classList.add("hidden");
+      setEditorStatus("Preview ready");
+      $("jobStatus").textContent = "Preview ready. Preparing export files in the background…";
+    } else if (!preview && result.status === "queued") {
+      $("jobStatus").textContent = "Waiting for a render worker…";
+    }
+    if (["queued", "running"].includes(result.status)) await new Promise((resolve) => setTimeout(resolve, 250));
+  }
+  return result;
+}
+
+function numericValidationErrors() {
+  const controls = new Map();
+  ["theme", "axes", "title", "legend", "canvas"].forEach((tab) =>
+    mergeCommonWithSchema(tab).forEach((control) => controls.set(control.key, control)));
+  allSchemaControls().forEach((control) => controls.set(control.key, control));
+  const errors = [];
+  controls.forEach((control) => {
+    if (!["number", "integer"].includes(control.type)) return;
+    const raw = state.params[control.key];
+    if (raw === undefined || raw === null || raw === "") return;
+    const value = typeof raw === "number" || typeof raw === "string" ? Number(raw) : NaN;
+    const bounds = numberFieldMeta(control.key.toLowerCase(), control);
+    if (!Number.isFinite(value) || (control.type === "integer" && !Number.isInteger(value))
+      || (bounds.min !== undefined && value < bounds.min) || (bounds.max !== undefined && value > bounds.max)) {
+      errors.push(`${control.label}: use ${control.type === "integer" ? "a whole number" : "a number"}${bounds.min !== undefined ? ` ≥ ${bounds.min}` : ""}${bounds.max !== undefined ? ` and ≤ ${bounds.max}` : ""}`);
+    }
+  });
+  return errors;
 }
 
 function setStageOverlay(loading) {
@@ -95,23 +257,40 @@ function setStageOverlay(loading) {
 }
 
 async function runDemoSilent() {
-  if (!state.pluginId || state.isUpdating) return;
+  if (!state.pluginId) return;
+  if (state.isUpdating) {
+    state.pendingRender = true;
+    return;
+  }
+  if (state.isUploading || state.isLoadingPreset) return;
+  const numericErrors = numericValidationErrors();
+  if (state.invalidFields.size || numericErrors.length) {
+    setEditorStatus("Check settings");
+    $("jobStatus").textContent = `Fix invalid settings: ${[...state.invalidFields.values()].map((item) => item.message).concat(numericErrors).join("; ")}`;
+    return;
+  }
+  clearTimeout(state.autoUpdateTimer);
+  state.pendingRender = false;
+  const revision = state.revision;
   setStageOverlay(true);
+  if (state.previewRevision === revision) $("stageOverlay")?.classList.add("hidden");
+  setEditorStatus(state.previewRevision === revision ? "Preparing exports…" : "Updating…");
+  renderDownloads(state.lastOutputs);
   try {
-    const payload = { params: sanitizeParamsForRun(state.params) };
-    if (state.selectedExampleId) payload.example_id = state.selectedExampleId;
-    const result = await api(`/api/plugins/${state.pluginId}/run-demo`, {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: { "Content-Type": "application/json" }
-    });
+    let result = await requestFigure();
+    result = await waitForRender(result, revision);
+    if (revision !== state.revision) return;
     renderValidation(result.vnext);
     if (result.status === "completed" && result.outputs) {
+      state.renderedRevision = revision;
+      state.previewRevision = revision;
       renderDownloads(result.outputs);
       if (result.outputs.preview) {
         await updateInstantPreview(result.outputs);
       }
-      $("jobStatus").textContent = `Updated figure (${new Date().toLocaleTimeString()})`;
+      if (revision !== state.revision) return;
+      $("jobStatus").textContent = result.cache?.hit ? "Figure ready — reused identical data and settings." : `Updated figure (${new Date().toLocaleTimeString()})`;
+      setEditorStatus("Synced");
     } else {
       const errObj = result.error && typeof result.error === "object" ? result.error : null;
       const detail =
@@ -121,19 +300,65 @@ async function runDemoSilent() {
         result.message ||
         result.status ||
         "unknown error";
-      $("jobStatus").textContent = `Auto update paused: ${detail}`;
+      $("jobStatus").textContent = `Could not render: ${errObj?.error || detail}${errObj?.suggestion ? ` ${errObj.suggestion}` : ""}`;
+      setEditorStatus("Render failed");
     }
   } catch (err) {
-    $("jobStatus").textContent = `Auto update paused: ${err.message}`;
+    if (revision === state.revision) {
+      $("jobStatus").textContent = `Could not render: ${err.message}`;
+      setEditorStatus("Render failed");
+    }
   } finally {
     setStageOverlay(false);
+    if (revision !== state.revision && !state.pendingRender && !state.invalidFields.size) setEditorStatus("Unapplied changes");
+    renderDownloads(state.lastOutputs);
+    if (state.pendingRender) {
+      state.pendingRender = false;
+      await runDemoSilent();
+    }
   }
+}
+
+function hideHtmlPreview() {
+  const frame = $("htmlPreview");
+  if (frame) {
+    frame.classList.add("hidden");
+    frame.removeAttribute("src");
+  }
+}
+
+function syncInteractiveToggle(hasHtml, showingHtml) {
+  const btn = $("toggleInteractiveBtn");
+  if (!btn) return;
+  btn.classList.toggle("hidden", !hasHtml);
+  if (!hasHtml) return;
+  btn.textContent = showingHtml ? "PNG" : "Live";
+  btn.title = showingHtml ? "Show static figure" : "Interactive view: drag nodes";
+}
+
+function updateHtmlPreview(path) {
+  const frame = $("htmlPreview");
+  const img = $("preview");
+  const plotlyBox = $("plotlyPreview");
+  const empty = $("emptyCanvas");
+  if (!frame || !path) return false;
+  if (plotlyBox) {
+    plotlyBox.classList.add("hidden");
+    try { if (window.Plotly) Plotly.purge(plotlyBox); } catch {}
+  }
+  if (img) img.style.display = "none";
+  const sep = path.includes("?") ? "&" : "?";
+  frame.src = path.startsWith("/") ? `${path}${sep}t=${Date.now()}` : path;
+  frame.classList.remove("hidden");
+  if (empty) empty.style.display = "none";
+  return true;
 }
 
 function updatePreviewImage(path) {
   const img = $("preview");
   const plotlyBox = $("plotlyPreview");
   const empty = $("emptyCanvas");
+  hideHtmlPreview();
   if (!img || !path) return;
   if (plotlyBox) {
     plotlyBox.classList.add("hidden");
@@ -149,21 +374,32 @@ function updatePreviewImage(path) {
   if (empty) empty.style.display = "none";
 }
 
-async function updateInstantPreview(outputs = {}) {
-  const rendered = await renderPlotlyPreview(outputs);
+async function updateInstantPreview(outputs = {}, revision = state.revision) {
+  const hasHtml = Boolean(outputs.html);
+  const showHtml = hasHtml && state.preferHtmlPreview;
+  syncInteractiveToggle(hasHtml, showHtml);
+  if (showHtml) {
+    updateHtmlPreview(outputs.html);
+    return;
+  }
+  hideHtmlPreview();
+  const rendered = await renderPlotlyPreview(outputs, revision);
+  if (revision !== state.revision) return;
   if (!rendered && outputs.preview) updatePreviewImage(outputs.preview);
 }
 
-async function renderPlotlyPreview(outputs = {}) {
+async function renderPlotlyPreview(outputs = {}, revision = state.revision) {
   const plotlyBox = $("plotlyPreview");
   const img = $("preview");
   const empty = $("emptyCanvas");
-  if (!plotlyBox || !outputs.json || !window.Plotly) return false;
+  if (!plotlyBox || !outputs.json) return false;
   try {
     const sep = outputs.json.includes("?") ? "&" : "?";
     const figure = await api(`${outputs.json}${sep}t=${Date.now()}`);
     const spec = figure?.plotly;
     if (!spec?.data?.length) return false;
+    if (typeof ensurePlotly === "function" && !(await ensurePlotly())) return false;
+    if (revision !== state.revision) return false;
     if (img) img.style.display = "none";
     plotlyBox.classList.remove("hidden");
     await Plotly.react(plotlyBox, spec.data, spec.layout || {}, {
@@ -219,13 +455,16 @@ function setPreviewVisible(visible, mode = "image") {
   const img = $("preview");
   const plotlyBox = $("plotlyPreview");
   const empty = $("emptyCanvas");
+  const frame = $("htmlPreview");
   if (visible) {
-    img.style.display = mode === "plotly" ? "none" : "block";
+    img.style.display = mode === "plotly" || mode === "html" ? "none" : "block";
     if (plotlyBox) plotlyBox.classList.toggle("hidden", mode !== "plotly");
+    if (frame) frame.classList.toggle("hidden", mode !== "html");
     if (empty) empty.style.display = "none";
   } else {
     img.style.display = "none";
     if (plotlyBox) plotlyBox.classList.add("hidden");
+    if (frame) frame.classList.add("hidden");
     if (empty) empty.style.display = "flex";
   }
 }
@@ -290,7 +529,10 @@ async function importPlotSpecFile(file) {
 }
 
 function applyImportedParams(params, unsupported = []) {
+  state.invalidFields.clear();
   state.params = { ...params };
+  state.userTouchedParams = true;
+  markFigureDirty();
   syncJsonFromParams();
   renderParamContentArea();
   const extra = unsupported && unsupported.length ? ` Ignored roles: ${unsupported.join(", ")}.` : "";
@@ -329,6 +571,7 @@ function ensureExportItems(container) {
     { fmt: "svg", label: "SVG" },
     { fmt: "pdf", label: "PDF" },
     { fmt: "png", label: "PNG" },
+    { fmt: "html", label: "Interactive HTML" },
     { fmt: "tiff", label: "TIFF" },
     { fmt: "plotspec", label: "PlotSpec (JSON)" },
     { fmt: "bundle", label: "Reproduction bundle (ZIP)" },
@@ -356,8 +599,20 @@ function renderDownloads(outputs) {
   const quickContainer = $("quickDownloads");
   const headerBox = $("headerExportLinks");
   const empty = $("exportMenuEmpty");
-  const map = normalizeOutputMap(outputs || {});
+  const synced = state.renderedRevision === state.revision && !state.isUpdating && !state.isUploading && !state.isLoadingPreset && !state.invalidFields.size;
+  const map = normalizeOutputMap(synced ? (outputs || {}) : {});
   state.lastOutputs = outputs || {};
+  const notice = $("figureSyncNotice");
+  if (notice) {
+    notice.hidden = synced || state.previewRevision < 0 || (state.previewRevision === state.revision && !state.isUpdating);
+    notice.textContent = state.previewRevision === state.revision
+      ? "Preview ready. Export files are being prepared in the background."
+      : "Preview has not applied the latest data and settings. Run Plot to update it.";
+  }
+  if ($("prepareExportButton")) {
+    $("prepareExportButton").hidden = synced;
+    $("prepareExportButton").disabled = state.isUpdating || state.isUploading || state.isLoadingPreset;
+  }
 
   // Primary formats live ONLY in the top Export dropdown (+ export tab clone)
   const rows = ensureExportItems(quickContainer);
@@ -374,8 +629,13 @@ function renderDownloads(outputs) {
       row.href = item.url;
       row.target = "_blank";
       row.rel = "noopener noreferrer";
-      row.download = EXPORT_FILENAMES[fmt] || item.filename || `figure.${fmt === "tiff" ? "tiff" : fmt}`;
-      row.title = `Download ${label}`;
+      if (fmt === "html") {
+        row.removeAttribute("download");
+        row.title = "Open interactive view";
+      } else {
+        row.download = EXPORT_FILENAMES[fmt] || item.filename || `figure.${fmt === "tiff" ? "tiff" : fmt}`;
+        row.title = `Download ${label}`;
+      }
       row.removeAttribute("aria-disabled");
       row.tabIndex = 0;
     } else {
@@ -383,7 +643,7 @@ function renderDownloads(outputs) {
       row.href = "#";
       row.removeAttribute("download");
       row.removeAttribute("target");
-      row.title = "Not available yet — run Demo / Run Plot first";
+      row.title = "Generate export files or run the plot to enable this download";
       row.setAttribute("aria-disabled", "true");
       row.tabIndex = -1;
     }
@@ -427,7 +687,9 @@ function renderDownloads(outputs) {
     empty.hidden = ready;
     empty.textContent = ready
       ? ""
-      : "Run Demo or Run Plot first — then SVG / PDF / PNG become active.";
+      : state.isUpdating ? "Preparing export files…"
+      : state.previewRevision === state.revision ? "Generate export files for this example."
+      : state.renderedRevision >= 0 ? "Apply your changes with Run Plot before exporting." : "Run a plot to enable downloads.";
   }
 }
 
@@ -494,6 +756,12 @@ function wireExportMenu() {
 }
 
 function numberFieldMeta(key, control) {
+  const fallback = inferredNumberFieldMeta(key, control);
+  return { ...fallback, min: control?.min ?? fallback.min, max: control?.max ?? fallback.max,
+    step: control?.step ?? fallback.step };
+}
+
+function inferredNumberFieldMeta(key, control) {
   const def = control?.default;
   if (key.includes("alpha")) return { min: 0, max: 1, step: 0.05 };
   if (key === "legend_x" || key === "legend_y" || key.includes("legend_just") || key.includes("hjust") || key.includes("vjust")) {
@@ -506,7 +774,7 @@ function numberFieldMeta(key, control) {
   if (/(point_size|dot_size|label_size|mark_.*size|pie_.*size|stat_embedded_size)/.test(key)) {
     return { min: 0, max: 20, step: 0.05 };
   }
-  if (key.includes("angle")) return { min: 0, max: 360, step: 1 };
+  if (key.includes("angle")) return { min: -360, max: 360, step: 1 };
   if (/(line_width|linewidth|border_width|tick_width|grid_width|minor_width)/.test(key)) {
     return { min: 0, max: 8, step: 0.05 };
   }
@@ -618,7 +886,7 @@ function parseLooseTypeSpec(raw, key) {
       help: raw.help || raw.description || "",
     };
     if (raw.type === "array") out.type = raw.items?.type === "string" ? "string_array" : "string_array";
-    if (raw.type === "integer") out.type = "number";
+    if (raw.type === "integer") out.type = "integer";
     if (raw.type === "boolean") out.type = "boolean";
     if (Array.isArray(raw.enum)) {
       out.type = "select";
@@ -640,7 +908,7 @@ function parseLooseTypeSpec(raw, key) {
     columns: "columns",
     string: "string",
     number: "number",
-    integer: "number",
+    integer: "integer",
     boolean: "boolean",
     color: "color",
     object: "object",
@@ -753,6 +1021,9 @@ function normalizeSchema(schema) {
         default: defaultValue(key, spec),
         help: spec.help || spec.description || "",
         required: Boolean(spec.required),
+        min: spec.min ?? spec.minimum,
+        max: spec.max ?? spec.maximum,
+        step: spec.step,
         options: inferOptions(key, spec),
         group: controlGroup({ key, section: sectionName }),
         tier: controlTier({ key, section: sectionName }),
@@ -820,14 +1091,18 @@ function sanitizeParamsForRun(params = {}) {
 function syncParamsFromJson() {
   const el = $("paramsText");
   if (!el) return;
-  const text = el.value.trim();
-  if (!text) {
-    state.params = {};
-    return;
-  }
   try {
-    state.params = JSON.parse(text);
-  } catch (err) {}
+    const value = JSON.parse(el.value.trim() || "{}");
+    if (!value || Array.isArray(value) || typeof value !== "object") throw new Error("Use a JSON object containing parameter names and values.");
+    state.params = value;
+    state.invalidFields.clear();
+    el.removeAttribute("aria-invalid");
+    if ($("jsonError")) $("jsonError").textContent = "";
+  } catch (err) {
+    state.invalidFields.set("__json", { message: `Configuration: ${err.message}`, value: el.value });
+    el.setAttribute("aria-invalid", "true");
+    if ($("jsonError")) $("jsonError").textContent = err.message;
+  }
 }
 
 function syncJsonFromParams() {
@@ -892,7 +1167,53 @@ function renderInputForControl(control) {
     return label;
   }
 
-  if (control.key.toLowerCase().includes("palette")) {
+  if (["object", "json", "textarea", "array", "string_array", "number_array", "color_array"].includes(control.type)) {
+    const wrap = document.createElement("span");
+    wrap.className = "structured-field";
+    const input = document.createElement("textarea");
+    input.rows = 3;
+    const structured = control.type !== "textarea";
+    input.value = state.invalidFields.get(control.key)?.value ?? (value == null ? "" : structured ? JSON.stringify(value, null, 2) : String(value));
+    const error = document.createElement("small");
+    error.className = "field-error";
+    error.id = `error-${control.key}`;
+    error.setAttribute("role", "alert");
+    error.textContent = state.invalidFields.get(control.key)?.message || "";
+    input.setAttribute("aria-describedby", error.id);
+    if (state.invalidFields.has(control.key)) input.setAttribute("aria-invalid", "true");
+    input.oninput = () => {
+      try {
+        let parsed = input.value;
+        if (structured) {
+          parsed = input.value.trim() ? JSON.parse(input.value) : undefined;
+          const array = control.type === "array" || control.type.endsWith("_array");
+          if (parsed !== undefined && (array ? !Array.isArray(parsed) : !parsed || Array.isArray(parsed) || typeof parsed !== "object")) {
+            throw new Error(array ? "Use a JSON list, for example [1, 2]." : "Use a JSON object with names and values.");
+          }
+          if (parsed !== undefined && control.type === "number_array" && parsed.some((x) => typeof x !== "number" || !Number.isFinite(x))) throw new Error("Every list item must be a number.");
+          if (parsed !== undefined && ["string_array", "color_array"].includes(control.type) && parsed.some((x) => typeof x !== "string")) throw new Error("Every list item must be text.");
+        }
+        if (parsed === undefined) delete state.params[control.key];
+        else state.params[control.key] = parsed;
+        state.invalidFields.delete(control.key);
+        error.textContent = "";
+        input.removeAttribute("aria-invalid");
+        syncJsonFromParams();
+        triggerAutoUpdate(350);
+      } catch (err) {
+        const message = `${control.label}: ${err.message}`;
+        state.invalidFields.set(control.key, { message, value: input.value });
+        input.setAttribute("aria-invalid", "true");
+        error.textContent = message;
+        markFigureDirty();
+        setEditorStatus("Check settings");
+      }
+    };
+    wrap.append(input, error);
+    return wrap;
+  }
+
+  if (control.key.toLowerCase().includes("palette") && control.type !== "select" && !control.options?.length) {
     const wrap = document.createElement("div");
     wrap.className = "palette-picker-wrap";
 
@@ -959,16 +1280,46 @@ function renderInputForControl(control) {
     input.value = shown !== undefined && shown !== null ? String(shown) : "";
     input.placeholder = control.default !== undefined && control.default !== null ? String(control.default) : "";
     input.title = control.default !== undefined ? `Default: ${control.default}` : "";
+    const error = document.createElement("small");
+    error.className = "field-error";
+    error.id = `error-${control.key}`;
+    error.setAttribute("role", "alert");
+    input.setAttribute("aria-describedby", error.id);
     const commitNumber = () => {
+      input.setCustomValidity("");
+      const numeric = input.value === "" ? undefined : Number(input.value);
+      const valid = input.validity.valid && (numeric === undefined || Number.isFinite(numeric))
+        && (control.type !== "integer" || numeric === undefined || Number.isInteger(numeric));
+      if (!valid) {
+        const message = `${control.label}: ${control.type === "integer" ? "use a whole number" : "use a valid number"}${meta.min !== undefined ? `, minimum ${meta.min}` : ""}${meta.max !== undefined ? `, maximum ${meta.max}` : ""}.`;
+        state.invalidFields.set(control.key, { message, value: input.value });
+        input.setAttribute("aria-invalid", "true");
+        error.textContent = message;
+        markFigureDirty();
+        setEditorStatus("Check settings");
+        return;
+      }
+      state.invalidFields.delete(control.key);
+      input.removeAttribute("aria-invalid");
+      error.textContent = "";
       const parsed = input.value === "" ? control.default : Number(input.value);
       if (parsed === undefined || Number.isNaN(parsed)) delete state.params[control.key];
       else state.params[control.key] = control.type === "integer" ? parseInt(parsed, 10) : parsed;
       syncJsonFromParams();
       triggerAutoUpdate(200);
     };
+    const invalid = state.invalidFields.get(control.key);
+    if (invalid) {
+      input.value = invalid.value;
+      input.setAttribute("aria-invalid", "true");
+      error.textContent = invalid.message;
+    }
     input.onchange = commitNumber;
     input.oninput = commitNumber;
-    return input;
+    const wrap = document.createElement("span");
+    wrap.className = "number-field";
+    wrap.append(input, error);
+    return wrap;
   }
 
   if (control.type === "color") {
@@ -1409,11 +1760,7 @@ function refreshParamNavCounts() {
     counts[t] = (counts[t] || 0) + 1;
   });
   // common tabs always have baseline controls
-  counts.theme = (counts.theme || 0) + (COMMON_CONTROLS.theme || []).length;
-  counts.axes = (counts.axes || 0) + COMMON_CONTROLS.axes.length;
-  counts.title = (counts.title || 0) + COMMON_CONTROLS.title.length;
-  counts.legend = (counts.legend || 0) + COMMON_CONTROLS.legend.length;
-  counts.canvas = (counts.canvas || 0) + COMMON_CONTROLS.canvas.length;
+  ["theme", "axes", "title", "legend", "canvas"].forEach((tab) => { counts[tab] = mergeCommonWithSchema(tab).length; });
 
   document.querySelectorAll("#paramNavCol [data-count-for]").forEach((el) => {
     const tab = el.dataset.countFor;
@@ -1441,6 +1788,9 @@ function makeVirtualControl(spec) {
     label: spec.label || labelize(spec.key),
     type: spec.type || inferType(spec.key, spec),
     default: spec.default,
+    min: spec.min ?? spec.minimum,
+    max: spec.max ?? spec.maximum,
+    step: spec.step,
     help: spec.help || "",
     required: false,
     options: spec.options || inferOptions(spec.key, spec),
@@ -1470,7 +1820,9 @@ function mergeCommonWithSchema(tab) {
   // Put baseline first, then schema (including overrides that replace baseline keys)
   const schemaByKey = Object.fromEntries(schemaControls.map((c) => [c.key, c]));
   if (schemaByKey.legend_title && !schemaByKey.legend_name) {
-    schemaByKey.legend_name = { ...schemaByKey.legend_title, key: "legend_name" };
+    // Display and edit the plugin's real key; changing only an alias leaves an
+    // existing legend_title in the preset taking precedence at render time.
+    schemaByKey.legend_name = schemaByKey.legend_title;
   }
   const head = (COMMON_CONTROLS[tab] || []).map((spec) => schemaByKey[spec.key] || makeVirtualControl(spec));
   const tail = orderedSchema.filter((c) => !commonFirst.includes(c.key) && c.key !== "legend_title");
@@ -1506,9 +1858,15 @@ function setupParamNavEvents() {
       tabs.forEach((t) => t.classList.remove("active"));
       tab.classList.add("active");
       state.activeParamTab = tab.dataset.ptab;
+      state.parameterSearch = "";
+      if ($("parameterSearch")) $("parameterSearch").value = "";
       renderParamContentArea();
     };
   });
+  if ($("parameterSearch")) $("parameterSearch").oninput = (event) => {
+    state.parameterSearch = event.target.value;
+    renderParamContentArea();
+  };
 }
 
 function collectColorParamKeys() {
@@ -1862,6 +2220,19 @@ function renderParamContentArea() {
   area.innerHTML = "";
   const tab = state.activeParamTab || "data";
   refreshParamNavCounts();
+  const query = state.parameterSearch.trim().toLowerCase();
+  if (query) {
+    const all = new Map();
+    ["theme", "axes", "title", "legend", "canvas"].forEach((tab) => mergeCommonWithSchema(tab).forEach((control) => all.set(control.key, control)));
+    allSchemaControls().forEach((control) => all.set(control.key, control));
+    const matches = [...all.values()].filter((control) => `${control.label} ${control.key} ${control.help}`.toLowerCase().includes(query));
+    const summary = document.createElement("p");
+    summary.className = "param-tab-intro";
+    summary.textContent = `${matches.length} matching settings across all sections`;
+    area.appendChild(summary);
+    appendControlGroup(area, "Search results", matches);
+    return;
+  }
 
   // ---- THEME (common color catalog) ----
   if (tab === "theme") {
@@ -1887,50 +2258,45 @@ function renderParamContentArea() {
     area.appendChild(intro);
 
     const dataCard = document.createElement("div");
-    dataCard.className = "chi-card-body";
-    dataCard.style.cssText =
-      "padding:16px; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; flex-direction:column; gap:12px; margin-bottom:16px;";
-    const selectedFile = state.customFileName || null;
-    dataCard.innerHTML = `
-      <div class="chi-action-row">
-        <span class="chi-action-label">select-file</span>
-        <label class="chi-icon-btn chi-btn-mint" title="Select data file" style="cursor:pointer; position:relative;">
-          📁
-          <input type="file" id="loadDataFileInput" accept=".csv,.tsv,.txt,.xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="position:absolute; inset:0; opacity:0; cursor:pointer;" />
-        </label>
-      </div>
-      ${selectedFile ? `<div style="font-size:11px; font-weight:700; color:#15803d; background:#f0fdf4; border:1px solid #bbf7d0; padding:6px 10px; border-radius:4px;">📁 ${escapeHtml(selectedFile)}</div>` : ""}
-      <div class="chi-action-row">
-        <span class="chi-action-label">reload</span>
-        <button type="button" class="chi-icon-btn chi-btn-mint" id="loadDataReloadBtn" title="Reload dataset">⚡</button>
-      </div>
-      <div class="chi-action-row">
-        <span class="chi-action-label">view data</span>
-        <button type="button" class="chi-icon-btn chi-btn-grey" id="loadDataViewBtn" title="View dataset table">👁️</button>
-      </div>
-    `;
+    dataCard.className = "dataset-inputs";
+    inputDefinitions().forEach((definition) => {
+      const label = document.createElement("label");
+      label.className = "dataset-input";
+      const title = document.createElement("strong");
+      title.textContent = `${definition.label || labelize(definition.id)}${definition.required ? " (required)" : " (optional)"}`;
+      const help = document.createElement("small");
+      help.textContent = definition.description || "Choose a CSV, TSV or Excel table.";
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = definition.type === "file" ? "" : ".csv,.tsv,.txt,.xlsx,.xlsm";
+      input.disabled = state.isUploading;
+      input.setAttribute("aria-label", `Upload ${definition.id}`);
+      input.onchange = () => loadUserFile(definition.id, input.files[0]);
+      label.append(title, help, input);
+      if (state.customFiles[definition.id]) {
+        const name = document.createElement("span");
+        name.className = "loaded-file-name";
+        name.textContent = state.customFiles[definition.id].name;
+        label.appendChild(name);
+      }
+      dataCard.appendChild(label);
+    });
+    if (Object.keys(state.customFiles).length) {
+      const note = document.createElement("p");
+      note.className = "dataset-note";
+      const missing = missingUserInputs();
+      note.textContent = missing.length
+        ? `Still needed: ${missing.map((item) => item.id).join(", ")}. Example files will not be mixed with your data.`
+        : "Your data is selected. Confirm column mappings, then choose Run Plot.";
+      dataCard.appendChild(note);
+    }
+    const viewBtn = document.createElement("button");
+    viewBtn.type = "button";
+    viewBtn.className = "secondary";
+    viewBtn.textContent = "View loaded data";
+    viewBtn.onclick = () => { if ($("stageDataDrawer")) $("stageDataDrawer").open = true; };
+    dataCard.appendChild(viewBtn);
     area.appendChild(dataCard);
-
-    const fileInput = dataCard.querySelector("#loadDataFileInput");
-    if (fileInput) {
-      fileInput.onchange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-          state.customFileName = file.name;
-          runDemoSilent();
-          renderParamContentArea();
-        }
-      };
-    }
-    const reloadBtn = dataCard.querySelector("#loadDataReloadBtn");
-    if (reloadBtn) reloadBtn.onclick = () => runDemoSilent();
-    const viewBtn = dataCard.querySelector("#loadDataViewBtn");
-    if (viewBtn) {
-      viewBtn.onclick = () => {
-        const drawer = $("stageDataDrawer");
-        if (drawer) drawer.open = true;
-      };
-    }
 
     const dataControls = controlsForTab("data");
     if (typeof renderDataMappingPanel === "function") {
@@ -2019,13 +2385,19 @@ function renderParamContentArea() {
     group.innerHTML = `<summary>Advanced JSON Configuration</summary>`;
     const textarea = document.createElement("textarea");
     textarea.id = "paramsText";
-    textarea.value = JSON.stringify(state.params, null, 2);
+    textarea.value = state.invalidFields.get("__json")?.value ?? JSON.stringify(state.params, null, 2);
     textarea.style.cssText = "width:100%; height:220px; font-family:monospace; font-size:11px; padding:10px;";
     textarea.oninput = () => {
       syncParamsFromJson();
       triggerAutoUpdate(300);
     };
-    group.appendChild(textarea);
+    const jsonError = document.createElement("small");
+    jsonError.id = "jsonError";
+    jsonError.className = "field-error";
+    jsonError.setAttribute("role", "alert");
+    jsonError.textContent = state.invalidFields.get("__json")?.message || "";
+    textarea.setAttribute("aria-describedby", "jsonError");
+    group.append(textarea, jsonError);
     area.appendChild(group);
     const extra = controlsForTab("export");
     if (extra.length) appendControlGroup(area, "Export parameters", extra, { open: false });
@@ -2276,55 +2648,26 @@ function loadDemoIntoUi() {
 
   renderParamContentArea();
   renderStageDataDrawer();
-  $("jobStatus").textContent = "Demo dataset pre-loaded. Tweak any parameters on the right sidebar.";
+  renderDataSource();
+  $("jobStatus").textContent = "Example data loaded. Upload your own data or customize the settings.";
 }
 
 async function runDemo(options = {}) {
-  const reloadDemo = options.reloadDemo !== false;
   if (!state.pluginId) return;
-  if ($("runDemoButton")) $("runDemoButton").disabled = true;
-  if ($("runButton")) $("runButton").disabled = true;
-  $("jobStatus").textContent = "Rendering figure...";
-  $("downloadLinks").innerHTML = "";
-  setStageOverlay(true);
-  try {
-    // Demo button reloads clean default params; Run Plot keeps sidebar edits
-    if (reloadDemo && state.demo && !state.selectedExampleId) {
-      loadDemoIntoUi();
+  if (options.reloadDemo !== false) {
+    if (state.selectedExampleId) return loadPreset(state.selectedExampleId, { previewOnly: options.previewOnly === true });
+    if (!Object.keys(state.demo?.files || {}).length && state.examples.length) {
+      return loadPreset(state.examples[0].id || state.examples[0].name, { useExampleData: true, previewOnly: options.previewOnly === true });
     }
-    const payload = { params: sanitizeParamsForRun(state.params) };
-    if (state.selectedExampleId) payload.example_id = state.selectedExampleId;
-    const result = await api(`/api/plugins/${state.pluginId}/run-demo`, {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: { "Content-Type": "application/json" }
-    });
-    renderValidation(result.vnext);
-    if (result.status === "completed" && result.outputs) {
-      $("jobStatus").textContent = `completed: Figure rendered.`;
-      renderDownloads(result.outputs);
-      if (result.outputs.preview) {
-        await updateInstantPreview(result.outputs);
-      }
-    } else {
-      const errObj = result.error && typeof result.error === "object" ? result.error : null;
-      const detail =
-        (errObj && (errObj.detail || errObj.error)) ||
-        result.detail ||
-        (typeof result.error === "string" ? result.error : null) ||
-        result.message ||
-        result.status ||
-        "unknown error";
-      $("jobStatus").textContent = `Render failed: ${detail}`;
-      if (result.outputs) renderDownloads(result.outputs);
-    }
-  } catch (error) {
-    $("jobStatus").textContent = `Render failed: ${error.message}`;
-  } finally {
-    setStageOverlay(false);
-    if ($("runDemoButton")) $("runDemoButton").disabled = !(state.demo || state.examples.length);
-    if ($("runButton")) $("runButton").disabled = false;
+    state.uploadVersion += 1;
+    state.isUploading = false;
+    state.customFiles = {};
+    state.invalidFields.clear();
+    loadDemoIntoUi();
   }
+  markFigureDirty();
+  renderDataSource();
+  return runDemoSilent();
 }
 
 function applyZoomTransform() {
@@ -2458,6 +2801,9 @@ function setupStageTools() {
         } else {
           document.exitFullscreen?.().catch(() => {});
         }
+      } else if (action === "toggle-interactive") {
+        state.preferHtmlPreview = !state.preferHtmlPreview;
+        if (state.lastOutputs) updateInstantPreview(state.lastOutputs);
       }
     };
   });
@@ -2468,6 +2814,10 @@ function setupStageTools() {
   if (toggle) {
     toggle.onchange = () => {
       state.autoUpdateEnabled = toggle.checked;
+      if (!toggle.checked) {
+        clearTimeout(state.autoUpdateTimer);
+        state.pendingRender = false;
+      } else if (state.renderedRevision !== state.revision) runDemoSilent();
     };
   }
 }
@@ -2491,45 +2841,104 @@ function wireExampleSelect() {
   });
   if (state.selectedExampleId) select.value = state.selectedExampleId;
 
-  select.onchange = async () => {
-    const eid = select.value || null;
-    state.selectedExampleId = eid;
-    $("jobStatus").textContent = eid ? `Loading preset “${eid}”…` : "Loading default demo…";
-    try {
-      if (eid) {
-        // Fetch example bundle metadata when available; otherwise run-demo with example_id
-        try {
-          const rec = await api(`/api/plugins/${state.pluginId}/examples/${encodeURIComponent(eid)}`);
-          // Prefer example params if present
-          if (rec?.params) {
-            let raw = rec.params;
-            if (raw.params && typeof raw.params === "object") raw = raw.params;
-            state.params = { ...raw };
-            syncJsonFromParams();
-          }
-          if (rec?.inputs || rec?.files) {
-            // Keep demo shell but swap params; run-demo uses example_id for files
-            state.demo = state.demo || { files: {}, params: {} };
-          }
-        } catch (_) {
-          // Example detail optional — run-demo with example_id is enough
-        }
-      } else if (state.demo) {
-        setParamsFromDemo(state.demo);
-      }
-      renderParamContentArea();
-      await runDemoSilent();
-      if (typeof refreshPlotGuide === "function") await refreshPlotGuide();
-    } catch (err) {
-      $("jobStatus").textContent = `Preset failed: ${err.message}`;
+  select.onchange = () => loadPreset(select.value || null, { previewOnly: true });
+}
+
+async function loadPreset(eid, { useExampleData = false, previewOnly = false } = {}) {
+  if (state.isLoadingPreset) return;
+  state.isLoadingPreset = true;
+  if ($("exampleSelect")) $("exampleSelect").disabled = true;
+  clearTimeout(state.autoUpdateTimer);
+  markFigureDirty();
+  $("jobStatus").textContent = eid ? `Loading preset “${eid}”…` : "Loading default example…";
+  try {
+    const record = eid ? await api(`/api/plugins/${state.pluginId}/examples/${encodeURIComponent(eid)}`) : null;
+    state.invalidFields.clear();
+    if (useExampleData) {
+      state.uploadVersion += 1;
+      state.isUploading = false;
+      state.customFiles = {};
     }
-  };
+    state.selectedExampleId = eid;
+    if (record) {
+      state.params = { ...(record.params?.params || record.params || {}) };
+      if (!Object.keys(state.customFiles).length && record.input_preview) state.inputPreview = record.input_preview;
+    } else if (Object.keys(state.customFiles).length) {
+      setParamsFromDemo(state.demo);
+    } else {
+      loadDemoIntoUi();
+    }
+    state.selectedRows = new Set();
+    state.selectedColumns = new Set();
+    if (typeof reconcileMappingsWithDataset === "function") reconcileMappingsWithDataset();
+    if (typeof applySuggestionsIfEmpty === "function") applySuggestionsIfEmpty();
+    syncJsonFromParams();
+    markFigureDirty();
+    renderDataSource();
+    renderStageDataDrawer();
+    renderParamContentArea();
+    if (previewOnly && record?.expected && !Object.keys(state.customFiles).length) {
+      renderValidation(null);
+      updatePreviewImage(record.expected);
+      state.previewRevision = state.revision;
+      state.lastOutputs = {};
+      renderDownloads({});
+      setEditorStatus("Example preview");
+      $("jobStatus").textContent = "Built-in example preview. Edit settings to update it, or generate export files when needed.";
+      if (typeof refreshPlotGuide === "function") await refreshPlotGuide();
+      return;
+    }
+  } catch (err) {
+    $("jobStatus").textContent = `Preset was not loaded: ${err.message}`;
+    if ($("exampleSelect")) $("exampleSelect").value = state.selectedExampleId || "";
+    setEditorStatus("Preset failed");
+    return;
+  } finally {
+    state.isLoadingPreset = false;
+    renderDownloads(state.lastOutputs);
+    if ($("exampleSelect")) $("exampleSelect").disabled = false;
+  }
+  await runDemoSilent();
+  if (typeof refreshPlotGuide === "function") await refreshPlotGuide();
+}
+
+async function loadSavedJob(jobId) {
+  const record = await api(`/api/jobs/${encodeURIComponent(jobId)}/editor`);
+  if (record.plugin_id !== state.pluginId) throw new Error("The saved run belongs to a different plot.");
+  const files = {};
+  for (const [field, info] of Object.entries(record.inputs || {})) {
+    const response = await fetch(info.url);
+    if (!response.ok) throw new Error(`Saved input unavailable: ${info.filename}`);
+    files[field] = new File([await response.blob()], info.filename);
+  }
+  if (!Object.keys(files).length) throw new Error("The saved run has no accessible input files.");
+  state.customFiles = files;
+  state.inputPreview = record.input_preview;
+  state.params = { ...record.params };
+  state.selectedExampleId = null;
+  state.userTouchedParams = true;
+  if ($("exampleSelect")) $("exampleSelect").value = "";
+  syncJsonFromParams();
+  renderDataSource();
+  renderStageDataDrawer();
+  renderParamContentArea();
+  state.lastOutputs = record.outputs || {};
+  renderDownloads(state.lastOutputs);
+  renderValidation(record.vnext);
+  if (record.status === "completed" && record.outputs?.preview) {
+    updatePreviewImage(record.outputs.preview);
+    state.renderedRevision = state.revision;
+    state.previewRevision = state.revision;
+    setEditorStatus("Synced");
+  } else setEditorStatus("Check settings");
+  $("jobStatus").textContent = `Loaded saved run ${jobId}. Editing its original data and settings.`;
 }
 
 async function init() {
   setupParamNavEvents();
   setupStageTools();
   wireExportMenu();
+  if ($("prepareExportButton")) $("prepareExportButton").onclick = () => runDemoSilent();
   wirePlotSpecImport();
   if (typeof initPlotGuide === "function") initPlotGuide();
 
@@ -2538,7 +2947,12 @@ async function init() {
       state.selectedExampleId = null;
       const sel = $("exampleSelect");
       if (sel) sel.value = "";
-      runDemo({ reloadDemo: true });
+      const example = state.examples.find((item) => item.bundle && item.expected);
+      if (example) {
+        state.selectedExampleId = example.id;
+        if (sel) sel.value = example.id;
+        loadPreset(example.id, { useExampleData: true, previewOnly: true });
+      } else runDemo({ reloadDemo: true });
     };
   }
   if ($("runButton")) {
@@ -2589,9 +3003,18 @@ async function init() {
     wireExampleSelect();
 
     const imported = takePendingImport();
-    if (imported) {
+    if (SAVED_JOB) {
+      await loadSavedJob(SAVED_JOB);
+    } else if (imported) {
       applyImportedParams(imported);
       await runDemo({ reloadDemo: false });
+    } else if (state.examples.some((example) => example.bundle && example.expected)) {
+      const example = state.selectedExampleId
+        ? { id: state.selectedExampleId }
+        : state.examples.find((item) => item.bundle && item.expected);
+      state.selectedExampleId = example.id;
+      if ($("exampleSelect")) $("exampleSelect").value = example.id;
+      await loadPreset(example.id, { previewOnly: true });
     } else if (state.demo && Object.keys(state.demo.files || {}).length) {
       await runDemo();
     } else if (state.examples.length) {
@@ -2599,7 +3022,7 @@ async function init() {
       state.selectedExampleId = state.examples[0].id || state.examples[0].name;
       const sel = $("exampleSelect");
       if (sel) sel.value = state.selectedExampleId || "";
-      await runDemoSilent();
+      await loadPreset(state.selectedExampleId);
     } else {
       $("jobStatus").textContent = "Ready for data upload.";
     }

@@ -1,0 +1,8 @@
+{
+  "x_column": "x",
+  "y_column": "y",
+  "vx_column": "vx",
+  "vy_column": "vy",
+  "group_column": "group",
+  "title": "Supplied vector field"
+}

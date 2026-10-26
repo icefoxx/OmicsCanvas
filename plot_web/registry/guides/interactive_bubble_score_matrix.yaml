@@ -1,0 +1,116 @@
+summary: Align a metric bubble matrix with one or more score panels.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare methods across metrics
+- Show component metrics and overall scores
+- Inspect ranking trade-offs
+common_uses: []
+input_requirements: Method names, numeric metric columns and score columns, or supported
+  long-format data.
+learn_more: 'Input: Method names, numeric metric columns and score columns, or supported
+  long-format data. Interpretation: The matrix and side panels may use different scales
+  and must be read separately. Check mappings, order and transformations before adjusting
+  labels, colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: The matrix and side panels may use different scales and must be read separately.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: State whether higher or lower values are preferable
+- id: caution_2
+  title: Caution 2
+  text: Composite scores depend on upstream weights, which the plot does not validate
+examples:
+- id: basic
+  title: Metrics with one score panel
+  description: 'Use case: Compare methods across metrics. This preset illustrates
+    metrics with one score panel. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare methods across metrics
+  input_requirements: Method names, numeric metric columns and score columns, or supported
+    long-format data.
+  preview_asset: plugins/interactive_bubble_score_matrix/all_examples_gallery/basic.png
+  mappings:
+    row_column: method
+    metric_columns:
+    - ARI
+    - NMI
+    - F1
+    - ASW
+    - V-Measure Homogeneity
+    score_column: Overall
+- id: multi_score
+  title: Multiple score panels
+  description: 'Use case: Show component metrics and overall scores. This preset illustrates
+    multiple score panels. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: multi_score
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Show component metrics and overall scores
+  input_requirements: Method names, numeric metric columns and score columns, or supported
+    long-format data.
+  preview_asset: plugins/interactive_bubble_score_matrix/all_examples_gallery/multi_score.png
+  variant_id: multi_score
+  mappings:
+    row_column: method
+    metric_columns:
+    - ARI
+    - NMI
+    - F1
+    - ASW
+    - V-Measure Homogeneity
+    score_columns:
+    - Bio(CP)
+    - DBI
+    - Overall
+- id: custom
+  title: Customized matrix-panel alignment
+  description: 'Use case: Inspect ranking trade-offs. This preset illustrates customized
+    matrix-panel alignment. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: custom
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect ranking trade-offs
+  input_requirements: Method names, numeric metric columns and score columns, or supported
+    long-format data.
+  preview_asset: plugins/interactive_bubble_score_matrix/all_examples_gallery/custom.png
+  variant_id: custom
+  mappings:
+    row_column: method
+    metric_columns:
+    - ARI
+    - NMI
+    - F1
+    - ASW
+    - V-Measure Homogeneity
+    score_column: Overall
+literature_ids:
+- wang_niche_preprint_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  custom:
+    summary: 'Use case: Inspect ranking trade-offs. This preset illustrates customized
+      matrix-panel alignment. Replace its input with your data while retaining the
+      appropriate view settings.'
+  multi_score:
+    summary: 'Use case: Show component metrics and overall scores. This preset illustrates
+      multiple score panels. Replace its input with your data while retaining the
+      appropriate view settings.'
+customization:
+- parameter: base_size
+  label: base_size
+  default: null
+- parameter: width
+  label: width
+  default: null
+- parameter: height
+  label: height
+  default: null

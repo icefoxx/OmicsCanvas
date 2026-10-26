@@ -1,0 +1,157 @@
+summary: Project nonnegative feature weights toward labeled vertices of a wheel.
+observation_type: observations or supplied summaries described in the input contract
+input_requirements: 3–12 numeric feature columns in desired vertex order, plus optional
+  group. Row-sum mode requires nonnegative weights. Zero-total rows are reported and
+  omitted.
+best_for:
+- Summarize nonnegative program weights
+- Compare observations against multiple feature vertices
+- Inspect an explicitly chosen feature normalization
+learn_more: Choose the intended data mapping and statistical mode before styling.
+  Vertex order and normalization affect the projection; record both. Nearby observations
+  need not have identical profiles.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Project nonnegative feature weights toward labeled vertices of a wheel. 3–12
+    numeric feature columns in desired vertex order, plus optional group. Row-sum
+    mode requires nonnegative weights. Zero-total rows are reported and omitted.
+cautions:
+- id: caution_1
+  title: Interpretation limit 1
+  text: Vertex order and normalization affect the projection; record both. Nearby
+    observations need not have identical profiles.
+- id: caution_2
+  title: Interpretation limit 2
+  text: Negative feature values require explicit feature-minmax normalization; no
+    trajectory is inferred.
+examples:
+- id: basic
+  title: Feature-weight wheel
+  description: Summarize nonnegative program weights
+  scenario: Summarize nonnegative program weights
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/radviz_plot/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    group_column: group
+- id: minmax
+  title: Feature-scaled wheel
+  description: Compare observations against multiple feature vertices
+  scenario: Compare observations against multiple feature vertices
+  demo_id: minmax
+  variant_id: minmax
+  preview_asset: plugins/radviz_plot/all_examples_gallery/minmax.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    group_column: group
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source. Local demos use independently
+  generated data and are not reproductions of its analyses.
+- Additional verified published figure/panel examples remain to be curated.
+customization:
+- parameter: feature_columns
+  label: Feature columns
+  default: []
+  help: 3–12 numeric features, in wheel vertex order.
+- parameter: group_column
+  label: Group column
+  default: group
+  help: ''
+- parameter: normalization
+  label: Normalization
+  default: row_sum
+  help: ''
+- parameter: spoke_show
+  label: Spoke show
+  default: true
+  help: ''
+- parameter: point_alpha
+  label: Point alpha
+  default: 0.75
+  help: ''
+- parameter: point_size
+  label: Point size
+  default: 2
+  help: ''
+- parameter: line_width
+  label: Line width
+  default: 0.6
+  help: ''
+- parameter: label_size
+  label: Label size
+  default: 2.8
+  help: ''
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report input mappings, units, preprocessing and all
+    selected statistical or display modes.'
+source_modules:
+- title: FigureYa281wheel
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa281wheel
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

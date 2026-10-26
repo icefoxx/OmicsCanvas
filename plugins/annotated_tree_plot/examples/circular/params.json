@@ -1,0 +1,15 @@
+{
+  "parent_column": "parent",
+  "child_column": "child",
+  "length_column": "length",
+  "group_column": "group",
+  "size_column": "size",
+  "feature_columns": [
+    "Gene_A",
+    "Gene_B"
+  ],
+  "title": "Circular tree with weighted nodes",
+  "layout": "circular",
+  "point_size": 8,
+  "heatmap_show": false
+}

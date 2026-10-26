@@ -1,0 +1,27 @@
+{
+  "input_mode": "edge_list",
+  "source_column": "source",
+  "target_column": "target",
+  "weight_column": "weight",
+  "layout_algorithm": "concentric",
+  "layout_sort": "label",
+  "ring_gap": 1.15,
+  "group_order": ["Core", "Signal", "Metabolic"],
+  "node_size_by": "degree",
+  "node_color_mode": "group",
+  "edge_weighted": true,
+  "edge_style": "link",
+  "directed": false,
+  "interactive": true,
+  "drag_nodes": true,
+  "physics_enabled": false,
+  "title": "Pathway groups on concentric rings",
+  "group_colors": {
+    "Core": "#4477AA",
+    "Signal": "#EE6677",
+    "Metabolic": "#228833"
+  },
+  "save_positions": true,
+  "width": 8.5,
+  "height": 7
+}

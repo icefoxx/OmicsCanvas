@@ -1,0 +1,34 @@
+id: linked_matrix_network_plot
+name: Linked Heatmap + Network
+version: 1.0.0
+description: Link a numeric feature matrix to supplied weighted relationships.
+language: R
+entrypoint: plot.R
+category: Multi-panel
+subcategory: Annotation
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+- id: links
+  type: table
+  formats:
+  - csv
+  - tsv
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+- links_used.csv
+runtime:
+  command: Rscript plugins/linked_matrix_network_plot/plot.R --input input.csv --params
+    params.json --output output_dir

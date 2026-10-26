@@ -1,0 +1,34 @@
+id: swimmer_plot
+name: Swimmer Timeline
+version: 1.0.0
+description: Show observation intervals and dated events for individual subjects.
+language: R
+entrypoint: plot.R
+category: Comparison
+subcategory: General
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+- id: events
+  type: table
+  formats:
+  - csv
+  - tsv
+  required: false
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+- events_used.csv
+runtime:
+  command: Rscript plugins/swimmer_plot/plot.R --input input.csv --params params.json
+    --output output_dir

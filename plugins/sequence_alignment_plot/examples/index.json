@@ -1,0 +1,25 @@
+{
+  "plugin_id": "sequence_alignment_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Aligned nucleotide sequences",
+      "plugin_id": "sequence_alignment_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "protein",
+      "label": "Aligned protein sequences",
+      "plugin_id": "sequence_alignment_plot",
+      "params": "protein/params.json",
+      "inputs": {
+        "input": "protein/input/data.csv"
+      },
+      "expected": "protein/expected/result.png"
+    }
+  ]
+}

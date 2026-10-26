@@ -1,0 +1,10 @@
+{
+  "id": "basic",
+  "label": "Annotation hierarchy",
+  "plugin_id": "circular_tree_embedding",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/cells.csv"
+  },
+  "expected": "expected/result.png"
+}

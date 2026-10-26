@@ -1,0 +1,104 @@
+summary: Stack continuous density distributions by category, optionally comparing
+  conditions within rows.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare population score distributions
+- Inspect sample expression distributions
+- Compare conditions within categories
+common_uses: []
+input_requirements: Continuous values and categories, or one numeric column per group.
+learn_more: 'Input: Continuous values and categories, or one numeric column per group.
+  Interpretation: Horizontal position represents values; ridge heights follow the
+  configured density scaling. Check mappings, order and transformations before adjusting
+  labels, colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Horizontal position represents values; ridge heights follow the configured
+    density scaling.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Peak height need not represent sample size
+- id: caution_2
+  title: Caution 2
+  text: Bandwidth, overlap and normalization affect appearance
+examples:
+- id: basic
+  title: Continuous distributions across categories
+  description: 'Use case: Compare population score distributions. This preset illustrates
+    continuous distributions across categories. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare population score distributions
+  input_requirements: Continuous values and categories, or one numeric column per
+    group.
+  preview_asset: plugins/interactive_ridgeline_plot/all_examples_gallery/basic.png
+  mappings:
+    id_column: sample
+- id: grouped
+  title: Conditions within categories
+  description: 'Use case: Inspect sample expression distributions. This preset illustrates
+    conditions within categories. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: grouped
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect sample expression distributions
+  input_requirements: Continuous values and categories, or one numeric column per
+    group.
+  preview_asset: plugins/interactive_ridgeline_plot/all_examples_gallery/grouped.png
+  variant_id: grouped
+  mappings:
+    feature_column: feature
+    value_column: value
+    group_column: group
+    id_column: sample
+    statistic_columns:
+      d: d
+      p: p
+- id: CAB_demo
+  title: Compact multiridge presentation
+  description: 'Use case: Compare conditions within categories. This preset illustrates
+    compact multiridge presentation. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: CAB_demo
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare conditions within categories
+  input_requirements: Continuous values and categories, or one numeric column per
+    group.
+  preview_asset: plugins/interactive_ridgeline_plot/all_examples_gallery/CAB_demo.png
+  variant_id: cab_demo
+  mappings:
+    id_column: sample
+literature_ids:
+- allen_raincloud_2019
+- li_leprosy_2025
+- jia_crc_programs_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  cab_demo:
+    summary: 'Use case: Compare conditions within categories. This preset illustrates
+      compact multiridge presentation. Replace its input with your data while retaining
+      the appropriate view settings.'
+  grouped:
+    summary: 'Use case: Inspect sample expression distributions. This preset illustrates
+      conditions within categories. Replace its input with your data while retaining
+      the appropriate view settings.'
+customization:
+- parameter: input_mode
+  label: input_mode
+  default: auto
+- parameter: group_colors
+  label: group_colors
+  default: null
+- parameter: width
+  label: width
+  default: 10
+- parameter: height
+  label: height
+  default: 6

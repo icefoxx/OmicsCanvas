@@ -1,0 +1,10 @@
+{
+  "chromosome_column": "chromosome",
+  "start_column": "start",
+  "end_column": "end",
+  "value_column": "value",
+  "group_column": "track",
+  "title": "Linear chromosome overview",
+  "layout": "linear",
+  "subtitle": ""
+}

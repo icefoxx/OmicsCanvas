@@ -1,0 +1,93 @@
+summary: Display binary feature states while distinguishing absence from missingness.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare evidence used by methods
+- Show mutation or detection states
+- Inspect missing records
+common_uses: []
+input_requirements: Wide binary matrix or long-format states; numeric values use value_threshold.
+learn_more: 'Input: Wide binary matrix or long-format states; numeric values use value_threshold.
+  Interpretation: Filled and unfilled marks distinguish states; unknown values require
+  a separate encoding. Check mappings, order and transformations before adjusting
+  labels, colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Filled and unfilled marks distinguish states; unknown values require a separate
+    encoding.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Thresholds change binary classifications
+- id: caution_2
+  title: Caution 2
+  text: Undetected does not mean biologically absent
+examples:
+- id: basic
+  title: Binary feature matrix
+  description: 'Use case: Compare evidence used by methods. This preset illustrates
+    binary feature matrix. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare evidence used by methods
+  input_requirements: Wide binary matrix or long-format states; numeric values use
+    value_threshold.
+  preview_asset: plugins/interactive_binary_plot/all_examples_gallery/basic.png
+- id: custom_layout
+  title: Layout for dense state matrices
+  description: 'Use case: Show mutation or detection states. This preset illustrates
+    layout for dense state matrices. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: custom_layout
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Show mutation or detection states
+  input_requirements: Wide binary matrix or long-format states; numeric values use
+    value_threshold.
+  preview_asset: plugins/interactive_binary_plot/all_examples_gallery/custom_layout.png
+- id: interactive
+  title: Inspect individual states on hover
+  description: 'Use case: Inspect missing records. This preset illustrates inspect
+    individual states on hover. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: interactive
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect missing records
+  input_requirements: Wide binary matrix or long-format states; numeric values use
+    value_threshold.
+  preview_asset: plugins/interactive_binary_plot/all_examples_gallery/interactive.png
+  variant_id: interactive
+  mappings:
+    row_id_column: Sample
+    group_column: Group
+literature_ids:
+- dang_pathwaymatrix_2015
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  interactive:
+    summary: 'Use case: Inspect missing records. This preset illustrates inspect individual
+      states on hover. Replace its input with your data while retaining the appropriate
+      view settings.'
+customization:
+- parameter: input_mode
+  label: Input Mode
+  default: null
+- parameter: group_column
+  label: Group Column
+  default: null
+- parameter: value_column
+  label: Value Column
+  default: null
+- parameter: base_size
+  label: Base Size
+  default: null
+- parameter: width
+  label: Width
+  default: null
+- parameter: height
+  label: Height
+  default: null

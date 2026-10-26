@@ -6,7 +6,9 @@
         "edge_list",
         "membership"
       ],
-      "label": "Input Mode"
+      "default": "edge_list",
+      "label": "Input Mode",
+      "help": "edge_list uses source/target pairs. membership uses group/element (falls back to source/target) and is meant for radial layouts."
     },
     "source_column": {
       "type": "column",
@@ -43,6 +45,12 @@
     "nodes_exclude": {
       "type": "string_array",
       "label": "Nodes Exclude"
+    },
+    "group_order": {
+      "type": "string_array",
+      "label": "Group order",
+      "default": [],
+      "help": "Ring order for concentric, and group-node order for radial. Empty = data order."
     }
   },
   "layout": {
@@ -52,21 +60,45 @@
         "fr",
         "kk",
         "circle",
+        "concentric",
+        "radial",
         "stress",
         "hierarchical",
         "manual"
       ],
-      "label": "Layout Algorithm"
+      "default": "fr",
+      "label": "Layout algorithm",
+      "help": "fr/kk/stress = force-directed; circle = one ring; concentric = one ring per group; radial = groups inside and members outside; hierarchical = tree; manual = x/y on the nodes table."
+    },
+    "layout_sort": {
+      "type": "select",
+      "options": ["none", "degree", "size", "label"],
+      "default": "none",
+      "label": "Ring sort",
+      "help": "Order of nodes around a ring. Only for layout_algorithm = circle, concentric, or radial."
+    },
+    "ring_gap": {
+      "type": "number",
+      "label": "Ring gap",
+      "default": 1,
+      "min": 0.2,
+      "max": 5,
+      "step": 0.1,
+      "help": "Radius step between rings. Only for layout_algorithm = concentric or radial."
     },
     "seed": {
       "type": "number",
-      "label": "Seed"
+      "label": "Seed",
+      "default": 42,
+      "help": "Runtime seed for random layouts (fr, kk, stress). No effect on circle, concentric, radial, or manual."
     }
   },
   "nodes": {
     "node_size": {
       "type": "number",
-      "label": "Node Size"
+      "label": "Node Size",
+      "default": 18,
+      "help": "Constant node size. Only for node_size_by = constant."
     },
     "node_size_min": {
       "type": "number",
@@ -76,9 +108,33 @@
       "type": "number",
       "label": "Node Size Max"
     },
+    "node_size_by": {
+      "type": "select",
+      "options": ["degree", "constant", "size_column"],
+      "default": "degree",
+      "label": "Node size by",
+      "help": "degree scales by connectivity; constant uses node_size (or min/max for membership groups vs members); size_column uses a size field on the nodes table."
+    },
+    "node_color_mode": {
+      "type": "select",
+      "options": ["group", "gradient"],
+      "default": "group",
+      "label": "Node colour mode",
+      "help": "group colours by the group column; gradient colours by degree (blue–white–red)."
+    },
+    "highlight_color": {
+      "type": "color",
+      "label": "Highlight colour",
+      "default": "#D4A017",
+      "help": "Ring colour for highlight_nodes / selected_nodes."
+    },
     "node_alpha": {
       "type": "number",
-      "label": "Node Alpha"
+      "label": "Node Alpha",
+      "default": 1,
+      "min": 0,
+      "max": 1,
+      "step": 0.05
     },
     "node_stroke": {
       "type": "number",
@@ -98,7 +154,8 @@
     },
     "label_show": {
       "type": "boolean",
-      "label": "Label Show"
+      "label": "Label Show",
+      "default": true
     },
     "label_size": {
       "type": "number",
@@ -133,12 +190,26 @@
     "edge_alpha": {
       "type": "number",
       "label": "Edge Alpha"
+    },
+    "edge_weighted": {
+      "type": "boolean",
+      "label": "Weight edge width",
+      "default": true,
+      "help": "Map edge weight to line width. Off draws every edge at edge_width_min."
+    },
+    "edge_style": {
+      "type": "select",
+      "options": ["link", "arc"],
+      "default": "link",
+      "label": "Edge style",
+      "help": "link = straight segments; arc = bowed chords (typical for circle layouts)."
     }
   },
   "legend": {
     "legend_show": {
       "type": "boolean",
-      "label": "Legend Show"
+      "label": "Legend Show",
+      "default": true
     },
     "legend_position": {
       "type": "string",
@@ -235,9 +306,17 @@
     }
   },
   "interaction": {
+    "interactive": {
+      "type": "boolean",
+      "label": "Interactive HTML",
+      "default": true,
+      "help": "Write a visNetwork HTML widget. Nodes keep the preset x/y and can be dragged when physics is off."
+    },
     "drag_nodes": {
       "type": "boolean",
-      "label": "Drag Nodes"
+      "label": "Drag Nodes",
+      "default": true,
+      "help": "Allow dragging nodes in the HTML view to rearrange the preset layout."
     },
     "zoom_view": {
       "type": "boolean",
@@ -245,11 +324,15 @@
     },
     "highlight_neighborhood": {
       "type": "boolean",
-      "label": "Highlight Neighborhood"
+      "label": "Highlight Neighborhood",
+      "default": true,
+      "help": "HTML only: highlight neighbours on click."
     },
     "navigation_buttons": {
       "type": "boolean",
-      "label": "Navigation Buttons"
+      "label": "Navigation Buttons",
+      "default": true,
+      "help": "HTML only: zoom/pan buttons on the widget."
     },
     "selectable": {
       "type": "boolean",
@@ -261,15 +344,21 @@
     },
     "physics_enabled": {
       "type": "boolean",
-      "label": "Physics Enabled"
+      "label": "Physics Enabled",
+      "default": false,
+      "help": "HTML only. Off keeps the preset x/y so nodes stay put after dragging. On lets vis.js simulate forces and ignores the preset."
     },
     "stabilize": {
       "type": "boolean",
-      "label": "Stabilize"
+      "label": "Stabilize",
+      "default": true,
+      "help": "HTML only: vis.js stabilization when physics is on."
     },
     "save_positions": {
       "type": "boolean",
-      "label": "Save Positions"
+      "label": "Save Positions",
+      "default": false,
+      "help": "Write positions.csv with the preset coordinates. Does not change the figure."
     }
   },
   "output": {

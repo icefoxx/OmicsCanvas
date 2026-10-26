@@ -260,10 +260,11 @@ def recommend_palettes(
         hit = 0.0
         kws = list(meta.get("keywords") or []) + list(meta.get("keywords_match_extra") or [])
         for kw in kws:
-            if kw.lower() in goal:
+            token = kw.lower().strip()
+            if token and re.search(r'(?<![a-z0-9])' + re.escape(token) + r'(?![a-z0-9])', goal):
                 hit += 3.0
         label = (meta.get("label") or "").lower()
-        if any(tok and tok in goal for tok in re.split(r"[\s/、,]+", label) if len(tok) > 1):
+        if any(re.search(r"(?<![a-z0-9])" + re.escape(tok) + r"(?![a-z0-9])", goal) for tok in re.split(r"[\s/、,]+", label) if len(tok) > 1):
             hit += 2.0
         if hit <= 0:
             continue

@@ -1,0 +1,10 @@
+{
+  "category_column": "category",
+  "value_column": "value",
+  "group_column": "group",
+  "plot_type": "stacked",
+  "title": "Pathway scores by condition",
+  "inner_radius": 0.25,
+  "width": 7,
+  "height": 7
+}

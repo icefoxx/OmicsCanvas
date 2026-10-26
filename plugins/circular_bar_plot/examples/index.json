@@ -1,0 +1,7 @@
+{
+  "plugin_id": "circular_bar_plot",
+  "examples": [
+    {"id": "basic", "label": "Basic", "plugin_id": "circular_bar_plot", "params": "basic/params.json", "inputs": {"input": "basic/input/example_input.csv"}, "expected": "basic/expected/result.png", "bundle": "basic"},
+    {"id": "single", "label": "Single series", "plugin_id": "circular_bar_plot", "params": "single/params.json", "inputs": {"input": "single/input/example_input.csv"}, "expected": "single/expected/result.png", "bundle": "single"}
+  ]
+}

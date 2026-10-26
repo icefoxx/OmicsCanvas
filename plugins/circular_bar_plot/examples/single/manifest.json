@@ -1,0 +1,11 @@
+{
+  "id": "single",
+  "label": "Single series",
+  "plugin_id": "circular_bar_plot",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/circular_bar_plot/plot.R --input plugins/circular_bar_plot/examples/single/input/example_input.csv --params plugins/circular_bar_plot/examples/single/params.json --output /tmp/circular_bar_plot_single"
+  }
+}

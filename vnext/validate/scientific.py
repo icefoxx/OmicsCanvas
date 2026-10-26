@@ -201,6 +201,9 @@ def global_guardrails(spec: dict[str, Any], meta: dict[str, Any] | None, tables:
     role_entries = meta.get("roles") or {}
     for role, col in roles.items():
         kind = (role_entries.get(role) or {}).get("kind") or ("numeric" if role in NUMERIC_ROLES else "any")
+        # This engine explicitly supports annotation categories as well as numeric heatmaps.
+        if meta.get("id") == "circular_heatmap" and role == "value" and (spec.get("legacy_params") or {}).get("value_mode") == "categorical":
+            kind = "categorical"
         if kind != "numeric":
             continue
         for c in _as_list(col):
@@ -331,7 +334,7 @@ def differential_expression_guardrails(spec, meta, tables, roles, how) -> list[d
 
 def embedding_guardrails(spec, meta, tables, roles, how) -> list[dict[str, str]]:
     issues: list[dict[str, str]] = []
-    for axis in ("x", "y"):
+    for axis in ("x", "y", "z"):
         col = _single(roles.get(axis))
         values = tables.values(col) if col else []
         if values and sum(1 for v in values if _finite(v)) < 0.95 * len(values):

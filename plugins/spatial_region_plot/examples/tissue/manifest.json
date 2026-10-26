@@ -1,0 +1,11 @@
+{
+  "id": "tissue",
+  "label": "Regions over a synthetic tissue background",
+  "plugin_id": "spatial_region_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv",
+    "image": "input/tissue.png"
+  },
+  "expected": "expected/result.png"
+}

@@ -1,0 +1,183 @@
+summary: Draw relationships from edges or memberships using configurable or fixed
+  node layouts.
+observation_type: observations or summary items in the input table
+best_for:
+- Show gene or protein associations
+- Compare shared members across functional sets
+- Organize relationships by module
+common_uses: []
+input_requirements: Source-target edges with an optional node table, or group-element
+  membership data.
+learn_more: 'Input: Source-target edges with an optional node table, or group-element
+  membership data. Interpretation: Edges encode supplied relationships; positions
+  follow the selected layout or explicit coordinates. Check mappings, order and transformations
+  before adjusting labels, colors and canvas dimensions. Confirm legends and units
+  before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Edges encode supplied relationships; positions follow the selected layout
+    or explicit coordinates.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Force-layout distance is not a calibrated biological distance
+- id: caution_2
+  title: Caution 2
+  text: Membership-derived edges are not direct molecular interactions
+examples:
+- id: network
+  title: Edge-list relationship network
+  description: 'Use case: Show gene or protein associations. This preset illustrates
+    edge-list relationship network. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: network
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Show gene or protein associations
+  input_requirements: Source-target edges with an optional node table, or group-element
+    membership data.
+  preview_asset: plugins/interactive_network_plot/all_examples_gallery/network.png
+  variant_id: network
+  mappings:
+    source_column: source
+    target_column: target
+    weight_column: weight
+    edge_group_column: edge_group
+- id: membership
+  title: Set-membership network
+  description: 'Use case: Compare shared members across functional sets. This preset
+    illustrates set-membership network. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: membership
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare shared members across functional sets
+  input_requirements: Source-target edges with an optional node table, or group-element
+    membership data.
+  preview_asset: plugins/interactive_network_plot/all_examples_gallery/membership.png
+  variant_id: membership
+  mappings:
+    group_column: group
+    node_id_column: element
+- id: manual_layout
+  title: Fixed coordinates for version comparisons
+  description: 'Use case: Organize relationships by module. This preset illustrates
+    fixed coordinates for version comparisons. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: manual_layout
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Organize relationships by module
+  input_requirements: Source-target edges with an optional node table, or group-element
+    membership data.
+  preview_asset: plugins/interactive_network_plot/all_examples_gallery/manual_layout.png
+  variant_id: network
+  mappings:
+    source_column: source
+    target_column: target
+    weight_column: weight
+literature_ids:
+- tan_spacec_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  network:
+    summary: Weighted interaction graph with a Fruchterman–Reingold layout.
+  circle:
+    summary: Nodes on one ring, optionally sorted by degree or size.
+  concentric:
+    summary: One ring per group, with optional size sorting.
+  membership:
+    summary: Group nodes inside, members on an outer ring, with membership edges.
+customization:
+- parameter: input_mode
+  label: Input Mode
+  default: edge_list
+  help: edge_list uses source/target pairs. membership uses group/element (falls back
+    to source/target) and is meant for radial layouts.
+- parameter: group_column
+  label: Group Column
+  default: null
+- parameter: source_column
+  label: Source Column
+  default: null
+- parameter: target_column
+  label: Target Column
+  default: null
+- parameter: group_colors
+  label: Group Colors
+  default: null
+- parameter: label_show
+  label: Label Show
+  default: true
+- parameter: base_size
+  label: Base Size
+  default: null
+- parameter: width
+  label: Width
+  default: null
+- parameter: height
+  label: Height
+  default: null
+source_modules:
+- title: FigureYa52GOplot
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa52GOplot
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa53PPImodule
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa53PPImodule
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa80GOclustering
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa80GOclustering
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa81immune_network
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa81immune_network
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa103coAbundant
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa103coAbundant
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa147Plus_STRING
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa147Plus_STRING
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa147interaction
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa147interaction
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa178receptorLigand
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa178receptorLigand
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa199crosslink
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa199crosslink
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa267scCellChat
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa267scCellChat
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa272scBulkCCCI
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa272scBulkCCCI
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa301scCoExpr
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa301scCoExpr
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

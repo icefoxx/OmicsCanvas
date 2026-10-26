@@ -1,0 +1,83 @@
+summary: Align running enrichment curves and gene-set hits with pathway-gene expression
+  heatmaps.
+observation_type: observations or summary items in the input table
+best_for:
+- Connect enrichment to expression evidence
+- Compare pathway member genes
+- Interpret expression using sample annotations
+common_uses: []
+input_requirements: Ranked genes, gene sets and a gene-by-sample expression matrix;
+  optional precomputed enrichment.
+learn_more: 'Input: Ranked genes, gene sets and a gene-by-sample expression matrix;
+  optional precomputed enrichment. Interpretation: The enrichment curve comes from
+  the ranking and the heatmap from the expression matrix; their scales differ. Check
+  mappings, order and transformations before adjusting labels, colors and canvas dimensions.
+  Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: The enrichment curve comes from the ranking and the heatmap from the expression
+    matrix; their scales differ.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Shared genes can occur in several pathways
+- id: caution_2
+  title: Caution 2
+  text: Precomputed statistics must match the supplied contrast and ranking
+examples:
+- id: basic
+  title: Enrichment linked to expression
+  description: 'Use case: Connect enrichment to expression evidence. This preset illustrates
+    enrichment linked to expression. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Connect enrichment to expression evidence
+  input_requirements: Ranked genes, gene sets and a gene-by-sample expression matrix;
+    optional precomputed enrichment.
+  preview_asset: plugins/gsea_pathway_heatmap/all_examples_gallery/basic.png
+- id: precomputed
+  title: Precomputed enrichment results
+  description: 'Use case: Compare pathway member genes. This preset illustrates precomputed
+    enrichment results. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: precomputed
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare pathway member genes
+  input_requirements: Ranked genes, gene sets and a gene-by-sample expression matrix;
+    optional precomputed enrichment.
+  preview_asset: plugins/gsea_pathway_heatmap/all_examples_gallery/precomputed.png
+  variant_id: precomputed
+- id: with_annotation
+  title: Heatmaps with sample annotations
+  description: 'Use case: Interpret expression using sample annotations. This preset
+    illustrates heatmaps with sample annotations. Replace its input with your data
+    while retaining the appropriate view settings.'
+  demo_id: with_annotation
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Interpret expression using sample annotations
+  input_requirements: Ranked genes, gene sets and a gene-by-sample expression matrix;
+    optional precomputed enrichment.
+  preview_asset: plugins/gsea_pathway_heatmap/all_examples_gallery/with_annotation.png
+  variant_id: with_annotation
+  mappings:
+    heatmap_column_annotation_columns:
+    - Day
+literature_ids:
+- gsea_subramanian_2005
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  precomputed:
+    summary: 'Use case: Compare pathway member genes. This preset illustrates precomputed
+      enrichment results. Replace its input with your data while retaining the appropriate
+      view settings.'
+  with_annotation:
+    summary: 'Use case: Interpret expression using sample annotations. This preset
+      illustrates heatmaps with sample annotations. Replace its input with your data
+      while retaining the appropriate view settings.'
+customization: []

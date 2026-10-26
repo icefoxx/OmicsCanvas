@@ -1,0 +1,3271 @@
+[
+  {
+    "plugin_id": "survival_plot",
+    "example": "basic",
+    "n_params": 24,
+    "results": [
+      {
+        "param": "curve_type",
+        "from": "survival",
+        "to": "event_probability",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "stat_method",
+        "from": "logrank",
+        "to": "none",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "landmark_time",
+        "from": 0,
+        "to": 1,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "confidence_level",
+        "from": 0.95,
+        "to": 0.999,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "confidence_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "confidence_alpha",
+        "from": 0.16,
+        "to": 0.08,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "censor_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "risk_table_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "risk_time_count",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "risk_text_size",
+        "from": 3,
+        "to": 6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Survival by cohort",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "binary_evaluation_plot",
+    "example": "basic",
+    "n_params": 20,
+    "results": [
+      {
+        "param": "input_mode",
+        "from": "predictions",
+        "to": "curve",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_type",
+        "from": "roc",
+        "to": "precision_recall",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "calibration_bins",
+        "from": 8,
+        "to": 16,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "threshold_min",
+        "from": 0.01,
+        "to": 0.02,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "threshold_max",
+        "from": 0.8,
+        "to": 0.999,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Receiver operating characteristic",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "metric_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "forest_plot",
+    "example": "basic",
+    "n_params": 18,
+    "results": [
+      {
+        "param": "x_scale",
+        "from": "linear",
+        "to": "log10",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "null_value",
+        "from": 1,
+        "to": 2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "estimate_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Effect estimates and confidence intervals",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "oncoprint_plot",
+    "example": "basic",
+    "n_params": 16,
+    "results": [
+      {
+        "param": "row_order",
+        "from": "frequency",
+        "to": "input",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "frequency_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "sample_label_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Multi-hit alteration matrix",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "empty_color",
+        "from": "#EDF0F3",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "frequency_color",
+        "from": "#5D7286",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "manhattan_qq_plot",
+    "example": "basic",
+    "n_params": 18,
+    "results": [
+      {
+        "param": "plot_type",
+        "from": "both",
+        "to": "manhattan",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "pvalue_threshold",
+        "from": 5e-08,
+        "to": 1e-07,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "threshold_color",
+        "from": "#D36161",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "qq_color",
+        "from": "#466F90",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Association overview",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_alpha",
+        "from": 0.75,
+        "to": 0.375,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "bland_altman_plot",
+    "example": "basic",
+    "n_params": 20,
+    "results": [
+      {
+        "param": "difference_mode",
+        "from": "absolute",
+        "to": "percent",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "loa_multiplier",
+        "from": 1.96,
+        "to": 3.92,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "trend_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Paired measurement agreement",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_alpha",
+        "from": 0.75,
+        "to": 0.375,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "swimmer_plot",
+    "example": "basic",
+    "n_params": 17,
+    "results": [
+      {
+        "param": "sort_by",
+        "from": "duration",
+        "to": "input",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "bar_width",
+        "from": 3,
+        "to": 6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "end_marker_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "event_size",
+        "from": 3,
+        "to": 6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Observation intervals and events",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "protein_variant_plot",
+    "example": "basic",
+    "n_params": 18,
+    "results": [
+      {
+        "param": "protein_length",
+        "from": 800,
+        "to": 1600,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "domain_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Protein variants and domains",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "clonal_fish_plot",
+    "example": "basic",
+    "n_params": 16,
+    "results": [
+      {
+        "param": "fraction_unit",
+        "from": "fraction",
+        "to": "percent",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "timepoint_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "fill_alpha",
+        "from": 0.9,
+        "to": 0.45,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Nested clone fractions",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "sequence_alignment_plot",
+    "example": "basic",
+    "n_params": 16,
+    "results": [
+      {
+        "param": "alphabet",
+        "from": "dna",
+        "to": "protein",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "residue_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "conservation_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "conservation_color",
+        "from": "#4D7189",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Aligned nucleotide sequences",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "circular_genomic_plot",
+    "example": "bars",
+    "n_params": 23,
+    "results": [
+      {
+        "param": "layout",
+        "from": "circular",
+        "to": "linear",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "track_type",
+        "from": "bar",
+        "to": "heatmap",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "gap_angle",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "link_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "link_alpha",
+        "from": 0.4,
+        "to": 0.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "link_color",
+        "from": "#627D96",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "low_color",
+        "from": "#397DA3",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "high_color",
+        "from": "#CD5865",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Circular interval magnitudes",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "nomogram_plot",
+    "example": "basic",
+    "n_params": 11,
+    "results": [
+      {
+        "param": "line_color",
+        "from": "#405368",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Supplied predictor point scales",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "interactive_3d_scatter",
+    "example": "alternate_view",
+    "n_params": 17,
+    "results": [
+      {
+        "param": "azimuth",
+        "from": 65,
+        "to": 130,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "elevation",
+        "from": 45,
+        "to": 80,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_alpha",
+        "from": 0.75,
+        "to": 0.375,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Alternate viewing angle",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "bar3d_plot",
+    "example": "basic",
+    "n_params": 15,
+    "results": [
+      {
+        "param": "azimuth",
+        "from": 40,
+        "to": 80,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "elevation",
+        "from": 25,
+        "to": 50,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "z_scale",
+        "from": "shared",
+        "to": "free",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "ncol",
+        "from": 3,
+        "to": 6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "bar_width",
+        "from": 0.72,
+        "to": 0.95,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Mutation-context count grid",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "radviz_plot",
+    "example": "basic",
+    "n_params": 17,
+    "results": [
+      {
+        "param": "normalization",
+        "from": "row_sum",
+        "to": "feature_minmax",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "spoke_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_alpha",
+        "from": 0.75,
+        "to": 0.375,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Feature-weight wheel",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "ecdf_plot",
+    "example": "basic",
+    "n_params": 17,
+    "results": [
+      {
+        "param": "confidence_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "confidence_alpha",
+        "from": 0.14,
+        "to": 0.07,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "confidence_level",
+        "from": 0.95,
+        "to": 0.999,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "stat_method",
+        "from": "wilcoxon",
+        "to": "none",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Cumulative score distributions",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "spatial_region_plot",
+    "example": "basic",
+    "n_params": 20,
+    "results": [
+      {
+        "param": "invert_y",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Measured tissue regions",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "fill_alpha",
+        "from": 0.85,
+        "to": 0.425,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "map_mark",
+        "from": "polygon",
+        "to": "spot",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2.5,
+        "to": 5.0,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "low_color",
+        "from": "#EAF1F5",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "high_color",
+        "from": "#315D86",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "border_color",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "annotated_tree_plot",
+    "example": "basic",
+    "n_params": 19,
+    "results": [
+      {
+        "param": "layout",
+        "from": "rectangular",
+        "to": "circular",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "gap_angle",
+        "from": 20,
+        "to": 40,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "heatmap_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Supplied tree and feature heatmap",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "tree_color",
+        "from": "#8CA1AE",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "circular_distribution_plot",
+    "example": "basic",
+    "n_params": 19,
+    "results": [
+      {
+        "param": "highlight_color",
+        "from": "#D74855",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "gap_angle",
+        "from": 60,
+        "to": 120,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "range_mode",
+        "from": "free",
+        "to": "shared",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "ncol",
+        "from": 3,
+        "to": 6,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "point_alpha",
+        "from": 0.6,
+        "to": 0.3,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Scores across reference groups",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "embedding_vector_plot",
+    "example": "basic",
+    "n_params": 19,
+    "results": [
+      {
+        "param": "vector_scale",
+        "from": 0.8,
+        "to": 1.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "arrow_stride",
+        "from": 4,
+        "to": 8,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "arrow_alpha",
+        "from": 0.8,
+        "to": 0.4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "arrow_length",
+        "from": 0.06,
+        "to": 0.12,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_alpha",
+        "from": 0.35,
+        "to": 0.175,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Supplied vector field",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "linked_matrix_network_plot",
+    "example": "basic",
+    "n_params": 22,
+    "results": [
+      {
+        "param": "matrix_mark",
+        "from": "heatmap",
+        "to": "dot",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "node_gap",
+        "from": 4,
+        "to": 8,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "dot_size",
+        "from": 5,
+        "to": 10,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "curvature",
+        "from": 0.12,
+        "to": 0.24,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "edge_alpha",
+        "from": 0.65,
+        "to": 0.325,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "low_color",
+        "from": "#397DA3",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "high_color",
+        "from": "#D16472",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Linked matrix and relationships",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "risk_stratification_panel",
+    "example": "basic",
+    "n_params": 20,
+    "results": [
+      {
+        "param": "sort_by",
+        "from": "risk",
+        "to": "input",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "heatmap_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "scale_features",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "subject_label_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Aligned risk and follow-up",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_alpha",
+        "from": 0.8,
+        "to": 0.4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "low_color",
+        "from": "#397DA3",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "high_color",
+        "from": "#D16472",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "line_plot",
+    "example": "basic",
+    "n_params": 23,
+    "results": [
+      {
+        "param": "line_width",
+        "from": 0.8,
+        "to": 1.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_alpha",
+        "from": 1,
+        "to": 0.5,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "error_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "smooth_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "band_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "band_alpha",
+        "from": 0.18,
+        "to": 0.09,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Response over time",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "xlab",
+        "from": "Day",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "ylab",
+        "from": "Score",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "axis_label_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "x_axis_text_angle",
+        "from": 0,
+        "to": 1,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 7,
+        "to": 14,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 4.5,
+        "to": 9.0,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "circular_heatmap",
+    "example": "basic",
+    "n_params": 18,
+    "results": [
+      {
+        "param": "value_mode",
+        "from": "numeric",
+        "to": "categorical",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "cluster_rows",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "cluster_columns",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "inner_radius",
+        "from": 0.25,
+        "to": 0.5,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "border_width",
+        "from": 0.1,
+        "to": 0.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Blue-Red 3",
+        "to": "Viridis",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "na_color",
+        "from": "#EEEEEE",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Marker z-scores around samples",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 7,
+        "to": 14,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 7,
+        "to": 14,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  }
+]

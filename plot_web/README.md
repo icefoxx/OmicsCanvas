@@ -122,6 +122,38 @@ annotation_used
 enrichment_results
 ```
 
+## Render responsiveness
+
+The standalone editor opens bundled examples from their existing PNG previews;
+this does not launch R or claim that a new figure has been validated. Editing a
+setting or choosing **Run Plot** renders the current data. **Export → Generate
+export files** prepares downloads for an example when they are needed.
+
+Editor renders use background jobs. A complete PNG or SVG can appear while R
+finishes the other formats; downloads are enabled only after completion. The
+API keeps its synchronous behavior unless JSON `background: true` (`run-demo`)
+or multipart `background=1` (`run`) is supplied. The 202 response contains a
+`poll_url`. Polling may return `live_preview` and `phase: exporting`. An optional
+`render_channel` replaces older queued requests from the same editor, while
+running subprocesses remain isolated and finish normally.
+
+Completed R results are cached by input contents, parameters, seed, plugin and
+shared code, server/PlotSpec code, R version, package descriptions and relevant
+environment settings. Each hit still runs current scientific validation and
+creates a fresh job/PlotSpec with its own download URLs. Corrupt entries are
+treated as misses. The first R request after server startup also fingerprints
+the runtime; new settings still incur normal R startup/drawing costs.
+
+```bash
+export PLOT_RENDER_CACHE=1                 # 0 disables result reuse
+export PLOT_RENDER_CACHE_MAX_ENTRIES=128   # LRU bound under storage/render_cache
+export PLOT_RENDER_WORKERS=2               # concurrent background R subprocesses
+```
+
+Cache entries contain copies of rendered artifacts and are separate from job
+retention below. Interactive Plotly code loads on demand; static previews do not
+wait for the external script. No persistent R session is shared between plugins.
+
 ## Storage retention
 
 Jobs, uploads and results accumulate under `plot_web/storage/`. Nothing is

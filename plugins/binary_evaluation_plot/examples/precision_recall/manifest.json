@@ -1,0 +1,10 @@
+{
+  "id": "precision_recall",
+  "label": "Precision and recall",
+  "plugin_id": "binary_evaluation_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

@@ -1,0 +1,85 @@
+summary: Compare sample-cluster mean-expression profiles using hierarchical clustering.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare corresponding populations across samples
+- Check annotation consistency
+- Inspect selected population relationships
+common_uses: []
+input_requirements: Expression matrix and cell annotations with matching IDs, sample
+  labels and clusters.
+learn_more: 'Input: Expression matrix and cell annotations with matching IDs, sample
+  labels and clusters. Interpretation: Branch heights reflect the selected distance
+  and linkage; annotation strips identify groups. Check mappings, order and transformations
+  before adjusting labels, colors and canvas dimensions. Confirm legends and units
+  before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Branch heights reflect the selected distance and linkage; annotation strips
+    identify groups.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: This is not a phylogenetic or developmental tree
+- id: caution_2
+  title: Caution 2
+  text: Mean profiles hide within-population heterogeneity
+examples:
+- id: basic
+  title: Sample-population relationships
+  description: 'Use case: Compare corresponding populations across samples. This preset
+    illustrates sample-population relationships. Replace its input with your data
+    while retaining the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare corresponding populations across samples
+  input_requirements: Expression matrix and cell annotations with matching IDs, sample
+    labels and clusters.
+  preview_asset: plugins/cluster_dendrogram_plot/all_examples_gallery/basic.png
+  mappings:
+    sample_column: sample
+    cluster_column: cluster
+- id: colored_labels
+  title: Group-colored labels
+  description: 'Use case: Check annotation consistency. This preset illustrates group-colored
+    labels. Replace its input with your data while retaining the appropriate view
+    settings.'
+  demo_id: colored_labels
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Check annotation consistency
+  input_requirements: Expression matrix and cell annotations with matching IDs, sample
+    labels and clusters.
+  preview_asset: plugins/cluster_dendrogram_plot/all_examples_gallery/colored_labels.png
+  mappings:
+    sample_column: sample
+    cluster_column: cluster
+- id: subset
+  title: Clustering selected populations
+  description: 'Use case: Inspect selected population relationships. This preset illustrates
+    clustering selected populations. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: subset
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect selected population relationships
+  input_requirements: Expression matrix and cell annotations with matching IDs, sample
+    labels and clusters.
+  preview_asset: plugins/cluster_dendrogram_plot/all_examples_gallery/subset.png
+  variant_id: subset
+  mappings:
+    sample_column: sample
+    cluster_column: cluster
+literature_ids:
+- eisen_clustering_1998
+- li_cerebrum_2021
+- yang_projection_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  subset:
+    summary: 'Use case: Inspect selected population relationships. This preset illustrates
+      clustering selected populations. Replace its input with your data while retaining
+      the appropriate view settings.'
+customization: []

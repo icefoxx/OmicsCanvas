@@ -1,0 +1,25 @@
+{
+  "plugin_id": "radviz_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Feature-weight wheel",
+      "plugin_id": "radviz_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "minmax",
+      "label": "Feature-scaled wheel",
+      "plugin_id": "radviz_plot",
+      "params": "minmax/params.json",
+      "inputs": {
+        "input": "minmax/input/data.csv"
+      },
+      "expected": "minmax/expected/result.png"
+    }
+  ]
+}

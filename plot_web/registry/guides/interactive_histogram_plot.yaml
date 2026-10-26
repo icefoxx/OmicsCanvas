@@ -1,0 +1,94 @@
+summary: Compare continuous distributions using shared, explicitly computed bins.
+observation_type: observations or summary items in the input table
+best_for:
+- Inspect quality-metric distributions
+- Compare condition shifts
+- Find outliers and truncation
+common_uses: []
+input_requirements: Numeric wide data or value/group long data, with optional observation
+  IDs.
+learn_more: 'Input: Numeric wide data or value/group long data, with optional observation
+  IDs. Interpretation: Bar heights represent counts or the selected normalization,
+  using common bins for comparisons. Check mappings, order and transformations before
+  adjusting labels, colors and canvas dimensions. Confirm legends and units before
+  export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Bar heights represent counts or the selected normalization, using common bins
+    for comparisons.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Bin width and boundaries affect the impression
+- id: caution_2
+  title: Caution 2
+  text: Counts reflect sample size as well as distribution shape
+examples:
+- id: basic
+  title: Compare distributions with shared bins
+  description: 'Use case: Inspect quality-metric distributions. This preset illustrates
+    compare distributions with shared bins. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect quality-metric distributions
+  input_requirements: Numeric wide data or value/group long data, with optional observation
+    IDs.
+  preview_asset: plugins/interactive_histogram_plot/all_examples_gallery/basic.png
+  mappings:
+    id_column: sample
+- id: custom_layout
+  title: Bin width and transparency
+  description: 'Use case: Compare condition shifts. This preset illustrates bin width
+    and transparency. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: custom_layout
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare condition shifts
+  input_requirements: Numeric wide data or value/group long data, with optional observation
+    IDs.
+  preview_asset: plugins/interactive_histogram_plot/all_examples_gallery/custom_layout.png
+  mappings:
+    id_column: sample
+- id: interactive
+  title: Inspect counts within each bin
+  description: 'Use case: Find outliers and truncation. This preset illustrates inspect
+    counts within each bin. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: interactive
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Find outliers and truncation
+  input_requirements: Numeric wide data or value/group long data, with optional observation
+    IDs.
+  preview_asset: plugins/interactive_histogram_plot/all_examples_gallery/interactive.png
+  variant_id: interactive
+  mappings:
+    id_column: sample
+literature_ids:
+- allen_raincloud_2019
+- liu_cellres_2025
+- klughammer_methylation_2023
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  interactive:
+    summary: 'Use case: Find outliers and truncation. This preset illustrates inspect
+      counts within each bin. Replace its input with your data while retaining the
+      appropriate view settings.'
+customization:
+- parameter: input_mode
+  label: input_mode
+  default: auto
+- parameter: base_size
+  label: base_size
+  default: 11
+- parameter: width
+  label: width
+  default: 10
+- parameter: height
+  label: height
+  default: 6

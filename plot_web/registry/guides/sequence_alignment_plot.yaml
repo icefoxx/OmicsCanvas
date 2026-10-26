@@ -1,0 +1,153 @@
+summary: Display aligned DNA or protein sequences with consensus conservation.
+observation_type: observations or supplied summaries described in the input contract
+input_requirements: Unique sequence IDs and equal-length pre-aligned DNA/protein strings,
+  including dash gaps. Alignment is not computed.
+best_for:
+- Inspect a pre-aligned sequence family
+- Compare residue substitutions and gaps
+- Summarize per-position consensus fractions
+learn_more: Choose the intended data mapping and statistical mode before styling.
+  The plugin displays an existing alignment and does not choose an alignment algorithm.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Display aligned DNA or protein sequences with consensus conservation. Unique
+    sequence IDs and equal-length pre-aligned DNA/protein strings, including dash
+    gaps. Alignment is not computed.
+cautions:
+- id: caution_1
+  title: Interpretation limit 1
+  text: The plugin displays an existing alignment and does not choose an alignment
+    algorithm.
+- id: caution_2
+  title: Interpretation limit 2
+  text: Consensus is the most frequent nongap residue count divided by sequence count,
+    not entropy or a phylogenetic test.
+examples:
+- id: basic
+  title: Aligned nucleotide sequences
+  description: Inspect a pre-aligned sequence family
+  scenario: Inspect a pre-aligned sequence family
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/sequence_alignment_plot/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    id_column: sequence_id
+    sequence_column: sequence
+- id: protein
+  title: Aligned protein sequences
+  description: Compare residue substitutions and gaps
+  scenario: Compare residue substitutions and gaps
+  demo_id: protein
+  variant_id: protein
+  preview_asset: plugins/sequence_alignment_plot/all_examples_gallery/protein.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    id_column: sequence_id
+    sequence_column: sequence
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source. Local demos use independently
+  generated data and are not reproductions of its analyses.
+- Additional verified published figure/panel examples remain to be curated.
+customization:
+- parameter: id_column
+  label: Id column
+  default: sequence_id
+  help: ''
+- parameter: sequence_column
+  label: Sequence column
+  default: sequence
+  help: ''
+- parameter: alphabet
+  label: Alphabet
+  default: dna
+  help: ''
+- parameter: residue_show
+  label: Residue show
+  default: true
+  help: Characters automatically omitted above 80 aligned positions.
+- parameter: conservation_show
+  label: Conservation show
+  default: true
+  help: ''
+- parameter: conservation_color
+  label: Conservation color
+  default: '#4D7189'
+  help: Only when conservation_show is enabled.
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: label_size
+  label: Label size
+  default: 2.8
+  help: ''
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report input mappings, units, preprocessing and all
+    selected statistical or display modes.'
+source_modules:
+- title: FigureYa2ggtree+pheatmap+msa
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa2ggtree%2Bpheatmap%2Bmsa
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

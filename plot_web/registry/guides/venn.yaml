@@ -1,0 +1,88 @@
+summary: Display overlaps among a small number of sets, including sets derived from
+  abundance data.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare differential-gene lists
+- Find shared and unique sample members
+- Inspect overlaps after thresholding
+common_uses: []
+input_requirements: Element IDs and set membership, or an abundance table in the supported
+  layout.
+learn_more: 'Input: Element IDs and set membership, or an abundance table in the supported
+  layout. Interpretation: Region labels give the counts for the corresponding set
+  intersections. Check mappings, order and transformations before adjusting labels,
+  colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Region labels give the counts for the corresponding set intersections.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Region area need not be proportional to the count
+- id: caution_2
+  title: Caution 2
+  text: Use an intersection matrix when there are many sets
+examples:
+- id: abundance
+  title: Sets from abundance data
+  description: 'Use case: Compare differential-gene lists. This preset illustrates
+    sets from abundance data. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: abundance
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare differential-gene lists
+  input_requirements: Element IDs and set membership, or an abundance table in the
+    supported layout.
+  preview_asset: plugins/dynamic_venn_diagram/all_examples_gallery/abundance.png
+  variant_id: abundance
+  mappings:
+    element_id_column: OTU
+- id: params
+  title: Explicit set definitions and overlaps
+  description: 'Use case: Find shared and unique sample members. This preset illustrates
+    explicit set definitions and overlaps. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: params
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Find shared and unique sample members
+  input_requirements: Element IDs and set membership, or an abundance table in the
+    supported layout.
+  preview_asset: plugins/dynamic_venn_diagram/all_examples_gallery/params.png
+literature_ids:
+- chen_ibd_2025
+- li_leprosy_2025
+- giuliani_prmt1_2021
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  abundance:
+    summary: 'Use case: Compare differential-gene lists. This preset illustrates sets
+      from abundance data. Replace its input with your data while retaining the appropriate
+      view settings.'
+customization:
+- parameter: width
+  label: Width
+  default: 8
+- parameter: height
+  label: Height
+  default: 7
+source_modules:
+- title: FigureYa112Plus_venn
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa112Plus_venn
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa112venn
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa112venn
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa283vennyPvalue
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa283vennyPvalue
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

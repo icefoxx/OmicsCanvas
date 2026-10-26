@@ -1,0 +1,85 @@
+summary: Map three nonnegative components onto a composition simplex.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare three population fractions
+- Show three-state score composition
+- Find samples dominated by one component
+common_uses: []
+input_requirements: Three nonnegative columns whose row totals are positive; optional
+  groups.
+learn_more: 'Input: Three nonnegative columns whose row totals are positive; optional
+  groups. Interpretation: Proximity to a vertex indicates a higher relative share
+  of that component. Check mappings, order and transformations before adjusting labels,
+  colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Proximity to a vertex indicates a higher relative share of that component.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Normalization removes total-quantity information
+- id: caution_2
+  title: Caution 2
+  text: Components must have a defensible common compositional interpretation
+examples:
+- id: basic
+  title: Relative composition of three components
+  description: 'Use case: Compare three population fractions. This preset illustrates
+    relative composition of three components. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare three population fractions
+  input_requirements: Three nonnegative columns whose row totals are positive; optional
+    groups.
+  preview_asset: plugins/ternary_plot/all_examples_gallery/basic.png
+  variant_id: basic
+  mappings:
+    a_column: a
+    b_column: b
+    c_column: c
+    group_column: group
+literature_ids:
+- tan_spacec_2025
+- kenn_decision_2022
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes:
+- Only one independent demonstration bundle is available. Three application scenarios
+  are listed, but a second input or mode-specific bundle is still needed.
+variants:
+  basic:
+    summary: Grouped points on an A–B–C simplex.
+customization:
+- parameter: group_column
+  label: Group column
+  default: group
+- parameter: palette
+  label: Palette
+  default: Set 2
+- parameter: group_colors
+  label: Colour per group
+  default: {}
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Width (in)
+  default: 6.5
+- parameter: height
+  label: Height (in)
+  default: 6
+source_modules:
+- title: FigureYa64triangle
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa64triangle
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa114ternaryCluster
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa114ternaryCluster
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

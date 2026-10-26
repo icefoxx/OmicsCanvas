@@ -1,0 +1,11 @@
+{
+  "id": "vertical",
+  "label": "Vertical",
+  "plugin_id": "raincloud_plot",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/raincloud_plot/plot.R --input plugins/raincloud_plot/examples/vertical/input/example_input.csv --params plugins/raincloud_plot/examples/vertical/params.json --output /tmp/raincloud_plot_vertical"
+  }
+}

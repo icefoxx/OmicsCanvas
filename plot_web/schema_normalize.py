@@ -31,7 +31,7 @@ def _leaf_from_jsonschema(raw: Any, key: str) -> dict[str, Any]:
     if t == "array":
         out["type"] = "string_array"
     elif t == "integer":
-        out["type"] = "number"
+        out["type"] = "integer"
     elif t in {"boolean", "number", "string", "object", "color", "column", "columns", "textarea"}:
         out["type"] = t
     elif t:
@@ -51,6 +51,15 @@ def _leaf_from_jsonschema(raw: Any, key: str) -> dict[str, Any]:
         out["required"] = bool(raw["required"])
     if raw.get("label"):
         out["label"] = raw["label"]
+    # Keep validation metadata through every wrapper/sectioned normalization.
+    # Dropping these made the editor and sensitivity scanner accept values that
+    # were outside the authored schema (for example confidence levels > 1).
+    for target, aliases in {"min": ("min", "minimum"), "max": ("max", "maximum"),
+                            "step": ("step", "multipleOf")}.items():
+        for source in aliases:
+            if source in raw:
+                out[target] = raw[source]
+                break
     return out
 
 
@@ -67,7 +76,7 @@ def _leaf_from_loose(raw: Any, key: str) -> dict[str, Any]:
         "columns": "columns",
         "string": "string",
         "number": "number",
-        "integer": "number",
+        "integer": "integer",
         "boolean": "boolean",
         "color": "color",
         "object": "object",

@@ -1,0 +1,329 @@
+summary: Kaplan–Meier curves with censor marks, confidence bands and numbers at risk.
+observation_type: observations or supplied summaries described in the input contract
+input_requirements: 'One row per independent observation: numeric nonnegative follow-up
+  time, event 0/1 and optional group. Only right censoring is supported.'
+best_for:
+- Compare survival between cohorts
+- Show right-censoring and follow-up coverage
+- Display conditional survival beyond a landmark
+learn_more: Choose the intended data mapping and statistical mode before styling.
+  Competing risks, left censoring and interval censoring require other analyses. 1
+  − KM is not a competing-risk cumulative incidence estimator.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: 'Kaplan–Meier curves with censor marks, confidence bands and numbers at risk.
+    One row per independent observation: numeric nonnegative follow-up time, event
+    0/1 and optional group. Only right censoring is supported.'
+cautions:
+- id: caution_1
+  title: Interpretation limit 1
+  text: Competing risks, left censoring and interval censoring require other analyses.
+    1 − KM is not a competing-risk cumulative incidence estimator.
+- id: caution_2
+  title: Interpretation limit 2
+  text: Log-rank comparisons do not adjust for confounders. Landmark conditioning
+    changes the eligible observations.
+examples:
+- id: basic
+  title: Survival by cohort
+  description: Compare survival between cohorts
+  scenario: Compare survival between cohorts
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/survival_plot/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    time_column: time
+    event_column: event
+    group_column: group
+- id: conditional
+  title: Conditional survival
+  description: Show right-censoring and follow-up coverage
+  scenario: Show right-censoring and follow-up coverage
+  demo_id: conditional
+  variant_id: conditional
+  preview_asset: plugins/survival_plot/all_examples_gallery/conditional.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    time_column: time
+    event_column: event
+    group_column: group
+- id: event_probability
+  title: Event probability
+  description: Display conditional survival beyond a landmark
+  scenario: Display conditional survival beyond a landmark
+  demo_id: event_probability
+  variant_id: event_probability
+  preview_asset: plugins/survival_plot/all_examples_gallery/event_probability.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    time_column: time
+    event_column: event
+    group_column: group
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source. Local demos use independently
+  generated data and are not reproductions of its analyses.
+- Additional verified published figure/panel examples remain to be curated.
+customization:
+- parameter: time_column
+  label: Follow-up time
+  default: time
+  help: ''
+- parameter: event_column
+  label: Event indicator
+  default: event
+  help: 0 = right-censored; 1 = event.
+- parameter: group_column
+  label: Group column
+  default: group
+  help: ''
+- parameter: curve_type
+  label: Curve type
+  default: survival
+  help: ''
+- parameter: stat_method
+  label: Stat method
+  default: none
+  help: ''
+- parameter: landmark_time
+  label: Landmark time
+  default: 0
+  help: Condition on remaining observed beyond this time; uses original time coordinates.
+- parameter: confidence_level
+  label: Confidence level
+  default: 0.95
+  help: ''
+- parameter: confidence_show
+  label: Confidence show
+  default: true
+  help: ''
+- parameter: confidence_alpha
+  label: Confidence alpha
+  default: 0.16
+  help: Only when confidence_show is enabled.
+- parameter: censor_show
+  label: Censor show
+  default: true
+  help: ''
+- parameter: point_size
+  label: Point size
+  default: 2
+  help: ''
+- parameter: line_width
+  label: Line width
+  default: 0.6
+  help: ''
+- parameter: risk_table_show
+  label: Risk table show
+  default: true
+  help: ''
+- parameter: risk_time_count
+  label: Risk time count
+  default: 6
+  help: Only when risk_table_show is enabled.
+- parameter: risk_text_size
+  label: Risk text size
+  default: 3
+  help: Only when risk_table_show is enabled.
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: grid_show
+  label: Grid show
+  default: false
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report input mappings, units, preprocessing and all
+    selected statistical or display modes.'
+source_modules:
+- title: FigureYa1survivalCurve_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa1survivalCurve_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa4bestSeparation
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa4bestSeparation
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa35batch_bestSeparationV3_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa35batch_bestSeparationV3_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa36nSurvV3
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa36nSurvV3
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa106immunotherapy
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa106immunotherapy
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa116supervisedCluster
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa116supervisedCluster
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa128Prognostic
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa128Prognostic
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa143survCor_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa143survCor_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa154immuneSubtypes
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa154immuneSubtypes
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa159LR_RF_V2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa159LR_RF_V2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa171subgroupSurv
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa171subgroupSurv
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa182RFSurvV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa182RFSurvV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa183condSurv
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa183condSurv
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa184ranger
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa184ranger
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa187RMS
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa187RMS
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa193RiskTable
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa193RiskTable
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa197SmoothHaz
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa197SmoothHaz
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa198SignatureCombinationV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa198SignatureCombinationV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa211multiCohortImmSubtype
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa211multiCohortImmSubtype
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa219GMM
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa219GMM
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa220repeatedLasso
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa220repeatedLasso
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa221tenFoldRF
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa221tenFoldRF
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa251NPHSurv
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa251NPHSurv
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa284pairwiseLogrank
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa284pairwiseLogrank
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa291PancanProgSigatureV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa291PancanProgSigatureV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa299pancanSurv
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa299pancanSurv
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

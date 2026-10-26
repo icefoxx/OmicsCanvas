@@ -1,0 +1,93 @@
+summary: Show nonnegative category shares using pie or donut sectors.
+observation_type: observations or summary items in the input table
+best_for:
+- Summarize a few cell-type shares
+- Survey sample composition
+- Check category order and labels
+common_uses: []
+input_requirements: Categories and nonnegative values, with optional groups, labels
+  or colors.
+learn_more: 'Input: Categories and nonnegative values, with optional groups, labels
+  or colors. Interpretation: Sector angles encode shares of the displayed total. Check
+  mappings, order and transformations before adjusting labels, colors and canvas dimensions.
+  Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Sector angles encode shares of the displayed total.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Filtering and top-N selection can change the denominator
+- id: caution_2
+  title: Caution 2
+  text: Use stacked bars for clearer comparisons across many samples
+examples:
+- id: basic
+  title: Composition of a few categories
+  description: 'Use case: Summarize a few cell-type shares. This preset illustrates
+    composition of a few categories. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Summarize a few cell-type shares
+  input_requirements: Categories and nonnegative values, with optional groups, labels
+    or colors.
+  preview_asset: plugins/interactive_pie_plot/all_examples_gallery/basic.png
+  mappings:
+    category_column: category
+    value_column: value
+    label_column: label
+    color_column: color
+- id: donut
+  title: Donut composition view
+  description: 'Use case: Survey sample composition. This preset illustrates donut
+    composition view. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: donut
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Survey sample composition
+  input_requirements: Categories and nonnegative values, with optional groups, labels
+    or colors.
+  preview_asset: plugins/interactive_pie_plot/all_examples_gallery/donut.png
+  variant_id: donut
+  mappings:
+    category_column: category
+    value_column: value
+    label_column: label
+    color_column: color
+- id: custom_layout
+  title: Label-layout customization
+  description: 'Use case: Check category order and labels. This preset illustrates
+    label-layout customization. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: custom_layout
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Check category order and labels
+  input_requirements: Categories and nonnegative values, with optional groups, labels
+    or colors.
+  preview_asset: plugins/interactive_pie_plot/all_examples_gallery/custom_layout.png
+  mappings:
+    category_column: category
+    value_column: value
+    label_column: label
+    color_column: color
+literature_ids:
+- hao_dnt_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  donut:
+    summary: 'Use case: Survey sample composition. This preset illustrates donut composition
+      view. Replace its input with your data while retaining the appropriate view
+      settings.'
+customization:
+- parameter: width
+  label: width
+  default: 8
+- parameter: height
+  label: height
+  default: 6

@@ -4,11 +4,13 @@ from __future__ import annotations
 import json
 import os
 import subprocess
+import time
 from pathlib import Path
 from typing import Any
 
 from fastapi import HTTPException
 
+from plot_web.server import render_cache
 from plot_web.server.plotspec import blocks_render, prepare_job_plotspec
 from plot_web.server.plugins import infer_language, plugin_path
 from plot_web.server.settings import MAX_LOCAL_SECONDS, ROOT_DIR
@@ -142,6 +144,8 @@ def _job_params(job: dict[str, Any]) -> dict[str, Any]:
 
 
 def run_local_job(job: dict[str, Any], cmd: list[str], plugin_dir: Path, output_dir: Path) -> dict[str, Any]:
+    started = time.perf_counter()
+    output_dir.mkdir(parents=True, exist_ok=True)
     job["status"] = "running"
     job["message"] = "Plugin is running locally."
     job["started_at"] = utc_now()
@@ -159,7 +163,35 @@ def run_local_job(job: dict[str, Any], cmd: list[str], plugin_dir: Path, output_
         save_job(job)
         record_job_in_state(job, job.get("dataset_id"))
         return job
+    validated = time.perf_counter()
+    key = render_cache.cache_key(job, cmd, plugin_dir, params)
+    fingerprinted = time.perf_counter()
+    job["cache"] = {"enabled": key is not None, "hit": False}
     save_job(job)
+    with render_cache.render_lock(key):
+        source_job = render_cache.restore(key, output_dir)
+        if source_job:
+            job.update({"status": "completed", "message": "Reused a completed figure with identical data and settings.",
+                        "finished_at": utc_now(), "returncode": 0,
+                        "outputs": output_urls_for_dir(job["figure_id"], output_dir)})
+            job["cache"] = {"enabled": True, "hit": True, "source_job_id": source_job}
+            (output_dir / "subprocess.stdout.log").write_text(f"Render cache hit; original render: {source_job}\n", encoding="utf-8")
+            (output_dir / "subprocess.stderr.log").write_text("", encoding="utf-8")
+            save_job(job)
+            record_job_in_state(job, job.get("dataset_id"))
+            completed = job
+        else:
+            completed = _execute_render(job, cmd, output_dir)
+            if completed.get("status") == "completed":
+                render_cache.store(key, output_dir, job["job_id"])
+    completed["timings"] = {"validation_seconds": round(validated - started, 4),
+                            "fingerprint_seconds": round(fingerprinted - validated, 4),
+                            "total_seconds": round(time.perf_counter() - started, 4)}
+    save_job(completed)
+    return completed
+
+
+def _execute_render(job: dict[str, Any], cmd: list[str], output_dir: Path) -> dict[str, Any]:
     try:
         result = subprocess.run(
             cmd,

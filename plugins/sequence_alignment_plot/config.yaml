@@ -1,0 +1,28 @@
+id: sequence_alignment_plot
+name: Sequence Alignment
+version: 1.0.0
+description: Display aligned DNA or protein sequences with consensus conservation.
+language: R
+entrypoint: plot.R
+category: Genomics
+subcategory: General
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+- consensus_used.csv
+runtime:
+  command: Rscript plugins/sequence_alignment_plot/plot.R --input input.csv --params
+    params.json --output output_dir

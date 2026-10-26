@@ -1,0 +1,13 @@
+category,value,group
+Glycolysis,12,Healthy
+TCA cycle,9,Healthy
+Oxidative phosphorylation,15,Healthy
+Pentose phosphate,5,Healthy
+Fatty acid oxidation,8,Healthy
+Amino acid metabolism,7,Healthy
+Glycolysis,18,Disease
+TCA cycle,6,Disease
+Oxidative phosphorylation,8,Disease
+Pentose phosphate,11,Disease
+Fatty acid oxidation,4,Disease
+Amino acid metabolism,10,Disease

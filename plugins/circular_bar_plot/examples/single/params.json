@@ -1,0 +1,10 @@
+{
+  "category_column": "category",
+  "value_column": "value",
+  "group_column": "group",
+  "plot_type": "single",
+  "title": "Pathway scores (summed)",
+  "inner_radius": 0.15,
+  "width": 7,
+  "height": 7
+}

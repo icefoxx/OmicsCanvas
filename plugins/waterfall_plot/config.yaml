@@ -1,0 +1,17 @@
+id: waterfall_plot
+name: Waterfall Plot
+version: 1.0.0
+description: Cumulative signed bars that show how sequential contributions add to a total.
+language: R
+entrypoint: plot.R
+category: Comparison
+subcategory: General
+status: beta
+inputs:
+- id: input
+  type: table
+  formats: [csv, tsv, txt]
+  required: true
+outputs: [result.svg, result.pdf, result.png, figure.json, run.log, data_used.csv]
+runtime:
+  command: Rscript plugins/waterfall_plot/plot.R --input input.csv --params params.json --output output_dir

@@ -1,0 +1,9 @@
+level1,level2,value
+Immune,T cell,40
+Immune,B cell,18
+Immune,NK,8
+Immune,MAIT,4
+Stroma,Fibroblast,22
+Stroma,Endothelial,12
+Epithelium,Luminal,30
+Epithelium,Basal,14

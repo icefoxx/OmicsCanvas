@@ -33,6 +33,22 @@
         "command": "Rscript plugins/interactive_enrichment_lollipop/plot.R --input plugins/interactive_enrichment_lollipop/examples/oct4_enrichment/input/example_input.csv --params plugins/interactive_enrichment_lollipop/examples/oct4_enrichment/params.json --output /tmp/interactive_enrichment_lollipop_oct4_out"
       },
       "bundle": "../examples/oct4_enrichment"
+    },
+    {
+      "id": "CAB_demo",
+      "label": "Diverging transcription factor lollipop",
+      "plugin_id": "interactive_enrichment_lollipop",
+      "params": "CAB_demo/params.json",
+      "inputs": {
+        "input": "CAB_demo/input/example_input.csv"
+      },
+      "expected": "CAB_demo/expected/result.png",
+      "reproduce": {
+        "command": "Rscript plugins/interactive_enrichment_lollipop/plot.R --input plugins/interactive_enrichment_lollipop/examples/CAB_demo/input/example_input.csv --params plugins/interactive_enrichment_lollipop/examples/CAB_demo/params.json --output /tmp/lollipop_CAB_demo"
+      },
+      "data_note": "Synthetic illustrative values, not data recovered from the cited publication.",
+      "bundle": "CAB_demo",
+      "gallery_png": "CAB_demo.png"
     }
   ]
 }

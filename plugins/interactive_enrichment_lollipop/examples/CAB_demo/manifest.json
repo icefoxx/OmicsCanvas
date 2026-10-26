@@ -1,0 +1,14 @@
+{
+  "id": "CAB_demo",
+  "label": "Diverging transcription factor lollipop",
+  "plugin_id": "interactive_enrichment_lollipop",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/example_input.csv"
+  },
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/interactive_enrichment_lollipop/plot.R --input plugins/interactive_enrichment_lollipop/examples/CAB_demo/input/example_input.csv --params plugins/interactive_enrichment_lollipop/examples/CAB_demo/params.json --output /tmp/lollipop_CAB_demo"
+  },
+  "data_note": "Synthetic illustrative values, not data recovered from the cited publication."
+}

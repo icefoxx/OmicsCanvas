@@ -1,0 +1,590 @@
+[
+  {
+    "plugin_id": "survival_plot",
+    "example": "basic",
+    "n_params": 24,
+    "results": [
+      {
+        "param": "curve_type",
+        "from": "survival",
+        "to": "event_probability",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "stat_method",
+        "from": "logrank",
+        "to": "none",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "landmark_time",
+        "from": 0,
+        "to": 1,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "confidence_level",
+        "from": 0.95,
+        "to": 0.999,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "confidence_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "confidence_alpha",
+        "from": 0.16,
+        "to": 0.08,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "censor_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "risk_table_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "risk_time_count",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "risk_text_size",
+        "from": 3,
+        "to": 6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Survival by cohort",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "binary_evaluation_plot",
+    "example": "basic",
+    "n_params": 20,
+    "results": [
+      {
+        "param": "input_mode",
+        "from": "predictions",
+        "to": "curve",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_type",
+        "from": "roc",
+        "to": "precision_recall",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "calibration_bins",
+        "from": 8,
+        "to": 16,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "threshold_min",
+        "from": 0.01,
+        "to": 0.02,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "threshold_max",
+        "from": 0.8,
+        "to": 0.999,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Receiver operating characteristic",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "metric_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "grid_show",
+        "from": false,
+        "to": true,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "interactive_3d_scatter",
+    "example": "alternate_view",
+    "n_params": 17,
+    "results": [
+      {
+        "param": "azimuth",
+        "from": 65,
+        "to": 130,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "elevation",
+        "from": 45,
+        "to": 80,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_alpha",
+        "from": 0.75,
+        "to": 0.375,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Alternate viewing angle",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "plugin_id": "circular_distribution_plot",
+    "example": "basic",
+    "n_params": 19,
+    "results": [
+      {
+        "param": "highlight_color",
+        "from": "#D74855",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "gap_angle",
+        "from": 60,
+        "to": 120,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "range_mode",
+        "from": "free",
+        "to": "shared",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "ncol",
+        "from": 3,
+        "to": 6,
+        "status": "no_effect",
+        "detail": ""
+      },
+      {
+        "param": "point_alpha",
+        "from": 0.6,
+        "to": 0.3,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "point_size",
+        "from": 2,
+        "to": 4,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "line_width",
+        "from": 0.6,
+        "to": 1.2,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "label_size",
+        "from": 2.8,
+        "to": 5.6,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title",
+        "from": "Scores across reference groups",
+        "to": "ZZ_SENSITIVITY_TEST",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "title_size",
+        "from": 13,
+        "to": 26,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "palette",
+        "from": "Set 2",
+        "to": "Dark 3",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_show",
+        "from": true,
+        "to": false,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_position",
+        "from": "right",
+        "to": "bottom",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "legend_text_size",
+        "from": 9,
+        "to": 18,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "font_family",
+        "from": "sans",
+        "to": "serif",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "base_size",
+        "from": 11,
+        "to": 22,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "plot_background",
+        "from": "#FFFFFF",
+        "to": "#FF00FF",
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "width",
+        "from": 8,
+        "to": 16,
+        "status": "ok",
+        "detail": ""
+      },
+      {
+        "param": "height",
+        "from": 6,
+        "to": 12,
+        "status": "ok",
+        "detail": ""
+      }
+    ]
+  }
+]

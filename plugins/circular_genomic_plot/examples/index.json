@@ -1,0 +1,53 @@
+{
+  "plugin_id": "circular_genomic_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Circular interval heatmap",
+      "plugin_id": "circular_genomic_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv",
+        "chromosomes": "basic/input/chromosomes.csv",
+        "links": "basic/input/links.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "bars",
+      "label": "Circular interval magnitudes",
+      "plugin_id": "circular_genomic_plot",
+      "params": "bars/params.json",
+      "inputs": {
+        "input": "bars/input/data.csv",
+        "chromosomes": "bars/input/chromosomes.csv",
+        "links": "bars/input/links.csv"
+      },
+      "expected": "bars/expected/result.png"
+    },
+    {
+      "id": "points",
+      "label": "Circular interval points",
+      "plugin_id": "circular_genomic_plot",
+      "params": "points/params.json",
+      "inputs": {
+        "input": "points/input/data.csv",
+        "chromosomes": "points/input/chromosomes.csv",
+        "links": "points/input/links.csv"
+      },
+      "expected": "points/expected/result.png"
+    },
+    {
+      "id": "linear",
+      "label": "Linear chromosome overview",
+      "plugin_id": "circular_genomic_plot",
+      "params": "linear/params.json",
+      "inputs": {
+        "input": "linear/input/data.csv",
+        "chromosomes": "linear/input/chromosomes.csv",
+        "links": "linear/input/links.csv"
+      },
+      "expected": "linear/expected/result.png"
+    }
+  ]
+}

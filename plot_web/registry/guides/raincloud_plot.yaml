@@ -1,0 +1,91 @@
+summary: Combine a half-violin, box and raw points to show distribution, quantiles
+  and individual observations.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare continuous phenotypes
+- Show raw small-sample observations
+- Inspect heterogeneity behind averages
+common_uses: []
+input_requirements: Group/value long data with optional sample or condition columns.
+learn_more: 'Input: Group/value long data with optional sample or condition columns.
+  Interpretation: The cloud shows density, the box shows quantiles and the points
+  show observations. Check mappings, order and transformations before adjusting labels,
+  colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: The cloud shows density, the box shows quantiles and the points show observations.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Jitter position has no extra numeric meaning
+- id: caution_2
+  title: Caution 2
+  text: Density estimates can be unstable for very small samples
+examples:
+- id: basic
+  title: Horizontal distributions with observations
+  description: 'Use case: Compare continuous phenotypes. This preset illustrates horizontal
+    distributions with observations. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare continuous phenotypes
+  input_requirements: Group/value long data with optional sample or condition columns.
+  preview_asset: plugins/raincloud_plot/all_examples_gallery/basic.png
+  variant_id: basic
+  mappings:
+    value_column: value
+    group_column: group
+- id: vertical
+  title: Vertical distribution comparison
+  description: 'Use case: Show raw small-sample observations. This preset illustrates
+    vertical distribution comparison. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: vertical
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Show raw small-sample observations
+  input_requirements: Group/value long data with optional sample or condition columns.
+  preview_asset: plugins/raincloud_plot/all_examples_gallery/vertical.png
+  variant_id: vertical
+  mappings:
+    value_column: value
+    group_column: group
+literature_ids:
+- allen_raincloud_2019
+- ari_agency_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  basic:
+    summary: Horizontal raincloud of expression by group.
+  vertical:
+    summary: Vertical raincloud with the same layers.
+customization:
+- parameter: group_column
+  label: Group column
+  default: group
+  help: Categorical groups; empty = one group.
+- parameter: value_column
+  label: Value column
+  default: value
+  help: Numeric values whose distribution is drawn.
+- parameter: palette
+  label: Palette
+  default: Set 2
+- parameter: group_colors
+  label: Colour per group
+  default: {}
+  help: '{"group": "#hex"}; overrides the palette.'
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Width (in)
+  default: 7
+- parameter: height
+  label: Height (in)
+  default: 5

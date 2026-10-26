@@ -1,0 +1,10 @@
+{
+  "id": "categorical",
+  "label": "Categorical annotation rings",
+  "plugin_id": "circular_heatmap",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "params": "params.json",
+  "expected": "expected/result.png"
+}

@@ -1,0 +1,115 @@
+summary: Align a metric bar panel above a feature matrix on a shared category axis.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare benchmark performance and inputs
+- Align outcomes with assay capabilities
+- Show scores alongside evidence combinations
+common_uses: []
+input_requirements: Categories, metric values and optional errors, plus binary or
+  continuous feature columns.
+learn_more: 'Input: Categories, metric values and optional errors, plus binary or
+  continuous feature columns. Interpretation: Bars encode metrics; dot filling or
+  color encodes the corresponding feature state or strength. Check mappings, order
+  and transformations before adjusting labels, colors and canvas dimensions. Confirm
+  legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Bars encode metrics; dot filling or color encodes the corresponding feature
+    state or strength.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Identify error bars as SD, SE or CI
+- id: caution_2
+  title: Caution 2
+  text: Feature presence does not establish its causal contribution to performance
+examples:
+- id: basic
+  title: Metrics and binary evidence
+  description: 'Use case: Compare benchmark performance and inputs. This preset illustrates
+    metrics and binary evidence. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare benchmark performance and inputs
+  input_requirements: Categories, metric values and optional errors, plus binary or
+    continuous feature columns.
+  preview_asset: plugins/combo_bar_dot_matrix/all_examples_gallery/basic.png
+  mappings:
+    x_column: model
+    y_column: auprc
+    se_column: se
+    group_column: group
+- id: heatmap_dots
+  title: Continuous evidence matrix
+  description: 'Use case: Align outcomes with assay capabilities. This preset illustrates
+    continuous evidence matrix. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: heatmap_dots
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Align outcomes with assay capabilities
+  input_requirements: Categories, metric values and optional errors, plus binary or
+    continuous feature columns.
+  preview_asset: plugins/combo_bar_dot_matrix/all_examples_gallery/heatmap_dots.png
+  variant_id: heatmap_dots
+  mappings:
+    x_column: model
+    y_column: auprc
+    se_column: se
+    group_column: group
+- id: bar_only
+  title: Metric bars without the matrix
+  description: 'Use case: Show scores alongside evidence combinations. This preset
+    illustrates metric bars without the matrix. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: bar_only
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Show scores alongside evidence combinations
+  input_requirements: Categories, metric values and optional errors, plus binary or
+    continuous feature columns.
+  preview_asset: plugins/combo_bar_dot_matrix/all_examples_gallery/bar_only.png
+  variant_id: bar_only
+  mappings:
+    x_column: model
+    y_column: auprc
+    se_column: se
+    group_column: group
+literature_ids:
+- liu_cellres_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  bar_only:
+    summary: 'Use case: Show scores alongside evidence combinations. This preset illustrates
+      metric bars without the matrix. Replace its input with your data while retaining
+      the appropriate view settings.'
+  heatmap_dots:
+    summary: 'Use case: Align outcomes with assay capabilities. This preset illustrates
+      continuous evidence matrix. Replace its input with your data while retaining
+      the appropriate view settings.'
+customization:
+- parameter: group_column
+  label: Group / color class
+  default: group
+- parameter: x_column
+  label: X category column (bars)
+  default: null
+- parameter: y_column
+  label: Bar value column
+  default: auprc
+- parameter: group_colors
+  label: Group colors {name:#hex}
+  default: {}
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Width (in)
+  default: 7.2
+- parameter: height
+  label: Height (in)
+  default: 5.4

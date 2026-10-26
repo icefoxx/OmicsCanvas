@@ -1,0 +1,61 @@
+{
+  "new_skills": 11,
+  "scenarios": 9,
+  "engines_catalogued": 80,
+  "canonical_preflight": {
+    "valid": 80,
+    "total": 80
+  },
+  "skill_validation": {
+    "new_valid": 11,
+    "edited_existing_valid": 1
+  },
+  "standards": {
+    "new_violations": 0,
+    "baselined": 1571
+  },
+  "registry": {
+    "valid": true,
+    "errors": 0,
+    "existing_warnings": 33
+  },
+  "vnext_registry": {
+    "valid": true,
+    "engines": 80
+  },
+  "smoke": {
+    "passed": 12,
+    "total": 12,
+    "baselines_updated": false
+  },
+  "sensitivity": {
+    "parameters": 83,
+    "crashes": 0,
+    "mode_conditional": 5,
+    "followup_effects_confirmed": 5
+  },
+  "initial_pytest": {
+    "passed": 214,
+    "warnings": 1
+  },
+  "external_provider_runs": 0,
+  "native_host_installs": 0,
+  "visual_review": {
+    "png": 4,
+    "pdf": 4
+  },
+  "final_pytest": {
+    "passed": 215,
+    "failed": 0,
+    "warnings": 1
+  },
+  "direct_r_replay": {
+    "returncode": 0,
+    "pixel_identical": true
+  },
+  "bundle_replay": {
+    "returncode": 0,
+    "input_spec_params_match": true,
+    "pixel_identical": true
+  }
+}

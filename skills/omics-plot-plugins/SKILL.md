@@ -1,6 +1,6 @@
 ---
 name: omics-plot-plugins
-description: Create, modify, fix, classify, document and test OmicsCanvas plot plugins (plugins/<id>/plot.R + params_schema.json + config.yaml + examples). Use for any task that adds a new plot or chart type, adds or changes plot parameters, fixes a rendering or layout bug, updates examples, baselines or gallery images, or changes plot categories/registry entries. Enforces docs/standards.
+description: Create, modify, fix, classify, document and test OmicsCanvas plot plugins (plugins/*/plot.R + params_schema.json + config.yaml + examples). Use for any task that adds a new plot or chart type, adds or changes plot parameters, fixes a rendering or layout bug, updates examples, baselines or gallery images, or changes plot categories/registry entries. Enforces docs/standards.
 ---
 
 # OmicsCanvas plot plugins
@@ -88,6 +88,10 @@ changed code → update only the baselines that changed intentionally → `sync_
 Record user-visible fixes in `docs/qa/` when doing an audit.
 
 ## Reference
+
+For rendering an existing two-state TF/regulon comparison as a diverging lollipop,
+use [diverging-tf-lollipop](../diverging-tf-lollipop/SKILL.md); it routes to the
+existing engine and its literature-backed Plot Guide example.
 
 `references/plugin-guide.md` holds older, plugin-specific parameter notes (volcano, correlation,
 threshold matrix, ranked panel, quadrant scatter, Venn, fgsea, advanced dim plot). Where it

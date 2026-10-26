@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Plot Editor | OmicsCanvas</title>
-  <link rel="stylesheet" href="/static/styles.css?v=vnext-1">
-  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <link rel="stylesheet" href="/static/styles.css?v=studio-usability-1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -27,14 +26,14 @@
         </span>
         <span class="status-pill ready">
           <span class="ready-dot" id="readyDot"></span>
-          <span id="editorStateText">Ready</span>
+          <span id="editorStateText">No figure yet</span>
         </span>
       </div>
       <label class="auto-update-toggle header-toggle" title="Re-render when parameters change">
         <input type="checkbox" id="autoUpdateToggle" checked>
         <span class="toggle-pill">Auto Update</span>
       </label>
-      <button id="runDemoButton" class="secondary compact-action">Demo</button>
+      <button id="runDemoButton" class="secondary compact-action">Reset to example</button>
       <button id="runButton" class="primary compact-action">Run Plot</button>
       <div class="export-menu" id="exportMenu">
         <button type="button" class="export-menu-btn" id="exportMenuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="exportMenuPanel">
@@ -48,11 +47,13 @@
             <a class="export-item is-disabled" data-fmt="svg" role="menuitem" href="#" tabindex="-1">SVG</a>
             <a class="export-item is-disabled" data-fmt="pdf" role="menuitem" href="#" tabindex="-1">PDF</a>
             <a class="export-item is-disabled" data-fmt="png" role="menuitem" href="#" tabindex="-1">PNG</a>
+            <a class="export-item is-disabled" data-fmt="html" role="menuitem" href="#" tabindex="-1">Interactive HTML</a>
             <a class="export-item is-disabled" data-fmt="tiff" role="menuitem" href="#" tabindex="-1">TIFF</a>
             <a class="export-item is-disabled" data-fmt="plotspec" role="menuitem" href="#" tabindex="-1">PlotSpec (JSON)</a>
             <a class="export-item is-disabled" data-fmt="bundle" role="menuitem" href="#" tabindex="-1">Reproduction bundle (ZIP)</a>
           </div>
           <button type="button" class="export-menu-action" id="importPlotSpecBtn" role="menuitem">Import PlotSpec…</button>
+          <button type="button" class="export-menu-action" id="prepareExportButton" role="menuitem">Generate export files</button>
           <input type="file" id="importPlotSpecInput" accept=".json,application/json" hidden />
         </div>
       </div>
@@ -82,6 +83,11 @@
         </div>
       </aside>
       <section class="plot-stage">
+        <div class="data-source-bar">
+          <span id="dataSource" aria-live="polite">Loading data source…</span>
+          <span class="data-source-hint">Data → map columns → customize → export</span>
+          <span id="figureSyncNotice" class="figure-sync-notice" role="status" hidden></span>
+        </div>
         <!-- Vertical floating tools: outside canvas, draggable, top-right by default -->
         <div class="canvas-float-tools" id="canvasControlBar" aria-label="Canvas tools">
           <button type="button" class="float-drag-handle" id="floatDragHandle" title="Drag to move" aria-label="Drag tools">
@@ -90,11 +96,13 @@
           <button type="button" data-stage-action="zoom-in" title="Zoom in" class="float-tool-btn" aria-label="Zoom in">+</button>
           <button type="button" data-stage-action="zoom-out" title="Zoom out" class="float-tool-btn" aria-label="Zoom out">−</button>
           <button type="button" data-stage-action="fullscreen" title="Fullscreen" class="float-tool-btn" aria-label="Fullscreen">⛶</button>
+          <button type="button" data-stage-action="toggle-interactive" id="toggleInteractiveBtn" title="Interactive view: drag nodes" class="float-tool-btn hidden" aria-label="Toggle interactive view">Live</button>
         </div>
         <div class="stage-canvas" id="stageCanvas">
           <div class="preview-card" id="previewCard">
             <div class="preview-wrap" id="previewWrap">
               <img id="preview" alt="Plot preview">
+              <iframe id="htmlPreview" class="html-preview hidden" title="Interactive figure"></iframe>
               <div id="plotlyPreview" class="plotly-preview hidden"></div>
               <div id="stageOverlay" class="stage-overlay hidden">
                 <div class="spinner"></div>
@@ -102,8 +110,8 @@
               </div>
               <div class="empty-canvas" id="emptyCanvas">
                 <div class="empty-icon">📊</div>
-                <h3>Loading figure...</h3>
-                <p>Pre-loading demo case automatically...</p>
+                <h3>No figure yet</h3>
+                <p>Try an example or upload your data to start.</p>
               </div>
             </div>
           </div>
@@ -112,7 +120,7 @@
         <div class="stage-foot">
           <div class="job-status-wrap">
             <strong>Status</strong>
-            <div id="jobStatus" class="job-status">Ready.</div>
+            <div id="jobStatus" class="job-status" role="status" aria-live="polite">Ready.</div>
           </div>
           <div id="validationPanel" class="validation-panel" hidden aria-live="polite"></div>
           <div id="downloadLinks" class="downloads export-cta-row" hidden></div>
@@ -138,26 +146,29 @@
 
       <aside class="controls-card editor-panel">
         <div class="card-head settings-head">
-          <h3>Parameters &amp; Config</h3>
+          <h3>Plot settings</h3>
           <div class="preset-wrap">
             <label for="exampleSelect">Presets</label>
             <select id="exampleSelect"></select>
           </div>
         </div>
 
+        <label class="parameter-search-label" for="parameterSearch">Find a setting
+          <input id="parameterSearch" type="search" placeholder="e.g. label, angle, legend…" autocomplete="off">
+        </label>
         <div class="param-sidebar-grid">
           <nav class="param-nav-col" id="paramNavCol" aria-label="Parameter groups">
             <div class="param-nav-group-label">Plot</div>
-            <button class="param-tab active" data-ptab="data" type="button">data <span class="param-tab-count" data-count-for="data"></span></button>
-            <button class="param-tab" data-ptab="plot" type="button">plot <span class="param-tab-count" data-count-for="plot"></span></button>
-            <button class="param-tab" data-ptab="customize" type="button">customize <span class="param-tab-count" data-count-for="customize"></span></button>
+            <button class="param-tab active" data-ptab="data" type="button">Data <span class="param-tab-count" data-count-for="data"></span></button>
+            <button class="param-tab" data-ptab="plot" type="button">Plot options <span class="param-tab-count" data-count-for="plot"></span></button>
+            <button class="param-tab" data-ptab="customize" type="button">Marks <span class="param-tab-count" data-count-for="customize"></span></button>
             <div class="param-nav-group-label">Common</div>
-            <button class="param-tab" data-ptab="theme" type="button">theme <span class="param-tab-count" data-count-for="theme"></span></button>
-            <button class="param-tab" data-ptab="axes" type="button">axes <span class="param-tab-count" data-count-for="axes"></span></button>
-            <button class="param-tab" data-ptab="title" type="button">title <span class="param-tab-count" data-count-for="title"></span></button>
-            <button class="param-tab" data-ptab="legend" type="button">legend <span class="param-tab-count" data-count-for="legend"></span></button>
-            <button class="param-tab" data-ptab="canvas" type="button">canvas <span class="param-tab-count" data-count-for="canvas"></span></button>
-            <button class="param-tab" data-ptab="export" type="button">export</button>
+            <button class="param-tab" data-ptab="theme" type="button">Colors & theme <span class="param-tab-count" data-count-for="theme"></span></button>
+            <button class="param-tab" data-ptab="axes" type="button">Axes & labels <span class="param-tab-count" data-count-for="axes"></span></button>
+            <button class="param-tab" data-ptab="title" type="button">Title <span class="param-tab-count" data-count-for="title"></span></button>
+            <button class="param-tab" data-ptab="legend" type="button">Legend <span class="param-tab-count" data-count-for="legend"></span></button>
+            <button class="param-tab" data-ptab="canvas" type="button">Size & fonts <span class="param-tab-count" data-count-for="canvas"></span></button>
+            <button class="param-tab" data-ptab="export" type="button">Export & JSON</button>
           </nav>
 
           <div class="param-content-col" id="paramContentCol">
@@ -181,9 +192,9 @@
     <span id="outputPathText"></span>
   </footer>
 
-  <script src="/static/html_utils.js?v=2"></script>
-  <script src="/static/plot_guide.js?v=plot-guide-1"></script>
-  <script src="/static/data_mapping.js?v=data-map-1"></script>
-  <script src="/static/editor.js?v=vnext-1"></script>
+  <script src="/static/html_utils.js?v=fast-preview-1"></script>
+  <script src="/static/plot_guide.js?v=english-published-figures-1"></script>
+  <script src="/static/data_mapping.js?v=studio-usability-1"></script>
+  <script src="/static/editor.js?v=ai-saved-job-1"></script>
 </body>
 </html>

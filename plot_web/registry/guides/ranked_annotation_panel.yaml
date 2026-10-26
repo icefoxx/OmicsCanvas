@@ -1,0 +1,65 @@
+summary: Align a ranked numeric panel with multiple continuous or categorical annotations.
+observation_type: observations or summary items in the input table
+best_for:
+- Link candidate rankings to annotations
+- Compare evidence for high-ranked items
+- Inspect sample or clinical attributes
+common_uses: []
+input_requirements: Item labels, ranking scores and annotation columns with configurable
+  types.
+learn_more: 'Input: Item labels, ranking scores and annotation columns with configurable
+  types. Interpretation: The left panel shows the selected value; each annotation
+  column has its own color meaning. Check mappings, order and transformations before
+  adjusting labels, colors and canvas dimensions. Confirm legends and units before
+  export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: The left panel shows the selected value; each annotation column has its own
+    color meaning.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Annotation columns may use different scales
+- id: caution_2
+  title: Caution 2
+  text: A selected ranking does not represent the entire population
+examples:
+- id: params
+  title: Candidate ranking with multiple annotations
+  description: 'Use case: Link candidate rankings to annotations. This preset illustrates
+    candidate ranking with multiple annotations. Replace its input with your data
+    while retaining the appropriate view settings.'
+  demo_id: params
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Link candidate rankings to annotations
+  input_requirements: Item labels, ranking scores and annotation columns with configurable
+    types.
+  preview_asset: plugins/ranked_annotation_panel/all_examples_gallery/params.png
+  mappings:
+    row_label_column: feature
+    left_value_column: score
+    annotation_columns:
+    - L13
+    - L18
+    - L6
+literature_ids:
+- lauria_gseca_2020
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes:
+- Only one independent demonstration bundle is available. Three application scenarios
+  are listed, but a second input or mode-specific bundle is still needed.
+variants: {}
+customization:
+- parameter: row_label_column
+  label: Row label column
+  default: null
+- parameter: width
+  label: Width
+  default: 7.2
+- parameter: height
+  label: Height
+  default: 6

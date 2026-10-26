@@ -1,0 +1,46 @@
+{
+  "data_mapping": {
+    "category_column": {"type": "column", "label": "Step column", "default": "category", "help": "Sequential contribution labels."},
+    "value_column": {"type": "column", "label": "Value column", "default": "value", "help": "Signed contribution. Positive increases the running total."},
+    "category_order": {"type": "string_array", "label": "Step order", "default": []}
+  },
+  "marks": {
+    "total_show": {"type": "boolean", "label": "Add total bar", "default": true},
+    "connector_show": {"type": "boolean", "label": "Connectors", "default": true},
+    "bar_width": {"type": "number", "label": "Bar width", "default": 0.7, "min": 0.2, "max": 1, "step": 0.05},
+    "bar_alpha": {"type": "number", "label": "Bar opacity", "default": 0.95, "min": 0, "max": 1, "step": 0.05},
+    "label_show": {"type": "boolean", "label": "Value labels", "default": true},
+    "label_size": {"type": "number", "label": "Label size", "default": 8},
+    "total_label": {"type": "string", "label": "Total bar label", "default": "Total"}
+  },
+  "colors": {
+    "increase_color": {"type": "color", "label": "Increase colour", "default": "#66C2A5"},
+    "decrease_color": {"type": "color", "label": "Decrease colour", "default": "#FC8D62"},
+    "total_color": {"type": "color", "label": "Total colour", "default": "#8DA0CB"}
+  },
+  "labels": {
+    "title": {"type": "string", "label": "Title", "default": ""},
+    "subtitle": {"type": "string", "label": "Subtitle", "default": ""},
+    "xlab": {"type": "string", "label": "X axis title", "default": ""},
+    "ylab": {"type": "string", "label": "Y axis title", "default": "Value"},
+    "title_size": {"type": "number", "label": "Title size", "default": 13},
+    "axis_label_size": {"type": "number", "label": "Axis title size", "default": 11},
+    "x_axis_text_angle": {"type": "number", "label": "X tick label angle", "default": 30}
+  },
+  "legend": {
+    "legend_show": {"type": "boolean", "label": "Show legend", "default": true},
+    "legend_position": {"type": "select", "label": "Legend position", "default": "right", "options": ["right", "bottom", "top", "left"]},
+    "legend_text_size": {"type": "number", "label": "Legend text size", "default": 9}
+  },
+  "theme": {
+    "font_family": {"type": "string", "label": "Font family", "default": "sans"},
+    "base_size": {"type": "number", "label": "Base font size", "default": 11},
+    "panel_border_show": {"type": "boolean", "label": "Panel border", "default": false},
+    "grid_show": {"type": "boolean", "label": "Grid lines", "default": false}
+  },
+  "export": {
+    "width": {"type": "number", "label": "Width (in)", "default": 8},
+    "height": {"type": "number", "label": "Height (in)", "default": 5},
+    "dpi": {"type": "number", "label": "PNG dpi", "default": 300}
+  }
+}

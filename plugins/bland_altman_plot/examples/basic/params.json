@@ -1,0 +1,6 @@
+{
+  "x_column": "method_a",
+  "y_column": "method_b",
+  "group_column": "group",
+  "title": "Paired measurement agreement"
+}

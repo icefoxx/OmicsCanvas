@@ -3,7 +3,8 @@
 ```text
 R/
 ├── sca/            canonical SCA helper library, sourced by plugins (single copy)
-├── runtime/        omicscanvas.Rprofile: seeds the RNG for every plugin run
+├── runtime/        omicscanvas.Rprofile: seeds the RNG for every plugin run;
+│                   also wraps htmlwidgets::saveWidget so missing pandoc does not fail the job
 └── upstream_sca/   unmodified snapshot of the upstream SCA sources (reference only;
                     no plugin loads it)
 ```

@@ -1,0 +1,119 @@
+summary: Decompose category totals into components as absolute counts or normalized
+  proportions.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare sample cell compositions
+- Inspect functional components within categories
+- Distinguish abundance from relative shares
+common_uses: []
+input_requirements: Categories, components and nonnegative values in supported long
+  or wide form.
+learn_more: 'Input: Categories, components and nonnegative values in supported long
+  or wide form. Interpretation: Total stack height represents total quantity, or a
+  fixed total in normalized mode. Check mappings, order and transformations before
+  adjusting labels, colors and canvas dimensions. Confirm legends and units before
+  export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Total stack height represents total quantity, or a fixed total in normalized
+    mode.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Relative changes need not imply absolute abundance changes
+- id: caution_2
+  title: Caution 2
+  text: Capture efficiency affects observed cell counts
+examples:
+- id: normal
+  title: Absolute stacked quantities
+  description: 'Use case: Compare sample cell compositions. This preset illustrates
+    absolute stacked quantities. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: normal
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare sample cell compositions
+  input_requirements: Categories, components and nonnegative values in supported long
+    or wide form.
+  preview_asset: plugins/stacked_bar_plot/all_examples_gallery/normal.png
+  variant_id: normal
+  mappings:
+    sample_column: sample
+    group_column: group
+    legend_columns: 1
+- id: percent
+  title: Normalized composition shares
+  description: 'Use case: Inspect functional components within categories. This preset
+    illustrates normalized composition shares. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: percent
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect functional components within categories
+  input_requirements: Categories, components and nonnegative values in supported long
+    or wide form.
+  preview_asset: plugins/stacked_bar_plot/all_examples_gallery/percent.png
+  variant_id: percent
+  mappings:
+    sample_column: sample
+    group_column: group
+- id: long
+  title: Long-format categories and components
+  description: 'Use case: Distinguish abundance from relative shares. This preset
+    illustrates long-format categories and components. Replace its input with your
+    data while retaining the appropriate view settings.'
+  demo_id: long
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Distinguish abundance from relative shares
+  input_requirements: Categories, components and nonnegative values in supported long
+    or wide form.
+  preview_asset: plugins/stacked_bar_plot/all_examples_gallery/long.png
+  variant_id: long
+  mappings:
+    sample_column: sample
+    group_column: group
+    stack_column: taxon
+    value_column: abundance
+literature_ids:
+- hao_dnt_2026
+- chen_ibd_2025
+- li_leprosy_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  long:
+    summary: 'Use case: Distinguish abundance from relative shares. This preset illustrates
+      long-format categories and components. Replace its input with your data while
+      retaining the appropriate view settings.'
+  normal:
+    summary: 'Use case: Compare sample cell compositions. This preset illustrates
+      absolute stacked quantities. Replace its input with your data while retaining
+      the appropriate view settings.'
+  percent:
+    summary: 'Use case: Inspect functional components within categories. This preset
+      illustrates normalized composition shares. Replace its input with your data
+      while retaining the appropriate view settings.'
+customization:
+- parameter: input_mode
+  label: Input mode
+  default: auto
+  help: auto detects long format when stack_column + value_column exist.
+- parameter: group_column
+  label: Group column
+  default: null
+  help: Clusters bars and centers group labels on the categorical axis.
+- parameter: value_column
+  label: Value column (long)
+  default: null
+- parameter: palette
+  label: Named palette
+  default: ''
+- parameter: width
+  label: Export width (in)
+  default: 9
+- parameter: height
+  label: Export height (in)
+  default: 7

@@ -1,0 +1,77 @@
+summary: Place nodes on a baseline and connect supplied relationships with arcs.
+observation_type: observations or summary items in the input table
+best_for:
+- Inspect gene relationships
+- Order nodes by genomic position or pathway
+- Compare links across modules
+common_uses: []
+input_requirements: Source-target edges; optional weights, groups and an ordered node
+  table.
+learn_more: 'Input: Source-target edges; optional weights, groups and an ordered node
+  table. Interpretation: Arcs connect edge endpoints and their spans depend on node
+  order. Check mappings, order and transformations before adjusting labels, colors
+  and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Arcs connect edge endpoints and their spans depend on node order.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Arc height is not interaction strength
+- id: caution_2
+  title: Caution 2
+  text: Undirected input cannot establish regulatory direction
+examples:
+- id: basic
+  title: Baseline nodes and arc links
+  description: 'Use case: Inspect gene relationships. This preset illustrates baseline
+    nodes and arc links. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect gene relationships
+  input_requirements: Source-target edges; optional weights, groups and an ordered
+    node table.
+  preview_asset: plugins/interactive_arc_network_plot/all_examples_gallery/basic.png
+- id: custom
+  title: Node order and arc styling
+  description: 'Use case: Order nodes by genomic position or pathway. This preset
+    illustrates node order and arc styling. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: custom
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Order nodes by genomic position or pathway
+  input_requirements: Source-target edges; optional weights, groups and an ordered
+    node table.
+  preview_asset: plugins/interactive_arc_network_plot/all_examples_gallery/custom.png
+  variant_id: custom
+- id: interactive
+  title: Inspect nodes and edges on hover
+  description: 'Use case: Compare links across modules. This preset illustrates inspect
+    nodes and edges on hover. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: interactive
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare links across modules
+  input_requirements: Source-target edges; optional weights, groups and an ordered
+    node table.
+  preview_asset: plugins/interactive_arc_network_plot/all_examples_gallery/interactive.png
+  variant_id: interactive
+literature_ids:
+- dang_pathwaymatrix_2015
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  custom:
+    summary: 'Use case: Order nodes by genomic position or pathway. This preset illustrates
+      node order and arc styling. Replace its input with your data while retaining
+      the appropriate view settings.'
+  interactive:
+    summary: 'Use case: Compare links across modules. This preset illustrates inspect
+      nodes and edges on hover. Replace its input with your data while retaining the
+      appropriate view settings.'
+customization: []

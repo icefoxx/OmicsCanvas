@@ -1,0 +1,90 @@
+summary: Summarize metadata category counts and composition using bars, pies, flows
+  or intersection views.
+observation_type: observations or summary items in the input table
+best_for:
+- Survey population counts
+- Compare sample composition
+- Inspect category correspondences and overlaps
+common_uses: []
+input_requirements: Observation-level metadata with category/group mappings and a
+  selected plot mode.
+learn_more: 'Input: Observation-level metadata with category/group mappings and a
+  selected plot mode. Interpretation: Marks represent counts, shares or intersections
+  depending on the active mode. Check mappings, order and transformations before adjusting
+  labels, colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Marks represent counts, shares or intersections depending on the active mode.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Different geometries need different interpretations
+- id: caution_2
+  title: Caution 2
+  text: Filters change count universes and proportional denominators
+examples:
+- id: bar
+  title: Category count overview
+  description: 'Use case: Survey population counts. This preset illustrates category
+    count overview. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: bar
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Survey population counts
+  input_requirements: Observation-level metadata with category/group mappings and
+    a selected plot mode.
+  preview_asset: plugins/stat_plot/all_examples_gallery/bar.png
+  variant_id: bar
+  mappings:
+    id_column: cell_id
+- id: pie
+  title: Composition of a few categories
+  description: 'Use case: Compare sample composition. This preset illustrates composition
+    of a few categories. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: pie
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare sample composition
+  input_requirements: Observation-level metadata with category/group mappings and
+    a selected plot mode.
+  preview_asset: plugins/stat_plot/all_examples_gallery/pie.png
+  variant_id: pie
+  mappings:
+    id_column: cell_id
+- id: dot
+  title: Cross-category summaries
+  description: 'Use case: Inspect category correspondences and overlaps. This preset
+    illustrates cross-category summaries. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: dot
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect category correspondences and overlaps
+  input_requirements: Observation-level metadata with category/group mappings and
+    a selected plot mode.
+  preview_asset: plugins/stat_plot/all_examples_gallery/dot.png
+  variant_id: dot
+  mappings:
+    id_column: cell_id
+literature_ids:
+- hao_dnt_2026
+- li_leprosy_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  bar:
+    summary: 'Use case: Survey population counts. This preset illustrates category
+      count overview. Replace its input with your data while retaining the appropriate
+      view settings.'
+  dot:
+    summary: 'Use case: Inspect category correspondences and overlaps. This preset
+      illustrates cross-category summaries. Replace its input with your data while
+      retaining the appropriate view settings.'
+  pie:
+    summary: 'Use case: Compare sample composition. This preset illustrates composition
+      of a few categories. Replace its input with your data while retaining the appropriate
+      view settings.'
+customization: []

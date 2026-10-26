@@ -1,0 +1,10 @@
+{
+  "id": "alternate_view",
+  "label": "Alternate viewing angle",
+  "plugin_id": "interactive_3d_scatter",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

@@ -1,0 +1,11 @@
+{
+  "value_column": "value",
+  "group_column": "group",
+  "group_order": ["Control", "Treated", "Rescue"],
+  "title": "Expression by treatment",
+  "xlab": "Group",
+  "ylab": "Expression",
+  "orientation": "horizontal",
+  "width": 7,
+  "height": 5
+}

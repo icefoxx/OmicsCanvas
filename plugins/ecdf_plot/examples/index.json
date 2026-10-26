@@ -1,0 +1,25 @@
+{
+  "plugin_id": "ecdf_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Cumulative score distributions",
+      "plugin_id": "ecdf_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "steps",
+      "label": "Empirical distribution steps",
+      "plugin_id": "ecdf_plot",
+      "params": "steps/params.json",
+      "inputs": {
+        "input": "steps/input/data.csv"
+      },
+      "expected": "steps/expected/result.png"
+    }
+  ]
+}

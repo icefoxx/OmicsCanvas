@@ -1,0 +1,178 @@
+{
+  "data_mapping": {
+    "row_column": {
+      "type": "column",
+      "label": "Row column",
+      "default": "row",
+      "help": "Ring labels (features)."
+    },
+    "column_column": {
+      "type": "column",
+      "label": "Column column",
+      "default": "column",
+      "help": "Angular labels (samples)."
+    },
+    "value_column": {
+      "type": "column",
+      "label": "Value column",
+      "default": "value"
+    },
+    "row_order": {
+      "type": "string_array",
+      "label": "Row order",
+      "default": []
+    },
+    "column_order": {
+      "type": "string_array",
+      "label": "Column order",
+      "default": []
+    },
+    "value_mode": {
+      "type": "select",
+      "label": "Value type",
+      "default": "numeric",
+      "options": [
+        "numeric",
+        "categorical"
+      ],
+      "help": "Categorical rings require unique cells and disable numeric clustering."
+    }
+  },
+  "marks": {
+    "cluster_rows": {
+      "type": "boolean",
+      "label": "Cluster rows",
+      "default": false
+    },
+    "cluster_columns": {
+      "type": "boolean",
+      "label": "Cluster columns",
+      "default": false
+    },
+    "inner_radius": {
+      "type": "number",
+      "label": "Inner hole",
+      "default": 0.25,
+      "min": 0,
+      "max": 0.8,
+      "step": 0.05
+    },
+    "border_width": {
+      "type": "number",
+      "label": "Tile border width",
+      "default": 0.1,
+      "min": 0,
+      "max": 1,
+      "step": 0.05
+    },
+    "label_show": {
+      "type": "boolean",
+      "label": "Column labels",
+      "default": true
+    },
+    "label_size": {
+      "type": "number",
+      "label": "Column label size",
+      "default": 8
+    }
+  },
+  "colors": {
+    "palette": {
+      "type": "select",
+      "label": "Fill palette",
+      "default": "Blue-Red 3",
+      "options": [
+        "Blue-Red 3",
+        "Viridis",
+        "Plasma",
+        "Zissou 1"
+      ]
+    },
+    "na_color": {
+      "type": "color",
+      "label": "Missing colour",
+      "default": "#EEEEEE",
+      "help": "Fill for missing row\u2013column cells."
+    },
+    "group_colors": {
+      "type": "object",
+      "label": "Category colors",
+      "default": {},
+      "help": "Named category overrides in categorical mode."
+    }
+  },
+  "labels": {
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "default": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "label": "Subtitle",
+      "default": ""
+    },
+    "legend_title": {
+      "type": "string",
+      "label": "Colour-bar title",
+      "default": ""
+    },
+    "title_size": {
+      "type": "number",
+      "label": "Title size",
+      "default": 13
+    }
+  },
+  "legend": {
+    "legend_show": {
+      "type": "boolean",
+      "label": "Show colour bar",
+      "default": true
+    },
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "default": "right",
+      "options": [
+        "right",
+        "bottom",
+        "top",
+        "left"
+      ]
+    },
+    "legend_text_size": {
+      "type": "number",
+      "label": "Legend text size",
+      "default": 9
+    }
+  },
+  "theme": {
+    "font_family": {
+      "type": "string",
+      "label": "Font family",
+      "default": "sans"
+    },
+    "base_size": {
+      "type": "number",
+      "label": "Base font size",
+      "default": 11
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "label": "Width (in)",
+      "default": 7
+    },
+    "height": {
+      "type": "number",
+      "label": "Height (in)",
+      "default": 7
+    },
+    "dpi": {
+      "type": "number",
+      "label": "PNG dpi",
+      "default": 300
+    }
+  }
+}

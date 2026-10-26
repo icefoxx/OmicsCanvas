@@ -1,0 +1,19 @@
+{
+  "group_column": "class",
+  "title": "CAB_demo",
+  "gap_angle": 22,
+  "ring_width": 0.05,
+  "x_column": "UMAP_1",
+  "y_column": "UMAP_2",
+  "cluster_column": "subtype",
+  "hierarchy_columns": [
+    "class",
+    "subclass"
+  ],
+  "feature_columns": [
+    "Gene_A",
+    "Gene_B",
+    "Gene_C",
+    "Gene_D"
+  ]
+}

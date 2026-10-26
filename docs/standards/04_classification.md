@@ -37,11 +37,11 @@ Allowed values (also `STUDIO_CATEGORIES` in `scripts/check_plugin_standards.py`)
 | Feature | feature values mapped on embeddings | Expression map, Density |
 | Expression / Statistics | expression summaries per group, SCA statistics | Statistics, Bar, Combo, Dendrogram, Composition |
 | Distribution | distributions of one variable | General |
-| Comparison | group vs group effects, ranked differences | Effect, Combo, General |
-| Composition | parts of a whole, flows between categories | Flow, General |
+| Comparison | group vs group effects, ranked differences | Effect, Combo, General, Polar, Line |
+| Composition | parts of a whole, flows between categories | Flow, General, Hierarchical |
 | Correlation | association between features/samples | General |
-| Scatter | x–y plots with statistics | Volcano, Regression, Correlation |
-| Heatmap | matrices of values | Matrix, Grouped, Binary, General |
+| Scatter | x–y plots with statistics | Volcano, Regression, Correlation, Ternary |
+| Heatmap | matrices of values | Matrix, Grouped, Binary, General, Circular |
 | Network | graphs, arcs, sankey-style networks | Arc, General |
 | Set / Enrichment | set overlap and functional enrichment | Set, UpSet, Enrichment, GSEA, Lollipop |
 | Genomics | coordinate-based tracks | General |
@@ -90,11 +90,11 @@ chart type; give it one when un-hiding it.
 | comparison | barplot, dot, lollipop, radar, parallel |
 | relationship | scatter, bubble, connected_scatter, density_2d |
 | matrix | heatmap, correlogram, dot_matrix |
-| composition | pie, doughnut, stacked_bar, treemap |
+| composition | pie, doughnut, stacked_bar, treemap, sunburst |
 | flow | sankey, alluvial, network, chord, arc |
 | sets | venn, upset |
 | tables | table, summary_table |
-| specialized | genomic_track, motif, dendrogram |
+| specialized | genomic_track, motif, dendrogram, ternary, spatial_map |
 
 Add the family id to every matching chart's `family_ids`. A visual grammar that fits none of these
 is a new chart type (below).
@@ -143,6 +143,8 @@ Generated from the configs, registry, taxonomy and rules on 2026-10-23.
 | `alluvial_plot` | Composition / Flow | alluvial | alluvial, chord, sankey | composition |
 | `balloon_plot` | Heatmap / Matrix | balloon_plot (hidden) | — | matrix |
 | `classified_bar_plot` | Expression / Statistics / Bar | classified_bar_plot (hidden) | — | composition |
+| `circular_bar_plot` | Comparison / Polar | circular_bar_plot | barplot | group_comparison |
+| `circular_heatmap` | Heatmap / Circular | circular_heatmap | heatmap | matrix |
 | `cluster_dendrogram_plot` | Expression / Statistics / Dendrogram | cluster_dendrogram_plot | dendrogram | matrix |
 | `combo_bar_dot_matrix` | Comparison / Combo | combo_bar_dot_matrix | barplot, dot, dot_matrix | group_comparison |
 | `combo_bar_line_plot` | Expression / Statistics / Combo | combo_bar_line_plot (hidden) | — | group_comparison |
@@ -176,13 +178,56 @@ Generated from the configs, registry, taxonomy and rules on 2026-10-23.
 | `interactive_sankey_plot` | Network / General | sankey (hidden) | — | network |
 | `interactive_upset_plot` | Set / Enrichment / UpSet | upset | upset | set_overlap |
 | `interactive_violin_plot` | Distribution / General | interactive_violin_plot | beeswarm, boxplot, violin | group_comparison |
+| `line_plot` | Comparison / Line | line_plot | connected_scatter | group_comparison |
 | `lineage_plot` | Dimension / Trajectory | trajectory | scatter | embedding |
 | `pie_dot_matrix` | Heatmap / Matrix | pie_dot_matrix (hidden) | — | matrix |
 | `quadrant_correlation_scatter` | Scatter / Correlation | quadrant_correlation_scatter | scatter | correlation |
+| `raincloud_plot` | Distribution / General | raincloud_plot | beeswarm, boxplot, violin | group_comparison |
 | `ranked_annotation_panel` | Multi-panel / Annotation | ranked_annotation_panel | lollipop, parallel, summary_table | multi_panel |
 | `regression_scatter_plot` | Scatter / Regression | regression_scatter_plot | scatter | correlation |
 | `sca_volcano_plot` | Scatter / Volcano | volcano | scatter | differential_expression |
 | `stacked_bar_plot` | Expression / Statistics / Composition | stacked_bar_plot (hidden) | — | composition |
+| `sunburst_plot` | Composition / Hierarchical | sunburst_plot | doughnut, sunburst | composition |
 | `stat_plot` | Expression / Statistics / Statistics | stat_plot (hidden) | — | group_comparison |
+| `ternary_plot` | Scatter / Ternary | ternary_plot | ternary | composition |
 | `threshold_matrix_heatmap` | Heatmap / Matrix | threshold_matrix_heatmap | heatmap | matrix |
+| `treemap_plot` | Composition / Hierarchical | treemap_plot | treemap | composition |
 | `violin_plot` | Expression / Statistics / Distribution | violin_plot | beeswarm, boxplot, violin | group_comparison |
+| `waterfall_plot` | Comparison / General | waterfall_plot | barplot | group_comparison |
+
+| `circular_tree_embedding` | Dimension / Embedding | circular_tree_embedding | scatter, dendrogram | embedding |
+
+## Specialty plot additions
+
+`spatial_map` describes filled anatomical/tissue-region polygons, a grammar not covered by the existing chart types. It uses the existing Feature category and matrix guardrails.
+
+| Plugin | Studio category / subcategory | Registry family | Chart type(s) | vNext family |
+|---|---|---|---|---|
+| `survival_plot` | Comparison / Survival | survival_plot | connected_scatter | group_comparison |
+| `binary_evaluation_plot` | Benchmark / General | binary_evaluation_plot | connected_scatter | group_comparison |
+| `forest_plot` | Comparison / Effect | forest_plot | lollipop | group_comparison |
+| `oncoprint_plot` | Heatmap / Matrix | oncoprint_plot | heatmap | matrix |
+| `manhattan_qq_plot` | Genomics / General | manhattan_qq_plot | scatter, genomic_track | genomic_track |
+| `bland_altman_plot` | Scatter / Comparison | bland_altman_plot | scatter | correlation |
+| `swimmer_plot` | Comparison / General | swimmer_plot | barplot | group_comparison |
+| `protein_variant_plot` | Genomics / General | protein_variant_plot | lollipop, genomic_track | genomic_track |
+| `clonal_fish_plot` | Composition / Flow | clonal_fish_plot | alluvial | composition |
+| `sequence_alignment_plot` | Genomics / General | sequence_alignment_plot | heatmap, genomic_track | genomic_track |
+| `circular_genomic_plot` | Genomics / General | circular_genomic_plot | genomic_track, heatmap | genomic_track |
+| `nomogram_plot` | Multi-panel / Annotation | nomogram_plot | parallel, summary_table | multi_panel |
+| `interactive_3d_scatter` | Dimension / Embedding | interactive_3d_scatter | scatter | embedding |
+| `bar3d_plot` | Comparison / General | bar3d_plot | barplot | matrix |
+| `radviz_plot` | Dimension / Embedding | radviz_plot | scatter | embedding |
+| `ecdf_plot` | Distribution / General | ecdf_plot | connected_scatter | group_comparison |
+| `spatial_region_plot` | Feature / Expression map | spatial_region_plot | spatial_map | matrix |
+| `annotated_tree_plot` | Expression / Statistics / Dendrogram | annotated_tree_plot | dendrogram | matrix |
+| `circular_distribution_plot` | Distribution / General | circular_distribution_plot | scatter | group_comparison |
+| `embedding_vector_plot` | Dimension / Trajectory | embedding_vector_plot | scatter, connected_scatter | embedding |
+
+
+| `linked_matrix_network_plot` | Multi-panel / Annotation | linked_matrix_network_plot | heatmap, network | multi_panel |
+| `risk_stratification_panel` | Multi-panel / Annotation | risk_stratification_panel | scatter, heatmap | multi_panel |
+
+The `z` data role records an independent third numeric coordinate. It is added to registry vocabulary and canonical vNext roles; embedding guardrails validate Z whenever mapped. Other data roles retain their existing meanings.
+
+Existing `line_plot` also supports supplied interval bands; `circular_heatmap` supports categorical annotation rings; `spatial_region_plot` supports measured spots. These remain within their existing category, chart type and vNext family.

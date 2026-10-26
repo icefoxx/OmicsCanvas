@@ -1,0 +1,203 @@
+summary: Color supplied anatomical or tissue-region polygons by numeric measurements.
+observation_type: observations or supplied summaries described in the input contract
+input_requirements: Ordered x/y polygon vertices, region ID and one numeric value
+  per region; optional part IDs for multipart polygons. PNG overlays require top-left-origin
+  image pixel coordinates and invert_y.
+best_for:
+- Map region-level expression measurements
+- Color supplied anatomical polygons
+- Overlay supplied regions on a synthetic or uploaded PNG tissue image
+learn_more: Choose the intended data mapping and statistical mode before styling.
+  Geometry is supplied; the plugin does not segment tissue or provide a built-in anatomical
+  atlas.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Color supplied anatomical or tissue-region polygons by numeric measurements.
+    Ordered x/y polygon vertices, region ID and one numeric value per region; optional
+    part IDs for multipart polygons. PNG overlays require top-left-origin image pixel
+    coordinates and invert_y.
+cautions:
+- id: caution_1
+  title: Interpretation limit 1
+  text: Geometry is supplied; the plugin does not segment tissue or provide a built-in
+    anatomical atlas.
+- id: caution_2
+  title: Interpretation limit 2
+  text: PNG overlays require matched pixel coordinates. Polygon labels are approximate
+    and should be visually checked for concave regions.
+- type: caution
+  title: Geometry and inference
+  text: Choose polygon geometry for ordered boundary vertices or spot geometry for
+    independent measured coordinates. Spot size applies only to spots. Optional PNG
+    backgrounds use pixel coordinates and require an inverted y axis.
+examples:
+- id: basic
+  title: Measured tissue regions
+  description: Map region-level expression measurements
+  scenario: Map region-level expression measurements
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/spatial_region_plot/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    x_column: x
+    y_column: y
+    group_column: region
+    value_column: value
+    part_column: part
+- id: tissue
+  title: Regions over a synthetic tissue background
+  description: Color supplied anatomical polygons
+  scenario: Color supplied anatomical polygons
+  demo_id: tissue
+  variant_id: tissue
+  preview_asset: plugins/spatial_region_plot/all_examples_gallery/tissue.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    x_column: x
+    y_column: y
+    group_column: region
+    value_column: value
+    part_column: part
+- id: spots
+  title: Measured spatial spots
+  description: Measured spatial spots
+  scenario: Measured spatial spots
+  demo_id: spots
+  variant_id: spots
+  preview_asset: plugins/spatial_region_plot/all_examples_gallery/spots.png
+  data_note: Independent synthetic data; upstream inference is not performed.
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source. Local demos use independently
+  generated data and are not reproductions of its analyses.
+- Additional verified published figure/panel examples remain to be curated.
+customization:
+- parameter: x_column
+  label: X column
+  default: x
+  help: ''
+- parameter: y_column
+  label: Y column
+  default: y
+  help: ''
+- parameter: group_column
+  label: Group column
+  default: region
+  help: ''
+- parameter: value_column
+  label: Value column
+  default: value
+  help: ''
+- parameter: part_column
+  label: Part column
+  default: part
+  help: ''
+- parameter: invert_y
+  label: Invert y
+  default: false
+  help: Required for PNG background pixel coordinates with origin at top left.
+- parameter: label_show
+  label: Label show
+  default: false
+  help: ''
+- parameter: label_size
+  label: Label size
+  default: 2.8
+  help: ''
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: fill_alpha
+  label: Fill alpha
+  default: 0.85
+  help: ''
+- parameter: line_width
+  label: Line width
+  default: 0.6
+  help: ''
+- parameter: low_color
+  label: Low color
+  default: '#EAF1F5'
+  help: ''
+- parameter: high_color
+  label: High color
+  default: '#315D86'
+  help: ''
+- parameter: border_color
+  label: Border color
+  default: '#FFFFFF'
+  help: ''
+- parameter: legend_title
+  label: Legend title
+  default: ''
+  help: ''
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report input mappings, units, preprocessing and all
+    selected statistical or display modes.'
+source_modules:
+- title: FigureYa78gganatogram
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa78gganatogram
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa239ST_PDAC
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa239ST_PDAC
+  scope: Supplied spatial spots/polygons and optional PNG tissue backgrounds; no spatial
+    deconvolution, segmentation or microbial read classification.
+- title: FigureYa323STpathseq
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa323STpathseq
+  scope: Supplied spatial spots/polygons and optional PNG tissue backgrounds; no spatial
+    deconvolution, segmentation or microbial read classification.

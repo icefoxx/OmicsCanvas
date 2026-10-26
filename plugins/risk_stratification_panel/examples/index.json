@@ -1,0 +1,25 @@
+{
+  "plugin_id": "risk_stratification_panel",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Aligned risk and follow-up",
+      "plugin_id": "risk_stratification_panel",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "scores_only",
+      "label": "Scores and follow-up",
+      "plugin_id": "risk_stratification_panel",
+      "params": "scores_only/params.json",
+      "inputs": {
+        "input": "scores_only/input/data.csv"
+      },
+      "expected": "scores_only/expected/result.png"
+    }
+  ]
+}

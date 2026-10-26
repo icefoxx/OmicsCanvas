@@ -1,0 +1,150 @@
+summary: Show weighted connections between categories across ordered stages.
+observation_type: observations or summary items in the input table
+best_for:
+- Track clone states across time points
+- Compare annotation versions
+- Inspect before-and-after category flows
+common_uses: []
+input_requirements: Stage categories and flow weights, or a source-target edge table
+  with consistent category names.
+learn_more: 'Input: Stage categories and flow weights, or a source-target edge table
+  with consistent category names. Interpretation: Ribbon widths encode supplied flow
+  weights; stage order follows the configuration. Check mappings, order and transformations
+  before adjusting labels, colors and canvas dimensions. Confirm legends and units
+  before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Ribbon widths encode supplied flow weights; stage order follows the configuration.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Cross-sectional correspondence does not prove cell-state transitions
+- id: caution_2
+  title: Caution 2
+  text: Filtering can change the total flow represented
+examples:
+- id: basic
+  title: Multistage category flows
+  description: 'Use case: Track clone states across time points. This preset illustrates
+    multistage category flows. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Track clone states across time points
+  input_requirements: Stage categories and flow weights, or a source-target edge table
+    with consistent category names.
+  preview_asset: plugins/alluvial_plot/all_examples_gallery/basic.png
+  mappings:
+    id_column: id
+    stage_columns:
+    - stage1
+    - stage2
+    - stage3
+    - stage4
+    - stage5
+    weight_column: weight
+- id: edges
+  title: Flows from an edge table
+  description: 'Use case: Compare annotation versions. This preset illustrates flows
+    from an edge table. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: edges
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare annotation versions
+  input_requirements: Stage categories and flow weights, or a source-target edge table
+    with consistent category names.
+  preview_asset: plugins/alluvial_plot/all_examples_gallery/edges.png
+  variant_id: edges
+  mappings:
+    source_column: source
+    target_column: target
+    value_column: value
+- id: hx_lineage
+  title: Clone lineages across stages
+  description: 'Use case: Inspect before-and-after category flows. This preset illustrates
+    clone lineages across stages. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: hx_lineage
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect before-and-after category flows
+  input_requirements: Stage categories and flow weights, or a source-target edge table
+    with consistent category names.
+  preview_asset: plugins/alluvial_plot/all_examples_gallery/hx_lineage.png
+  variant_id: hx_lineage
+  mappings:
+    id_column: id
+    stage_columns:
+    - stage1
+    - stage2
+    - stage3
+    - stage4
+    - stage5
+    weight_column: weight
+literature_ids:
+- blair_phospho_2025
+- dondi_isoforms_2023
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  edges:
+    summary: 'Use case: Compare annotation versions. This preset illustrates flows
+      from an edge table. Replace its input with your data while retaining the appropriate
+      view settings.'
+  hx_lineage:
+    summary: 'Use case: Inspect before-and-after category flows. This preset illustrates
+      clone lineages across stages. Replace its input with your data while retaining
+      the appropriate view settings.'
+customization:
+- parameter: input_mode
+  label: Input mode
+  default: auto
+  help: 'wide: id + stage columns; long: id/stage/node; edges: source→target flows'
+- parameter: value_column
+  label: Value (edges mode)
+  default: value
+- parameter: source_column
+  label: Source (edges mode)
+  default: source
+- parameter: target_column
+  label: Target (edges mode)
+  default: target
+- parameter: palette
+  label: Named palette
+  default: npg
+- parameter: label_show
+  label: Show node labels
+  default: true
+- parameter: base_size
+  label: Base font size
+  default: 12
+- parameter: width
+  label: Width (in)
+  default: 12
+- parameter: height
+  label: Height (in)
+  default: 7
+source_modules:
+- title: FigureYa25Sankey_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa25Sankey_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa40lineage
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa40lineage
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa259circLink
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa259circLink
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa310CPDBChordGramV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa310CPDBChordGramV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

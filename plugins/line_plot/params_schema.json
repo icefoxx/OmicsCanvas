@@ -1,0 +1,241 @@
+{
+  "data_mapping": {
+    "x_column": {
+      "type": "column",
+      "label": "X column",
+      "default": "x",
+      "help": "Numeric or ordered category for the x axis."
+    },
+    "y_column": {
+      "type": "column",
+      "label": "Y column",
+      "default": "y",
+      "help": "Numeric series values."
+    },
+    "group_column": {
+      "type": "column",
+      "label": "Group column",
+      "default": "group",
+      "help": "Series colour; empty = one line."
+    },
+    "se_column": {
+      "type": "column",
+      "label": "Error column",
+      "default": "se",
+      "help": "Standard error for error bars; unused if missing."
+    },
+    "y2_column": {
+      "type": "column",
+      "label": "Second Y column",
+      "default": "",
+      "help": "Optional second series on a secondary axis. Empty = off."
+    },
+    "groups_include": {
+      "type": "string_array",
+      "label": "Groups to keep",
+      "default": []
+    },
+    "groups_exclude": {
+      "type": "string_array",
+      "label": "Groups to drop",
+      "default": []
+    },
+    "group_order": {
+      "type": "string_array",
+      "label": "Group order",
+      "default": []
+    },
+    "lower_column": {
+      "type": "column",
+      "label": "Lower bound",
+      "default": "lower",
+      "help": "Used only when supplied interval band is enabled."
+    },
+    "upper_column": {
+      "type": "column",
+      "label": "Upper bound",
+      "default": "upper",
+      "help": "Used only when supplied interval band is enabled."
+    }
+  },
+  "marks": {
+    "line_width": {
+      "type": "number",
+      "label": "Line width",
+      "default": 0.8,
+      "min": 0.2,
+      "max": 4,
+      "step": 0.1
+    },
+    "line_alpha": {
+      "type": "number",
+      "label": "Line opacity",
+      "default": 1,
+      "min": 0,
+      "max": 1,
+      "step": 0.05
+    },
+    "point_show": {
+      "type": "boolean",
+      "label": "Show points",
+      "default": true
+    },
+    "point_size": {
+      "type": "number",
+      "label": "Point size",
+      "default": 2,
+      "min": 0.1,
+      "max": 8,
+      "step": 0.1
+    },
+    "error_show": {
+      "type": "boolean",
+      "label": "Error bars",
+      "default": true,
+      "help": "Only when se_column is present and numeric."
+    },
+    "smooth_show": {
+      "type": "boolean",
+      "label": "Loess smooth",
+      "default": false
+    },
+    "band_show": {
+      "type": "boolean",
+      "label": "Supplied interval band",
+      "default": false,
+      "help": "Display provided lower and upper bounds; no confidence or credible interval is inferred."
+    },
+    "band_alpha": {
+      "type": "number",
+      "label": "Band opacity",
+      "default": 0.18,
+      "min": 0,
+      "max": 1,
+      "help": "Applies when supplied interval band is enabled."
+    }
+  },
+  "colors": {
+    "palette": {
+      "type": "select",
+      "label": "Palette",
+      "default": "Set 2",
+      "options": [
+        "Set 2",
+        "Dark 3",
+        "Viridis",
+        "Zissou 1"
+      ]
+    },
+    "group_colors": {
+      "type": "object",
+      "label": "Colour per group",
+      "default": {}
+    }
+  },
+  "labels": {
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "default": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "label": "Subtitle",
+      "default": ""
+    },
+    "xlab": {
+      "type": "string",
+      "label": "X axis title",
+      "default": "",
+      "help": "Empty = column name."
+    },
+    "ylab": {
+      "type": "string",
+      "label": "Y axis title",
+      "default": "",
+      "help": "Empty = column name."
+    },
+    "title_size": {
+      "type": "number",
+      "label": "Title size",
+      "default": 13
+    },
+    "axis_label_size": {
+      "type": "number",
+      "label": "Axis title size",
+      "default": 11
+    },
+    "x_axis_text_angle": {
+      "type": "number",
+      "label": "X tick label angle",
+      "default": 0
+    }
+  },
+  "legend": {
+    "legend_show": {
+      "type": "boolean",
+      "label": "Show legend",
+      "default": true
+    },
+    "legend_position": {
+      "type": "select",
+      "label": "Legend position",
+      "default": "right",
+      "options": [
+        "right",
+        "bottom",
+        "top",
+        "left"
+      ]
+    },
+    "legend_title": {
+      "type": "string",
+      "label": "Legend title",
+      "default": ""
+    },
+    "legend_text_size": {
+      "type": "number",
+      "label": "Legend text size",
+      "default": 9
+    }
+  },
+  "theme": {
+    "font_family": {
+      "type": "string",
+      "label": "Font family",
+      "default": "sans"
+    },
+    "base_size": {
+      "type": "number",
+      "label": "Base font size",
+      "default": 11
+    },
+    "panel_border_show": {
+      "type": "boolean",
+      "label": "Panel border",
+      "default": false
+    },
+    "grid_show": {
+      "type": "boolean",
+      "label": "Grid lines",
+      "default": true
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "label": "Width (in)",
+      "default": 7
+    },
+    "height": {
+      "type": "number",
+      "label": "Height (in)",
+      "default": 4.5
+    },
+    "dpi": {
+      "type": "number",
+      "label": "PNG dpi",
+      "default": 300
+    }
+  }
+}

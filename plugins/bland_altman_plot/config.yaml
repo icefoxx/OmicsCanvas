@@ -1,0 +1,27 @@
+id: bland_altman_plot
+name: "Bland\u2013Altman Agreement"
+version: 1.0.0
+description: Compare paired measurements using mean differences and limits of agreement.
+language: R
+entrypoint: plot.R
+category: Scatter
+subcategory: Comparison
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+runtime:
+  command: Rscript plugins/bland_altman_plot/plot.R --input input.csv --params params.json
+    --output output_dir

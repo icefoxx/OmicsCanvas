@@ -1,0 +1,99 @@
+summary: Align bars and lines over the same categories, optionally with different
+  units.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare counts and proportions
+- Show output and efficiency together
+- Inspect sample quantity and quality metrics
+common_uses: []
+input_requirements: Categories, bar values and line values; supported long-format
+  group mappings.
+learn_more: 'Input: Categories, bar values and line values; supported long-format
+  group mappings. Interpretation: Read bars and lines against their respective legends
+  and axes. Check mappings, order and transformations before adjusting labels, colors
+  and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Read bars and lines against their respective legends and axes.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Dual-axis scaling can create apparent relationships
+- id: caution_2
+  title: Caution 2
+  text: Connecting categories does not establish time or interpolation
+examples:
+- id: basic
+  title: Counts and a second metric
+  description: 'Use case: Compare counts and proportions. This preset illustrates
+    counts and a second metric. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare counts and proportions
+  input_requirements: Categories, bar values and line values; supported long-format
+    group mappings.
+  preview_asset: plugins/combo_bar_line_plot/all_examples_gallery/basic.png
+  mappings:
+    sample_column: sample
+    bar_column: bar_value
+    line_column: line_value
+- id: long
+  title: Series mapped from long-format data
+  description: 'Use case: Show output and efficiency together. This preset illustrates
+    series mapped from long-format data. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: long
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Show output and efficiency together
+  input_requirements: Categories, bar values and line values; supported long-format
+    group mappings.
+  preview_asset: plugins/combo_bar_line_plot/all_examples_gallery/long.png
+  variant_id: long
+  mappings:
+    sample_column: sample
+    metric_column: metric
+    long_value_column: value
+- id: labeled
+  title: Numeric labels for dual-axis reading
+  description: 'Use case: Inspect sample quantity and quality metrics. This preset
+    illustrates numeric labels for dual-axis reading. Replace its input with your
+    data while retaining the appropriate view settings.'
+  demo_id: labeled
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect sample quantity and quality metrics
+  input_requirements: Categories, bar values and line values; supported long-format
+    group mappings.
+  preview_asset: plugins/combo_bar_line_plot/all_examples_gallery/labeled.png
+  mappings:
+    sample_column: sample
+    bar_column: bar_value
+    line_column: line_value
+literature_ids: []
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  long:
+    summary: 'Use case: Show output and efficiency together. This preset illustrates
+      series mapped from long-format data. Replace its input with your data while
+      retaining the appropriate view settings.'
+customization:
+- parameter: input_mode
+  label: Input mode
+  default: auto
+- parameter: group_column
+  label: Group column (optional bar coloring)
+  default: null
+- parameter: palette
+  label: Named palette
+  default: ''
+- parameter: width
+  label: Export width (in)
+  default: 8
+- parameter: height
+  label: Export height (in)
+  default: 5.5

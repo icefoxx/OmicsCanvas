@@ -1,0 +1,7 @@
+{
+  "x_column": "x",
+  "y_column": "y",
+  "value_column": "count",
+  "group_column": "group",
+  "title": "Mutation-context count grid"
+}

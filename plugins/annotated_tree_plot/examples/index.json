@@ -1,0 +1,27 @@
+{
+  "plugin_id": "annotated_tree_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Supplied tree and feature heatmap",
+      "plugin_id": "annotated_tree_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv",
+        "annot": "basic/input/annot.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "circular",
+      "label": "Circular tree with weighted nodes",
+      "plugin_id": "annotated_tree_plot",
+      "params": "circular/params.json",
+      "inputs": {
+        "input": "circular/input/data.csv",
+        "annot": "circular/input/annot.csv"
+      },
+      "expected": "circular/expected/result.png"
+    }
+  ]
+}

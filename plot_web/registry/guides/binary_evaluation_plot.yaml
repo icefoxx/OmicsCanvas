@@ -1,0 +1,387 @@
+summary: ROC, precision–recall, calibration and decision curves from supplied predictions.
+observation_type: observations or supplied summaries described in the input contract
+input_requirements: 'Predictions mode: binary outcome, numeric score and optional
+  model/group. Calibration and decision curves require probabilities in [0,1]. Curve
+  mode: supplied numeric x/y and optional group.'
+best_for:
+- Compare supplied binary-model predictions
+- Inspect probability calibration
+- Compare net benefit over declared decision thresholds
+learn_more: Choose the intended data mapping and statistical mode before styling.
+  No model training, optimism correction or clinical threshold selection is performed.
+  Evaluate held-out predictions where appropriate.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: 'ROC, precision–recall, calibration and decision curves from supplied predictions.
+    Predictions mode: binary outcome, numeric score and optional model/group. Calibration
+    and decision curves require probabilities in [0,1]. Curve mode: supplied numeric
+    x/y and optional group.'
+cautions:
+- id: caution_1
+  title: Interpretation limit 1
+  text: No model training, optimism correction or clinical threshold selection is
+    performed. Evaluate held-out predictions where appropriate.
+- id: caution_2
+  title: Interpretation limit 2
+  text: Ordinary binary evaluation does not handle censored outcomes. Upload externally
+    computed curves for time-dependent ROC.
+examples:
+- id: basic
+  title: Receiver operating characteristic
+  description: Compare supplied binary-model predictions
+  scenario: Compare supplied binary-model predictions
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/binary_evaluation_plot/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    outcome_column: outcome
+    score_column: score
+    group_column: group
+    x_column: x
+    y_column: y
+- id: precision_recall
+  title: Precision and recall
+  description: Inspect probability calibration
+  scenario: Inspect probability calibration
+  demo_id: precision_recall
+  variant_id: precision_recall
+  preview_asset: plugins/binary_evaluation_plot/all_examples_gallery/precision_recall.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    outcome_column: outcome
+    score_column: score
+    group_column: group
+    x_column: x
+    y_column: y
+- id: calibration
+  title: Probability calibration
+  description: Compare net benefit over declared decision thresholds
+  scenario: Compare net benefit over declared decision thresholds
+  demo_id: calibration
+  variant_id: calibration
+  preview_asset: plugins/binary_evaluation_plot/all_examples_gallery/calibration.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    outcome_column: outcome
+    score_column: score
+    group_column: group
+    x_column: x
+    y_column: y
+- id: decision_curve
+  title: Net benefit by threshold
+  description: Compare net benefit over declared decision thresholds
+  scenario: Compare net benefit over declared decision thresholds
+  demo_id: decision_curve
+  variant_id: decision_curve
+  preview_asset: plugins/binary_evaluation_plot/all_examples_gallery/decision_curve.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    outcome_column: outcome
+    score_column: score
+    group_column: group
+    x_column: x
+    y_column: y
+- id: supplied_curve
+  title: Supplied evaluation curves
+  description: Compare net benefit over declared decision thresholds
+  scenario: Compare net benefit over declared decision thresholds
+  demo_id: supplied_curve
+  variant_id: supplied_curve
+  preview_asset: plugins/binary_evaluation_plot/all_examples_gallery/supplied_curve.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    outcome_column: outcome
+    score_column: score
+    group_column: group
+    x_column: x
+    y_column: y
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source. Local demos use independently
+  generated data and are not reproductions of its analyses.
+- Additional verified published figure/panel examples remain to be curated.
+customization:
+- parameter: outcome_column
+  label: Outcome column
+  default: outcome
+  help: ''
+- parameter: score_column
+  label: Score column
+  default: score
+  help: ''
+- parameter: group_column
+  label: Group column
+  default: group
+  help: ''
+- parameter: x_column
+  label: X column
+  default: x
+  help: X/Y are used only for input_mode = curve.
+- parameter: y_column
+  label: Y column
+  default: y
+  help: X/Y are used only for input_mode = curve.
+- parameter: input_mode
+  label: Input mode
+  default: predictions
+  help: Supplied curve coordinates support upstream time-dependent analyses without
+    fitting censoring models here.
+- parameter: plot_type
+  label: Plot type
+  default: roc
+  help: ''
+- parameter: positive_class
+  label: Positive class
+  default: ''
+  help: Empty uses the observed label 1; otherwise enter the positive outcome label.
+    Predictions mode only.
+- parameter: calibration_bins
+  label: Calibration bins
+  default: 8
+  help: Equal-width probability bins; calibration predictions mode only.
+- parameter: threshold_min
+  label: Threshold min
+  default: 0.01
+  help: Decision-curve predictions mode only; min must remain below max.
+- parameter: threshold_max
+  label: Threshold max
+  default: 0.8
+  help: Decision-curve predictions mode only; min must remain below max.
+- parameter: point_size
+  label: Point size
+  default: 2
+  help: Only for calibration plots.
+- parameter: line_width
+  label: Line width
+  default: 0.6
+  help: ''
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: metric_show
+  label: Show AUC / AP / Brier in legend
+  default: true
+  help: Predictions mode only; applies to ROC, precision–recall and calibration.
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: grid_show
+  label: Grid show
+  default: false
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+- parameter: x_limits
+  label: X limits
+  default: []
+  help: Optional two-number display limits; empty = automatic. Data outside the viewport
+    remain exported.
+- parameter: y_limits
+  label: Y limits
+  default: []
+  help: Optional two-number display limits; empty = automatic. Data outside the viewport
+    remain exported.
+reporting:
+  base_template: '{family_name}. Report input mappings, units, preprocessing and all
+    selected statistical or display modes.'
+source_modules:
+- title: FigureYa24ROC
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa24ROC
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa30Plus_nomogram_app
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa30Plus_nomogram_app
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa30nomogram_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa30nomogram_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa33DCA_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa33DCA_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa65SVM
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa65SVM
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa72biomarker
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa72biomarker
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa85timeROC
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa85timeROC
+  scope: Plot supplied time-dependent ROC coordinates. Censoring-aware ROC estimation
+    is not implemented by ordinary binary prediction evaluation.
+- title: FigureYa102multipanelROC
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa102multipanelROC
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa106immunotherapy
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa106immunotherapy
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa128Prognostic
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa128Prognostic
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa138NiceCalibration
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa138NiceCalibration
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa159LR_RF_V2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa159LR_RF_V2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa171subgroupSurv
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa171subgroupSurv
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa182RFSurvV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa182RFSurvV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa184ranger
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa184ranger
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa198SignatureCombinationV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa198SignatureCombinationV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa200pairwiseAUC
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa200pairwiseAUC
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa211multiCohortImmSubtype
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa211multiCohortImmSubtype
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa218Elasticnet
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa218Elasticnet
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa219GMM
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa219GMM
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa220repeatedLasso
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa220repeatedLasso
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa221tenFoldRF
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa221tenFoldRF
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa225GiViTl
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa225GiViTl
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa246supervisedGDSC
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa246supervisedGDSC
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa251NPHSurv
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa251NPHSurv
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa291PancanProgSigatureV2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa291PancanProgSigatureV2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa293Plus_BinaryClassificationML
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa293Plus_BinaryClassificationML
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa293machineLearning
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa293machineLearning
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa316RF_XGBoost_Boruta
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa316RF_XGBoost_Boruta
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

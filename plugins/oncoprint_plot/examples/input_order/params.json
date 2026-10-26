@@ -1,0 +1,9 @@
+{
+  "feature_column": "gene",
+  "sample_column": "sample",
+  "group_column": "alteration",
+  "title": "Input-order alteration matrix",
+  "row_order": "input",
+  "frequency_show": false,
+  "sample_label_show": true
+}

@@ -53,6 +53,7 @@ roles:
     multiple: false
     evidence:
     - curated
+    - example_values
     - schema_type
     autodetect:
     - pvalue
@@ -138,5 +139,5 @@ generated:
   by: vnext.migrate
   generator_version: '1.0'
   curated: true
-  n_examples_scanned: 4
+  n_examples_scanned: 5
   warnings: []

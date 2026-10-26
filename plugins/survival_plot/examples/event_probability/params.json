@@ -1,0 +1,8 @@
+{
+  "time_column": "time",
+  "event_column": "event",
+  "group_column": "group",
+  "title": "Event probability",
+  "curve_type": "event_probability",
+  "risk_table_show": false
+}

@@ -6,10 +6,11 @@
   "mode": "",
   "params": "params.json",
   "inputs": {
-    "input": "input/example_input.csv"
+    "input": "input/example_input.csv",
+    "nodes": "input/example_nodes.csv"
   },
   "expected": "expected/result.png",
   "reproduce": {
-    "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/manual_layout/input/example_input.csv --params plugins/interactive_network_plot/examples/manual_layout/params.json --output /tmp/interactive_network_plot_manual_layout_out"
+    "command": "Rscript plugins/interactive_network_plot/plot.R --input plugins/interactive_network_plot/examples/manual_layout/input/example_input.csv --params plugins/interactive_network_plot/examples/manual_layout/params.json --output /tmp/interactive_network_plot_manual_layout_out --nodes plugins/interactive_network_plot/examples/manual_layout/input/example_nodes.csv"
   }
 }

@@ -1,0 +1,579 @@
+[
+  {
+    "plugin": "advanced_dim_plot",
+    "example": "axis_label_controls",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "advanced_feature_plot",
+    "example": "density_hex",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "alluvial_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "annotated_tree_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "balloon_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "bar3d_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "binary_evaluation_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "bland_altman_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "circular_bar_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "circular_distribution_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "circular_genomic_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "circular_heatmap",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "circular_tree_embedding",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "classified_bar_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "clonal_fish_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "cluster_dendrogram_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "combo_bar_dot_matrix",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "combo_bar_line_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "den_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "dot_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "dynamic_venn_diagram",
+    "example": "abundance",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "ecdf_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "embedding_vector_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "exp_stat_plot",
+    "example": "bar",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "feature_density_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "fgsea_enrichment_plot",
+    "example": "custom_layout",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "forest_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "go_kegg_enrichment_bar_bubble",
+    "example": "go_kegg",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "group_heatmap",
+    "example": "cell_heatmap",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "gsea_pathway_heatmap",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "gsea_ridge_nes_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "hierarchical_marker_panel",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "highlight_effect_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_3d_scatter",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_arc_network_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_binary_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_bubble_score_matrix",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_clustered_heatmap_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_correlation_matrix",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_dual_triangle_heatmap_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": [
+      {
+        "code": "LEGACY_INPUT_ALIAS",
+        "field": "upper",
+        "message": "Canonical input alias input resolves to declared primary field upper."
+      },
+      {
+        "code": "LEGACY_INPUT_ALIAS",
+        "field": "annotation",
+        "message": "Canonical annot alias resolves to annotation; an explicit annotation field takes precedence, matching the shared command builder."
+      }
+    ]
+  },
+  {
+    "plugin": "interactive_dumbbell_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_enrichment_lollipop",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_genomic_signal_track_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": [
+      {
+        "code": "LEGACY_INPUT_ALIAS",
+        "field": "signal",
+        "message": "Canonical input alias input resolves to declared primary field signal."
+      }
+    ]
+  },
+  {
+    "plugin": "interactive_histogram_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_mantel_correlation_network",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_motif_logo_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_network_plot",
+    "example": "circle",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_pie_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_radar_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_ridgeline_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_sankey_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_upset_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "interactive_violin_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "line_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "lineage_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "linked_matrix_network_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "manhattan_qq_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "nomogram_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "oncoprint_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "pie_dot_matrix",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "protein_variant_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "quadrant_correlation_scatter",
+    "example": "params",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "radviz_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "raincloud_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "ranked_annotation_panel",
+    "example": "params",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "regression_scatter_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "risk_stratification_panel",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "sca_volcano_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "sequence_alignment_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "spatial_region_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "stacked_bar_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "stat_plot",
+    "example": "bar",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "sunburst_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "survival_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "swimmer_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "ternary_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "threshold_matrix_heatmap",
+    "example": "params",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "treemap_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "violin_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  },
+  {
+    "plugin": "waterfall_plot",
+    "example": "basic",
+    "valid": true,
+    "errors": [],
+    "compatibility_notes": []
+  }
+]

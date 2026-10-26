@@ -658,7 +658,34 @@ def fieldForBackend(field: str) -> str:
     return "file" if field == "input" else field
 
 
-def demo_payload(plugin_id: str, config: dict[str, Any]) -> dict[str, Any]:
+def demo_payload(plugin_id: str, config: dict[str, Any], example_id: str | None = None) -> dict[str, Any]:
+    """Resolve canonical bundles first when selected, retaining legacy root-file support."""
+    bundles = sorted((PLUGIN_DIR / plugin_id / 'examples').glob('*/manifest.json'))
+    if example_id is not None or (bundles and not list((PLUGIN_DIR / plugin_id).glob('example_*.csv'))):
+        if not bundles:
+            if example_id:
+                raise HTTPException(status_code=404, detail='This plot has no canonical example bundle.')
+        else:
+            selected = example_id or ('basic' if any(p.parent.name == 'basic' for p in bundles) else bundles[0].parent.name)
+            bundle = example_bundle(plugin_id, selected)
+            manifest = read_example_manifest(bundle)
+            paths = {key: example_file(bundle, value) for key, value in (manifest.get('inputs') or {}).items()}
+            required = [item.get('id') or item.get('name') or 'input' for item in config.get('inputs') or [] if item.get('required')]
+            missing = [key for key in required if key not in paths and not (key == 'input' and 'file' in paths)]
+            if missing:
+                raise HTTPException(status_code=400, detail='Example is missing required inputs: ' + ', '.join(missing))
+            params_path = example_file(bundle, manifest.get('params') or 'params.json')
+            params = json.loads(params_path.read_text(encoding='utf-8'))
+            files = {}
+            for key, path in paths.items():
+                record = {'filename': path.name, 'path': str(path.relative_to(ROOT_DIR)), 'field': key}
+                if path.suffix.lower() in {'.csv', '.tsv', '.txt', '.xlsx', '.xlsm', '.xls'}:
+                    record['preview'] = preview_table(path)
+                files[key] = record
+            return {'plugin_id': plugin_id, 'example_id': selected, 'params': params,
+                    'files': files, '_file_paths': paths, 'examples': list_example_params(plugin_id),
+                    'galleries': [str(path.relative_to(ROOT_DIR)) for path in gallery_files(plugin_id)]}
+
     inputs = config.get("inputs") if isinstance(config.get("inputs"), list) else []
     if not inputs:
         inputs = [{"name": "input", "id": "input", "type": "table", "required": True}]

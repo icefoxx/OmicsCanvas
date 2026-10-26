@@ -1,0 +1,25 @@
+{
+  "plugin_id": "embedding_vector_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Supplied vector field",
+      "plugin_id": "embedding_vector_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "radial",
+      "label": "Supplied outward displacement field",
+      "plugin_id": "embedding_vector_plot",
+      "params": "radial/params.json",
+      "inputs": {
+        "input": "radial/input/data.csv"
+      },
+      "expected": "radial/expected/result.png"
+    }
+  ]
+}

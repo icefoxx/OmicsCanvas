@@ -1,0 +1,113 @@
+summary: Emphasize selected effects and intervals while retaining other items as a
+  background cloud.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare target tissues with background
+- Emphasize candidate effects
+- Check distributions before collapsing background
+common_uses: []
+input_requirements: Item IDs, effect values, optional intervals and a highlight rule.
+learn_more: 'Input: Item IDs, effect values, optional intervals and a highlight rule.
+  Interpretation: Highlighted items retain separate rows; each background point still
+  represents an individual item. Check mappings, order and transformations before
+  adjusting labels, colors and canvas dimensions. Confirm legends and units before
+  export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Highlighted items retain separate rows; each background point still represents
+    an individual item.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Collapsing background rows is not statistical aggregation
+- id: caution_2
+  title: Caution 2
+  text: Intervals and significance must come from an appropriate upstream model
+examples:
+- id: basic
+  title: Candidates against the background cloud
+  description: 'Use case: Compare target tissues with background. This preset illustrates
+    candidates against the background cloud. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare target tissues with background
+  input_requirements: Item IDs, effect values, optional intervals and a highlight
+    rule.
+  preview_asset: plugins/highlight_effect_plot/all_examples_gallery/basic.png
+  mappings:
+    category_column: category
+    value_column: value
+    pvalue_column: pvalue
+- id: no_collapse
+  title: Retain all item rows
+  description: 'Use case: Emphasize candidate effects. This preset illustrates retain
+    all item rows. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: no_collapse
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Emphasize candidate effects
+  input_requirements: Item IDs, effect values, optional intervals and a highlight
+    rule.
+  preview_asset: plugins/highlight_effect_plot/all_examples_gallery/no_collapse.png
+  variant_id: no_collapse
+  mappings:
+    category_column: category
+    value_column: value
+    pvalue_column: pvalue
+- id: summary
+  title: Configured summary view
+  description: 'Use case: Check distributions before collapsing background. This preset
+    illustrates configured summary view. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: summary
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Check distributions before collapsing background
+  input_requirements: Item IDs, effect values, optional intervals and a highlight
+    rule.
+  preview_asset: plugins/highlight_effect_plot/all_examples_gallery/summary.png
+  variant_id: summary
+  mappings:
+    category_column: category
+    mean_column: mean
+    ci_low_column: ci_low
+    ci_high_column: ci_high
+    pvalue_column: pvalue
+    highlight_column: highlight
+literature_ids:
+- hao_dnt_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  no_collapse:
+    summary: 'Use case: Emphasize candidate effects. This preset illustrates retain
+      all item rows. Replace its input with your data while retaining the appropriate
+      view settings.'
+  summary:
+    summary: 'Use case: Check distributions before collapsing background. This preset
+      illustrates configured summary view. Replace its input with your data while
+      retaining the appropriate view settings.'
+customization:
+- parameter: input_mode
+  label: Input mode
+  default: auto
+  help: 'points: raw observations; summary: precomputed mean/CI'
+- parameter: value_column
+  label: Value column (points mode)
+  default: value
+- parameter: category_column
+  label: Category / term column
+  default: category
+- parameter: base_size
+  label: Base font size
+  default: 12
+- parameter: width
+  label: Width (in)
+  default: 6.5
+- parameter: height
+  label: Height (in)
+  default: 4.2

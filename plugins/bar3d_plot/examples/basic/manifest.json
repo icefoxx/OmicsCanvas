@@ -1,0 +1,10 @@
+{
+  "id": "basic",
+  "label": "Mutation-context count grid",
+  "plugin_id": "bar3d_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

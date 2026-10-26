@@ -82,6 +82,30 @@ def test_yaml_cache_returns_copies_and_sees_edits(tmp_path):
     assert load_yaml_cached(tmp_path / "missing.yaml") is None
 
 
+def test_output_urls_include_html_view(tmp_path):
+    out = tmp_path / "out"
+    out.mkdir()
+    (out / "result.html").write_text("<html></html>", encoding="utf-8")
+    (out / "result_files").mkdir()
+    (out / "result_files" / "vis.js").write_text("1", encoding="utf-8")
+    urls = storage.output_urls_for_dir("fig_html", out)
+    assert urls["html"] == "/api/figures/fig_html/view/result.html"
+
+
+def test_figure_view_file_serves_nested_assets_and_blocks_escape(tmp_path):
+    out = tmp_path / "out"
+    nested = out / "result_files" / "vis-9.1.0"
+    nested.mkdir(parents=True)
+    asset = nested / "vis-network.min.js"
+    asset.write_text("widget", encoding="utf-8")
+    (out / "result.html").write_text("<html></html>", encoding="utf-8")
+    assert storage.figure_view_file(out, "result.html").name == "result.html"
+    assert storage.figure_view_file(out, "result_files/vis-9.1.0/vis-network.min.js") == asset.resolve()
+    with pytest.raises(Exception) as exc:
+        storage.figure_view_file(out, "../secret.txt")
+    assert getattr(exc.value, "status_code", None) in {403, 404}
+
+
 def test_figure_index_lookup_and_rebuild(tmp_storage):
     _make_job("job_a", "fig_a")
     assert storage.figure_to_job("fig_a")["job_id"] == "job_a"

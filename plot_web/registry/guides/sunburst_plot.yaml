@@ -1,0 +1,88 @@
+summary: Show two- or three-level category composition using nested sectors.
+observation_type: observations or summary items in the input table
+best_for:
+- Summarize annotation hierarchy composition
+- Survey functional classifications
+- Inspect shares within parent categories
+common_uses: []
+input_requirements: Parent, child, optional third-level labels and nonnegative values.
+learn_more: 'Input: Parent, child, optional third-level labels and nonnegative values.
+  Interpretation: Children nest inside parents and sector angles represent the corresponding
+  values. Check mappings, order and transformations before adjusting labels, colors
+  and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Children nest inside parents and sector angles represent the corresponding
+    values.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Preserve full paths when child labels repeat
+- id: caution_2
+  title: Caution 2
+  text: Outer-ring area does not imply greater quantity
+examples:
+- id: basic
+  title: Two-level category composition
+  description: 'Use case: Summarize annotation hierarchy composition. This preset
+    illustrates two-level category composition. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Summarize annotation hierarchy composition
+  input_requirements: Parent, child, optional third-level labels and nonnegative values.
+  preview_asset: plugins/sunburst_plot/all_examples_gallery/basic.png
+  variant_id: basic
+  mappings:
+    level1_column: level1
+    level2_column: level2
+    value_column: value
+- id: three_level
+  title: Three-level category hierarchy
+  description: 'Use case: Survey functional classifications. This preset illustrates
+    three-level category hierarchy. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: three_level
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Survey functional classifications
+  input_requirements: Parent, child, optional third-level labels and nonnegative values.
+  preview_asset: plugins/sunburst_plot/all_examples_gallery/three_level.png
+  variant_id: three_level
+  mappings:
+    level1_column: level1
+    level2_column: level2
+    level3_column: level3
+    value_column: value
+literature_ids:
+- liu_cellres_2025
+- giuliani_prmt1_2021
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  basic:
+    summary: Parent and child rings of category shares.
+  three_level:
+    summary: Three nested rings of category shares.
+customization:
+- parameter: value_column
+  label: Value column
+  default: value
+- parameter: palette
+  label: Palette
+  default: Set 2
+- parameter: label_show
+  label: Slice labels
+  default: true
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Width (in)
+  default: 7
+- parameter: height
+  label: Height (in)
+  default: 7

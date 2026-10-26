@@ -1,0 +1,184 @@
+summary: Overlay supplied displacement vectors on an embedding without inferring velocities.
+observation_type: observations or supplied summaries described in the input contract
+input_requirements: Finite numeric x/y coordinates, supplied vx/vy vectors in compatible
+  coordinate units, and optional group.
+best_for:
+- Visualize supplied displacement vectors
+- Inspect directions on an existing embedding
+- Compare a vector field without running velocity inference
+learn_more: Choose the intended data mapping and statistical mode before styling.
+  The plugin does not compute RNA velocity or a kinetic model. Supply vector coordinates
+  compatible with the embedding.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Overlay supplied displacement vectors on an embedding without inferring velocities.
+    Finite numeric x/y coordinates, supplied vx/vy vectors in compatible coordinate
+    units, and optional group.
+cautions:
+- id: caution_1
+  title: Interpretation limit 1
+  text: The plugin does not compute RNA velocity or a kinetic model. Supply vector
+    coordinates compatible with the embedding.
+- id: caution_2
+  title: Interpretation limit 2
+  text: Arrow thinning uses a deterministic row stride and does not estimate a spatial
+    average or streamline.
+examples:
+- id: basic
+  title: Supplied vector field
+  description: Visualize supplied displacement vectors
+  scenario: Visualize supplied displacement vectors
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/embedding_vector_plot/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    x_column: x
+    y_column: y
+    vx_column: vx
+    vy_column: vy
+    group_column: group
+- id: radial
+  title: Supplied outward displacement field
+  description: Inspect directions on an existing embedding
+  scenario: Inspect directions on an existing embedding
+  demo_id: radial
+  variant_id: radial
+  preview_asset: plugins/embedding_vector_plot/all_examples_gallery/radial.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    x_column: x
+    y_column: y
+    vx_column: vx
+    vy_column: vy
+    group_column: group
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source. Local demos use independently
+  generated data and are not reproductions of its analyses.
+- Additional verified published figure/panel examples remain to be curated.
+customization:
+- parameter: x_column
+  label: X column
+  default: x
+  help: ''
+- parameter: y_column
+  label: Y column
+  default: y
+  help: ''
+- parameter: vx_column
+  label: Vx column
+  default: vx
+  help: ''
+- parameter: vy_column
+  label: Vy column
+  default: vy
+  help: ''
+- parameter: group_column
+  label: Group column
+  default: group
+  help: ''
+- parameter: vector_scale
+  label: Vector scale
+  default: 0.8
+  help: ''
+- parameter: arrow_stride
+  label: Arrow stride
+  default: 4
+  help: ''
+- parameter: arrow_alpha
+  label: Arrow alpha
+  default: 0.8
+  help: ''
+- parameter: arrow_length
+  label: Arrow length
+  default: 0.06
+  help: ''
+- parameter: point_alpha
+  label: Point alpha
+  default: 0.35
+  help: ''
+- parameter: point_size
+  label: Point size
+  default: 2
+  help: ''
+- parameter: line_width
+  label: Line width
+  default: 0.6
+  help: ''
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: grid_show
+  label: Grid show
+  default: false
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report input mappings, units, preprocessing and all
+    selected statistical or display modes.'
+source_modules:
+- title: FigureYa177RNAvelocity
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa177RNAvelocity
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

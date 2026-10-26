@@ -1,0 +1,37 @@
+{
+  "data_mapping": {
+    "level1_column": {"type": "column", "label": "Parent column", "default": "level1"},
+    "level2_column": {"type": "column", "label": "Child column", "default": "level2", "help": "Optional nested labels. Empty = one-level treemap."},
+    "value_column": {"type": "column", "label": "Value column", "default": "value"}
+  },
+  "marks": {
+    "label_show": {"type": "boolean", "label": "Tile labels", "default": true},
+    "label_size": {"type": "number", "label": "Label size", "default": 8},
+    "border_width": {"type": "number", "label": "Tile border width", "default": 0.4, "min": 0, "max": 2, "step": 0.1},
+    "border_color": {"type": "color", "label": "Tile border colour", "default": "#FFFFFF"},
+    "parent_border_width": {"type": "number", "label": "Parent border width", "default": 1.2, "min": 0, "max": 4, "step": 0.1, "help": "Only drawn when level2_column is mapped."}
+  },
+  "colors": {
+    "palette": {"type": "select", "label": "Palette", "default": "Set 2", "options": ["Set 2", "Dark 3", "Viridis", "Zissou 1"]}
+  },
+  "labels": {
+    "title": {"type": "string", "label": "Title", "default": ""},
+    "subtitle": {"type": "string", "label": "Subtitle", "default": ""},
+    "title_size": {"type": "number", "label": "Title size", "default": 13}
+  },
+  "legend": {
+    "legend_show": {"type": "boolean", "label": "Show legend", "default": true},
+    "legend_position": {"type": "select", "label": "Legend position", "default": "right", "options": ["right", "bottom", "top", "left"]},
+    "legend_title": {"type": "string", "label": "Legend title", "default": ""},
+    "legend_text_size": {"type": "number", "label": "Legend text size", "default": 9}
+  },
+  "theme": {
+    "font_family": {"type": "string", "label": "Font family", "default": "sans"},
+    "base_size": {"type": "number", "label": "Base font size", "default": 11}
+  },
+  "export": {
+    "width": {"type": "number", "label": "Width (in)", "default": 8},
+    "height": {"type": "number", "label": "Height (in)", "default": 6},
+    "dpi": {"type": "number", "label": "PNG dpi", "default": 300}
+  }
+}

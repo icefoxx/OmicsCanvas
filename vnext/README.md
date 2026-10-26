@@ -60,3 +60,11 @@ Every plot_web job builds a PlotSpec and validates it before rendering
 (`plot_web/server/plotspec.py`); `PLOT_VALIDATION_MODE=warn|enforce|off`
 (default `warn`). Results expose `plotspec`, `validation` and `bundle` downloads,
 and Studio can export/import PlotSpecs.
+
+## Provider-neutral plotting CLI and skills
+
+For compact discovery, layered research-scenario skills, schema parameter overrides and
+checksum-bound plans, see [the portable CLI guide](../docs/cli/README.md).
+`python -m omicscanvas` wraps this existing deterministic adapter and reproduction layer;
+it does not require a running web server or a model provider. Start with
+`skills/omicscanvas-router/SKILL.md` in any assistant with local file and shell tools.

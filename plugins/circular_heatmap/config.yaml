@@ -1,0 +1,17 @@
+id: circular_heatmap
+name: Circular Heatmap
+version: 1.0.0
+description: Matrix values drawn as tiles around a polar axis.
+language: R
+entrypoint: plot.R
+category: Heatmap
+subcategory: Circular
+status: beta
+inputs:
+- id: input
+  type: table
+  formats: [csv, tsv, txt]
+  required: true
+outputs: [result.svg, result.pdf, result.png, figure.json, run.log, data_used.csv]
+runtime:
+  command: Rscript plugins/circular_heatmap/plot.R --input input.csv --params params.json --output output_dir

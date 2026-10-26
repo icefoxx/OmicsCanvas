@@ -1,0 +1,99 @@
+summary: Cluster matrix columns and display aligned sample annotations.
+observation_type: observations or summary items in the input table
+best_for:
+- Check sample grouping
+- Inspect batch structure
+- Compare a selected sample subset
+common_uses: []
+input_requirements: Numeric matrix with row IDs, plus annotations matched to column
+  names.
+learn_more: 'Input: Numeric matrix with row IDs, plus annotations matched to column
+  names. Interpretation: Branches represent hierarchical relationships under the configured
+  distance and linkage. Check mappings, order and transformations before adjusting
+  labels, colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Branches represent hierarchical relationships under the configured distance
+    and linkage.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Scaling and distance affect the hierarchy
+- id: caution_2
+  title: Caution 2
+  text: Branch lengths are not elapsed time or proof of biological classes
+examples:
+- id: basic
+  title: Matrix-column hierarchy
+  description: 'Use case: Check sample grouping. This preset illustrates matrix-column
+    hierarchy. Replace its input with your data while retaining the appropriate view
+    settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Check sample grouping
+  input_requirements: Numeric matrix with row IDs, plus annotations matched to column
+    names.
+  preview_asset: plugins/den_plot/all_examples_gallery/basic.png
+  mappings:
+    row_id_column: feature
+- id: colored_labels
+  title: Annotation-colored labels
+  description: 'Use case: Inspect batch structure. This preset illustrates annotation-colored
+    labels. Replace its input with your data while retaining the appropriate view
+    settings.'
+  demo_id: colored_labels
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect batch structure
+  input_requirements: Numeric matrix with row IDs, plus annotations matched to column
+    names.
+  preview_asset: plugins/den_plot/all_examples_gallery/colored_labels.png
+  mappings:
+    row_id_column: feature
+- id: subset
+  title: Sample-subset clustering
+  description: 'Use case: Compare a selected sample subset. This preset illustrates
+    sample-subset clustering. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: subset
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare a selected sample subset
+  input_requirements: Numeric matrix with row IDs, plus annotations matched to column
+    names.
+  preview_asset: plugins/den_plot/all_examples_gallery/subset.png
+  variant_id: subset
+  mappings:
+    row_id_column: feature
+    sample_columns:
+    - S01
+    - S02
+    - S03
+    - S04
+    - S07
+    - S08
+    - S09
+    - S10
+literature_ids:
+- eisen_clustering_1998
+- li_cerebrum_2021
+- yang_projection_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  subset:
+    summary: 'Use case: Compare a selected sample subset. This preset illustrates
+      sample-subset clustering. Replace its input with your data while retaining the
+      appropriate view settings.'
+customization:
+- parameter: group_colors
+  label: Group colors
+  default: {}
+- parameter: width
+  label: Width
+  default: 8
+- parameter: height
+  label: Height
+  default: 6

@@ -1,6 +1,6 @@
 id: interactive_enrichment_lollipop
 name: Interactive Enrichment Lollipop
-version: 1.1.0
+version: 1.2.0
 description: 'CAB_demo-style zero-centered lollipop / Cleveland plot. Categories on one axis, signed values on the other,
   stems to zero, group colors, optional size mapping, full axis/title/legend controls, and optional plotly HTML.
 

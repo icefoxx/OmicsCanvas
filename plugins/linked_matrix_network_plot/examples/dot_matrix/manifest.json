@@ -1,0 +1,11 @@
+{
+  "id": "dot_matrix",
+  "label": "Dot matrix and relationships",
+  "plugin_id": "linked_matrix_network_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv",
+    "links": "input/links.csv"
+  },
+  "expected": "expected/result.png"
+}

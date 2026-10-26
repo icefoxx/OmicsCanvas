@@ -1,0 +1,8 @@
+{
+  "pvalue_column": "pvalue",
+  "chromosome_column": "chromosome",
+  "position_column": "position",
+  "label_column": "label",
+  "title": "Genomic association signals",
+  "plot_type": "manhattan"
+}

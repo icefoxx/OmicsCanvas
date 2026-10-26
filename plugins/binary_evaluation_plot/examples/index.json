@@ -1,0 +1,55 @@
+{
+  "plugin_id": "binary_evaluation_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Receiver operating characteristic",
+      "plugin_id": "binary_evaluation_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "precision_recall",
+      "label": "Precision and recall",
+      "plugin_id": "binary_evaluation_plot",
+      "params": "precision_recall/params.json",
+      "inputs": {
+        "input": "precision_recall/input/data.csv"
+      },
+      "expected": "precision_recall/expected/result.png"
+    },
+    {
+      "id": "calibration",
+      "label": "Probability calibration",
+      "plugin_id": "binary_evaluation_plot",
+      "params": "calibration/params.json",
+      "inputs": {
+        "input": "calibration/input/data.csv"
+      },
+      "expected": "calibration/expected/result.png"
+    },
+    {
+      "id": "decision_curve",
+      "label": "Net benefit by threshold",
+      "plugin_id": "binary_evaluation_plot",
+      "params": "decision_curve/params.json",
+      "inputs": {
+        "input": "decision_curve/input/data.csv"
+      },
+      "expected": "decision_curve/expected/result.png"
+    },
+    {
+      "id": "supplied_curve",
+      "label": "Supplied evaluation curves",
+      "plugin_id": "binary_evaluation_plot",
+      "params": "supplied_curve/params.json",
+      "inputs": {
+        "input": "supplied_curve/input/data.csv"
+      },
+      "expected": "supplied_curve/expected/result.png"
+    }
+  ]
+}

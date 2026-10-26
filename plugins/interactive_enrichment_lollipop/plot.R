@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-# BioFigureAI: Interactive Enrichment Lollipop (CAB_demo-compatible)
+# OmicsCanvas: Interactive Enrichment Lollipop
 # ------------------------------------------------------------
 # Horizontal (default) or vertical zero-centered lollipop / Cleveland
 # plot with group colors, optional size mapping, stems, zero line,
@@ -31,6 +31,7 @@ out <- op$output %||% getwd()
 dir.create(out, recursive = TRUE, showWarnings = FALSE)
 err_path <- file.path(out, 'error.json')
 if (file.exists(err_path)) unlink(err_path)
+unlink(file.path(out, c('result.svg', 'result.pdf', 'result.png', 'result.html', 'figure.json')))
 
 logmsg <- function(x) {
   cat(sprintf('[%s] %s\n', format(Sys.time(), '%F %T'), x),
@@ -38,6 +39,7 @@ logmsg <- function(x) {
 }
 
 fail <- function(m, d = '', s = 'Check input and params.') {
+  unlink(file.path(out, c('result.svg', 'result.pdf', 'result.png', 'result.html', 'figure.json')))
   writeLines(
     toJSON(list(error = m, detail = d, suggestion = s), auto_unbox = TRUE, pretty = TRUE),
     err_path
@@ -158,7 +160,18 @@ tryCatch({
     pvalue = if (is.null(pc)) NA_real_ else suppressWarnings(as.numeric(d[[pc]])),
     stringsAsFactors = FALSE
   )
-  z <- z[!is.na(z$value) & nzchar(z$category), , drop = FALSE]
+  valid <- is.finite(z$value) & !is.na(z$category) & nzchar(z$category)
+  logmsg(sprintf('Dropped %d rows with missing labels or non-finite effects.', sum(!valid)))
+  z <- z[valid, , drop = FALSE]
+
+  size_transform <- as.character(val('size_transform', 'identity'))
+  if (size_transform == 'neg_log10_pvalue') {
+    if (is.null(pc)) fail('P-value column required', 'Set pvalue_column to a raw or adjusted p-value column.')
+    valid_p <- is.finite(z$pvalue) & z$pvalue >= 0 & z$pvalue <= 1
+    if (!all(valid_p)) fail('Invalid p-values', 'P-values must be finite numbers between 0 and 1; missing values are not accepted in this size mode.')
+    if (any(z$pvalue == 0)) logmsg('Zero p-values were floored at the smallest positive double for size transformation.')
+    z$size <- -log10(pmax(z$pvalue, .Machine$double.xmin))
+  }
 
   # Size: use size column, or |value| when size mapping is on without a size column
   size_map <- bool(c('size_switch', 'lollipop_size_switch', 'map_size', 'size_scale'), TRUE)
@@ -320,7 +333,9 @@ tryCatch({
   size_legend_title_raw <- trimws(as.character(val_any(c('size_legend_title'), '')[1] %||% ''))
   if (!nzchar(size_legend_title_raw)) {
     size_key <- tolower(as.character(sc %||% ''))
-    size_legend_title <- if (size_key %in% c('size', 'count', 'n', 'set_size', 'gene_count')) {
+    size_legend_title <- if (size_transform == 'neg_log10_pvalue') {
+      paste0('-log10(', pc, ')')
+    } else if (size_key %in% c('size', 'count', 'n', 'set_size', 'gene_count')) {
       'Set size'
     } else if (nzchar(size_key)) {
       sc
@@ -372,6 +387,17 @@ tryCatch({
   base_size <- num(c('base_size', 'font_size'), 11)
   font_family <- as.character(val_any(c('font_family'), 'sans')[1] %||% 'sans')
   margin_cm <- num(c('margin'), 0.4)
+  color_mode <- as.character(val('color_mode', 'group'))
+  central_labels <- identical(as.character(val('category_label_position', 'axis')), 'zero_opposite')
+  direction_labels_show <- bool('direction_labels_show', FALSE)
+  if (!horizontal && (central_labels || direction_labels_show)) {
+    logmsg('Vertical orientation uses category-axis labels and omits horizontal enrichment arrows.')
+    central_labels <- FALSE
+    direction_labels_show <- FALSE
+  }
+  if (central_labels && length(x_limits) == 2 && (min(x_limits) >= 0 || max(x_limits) <= 0)) {
+    fail('Zero must be inside the effect axis', 'Set x_limits to include negative and positive space for the labels.')
+  }
 
   # Build plot
   if (horizontal) {
@@ -380,7 +406,15 @@ tryCatch({
     p <- ggplot(z, aes(x = .data$.y, y = .data$.x))
   }
 
-  if (stem_show) {
+  if (stem_show && color_mode == 'value') {
+    if (horizontal) {
+      p <- p + geom_segment(aes(x = 0, xend = .data$.x, y = .data$.y, yend = .data$.y,
+                                colour = .data$value), linewidth = stem_width, linetype = stem_lty, alpha = stem_alpha)
+    } else {
+      p <- p + geom_segment(aes(x = .data$.y, xend = .data$.y, y = 0, yend = .data$.x,
+                                colour = .data$value), linewidth = stem_width, linetype = stem_lty, alpha = stem_alpha)
+    }
+  } else if (stem_show) {
     if (horizontal) {
       p <- p + geom_segment(
         aes(x = 0, xend = .data$.x, y = .data$.y, yend = .data$.y),
@@ -410,7 +444,25 @@ tryCatch({
     }
   }
 
-  if (point_shape %in% c(21, 22, 23, 24, 25)) {
+  if (color_mode == 'value') {
+    if (point_shape %in% c(21, 22, 23, 24, 25)) {
+      p <- p + geom_point(aes(fill = .data$value, size = .data$size), shape = point_shape,
+                          colour = if (point_stroke > 0) point_border else NA,
+                          alpha = point_alpha, stroke = point_stroke) +
+        scale_fill_gradient2(low = as.character(val('color_low', '#879B39')),
+                             mid = as.character(val('color_mid', '#FFFFED')),
+                             high = as.character(val('color_high', '#CB6582')),
+                             midpoint = 0, name = if (nzchar(legend_title_raw)) legend_title_raw else vc)
+    } else {
+      p <- p + geom_point(aes(colour = .data$value, size = .data$size),
+                          shape = point_shape, alpha = point_alpha, stroke = point_stroke)
+    }
+    p <- p +
+      scale_colour_gradient2(low = as.character(val('color_low', '#879B39')),
+                             mid = as.character(val('color_mid', '#FFFFED')),
+                             high = as.character(val('color_high', '#CB6582')),
+                             midpoint = 0, name = if (nzchar(legend_title_raw)) legend_title_raw else vc)
+  } else if (point_shape %in% c(21, 22, 23, 24, 25)) {
     p <- p + geom_point(
       aes(fill = .data$group, size = .data$size),
       shape = point_shape,
@@ -433,6 +485,7 @@ tryCatch({
     p <- p + scale_size_continuous(
       range = c(pt_min, pt_max),
       name = size_legend_title,
+      limits = if (size_transform == 'neg_log10_pvalue') c(0, max(z$size, size_legend_breaks, na.rm = TRUE)) else NULL,
       breaks = if (length(size_legend_breaks)) size_legend_breaks else waiver()
     )
   } else {
@@ -476,16 +529,24 @@ tryCatch({
   }
 
   # Scales for category axis
+  if (central_labels) {
+    label_gap <- num('label_gap', 0.012) * max(diff(range(c(0, z$value))), .Machine$double.eps)
+    p <- p + geom_text(aes(x = ifelse(.data$value >= 0, -label_gap, label_gap),
+                           y = .data$.y, label = .data$label,
+                           hjust = ifelse(.data$value >= 0, 1, 0)),
+                       size = label_size, colour = label_color, fontface = label_face,
+                       show.legend = FALSE, inherit.aes = FALSE)
+  }
   if (horizontal) {
     p <- p + scale_y_continuous(
       breaks = seq_along(levels(z$category)),
-      labels = levels(z$category),
+      labels = if (central_labels) NULL else levels(z$category),
       expand = expansion(mult = c(0.02, 0.02))
     )
     if (length(x_limits) == 2 && all(is.finite(x_limits))) {
-      p <- p + scale_x_continuous(limits = x_limits, expand = expansion(mult = c(0.02, 0.05)))
+      p <- p + scale_x_continuous(limits = x_limits, expand = expansion(mult = c(0.07, 0.07)))
     } else {
-      p <- p + scale_x_continuous(expand = expansion(mult = c(0.02, 0.05)))
+      p <- p + scale_x_continuous(expand = expansion(mult = c(0.07, 0.07)))
     }
   } else {
     p <- p + scale_x_continuous(
@@ -494,7 +555,7 @@ tryCatch({
       expand = expansion(mult = c(0.02, 0.02))
     )
     if (length(x_limits) == 2 && all(is.finite(x_limits))) {
-      p <- p + scale_y_continuous(limits = x_limits, expand = expansion(mult = c(0.02, 0.05)))
+      p <- p + scale_y_continuous(limits = x_limits, expand = expansion(mult = c(0.07, 0.07)))
     }
   }
 
@@ -537,7 +598,13 @@ tryCatch({
   } else {
     'none'
   }
-  if (point_shape %in% c(21, 22, 23, 24, 25)) {
+  if (color_mode == 'value') {
+    filled_head <- point_shape %in% c(21, 22, 23, 24, 25)
+    p <- p + guides(colour = if (legend_show && !filled_head) guide_colourbar(order = 2) else 'none',
+                    fill = if (legend_show && filled_head) guide_colourbar(order = 2) else 'none',
+                    size = if (show_size_legend) guide_legend(order = 1,
+                      override.aes = list(colour = 'black', alpha = 1, shape = 16)) else 'none')
+  } else if (point_shape %in% c(21, 22, 23, 24, 25)) {
     p <- p + guides(
       fill = if (legend_show) guide_legend(title = legend_title, override.aes = list(size = 4, alpha = 1)) else 'none',
       size = size_guide,
@@ -550,6 +617,35 @@ tryCatch({
     )
   }
 
+  if (central_labels) {
+    p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                    axis.line.x = element_line(colour = axis_text_color, linewidth = 0.45))
+  }
+  if (legend_position == 'inside') {
+    p <- p + theme(legend.position = c(0.97, 0.06),
+                    legend.justification = c(1, 0), legend.background = element_blank())
+  }
+  if (direction_labels_show) {
+    extent <- if (length(x_limits) == 2) x_limits else range(c(-abs(z$value), abs(z$value))) * 1.1
+    points_per_row <- max(1, h * 72 - 100) / max(1, length(levels(z$category)))
+    arrow_y <- min(z$.y) - 0.7 - 24 / points_per_row
+    text_y <- min(z$.y) - 0.7 - 40 / points_per_row
+    p <- p + annotate('segment', x = extent[1] * 0.18, xend = extent[1] * 0.85,
+                       y = arrow_y, yend = arrow_y, linewidth = 1.2,
+                       colour = as.character(val('color_low', '#879B39')),
+                       arrow = grid::arrow(length = grid::unit(0.12, 'in'), type = 'closed')) +
+      annotate('segment', x = extent[2] * 0.18, xend = extent[2] * 0.85,
+               y = arrow_y, yend = arrow_y, linewidth = 1.2,
+               colour = as.character(val('color_high', '#CB6582')),
+               arrow = grid::arrow(length = grid::unit(0.12, 'in'), type = 'closed')) +
+      annotate('text', x = extent[1] * 0.52, y = text_y,
+               label = as.character(val('negative_label', 'Enriched in group 1')), size = label_size) +
+      annotate('text', x = extent[2] * 0.52, y = text_y,
+               label = as.character(val('positive_label', 'Enriched in group 2')), size = label_size) +
+      coord_cartesian(ylim = c(min(z$.y) - 0.7, max(z$.y) + 0.8), clip = 'off', expand = FALSE) +
+      theme(plot.margin = margin(t = margin_cm * 28.35, r = margin_cm * 28.35,
+                                 b = 65, l = margin_cm * 28.35))
+  }
   logmsg(sprintf('Built lollipop: %s categories, %s groups, orientation=%s.',
                  nrow(z), nlevels(z$group), orientation))
 
@@ -557,16 +653,29 @@ tryCatch({
   # cairo_pdf matches system fonts and falls back for unknown families (pdf() errors).
   ggsave(file.path(out, 'result.pdf'), p, width = w, height = h, units = 'in',
          device = if (capabilities('cairo')) grDevices::cairo_pdf else 'pdf')
-  ggsave(file.path(out, 'result.png'), p, width = w, height = h, units = 'in', dpi = dpi)
+  ggsave(file.path(out, 'result.png'), p, width = w, height = h, units = 'in', dpi = dpi, device = ragg::agg_png)
 
+  html_ok <- FALSE
   if (bool(c('interactive'), FALSE) && requireNamespace('plotly', quietly = TRUE)) {
-    q <- plotly::ggplotly(p, tooltip = 'text')
-    q <- plotly::config(q, displaylogo = FALSE, scrollZoom = bool(c('zoom'), TRUE),
-                        modeBarButtonsToAdd = c('lasso2d', 'select2d'))
-    htmlwidgets::saveWidget(q, file.path(out, 'result.html'), selfcontained = TRUE)
-  } else {
+    html_ok <- tryCatch({
+      q <- plotly::ggplotly(p, tooltip = 'text')
+      q <- plotly::config(q, displaylogo = FALSE, scrollZoom = bool(c('zoom'), TRUE),
+                          modeBarButtonsToAdd = c('lasso2d', 'select2d'))
+      htmlwidgets::saveWidget(q, file.path(out, 'result.html'), selfcontained = TRUE)
+      TRUE
+    }, error = function(e) {
+      logmsg(paste('Interactive conversion unavailable; static exports preserved:', conditionMessage(e)))
+      FALSE
+    })
+  }
+  if (!html_ok) {
+    png_path <- file.path(out, 'result.png')
+    image_data <- jsonlite::base64_enc(readBin(png_path, 'raw', n = file.info(png_path)$size))
     writeLines(
-      '<html><body>Static render. Set interactive:true and install plotly for HTML.</body></html>',
+      paste0('<!doctype html><html><head><meta charset="utf-8"><title>Lollipop preview</title></head>',
+             '<body><p>Static preview. Use PNG, SVG or PDF for the reference layout.</p>',
+             '<img alt="Lollipop plot" style="max-width:100%;height:auto" src="data:image/png;base64,',
+             image_data, '"></body></html>'),
       file.path(out, 'result.html')
     )
   }
@@ -588,6 +697,10 @@ tryCatch({
   writeLines(
     toJSON(list(
       figure_type = 'interactive_enrichment_lollipop',
+      plugin = 'interactive_enrichment_lollipop', version = '1.2.0',
+      mapping = list(category = cc, signed_effect = vc, pvalue = pc, size = sc),
+      transforms = list(size = size_transform, color = color_mode, category_labels = if (central_labels) 'zero_opposite' else 'axis'),
+      interactive_html = html_ok,
       title = if (title_show) title else '',
       layout = list(width = w, height = h, orientation = orientation),
       analysis = list(

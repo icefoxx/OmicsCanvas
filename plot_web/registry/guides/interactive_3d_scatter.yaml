@@ -1,0 +1,173 @@
+summary: View supplied three-dimensional coordinates with an interactive scene and
+  vector projection.
+observation_type: observations or supplied summaries described in the input contract
+input_requirements: Three finite numeric coordinate columns and optional categorical
+  group; up to 50,000 observations. Coordinates are consumed as supplied, without
+  fitting PCA.
+best_for:
+- Inspect supplied three-dimensional coordinates
+- Rotate a grouped sample embedding
+- Export a fixed vector projection of the same coordinates
+learn_more: Choose the intended data mapping and statistical mode before styling.
+  A projection can conceal overlap; rotate the HTML view and compare complementary
+  quantitative analyses.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: View supplied three-dimensional coordinates with an interactive scene and
+    vector projection. Three finite numeric coordinate columns and optional categorical
+    group; up to 50,000 observations. Coordinates are consumed as supplied, without
+    fitting PCA.
+cautions:
+- id: caution_1
+  title: Interpretation limit 1
+  text: A projection can conceal overlap; rotate the HTML view and compare complementary
+    quantitative analyses.
+- id: caution_2
+  title: Interpretation limit 2
+  text: The static export uses an orthographic projection; PCA/t-SNE/UMAP fitting
+    is performed upstream.
+examples:
+- id: basic
+  title: Three-dimensional sample coordinates
+  description: Inspect supplied three-dimensional coordinates
+  scenario: Inspect supplied three-dimensional coordinates
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/interactive_3d_scatter/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    x_column: PC1
+    y_column: PC2
+    z_column: PC3
+    group_column: group
+- id: alternate_view
+  title: Alternate viewing angle
+  description: Rotate a grouped sample embedding
+  scenario: Rotate a grouped sample embedding
+  demo_id: alternate_view
+  variant_id: alternate_view
+  preview_asset: plugins/interactive_3d_scatter/all_examples_gallery/alternate_view.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    x_column: PC1
+    y_column: PC2
+    z_column: PC3
+    group_column: group
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source. Local demos use independently
+  generated data and are not reproductions of its analyses.
+- Additional verified published figure/panel examples remain to be curated.
+customization:
+- parameter: x_column
+  label: X column
+  default: PC1
+  help: ''
+- parameter: y_column
+  label: Y column
+  default: PC2
+  help: ''
+- parameter: z_column
+  label: Z column
+  default: PC3
+  help: ''
+- parameter: group_column
+  label: Group column
+  default: group
+  help: ''
+- parameter: azimuth
+  label: Azimuth
+  default: 40
+  help: ''
+- parameter: elevation
+  label: Elevation
+  default: 25
+  help: ''
+- parameter: point_alpha
+  label: Point alpha
+  default: 0.75
+  help: ''
+- parameter: point_size
+  label: Point size
+  default: 2
+  help: ''
+- parameter: line_width
+  label: Line width
+  default: 0.6
+  help: ''
+- parameter: label_size
+  label: Label size
+  default: 2.8
+  help: ''
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report input mappings, units, preprocessing and all
+    selected statistical or display modes.'
+source_modules:
+- title: FigureYa164PCA3D
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa164PCA3D
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

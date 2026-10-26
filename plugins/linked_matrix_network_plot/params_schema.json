@@ -1,0 +1,244 @@
+{
+  "data_mapping": {
+    "row_column": {
+      "type": "column",
+      "default": "feature",
+      "label": "Row column",
+      "help": ""
+    },
+    "column_column": {
+      "type": "column",
+      "default": "condition",
+      "label": "Column column",
+      "help": ""
+    },
+    "value_column": {
+      "type": "column",
+      "default": "value",
+      "label": "Value column",
+      "help": ""
+    },
+    "edge_group_column": {
+      "type": "column",
+      "default": "group",
+      "label": "Edge group column",
+      "help": ""
+    }
+  },
+  "layout": {
+    "matrix_mark": {
+      "type": "select",
+      "default": "heatmap",
+      "label": "Matrix mark",
+      "help": "",
+      "options": [
+        "heatmap",
+        "dot"
+      ]
+    },
+    "node_gap": {
+      "type": "number",
+      "default": 4,
+      "label": "Node gap",
+      "help": "",
+      "min": 1,
+      "max": 10
+    }
+  },
+  "marks": {
+    "dot_size": {
+      "type": "number",
+      "default": 5,
+      "label": "Dot size",
+      "help": "Only for matrix_mark = dot.",
+      "min": 1,
+      "max": 12
+    },
+    "curvature": {
+      "type": "number",
+      "default": 0.12,
+      "label": "Curvature",
+      "help": "",
+      "min": -0.5,
+      "max": 0.5
+    },
+    "edge_alpha": {
+      "type": "number",
+      "default": 0.65,
+      "label": "Edge alpha",
+      "help": "",
+      "min": 0.05,
+      "max": 1
+    },
+    "point_size": {
+      "type": "number",
+      "default": 2,
+      "label": "Point size",
+      "help": "",
+      "min": 0.1,
+      "max": 10
+    },
+    "line_width": {
+      "type": "number",
+      "default": 0.6,
+      "label": "Line width",
+      "help": "",
+      "min": 0.1,
+      "max": 3
+    }
+  },
+  "colors": {
+    "low_color": {
+      "type": "color",
+      "default": "#397DA3",
+      "label": "Low color",
+      "help": ""
+    },
+    "high_color": {
+      "type": "color",
+      "default": "#D16472",
+      "label": "High color",
+      "help": ""
+    },
+    "palette": {
+      "type": "select",
+      "default": "Set 2",
+      "label": "Palette",
+      "help": "",
+      "options": [
+        "Set 2",
+        "Dark 3",
+        "Viridis"
+      ]
+    },
+    "group_colors": {
+      "type": "object",
+      "default": {},
+      "label": "Named colors",
+      "help": "Named categorical colors override the palette."
+    }
+  },
+  "labels": {
+    "label_size": {
+      "type": "number",
+      "default": 2.8,
+      "label": "Label size",
+      "help": "",
+      "min": 1,
+      "max": 6
+    },
+    "title": {
+      "type": "string",
+      "default": "",
+      "label": "Title",
+      "help": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "",
+      "label": "Subtitle",
+      "help": "Empty uses the automatic description."
+    },
+    "caption": {
+      "type": "string",
+      "default": "",
+      "label": "Caption",
+      "help": ""
+    },
+    "title_size": {
+      "type": "number",
+      "default": 13,
+      "label": "Title size",
+      "help": "Only when a nonempty title is supplied.",
+      "min": 6,
+      "max": 30
+    }
+  },
+  "legend": {
+    "legend_show": {
+      "type": "boolean",
+      "default": true,
+      "label": "Legend show",
+      "help": ""
+    },
+    "legend_position": {
+      "type": "select",
+      "default": "right",
+      "label": "Legend position",
+      "help": "",
+      "options": [
+        "right",
+        "bottom",
+        "top",
+        "left"
+      ]
+    },
+    "legend_text_size": {
+      "type": "number",
+      "default": 9,
+      "label": "Legend text size",
+      "help": "",
+      "min": 5,
+      "max": 20
+    }
+  },
+  "theme": {
+    "font_family": {
+      "type": "select",
+      "default": "sans",
+      "label": "Font family",
+      "help": "",
+      "options": [
+        "sans",
+        "serif",
+        "mono"
+      ]
+    },
+    "base_size": {
+      "type": "number",
+      "default": 11,
+      "label": "Base size",
+      "help": "",
+      "min": 6,
+      "max": 22
+    },
+    "plot_background": {
+      "type": "color",
+      "default": "#FFFFFF",
+      "label": "Plot background",
+      "help": ""
+    },
+    "grid_show": {
+      "type": "boolean",
+      "default": false,
+      "label": "Grid show",
+      "help": ""
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "default": 8,
+      "label": "Width",
+      "help": "Inches.",
+      "min": 3,
+      "max": 20
+    },
+    "height": {
+      "type": "number",
+      "default": 6,
+      "label": "Height",
+      "help": "Inches.",
+      "min": 3,
+      "max": 20
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 150,
+      "label": "Dpi",
+      "help": "",
+      "min": 72,
+      "max": 600
+    }
+  }
+}

@@ -221,13 +221,30 @@ def output_urls_for_dir(figure_id: str, result_dir: Path | None = None) -> dict[
         "enrichment_results.csv": "enrichment_results",
         "plotspec.json": "plotspec",
         "validation.json": "validation",
+        "result.html": "html",
     }
     for filename, key in names.items():
         if (result_dir / filename).exists():
             urls[key] = f"/api/figures/{figure_id}/download/{key}"
+    if (result_dir / "result.html").exists():
+        # View URL keeps relative result_files/ next to the widget.
+        urls["html"] = f"/api/figures/{figure_id}/view/result.html"
     if (result_dir / "plotspec.json").exists():
         urls["bundle"] = f"/api/figures/{figure_id}/bundle"
     return urls
+
+
+def figure_view_file(output_dir: Path, rel_path: str) -> Path:
+    """Resolve a file under a job output dir for the interactive HTML view."""
+    root = Path(output_dir).resolve()
+    target = (root / rel_path).resolve()
+    try:
+        target.relative_to(root)
+    except ValueError as exc:
+        raise HTTPException(status_code=403, detail="Invalid path") from exc
+    if not target.is_file():
+        raise HTTPException(status_code=404, detail="Not found")
+    return target
 
 
 def output_file_for_type(result_dir: Path, file_type: str) -> Path:
@@ -238,6 +255,7 @@ def output_file_for_type(result_dir: Path, file_type: str) -> Path:
         "json": "figure.json",
         "figure_json": "figure.json",
         "log": "run.log",
+        "html": "result.html",
         "selected_rows": "selected_rows.csv",
         "selected_points": "selected_points.csv",
         "selected_features": "selected_features.csv",

@@ -1,0 +1,277 @@
+[
+  {
+    "case": "named-survival",
+    "exit_code": 0,
+    "result": {
+      "ok": true,
+      "plugin_id": "survival_plot",
+      "data_source": "user_files",
+      "output": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/named-survival",
+      "figures": {
+        "svg": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/named-survival/result.svg",
+        "pdf": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/named-survival/result.pdf",
+        "png": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/named-survival/result.png",
+        "figure_json": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/named-survival/figure.json",
+        "log": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/named-survival/run.log"
+      },
+      "bundle": {
+        "bundle_version": "2",
+        "plotspec": "plotspec.json",
+        "plotspec_hash": "a49dfa7ef5920a65a11e771a8f0355a5346aa78793fd6fccdbc240f667c17c0e",
+        "params": "params.json",
+        "inputs": {
+          "input": "input/input__ai_survival_named_columns.csv"
+        },
+        "input": "input/input__ai_survival_named_columns.csv",
+        "input_checksum": "ccb536137dfa2df83f77b94a5a600cd86788915ce4549065bbf4105b3ad23f7e",
+        "methods": "methods.txt",
+        "runtime": "runtime.json",
+        "validation": "validation.json",
+        "figures": {
+          "svg": "figures/result.svg",
+          "pdf": "figures/result.pdf",
+          "png": "figures/result.png",
+          "figure_json": "figures/figure.json",
+          "log": "figures/run.log"
+        },
+        "sha256": {
+          "REPRODUCE.md": "00e3e9134158e110acca7b3d09eb8e585c7bec57cbdc9a124ff58578722023b0",
+          "figures/figure.json": "1bcfab5691e672046c86778ca42bd38f25fb44fa0f692320de2dc6d1ea9e0d2e",
+          "figures/result.pdf": "83ba400093cc80a7b9d67270c8136165c6a95a396510b094f6e38205aac4d375",
+          "figures/result.png": "a2a7e23b847a2a4576d9e6d4ca269e0fd75dc177c52af2d2d2c72be8a08c6e58",
+          "figures/result.svg": "5a603f97409fab8040910aa243e5874c27d29fe93f082917529b0efb7af421ff",
+          "figures/run.log": "3597b11f3bfbcbed0b1e6c35afdae32112ce133d4b70dfc58d10e8812f2efe65",
+          "input/input__ai_survival_named_columns.csv": "ccb536137dfa2df83f77b94a5a600cd86788915ce4549065bbf4105b3ad23f7e",
+          "methods.txt": "ee89b5570e6b9331ff206299104346da71ff694d044a3cbba2a17ccea5146695",
+          "params.json": "343cadfbd4a7185646ef659fe535a0dfa6818fb0dfe80aeb0642c2bc0aa9d19c",
+          "plotspec.json": "22b8922e0deaa4b77c82c9e480a56155597141368b0ca189d20a4954b3d923e1",
+          "runtime.json": "ebf8305282c84659cc1bcd6a2f7326ad685eb1ac617ccbdc816d3bd74a3c885b",
+          "validation.json": "331647e909b0efc6b4b170b7e5a04d41f6ba822288a4ebacf6a113babdca4b29"
+        }
+      },
+      "direct_command": [
+        "Rscript",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plugins/survival_plot/plot.R",
+        "--input",
+        "/Users/johnchang/workstation/development/OmicsCanvas/docs/qa/fixtures/ai_survival_named_columns.csv",
+        "--params",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/named-survival/params.json",
+        "--output",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/named-survival"
+      ],
+      "direct_environment": {
+        "R_PROFILE_USER": "/Users/johnchang/workstation/development/OmicsCanvas/R/runtime/omicscanvas.Rprofile",
+        "OMICSCANVAS_SEED": "42"
+      },
+      "validation_warnings": []
+    }
+  },
+  {
+    "case": "calibration",
+    "exit_code": 0,
+    "result": {
+      "ok": true,
+      "plugin_id": "binary_evaluation_plot",
+      "data_source": "builtin_example",
+      "output": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/calibration",
+      "figures": {
+        "svg": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/calibration/result.svg",
+        "pdf": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/calibration/result.pdf",
+        "png": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/calibration/result.png",
+        "figure_json": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/calibration/figure.json",
+        "log": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/calibration/run.log"
+      },
+      "bundle": {
+        "bundle_version": "2",
+        "plotspec": "plotspec.json",
+        "plotspec_hash": "9403d504edd78d1ea3792dba17cce7fe347653e5208a554fb7682af34fb29f77",
+        "params": "params.json",
+        "inputs": {
+          "input": "input/input__data.csv"
+        },
+        "input": "input/input__data.csv",
+        "input_checksum": "f67acea8168278d24dc18697b185cef434dd220a73af4ebc79d386a5fbcda2f6",
+        "methods": "methods.txt",
+        "runtime": "runtime.json",
+        "validation": "validation.json",
+        "figures": {
+          "svg": "figures/result.svg",
+          "pdf": "figures/result.pdf",
+          "png": "figures/result.png",
+          "figure_json": "figures/figure.json",
+          "log": "figures/run.log"
+        },
+        "sha256": {
+          "REPRODUCE.md": "b7fa27f28422da21cc529856b107bbdbb9a62ae2466c8244037381ba6cc7f7d5",
+          "figures/figure.json": "5d107c5cb26b3f0842640e56a51dd1a5d39b8ab56eb6cd7dcc5ae99954fb3bf6",
+          "figures/result.pdf": "9c6bc2b6a0357727df6a910303d75c1f4c1c30c209b61909c612a836f6c37359",
+          "figures/result.png": "a96fbc6f7bf5d6596984617e382ea50955d37e7767f691f028832417055c1415",
+          "figures/result.svg": "ca8e83bebe103f330ffd2a3b244c9190e15825064cde7e7e9172ce66622d5ba5",
+          "figures/run.log": "3fa135cea49851d62e1970ed2150e50d686cd2c5566b04de30448e7772a4fb8b",
+          "input/input__data.csv": "f67acea8168278d24dc18697b185cef434dd220a73af4ebc79d386a5fbcda2f6",
+          "methods.txt": "52577ea193cde06d1e57101501c0a168815d08f27cc60ac5ed2282570b5a18f9",
+          "params.json": "9fe260c15257ce81e2c6f485556e2dd9788c4cc68ab04ac02cdf9dc3645f61cf",
+          "plotspec.json": "6863a2e6ccb2e8849f50f4d7bce290a92ebc3a26cb3b7dd08b310acc6d1c8dd0",
+          "runtime.json": "cd5d245da12245d3be0ba3113087f1825cf57bebd6382673808dbe230bace9c1",
+          "validation.json": "91b72a2a01e367f8fea0980e88bbe864855bd6e61436f2d47ec0bd4d26e2b287"
+        }
+      },
+      "direct_command": [
+        "Rscript",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plugins/binary_evaluation_plot/plot.R",
+        "--input",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plugins/binary_evaluation_plot/examples/calibration/input/data.csv",
+        "--params",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/calibration/params.json",
+        "--output",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/calibration"
+      ],
+      "direct_environment": {
+        "R_PROFILE_USER": "/Users/johnchang/workstation/development/OmicsCanvas/R/runtime/omicscanvas.Rprofile",
+        "OMICSCANVAS_SEED": "42"
+      },
+      "validation_warnings": []
+    }
+  },
+  {
+    "case": "3d-embedding",
+    "exit_code": 0,
+    "result": {
+      "ok": true,
+      "plugin_id": "interactive_3d_scatter",
+      "data_source": "builtin_example",
+      "output": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/3d-embedding",
+      "figures": {
+        "svg": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/3d-embedding/result.svg",
+        "pdf": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/3d-embedding/result.pdf",
+        "png": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/3d-embedding/result.png",
+        "html": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/3d-embedding/result.html",
+        "figure_json": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/3d-embedding/figure.json",
+        "log": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/3d-embedding/run.log"
+      },
+      "bundle": {
+        "bundle_version": "2",
+        "plotspec": "plotspec.json",
+        "plotspec_hash": "41ec96eba62ff5819392711306dca53c4f766a990ef85b62d42e09e9991bd275",
+        "params": "params.json",
+        "inputs": {
+          "input": "input/input__data.csv"
+        },
+        "input": "input/input__data.csv",
+        "input_checksum": "ad0ba5aed9f3b85972dbaeaa56555a72d45e8c6af5a02018ba7f8203ef1142ea",
+        "methods": "methods.txt",
+        "runtime": "runtime.json",
+        "validation": "validation.json",
+        "figures": {
+          "svg": "figures/result.svg",
+          "pdf": "figures/result.pdf",
+          "png": "figures/result.png",
+          "html": "figures/result.html",
+          "figure_json": "figures/figure.json",
+          "log": "figures/run.log"
+        },
+        "sha256": {
+          "REPRODUCE.md": "d495f892c017cde01801ae362b74e0bf77c5fa0fef370ae88abf7a55712ca858",
+          "figures/figure.json": "ab35c1b729e56897e071c0afd5eec0e71428dfc41cb78dedc9c338f4306a883e",
+          "figures/result.html": "44026c4f7ada5d8f4ff86a1792cb94d2ccff9cf2229b8eb090b04fae7dc8d572",
+          "figures/result.pdf": "2e0e8eaab32c62199894a9c603fce8f20cca5bf591f42fb8714f864ba4c3d91b",
+          "figures/result.png": "6e7ec484b94c93888119082d58f3f5c069e0e4e9c434298c56412449b7883959",
+          "figures/result.svg": "c97948dbf9bc412d0231c6720a2dbef64e861ad4eca4037cc69941d1bb069cf8",
+          "figures/run.log": "9716c68ce6f246c1df790cd638e09b8f0307109e35996aa66f06cecc68339bb1",
+          "input/input__data.csv": "ad0ba5aed9f3b85972dbaeaa56555a72d45e8c6af5a02018ba7f8203ef1142ea",
+          "methods.txt": "51727ee018db189beded7d7c8d1eb178f73786c6d7ece60c1a119881f5bd7413",
+          "params.json": "cd326a7ed10576331d6f1debd1d30ad897107c2cfab75e93ef686e59393756e7",
+          "plotspec.json": "de05d86a50b9ada35cb540662e1e0d72c1eb7813d00a6ed443d3fd84ef4d0c25",
+          "runtime.json": "c584790dd7c6a2661ccd9a74f86e19c00f7c76566e980439208d5a45e6f0cd87",
+          "validation.json": "a1125bb27cb71f0a83fe1b3cc55c4e4785cbeb3b6144812830d20087fd3c98d8"
+        }
+      },
+      "direct_command": [
+        "Rscript",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plugins/interactive_3d_scatter/plot.R",
+        "--input",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plugins/interactive_3d_scatter/examples/basic/input/data.csv",
+        "--params",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/3d-embedding/params.json",
+        "--output",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/3d-embedding"
+      ],
+      "direct_environment": {
+        "R_PROFILE_USER": "/Users/johnchang/workstation/development/OmicsCanvas/R/runtime/omicscanvas.Rprofile",
+        "OMICSCANVAS_SEED": "42"
+      },
+      "validation_warnings": []
+    }
+  },
+  {
+    "case": "linked-matrix-network",
+    "exit_code": 0,
+    "result": {
+      "ok": true,
+      "plugin_id": "linked_matrix_network_plot",
+      "data_source": "builtin_example",
+      "output": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/linked-matrix-network",
+      "figures": {
+        "svg": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/linked-matrix-network/result.svg",
+        "pdf": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/linked-matrix-network/result.pdf",
+        "png": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/linked-matrix-network/result.png",
+        "figure_json": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/linked-matrix-network/figure.json",
+        "log": "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/linked-matrix-network/run.log"
+      },
+      "bundle": {
+        "bundle_version": "2",
+        "plotspec": "plotspec.json",
+        "plotspec_hash": "4ebf63fe412b12f3725f761cf53e981a7d8762edf17167bff5e23bdfefd52108",
+        "params": "params.json",
+        "inputs": {
+          "input": "input/input__data.csv",
+          "links": "input/links__links.csv"
+        },
+        "input": "input/input__data.csv",
+        "input_checksum": "799b7b80c64f81e968a1727270bffb582de7211f34ca47c4a8c27c827fa09d62",
+        "methods": "methods.txt",
+        "runtime": "runtime.json",
+        "validation": "validation.json",
+        "figures": {
+          "svg": "figures/result.svg",
+          "pdf": "figures/result.pdf",
+          "png": "figures/result.png",
+          "figure_json": "figures/figure.json",
+          "log": "figures/run.log"
+        },
+        "sha256": {
+          "REPRODUCE.md": "91fa84ba739a861afb0dc596bf9c7304326f05dc49b9c33d9e9c6cb376468e4a",
+          "figures/figure.json": "11b3ae9cd4bad6cee73289468b15c3dd2677c79de08c513497aeaaaafef5cc10",
+          "figures/result.pdf": "68d43103180e18621fe3c11c12258e4cb22d03df4a24233120c01f29bf52c059",
+          "figures/result.png": "e70cce12229b954d31b02838242f8113c3f02aca9d6dc0c5f1cc92af5a3f4adc",
+          "figures/result.svg": "09cf2c650121bf17619f746b6c5713b4c245088f342bbc913fd17cc235b80d4a",
+          "figures/run.log": "927031d017b714714434a0fa48ed2dd5f919e3a70d307631740e0c004a1f3cf8",
+          "input/input__data.csv": "799b7b80c64f81e968a1727270bffb582de7211f34ca47c4a8c27c827fa09d62",
+          "input/links__links.csv": "05c5e39ae298d08d1b6d8d1e8b3d99adfe7048f6cd391875a09ad30ed55e2d7d",
+          "methods.txt": "09544baa8d129b2d43278eef9d1ef9df5ec191e9698d912a6a2b74c6cd5126db",
+          "params.json": "78cbf0fb9fec8bf7dfb81979a16bc1033554a2dd96f6eaf9e28980b297f38608",
+          "plotspec.json": "15125258ed07be0c279f05256f8c485059e4bb38c04b9982e37a2193a6d2ac51",
+          "runtime.json": "46b4284d7fcc52bce0e0c3a4fee96a7a9e1ade30ce918b6254d27bd71fe674f7",
+          "validation.json": "82d7709e9f899f90ae227cb59cbc94c355788881b3bacf63e26563d4c71dc62a"
+        }
+      },
+      "direct_command": [
+        "Rscript",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plugins/linked_matrix_network_plot/plot.R",
+        "--input",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plugins/linked_matrix_network_plot/examples/basic/input/data.csv",
+        "--params",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/linked-matrix-network/params.json",
+        "--output",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plot_web/storage/cli_examples/2026-10-26/linked-matrix-network",
+        "--links",
+        "/Users/johnchang/workstation/development/OmicsCanvas/plugins/linked_matrix_network_plot/examples/basic/input/links.csv"
+      ],
+      "direct_environment": {
+        "R_PROFILE_USER": "/Users/johnchang/workstation/development/OmicsCanvas/R/runtime/omicscanvas.Rprofile",
+        "OMICSCANVAS_SEED": "42"
+      },
+      "validation_warnings": []
+    }
+  }
+]

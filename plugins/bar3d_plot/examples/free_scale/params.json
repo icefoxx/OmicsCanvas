@@ -1,0 +1,10 @@
+{
+  "x_column": "x",
+  "y_column": "y",
+  "value_column": "count",
+  "group_column": "group",
+  "title": "Grid heights with independent panel scales",
+  "z_scale": "free",
+  "azimuth": 30,
+  "ncol": 2
+}

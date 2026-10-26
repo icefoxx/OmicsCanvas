@@ -1,0 +1,134 @@
+[
+  {
+    "plugin": "survival_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "binary_evaluation_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "forest_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "oncoprint_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "manhattan_qq_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "bland_altman_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "swimmer_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "protein_variant_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "clonal_fish_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "sequence_alignment_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "circular_genomic_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "nomogram_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "interactive_3d_scatter",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "bar3d_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "radviz_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "ecdf_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "spatial_region_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "annotated_tree_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "circular_distribution_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "embedding_vector_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "linked_matrix_network_plot",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  },
+  {
+    "plugin": "risk_stratification_panel",
+    "has_builtin_inputs": false,
+    "resolved_fields": [],
+    "manifest_exists": true
+  }
+]

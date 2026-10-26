@@ -1,0 +1,103 @@
+summary: Use ratio or segmented circles in a matrix to show fractions, binary states
+  or correlations.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare detection fractions
+- Inspect binary feature states
+- Survey correlation direction and strength
+common_uses: []
+input_requirements: Row/column identifiers and proportions, states or coefficients
+  appropriate to the active mode.
+learn_more: 'Input: Row/column identifiers and proportions, states or coefficients
+  appropriate to the active mode. Interpretation: Read circle filling or segmentation
+  using the active mode''s legend. Check mappings, order and transformations before
+  adjusting labels, colors and canvas dimensions. Confirm legends and units before
+  export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Read circle filling or segmentation using the active mode's legend.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Specify the denominator for proportions
+- id: caution_2
+  title: Caution 2
+  text: Binary states and continuous correlations do not share the same interpretation
+examples:
+- id: basic
+  title: Ratio-circle matrix
+  description: 'Use case: Compare detection fractions. This preset illustrates ratio-circle
+    matrix. Replace its input with your data while retaining the appropriate view
+    settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare detection fractions
+  input_requirements: Row/column identifiers and proportions, states or coefficients
+    appropriate to the active mode.
+  preview_asset: plugins/pie_dot_matrix/all_examples_gallery/basic.png
+  mappings:
+    row_column: category
+- id: binary
+  title: Binary feature states
+  description: 'Use case: Inspect binary feature states. This preset illustrates binary
+    feature states. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: binary
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect binary feature states
+  input_requirements: Row/column identifiers and proportions, states or coefficients
+    appropriate to the active mode.
+  preview_asset: plugins/pie_dot_matrix/all_examples_gallery/binary.png
+  variant_id: binary
+  mappings:
+    row_column: category
+- id: correlation
+  title: Correlation-strength matrix
+  description: 'Use case: Survey correlation direction and strength. This preset illustrates
+    correlation-strength matrix. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: correlation
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Survey correlation direction and strength
+  input_requirements: Row/column identifiers and proportions, states or coefficients
+    appropriate to the active mode.
+  preview_asset: plugins/pie_dot_matrix/all_examples_gallery/correlation.png
+  variant_id: correlation
+  mappings:
+    row_column: category
+literature_ids:
+- yang_projection_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  binary:
+    summary: 'Use case: Inspect binary feature states. This preset illustrates binary
+      feature states. Replace its input with your data while retaining the appropriate
+      view settings.'
+  correlation:
+    summary: 'Use case: Survey correlation direction and strength. This preset illustrates
+      correlation-strength matrix. Replace its input with your data while retaining
+      the appropriate view settings.'
+customization:
+- parameter: input_mode
+  label: Input mode
+  default: auto
+- parameter: value_column
+  label: Value (long mode)
+  default: value
+- parameter: palette
+  label: Row-category palette
+  default: habitat
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Width (in)
+  default: 12
+- parameter: height
+  label: Height (in)
+  default: 5.5

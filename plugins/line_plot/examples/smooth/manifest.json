@@ -1,0 +1,11 @@
+{
+  "id": "smooth",
+  "label": "Smooth",
+  "plugin_id": "line_plot",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/line_plot/plot.R --input plugins/line_plot/examples/smooth/input/example_input.csv --params plugins/line_plot/examples/smooth/params.json --output /tmp/line_plot_smooth"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "time_column": "time",
+  "event_column": "event",
+  "group_column": "group",
+  "title": "Conditional survival",
+  "landmark_time": 12,
+  "stat_method": "none"
+}

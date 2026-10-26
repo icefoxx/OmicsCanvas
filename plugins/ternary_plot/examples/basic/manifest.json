@@ -1,0 +1,11 @@
+{
+  "id": "basic",
+  "label": "Basic",
+  "plugin_id": "ternary_plot",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/ternary_plot/plot.R --input plugins/ternary_plot/examples/basic/input/example_input.csv --params plugins/ternary_plot/examples/basic/params.json --output /tmp/ternary_plot_basic"
+  }
+}

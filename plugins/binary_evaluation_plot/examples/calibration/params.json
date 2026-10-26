@@ -1,0 +1,9 @@
+{
+  "outcome_column": "outcome",
+  "score_column": "score",
+  "group_column": "group",
+  "x_column": "x",
+  "y_column": "y",
+  "title": "Probability calibration",
+  "plot_type": "calibration"
+}

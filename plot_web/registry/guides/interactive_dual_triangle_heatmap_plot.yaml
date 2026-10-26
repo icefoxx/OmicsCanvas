@@ -1,0 +1,90 @@
+summary: Place two aligned square matrices in separate triangles with independent
+  scales.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare similarity definitions
+- Contrast two conditions
+- Inspect set similarity alongside expression correlation
+common_uses: []
+input_requirements: Two square matrices with matching labels, such as similarity and
+  correlation.
+learn_more: 'Input: Two square matrices with matching labels, such as similarity and
+  correlation. Interpretation: Read the upper and lower triangles against their own
+  legends. Check mappings, order and transformations before adjusting labels, colors
+  and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Read the upper and lower triangles against their own legends.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Different scales cannot be compared by subtracting colors
+- id: caution_2
+  title: Caution 2
+  text: Mismatched labels or ordering invalidate pairwise alignment
+examples:
+- id: basic
+  title: Compare two pairwise matrices
+  description: 'Use case: Compare similarity definitions. This preset illustrates
+    compare two pairwise matrices. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare similarity definitions
+  input_requirements: Two square matrices with matching labels, such as similarity
+    and correlation.
+  preview_asset: plugins/interactive_dual_triangle_heatmap_plot/all_examples_gallery/basic.png
+- id: custom
+  title: Independent scales and labels
+  description: 'Use case: Contrast two conditions. This preset illustrates independent
+    scales and labels. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: custom
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Contrast two conditions
+  input_requirements: Two square matrices with matching labels, such as similarity
+    and correlation.
+  preview_asset: plugins/interactive_dual_triangle_heatmap_plot/all_examples_gallery/custom.png
+  variant_id: custom
+  mappings:
+    annotation_columns:
+    - Dataset
+    - Group
+- id: interactive
+  title: Inspect both triangles on hover
+  description: 'Use case: Inspect set similarity alongside expression correlation.
+    This preset illustrates inspect both triangles on hover. Replace its input with
+    your data while retaining the appropriate view settings.'
+  demo_id: interactive
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect set similarity alongside expression correlation
+  input_requirements: Two square matrices with matching labels, such as similarity
+    and correlation.
+  preview_asset: plugins/interactive_dual_triangle_heatmap_plot/all_examples_gallery/interactive.png
+  variant_id: interactive
+  mappings:
+    annotation_columns:
+    - Dataset
+literature_ids: []
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  custom:
+    summary: 'Use case: Contrast two conditions. This preset illustrates independent
+      scales and labels. Replace its input with your data while retaining the appropriate
+      view settings.'
+  interactive:
+    summary: 'Use case: Inspect set similarity alongside expression correlation. This
+      preset illustrates inspect both triangles on hover. Replace its input with your
+      data while retaining the appropriate view settings.'
+customization:
+- parameter: width
+  label: width
+  default: 11
+- parameter: height
+  label: height
+  default: 10

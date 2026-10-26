@@ -369,9 +369,11 @@ def build_registry(plugin_dir: Path | None = None) -> dict[str, Any]:
 
 def load_registry(rebuild: bool = False) -> dict[str, Any]:
     if rebuild or not GENERATED_PATH.exists():
+        from plot_web.server.storage import atomic_write_text
+
         reg = build_registry()
         GENERATED_PATH.parent.mkdir(parents=True, exist_ok=True)
-        GENERATED_PATH.write_text(json.dumps(reg, indent=2), encoding="utf-8")
+        atomic_write_text(GENERATED_PATH, json.dumps(reg, indent=2))
     else:
         reg = json.loads(GENERATED_PATH.read_text(encoding="utf-8"))
     from plot_web.plot_guide import attach_guides
@@ -952,32 +954,32 @@ CHART_CATEGORY_TAXONOMY = [
         "id": "distribution",
         "name": "Distribution",
         "charts": [
-            {"id": "violin", "name": "Violin", "family_ids": ["violin_plot", "interactive_violin_plot"]},
+            {"id": "violin", "name": "Violin", "family_ids": ["violin_plot", "interactive_violin_plot", "raincloud_plot"]},
             {"id": "density", "name": "Density", "family_ids": ["den_plot", "feature_embedding"]},
             {"id": "histogram", "name": "Histogram", "family_ids": ["interactive_histogram_plot"]},
-            {"id": "boxplot", "name": "Boxplot", "family_ids": ["interactive_violin_plot", "violin_plot"]},
+            {"id": "boxplot", "name": "Boxplot", "family_ids": ["interactive_violin_plot", "violin_plot", "raincloud_plot"]},
             {"id": "ridgeline", "name": "Ridgeline", "family_ids": ["ridgeline", "gsea"]},
-            {"id": "beeswarm", "name": "Beeswarm", "family_ids": ["interactive_violin_plot", "violin_plot", "highlight_effect_plot"]},
+            {"id": "beeswarm", "name": "Beeswarm", "family_ids": ["interactive_violin_plot", "violin_plot", "highlight_effect_plot", "raincloud_plot"]},
         ],
     },
     {
         "id": "comparison",
         "name": "Comparison",
         "charts": [
-            {"id": "barplot", "name": "Barplot", "family_ids": ["combo_bar_dot_matrix", "exp_stat_plot", "go_kegg_enrichment_bar_bubble", "hierarchical_marker_panel"]},
+            {"id": "barplot", "name": "Barplot", "family_ids": ["combo_bar_dot_matrix", "exp_stat_plot", "go_kegg_enrichment_bar_bubble", "hierarchical_marker_panel", "circular_bar_plot", "waterfall_plot", "swimmer_plot", "bar3d_plot"]},
             {"id": "dot", "name": "Dot plot", "family_ids": ["dot_plot", "combo_bar_dot_matrix", "hierarchical_marker_panel"]},
-            {"id": "lollipop", "name": "Lollipop", "family_ids": ["enrichment_lollipop", "ranked_annotation_panel", "interactive_dumbbell_plot"]},
+            {"id": "lollipop", "name": "Lollipop", "family_ids": ["enrichment_lollipop", "ranked_annotation_panel", "interactive_dumbbell_plot", "forest_plot", "protein_variant_plot"]},
             {"id": "radar", "name": "Radar / Spider", "family_ids": ["interactive_radar_plot"]},
-            {"id": "parallel", "name": "Parallel coordinates", "family_ids": ["ranked_annotation_panel"]},
+            {"id": "parallel", "name": "Parallel coordinates", "family_ids": ["ranked_annotation_panel", "nomogram_plot"]},
         ],
     },
     {
         "id": "relationship",
         "name": "Relationship",
         "charts": [
-            {"id": "scatter", "name": "Scatter", "family_ids": ["regression_scatter_plot", "quadrant_correlation_scatter", "volcano", "umap_tsne", "feature_embedding", "trajectory"]},
+            {"id": "scatter", "name": "Scatter", "family_ids": ["regression_scatter_plot", "quadrant_correlation_scatter", "volcano", "umap_tsne", "feature_embedding", "trajectory", "circular_tree_embedding", "manhattan_qq_plot", "bland_altman_plot", "interactive_3d_scatter", "radviz_plot", "circular_distribution_plot", "embedding_vector_plot", "risk_stratification_panel"]},
             {"id": "bubble", "name": "Bubble", "family_ids": ["dot_plot", "interactive_bubble_score_matrix"]},
-            {"id": "connected_scatter", "name": "Connected scatter", "family_ids": ["interactive_dumbbell_plot"]},
+            {"id": "connected_scatter", "name": "Connected scatter", "family_ids": ["interactive_dumbbell_plot", "line_plot", "survival_plot", "binary_evaluation_plot", "ecdf_plot", "embedding_vector_plot"]},
             {"id": "density_2d", "name": "2D density", "family_ids": ["feature_embedding", "umap_tsne"]},
         ],
     },
@@ -985,7 +987,7 @@ CHART_CATEGORY_TAXONOMY = [
         "id": "matrix",
         "name": "Matrix",
         "charts": [
-            {"id": "heatmap", "name": "Heatmap", "family_ids": ["grouped_heatmap", "threshold_matrix_heatmap"]},
+            {"id": "heatmap", "name": "Heatmap", "family_ids": ["grouped_heatmap", "threshold_matrix_heatmap", "circular_heatmap", "oncoprint_plot", "sequence_alignment_plot", "circular_genomic_plot", "linked_matrix_network_plot", "risk_stratification_panel"]},
             {"id": "correlogram", "name": "Correlogram", "family_ids": ["interactive_correlation_matrix"]},
             {"id": "dot_matrix", "name": "Dot / Balloon matrix", "family_ids": ["dot_plot", "combo_bar_dot_matrix", "hierarchical_marker_panel"]},
         ],
@@ -995,9 +997,10 @@ CHART_CATEGORY_TAXONOMY = [
         "name": "Composition",
         "charts": [
             {"id": "pie", "name": "Pie / Rose", "family_ids": ["interactive_pie_plot", "umap_tsne"]},
-            {"id": "doughnut", "name": "Donut", "family_ids": ["interactive_pie_plot"]},
+            {"id": "doughnut", "name": "Donut", "family_ids": ["interactive_pie_plot", "sunburst_plot"]},
             {"id": "stacked_bar", "name": "Stacked bar", "family_ids": ["exp_stat_plot"]},
-            {"id": "treemap", "name": "Treemap", "family_ids": []},
+            {"id": "treemap", "name": "Treemap", "family_ids": ["treemap_plot"]},
+            {"id": "sunburst", "name": "Sunburst", "family_ids": ["sunburst_plot"]},
         ],
     },
     {
@@ -1005,8 +1008,8 @@ CHART_CATEGORY_TAXONOMY = [
         "name": "Flow & Network",
         "charts": [
             {"id": "sankey", "name": "Sankey", "family_ids": ["alluvial", "gsea"]},
-            {"id": "alluvial", "name": "Alluvial", "family_ids": ["alluvial"]},
-            {"id": "network", "name": "Network", "family_ids": ["interactive_network_plot", "interactive_mantel_correlation_network"]},
+            {"id": "alluvial", "name": "Alluvial", "family_ids": ["alluvial", "clonal_fish_plot"]},
+            {"id": "network", "name": "Network", "family_ids": ["interactive_network_plot", "interactive_mantel_correlation_network", "linked_matrix_network_plot"]},
             {"id": "chord", "name": "Chord", "family_ids": ["alluvial"]},
             {"id": "arc", "name": "Arc diagram", "family_ids": ["interactive_arc_network_plot"]},
         ],
@@ -1024,16 +1027,18 @@ CHART_CATEGORY_TAXONOMY = [
         "name": "Tables",
         "charts": [
             {"id": "table", "name": "Table", "family_ids": []},
-            {"id": "summary_table", "name": "Summary table", "family_ids": ["ranked_annotation_panel"]},
+            {"id": "summary_table", "name": "Summary table", "family_ids": ["ranked_annotation_panel", "nomogram_plot"]},
         ],
     },
     {
         "id": "specialized",
         "name": "Specialized",
         "charts": [
-            {"id": "genomic_track", "name": "Genomic track", "family_ids": ["interactive_genomic_signal_track_plot"]},
+            {"id": "genomic_track", "name": "Genomic track", "family_ids": ["interactive_genomic_signal_track_plot", "manhattan_qq_plot", "protein_variant_plot", "sequence_alignment_plot", "circular_genomic_plot"]},
             {"id": "motif", "name": "Motif logo", "family_ids": ["interactive_motif_logo_plot"]},
-            {"id": "dendrogram", "name": "Dendrogram", "family_ids": ["cluster_dendrogram_plot", "hierarchical_marker_panel"]},
+            {"id": "spatial_map", "name": "Spatial / Region map", "family_ids": ["spatial_region_plot"]},
+            {"id": "dendrogram", "name": "Dendrogram", "family_ids": ["cluster_dendrogram_plot", "hierarchical_marker_panel", "circular_tree_embedding", "annotated_tree_plot"]},
+            {"id": "ternary", "name": "Ternary", "family_ids": ["ternary_plot"]},
         ],
     },
 ]

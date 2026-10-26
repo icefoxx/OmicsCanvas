@@ -1,0 +1,154 @@
+summary: Show the relationship between two numeric variables using scatter and fitted
+  trends.
+observation_type: observations or summary items in the input table
+best_for:
+- Explore dose-response relationships
+- Compare experimental metrics
+- Inspect model fit and outliers
+common_uses: []
+input_requirements: Two numeric columns with optional group and label fields.
+learn_more: 'Input: Two numeric columns with optional group and label fields. Interpretation:
+  Points represent observations and the fit summarizes the chosen model. Check mappings,
+  order and transformations before adjusting labels, colors and canvas dimensions.
+  Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Points represent observations and the fit summarizes the chosen model.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Regression or correlation does not establish causation
+- id: caution_2
+  title: Caution 2
+  text: Nonlinearity, outliers and dependent observations affect inference
+examples:
+- id: basic
+  title: Two-variable scatter and fit
+  description: 'Use case: Explore dose-response relationships. This preset illustrates
+    two-variable scatter and fit. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Explore dose-response relationships
+  input_requirements: Two numeric columns with optional group and label fields.
+  preview_asset: plugins/regression_scatter_plot/all_examples_gallery/basic.png
+  mappings:
+    x_column: x
+    y_column: y
+    group_column: group
+    id_column: id
+- id: CAB_demo
+  title: Reference-style regression presentation
+  description: 'Use case: Compare experimental metrics. This preset illustrates reference-style
+    regression presentation. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: CAB_demo
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare experimental metrics
+  input_requirements: Two numeric columns with optional group and label fields.
+  preview_asset: plugins/regression_scatter_plot/all_examples_gallery/CAB_demo.png
+  variant_id: cab_demo
+  mappings:
+    x_column: x
+    y_column: y
+    group_column: group
+    id_column: id
+literature_ids:
+- hao_dnt_2026
+- li_cerebrum_2021
+- zhernakova_age_sex_2022
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  cab_demo:
+    summary: 'Use case: Compare experimental metrics. This preset illustrates reference-style
+      regression presentation. Replace its input with your data while retaining the
+      appropriate view settings.'
+customization:
+- parameter: group_column
+  label: Group / color column
+  default: null
+- parameter: x_column
+  label: X column
+  default: null
+- parameter: y_column
+  label: Y column
+  default: null
+- parameter: group_colors
+  label: Per-group colors
+  default: {}
+- parameter: width
+  label: Export width
+  default: 8
+- parameter: height
+  label: Export height
+  default: 6.5
+source_modules:
+- title: FigureYa16fitting
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa16fitting
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa48Adonis
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa48Adonis
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa77baseZoom
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa77baseZoom
+  scope: Inset magnification is a presentation treatment; independent panels can be
+    exported, but an arbitrary nested-inset editor is not implemented.
+- title: FigureYa95pairwise
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa95pairwise
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa96R2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa96R2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa163twoVarCor_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa163twoVarCor_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa175quadrant
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa175quadrant
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa210survivalScape
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa210survivalScape
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa215DNAage
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa215DNAage
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa242corMethExpr
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa242corMethExpr
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa271panMethExpr
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa271panMethExpr
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa286ExprCorORR
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa286ExprCorORR
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa319ContribScore
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa319ContribScore
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

@@ -1,6 +1,6 @@
 # Classification report
 
-Counts: demo=67, export=2, legacy_alias=21, parameter=24, preset=2, rendering=1, variant=98
+Counts: demo=99, export=2, legacy_alias=21, parameter=24, preset=2, rendering=1, variant=141
 
 | plugin | example | class | maps_to | notes |
 |---|---|---|---|---|
@@ -53,13 +53,40 @@ Counts: demo=67, export=2, legacy_alias=21, parameter=24, preset=2, rendering=1,
 | `alluvial_plot` | `edges` | variant | edges/recommended | edges |
 | `alluvial_plot` | `hx_lineage` | variant | hx_lineage/recommended | hx_lineage |
 | `alluvial_plot` | `long` | variant | long/recommended | long |
+| `annotated_tree_plot` | `basic` | demo | basic/recommended | Supplied tree and feature heatmap |
+| `annotated_tree_plot` | `circular` | variant | circular/recommended | Circular tree with weighted nodes |
 | `balloon_plot` | `basic` | demo | basic/recommended | basic |
 | `balloon_plot` | `gradient` | variant | gradient/recommended | gradient |
 | `balloon_plot` | `no_stats` | variant | no_stats/recommended | no_stats |
+| `bar3d_plot` | `basic` | demo | basic/recommended | Mutation-context count grid |
+| `bar3d_plot` | `free_scale` | variant | free_scale/recommended | Grid heights with independent panel scales |
+| `binary_evaluation_plot` | `basic` | demo | basic/recommended | Receiver operating characteristic |
+| `binary_evaluation_plot` | `precision_recall` | variant | precision_recall/recommended | Precision and recall |
+| `binary_evaluation_plot` | `calibration` | variant | calibration/recommended | Probability calibration |
+| `binary_evaluation_plot` | `decision_curve` | variant | decision_curve/recommended | Net benefit by threshold |
+| `binary_evaluation_plot` | `supplied_curve` | variant | supplied_curve/recommended | Supplied evaluation curves |
+| `bland_altman_plot` | `basic` | demo | basic/recommended | Paired measurement agreement |
+| `bland_altman_plot` | `percent` | variant | percent/recommended | Relative measurement agreement |
+| `circular_bar_plot` | `basic` | demo | basic/recommended | Basic |
+| `circular_bar_plot` | `single` | variant | single/recommended | Single series |
+| `circular_distribution_plot` | `basic` | demo | basic/recommended | Scores across reference groups |
+| `circular_distribution_plot` | `shared_range` | variant | shared_range/recommended | Scores on a common scale |
+| `circular_genomic_plot` | `basic` | demo | basic/recommended | Circular interval heatmap |
+| `circular_genomic_plot` | `bars` | variant | bars/recommended | Circular interval magnitudes |
+| `circular_genomic_plot` | `points` | variant | points/recommended | Circular interval points |
+| `circular_genomic_plot` | `linear` | variant | linear/recommended | Linear chromosome overview |
+| `circular_heatmap` | `basic` | demo | basic/recommended | Basic |
+| `circular_heatmap` | `clustered` | variant | clustered/recommended | Clustered |
+| `circular_heatmap` | `categorical` | variant | categorical/recommended | Categorical annotation rings |
+| `circular_tree_embedding` | `basic` | demo | basic/recommended | Annotation hierarchy |
+| `circular_tree_embedding` | `similarity` | variant | similarity/recommended | Feature similarity |
+| `circular_tree_embedding` | `CAB_demo` | variant | cab_demo/recommended | CAB_demo |
 | `classified_bar_plot` | `CAB_demo` | variant | cab_demo/recommended | Horizontal classified bars |
 | `classified_bar_plot` | `vertical` | variant | vertical/recommended | Vertical classified bars |
 | `classified_bar_plot` | `basic` | demo | basic/recommended | Basic classified bars |
 | `classified_bar_plot` | `labeled` | parameter | labels | Labeled classified bars |
+| `clonal_fish_plot` | `basic` | demo | basic/recommended | Nested clone fractions |
+| `clonal_fish_plot` | `percent` | variant | percent/recommended | Clone fractions in percent |
 | `cluster_dendrogram_plot` | `basic` | demo | basic/recommended | basic |
 | `cluster_dendrogram_plot` | `colored_labels` | parameter | labels | colored_labels |
 | `cluster_dendrogram_plot` | `subset` | variant | subset/recommended | subset |
@@ -78,6 +105,10 @@ Counts: demo=67, export=2, legacy_alias=21, parameter=24, preset=2, rendering=1,
 | `dot_plot` | `dendro` | legacy_alias | marker_dot/recommended | With gene and cluster dendrograms |
 | `dynamic_venn_diagram` | `abundance` | variant | abundance/recommended | abundance |
 | `dynamic_venn_diagram` | `params` | demo | params/recommended | params |
+| `ecdf_plot` | `basic` | demo | basic/recommended | Cumulative score distributions |
+| `ecdf_plot` | `steps` | variant | steps/recommended | Empirical distribution steps |
+| `embedding_vector_plot` | `basic` | demo | basic/recommended | Supplied vector field |
+| `embedding_vector_plot` | `radial` | variant | radial/recommended | Supplied outward displacement field |
 | `exp_stat_plot` | `bar` | demo | grouped_bar/recommended | bar |
 | `exp_stat_plot` | `box_split` | parameter | marks | box_split |
 | `exp_stat_plot` | `col_flip` | demo | flipped_bar/recommended | col_flip |
@@ -98,6 +129,9 @@ Counts: demo=67, export=2, legacy_alias=21, parameter=24, preset=2, rendering=1,
 | `fgsea_enrichment_plot` | `summary` | variant | summary/recommended | summary |
 | `fgsea_enrichment_plot` | `ridge` | variant | ridge/recommended | Enrichment ridge (log2FC density) |
 | `fgsea_enrichment_plot` | `gene_sankey` | variant | gene_sankey/recommended | Gene-pathway Sankey + bubble |
+| `forest_plot` | `basic` | demo | basic/recommended | Effect estimates and confidence intervals |
+| `forest_plot` | `log_ratio` | variant | log_ratio/recommended | Ratios on a logarithmic axis |
+| `forest_plot` | `signed_effects` | variant | signed_effects/recommended | Signed differences |
 | `go_kegg_enrichment_bar_bubble` | `go_kegg` | demo | grouped_bar_dot/recommended | GO / KEGG Bar + Count Dots |
 | `group_heatmap` | `cell_heatmap` | demo | cell_heatmap/recommended | cell_heatmap |
 | `group_heatmap` | `clustered_dotplot` | demo | clustered_dotplot/recommended | clustered_dotplot |
@@ -122,6 +156,8 @@ Counts: demo=67, export=2, legacy_alias=21, parameter=24, preset=2, rendering=1,
 | `highlight_effect_plot` | `basic` | demo | basic/recommended | basic |
 | `highlight_effect_plot` | `no_collapse` | variant | no_collapse/recommended | no_collapse |
 | `highlight_effect_plot` | `summary` | variant | summary/recommended | summary |
+| `interactive_3d_scatter` | `basic` | demo | basic/recommended | Three-dimensional sample coordinates |
+| `interactive_3d_scatter` | `alternate_view` | variant | alternate_view/recommended | Alternate viewing angle |
 | `interactive_arc_network_plot` | `basic` | demo | basic/recommended | basic |
 | `interactive_arc_network_plot` | `custom` | variant | custom/recommended | custom |
 | `interactive_arc_network_plot` | `interactive` | variant | interactive/recommended | interactive |
@@ -147,6 +183,7 @@ Counts: demo=67, export=2, legacy_alias=21, parameter=24, preset=2, rendering=1,
 | `interactive_dumbbell_plot` | `interactive` | variant | interactive/recommended | interactive |
 | `interactive_enrichment_lollipop` | `basic` | demo | lollipop/recommended | basic |
 | `interactive_enrichment_lollipop` | `oct4_enrichment` | demo | oct4_enrichment/recommended | OCT4 enrichment |
+| `interactive_enrichment_lollipop` | `CAB_demo` | demo | diverging_tf/recommended | Diverging transcription factor lollipop |
 | `interactive_genomic_signal_track_plot` | `basic` | demo | basic/recommended | basic |
 | `interactive_genomic_signal_track_plot` | `custom_layout` | parameter | layout | custom_layout |
 | `interactive_genomic_signal_track_plot` | `interactive` | variant | interactive/recommended | interactive |
@@ -157,9 +194,11 @@ Counts: demo=67, export=2, legacy_alias=21, parameter=24, preset=2, rendering=1,
 | `interactive_motif_logo_plot` | `basic` | demo | basic/recommended | basic |
 | `interactive_motif_logo_plot` | `custom` | variant | custom/recommended | custom |
 | `interactive_motif_logo_plot` | `interactive` | variant | interactive/recommended | interactive |
-| `interactive_network_plot` | `manual_layout` | parameter | layout | manual_layout |
-| `interactive_network_plot` | `membership` | variant | membership/recommended | membership |
-| `interactive_network_plot` | `network` | variant | network/recommended | network |
+| `interactive_network_plot` | `network` | variant | network/recommended | Force-directed network |
+| `interactive_network_plot` | `circle` | variant | circle/recommended | Circular layout |
+| `interactive_network_plot` | `concentric` | variant | concentric/recommended | Concentric layout |
+| `interactive_network_plot` | `membership` | variant | membership/recommended | Membership radial |
+| `interactive_network_plot` | `manual_layout` | parameter | network/recommended | Manual layout |
 | `interactive_pie_plot` | `basic` | demo | basic/recommended | basic |
 | `interactive_pie_plot` | `custom_layout` | parameter | layout | custom_layout |
 | `interactive_pie_plot` | `donut` | variant | donut/recommended | donut |
@@ -186,20 +225,45 @@ Counts: demo=67, export=2, legacy_alias=21, parameter=24, preset=2, rendering=1,
 | `interactive_violin_plot` | `custom_layout` | parameter | layout | custom_layout |
 | `interactive_violin_plot` | `interactive` | variant | interactive/recommended | interactive |
 | `interactive_violin_plot` | `long` | variant | long/recommended | long |
+| `line_plot` | `basic` | demo | basic/recommended | Basic |
+| `line_plot` | `smooth` | variant | smooth/recommended | Smooth |
+| `line_plot` | `interval_band` | variant | interval_band/recommended | Supplied confidence or credible bounds |
 | `lineage_plot` | `basic` | demo | basic/recommended | basic |
 | `lineage_plot` | `single` | variant | single/recommended | single |
 | `lineage_plot` | `whiskers` | variant | whiskers/recommended | whiskers |
+| `linked_matrix_network_plot` | `basic` | demo | basic/recommended | Linked matrix and relationships |
+| `linked_matrix_network_plot` | `dot_matrix` | variant | dot_matrix/recommended | Dot matrix and relationships |
+| `manhattan_qq_plot` | `basic` | demo | basic/recommended | Association overview |
+| `manhattan_qq_plot` | `manhattan` | variant | manhattan/recommended | Genomic association signals |
+| `manhattan_qq_plot` | `qq` | variant | qq/recommended | Expected and observed probabilities |
+| `nomogram_plot` | `basic` | demo | basic/recommended | Supplied predictor point scales |
+| `nomogram_plot` | `compact` | variant | compact/recommended | Supplied total-point outcome mapping |
+| `oncoprint_plot` | `basic` | demo | basic/recommended | Multi-hit alteration matrix |
+| `oncoprint_plot` | `input_order` | variant | input_order/recommended | Input-order alteration matrix |
 | `pie_dot_matrix` | `basic` | demo | basic/recommended | basic |
 | `pie_dot_matrix` | `binary` | variant | binary/recommended | binary |
 | `pie_dot_matrix` | `correlation` | variant | correlation/recommended | correlation |
+| `protein_variant_plot` | `basic` | demo | basic/recommended | Protein variants and domains |
+| `protein_variant_plot` | `variants_only` | variant | variants_only/recommended | Variant count profile |
 | `quadrant_correlation_scatter` | `params` | demo | params/recommended | params |
+| `radviz_plot` | `basic` | demo | basic/recommended | Feature-weight wheel |
+| `radviz_plot` | `minmax` | variant | minmax/recommended | Feature-scaled wheel |
+| `raincloud_plot` | `basic` | demo | basic/recommended | Basic |
+| `raincloud_plot` | `vertical` | variant | vertical/recommended | Vertical |
 | `ranked_annotation_panel` | `params` | demo | params/recommended | params |
 | `regression_scatter_plot` | `basic` | demo | basic/recommended | basic |
 | `regression_scatter_plot` | `CAB_demo` | variant | cab_demo/recommended | CAB_demo |
+| `risk_stratification_panel` | `basic` | demo | basic/recommended | Aligned risk and follow-up |
+| `risk_stratification_panel` | `scores_only` | variant | scores_only/recommended | Scores and follow-up |
 | `sca_volcano_plot` | `avg` | variant | avg/recommended | avg |
 | `sca_volcano_plot` | `basic` | demo | basic/recommended | basic |
 | `sca_volcano_plot` | `percent` | variant | percent/recommended | percent |
 | `sca_volcano_plot` | `regions` | variant | regions/recommended | regions |
+| `sequence_alignment_plot` | `basic` | demo | basic/recommended | Aligned nucleotide sequences |
+| `sequence_alignment_plot` | `protein` | variant | protein/recommended | Aligned protein sequences |
+| `spatial_region_plot` | `basic` | demo | basic/recommended | Measured tissue regions |
+| `spatial_region_plot` | `tissue` | variant | tissue/recommended | Regions over a synthetic tissue background |
+| `spatial_region_plot` | `spots` | variant | spots/recommended | Measured spatial spots |
 | `stacked_bar_plot` | `basic` | demo | basic/recommended | basic |
 | `stacked_bar_plot` | `CAB_demo` | variant | cab_demo/recommended | CAB_demo |
 | `stacked_bar_plot` | `long` | variant | long/recommended | long |
@@ -214,8 +278,19 @@ Counts: demo=67, export=2, legacy_alias=21, parameter=24, preset=2, rendering=1,
 | `stat_plot` | `sankey` | variant | sankey/recommended | sankey |
 | `stat_plot` | `upset` | variant | upset/recommended | upset |
 | `stat_plot` | `venn` | variant | venn/recommended | venn |
+| `sunburst_plot` | `basic` | demo | basic/recommended | Basic |
+| `sunburst_plot` | `three_level` | variant | three_level/recommended | Three rings |
+| `survival_plot` | `basic` | demo | basic/recommended | Survival by cohort |
+| `survival_plot` | `conditional` | variant | conditional/recommended | Conditional survival |
+| `survival_plot` | `event_probability` | variant | event_probability/recommended | Event probability |
+| `swimmer_plot` | `basic` | demo | basic/recommended | Observation intervals and events |
+| `swimmer_plot` | `staggered` | variant | staggered/recommended | Staggered observation windows |
+| `ternary_plot` | `basic` | demo | basic/recommended | Basic |
 | `threshold_matrix_heatmap` | `params` | demo | params/recommended | params |
+| `treemap_plot` | `basic` | demo | basic/recommended | Basic |
 | `violin_plot` | `anno` | variant | anno/recommended | anno |
 | `violin_plot` | `basic` | demo | basic/recommended | basic |
 | `violin_plot` | `dot` | variant | dot/recommended | dot |
 | `violin_plot` | `matrix` | variant | matrix/recommended | matrix |
+| `waterfall_plot` | `basic` | demo | basic/recommended | Basic |
+| `waterfall_plot` | `no_total` | variant | no_total/recommended | Without total |

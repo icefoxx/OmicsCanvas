@@ -1,0 +1,7 @@
+{
+  "value_column": "value",
+  "group_column": "group",
+  "title": "Empirical distribution steps",
+  "confidence_show": false,
+  "stat_method": "ks"
+}

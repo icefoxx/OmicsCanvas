@@ -12,10 +12,12 @@ from fastapi.responses import FileResponse, JSONResponse
 
 from plot_web.server.plugins import plugin_config_path, plugin_path, read_yaml
 from plot_web.server.runner import build_command, run_local_job
-from plot_web.server.settings import JOBS_DIR, REPORTS_DIR, RESULTS_DIR
+from plot_web.server.render_tasks import ready_preview
+from plot_web.server.settings import JOBS_DIR, REPORTS_DIR, RESULTS_DIR, ROOT_DIR
 from plot_web.server.storage import (
     ensure_storage,
     figure_to_job,
+    figure_view_file,
     list_jobs,
     load_job,
     output_file_for_type,
@@ -30,7 +32,24 @@ router = APIRouter()
 
 @router.get("/api/jobs/{job_id}")
 def get_job(job_id: str) -> dict[str, Any]:
-    return load_job(job_id)
+    job = load_job(job_id)
+    if job.get("status") == "running":
+        preview = ready_preview(Path(job["output_dir"]))
+        if preview:
+            job["live_preview"] = f"/api/jobs/{job_id}/preview?kind={preview.suffix[1:]}"
+            job["phase"] = "exporting"
+    return job
+
+
+@router.get("/api/jobs/{job_id}/preview")
+def job_preview(job_id: str, kind: str | None = None) -> FileResponse:
+    job = load_job(job_id)
+    if job.get("status") not in {"running", "completed"}:
+        raise HTTPException(status_code=404, detail="Preview is not ready")
+    path = ready_preview(Path(job["output_dir"]), kind)
+    if path is None:
+        raise HTTPException(status_code=404, detail="Preview is not ready")
+    return FileResponse(path, media_type="image/png" if path.suffix == ".png" else "image/svg+xml")
 
 
 @router.get("/api/results")
@@ -148,6 +167,26 @@ def preview_figure(figure_id: str) -> FileResponse:
     return FileResponse(path, media_type="image/png")
 
 
+@router.get("/api/figures/{figure_id}/view/{rel_path:path}")
+def view_figure_asset(figure_id: str, rel_path: str) -> FileResponse:
+    """Serve result.html and its result_files/ so the visNetwork widget can load."""
+    job = figure_to_job(figure_id)
+    path = figure_view_file(Path(job["output_dir"]), rel_path)
+    media = {
+        ".html": "text/html",
+        ".js": "text/javascript",
+        ".css": "text/css",
+        ".json": "application/json",
+        ".png": "image/png",
+        ".svg": "image/svg+xml",
+        ".woff": "font/woff",
+        ".woff2": "font/woff2",
+    }.get(path.suffix.lower())
+    # Inline: filename= would set Content-Disposition: attachment and the browser
+    # downloads the widget instead of rendering it in the canvas iframe.
+    return FileResponse(path, media_type=media, content_disposition_type="inline")
+
+
 @router.get("/api/figures/{figure_id}/download/{file_type}")
 def download_figure(figure_id: str, file_type: str) -> FileResponse:
     job = figure_to_job(figure_id)
@@ -163,5 +202,51 @@ def download_figure(figure_id: str, file_type: str) -> FileResponse:
         "plotspec": "application/json",
         "validation": "application/json",
         "log": "text/plain",
+        "html": "text/html",
     }.get(file_type, "text/csv")
     return FileResponse(path, media_type=media_type, filename=path.name)
+
+
+def _editor_inputs(job: dict[str, Any]) -> dict[str, Path]:
+    config = read_yaml(plugin_config_path(job['plugin_id']))
+    saved = job.get('uploaded_files') or {}
+    paths = {}
+    for definition in config.get('inputs') or []:
+        field = definition.get('id') or definition.get('name') or 'input'
+        value = saved.get(field) or (saved.get('file') if field == 'input' else None)
+        if not value:
+            continue
+        path = Path(value).resolve()
+        if not path.is_relative_to(ROOT_DIR.resolve()) or not path.is_file():
+            raise HTTPException(status_code=404, detail='Saved input is unavailable')
+        paths[field] = path
+    return paths
+
+
+@router.get('/api/jobs/{job_id}/editor')
+def editor_handoff(job_id: str) -> dict[str, Any]:
+    from plot_web.server.tables import preview_table
+    from urllib.parse import quote
+    job = load_job(job_id)
+    files = _editor_inputs(job)
+    previews = {}
+    for field, path in files.items():
+        record = {'filename': path.name}
+        if path.suffix.lower() in {'.csv', '.tsv', '.txt', '.xlsx', '.xlsm', '.xls'}:
+            record.update(preview_table(path))
+        previews[field] = record
+    params = json.loads(Path(job['params_path']).read_text(encoding='utf-8'))
+    return {'job_id': job_id, 'plugin_id': job['plugin_id'], 'status': job.get('status'),
+            'params': params, 'ai': job.get('ai'), 'vnext': job.get('vnext'),
+            'outputs': job.get('outputs') or {},
+            'input_preview': {'plugin_id': job['plugin_id'], 'files': previews},
+            'inputs': {field: {'filename': path.name, 'url': f'/api/jobs/{quote(job_id)}/inputs/{quote(field)}'}
+                       for field, path in files.items()}}
+
+
+@router.get('/api/jobs/{job_id}/inputs/{field}')
+def editor_input_file(job_id: str, field: str) -> FileResponse:
+    files = _editor_inputs(load_job(job_id))
+    if field not in files:
+        raise HTTPException(status_code=404, detail='Saved input not found')
+    return FileResponse(files[field], filename=files[field].name)

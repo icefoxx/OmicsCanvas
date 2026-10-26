@@ -1,0 +1,7 @@
+{
+  "x_column": "PC1",
+  "y_column": "PC2",
+  "z_column": "PC3",
+  "group_column": "group",
+  "title": "Three-dimensional sample coordinates"
+}

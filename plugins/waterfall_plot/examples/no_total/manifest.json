@@ -1,0 +1,11 @@
+{
+  "id": "no_total",
+  "label": "Without total",
+  "plugin_id": "waterfall_plot",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/waterfall_plot/plot.R --input plugins/waterfall_plot/examples/no_total/input/example_input.csv --params plugins/waterfall_plot/examples/no_total/params.json --output /tmp/waterfall_plot_no_total"
+  }
+}

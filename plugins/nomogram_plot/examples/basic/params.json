@@ -1,0 +1,6 @@
+{
+  "group_column": "scale",
+  "position_column": "position",
+  "label_column": "label",
+  "title": "Supplied predictor point scales"
+}

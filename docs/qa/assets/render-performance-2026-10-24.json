@@ -1,0 +1,146 @@
+[
+  {
+    "plugin": "ternary_plot",
+    "iteration": 1,
+    "status": "completed",
+    "cache": {
+      "enabled": true,
+      "hit": false
+    },
+    "accept_seconds": 0.028,
+    "preview_seconds": 6.531,
+    "total_seconds": 8.45,
+    "timings": {
+      "validation_seconds": 0.4577,
+      "fingerprint_seconds": 0.3751,
+      "total_seconds": 8.3745
+    },
+    "job_id": "job_demo_20261024_225510_e35f4175"
+  },
+  {
+    "plugin": "ternary_plot",
+    "iteration": 2,
+    "status": "completed",
+    "cache": {
+      "enabled": true,
+      "hit": true,
+      "source_job_id": "job_demo_20261024_225510_e35f4175"
+    },
+    "accept_seconds": 0.058,
+    "preview_seconds": null,
+    "total_seconds": 0.82,
+    "timings": {
+      "validation_seconds": 0.4163,
+      "fingerprint_seconds": 0.2588,
+      "total_seconds": 0.7102
+    },
+    "job_id": "job_demo_20261024_225518_8cbdeb27"
+  },
+  {
+    "plugin": "sca_volcano_plot",
+    "iteration": 1,
+    "status": "completed",
+    "cache": {
+      "enabled": true,
+      "hit": false
+    },
+    "accept_seconds": 0.018,
+    "preview_seconds": 9.661,
+    "total_seconds": 14.026,
+    "timings": {
+      "validation_seconds": 0.373,
+      "fingerprint_seconds": 0.2688,
+      "total_seconds": 13.9125
+    },
+    "job_id": "job_demo_20261024_225519_f31c61c6"
+  },
+  {
+    "plugin": "sca_volcano_plot",
+    "iteration": 2,
+    "status": "completed",
+    "cache": {
+      "enabled": true,
+      "hit": true,
+      "source_job_id": "job_demo_20261024_225519_f31c61c6"
+    },
+    "accept_seconds": 0.007,
+    "preview_seconds": null,
+    "total_seconds": 0.223,
+    "timings": {
+      "validation_seconds": 0.0761,
+      "fingerprint_seconds": 0.07,
+      "total_seconds": 0.1581
+    },
+    "job_id": "job_demo_20261024_225533_a6c8a427"
+  },
+  {
+    "plugin": "group_heatmap",
+    "iteration": 1,
+    "status": "completed",
+    "cache": {
+      "enabled": true,
+      "hit": false
+    },
+    "accept_seconds": 0.006,
+    "preview_seconds": 14.875,
+    "total_seconds": 15.641,
+    "timings": {
+      "validation_seconds": 0.079,
+      "fingerprint_seconds": 0.0749,
+      "total_seconds": 15.5527
+    },
+    "job_id": "job_demo_20261024_225534_058e89bf"
+  },
+  {
+    "plugin": "group_heatmap",
+    "iteration": 2,
+    "status": "completed",
+    "cache": {
+      "enabled": true,
+      "hit": true,
+      "source_job_id": "job_demo_20261024_225534_058e89bf"
+    },
+    "accept_seconds": 0.007,
+    "preview_seconds": null,
+    "total_seconds": 0.231,
+    "timings": {
+      "validation_seconds": 0.0755,
+      "fingerprint_seconds": 0.076,
+      "total_seconds": 0.1674
+    },
+    "job_id": "job_demo_20261024_225549_db772c50"
+  },
+  {
+    "plugin": "interactive_network_plot",
+    "iteration": 1,
+    "status": "completed",
+    "cache": {
+      "enabled": true,
+      "hit": false
+    },
+    "accept_seconds": 0.007,
+    "preview_seconds": 3.506,
+    "total_seconds": 4.625,
+    "timings": null,
+    "job_id": "job_demo_20261024_225550_8afc169b"
+  },
+  {
+    "plugin": "interactive_network_plot",
+    "iteration": 2,
+    "status": "completed",
+    "cache": {
+      "enabled": true,
+      "hit": true,
+      "source_job_id": "job_demo_20261024_225550_8afc169b"
+    },
+    "accept_seconds": 0.009,
+    "preview_seconds": null,
+    "total_seconds": 0.232,
+    "timings": {
+      "validation_seconds": 0.0758,
+      "fingerprint_seconds": 0.0703,
+      "total_seconds": 0.1801
+    },
+    "job_id": "job_demo_20261024_225554_5126e3a6"
+  }
+]

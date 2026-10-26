@@ -1,0 +1,36 @@
+{
+  "plugin_id": "spatial_region_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Measured tissue regions",
+      "plugin_id": "spatial_region_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "tissue",
+      "label": "Regions over a synthetic tissue background",
+      "plugin_id": "spatial_region_plot",
+      "params": "tissue/params.json",
+      "inputs": {
+        "input": "tissue/input/data.csv",
+        "image": "tissue/input/tissue.png"
+      },
+      "expected": "tissue/expected/result.png"
+    },
+    {
+      "id": "spots",
+      "label": "Measured spatial spots",
+      "plugin_id": "spatial_region_plot",
+      "inputs": {
+        "input": "spots/input/data.csv"
+      },
+      "params": "spots/params.json",
+      "expected": "spots/expected/result.png"
+    }
+  ]
+}

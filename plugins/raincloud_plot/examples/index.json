@@ -1,0 +1,23 @@
+{
+  "plugin_id": "raincloud_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Basic",
+      "plugin_id": "raincloud_plot",
+      "params": "basic/params.json",
+      "inputs": {"input": "basic/input/example_input.csv"},
+      "expected": "basic/expected/result.png",
+      "bundle": "basic"
+    },
+    {
+      "id": "vertical",
+      "label": "Vertical",
+      "plugin_id": "raincloud_plot",
+      "params": "vertical/params.json",
+      "inputs": {"input": "vertical/input/example_input.csv"},
+      "expected": "vertical/expected/result.png",
+      "bundle": "vertical"
+    }
+  ]
+}

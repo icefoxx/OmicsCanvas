@@ -64,6 +64,7 @@ parameter_groups:
 data_roles:
   - x
   - y
+  - z
   - x_embedding
   - y_embedding
   - group

@@ -1,0 +1,25 @@
+{
+  "input_mode": "edge_list",
+  "source_column": "source",
+  "target_column": "target",
+  "weight_column": "weight",
+  "layout_algorithm": "circle",
+  "layout_sort": "degree",
+  "node_size_by": "degree",
+  "node_color_mode": "group",
+  "edge_weighted": true,
+  "edge_style": "arc",
+  "directed": false,
+  "interactive": true,
+  "drag_nodes": true,
+  "physics_enabled": false,
+  "title": "Degree-sorted circular signaling network",
+  "group_colors": {
+    "Core": "#4477AA",
+    "Signal": "#EE6677",
+    "Metabolic": "#228833"
+  },
+  "save_positions": true,
+  "width": 8,
+  "height": 6.5
+}

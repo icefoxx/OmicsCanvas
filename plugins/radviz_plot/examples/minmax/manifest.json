@@ -1,0 +1,10 @@
+{
+  "id": "minmax",
+  "label": "Feature-scaled wheel",
+  "plugin_id": "radviz_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

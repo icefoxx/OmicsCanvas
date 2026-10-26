@@ -1,0 +1,51 @@
+{
+  "data_mapping": {
+    "value_column": {"type": "column", "label": "Value column", "default": "value", "help": "Numeric values whose distribution is drawn."},
+    "group_column": {"type": "column", "label": "Group column", "default": "group", "help": "Categorical groups; empty = one group."},
+    "groups_include": {"type": "string_array", "label": "Groups to keep", "default": []},
+    "groups_exclude": {"type": "string_array", "label": "Groups to drop", "default": []},
+    "group_order": {"type": "string_array", "label": "Group order", "default": []}
+  },
+  "marks": {
+    "orientation": {"type": "select", "label": "Orientation", "default": "horizontal", "options": ["horizontal", "vertical"]},
+    "violin_show": {"type": "boolean", "label": "Half violin", "default": true},
+    "violin_width": {"type": "number", "label": "Violin width", "default": 0.9, "min": 0.1, "max": 2, "step": 0.05},
+    "violin_alpha": {"type": "number", "label": "Violin opacity", "default": 0.7, "min": 0, "max": 1, "step": 0.05},
+    "box_show": {"type": "boolean", "label": "Box overlay", "default": true},
+    "box_width": {"type": "number", "label": "Box width", "default": 0.18, "min": 0.02, "max": 0.6, "step": 0.02},
+    "point_show": {"type": "boolean", "label": "Jittered points", "default": true},
+    "point_size": {"type": "number", "label": "Point size", "default": 1.4, "min": 0.1, "max": 6, "step": 0.1},
+    "point_alpha": {"type": "number", "label": "Point opacity", "default": 0.45, "min": 0, "max": 1, "step": 0.05},
+    "point_jitter": {"type": "number", "label": "Point jitter width", "default": 0.08, "min": 0, "max": 0.4, "step": 0.01}
+  },
+  "colors": {
+    "palette": {"type": "select", "label": "Palette", "default": "Set 2", "options": ["Set 2", "Dark 3", "Viridis", "Zissou 1"]},
+    "group_colors": {"type": "object", "label": "Colour per group", "default": {}, "help": "{\"group\": \"#hex\"}; overrides the palette."}
+  },
+  "labels": {
+    "title": {"type": "string", "label": "Title", "default": ""},
+    "subtitle": {"type": "string", "label": "Subtitle", "default": ""},
+    "xlab": {"type": "string", "label": "X axis title", "default": "", "help": "Empty = column name."},
+    "ylab": {"type": "string", "label": "Y axis title", "default": "", "help": "Empty = column name."},
+    "title_size": {"type": "number", "label": "Title size", "default": 13},
+    "axis_label_size": {"type": "number", "label": "Axis title size", "default": 11},
+    "x_axis_text_angle": {"type": "number", "label": "X tick label angle", "default": 0}
+  },
+  "legend": {
+    "legend_show": {"type": "boolean", "label": "Show legend", "default": true},
+    "legend_position": {"type": "select", "label": "Legend position", "default": "right", "options": ["right", "bottom", "top", "left"]},
+    "legend_title": {"type": "string", "label": "Legend title", "default": "", "help": "Empty = group column name."},
+    "legend_text_size": {"type": "number", "label": "Legend text size", "default": 9}
+  },
+  "theme": {
+    "font_family": {"type": "string", "label": "Font family", "default": "sans"},
+    "base_size": {"type": "number", "label": "Base font size", "default": 11},
+    "panel_border_show": {"type": "boolean", "label": "Panel border", "default": false},
+    "grid_show": {"type": "boolean", "label": "Grid lines", "default": false}
+  },
+  "export": {
+    "width": {"type": "number", "label": "Width (in)", "default": 7},
+    "height": {"type": "number", "label": "Height (in)", "default": 5},
+    "dpi": {"type": "number", "label": "PNG dpi", "default": 300}
+  }
+}

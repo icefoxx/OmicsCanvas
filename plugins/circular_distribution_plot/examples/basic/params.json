@@ -1,0 +1,10 @@
+{
+  "value_column": "score",
+  "feature_column": "metric",
+  "group_column": "group",
+  "id_column": "id",
+  "title": "Scores across reference groups",
+  "highlight_ids": [
+    "Target"
+  ]
+}

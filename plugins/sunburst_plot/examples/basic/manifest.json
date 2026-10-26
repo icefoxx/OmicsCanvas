@@ -1,0 +1,11 @@
+{
+  "id": "basic",
+  "label": "Basic",
+  "plugin_id": "sunburst_plot",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/sunburst_plot/plot.R --input plugins/sunburst_plot/examples/basic/input/example_input.csv --params plugins/sunburst_plot/examples/basic/params.json --output /tmp/sunburst_plot_basic"
+  }
+}

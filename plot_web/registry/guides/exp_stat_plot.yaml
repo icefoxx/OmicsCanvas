@@ -1,0 +1,92 @@
+summary: Compare feature-expression summaries or distributions using bars, boxes,
+  violins and related views.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare within-group expression distributions
+- Split expression by condition
+- Emphasize a target feature or population
+common_uses: []
+input_requirements: Observation metadata and an expression matrix with aligned IDs.
+learn_more: 'Input: Observation metadata and an expression matrix with aligned IDs.
+  Interpretation: Interpret the active geometry as a mean, quantiles or a distribution
+  rather than reusing one reading for every mode. Check mappings, order and transformations
+  before adjusting labels, colors and canvas dimensions. Confirm legends and units
+  before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Interpret the active geometry as a mean, quantiles or a distribution rather
+    than reusing one reading for every mode.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Cells are not independent biological replicates
+- id: caution_2
+  title: Caution 2
+  text: State the error definition and statistical test explicitly
+examples:
+- id: bar
+  title: Expression summary bars
+  description: 'Use case: Compare within-group expression distributions. This preset
+    illustrates expression summary bars. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: bar
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare within-group expression distributions
+  input_requirements: Observation metadata and an expression matrix with aligned IDs.
+  preview_asset: plugins/exp_stat_plot/all_examples_gallery/bar.png
+  variant_id: grouped_bar
+  mappings:
+    id_column: cell
+    group_column: cluster
+    split_column: condition
+    stat_columns:
+    - percent_top50
+- id: box_split
+  title: Condition-split expression distributions
+  description: 'Use case: Split expression by condition. This preset illustrates condition-split
+    expression distributions. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: box_split
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Split expression by condition
+  input_requirements: Observation metadata and an expression matrix with aligned IDs.
+  preview_asset: plugins/exp_stat_plot/all_examples_gallery/box_split.png
+  mappings:
+    id_column: cell
+    group_column: condition
+    split_column: cluster
+    stat_columns:
+    - module_score
+    - mito_percent
+- id: violin
+  title: Expression-distribution shapes
+  description: 'Use case: Emphasize a target feature or population. This preset illustrates
+    expression-distribution shapes. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: violin
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Emphasize a target feature or population
+  input_requirements: Observation metadata and an expression matrix with aligned IDs.
+  preview_asset: plugins/exp_stat_plot/all_examples_gallery/violin.png
+  mappings:
+    id_column: cell
+    group_column: cluster
+    split_column: condition
+    stat_columns:
+    - CD3D
+    - MS4A1
+literature_ids:
+- chen_ibd_2025
+- sanchez_wheat_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  grouped_bar:
+    summary: Compare group statistics as bars, with optional trend and reference lines.
+  flipped_bar:
+    summary: Stacked columns rotated for long labels or many categories.
+customization: []

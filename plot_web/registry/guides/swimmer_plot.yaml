@@ -1,0 +1,170 @@
+summary: Show observation intervals and dated events for individual subjects.
+observation_type: observations or supplied summaries described in the input contract
+input_requirements: One unique subject per start/end interval with end >= start. Optional
+  events CSV has subject, time and event; events must fall within their subject interval.
+best_for:
+- Summarize individual follow-up intervals
+- Overlay dated treatment or response events
+- Compare staggered observation windows
+learn_more: Choose the intended data mapping and statistical mode before styling.
+  An interval endpoint marker does not identify progression, death or censoring unless
+  the event table explicitly encodes it.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Show observation intervals and dated events for individual subjects. One unique
+    subject per start/end interval with end >= start. Optional events CSV has subject,
+    time and event; events must fall within their subject interval.
+cautions:
+- id: caution_1
+  title: Interpretation limit 1
+  text: An interval endpoint marker does not identify progression, death or censoring
+    unless the event table explicitly encodes it.
+- id: caution_2
+  title: Interpretation limit 2
+  text: Intervals are supplied observations; no treatment effect or survival model
+    is inferred.
+examples:
+- id: basic
+  title: Observation intervals and events
+  description: Summarize individual follow-up intervals
+  scenario: Summarize individual follow-up intervals
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/swimmer_plot/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    id_column: subject
+    start_column: start
+    end_column: end
+    group_column: group
+- id: staggered
+  title: Staggered observation windows
+  description: Overlay dated treatment or response events
+  scenario: Overlay dated treatment or response events
+  demo_id: staggered
+  variant_id: staggered
+  preview_asset: plugins/swimmer_plot/all_examples_gallery/staggered.png
+  data_note: Independent synthetic demonstration, not original publication data.
+  mappings:
+    id_column: subject
+    start_column: start
+    end_column: end
+    group_column: group
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source. Local demos use independently
+  generated data and are not reproductions of its analyses.
+- Additional verified published figure/panel examples remain to be curated.
+customization:
+- parameter: id_column
+  label: Id column
+  default: subject
+  help: ''
+- parameter: start_column
+  label: Start column
+  default: start
+  help: ''
+- parameter: end_column
+  label: End column
+  default: end
+  help: ''
+- parameter: group_column
+  label: Group column
+  default: group
+  help: ''
+- parameter: sort_by
+  label: Sort by
+  default: duration
+  help: ''
+- parameter: bar_width
+  label: Bar width
+  default: 3
+  help: ''
+- parameter: end_marker_show
+  label: End marker show
+  default: true
+  help: ''
+- parameter: event_size
+  label: Event size
+  default: 3
+  help: Only when an events table is supplied.
+- parameter: point_size
+  label: Point size
+  default: 2
+  help: ''
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: grid_show
+  label: Grid show
+  default: false
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report input mappings, units, preprocessing and all
+    selected statistical or display modes.'
+source_modules:
+- title: FigureYa186swimmerplot
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa186swimmerplot
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

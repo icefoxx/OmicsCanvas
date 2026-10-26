@@ -1,0 +1,31 @@
+id: circular_tree_embedding
+name: Circular Tree + Embedding
+version: 1.0.0
+description: Link a radial cell-type hierarchy to a central embedding with matched
+  annotation colors.
+language: R
+entrypoint: plot.R
+category: Dimension
+subcategory: Embedding
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+- annotation_used.csv
+- tree_edges_used.csv
+- profiles_used.csv
+runtime:
+  command: Rscript plugins/circular_tree_embedding/plot.R --input input.csv --params
+    params.json --output output_dir

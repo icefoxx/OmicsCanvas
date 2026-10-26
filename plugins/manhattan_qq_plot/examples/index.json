@@ -1,0 +1,35 @@
+{
+  "plugin_id": "manhattan_qq_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Association overview",
+      "plugin_id": "manhattan_qq_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "manhattan",
+      "label": "Genomic association signals",
+      "plugin_id": "manhattan_qq_plot",
+      "params": "manhattan/params.json",
+      "inputs": {
+        "input": "manhattan/input/data.csv"
+      },
+      "expected": "manhattan/expected/result.png"
+    },
+    {
+      "id": "qq",
+      "label": "Expected and observed probabilities",
+      "plugin_id": "manhattan_qq_plot",
+      "params": "qq/params.json",
+      "inputs": {
+        "input": "qq/input/data.csv"
+      },
+      "expected": "qq/expected/result.png"
+    }
+  ]
+}

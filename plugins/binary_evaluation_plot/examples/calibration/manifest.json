@@ -1,0 +1,10 @@
+{
+  "id": "calibration",
+  "label": "Probability calibration",
+  "plugin_id": "binary_evaluation_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

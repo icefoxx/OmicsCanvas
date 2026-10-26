@@ -1,0 +1,45 @@
+{
+  "data_mapping": {
+    "a_column": {"type": "column", "label": "A vertex column", "default": "a", "help": "Non-negative share or count for vertex A (top)."},
+    "b_column": {"type": "column", "label": "B vertex column", "default": "b", "help": "Non-negative share or count for vertex B (bottom left)."},
+    "c_column": {"type": "column", "label": "C vertex column", "default": "c", "help": "Non-negative share or count for vertex C (bottom right)."},
+    "group_column": {"type": "column", "label": "Group column", "default": "group"},
+    "size_column": {"type": "column", "label": "Size column", "default": "", "help": "Optional point size mapping. Empty = point_size only."},
+    "groups_include": {"type": "string_array", "label": "Groups to keep", "default": []},
+    "groups_exclude": {"type": "string_array", "label": "Groups to drop", "default": []},
+    "group_order": {"type": "string_array", "label": "Group order", "default": []}
+  },
+  "marks": {
+    "point_size": {"type": "number", "label": "Point size", "default": 2.5, "min": 0.2, "max": 10, "step": 0.1},
+    "point_alpha": {"type": "number", "label": "Point opacity", "default": 0.85, "min": 0, "max": 1, "step": 0.05},
+    "grid_show": {"type": "boolean", "label": "Ternary grid", "default": true},
+    "vertex_label_size": {"type": "number", "label": "Vertex label size", "default": 11}
+  },
+  "colors": {
+    "palette": {"type": "select", "label": "Palette", "default": "Set 2", "options": ["Set 2", "Dark 3", "Viridis", "Zissou 1"]},
+    "group_colors": {"type": "object", "label": "Colour per group", "default": {}}
+  },
+  "labels": {
+    "title": {"type": "string", "label": "Title", "default": ""},
+    "subtitle": {"type": "string", "label": "Subtitle", "default": ""},
+    "a_label": {"type": "string", "label": "A vertex label", "default": "", "help": "Empty = column name."},
+    "b_label": {"type": "string", "label": "B vertex label", "default": ""},
+    "c_label": {"type": "string", "label": "C vertex label", "default": ""},
+    "title_size": {"type": "number", "label": "Title size", "default": 13}
+  },
+  "legend": {
+    "legend_show": {"type": "boolean", "label": "Show legend", "default": true},
+    "legend_position": {"type": "select", "label": "Legend position", "default": "right", "options": ["right", "bottom", "top", "left"]},
+    "legend_title": {"type": "string", "label": "Legend title", "default": ""},
+    "legend_text_size": {"type": "number", "label": "Legend text size", "default": 9}
+  },
+  "theme": {
+    "font_family": {"type": "string", "label": "Font family", "default": "sans"},
+    "base_size": {"type": "number", "label": "Base font size", "default": 11}
+  },
+  "export": {
+    "width": {"type": "number", "label": "Width (in)", "default": 6.5},
+    "height": {"type": "number", "label": "Height (in)", "default": 6},
+    "dpi": {"type": "number", "label": "PNG dpi", "default": 300}
+  }
+}

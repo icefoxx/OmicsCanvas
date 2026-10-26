@@ -1,0 +1,52 @@
+[
+  {
+    "plugin": "binary_evaluation_plot",
+    "mode": "calibration",
+    "parameter": "calibration_bins",
+    "value": 16,
+    "rendered": true,
+    "image_changed": true,
+    "baseline": "/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/ai_mode_checks_ivwnyg2r/calibration_bins/base/out/result.png",
+    "changed": "/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/ai_mode_checks_ivwnyg2r/calibration_bins/changed/out/result.png"
+  },
+  {
+    "plugin": "binary_evaluation_plot",
+    "mode": "calibration",
+    "parameter": "point_size",
+    "value": 4,
+    "rendered": true,
+    "image_changed": true,
+    "baseline": "/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/ai_mode_checks_ivwnyg2r/point_size/base/out/result.png",
+    "changed": "/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/ai_mode_checks_ivwnyg2r/point_size/changed/out/result.png"
+  },
+  {
+    "plugin": "binary_evaluation_plot",
+    "mode": "decision_curve",
+    "parameter": "threshold_min",
+    "value": 0.02,
+    "rendered": true,
+    "image_changed": true,
+    "baseline": "/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/ai_mode_checks_ivwnyg2r/threshold_min/base/out/result.png",
+    "changed": "/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/ai_mode_checks_ivwnyg2r/threshold_min/changed/out/result.png"
+  },
+  {
+    "plugin": "binary_evaluation_plot",
+    "mode": "decision_curve",
+    "parameter": "threshold_max",
+    "value": 0.95,
+    "rendered": true,
+    "image_changed": true,
+    "baseline": "/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/ai_mode_checks_ivwnyg2r/threshold_max/base/out/result.png",
+    "changed": "/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/ai_mode_checks_ivwnyg2r/threshold_max/changed/out/result.png"
+  },
+  {
+    "plugin": "circular_distribution_plot",
+    "mode": "facets",
+    "parameter": "ncol",
+    "value": 1,
+    "rendered": true,
+    "image_changed": true,
+    "baseline": "/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/ai_mode_checks_ivwnyg2r/ncol/base/out/result.png",
+    "changed": "/var/folders/tx/jsdljyxd3fj7jz6y8k9bkbw40000gq/T/ai_mode_checks_ivwnyg2r/ncol/changed/out/result.png"
+  }
+]

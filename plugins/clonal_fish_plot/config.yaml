@@ -1,0 +1,28 @@
+id: clonal_fish_plot
+name: Clonal Evolution
+version: 1.0.0
+description: Show supplied nested clone fractions across time.
+language: R
+entrypoint: plot.R
+category: Composition
+subcategory: Flow
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+- clone_hierarchy_used.csv
+runtime:
+  command: Rscript plugins/clonal_fish_plot/plot.R --input input.csv --params params.json
+    --output output_dir

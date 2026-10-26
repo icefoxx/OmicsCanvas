@@ -1,0 +1,12 @@
+{
+  "value_column": "score",
+  "feature_column": "metric",
+  "group_column": "group",
+  "id_column": "id",
+  "title": "Scores on a common scale",
+  "range_mode": "shared",
+  "highlight_ids": [
+    "Target"
+  ],
+  "ncol": 2
+}

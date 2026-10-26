@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 from plot_web.app import list_plot_styles
 from plot_web.plot_registry import (
     browse_categories,
@@ -27,6 +29,25 @@ def test_every_plugin_is_registered():
     missing = [e for e in result["errors"] if e["code"] == "PLUGIN_NOT_IN_REGISTRY"]
     assert missing == [], missing
     assert result["valid"] or all(e["code"] != "DUPLICATE_ID" for e in result["errors"])
+
+
+def test_rebuild_keeps_previous_registry_readable_until_publish(tmp_path, monkeypatch):
+    from plot_web import plot_registry
+    from plot_web.server import storage
+    target = tmp_path / "registry.json"
+    target.write_text(json.dumps({"plots": [], "generation": "old"}))
+    monkeypatch.setattr(plot_registry, "GENERATED_PATH", target)
+    monkeypatch.setattr(plot_registry, "build_registry", lambda: {"plots": [], "generation": "new"})
+    replace = storage.os.replace
+    observed = []
+    def publish(staged, destination):
+        observed.append(json.loads(target.read_text())["generation"])
+        assert json.loads(staged.read_text())["generation"] == "new"
+        replace(staged, destination)
+    monkeypatch.setattr(storage.os, "replace", publish)
+    plot_registry.load_registry(rebuild=True)
+    assert observed == ["old"]
+    assert json.loads(target.read_text())["generation"] == "new"
 
 
 def test_umap_reference_family():

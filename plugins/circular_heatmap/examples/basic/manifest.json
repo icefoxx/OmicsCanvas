@@ -1,0 +1,11 @@
+{
+  "id": "basic",
+  "label": "Basic",
+  "plugin_id": "circular_heatmap",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/circular_heatmap/plot.R --input plugins/circular_heatmap/examples/basic/input/example_input.csv --params plugins/circular_heatmap/examples/basic/params.json --output /tmp/circular_heatmap_basic"
+  }
+}

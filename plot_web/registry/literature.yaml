@@ -1,34 +1,1962 @@
-# Curated literature. Do not add entries without a real citation.
-# Never set thumbnail_reuse_allowed true unless reuse rights are verified.
 entries:
-  - id: umap_mcinnes_2018
-    title: "UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction"
-    authors: "McInnes L, Healy J, Melville J"
-    citation: "McInnes L, Healy J, Melville J. UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction. arXiv:1802.03426, 2018."
-    journal: arXiv
-    year: 2018
-    doi: ""
-    url: "https://arxiv.org/abs/1802.03426"
-    figure: ""
-    license: "arXiv preprint (see paper for terms)"
-    thumbnail_reuse_allowed: false
-    description: "Introduces UMAP as a neighborhood-preserving dimension-reduction method used for 2D embeddings."
-    relevance: "Primary method paper for the UMAP embedding shown by this plot family."
-    use_case: [cell_clustering]
-    plot_families: [umap_tsne]
-
-  - id: umap_becht_2019
-    title: "Dimensionality reduction for visualizing single-cell data using UMAP"
-    authors: "Becht E, McInnes L, Healy J, Dutertre CA, Kwok IWH, Ng LG, Ginhoux F, Newell EW"
-    citation: "Becht E et al. Dimensionality reduction for visualizing single-cell data using UMAP. Nat Biotechnol. 2019;37:38–44."
-    journal: Nature Biotechnology
-    year: 2019
-    doi: "10.1038/nbt.4314"
-    url: "https://doi.org/10.1038/nbt.4314"
-    figure: ""
-    license: "Publisher terms; figure reuse not asserted"
-    thumbnail_reuse_allowed: false
-    description: "Shows UMAP for visualizing single-cell populations compared with t-SNE."
-    relevance: "Published single-cell use of UMAP for cluster and cell-type overview, without copying journal figures."
-    use_case: [cell_clustering, sample_comparison]
-    plot_families: [umap_tsne]
+- id: hao_dnt_2026
+  title: A pan-cancer single cell landscape reveals heterogeneity and functional diversity
+    of double-negative T cells
+  authors: Hao Q, Zhou T, Yan H, et al.
+  citation: Hao Q, Zhou T, Yan H, et al. A pan-cancer single cell landscape reveals
+    heterogeneity and functional diversity of double-negative T cells. Molecular Cancer.
+    2026;25:24.
+  journal: Molecular Cancer
+  year: 2026
+  doi: 10.1186/s12943-025-02548-8
+  url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+  figure: Figure 6L
+  license: 'Article: CC BY-NC-ND 4.0; original figure not reproduced here.'
+  thumbnail_reuse_allowed: false
+  description: Profiles double-negative T-cell states across cancers.
+  relevance: The panels below illustrate different ways to display cell states, marker
+    evidence and comparisons.
+  use_case:
+  - single_cell
+  - differential_expression
+  - ranking
+  plot_families:
+  - enrichment_lollipop
+  - umap_tsne
+  - feature_embedding
+  - dot_plot
+  - stacked_bar_plot
+  - stat_plot
+  - interactive_radar_plot
+  - hierarchical_marker_panel
+  - interactive_pie_plot
+  - balloon_plot
+  - grouped_heatmap
+  - interactive_clustered_heatmap_plot
+  - threshold_matrix_heatmap
+  - classified_bar_plot
+  - go_kegg_enrichment_bar_bubble
+  - upset
+  - line_plot
+  - trajectory
+  - quadrant_correlation_scatter
+  - regression_scatter_plot
+  - highlight_effect_plot
+  reference_type: published_use_case
+  figure_examples:
+  - id: hao_dnt_2026_panel_1
+    figure: Figure 1B
+    title: Annotated T-cell embedding
+    description: Cell-type labels on UMAP.
+    plot_families:
+    - umap_tsne
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/1
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Supply embedding coordinates and cell annotations; the renderer does
+      not integrate datasets.
+  - id: hao_dnt_2026_panel_2
+    figure: Figure 1C
+    title: Marker expression on UMAP
+    description: Marker values on the embedding.
+    plot_families:
+    - feature_embedding
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/1
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use the same coordinates for feature maps; state expression transformations.
+  - id: hao_dnt_2026_panel_3
+    figure: Figure 1D
+    title: Marker evidence across populations
+    description: Marker means and detection fractions.
+    plot_families:
+    - dot_plot
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/1
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Provide group-level means and fractions or a compatible expression
+      matrix.
+  - id: hao_dnt_2026_panel_4
+    figure: Figure 1F
+    title: DNT composition across samples
+    description: Stacked cell-type proportions.
+    plot_families:
+    - stacked_bar_plot
+    - stat_plot
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/1
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Specify the denominator and retain sample-level categories.
+  - id: hao_dnt_2026_panel_5
+    figure: Figure 1H
+    title: Multifunctional cell-state profiles
+    description: Functions compared across cell types.
+    plot_families:
+    - interactive_radar_plot
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/1
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Provide comparable functional scores and explicitly set radial scaling.
+  - id: hao_dnt_2026_panel_6
+    figure: Figure 2B
+    title: Markers alongside population frequency
+    description: Marker heatmap with frequency bars.
+    plot_families:
+    - hierarchical_marker_panel
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/2
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: related_layout
+    adaptation: 'Related composite: the local panel adds explicit hierarchy labels
+      and uses its own marker encodings.'
+  - id: hao_dnt_2026_panel_7
+    figure: Figure 2D
+    title: Population abundance across cancers
+    description: Population frequencies and cancer-type composition.
+    plot_families:
+    - interactive_pie_plot
+    - balloon_plot
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/2
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Select the pie or sized-matrix component; the local plugin does not
+      assemble the entire original composite.
+  - id: hao_dnt_2026_panel_8
+    figure: Figure 2E
+    title: Functional-activity heatmap
+    description: Cytokine activities across DNT subsets.
+    plot_families:
+    - grouped_heatmap
+    - interactive_clustered_heatmap_plot
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/2
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use a precomputed population-by-activity matrix; activity inference
+      is upstream.
+  - id: hao_dnt_2026_panel_9
+    figure: Figure 2F
+    title: Pathway evidence across populations
+    description: Adjusted probabilities for shared pathways.
+    plot_families:
+    - threshold_matrix_heatmap
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/2
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: related_layout
+    adaptation: 'Related encoding: choose explicit probability bins; the paper uses
+      a continuous significance scale.'
+  - id: hao_dnt_2026_panel_10
+    figure: Figure 2G
+    title: Ranked biological-process enrichment
+    description: Bars summarize pathway enrichment evidence.
+    plot_families:
+    - classified_bar_plot
+    - go_kegg_enrichment_bar_bubble
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/2
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: related_layout
+    adaptation: The source supplies enrichment bars; counts and extra bubble encodings
+      require separate data and are not inferred.
+  - id: hao_dnt_2026_panel_11
+    figure: Figure 3D
+    title: Shared receptor clonotypes
+    description: TCR overlap across cell subsets.
+    plot_families:
+    - upset
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/3
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use clonotype IDs and subset memberships with an explicit intersection
+      definition.
+  - id: hao_dnt_2026_panel_12
+    figure: Figure 3E-F
+    title: Marker changes along pseudotime
+    description: Expression trends along inferred trajectories.
+    plot_families:
+    - line_plot
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/3
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Provide ordered values or upstream fits; confidence bands and trajectory
+      inference are not automatically reproduced.
+  - id: hao_dnt_2026_panel_13
+    figure: Figure 3A
+    title: Differentiation paths on an embedding
+    description: RNA-velocity trajectories on UMAP.
+    plot_families:
+    - trajectory
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/3
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: related_layout
+    adaptation: 'Related layout: supply precomputed paths. This plugin does not compute
+      velocity or reproduce velocity streamlines.'
+  - id: hao_dnt_2026_panel_14
+    figure: Figure 4D
+    title: Compare two differential effects
+    description: Effects in two tissue contrasts.
+    plot_families:
+    - quadrant_correlation_scatter
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/4
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Choose biologically justified thresholds; probability-driven mark
+      encodings require compatible fields.
+  - id: hao_dnt_2026_panel_15
+    figure: Figure 6L
+    title: Opposing TF signatures
+    description: Signed TF effects in Grm1 versus Grm2.
+    plot_families:
+    - enrichment_lollipop
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/6
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use a signed contrast table with TF names and probabilities; the local
+      starter is synthetic.
+  - id: hao_dnt_2026_panel_16
+    figure: Figure 6M
+    title: Compare cytokine enrichment contrasts
+    description: Cytokine scores compared across contrasts.
+    plot_families:
+    - regression_scatter_plot
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8/figures/6
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Provide the two score columns and report the chosen association statistic;
+      no causal claim follows.
+  - id: hao_dnt_2026_extra_12
+    figure: Figure 1L
+    plot_families:
+    - highlight_effect_plot
+    title: Effects and uncertainty across cohorts
+    description: Adjusted survival effects with confidence intervals.
+    adaptation: 'Related layout: transform hazard ratios and interval limits to log
+      scale for a zero-centered effect plot. Background-cloud collapsing is a local
+      option absent from the source.'
+    match_type: related_layout
+    figure_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    evidence_url: https://link.springer.com/article/10.1186/s12943-025-02548-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+- id: umap_mcinnes_2018
+  title: 'UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction'
+  authors: McInnes L, Healy J, Melville J
+  citation: 'McInnes L, Healy J, Melville J. UMAP: Uniform Manifold Approximation
+    and Projection for Dimension Reduction. arXiv:1802.03426, 2018.'
+  journal: arXiv
+  year: 2018
+  doi: ''
+  url: https://arxiv.org/abs/1802.03426
+  figure: ''
+  license: arXiv preprint (see paper for terms)
+  thumbnail_reuse_allowed: false
+  description: Introduces UMAP as a neighborhood-preserving dimension-reduction method
+    used for 2D embeddings.
+  relevance: Primary method paper for the UMAP embedding shown by this plot family.
+  use_case:
+  - cell_clustering
+  plot_families:
+  - umap_tsne
+  reference_type: method_reference
+- id: umap_becht_2019
+  title: Dimensionality reduction for visualizing single-cell data using UMAP
+  authors: Becht E, McInnes L, Healy J, Dutertre CA, Kwok IWH, Ng LG, Ginhoux F, Newell
+    EW
+  citation: Becht E et al. Dimensionality reduction for visualizing single-cell data
+    using UMAP. Nat Biotechnol. 2019;37:38–44.
+  journal: Nature Biotechnology
+  year: 2019
+  doi: 10.1038/nbt.4314
+  url: https://doi.org/10.1038/nbt.4314
+  figure: ''
+  license: Publisher terms; figure reuse not asserted
+  thumbnail_reuse_allowed: false
+  description: Shows UMAP for visualizing single-cell populations compared with t-SNE.
+  relevance: Published single-cell use of UMAP for cluster and cell-type overview,
+    without copying journal figures.
+  use_case:
+  - cell_clustering
+  - sample_comparison
+  plot_families:
+  - umap_tsne
+  reference_type: method_reference
+- id: gsea_subramanian_2005
+  title: 'Gene set enrichment analysis: A knowledge-based approach for interpreting
+    genome-wide expression profiles'
+  authors: Subramanian A, Tamayo P, Mootha VK, et al.
+  citation: 'Subramanian A, Tamayo P, Mootha VK, et al. (2005). Gene set enrichment
+    analysis: A knowledge-based approach for interpreting genome-wide expression profiles.
+    PNAS.'
+  journal: PNAS
+  year: 2005
+  doi: 10.1073/pnas.0506580102
+  url: https://software.broadinstitute.org/gsea/doc/subramanian_tamayo_gsea_pnas.pdf
+  figure: ''
+  license: Source linked; figure reuse rights are not asserted.
+  thumbnail_reuse_allowed: false
+  reference_type: method_reference
+  description: Introduces enrichment analysis along ranked gene lists.
+  relevance: Background for running enrichment curves, hit positions and enrichment
+    statistics; local demos use independent data.
+  plot_families:
+  - gsea
+  - gsea_heatmap
+  - gsea_ridge_nes_plot
+  verified_on: '2026-10-25'
+- id: eisen_clustering_1998
+  title: Cluster analysis and display of genome-wide expression patterns
+  authors: Eisen MB, Spellman PT, Brown PO, Botstein D
+  citation: Eisen MB, Spellman PT, Brown PO, Botstein D (1998). Cluster analysis and
+    display of genome-wide expression patterns. PNAS.
+  journal: PNAS
+  year: 1998
+  doi: 10.1073/pnas.95.25.14863
+  url: https://www.cs.princeton.edu/courses/archive/fall03/cs597F/Articles/cluster_analysis_hier_eisen.pdf
+  figure: ''
+  license: Source linked; figure reuse rights are not asserted.
+  thumbnail_reuse_allowed: false
+  reference_type: method_reference
+  description: Organizes gene-expression patterns using hierarchical clustering.
+  relevance: Background for expression heatmaps and clustering; circular layouts and
+    extra panels are local adaptations.
+  plot_families:
+  - grouped_heatmap
+  - interactive_clustered_heatmap_plot
+  - den_plot
+  - cluster_dendrogram_plot
+  - circular_heatmap
+  verified_on: '2026-10-25'
+- id: lex_intersections_2014
+  title: 'UpSet: Visualization of Intersecting Sets'
+  authors: Lex A, Gehlenborg N, Strobelt H, Vuillemot R, Pfister H
+  citation: 'Lex A, Gehlenborg N, Strobelt H, Vuillemot R, Pfister H (2014). UpSet:
+    Visualization of Intersecting Sets. IEEE Transactions on Visualization and Computer
+    Graphics.'
+  journal: IEEE Transactions on Visualization and Computer Graphics
+  year: 2014
+  doi: 10.1109/TVCG.2014.2346248
+  url: https://vdl.sci.utah.edu/publications/2014_infovis_upset/
+  figure: ''
+  license: Source linked; figure reuse rights are not asserted.
+  thumbnail_reuse_allowed: false
+  reference_type: method_reference
+  description: Introduces matrix-based set intersections with quantitative summaries.
+  relevance: Background for exact intersections, intersection sizes and attribute
+    queries.
+  plot_families:
+  - upset
+  verified_on: '2026-10-25'
+- id: allen_raincloud_2019
+  title: 'Raincloud plots: a multi-platform tool for robust data visualization'
+  authors: Allen M, Poggiali D, Whitaker K, Marshall TR, Kievit RA
+  citation: 'Allen M, Poggiali D, Whitaker K, Marshall TR, Kievit RA. Raincloud plots:
+    a multi-platform tool for robust data visualization. Wellcome Open Research 4:63
+    (2021, version 2; first published 2019).'
+  journal: Wellcome Open Research
+  year: 2021
+  doi: 10.12688/wellcomeopenres.15191.2
+  url: https://wellcomeopenresearch.org/articles/4-63
+  figure: ''
+  license: Source linked; figure reuse rights are not asserted.
+  thumbnail_reuse_allowed: false
+  reference_type: method_reference
+  description: Combines observations, density and summary statistics.
+  relevance: Explains the roles of density, raw points and summary statistics. Other
+    distribution plots are related reading, not identical layouts.
+  plot_families:
+  - raincloud_plot
+  - interactive_violin_plot
+  - violin_plot
+  - ridgeline
+  - interactive_histogram_plot
+  verified_on: '2026-10-25'
+  figure_examples:
+  - id: allen_raincloud_2019_extra_13
+    figure: Figure 3
+    plot_families:
+    - raincloud_plot
+    title: Anatomy of a raincloud plot
+    description: Density, observations and a box summary.
+    adaptation: Use individual values and group labels; retain the distinct roles
+      of density and observed points.
+    match_type: same_grammar
+    figure_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6480976/
+    evidence_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6480976/
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+- id: schneider_logos_1990
+  title: 'Sequence logos: a new way to display consensus sequences'
+  authors: Schneider TD, Stephens RM
+  citation: 'Schneider TD, Stephens RM (1990). Sequence logos: a new way to display
+    consensus sequences. Nucleic Acids Research.'
+  journal: Nucleic Acids Research
+  year: 1990
+  doi: 10.1093/nar/18.20.6097
+  url: https://academic.oup.com/nar/article/18/20/6097/1141316
+  figure: ''
+  license: Source linked; figure reuse rights are not asserted.
+  thumbnail_reuse_allowed: false
+  reference_type: method_reference
+  description: Introduces sequence logos for positional frequencies and information
+    content.
+  relevance: Explains letter heights and conservation; the logo itself does not establish
+    enrichment significance.
+  plot_families:
+  - interactive_motif_logo_plot
+  verified_on: '2026-10-25'
+- id: tan_spacec_2025
+  title: 'SPACEc: a streamlined, interactive Python workflow for multiplexed image
+    processing and analysis'
+  authors: Tan Y, Kempchen TN, Becker M, et al.
+  journal: Nature Communications
+  year: 2025
+  doi: 10.1038/s41467-025-65658-3
+  url: https://www.nature.com/articles/s41467-025-65658-3
+  citation: 'Tan Y, Kempchen TN, Becker M, et al. (2025). SPACEc: a streamlined, interactive
+    Python workflow for multiplexed image processing and analysis. Nature Communications.'
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - umap_tsne
+  - ternary_plot
+  - interactive_network_plot
+  figure_examples:
+  - id: tan_spacec_2025_panel_17
+    figure: Figure 2B
+    title: Spatial-imaging cell annotations
+    description: Annotated tonsil cells on UMAP.
+    plot_families:
+    - umap_tsne
+    figure_url: https://www.nature.com/articles/s41467-025-65658-3#Fig2
+    evidence_url: https://www.nature.com/articles/s41467-025-65658-3
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Supply computed coordinates and labels; segmentation and annotation
+      are upstream.
+  - id: tan_spacec_2025_panel_18
+    figure: Figure 2G
+    title: Three-neighborhood composition
+    description: Barycentric neighborhood combinations.
+    plot_families:
+    - ternary_plot
+    figure_url: https://www.nature.com/articles/s41467-025-65658-3#Fig2
+    evidence_url: https://www.nature.com/articles/s41467-025-65658-3
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Select exactly three nonnegative neighborhood fractions with a positive
+      total.
+  - id: tan_spacec_2025_panel_19
+    figure: Figure 2I
+    title: Condition-specific cellular interactions
+    description: Distance-based cell interaction networks.
+    plot_families:
+    - interactive_network_plot
+    figure_url: https://www.nature.com/articles/s41467-025-65658-3#Fig2
+    evidence_url: https://www.nature.com/articles/s41467-025-65658-3
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use precomputed edges and effects; permutation tests are not performed
+      by this renderer.
+- id: liu_cellres_2025
+  title: Deciphering cancer therapy resistance via patient-level single-cell transcriptomics
+    with CellResDB
+  authors: Liu T, Qiao H, Ren L, et al.
+  journal: Communications Biology
+  year: 2025
+  doi: 10.1038/s42003-025-08457-2
+  url: https://www.nature.com/articles/s42003-025-08457-2
+  citation: Liu T, Qiao H, Ren L, et al. (2025). Deciphering cancer therapy resistance
+    via patient-level single-cell transcriptomics with CellResDB. Communications Biology.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - sunburst_plot
+  - classified_bar_plot
+  - interactive_histogram_plot
+  - combo_bar_dot_matrix
+  figure_examples:
+  - id: liu_cellres_2025_panel_20
+    figure: Figure 2B
+    title: Dataset composition by tissue and disease
+    description: Nested tissue and disease sectors.
+    plot_families:
+    - sunburst_plot
+    figure_url: https://www.nature.com/articles/s42003-025-08457-2#Fig2
+    evidence_url: https://www.nature.com/articles/s42003-025-08457-2
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Preserve parent-child paths and dataset counts; do not treat repeated
+      labels as unique paths.
+  - id: liu_cellres_2025_panel_21
+    figure: Figure 2D
+    title: Rank treatment frequencies
+    description: Drug-use counts across datasets.
+    plot_families:
+    - classified_bar_plot
+    figure_url: https://www.nature.com/articles/s42003-025-08457-2#Fig2
+    evidence_url: https://www.nature.com/articles/s42003-025-08457-2
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use one row per treatment with a count and optional treatment-class
+      annotation.
+  - id: liu_cellres_2025_panel_22
+    figure: Figure 2E-F
+    title: Dataset size distributions
+    description: Binned cell-type and cell-count frequencies.
+    plot_families:
+    - interactive_histogram_plot
+    figure_url: https://www.nature.com/articles/s42003-025-08457-2#Fig2
+    evidence_url: https://www.nature.com/articles/s42003-025-08457-2
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Start from dataset-level observations and use explicit bin boundaries;
+      log-transform counts only when stated.
+  - id: liu_cellres_2025_panel_23
+    figure: Figure 2C
+    title: Treatment counts and combinations
+    description: Therapy counts with dataset treatment indicators.
+    plot_families:
+    - combo_bar_dot_matrix
+    figure_url: https://www.nature.com/articles/s42003-025-08457-2#Fig2
+    evidence_url: https://www.nature.com/articles/s42003-025-08457-2
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: related_layout
+    adaptation: 'Related composite: derive aligned categories for the local bar-plus-matrix
+      layout; do not relabel intersection bars as performance scores.'
+- id: chen_ibd_2025
+  title: Transcriptomic exploration of key genes related to mitochondria and ferroptosis
+    in inflammatory bowel disease and experimental validation
+  authors: Chen H, Liang Q, Geng L, Feng B
+  journal: Scientific Reports
+  year: 2025
+  doi: 10.1038/s41598-025-27002-z
+  url: https://www.nature.com/articles/s41598-025-27002-z
+  citation: Chen H, Liang Q, Geng L, Feng B (2025). Transcriptomic exploration of
+    key genes related to mitochondria and ferroptosis in inflammatory bowel disease
+    and experimental validation. Scientific Reports.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - volcano
+  - circular_heatmap
+  - venn
+  - treemap_plot
+  - gsea
+  - stacked_bar_plot
+  - interactive_violin_plot
+  - violin_plot
+  - exp_stat_plot
+  figure_examples:
+  - id: chen_ibd_2025_panel_24
+    figure: Figure 1A
+    title: Differential expression in IBD
+    description: Effects versus differential-expression evidence.
+    plot_families:
+    - volcano
+    figure_url: https://www.nature.com/articles/s41598-025-27002-z#Fig1
+    evidence_url: https://www.nature.com/articles/s41598-025-27002-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Map effect and adjusted probability columns without recomputing statistics
+      in the plot.
+  - id: chen_ibd_2025_panel_25
+    figure: Figure 1B
+    title: Top differential genes in a circle
+    description: Circular expression heatmap.
+    plot_families:
+    - circular_heatmap
+    figure_url: https://www.nature.com/articles/s41598-025-27002-z#Fig1
+    evidence_url: https://www.nature.com/articles/s41598-025-27002-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Prepare a long sample-gene-value table and report scaling before clustering.
+  - id: chen_ibd_2025_panel_26
+    figure: Figure 1C
+    title: Intersect candidate-gene sets
+    description: Overlap of three candidate gene sets.
+    plot_families:
+    - venn
+    figure_url: https://www.nature.com/articles/s41598-025-27002-z#Fig1
+    evidence_url: https://www.nature.com/articles/s41598-025-27002-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Provide gene IDs for each set; use an explicit background only for
+      upstream tests.
+  - id: chen_ibd_2025_panel_27
+    figure: Figure 1E
+    title: Enriched pathway summary
+    description: KEGG enrichment shown as a treemap.
+    plot_families:
+    - treemap_plot
+    figure_url: https://www.nature.com/articles/s41598-025-27002-z#Fig1
+    evidence_url: https://www.nature.com/articles/s41598-025-27002-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Supply nonnegative area weights and parent classes; state any conversion
+      of probabilities to weights.
+  - id: chen_ibd_2025_panel_28
+    figure: Figure 4A-H
+    title: Gene-associated pathway enrichment
+    description: Running enrichment curves with gene-set hits.
+    plot_families:
+    - gsea
+    figure_url: https://www.nature.com/articles/s41598-025-27002-z#Fig4
+    evidence_url: https://www.nature.com/articles/s41598-025-27002-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Provide a signed gene ranking and matched gene sets; keep raw and
+      adjusted probabilities distinct.
+  - id: chen_ibd_2025_panel_29
+    figure: Figure 6A
+    title: Immune-composition comparison
+    description: Stacked immune-cell infiltration profiles.
+    plot_families:
+    - stacked_bar_plot
+    figure_url: https://www.nature.com/articles/s41598-025-27002-z#Fig6
+    evidence_url: https://www.nature.com/articles/s41598-025-27002-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use consistent denominators; inferred infiltration scores need not
+      be literal cell counts.
+  - id: chen_ibd_2025_panel_30
+    figure: Figure 6B
+    title: Immune-infiltration distributions
+    description: Groupwise infiltration-score violins.
+    plot_families:
+    - interactive_violin_plot
+    - violin_plot
+    - exp_stat_plot
+    figure_url: https://www.nature.com/articles/s41598-025-27002-z#Fig6
+    evidence_url: https://www.nature.com/articles/s41598-025-27002-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use sample-level scores and group labels; statistical testing remains
+      a separate analysis.
+- id: li_cerebrum_2021
+  title: An atlas of gene regulatory elements in adult mouse cerebrum
+  authors: Li YE, Preissl S, Hou X, et al.
+  journal: Nature
+  year: 2021
+  doi: 10.1038/s41586-021-03604-1
+  url: https://www.nature.com/articles/s41586-021-03604-1
+  citation: Li YE, Preissl S, Hou X, et al. (2021). An atlas of gene regulatory elements
+    in adult mouse cerebrum. Nature.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - interactive_genomic_signal_track_plot
+  - feature_embedding
+  - cluster_dendrogram_plot
+  - den_plot
+  - regression_scatter_plot
+  - hierarchical_marker_panel
+  figure_examples:
+  - id: li_cerebrum_2021_panel_31
+    figure: Figure 1E
+    title: Cell-type chromatin-accessibility tracks
+    description: Aggregate accessibility at marker loci.
+    plot_families:
+    - interactive_genomic_signal_track_plot
+    figure_url: https://www.nature.com/articles/s41586-021-03604-1#Fig1
+    evidence_url: https://www.nature.com/articles/s41586-021-03604-1
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Export signal values on a common genomic axis; gene models and genome
+      build must be specified.
+  - id: li_cerebrum_2021_panel_32
+    figure: Extended Data Figure 6A
+    title: Gene activity on the cell embedding
+    description: Marker activity on UMAP.
+    plot_families:
+    - feature_embedding
+    figure_url: https://www.nature.com/articles/s41586-021-03604-1
+    evidence_url: https://www.nature.com/articles/s41586-021-03604-1
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Map activity values to existing coordinates rather than treating activity
+      as RNA expression.
+  - id: li_cerebrum_2021_panel_33
+    figure: Extended Data Figure 9
+    title: Hierarchical cell-type relationships
+    description: Chromatin-profile subclass dendrogram.
+    plot_families:
+    - cluster_dendrogram_plot
+    - den_plot
+    figure_url: https://www.nature.com/articles/s41586-021-03604-1
+    evidence_url: https://www.nature.com/articles/s41586-021-03604-1
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use compatible profile data; bootstrap supports in the paper are not
+      calculated by this renderer.
+  - id: li_cerebrum_2021_panel_34
+    figure: Extended Data Figure 12D
+    title: Reproducibility across biological replicates
+    description: Regional-specificity scores between replicates.
+    plot_families:
+    - regression_scatter_plot
+    figure_url: https://www.nature.com/articles/s41586-021-03604-1
+    evidence_url: https://www.nature.com/articles/s41586-021-03604-1
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Match corresponding population IDs and report the chosen correlation
+      or fit.
+  - id: li_cerebrum_2021_panel_35
+    figure: Figure 1D
+    title: Cell hierarchy and abundance
+    description: Class hierarchy with subclass counts.
+    plot_families:
+    - hierarchical_marker_panel
+    figure_url: https://www.nature.com/articles/s41586-021-03604-1#Fig1
+    evidence_url: https://www.nature.com/articles/s41586-021-03604-1
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: related_layout
+    adaptation: 'Related composite: marker columns must be supplied separately; this
+      is not an exact reconstruction of the original panel.'
+  - id: li_cerebrum_2021_panel_36
+    figure: Figure 3I
+    title: Candidate regulatory regions at a locus
+    description: Astrocyte accessibility near Olig2.
+    plot_families:
+    - interactive_genomic_signal_track_plot
+    figure_url: https://www.nature.com/articles/s41586-021-03604-1#Fig3
+    evidence_url: https://www.nature.com/articles/s41586-021-03604-1
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Prepare per-track position-value records and optional feature intervals;
+      regulatory inference remains upstream.
+- id: yang_projection_2025
+  title: Projection-TAGs enable multiplex projection tracing and multi-modal profiling
+    of projection neurons
+  authors: Yang L, Liu F, Hahm H, et al.
+  journal: Nature Communications
+  year: 2025
+  doi: 10.1038/s41467-025-60360-w
+  url: https://www.nature.com/articles/s41467-025-60360-w
+  citation: Yang L, Liu F, Hahm H, et al. (2025). Projection-TAGs enable multiplex
+    projection tracing and multi-modal profiling of projection neurons. Nature Communications.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - cluster_dendrogram_plot
+  - den_plot
+  - grouped_heatmap
+  - interactive_genomic_signal_track_plot
+  - dot_plot
+  - pie_dot_matrix
+  figure_examples:
+  - id: yang_projection_2025_panel_37
+    figure: Figure 2D
+    title: Transcriptomic cluster hierarchy
+    description: Hierarchical clustering with class annotations.
+    plot_families:
+    - cluster_dendrogram_plot
+    - den_plot
+    figure_url: https://www.nature.com/articles/s41467-025-60360-w#Fig2
+    evidence_url: https://www.nature.com/articles/s41467-025-60360-w
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use group-average marker profiles and matched annotations; keep aggregation
+      choices explicit.
+  - id: yang_projection_2025_panel_38
+    figure: Figure 2E
+    title: Cluster marker-expression heatmap
+    description: Mean marker expression across clusters.
+    plot_families:
+    - grouped_heatmap
+    figure_url: https://www.nature.com/articles/s41467-025-60360-w#Fig2
+    evidence_url: https://www.nature.com/articles/s41467-025-60360-w
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Map an appropriate expression summary and state whether values are
+      scaled.
+  - id: yang_projection_2025_panel_39
+    figure: Figure 2F
+    title: Accessibility grouped by projection-neuron type
+    description: Binned accessibility coverage at marker loci.
+    plot_families:
+    - interactive_genomic_signal_track_plot
+    figure_url: https://www.nature.com/articles/s41467-025-60360-w#Fig2
+    evidence_url: https://www.nature.com/articles/s41467-025-60360-w
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Supply the binned signal values; the renderer does not perform fragment
+      counting.
+  - id: yang_projection_2025_panel_40
+    figure: Figure 2G
+    title: Projection-positive fractions
+    description: Projection-positive fractions across transcriptional clusters.
+    plot_families:
+    - dot_plot
+    - pie_dot_matrix
+    figure_url: https://www.nature.com/articles/s41467-025-60360-w#Fig2
+    evidence_url: https://www.nature.com/articles/s41467-025-60360-w
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: related_layout
+    adaptation: Use fractions with explicit denominators. Ratio-circle mode is an
+      alternative encoding rather than the paper's exact dot styling.
+- id: blair_phospho_2025
+  title: 'Phospho-seq: integrated, multi-modal profiling of intracellular protein
+    dynamics in single cells'
+  authors: Blair JD, Hartman A, Zenk F, et al.
+  journal: Nature Communications
+  year: 2025
+  doi: 10.1038/s41467-025-56590-7
+  url: https://www.nature.com/articles/s41467-025-56590-7
+  citation: 'Blair JD, Hartman A, Zenk F, et al. (2025). Phospho-seq: integrated,
+    multi-modal profiling of intracellular protein dynamics in single cells. Nature
+    Communications.'
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - alluvial
+  - sankey
+  - umap_tsne
+  figure_examples:
+  - id: blair_phospho_2025_panel_41
+    figure: Figure 3F
+    title: Cross-modality annotation transfer
+    description: ATAC labels linked to transferred labels.
+    plot_families:
+    - alluvial
+    - sankey
+    figure_url: https://www.nature.com/articles/s41467-025-56590-7#Fig3
+    evidence_url: https://www.nature.com/articles/s41467-025-56590-7
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Aggregate label-pair counts into source-target flows; label transfer
+      is upstream.
+  - id: blair_phospho_2025_panel_42
+    figure: Figure 3B
+    title: Joint multimodal cell map
+    description: Joint multimodal UMAP with cell labels.
+    plot_families:
+    - umap_tsne
+    figure_url: https://www.nature.com/articles/s41467-025-56590-7#Fig3
+    evidence_url: https://www.nature.com/articles/s41467-025-56590-7
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Provide existing integrated coordinates; this plot does not perform
+      multimodal integration.
+- id: li_leprosy_2025
+  title: A single-cell V(D)J sequencing dataset of peripheral blood cells in multibacillary
+    leprosy
+  authors: Li Z, Jia J, Zhang Q, et al.
+  journal: Scientific Data
+  year: 2025
+  doi: 10.1038/s41597-025-05616-2
+  url: https://www.nature.com/articles/s41597-025-05616-2
+  citation: Li Z, Jia J, Zhang Q, et al. (2025). A single-cell V(D)J sequencing dataset
+    of peripheral blood cells in multibacillary leprosy. Scientific Data.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - ridgeline
+  - venn
+  - stacked_bar_plot
+  - stat_plot
+  figure_examples:
+  - id: li_leprosy_2025_panel_43
+    figure: Figure 4A
+    title: Immune-receptor length distributions
+    description: CDR3 length distributions by group.
+    plot_families:
+    - ridgeline
+    figure_url: https://www.nature.com/articles/s41597-025-05616-2#Fig4
+    evidence_url: https://www.nature.com/articles/s41597-025-05616-2
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use per-sequence lengths and grouping labels; density estimation choices
+      affect ridge appearance.
+  - id: li_leprosy_2025_panel_44
+    figure: Figure 4B
+    title: Shared immune-receptor sequences
+    description: CDR3 sharing across individuals.
+    plot_families:
+    - venn
+    figure_url: https://www.nature.com/articles/s41597-025-05616-2#Fig4
+    evidence_url: https://www.nature.com/articles/s41597-025-05616-2
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Build sets from unique sequence IDs and state which individuals define
+      each set.
+  - id: li_leprosy_2025_panel_45
+    figure: Figure 2, left
+    title: Receptor-chain composition
+    description: Chain proportions for individual samples.
+    plot_families:
+    - stacked_bar_plot
+    - stat_plot
+    figure_url: https://www.nature.com/articles/s41597-025-05616-2#Fig2
+    evidence_url: https://www.nature.com/articles/s41597-025-05616-2
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Map each sample to a category and each receptor chain to a component.
+- id: zhernakova_age_sex_2022
+  title: Age-dependent sex differences in cardiometabolic risk factors
+  authors: Zhernakova DV, Sinha T, Andreu-Sanchez S, et al.
+  journal: Nature Cardiovascular Research
+  year: 2022
+  doi: 10.1038/s44161-022-00131-8
+  url: https://www.nature.com/articles/s44161-022-00131-8
+  citation: Zhernakova DV, Sinha T, Andreu-Sanchez S, et al. (2022). Age-dependent
+    sex differences in cardiometabolic risk factors. Nature Cardiovascular Research.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - circular_bar_plot
+  - line_plot
+  - regression_scatter_plot
+  figure_examples:
+  - id: zhernakova_age_sex_2022_panel_46
+    figure: Extended Data Figure 5
+    title: Variance-component profiles for proteins
+    description: Circular stacked explained-variance bars.
+    plot_families:
+    - circular_bar_plot
+    figure_url: https://www.nature.com/articles/s44161-022-00131-8
+    evidence_url: https://www.nature.com/articles/s44161-022-00131-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Supply nonnegative variance fractions and component groups; the central
+      dendrogram is not part of this plugin.
+  - id: zhernakova_age_sex_2022_panel_47
+    figure: Extended Data Figure 6
+    title: Age-dependent protein profiles
+    description: Protein observations and fitted age trends.
+    plot_families:
+    - line_plot
+    - regression_scatter_plot
+    figure_url: https://www.nature.com/articles/s44161-022-00131-8
+    evidence_url: https://www.nature.com/articles/s44161-022-00131-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Provide observations or upstream model predictions; local smoothing
+      does not reproduce the original GAM inference.
+- id: sanchez_wheat_2025
+  title: Agronomic and environmental assessment of a new fertilization strategy using
+    pelleted organo-mineral fertilizers for wheat production in mediterranean agricultural
+    soils
+  authors: Sanchez-Mendez S, Orden L, Franco-Luesma S, et al.
+  journal: Scientific Reports
+  year: 2025
+  doi: 10.1038/s41598-025-20818-9
+  url: https://www.nature.com/articles/s41598-025-20818-9
+  citation: Sanchez-Mendez S, Orden L, Franco-Luesma S, et al. (2025). Agronomic and
+    environmental assessment of a new fertilization strategy using pelleted organo-mineral
+    fertilizers for wheat production in mediterranean agricultural soils. Scientific
+    Reports.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - interactive_mantel_correlation_network
+  - interactive_correlation_matrix
+  - exp_stat_plot
+  - classified_bar_plot
+  figure_examples:
+  - id: sanchez_wheat_2025_panel_48
+    figure: Figure 3
+    title: Soil properties and wheat performance
+    description: Mantel links alongside Pearson correlations.
+    plot_families:
+    - interactive_mantel_correlation_network
+    - interactive_correlation_matrix
+    figure_url: https://www.nature.com/articles/s41598-025-20818-9#Fig3
+    evidence_url: https://www.nature.com/articles/s41598-025-20818-9
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use separately computed coefficients and probabilities; the correlation-matrix
+      plugin renders only the Pearson component.
+  - id: sanchez_wheat_2025_panel_49
+    figure: Figure 2A-B
+    title: Compare fertilizer emission metrics
+    description: Treatment bars with standard errors.
+    plot_families:
+    - exp_stat_plot
+    - classified_bar_plot
+    figure_url: https://www.nature.com/articles/s41598-025-20818-9#Fig2
+    evidence_url: https://www.nature.com/articles/s41598-025-20818-9
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Prepare treatment-level means and errors; preserve units and do not
+      infer significance from bar overlap.
+- id: prabhu_ampylation_2024
+  title: Protein feature engineering framework for AMPylation site prediction
+  authors: Prabhu H, Bhosale H, Sane A, et al.
+  journal: Scientific Reports
+  year: 2024
+  doi: 10.1038/s41598-024-58450-8
+  url: https://www.nature.com/articles/s41598-024-58450-8
+  citation: Prabhu H, Bhosale H, Sane A, et al. (2024). Protein feature engineering
+    framework for AMPylation site prediction. Scientific Reports.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - waterfall_plot
+  figure_examples:
+  - id: prabhu_ampylation_2024_panel_50
+    figure: Figure 4A-D
+    title: Explain individual model predictions
+    description: Signed SHAP contributions to predictions.
+    plot_families:
+    - waterfall_plot
+    figure_url: https://www.nature.com/articles/s41598-024-58450-8#Fig4
+    evidence_url: https://www.nature.com/articles/s41598-024-58450-8
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Supply precomputed contributions. The local chart uses cumulative
+      bars and does not compute SHAP values; include the baseline in the contribution
+      table if needed.
+- id: kenn_decision_2022
+  title: Decision Theory versus Conventional Statistics for Personalized Therapy of
+    Breast Cancer
+  authors: Kenn M, Karch R, Cacsire Castillo-Tong D, et al.
+  journal: Journal of Personalized Medicine
+  year: 2022
+  doi: 10.3390/jpm12040570
+  url: https://www.mdpi.com/2075-4426/12/4/570
+  citation: Kenn M, Karch R, Cacsire Castillo-Tong D, et al. (2022). Decision Theory
+    versus Conventional Statistics for Personalized Therapy of Breast Cancer. Journal
+    of Personalized Medicine.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - ternary_plot
+  figure_examples:
+  - id: kenn_decision_2022_panel_51
+    figure: Figure 4B
+    title: Three-component diagnostic evidence
+    description: Evidence represented on a ternary plane.
+    plot_families:
+    - ternary_plot
+    figure_url: https://www.mdpi.com/2075-4426/12/4/570
+    evidence_url: https://www.mdpi.com/2075-4426/12/4/570
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Supply three nonnegative components summing to a common total; the
+      renderer does not calculate clinical evidence or make decisions.
+- id: dang_pathwaymatrix_2015
+  title: 'PathwayMatrix: visualizing binary relationships between proteins in biological
+    pathways'
+  authors: Dang TN, Murray P, Forbes AG
+  journal: BMC Proceedings
+  year: 2015
+  doi: 10.1186/1753-6561-9-S6-S3
+  url: https://creativecoding.soe.ucsc.edu/pdfs/Dang_PathwayMatrix_BioVis2015.pdf
+  citation: 'Dang TN, Murray P, Forbes AG (2015). PathwayMatrix: visualizing binary
+    relationships between proteins in biological pathways. BMC Proceedings.'
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - interactive_arc_network_plot
+  - interactive_binary_plot
+  figure_examples:
+  - id: dang_pathwaymatrix_2015_panel_52
+    figure: Figure 5A-B
+    title: Protein-complex membership links
+    description: Arcs connect proteins and nested complexes.
+    plot_families:
+    - interactive_arc_network_plot
+    figure_url: https://creativecoding.soe.ucsc.edu/pdfs/Dang_PathwayMatrix_BioVis2015.pdf
+    evidence_url: https://creativecoding.soe.ucsc.edu/pdfs/Dang_PathwayMatrix_BioVis2015.pdf
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Export memberships as edges with a fixed node order. The local horizontal
+      layout omits the original linked matrix interaction.
+  - id: dang_pathwaymatrix_2015_panel_53
+    figure: Figure 2
+    title: Protein relationship adjacency matrix
+    description: Binary relationships in a pathway matrix.
+    plot_families:
+    - interactive_binary_plot
+    figure_url: https://creativecoding.soe.ucsc.edu/pdfs/Dang_PathwayMatrix_BioVis2015.pdf
+    evidence_url: https://creativecoding.soe.ucsc.edu/pdfs/Dang_PathwayMatrix_BioVis2015.pdf
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: related_layout
+    adaptation: 'Related layout: export binary relationships; original lensing and
+      linked interaction are not implemented here. The original matrix also encodes
+      relation types; binary conversion must use an explicit rule.'
+- id: schormair_rls_2024
+  title: Genome-wide meta-analyses of restless legs syndrome yield insights into genetic
+    architecture, disease biology and risk prediction
+  authors: Schormair B, Zhao C, Bell S, et al.
+  journal: Nature Genetics
+  year: 2024
+  doi: 10.1038/s41588-024-01763-1
+  url: https://www.nature.com/articles/s41588-024-01763-1
+  citation: Schormair B, Zhao C, Bell S, et al. (2024). Genome-wide meta-analyses
+    of restless legs syndrome yield insights into genetic architecture, disease biology
+    and risk prediction. Nature Genetics.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - treemap_plot
+  figure_examples:
+  - id: schormair_rls_2024_panel_54
+    figure: Figure 1A-B
+    title: Summarize genetic pathway enrichment
+    description: Enriched pathways grouped into treemap clusters.
+    plot_families:
+    - treemap_plot
+    figure_url: https://www.nature.com/articles/s41588-024-01763-1#Fig1
+    evidence_url: https://www.nature.com/articles/s41588-024-01763-1
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Supply nonnegative enrichment weights and pathway-cluster labels;
+      automatic semantic grouping is upstream.
+- id: kohn_sleep_2025
+  title: Phenome-wide associations of sleep characteristics in the Human Phenotype
+    Project
+  authors: Kohn S, Diament A, Godneva A, et al.
+  journal: Nature Medicine
+  year: 2025
+  doi: 10.1038/s41591-024-03481-x
+  url: https://www.nature.com/articles/s41591-024-03481-x
+  citation: Kohn S, Diament A, Godneva A, et al. (2025). Phenome-wide associations
+    of sleep characteristics in the Human Phenotype Project. Nature Medicine.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - circular_heatmap
+  figure_examples:
+  - id: kohn_sleep_2025_panel_55
+    figure: Extended Data Figure 4
+    title: Sleep-feature effects across body systems
+    description: Circular heatmap of direct effects.
+    plot_families:
+    - circular_heatmap
+    figure_url: https://www.nature.com/articles/s41591-024-03481-x
+    evidence_url: https://www.nature.com/articles/s41591-024-03481-x
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use supplied effect estimates and body-system labels; mediation analysis
+      is upstream.
+- id: li_freeze_thaw_2025
+  title: Soil nitrogen-hydrolyzing enzyme activities respond differently to the freeze-thaw
+    temperature and number of cycles
+  authors: Li S, Zhou M, Guan S, et al.
+  journal: Scientific Reports
+  year: 2025
+  doi: 10.1038/s41598-025-98879-z
+  url: https://www.nature.com/articles/s41598-025-98879-z
+  citation: Li S, Zhou M, Guan S, et al. (2025). Soil nitrogen-hydrolyzing enzyme
+    activities respond differently to the freeze-thaw temperature and number of cycles.
+    Scientific Reports.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - interactive_mantel_correlation_network
+  - interactive_correlation_matrix
+  figure_examples:
+  - id: li_freeze_thaw_2025_panel_56
+    figure: Figure 3
+    title: Environmental relationships during freeze-thaw
+    description: Mantel networks paired with a correlation triangle.
+    plot_families:
+    - interactive_mantel_correlation_network
+    - interactive_correlation_matrix
+    figure_url: https://www.nature.com/articles/s41598-025-98879-z#Fig3
+    evidence_url: https://www.nature.com/articles/s41598-025-98879-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Keep distance-based and variable-based statistics separate; the matrix
+      plugin covers the triangle only.
+- id: wang_niche_preprint_2026
+  title: Benchmarking niche identification via domain segmentation for spatial transcriptomics
+    data
+  authors: Wang Y, Chen Y, Yang L, et al.
+  journal: bioRxiv
+  year: 2026
+  doi: 10.64898/2026.02.27.708202
+  url: https://www.biorxiv.org/content/10.64898/2026.02.27.708202v1.full
+  citation: Wang Y, Chen Y, Yang L, et al. (2026). Benchmarking niche identification
+    via domain segmentation for spatial transcriptomics data. bioRxiv.
+  reference_type: published_use_case
+  publication_status: preprint
+  thumbnail_reuse_allowed: false
+  license: Linked to the source; no original figure is reproduced here.
+  verified_on: '2026-10-25'
+  description: See the figure-specific examples curated for this plot family.
+  relevance: Use the listed panels to identify a suitable visual encoding and prepare
+    compatible input data.
+  plot_families:
+  - interactive_bubble_score_matrix
+  figure_examples:
+  - id: wang_niche_preprint_2026_panel_57
+    figure: Figure 6F
+    title: Benchmark spatial niche methods
+    description: Metric-color and rank-size bubble matrix.
+    plot_families:
+    - interactive_bubble_score_matrix
+    figure_url: https://www.biorxiv.org/content/10.64898/2026.02.27.708202v1.full#F6
+    evidence_url: https://www.biorxiv.org/content/10.64898/2026.02.27.708202v1.full
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: related_layout
+    adaptation: 'Related layout: calculate metrics and ranks upstream; the plugin''s
+      side-score panels are additional local views. The source sizes bubbles by rank;
+      verify the local size encoding rather than treating a score-sized preset as
+      an exact reproduction.'
+- id: guo_clinical_transfer_2026
+  title: The limits of debiased clinical language models for cross-hospital generalization
+  authors: Guo A, Chen W, Zhang Y, et al.
+  journal: Scientific Reports
+  year: 2026
+  doi: 10.1038/s41598-026-53043-z
+  url: https://www.nature.com/articles/s41598-026-53043-z
+  citation: Guo A, Chen W, Zhang Y, et al. (2026). The limits of debiased clinical
+    language models for cross-hospital generalization. Scientific Reports.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Source linked; original figure not reproduced.
+  verified_on: '2026-10-25'
+  description: See the plot-specific figure examples below.
+  relevance: A caption-verified example of the visual encoding or an explicitly labelled
+    related layout.
+  plot_families:
+  - interactive_dumbbell_plot
+  figure_examples:
+  - id: guo_clinical_transfer_2026_extra_1
+    figure: Figure 2B
+    plot_families:
+    - interactive_dumbbell_plot
+    title: Compare in-domain and transferred performance
+    description: Endpoint pairs compare cross-hospital fairness metrics.
+    adaptation: Use one row per method with the two endpoint values; no clinical prediction
+      or fairness inference is computed here.
+    match_type: same_grammar
+    figure_url: https://www.nature.com/articles/s41598-026-53043-z#Fig2
+    evidence_url: https://www.nature.com/articles/s41598-026-53043-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+- id: lauria_gseca_2020
+  title: Identification of altered biological processes in heterogeneous RNA-sequencing
+    data by discretization of expression profiles
+  authors: Lauria A, Peirone S, Del Giudice M, et al.
+  journal: Nucleic Acids Research
+  year: 2020
+  doi: 10.1093/nar/gkz1208
+  url: https://academic.oup.com/nar/article/48/4/1730/5691219
+  citation: Lauria A, Peirone S, Del Giudice M, et al. (2020). Identification of altered
+    biological processes in heterogeneous RNA-sequencing data by discretization of
+    expression profiles. Nucleic Acids Research.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Source linked; original figure not reproduced.
+  verified_on: '2026-10-25'
+  description: See the plot-specific figure examples below.
+  relevance: A caption-verified example of the visual encoding or an explicitly labelled
+    related layout.
+  plot_families:
+  - ranked_annotation_panel
+  - upset
+  figure_examples:
+  - id: lauria_gseca_2020_extra_2
+    figure: Figure 4B
+    plot_families:
+    - ranked_annotation_panel
+    title: Ranked pathways with evidence annotations
+    description: Pathway ranks aligned with annotation columns.
+    adaptation: 'Related layout: the paper displays a rank heatmap; choose one rank/score
+      for the local left numeric panel and supply annotation columns separately.'
+    match_type: related_layout
+    figure_url: https://academic.oup.com/nar/article/48/4/1730/5691219
+    evidence_url: https://academic.oup.com/nar/article/48/4/1730/5691219
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+  - id: lauria_gseca_2020_extra_3
+    figure: Figure 4A
+    plot_families:
+    - upset
+    title: Overlap of altered gene sets across methods
+    description: Method-specific gene-set overlap combinations.
+    adaptation: Use gene-set IDs as elements and algorithms as sets; preserve exact-intersection
+      semantics.
+    match_type: same_grammar
+    figure_url: https://academic.oup.com/nar/article/48/4/1730/5691219
+    evidence_url: https://academic.oup.com/nar/article/48/4/1730/5691219
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+- id: rodionova_punr_2021
+  title: Identification of a transcription factor, PunR, that regulates the purine
+    and purine nucleoside transporter punC in E. coli
+  authors: Rodionova IA, Gao Y, Sastry A, et al.
+  journal: Communications Biology
+  year: 2021
+  doi: 10.1038/s42003-021-02516-0
+  url: https://www.nature.com/articles/s42003-021-02516-0
+  citation: Rodionova IA, Gao Y, Sastry A, et al. (2021). Identification of a transcription
+    factor, PunR, that regulates the purine and purine nucleoside transporter punC
+    in E. coli. Communications Biology.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Source linked; original figure not reproduced.
+  verified_on: '2026-10-25'
+  description: See the plot-specific figure examples below.
+  relevance: A caption-verified example of the visual encoding or an explicitly labelled
+    related layout.
+  plot_families:
+  - interactive_motif_logo_plot
+  figure_examples:
+  - id: rodionova_punr_2021_extra_4
+    figure: Figure 2A-E
+    plot_families:
+    - interactive_motif_logo_plot
+    title: Compare regulatory motifs across bacterial groups
+    description: PunR binding-site sequence logos.
+    adaptation: Supply DNA position-probability matrices; motif discovery and alignments
+      are upstream.
+    match_type: same_grammar
+    figure_url: https://www.nature.com/articles/s42003-021-02516-0#Fig2
+    evidence_url: https://www.nature.com/articles/s42003-021-02516-0
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+- id: harrington_geocas9_2017
+  title: A thermostable Cas9 with increased lifetime in human plasma
+  authors: Harrington LB, Paez-Espino D, Staahl BT, et al.
+  journal: Nature Communications
+  year: 2017
+  doi: 10.1038/s41467-017-01408-4
+  url: https://www.nature.com/articles/s41467-017-01408-4
+  citation: Harrington LB, Paez-Espino D, Staahl BT, et al. (2017). A thermostable
+    Cas9 with increased lifetime in human plasma. Nature Communications.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Source linked; original figure not reproduced.
+  verified_on: '2026-10-25'
+  description: See the plot-specific figure examples below.
+  relevance: A caption-verified example of the visual encoding or an explicitly labelled
+    related layout.
+  plot_families:
+  - interactive_motif_logo_plot
+  figure_examples:
+  - id: harrington_geocas9_2017_extra_5
+    figure: Figure 2A
+    plot_families:
+    - interactive_motif_logo_plot
+    title: Inspect nuclease sequence preferences
+    description: PAM sequence logos for two Cas9 orthologs.
+    adaptation: Supply base probabilities at each position; the local renderer does
+      not infer PAMs or cleavage efficiency.
+    match_type: same_grammar
+    figure_url: https://www.nature.com/articles/s41467-017-01408-4#Fig2
+    evidence_url: https://www.nature.com/articles/s41467-017-01408-4
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+- id: ari_agency_2025
+  title: Producing unexpected emotional expressions in others reduces one's own agency
+  authors: Ari I, De Tommaso D, Wykowska A
+  journal: Scientific Reports
+  year: 2025
+  doi: 10.1038/s41598-025-25703-z
+  url: https://www.nature.com/articles/s41598-025-25703-z
+  citation: Ari I, De Tommaso D, Wykowska A (2025). Producing unexpected emotional
+    expressions in others reduces one's own agency. Scientific Reports.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Source linked; original figure not reproduced.
+  verified_on: '2026-10-25'
+  description: See the plot-specific figure examples below.
+  relevance: A caption-verified example of the visual encoding or an explicitly labelled
+    related layout.
+  plot_families:
+  - raincloud_plot
+  figure_examples:
+  - id: ari_agency_2025_extra_6
+    figure: Figure 7
+    plot_families:
+    - raincloud_plot
+    title: Participant-level outcome distributions
+    description: Participant means, densities and box summaries.
+    adaptation: Use participant-level observations; repeated-measures connectors and
+      model-estimated means in the paper require additional analysis or annotations.
+    match_type: same_grammar
+    figure_url: https://www.nature.com/articles/s41598-025-25703-z#Fig7
+    evidence_url: https://www.nature.com/articles/s41598-025-25703-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+- id: dondi_isoforms_2023
+  title: Detection of isoforms and genomic alterations by high-throughput full-length
+    single-cell RNA sequencing in ovarian cancer
+  authors: Dondi A, Lischetti U, Jacob F, et al.
+  journal: Nature Communications
+  year: 2023
+  doi: 10.1038/s41467-023-43387-9
+  url: https://www.nature.com/articles/s41467-023-43387-9
+  citation: Dondi A, Lischetti U, Jacob F, et al. (2023). Detection of isoforms and
+    genomic alterations by high-throughput full-length single-cell RNA sequencing
+    in ovarian cancer. Nature Communications.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Source linked; original figure not reproduced.
+  verified_on: '2026-10-25'
+  description: See the plot-specific figure examples below.
+  relevance: A caption-verified example of the visual encoding or an explicitly labelled
+    related layout.
+  plot_families:
+  - alluvial
+  - sankey
+  - volcano
+  figure_examples:
+  - id: dondi_isoforms_2023_extra_7
+    figure: Figure 4B-C
+    plot_families:
+    - alluvial
+    - sankey
+    title: Isoform-class changes between tissues
+    description: Isoform-biotype flows between tissue groups.
+    adaptation: Aggregate paired biotypes into weighted edges; isoform calling and
+      differential usage tests are upstream.
+    match_type: same_grammar
+    figure_url: https://www.nature.com/articles/s41467-023-43387-9#Fig4
+    evidence_url: https://www.nature.com/articles/s41467-023-43387-9
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+  - id: dondi_isoforms_2023_extra_8
+    figure: Figure 4F
+    plot_families:
+    - volcano
+    title: Differential transcript-end usage
+    description: Fraction changes versus adjusted probabilities.
+    adaptation: Use the reported fraction-change statistic rather than silently relabelling
+      it as log fold change.
+    match_type: same_grammar
+    figure_url: https://www.nature.com/articles/s41467-023-43387-9#Fig4
+    evidence_url: https://www.nature.com/articles/s41467-023-43387-9
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+- id: giuliani_prmt1_2021
+  title: PRMT1-dependent regulation of RNA metabolism and DNA damage response sustains
+    pancreatic ductal adenocarcinoma
+  authors: Giuliani V, Miller MA, Liu CY, et al.
+  journal: Nature Communications
+  year: 2021
+  doi: 10.1038/s41467-021-24798-y
+  url: https://www.nature.com/articles/s41467-021-24798-y
+  citation: Giuliani V, Miller MA, Liu CY, et al. (2021). PRMT1-dependent regulation
+    of RNA metabolism and DNA damage response sustains pancreatic ductal adenocarcinoma.
+    Nature Communications.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Source linked; original figure not reproduced.
+  verified_on: '2026-10-25'
+  description: See the plot-specific figure examples below.
+  relevance: A caption-verified example of the visual encoding or an explicitly labelled
+    related layout.
+  plot_families:
+  - sunburst_plot
+  - venn
+  figure_examples:
+  - id: giuliani_prmt1_2021_extra_9
+    figure: Figure 1I
+    plot_families:
+    - sunburst_plot
+    title: Hierarchical screen-impact summary
+    description: PRMT-family impact across genetic screens.
+    adaptation: Supply the nonnegative transformed screen weights and hierarchy; explain
+      that sector weight is transformed evidence rather than cell abundance.
+    match_type: same_grammar
+    figure_url: https://www.nature.com/articles/s41467-021-24798-y#Fig1
+    evidence_url: https://www.nature.com/articles/s41467-021-24798-y
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+  - id: giuliani_prmt1_2021_extra_10
+    figure: Figure 1B
+    plot_families:
+    - venn
+    title: Shared genetic-screen hits
+    description: Individual and shared screen-hit sets.
+    adaptation: Provide the screened hit lists with the same filtering rules as the
+      comparison.
+    match_type: same_grammar
+    figure_url: https://www.nature.com/articles/s41467-021-24798-y#Fig1
+    evidence_url: https://www.nature.com/articles/s41467-021-24798-y
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+- id: jing_auditory_2025
+  title: Molecular logic for cellular specializations that initiate the auditory parallel
+    processing pathways
+  authors: Jing J, Hu M, Ngodup T, et al.
+  journal: Nature Communications
+  year: 2025
+  doi: 10.1038/s41467-024-55257-z
+  url: https://www.nature.com/articles/s41467-024-55257-z
+  citation: Jing J, Hu M, Ngodup T, et al. (2025). Molecular logic for cellular specializations
+    that initiate the auditory parallel processing pathways. Nature Communications.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Source linked; original figure not reproduced.
+  verified_on: '2026-10-25'
+  description: See the plot-specific figure examples below.
+  relevance: A caption-verified example of the visual encoding or an explicitly labelled
+    related layout.
+  plot_families:
+  - dot_plot
+  - hierarchical_marker_panel
+  figure_examples:
+  - id: jing_auditory_2025_extra_11
+    figure: Figure 1C
+    plot_families:
+    - dot_plot
+    - hierarchical_marker_panel
+    title: Marker evidence alongside a cell hierarchy
+    description: Marker dots aligned with a cluster dendrogram.
+    adaptation: The dot grammar matches. For the hierarchical panel, supply explicit
+      hierarchy labels and any cell counts absent from the source panel.
+    match_type: related_layout
+    figure_url: https://www.nature.com/articles/s41467-024-55257-z#Fig1
+    evidence_url: https://www.nature.com/articles/s41467-024-55257-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+- id: celik_crc_age_2026
+  title: Age-stratified analysis of therapeutic, immune, and glycosylation gene expression
+    in colorectal cancer using machine learning
+  authors: Celik H, Bansal B, Gill JS, et al.
+  journal: Scientific Reports
+  year: 2026
+  doi: 10.1038/s41598-025-31499-9
+  url: https://www.nature.com/articles/s41598-025-31499-9
+  citation: Celik H, Bansal B, Gill JS, et al. (2026). Age-stratified analysis of
+    therapeutic, immune, and glycosylation gene expression in colorectal cancer using
+    machine learning. Scientific Reports. First published online in December 2025;
+    cited issue year 2026.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Original publication linked; no figure copied.
+  description: See the figure-specific example and adaptation notes.
+  relevance: A checked figure-panel example of this plot grammar.
+  plot_families:
+  - circular_bar_plot
+  verified_on: '2026-10-25'
+  figure_examples:
+  - id: celik_crc_age_2026_figure
+    figure: Figure 9A-C
+    title: Pathway significance on a circular axis
+    description: Circular bars summarize pathway enrichment evidence.
+    plot_families:
+    - circular_bar_plot
+    figure_url: https://www.nature.com/articles/s41598-025-31499-9#Fig9
+    evidence_url: https://www.nature.com/articles/s41598-025-31499-9
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Supply term labels and nonnegative -log10 probability values; the
+      source's outer gene annotations are not automatically produced.
+- id: nimo_opendvp_2026
+  title: 'OpenDVP: an experimental and computational framework for community-empowered
+    deep visual proteomics'
+  authors: Nimo J, Fritzsche S, Valdes DS, et al.
+  journal: Nature Methods
+  year: 2026
+  doi: 10.1038/s41592-026-03262-z
+  url: https://www.nature.com/articles/s41592-026-03262-z
+  citation: 'Nimo J, Fritzsche S, Valdes DS, et al. (2026). OpenDVP: an experimental
+    and computational framework for community-empowered deep visual proteomics. Nature
+    Methods.'
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Original publication linked; no figure copied.
+  description: See the figure-specific example and adaptation notes.
+  relevance: A checked figure-panel example of this plot grammar.
+  plot_families:
+  - interactive_radar_plot
+  verified_on: '2026-10-25'
+  figure_examples:
+  - id: nimo_opendvp_2026_figure
+    figure: Figure 5F
+    title: Compare spatial-proteomics trade-offs
+    description: Three strategies compared on five qualitative axes.
+    plot_families:
+    - interactive_radar_plot
+    figure_url: https://www.nature.com/articles/s41592-026-03262-z#Fig5
+    evidence_url: https://www.nature.com/articles/s41592-026-03262-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use explicit ordinal values and label the scale; polygon area is not
+      a quantitative overall performance score.
+- id: puig_oud_2023
+  title: Circadian rhythm disruptions associated with opioid use disorder in synaptic
+    proteomes of human dorsolateral prefrontal cortex and nucleus accumbens
+  authors: Puig S, Xue X, Salisbury R, et al.
+  journal: Molecular Psychiatry
+  year: 2023
+  doi: 10.1038/s41380-023-02241-6
+  url: https://www.nature.com/articles/s41380-023-02241-6
+  citation: Puig S, Xue X, Salisbury R, et al. (2023). Circadian rhythm disruptions
+    associated with opioid use disorder in synaptic proteomes of human dorsolateral
+    prefrontal cortex and nucleus accumbens. Molecular Psychiatry.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Original publication linked; no figure copied.
+  description: See the figure-specific example and adaptation notes.
+  relevance: A checked figure-panel example of this plot grammar.
+  plot_families:
+  - enrichment_lollipop
+  verified_on: '2026-10-25'
+  figure_examples:
+  - id: puig_oud_2023_figure
+    figure: Figure 2A-B
+    title: Compare enriched synaptic pathways
+    description: Enrichment scores with adjusted probabilities and protein counts.
+    plot_families:
+    - enrichment_lollipop
+    figure_url: https://www.nature.com/articles/s41380-023-02241-6#Fig2
+    evidence_url: https://www.nature.com/articles/s41380-023-02241-6
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use the supplied enrichment ratio as the x value and counts for size;
+      these ratios are not signed differential effects. The source colors probabilities
+      independently of the x score; the current value-color mode follows x, so an
+      exact copy needs an appropriate separate color mapping.
+- id: pieszko_cardiac_2023
+  title: Time and event-specific deep learning for personalized risk assessment after
+    cardiac perfusion imaging
+  authors: Pieszko K, Shanbhag AD, Singh A, et al.
+  journal: npj Digital Medicine
+  year: 2023
+  doi: 10.1038/s41746-023-00806-x
+  url: https://www.nature.com/articles/s41746-023-00806-x
+  citation: Pieszko K, Shanbhag AD, Singh A, et al. (2023). Time and event-specific
+    deep learning for personalized risk assessment after cardiac perfusion imaging.
+    npj Digital Medicine.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Original publication linked; no figure copied.
+  description: See the figure-specific example and adaptation notes.
+  relevance: A checked figure-panel example of this plot grammar.
+  plot_families:
+  - waterfall_plot
+  verified_on: '2026-10-25'
+  figure_examples:
+  - id: pieszko_cardiac_2023_figure
+    figure: Figure 5
+    title: Explain individualized model risk
+    description: Signed features contribute to an individual prediction.
+    plot_families:
+    - waterfall_plot
+    figure_url: https://www.nature.com/articles/s41746-023-00806-x#Fig5
+    evidence_url: https://www.nature.com/articles/s41746-023-00806-x
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Supply computed contributions and a baseline; the local cumulative
+      bars do not train a model or make patient-specific risk assessments. Include
+      a nonzero baseline as an explicit initial step when preparing the table.
+- id: klughammer_methylation_2023
+  title: Comparative analysis of genome-scale, base-resolution DNA methylation profiles
+    across 580 animal species
+  authors: Klughammer J, Romanovskaia D, Nemc A, et al.
+  journal: Nature Communications
+  year: 2023
+  doi: 10.1038/s41467-022-34828-y
+  url: https://www.nature.com/articles/s41467-022-34828-y
+  citation: Klughammer J, Romanovskaia D, Nemc A, et al. (2023). Comparative analysis
+    of genome-scale, base-resolution DNA methylation profiles across 580 animal species.
+    Nature Communications.
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Original publication linked; no figure copied.
+  description: See the figure-specific example and adaptation notes.
+  relevance: A checked figure-panel example of this plot grammar.
+  plot_families:
+  - interactive_histogram_plot
+  verified_on: '2026-10-25'
+  figure_examples:
+  - id: klughammer_methylation_2023_figure
+    figure: Figure 2D
+    title: Compare model-performance distributions
+    description: ROC-AUC distributions for vertebrate and invertebrate species.
+    plot_families:
+    - interactive_histogram_plot
+    figure_url: https://www.nature.com/articles/s41467-022-34828-y#Fig2
+    evidence_url: https://www.nature.com/articles/s41467-022-34828-y
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+    adaptation: Use species-level ROC-AUC values and a taxonomic group column with
+      shared bin boundaries.
+- id: jia_crc_programs_2026
+  title: Single-cell analysis identifies dysregulated cell type-specific gene programs
+    and intercellular crosstalk underlying colorectal cancer
+  authors: Jia W, Lin K, Liu X, et al.
+  journal: npj Precision Oncology
+  year: 2026
+  doi: 10.1038/s41698-026-01490-2
+  url: https://www.nature.com/articles/s41698-026-01490-2
+  citation: Jia W, Lin K, Liu X, et al. Single-cell analysis identifies dysregulated
+    cell type-specific gene programs and intercellular crosstalk underlying colorectal
+    cancer. npj Precision Oncology 10:321 (2026).
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Original source linked; no image copied.
+  description: A figure-specific example of regulon-target score distributions.
+  relevance: Compare signed gene-score distributions without reducing each regulon
+    to one mean.
+  plot_families:
+  - ridgeline
+  figure_examples:
+  - id: jia_crc_programs_2026_fig3b
+    figure: Figure 3B
+    title: Regulon-target score distributions
+    description: Target-gene fold-change distributions for activated and repressed
+      regulons.
+    adaptation: Supply gene-level scores and regulon labels. Regulon discovery and
+      differential testing must be done upstream.
+    plot_families:
+    - ridgeline
+    figure_url: https://www.nature.com/articles/s41698-026-01490-2#Fig3
+    evidence_url: https://www.nature.com/articles/s41698-026-01490-2
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+- id: lee_brain_atlas_2026
+  title: Single-cell atlas of transcriptomic vulnerability across brain disorders
+  authors: Lee D, Koutrouli M, Masse NY, et al.
+  journal: Nature
+  year: 2026
+  doi: 10.1038/s41586-025-09573-z
+  url: https://www.nature.com/articles/s41586-025-09573-z
+  citation: Lee D, Koutrouli M, Masse NY, et al. Single-cell atlas of transcriptomic
+    vulnerability across brain disorders. Nature 657, 988–1002 (2026).
+  reference_type: published_use_case
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Publisher article is CC BY 4.0; original figure linked, no image copied.
+  description: A multi-level brain cell taxonomy presented around a central embedding.
+  relevance: Summarize cell-type annotations at several levels and link them to an
+    embedding.
+  plot_families:
+  - circular_tree_embedding
+  figure_examples:
+  - id: lee_brain_atlas_2026_fig2a
+    figure: Figure 2a
+    title: Hierarchical cell taxonomy with a central embedding
+    description: Atlas overview with eight classes, 27 subclasses and 65 subtypes.
+    adaptation: Supply cell coordinates and class/subclass/subtype labels. Use annotation
+      mode for an existing taxonomy, or measured feature means for similarity clustering.
+      The original iterative taxonomy inference and embedding are upstream analyses;
+      this plugin does not reproduce them. Local demos contain 17 synthetic leaves,
+      not the original atlas data.
+    plot_families:
+    - circular_tree_embedding
+    figure_url: https://www.nature.com/articles/s41586-025-09573-z#Fig2
+    evidence_url: https://www.nature.com/articles/s41586-025-09573-z
+    verification: primary_source_caption
+    verified_on: '2026-10-25'
+    match_type: same_grammar
+- id: figureya_lu_2025
+  title: 'FigureYa: A Standardized Visualization Framework for Enhancing Biomedical
+    Data Interpretation and Research Efficiency'
+  authors: Lu X, Li K, Li Z, et al.
+  journal: iMetaMed
+  year: 2025
+  doi: 10.1002/imm3.70005
+  url: https://github.com/ying-ge/FigureYa
+  citation: 'Lu X, Li K, Li Z, et al. FigureYa: A Standardized Visualization Framework
+    for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed
+    1:e70005 (2025).'
+  reference_type: method_reference
+  publication_status: published
+  thumbnail_reuse_allowed: false
+  license: Repository states CC BY-NC-SA 4.0. Linked for method comparison; no upstream
+    code or figures copied.
+  description: Reference collection used to audit plot-grammar coverage.
+  relevance: Compare the required input shape and intended visualization with the
+    corresponding source module; upstream analyses are not automatically reproduced.
+  plot_families:
+  - survival_plot
+  - binary_evaluation_plot
+  - forest_plot
+  - oncoprint_plot
+  - manhattan_qq_plot
+  - bland_altman_plot
+  - swimmer_plot
+  - protein_variant_plot
+  - clonal_fish_plot
+  - sequence_alignment_plot
+  - circular_genomic_plot
+  - nomogram_plot
+  - interactive_3d_scatter
+  - bar3d_plot
+  - radviz_plot
+  - ecdf_plot
+  - spatial_region_plot
+  - annotated_tree_plot
+  - circular_distribution_plot
+  - embedding_vector_plot
+  - linked_matrix_network_plot
+  - risk_stratification_panel

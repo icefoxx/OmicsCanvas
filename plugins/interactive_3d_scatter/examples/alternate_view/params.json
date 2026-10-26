@@ -1,0 +1,9 @@
+{
+  "x_column": "PC1",
+  "y_column": "PC2",
+  "z_column": "PC3",
+  "group_column": "group",
+  "title": "Alternate viewing angle",
+  "azimuth": 65,
+  "elevation": 45
+}

@@ -7,6 +7,7 @@
 # `kind` is the expected column type; `aliases` are parameter stems
 # (parameter name minus _column/_col/_columns/_by) that mean this role.
 roles:
+  z:               {kind: numeric, aliases: [z, dim3, pc3, umap3, umap_3]}
   id:              {kind: id,          aliases: [id, row_id, cell, cell_id, element_id, node_id, barcode]}
   # x/y are axes, not necessarily numeric (dot plots use gene x cluster); embedding rules require numbers.
   x:               {kind: any,         aliases: [x, dim1, umap1, umap_1, tsne1, tsne_1, pc1]}
@@ -39,20 +40,29 @@ families:
   enrichment: [interactive_enrichment_lollipop, fgsea_enrichment_plot, go_kegg_enrichment_bar_bubble,
                gsea_pathway_heatmap, gsea_ridge_nes_plot]
   differential_expression: [sca_volcano_plot]
-  embedding: [advanced_dim_plot, advanced_feature_plot, feature_density_plot, lineage_plot]
-  composition: [stacked_bar_plot, interactive_pie_plot, alluvial_plot, classified_bar_plot]
+  embedding: [advanced_dim_plot, advanced_feature_plot, feature_density_plot, lineage_plot, circular_tree_embedding,
+               interactive_3d_scatter, radviz_plot, embedding_vector_plot]
+  composition: [stacked_bar_plot, interactive_pie_plot, alluvial_plot, classified_bar_plot,
+                sunburst_plot, treemap_plot, ternary_plot,
+               clonal_fish_plot]
   group_comparison: [exp_stat_plot, stat_plot, violin_plot, interactive_violin_plot, interactive_ridgeline_plot,
                      interactive_histogram_plot, highlight_effect_plot, interactive_dumbbell_plot,
-                     interactive_radar_plot, combo_bar_line_plot, combo_bar_dot_matrix]
+                     interactive_radar_plot, combo_bar_line_plot, combo_bar_dot_matrix,
+                     raincloud_plot, circular_bar_plot, waterfall_plot, line_plot,
+               survival_plot, binary_evaluation_plot, forest_plot, swimmer_plot, ecdf_plot, circular_distribution_plot]
   matrix: [dot_plot, group_heatmap, balloon_plot, interactive_binary_plot, interactive_clustered_heatmap_plot,
            interactive_dual_triangle_heatmap_plot, pie_dot_matrix, threshold_matrix_heatmap,
-           interactive_bubble_score_matrix, cluster_dendrogram_plot, den_plot]
+           interactive_bubble_score_matrix, cluster_dendrogram_plot, den_plot, circular_heatmap,
+               oncoprint_plot, bar3d_plot, spatial_region_plot, annotated_tree_plot]
   correlation: [interactive_correlation_matrix, interactive_mantel_correlation_network,
-                quadrant_correlation_scatter, regression_scatter_plot]
+                quadrant_correlation_scatter, regression_scatter_plot,
+               bland_altman_plot]
   network: [interactive_network_plot, interactive_arc_network_plot, interactive_sankey_plot]
   set_overlap: [dynamic_venn_diagram, interactive_upset_plot]
-  genomic_track: [interactive_genomic_signal_track_plot, interactive_motif_logo_plot]
-  multi_panel: [ranked_annotation_panel, hierarchical_marker_panel]
+  genomic_track: [interactive_genomic_signal_track_plot, interactive_motif_logo_plot,
+               manhattan_qq_plot, protein_variant_plot, sequence_alignment_plot, circular_genomic_plot]
+  multi_panel: [ranked_annotation_panel, hierarchical_marker_panel,
+               nomogram_plot, linked_matrix_network_plot, risk_stratification_panel]
 
 # Within a family a generic stem can carry a stronger meaning.
 family_role_overrides:
@@ -65,6 +75,138 @@ family_role_overrides:
 #   required_roles: roles that must resolve to a column for a valid figure
 #   guardrails: names of extra skill-level checks
 skills:
+  linked_matrix_network_plot:
+    roles:
+      feature: row_column
+      sample: column_column
+      value: value_column
+    not_roles:
+    - edge_group_column
+  risk_stratification_panel:
+    roles:
+      id: id_column
+      value: value_column
+      x: time_column
+      group: group_column
+    not_roles:
+    - feature_columns
+  survival_plot:
+    roles:
+      x: time_column
+      value: event_column
+      group: group_column
+    statistics:
+      method: stat_method
+  binary_evaluation_plot:
+    roles:
+      group: group_column
+    not_roles:
+    - x_column
+    - y_column
+    - outcome_column
+    - score_column
+  forest_plot:
+    roles:
+      category: label_column
+      value: effect_column
+      ci_low: lower_column
+      ci_high: upper_column
+      group: group_column
+  oncoprint_plot:
+    roles:
+      feature: feature_column
+      sample: sample_column
+      group: group_column
+  manhattan_qq_plot:
+    roles:
+      pvalue: pvalue_column
+  bland_altman_plot:
+    roles:
+      x: x_column
+      y: y_column
+      group: group_column
+  swimmer_plot:
+    roles:
+      id: id_column
+      x: start_column
+      y: end_column
+      group: group_column
+  protein_variant_plot:
+    roles:
+      x: position_column
+      value: value_column
+      group: group_column
+  clonal_fish_plot:
+    roles:
+      source: parent_column
+      target: group_column
+      x: x_column
+      value: value_column
+  sequence_alignment_plot:
+    roles:
+      id: id_column
+  circular_genomic_plot:
+    roles:
+      x: start_column
+      y: end_column
+      value: value_column
+      group: group_column
+  nomogram_plot:
+    roles:
+      x: position_column
+      group: group_column
+  interactive_3d_scatter:
+    roles:
+      x: x_column
+      y: y_column
+      z: z_column
+      group: group_column
+  bar3d_plot:
+    roles:
+      x: x_column
+      y: y_column
+      value: value_column
+      group: group_column
+  radviz_plot:
+    roles:
+      feature: feature_columns
+      group: group_column
+  ecdf_plot:
+    roles:
+      value: value_column
+      group: group_column
+    statistics:
+      method: stat_method
+  spatial_region_plot:
+    roles:
+      x: x_column
+      y: y_column
+      group: group_column
+      value: value_column
+  annotated_tree_plot:
+    roles:
+      source: parent_column
+      target: child_column
+      weight: length_column
+      group: group_column
+      size: size_column
+    not_roles:
+    - feature_columns
+  circular_distribution_plot:
+    roles:
+      value: value_column
+      feature: feature_column
+      group: group_column
+      id: id_column
+  embedding_vector_plot:
+    roles:
+      x: x_column
+      y: y_column
+      group: group_column
+  circular_tree_embedding:
+    roles: {x: x_column, y: y_column, group: group_column, cluster: cluster_column}
+    required_roles: [x, y, group, cluster]
+    statistics: {method: cluster_method}
   interactive_enrichment_lollipop:
     # plot.R has no adjusted p-value parameter; an adjusted_pvalue mapping is reported as unsupported.
     roles: {category: category_column, signed_effect: value_column, group: group_column,
@@ -127,6 +269,29 @@ skills:
     statistics: {clustering_method: cluster_method, distance_method: distance_method}
   cluster_dendrogram_plot:
     statistics: {clustering_method: cluster_method, distance_method: distance_method}
+  raincloud_plot:
+    roles: {value: value_column, group: group_column}
+    required_roles: [value]
+  circular_bar_plot:
+    roles: {category: category_column, value: value_column, group: group_column}
+    required_roles: [category, value]
+  line_plot:
+    roles: {x: x_column, y: y_column, group: group_column, se: se_column}
+    required_roles: [x, y]
+  waterfall_plot:
+    roles: {category: category_column, value: value_column}
+    required_roles: [category, value]
+  sunburst_plot:
+    roles: {group: level1_column, category: level2_column, value: value_column}
+    required_roles: [group, value]
+  treemap_plot:
+    roles: {group: level1_column, category: level2_column, value: value_column}
+    required_roles: [group, value]
+  ternary_plot:
+    roles: {group: group_column, size: size_column}
+  circular_heatmap:
+    roles: {feature: row_column, group: column_column, value: value_column}
+    required_roles: [feature, group, value]
   dot_plot:
     not_roles: [top_by, dot_col]
     statistics: {clustering_method: cluster_method, distance_method: distance_method}

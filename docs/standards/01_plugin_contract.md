@@ -36,7 +36,10 @@ Rscript plugins/<id>/plot.R --input <table> --params <params.json> --output <dir
 - The working directory is the repository root, but never rely on it: resolve repository files
   relative to the script path (template: `script_dir`, `repo_root`).
 - plot_web runs R with `R_PROFILE_USER=R/runtime/omicscanvas.Rprofile`, which seeds the RNG from
-  `params.seed` (default 42). Do not override it.
+  `params.seed` (default 42). Do not override it. The same profile wraps
+  `htmlwidgets::saveWidget` so missing pandoc does not abort the job: self-contained HTML is
+  attempted when pandoc is present, otherwise a non-selfcontained file (or a stub page) is
+  written and PNG/PDF still succeed.
 
 ## config.yaml
 

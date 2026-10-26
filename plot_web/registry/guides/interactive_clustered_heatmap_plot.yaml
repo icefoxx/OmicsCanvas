@@ -1,0 +1,108 @@
+summary: Cluster a numeric matrix with aligned row/column annotations and optional
+  side panels.
+observation_type: observations or summary items in the input table
+best_for:
+- Find sample and feature modules
+- Check batch and biological groups
+- Compare aligned ancillary metrics
+common_uses: []
+input_requirements: Wide numeric matrix with row IDs; optional matched row and column
+  annotations.
+learn_more: 'Input: Wide numeric matrix with row IDs; optional matched row and column
+  annotations. Interpretation: Tiles show the configured values or scaling; trees
+  describe the selected distances. Check mappings, order and transformations before
+  adjusting labels, colors and canvas dimensions. Confirm legends and units before
+  export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Tiles show the configured values or scaling; trees describe the selected distances.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Missing-value handling and scaling affect clustering
+- id: caution_2
+  title: Caution 2
+  text: Co-varying modules do not establish shared regulation
+examples:
+- id: basic
+  title: Clustered numeric matrix
+  description: 'Use case: Find sample and feature modules. This preset illustrates
+    clustered numeric matrix. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Find sample and feature modules
+  input_requirements: Wide numeric matrix with row IDs; optional matched row and column
+    annotations.
+  preview_asset: plugins/interactive_clustered_heatmap_plot/all_examples_gallery/basic.png
+  mappings:
+    row_id_column: Gene
+    matrix_start_column: 2
+    cluster_columns: true
+- id: custom
+  title: Color and annotation customization
+  description: 'Use case: Check batch and biological groups. This preset illustrates
+    color and annotation customization. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: custom
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Check batch and biological groups
+  input_requirements: Wide numeric matrix with row IDs; optional matched row and column
+    annotations.
+  preview_asset: plugins/interactive_clustered_heatmap_plot/all_examples_gallery/custom.png
+  variant_id: custom
+  mappings:
+    row_id_column: Gene
+    matrix_start_column: 2
+    cluster_columns: true
+- id: panels
+  title: Heatmap with additional panels
+  description: 'Use case: Compare aligned ancillary metrics. This preset illustrates
+    heatmap with additional panels. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: panels
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare aligned ancillary metrics
+  input_requirements: Wide numeric matrix with row IDs; optional matched row and column
+    annotations.
+  preview_asset: plugins/interactive_clustered_heatmap_plot/all_examples_gallery/panels.png
+  variant_id: panels
+  mappings:
+    row_id_column: Gene
+    matrix_start_column: 2
+    cluster_columns: true
+    panel_group_column: panel
+literature_ids:
+- eisen_clustering_1998
+- hao_dnt_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  custom:
+    summary: 'Use case: Check batch and biological groups. This preset illustrates
+      color and annotation customization. Replace its input with your data while retaining
+      the appropriate view settings.'
+  panels:
+    summary: 'Use case: Compare aligned ancillary metrics. This preset illustrates
+      heatmap with additional panels. Replace its input with your data while retaining
+      the appropriate view settings.'
+customization:
+- parameter: palette
+  label: palette
+  default: viridis
+- parameter: cluster_rows
+  label: cluster_rows
+  default: true
+- parameter: cluster_columns
+  label: cluster_columns
+  default: true
+- parameter: width
+  label: width
+  default: 12
+- parameter: height
+  label: height
+  default: 9

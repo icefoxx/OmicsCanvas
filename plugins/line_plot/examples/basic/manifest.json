@@ -1,0 +1,11 @@
+{
+  "id": "basic",
+  "label": "Basic",
+  "plugin_id": "line_plot",
+  "params": "params.json",
+  "inputs": {"input": "input/example_input.csv"},
+  "expected": "expected/result.png",
+  "reproduce": {
+    "command": "Rscript plugins/line_plot/plot.R --input plugins/line_plot/examples/basic/input/example_input.csv --params plugins/line_plot/examples/basic/params.json --output /tmp/line_plot_basic"
+  }
+}

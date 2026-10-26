@@ -1,0 +1,11 @@
+{
+  "feature_columns": [
+    "Program_A",
+    "Program_B",
+    "Program_C",
+    "Program_D"
+  ],
+  "group_column": "group",
+  "title": "Feature-scaled wheel",
+  "normalization": "feature_minmax"
+}

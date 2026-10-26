@@ -1,0 +1,28 @@
+id: ecdf_plot
+name: Empirical CDF
+version: 1.0.0
+description: Compare cumulative distributions with optional distribution-free confidence
+  bands.
+language: R
+entrypoint: plot.R
+category: Distribution
+subcategory: General
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+runtime:
+  command: Rscript plugins/ecdf_plot/plot.R --input input.csv --params params.json
+    --output output_dir

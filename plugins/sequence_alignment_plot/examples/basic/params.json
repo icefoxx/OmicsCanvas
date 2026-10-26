@@ -1,0 +1,5 @@
+{
+  "id_column": "sequence_id",
+  "sequence_column": "sequence",
+  "title": "Aligned nucleotide sequences"
+}

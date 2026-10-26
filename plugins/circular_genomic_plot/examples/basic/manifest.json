@@ -1,0 +1,12 @@
+{
+  "id": "basic",
+  "label": "Circular interval heatmap",
+  "plugin_id": "circular_genomic_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv",
+    "chromosomes": "input/chromosomes.csv",
+    "links": "input/links.csv"
+  },
+  "expected": "expected/result.png"
+}

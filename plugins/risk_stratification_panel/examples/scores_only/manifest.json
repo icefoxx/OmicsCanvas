@@ -1,0 +1,10 @@
+{
+  "id": "scores_only",
+  "label": "Scores and follow-up",
+  "plugin_id": "risk_stratification_panel",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

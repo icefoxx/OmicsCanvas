@@ -1,0 +1,10 @@
+{
+  "id": "basic",
+  "label": "Aligned nucleotide sequences",
+  "plugin_id": "sequence_alignment_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

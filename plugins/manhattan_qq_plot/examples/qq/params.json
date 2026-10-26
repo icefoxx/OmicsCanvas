@@ -1,0 +1,8 @@
+{
+  "pvalue_column": "pvalue",
+  "chromosome_column": "chromosome",
+  "position_column": "position",
+  "label_column": "label",
+  "title": "Expected and observed probabilities",
+  "plot_type": "qq"
+}

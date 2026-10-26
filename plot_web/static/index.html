@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Plot Studio | OmicsCanvas</title>
-  <link rel="stylesheet" href="/static/styles.css?v=vnext-1">
-  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <link rel="stylesheet" href="/static/styles.css?v=ai-workflow-fix-3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -21,13 +20,18 @@
       </div>
     </div>
     <nav class="top-actions">
-      <button data-mode="plotLibrary" class="top-link">Explore Plots</button>
+      <button data-mode="plotLibrary" class="top-link">All Plots</button>
       <button data-mode="aiStudio" class="top-link ai-nav-link">✦ AI Studio</button>
       <button data-mode="dataUpload" class="top-link">Datasets</button>
       <button data-mode="results" class="top-link">Runs</button>
       <button data-mode="reports" class="top-link">Reports</button>
-      <button id="saveStateButton" class="secondary compact-action">Save Session</button>
-      <button id="loadStateButton" class="secondary compact-action">Load Session</button>
+      <details class="session-menu">
+        <summary>Session</summary>
+        <div class="session-menu-panel">
+          <button id="saveStateButton" class="secondary compact-action">Save Session</button>
+          <button id="loadStateButton" class="secondary compact-action">Load Session</button>
+        </div>
+      </details>
       <div id="health" class="status">Checking backend</div>
     </nav>
   </header>
@@ -42,7 +46,7 @@
     <section class="workspace">
       <!-- PLOT GALLERY PORTAL (ENGLISH VIEW) -->
       <section id="plotLibraryPanel" class="mode-panel">
-        <div id="discoveryRoot" class="discovery-root"></div>
+        <div id="discoveryRoot" class="discovery-root"><p class="empty-inline" role="status">Loading plot library…</p></div>
       </section>
 
       <!-- AI STUDIO -->
@@ -55,9 +59,8 @@
                 <span class="ai-engine-pill" id="aiEnginePill">checking…</span>
               </div>
               <p class="ai-hero-text">
-                Upload a table and describe your goal. The studio will: (1) summarize intent,
-                (2) match plots and related skills, (3) render the top 3 demos, (4) explain each figure.
-                Rules always run; LLM refines text when <code>OPENCODE_API_KEY</code> / <code>XAI_API_KEY</code> is set.
+                Upload a table, describe the plot, then review its mode and column mappings.
+                Your uploaded-data figures use all observations. Built-in examples are a separate action.
               </p>
               <div class="ai-upload-row">
                 <label class="ai-file-label">
@@ -73,7 +76,7 @@
               </div>
               <div id="aiIntentBox" class="ai-intent-box hidden"></div>
               <div id="aiProfileBox" class="ai-profile-box hidden"></div>
-              <div id="aiSkillsBox" class="ai-skills-box hidden"></div>
+              <details class="ai-secondary-details"><summary>Matched workflows &amp; skills</summary><div id="aiSkillsBox" class="ai-skills-box hidden"></div></details>
             </div>
 
             <div class="card">
@@ -92,6 +95,7 @@
             </div>
 
             <div class="card">
+              <details class="ai-secondary-details"><summary>Recommended palettes</summary>
               <div class="card-head">
                 <h3>Recommended palettes</h3>
                 <span class="ai-engine-pill" title="Source: color.amfe.space">AMFE</span>
@@ -99,6 +103,7 @@
               <div id="aiPaletteList" class="ai-palette-list">
                 <div class="ai-empty">After analysis, journal-style palettes appear here (copy HEX).</div>
               </div>
+              </details>
             </div>
 
           </div>
@@ -106,7 +111,7 @@
           <aside class="ai-chat-aside card">
             <div class="card-head"><h3>Assistant chat</h3></div>
             <div id="aiChatLog" class="ai-chat-log">
-              <div class="ai-chat-bubble bot">Hi! Upload data, state your goal, then click “Run top 3 &amp; explain”. I will summarize intent, rank plots, render demos, and explain each figure.</div>
+              <div class="ai-chat-bubble bot">Hi! Upload data, state your goal, then click “Run top 3 &amp; explain”. I can explain matched workflows, confirm the data scope, and prepare color edits for review.</div>
             </div>
             <div class="ai-chat-compose">
               <input type="text" id="aiChatInput" placeholder="e.g. Why a volcano plot?">
@@ -123,10 +128,10 @@
           <div class="dataset-form">
             <input id="datasetName" type="text" placeholder="Dataset name">
             <select id="datasetRole">
-              <option value="primary_table">primary_table</option>
-              <option value="expression_matrix">expression_matrix</option>
-              <option value="metadata">metadata</option>
-              <option value="annotation">annotation</option>
+              <option value="primary_table">Data table</option>
+              <option value="expression_matrix">Expression matrix</option>
+              <option value="metadata">Sample metadata</option>
+              <option value="annotation">Annotations</option>
             </select>
             <input id="datasetFile" type="file" accept=".csv,.tsv,.txt,.xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
             <textarea id="datasetNotes" placeholder="Notes & metadata description"></textarea>
@@ -337,8 +342,8 @@
     <span id="outputPathText"></span>
   </footer>
 
-  <script src="/static/html_utils.js?v=2"></script>
-  <script src="/static/discovery.js?v=migrate-stacked-bar-1"></script>
-  <script src="/static/app.js?v=vnext-1"></script>
+  <script src="/static/html_utils.js?v=fast-preview-1"></script>
+  <script src="/static/discovery.js?v=all-plots-home-1"></script>
+  <script src="/static/app.js?v=ai-workflow-fix-2"></script>
 </body>
 </html>

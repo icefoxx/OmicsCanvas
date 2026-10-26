@@ -1,0 +1,38 @@
+{
+  "full_pytest": {
+    "passed": 192,
+    "failed": 0,
+    "warnings": 1
+  },
+  "focused_ai_pytest": {
+    "passed": 43,
+    "failed": 0,
+    "includes_final_supplied_curve_check": true
+  },
+  "standards": {
+    "plugins": 80,
+    "new_violations": 0,
+    "baselined": 1571
+  },
+  "sensitivity": {
+    "scalar_parameters": 80,
+    "crashes": 0,
+    "conditional_no_effect": 5,
+    "mode_aware_followup_passed": 5
+  },
+  "javascript_syntax": "passed",
+  "diff_whitespace": "passed",
+  "full_image_regression": {
+    "passed": 137,
+    "differences": 133,
+    "failures": 24,
+    "new_differences": 0,
+    "new_failures": 0,
+    "baseline_updates": 0
+  },
+  "browser_pipeline": {
+    "completed": 3,
+    "total": 3
+  },
+  "llm_provider_exercised": false
+}

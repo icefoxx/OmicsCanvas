@@ -1,0 +1,6 @@
+{
+  "feature_column": "gene",
+  "sample_column": "sample",
+  "group_column": "alteration",
+  "title": "Multi-hit alteration matrix"
+}

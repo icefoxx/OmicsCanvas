@@ -1,0 +1,10 @@
+{
+  "id": "signed_effects",
+  "label": "Signed differences",
+  "plugin_id": "forest_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

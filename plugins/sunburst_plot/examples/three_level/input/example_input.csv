@@ -1,0 +1,12 @@
+level1,level2,level3,value
+Immune,T cell,CD4,22
+Immune,T cell,CD8,18
+Immune,B cell,Naive,10
+Immune,B cell,Memory,8
+Immune,NK,CD56,8
+Stroma,Fibroblast,Myofibroblast,14
+Stroma,Fibroblast,Resting,8
+Stroma,Endothelial,Capillary,12
+Epithelium,Luminal,Secretory,18
+Epithelium,Luminal,Ciliated,12
+Epithelium,Basal,Basal,14

@@ -1,0 +1,204 @@
+summary: Connect observations over a numeric or ordered x-axis, with optional errors
+  or smoothing.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare changes over time
+- Show dose-response patterns
+- Explore continuous-covariate trends
+common_uses: []
+input_requirements: X and Y values with optional group and error columns.
+learn_more: 'Input: X and Y values with optional group and error columns. Interpretation:
+  Lines join ordered observations; smoothing is an estimate rather than additional
+  observed data. Check mappings, order and transformations before adjusting labels,
+  colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Lines join ordered observations; smoothing is an estimate rather than additional
+    observed data.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Categories need a meaningful connecting order
+- id: caution_2
+  title: Caution 2
+  text: Smoothing does not establish causality or a significant trend
+- type: caution
+  title: Geometry and inference
+  text: Enable the supplied interval band to display numeric lower and upper bounds
+    containing each y value. Intervals are supplied by the analysis; no confidence
+    or credible interval is inferred. Band opacity and bound-column mappings apply
+    only when the band is enabled.
+examples:
+- id: basic
+  title: Grouped trends with errors
+  description: 'Use case: Compare changes over time. This preset illustrates grouped
+    trends with errors. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare changes over time
+  input_requirements: X and Y values with optional group and error columns.
+  preview_asset: plugins/line_plot/all_examples_gallery/basic.png
+  variant_id: basic
+  mappings:
+    x_column: x
+    y_column: y
+    group_column: group
+    se_column: se
+- id: smooth
+  title: Smoothed continuous trends
+  description: 'Use case: Show dose-response patterns. This preset illustrates smoothed
+    continuous trends. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: smooth
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Show dose-response patterns
+  input_requirements: X and Y values with optional group and error columns.
+  preview_asset: plugins/line_plot/all_examples_gallery/smooth.png
+  variant_id: smooth
+  mappings:
+    x_column: x
+    y_column: y
+    group_column: group
+    se_column: se
+- id: interval_band
+  title: Supplied interval band
+  description: Supplied interval band
+  scenario: Supplied interval band
+  demo_id: interval_band
+  variant_id: interval_band
+  preview_asset: plugins/line_plot/all_examples_gallery/interval_band.png
+  data_note: Independent synthetic data; upstream inference is not performed.
+literature_ids:
+- hao_dnt_2026
+- zhernakova_age_sex_2022
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  basic:
+    summary: Grouped lines with points and error bars.
+  smooth:
+    summary: Loess smooth over numeric x.
+customization:
+- parameter: group_column
+  label: Group column
+  default: group
+  help: Series colour; empty = one line.
+- parameter: x_column
+  label: X column
+  default: x
+  help: Numeric or ordered category for the x axis.
+- parameter: y_column
+  label: Y column
+  default: y
+  help: Numeric series values.
+- parameter: palette
+  label: Palette
+  default: Set 2
+- parameter: group_colors
+  label: Colour per group
+  default: {}
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Width (in)
+  default: 7
+- parameter: height
+  label: Height (in)
+  default: 4.5
+source_modules:
+- title: FigureYa20mortality
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa20mortality
+  scope: Supplied lower/upper interval bands are available in line_plot; survival/spline/Bayesian
+    model fitting remains upstream.
+- title: FigureYa31lasso_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa31lasso_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa44profile
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa44profile
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa62twoAxis
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa62twoAxis
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa77baseZoom
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa77baseZoom
+  scope: Inset magnification is a presentation treatment; independent panels can be
+    exported, but an arbitrary nested-inset editor is not implemented.
+- title: FigureYa99smoothHRv2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa99smoothHRv2
+  scope: Supplied lower/upper interval bands are available in line_plot; survival/spline/Bayesian
+    model fitting remains upstream.
+- title: FigureYa110mutationSignature
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa110mutationSignature
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa117multilinearDE
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa117multilinearDE
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa118MulticlassDESeq2
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa118MulticlassDESeq2
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa119Multiclasslimma
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa119Multiclasslimma
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa120MulticlassedgeR
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa120MulticlassedgeR
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa189timeCindex
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa189timeCindex
+  scope: Plot supplied time-dependent concordance estimates as lines; concordance
+    estimation remains upstream.
+- title: FigureYa192breakpoint
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa192breakpoint
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa197SmoothHaz
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa197SmoothHaz
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa218Elasticnet
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa218Elasticnet
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa219GMM
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa219GMM
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa220repeatedLasso
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa220repeatedLasso
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa273BAPC
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa273BAPC
+  scope: Supplied lower/upper interval bands are available in line_plot; survival/spline/Bayesian
+    model fitting remains upstream.
+- title: FigureYa289TILSig
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa289TILSig
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

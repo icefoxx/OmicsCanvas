@@ -1,0 +1,10 @@
+{
+  "id": "interval_band",
+  "label": "Supplied confidence or credible bounds",
+  "plugin_id": "line_plot",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "params": "params.json",
+  "expected": "expected/result.png"
+}

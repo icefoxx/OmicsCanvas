@@ -1,0 +1,10 @@
+{
+  "id": "basic",
+  "label": "Three-dimensional sample coordinates",
+  "plugin_id": "interactive_3d_scatter",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

@@ -1,0 +1,464 @@
+[
+  {
+    "plugin": "annotated_tree_plot",
+    "goal": "Draw a annotated tree",
+    "top": [
+      {
+        "plugin_id": "annotated_tree_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 10.2
+      },
+      {
+        "plugin_id": "interactive_violin_plot",
+        "score": 10.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 7
+  },
+  {
+    "plugin": "bar3d_plot",
+    "goal": "Draw a lego plot",
+    "top": [
+      {
+        "plugin_id": "bar3d_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 10.2
+      },
+      {
+        "plugin_id": "interactive_violin_plot",
+        "score": 10.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 96
+  },
+  {
+    "plugin": "binary_evaluation_plot",
+    "goal": "Draw a roc curve",
+    "top": [
+      {
+        "plugin_id": "binary_evaluation_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "combo_bar_dot_matrix",
+        "score": 8.2
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 5.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 160
+  },
+  {
+    "plugin": "bland_altman_plot",
+    "goal": "Draw a bland altman",
+    "top": [
+      {
+        "plugin_id": "bland_altman_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 5.2
+      },
+      {
+        "plugin_id": "interactive_ridgeline_plot",
+        "score": 5.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 80
+  },
+  {
+    "plugin": "circular_distribution_plot",
+    "goal": "Draw a circular score",
+    "top": [
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 15.2
+      },
+      {
+        "plugin_id": "circular_distribution_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "interactive_violin_plot",
+        "score": 10.2
+      }
+    ],
+    "correct_top": false,
+    "workflow_matched": true,
+    "rows": 240
+  },
+  {
+    "plugin": "circular_genomic_plot",
+    "goal": "Draw a circular genome",
+    "top": [
+      {
+        "plugin_id": "circular_genomic_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 12.2
+      },
+      {
+        "plugin_id": "interactive_violin_plot",
+        "score": 7.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 108
+  },
+  {
+    "plugin": "clonal_fish_plot",
+    "goal": "Draw a clonal fish",
+    "top": [
+      {
+        "plugin_id": "clonal_fish_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "alluvial_plot",
+        "score": 10.2
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 7.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 20
+  },
+  {
+    "plugin": "ecdf_plot",
+    "goal": "Draw a ecdf",
+    "top": [
+      {
+        "plugin_id": "ecdf_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "dynamic_venn_diagram",
+        "score": 8.2
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 5.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 260
+  },
+  {
+    "plugin": "embedding_vector_plot",
+    "goal": "Draw a embedding vector",
+    "top": [
+      {
+        "plugin_id": "embedding_vector_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "advanced_dim_plot",
+        "score": 5.2
+      },
+      {
+        "plugin_id": "combo_bar_dot_matrix",
+        "score": 5.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 240
+  },
+  {
+    "plugin": "forest_plot",
+    "goal": "Draw a forest plot",
+    "top": [
+      {
+        "plugin_id": "forest_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 10.2
+      },
+      {
+        "plugin_id": "interactive_violin_plot",
+        "score": 10.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 8
+  },
+  {
+    "plugin": "interactive_3d_scatter",
+    "goal": "Draw a 3d embedding",
+    "top": [
+      {
+        "plugin_id": "advanced_dim_plot",
+        "score": 17.2
+      },
+      {
+        "plugin_id": "interactive_3d_scatter",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "combo_bar_dot_matrix",
+        "score": 5.2
+      }
+    ],
+    "correct_top": false,
+    "workflow_matched": true,
+    "rows": 225
+  },
+  {
+    "plugin": "linked_matrix_network_plot",
+    "goal": "Draw a linked heatmap",
+    "top": [
+      {
+        "plugin_id": "linked_matrix_network_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "interactive_violin_plot",
+        "score": 10.2
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 7.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 40
+  },
+  {
+    "plugin": "manhattan_qq_plot",
+    "goal": "Draw a manhattan",
+    "top": [
+      {
+        "plugin_id": "manhattan_qq_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "sca_volcano_plot",
+        "score": 11.2
+      },
+      {
+        "plugin_id": "interactive_pie_plot",
+        "score": 3.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 420
+  },
+  {
+    "plugin": "nomogram_plot",
+    "goal": "Draw a nomogram",
+    "top": [
+      {
+        "plugin_id": "nomogram_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "regression_scatter_plot",
+        "score": 4.2
+      },
+      {
+        "plugin_id": "interactive_pie_plot",
+        "score": 3.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 26
+  },
+  {
+    "plugin": "oncoprint_plot",
+    "goal": "Draw a oncoprint",
+    "top": [
+      {
+        "plugin_id": "oncoprint_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "dynamic_venn_diagram",
+        "score": 6.2
+      },
+      {
+        "plugin_id": "stat_plot",
+        "score": 6.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 92
+  },
+  {
+    "plugin": "protein_variant_plot",
+    "goal": "Draw a protein variant",
+    "top": [
+      {
+        "plugin_id": "protein_variant_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 10.2
+      },
+      {
+        "plugin_id": "interactive_violin_plot",
+        "score": 10.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 9
+  },
+  {
+    "plugin": "radviz_plot",
+    "goal": "Draw a radviz",
+    "top": [
+      {
+        "plugin_id": "radviz_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "combo_bar_dot_matrix",
+        "score": 5.2
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 5.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 195
+  },
+  {
+    "plugin": "risk_stratification_panel",
+    "goal": "Draw a risk stratification panel",
+    "top": [
+      {
+        "plugin_id": "risk_stratification_panel",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "pie_dot_matrix",
+        "score": 12.2
+      },
+      {
+        "plugin_id": "stacked_bar_plot",
+        "score": 12.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 60
+  },
+  {
+    "plugin": "sequence_alignment_plot",
+    "goal": "Draw a sequence alignment",
+    "top": [
+      {
+        "plugin_id": "sequence_alignment_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "dynamic_venn_diagram",
+        "score": 8.2
+      },
+      {
+        "plugin_id": "interactive_pie_plot",
+        "score": 3.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 7
+  },
+  {
+    "plugin": "spatial_region_plot",
+    "goal": "Draw a spatial region",
+    "top": [
+      {
+        "plugin_id": "spatial_region_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "combo_bar_dot_matrix",
+        "score": 5.2
+      },
+      {
+        "plugin_id": "pie_dot_matrix",
+        "score": 4.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 24
+  },
+  {
+    "plugin": "survival_plot",
+    "goal": "Draw a kaplan",
+    "top": [
+      {
+        "plugin_id": "survival_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "alluvial_plot",
+        "score": 10.2
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 5.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 130
+  },
+  {
+    "plugin": "swimmer_plot",
+    "goal": "Draw a swimmer",
+    "top": [
+      {
+        "plugin_id": "swimmer_plot",
+        "score": 15.0
+      },
+      {
+        "plugin_id": "highlight_effect_plot",
+        "score": 10.2
+      },
+      {
+        "plugin_id": "interactive_violin_plot",
+        "score": 10.2
+      }
+    ],
+    "correct_top": true,
+    "workflow_matched": true,
+    "rows": 14
+  }
+]

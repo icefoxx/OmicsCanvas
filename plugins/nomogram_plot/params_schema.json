@@ -1,0 +1,135 @@
+{
+  "data_mapping": {
+    "group_column": {
+      "type": "column",
+      "default": "scale",
+      "label": "Group column",
+      "help": ""
+    },
+    "position_column": {
+      "type": "column",
+      "default": "position",
+      "label": "Position column",
+      "help": "Normalized position from 0 to 1 on the supplied scale."
+    },
+    "label_column": {
+      "type": "column",
+      "default": "label",
+      "label": "Label column",
+      "help": ""
+    }
+  },
+  "colors": {
+    "line_color": {
+      "type": "color",
+      "default": "#405368",
+      "label": "Line color",
+      "help": ""
+    }
+  },
+  "labels": {
+    "label_show": {
+      "type": "boolean",
+      "default": true,
+      "label": "Label show",
+      "help": ""
+    },
+    "label_size": {
+      "type": "number",
+      "default": 2.8,
+      "label": "Label size",
+      "help": "",
+      "min": 1,
+      "max": 6
+    },
+    "title": {
+      "type": "string",
+      "default": "",
+      "label": "Title",
+      "help": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "",
+      "label": "Subtitle",
+      "help": "Empty uses the automatic description."
+    },
+    "caption": {
+      "type": "string",
+      "default": "",
+      "label": "Caption",
+      "help": ""
+    },
+    "title_size": {
+      "type": "number",
+      "default": 13,
+      "label": "Title size",
+      "help": "Only when a nonempty title is supplied.",
+      "min": 6,
+      "max": 30
+    }
+  },
+  "marks": {
+    "line_width": {
+      "type": "number",
+      "default": 0.6,
+      "label": "Line width",
+      "help": "",
+      "min": 0.1,
+      "max": 3
+    }
+  },
+  "theme": {
+    "font_family": {
+      "type": "select",
+      "default": "sans",
+      "label": "Font family",
+      "help": "",
+      "options": [
+        "sans",
+        "serif",
+        "mono"
+      ]
+    },
+    "base_size": {
+      "type": "number",
+      "default": 11,
+      "label": "Base size",
+      "help": "",
+      "min": 6,
+      "max": 22
+    },
+    "plot_background": {
+      "type": "color",
+      "default": "#FFFFFF",
+      "label": "Plot background",
+      "help": ""
+    }
+  },
+  "export": {
+    "width": {
+      "type": "number",
+      "default": 8,
+      "label": "Width",
+      "help": "Inches.",
+      "min": 3,
+      "max": 20
+    },
+    "height": {
+      "type": "number",
+      "default": 6,
+      "label": "Height",
+      "help": "Inches.",
+      "min": 3,
+      "max": 20
+    },
+    "dpi": {
+      "type": "integer",
+      "default": 150,
+      "label": "Dpi",
+      "help": "",
+      "min": 72,
+      "max": 600
+    }
+  }
+}

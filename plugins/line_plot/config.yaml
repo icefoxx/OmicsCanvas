@@ -1,0 +1,17 @@
+id: line_plot
+name: Line Plot
+version: 1.0.0
+description: Multi-series lines with optional points, error bars, and a second y axis.
+language: R
+entrypoint: plot.R
+category: Comparison
+subcategory: Line
+status: beta
+inputs:
+- id: input
+  type: table
+  formats: [csv, tsv, txt]
+  required: true
+outputs: [result.svg, result.pdf, result.png, figure.json, run.log, data_used.csv]
+runtime:
+  command: Rscript plugins/line_plot/plot.R --input input.csv --params params.json --output output_dir

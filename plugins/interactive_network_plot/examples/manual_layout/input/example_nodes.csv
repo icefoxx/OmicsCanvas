@@ -1,0 +1,7 @@
+id,label,group,type,x,y
+ALPHA,Alpha hub,Core,Node,0,2
+BETA,Beta,Core,Node,1.73,1
+GAMMA,Gamma,Signal,Node,1.73,-1
+DELTA,Delta,Signal,Node,0,-2
+EPSILON,Epsilon,Metabolic,Node,-1.73,-1
+ZETA,Zeta,Metabolic,Node,-1.73,1

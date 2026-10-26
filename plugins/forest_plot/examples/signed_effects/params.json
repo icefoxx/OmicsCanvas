@@ -1,0 +1,10 @@
+{
+  "label_column": "label",
+  "effect_column": "effect",
+  "lower_column": "lower",
+  "upper_column": "upper",
+  "group_column": "group",
+  "title": "Signed differences",
+  "null_value": 0,
+  "estimate_show": false
+}

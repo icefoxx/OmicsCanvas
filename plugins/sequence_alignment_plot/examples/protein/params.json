@@ -1,0 +1,6 @@
+{
+  "id_column": "sequence_id",
+  "sequence_column": "sequence",
+  "title": "Aligned protein sequences",
+  "alphabet": "protein"
+}

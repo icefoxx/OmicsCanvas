@@ -77,6 +77,20 @@ def perturb(key: str, field: dict, current):
         new = v * 2 if v not in (0.0,) else 1.0
         if 0 < v <= 1 and ("alpha" in key or "opacity" in key):
             new = v / 2
+        # The scanner must not manufacture invalid confidence levels, dimensions,
+        # angles, etc. outside the same schema bounds enforced by the editor.
+        lower, upper = field.get("min"), field.get("max")
+        if isinstance(lower, (int, float)):
+            new = max(float(lower), new)
+        if isinstance(upper, (int, float)):
+            new = min(float(upper), new)
+        if new == v:
+            step = float(field.get("step") or (1 if ftype == "integer" else max(abs(v) / 2, 0.1)))
+            alternatives = [v - step, v + step]
+            new = next((x for x in alternatives
+                        if (lower is None or x >= lower) and (upper is None or x <= upper) and x != v), v)
+        if new == v:
+            return None
         return int(new) if ftype == "integer" or (isinstance(value, int) and float(new).is_integer()) else new
     if "font_family" in key or key in {"font", "family"}:
         return "serif" if str(value).lower() != "serif" else "mono"  # an unknown font would silently fall back

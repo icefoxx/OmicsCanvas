@@ -1,0 +1,112 @@
+summary: Display set intersections using a membership matrix and count bars, with
+  optional attributes.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare differential-gene lists
+- Find shared and unique members
+- Inspect attributes of chosen intersections
+common_uses: []
+input_requirements: Element IDs with set memberships in the supported wide or long
+  layout.
+learn_more: 'Input: Element IDs with set memberships in the supported wide or long
+  layout. Interpretation: The dot matrix defines a combination and the bar reports
+  its size. Check mappings, order and transformations before adjusting labels, colors
+  and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: The dot matrix defines a combination and the bar reports its size.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Exact intersections, inclusive intersections and unions differ
+- id: caution_2
+  title: Caution 2
+  text: Minimum-size filters hide rare combinations
+examples:
+- id: basic
+  title: Exact multiset intersections
+  description: 'Use case: Compare differential-gene lists. This preset illustrates
+    exact multiset intersections. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare differential-gene lists
+  input_requirements: Element IDs with set memberships in the supported wide or long
+    layout.
+  preview_asset: plugins/interactive_upset_plot/all_examples_gallery/basic.png
+  mappings:
+    item_column: item_id
+    set_columns:
+    - A
+    - B
+    - C
+    - D
+    - E
+    - F
+    - G
+- id: query_highlight
+  title: Highlight target intersections
+  description: 'Use case: Find shared and unique members. This preset illustrates
+    highlight target intersections. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: query_highlight
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Find shared and unique members
+  input_requirements: Element IDs with set memberships in the supported wide or long
+    layout.
+  preview_asset: plugins/interactive_upset_plot/all_examples_gallery/query_highlight.png
+  variant_id: query_highlight
+  mappings:
+    item_column: item_id
+    set_columns:
+    - A
+    - B
+    - C
+    - D
+    - E
+    - F
+    - G
+- id: annotated_numeric
+  title: Intersections and numeric attributes
+  description: 'Use case: Inspect attributes of chosen intersections. This preset
+    illustrates intersections and numeric attributes. Replace its input with your
+    data while retaining the appropriate view settings.'
+  demo_id: annotated_numeric
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect attributes of chosen intersections
+  input_requirements: Element IDs with set memberships in the supported wide or long
+    layout.
+  preview_asset: plugins/interactive_upset_plot/all_examples_gallery/annotated_numeric.png
+  variant_id: annotated_numeric
+  mappings:
+    item_column: item_id
+    set_columns:
+    - A
+    - B
+    - C
+    - D
+    - E
+    - F
+    - G
+    annotation_columns:
+    - score
+literature_ids:
+- lex_intersections_2014
+- hao_dnt_2026
+- lauria_gseca_2020
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  annotated_numeric:
+    summary: 'Use case: Inspect attributes of chosen intersections. This preset illustrates
+      intersections and numeric attributes. Replace its input with your data while
+      retaining the appropriate view settings.'
+  query_highlight:
+    summary: 'Use case: Find shared and unique members. This preset illustrates highlight
+      target intersections. Replace its input with your data while retaining the appropriate
+      view settings.'
+customization: []

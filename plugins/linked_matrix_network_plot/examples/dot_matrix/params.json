@@ -1,0 +1,8 @@
+{
+  "matrix_mark": "dot",
+  "row_column": "feature",
+  "column_column": "condition",
+  "value_column": "value",
+  "edge_group_column": "group",
+  "title": "Dot matrix and relationships"
+}

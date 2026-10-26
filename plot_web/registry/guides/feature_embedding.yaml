@@ -1,0 +1,131 @@
+summary: Display continuous features on an existing two-dimensional embedding, with
+  faceting and multifeature color blending.
+observation_type: observations or summary items in the input table
+best_for:
+- Locate cell-type markers
+- Compare feature patterns across conditions
+- Inspect feature colocalization
+common_uses: []
+input_requirements: Observation IDs, two embedding coordinates and numeric features;
+  optional sample and group columns.
+learn_more: 'Input: Observation IDs, two embedding coordinates and numeric features;
+  optional sample and group columns. Interpretation: Color encodes feature values;
+  blended colors combine feature channels. Check mappings, order and transformations
+  before adjusting labels, colors and canvas dimensions. Confirm legends and units
+  before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Color encodes feature values; blended colors combine feature channels.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Colocalization does not establish regulation
+- id: caution_2
+  title: Caution 2
+  text: Independently scaled panels cannot be compared by color intensity
+examples:
+- id: pdf_repro_basic_two_features
+  title: Two-feature marker maps
+  description: 'Use case: Locate cell-type markers. This preset illustrates two-feature
+    marker maps. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: pdf_repro_basic_two_features
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Locate cell-type markers
+  input_requirements: Observation IDs, two embedding coordinates and numeric features;
+    optional sample and group columns.
+  preview_asset: plugins/advanced_feature_plot/all_examples_gallery/pdf_repro_basic_two_features.png
+  variant_id: feature_expression
+  mappings:
+    x_column: dim1
+    y_column: dim2
+    id_column: cell
+    group_column: cluster
+    feature_columns:
+    - Atoh1
+    - Neurod1
+- id: pdf_repro_split_by_sample
+  title: Feature maps split by sample
+  description: 'Use case: Compare feature patterns across conditions. This preset
+    illustrates feature maps split by sample. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: pdf_repro_split_by_sample
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare feature patterns across conditions
+  input_requirements: Observation IDs, two embedding coordinates and numeric features;
+    optional sample and group columns.
+  preview_asset: plugins/advanced_feature_plot/all_examples_gallery/pdf_repro_split_by_sample.png
+  variant_id: split_feature_expression
+  mappings:
+    x_column: dim1
+    y_column: dim2
+    id_column: cell
+    group_column: cluster
+    feature_columns:
+    - Atoh1
+    split_column: orig.ident
+- id: pdf_repro_feature_comp_multiply
+  title: Multifeature colocalization
+  description: 'Use case: Inspect feature colocalization. This preset illustrates
+    multifeature colocalization. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: pdf_repro_feature_comp_multiply
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect feature colocalization
+  input_requirements: Observation IDs, two embedding coordinates and numeric features;
+    optional sample and group columns.
+  preview_asset: plugins/advanced_feature_plot/all_examples_gallery/pdf_repro_feature_comp_multiply.png
+  variant_id: feature_coexpression
+  mappings:
+    x_column: dim1
+    y_column: dim2
+    id_column: cell
+    group_column: cluster
+    feature_columns:
+    - Atoh1
+    - Neurod1
+literature_ids:
+- hao_dnt_2026
+- li_cerebrum_2021
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  feature_expression:
+    summary: Visualize one or more feature values across observations in a 2D embedding.
+  split_feature_expression:
+    summary: Compare feature maps across samples, conditions, or other groups on the
+      same embedding.
+  feature_coexpression:
+    summary: Jointly encode multiple features on one map by mixing their colors.
+  aggregated_feature_expression:
+    summary: Summarize feature intensity in spatial bins instead of drawing every
+      cell.
+customization:
+- parameter: group_column
+  label: Group column
+  default: null
+- parameter: feature_columns
+  label: Feature columns
+  default: []
+- parameter: x_column
+  label: X embedding
+  default: dim1
+- parameter: y_column
+  label: Y embedding
+  default: dim2
+- parameter: palette
+  label: Palette
+  default: ''
+- parameter: label_show
+  label: Show labels
+  default: false
+- parameter: width
+  label: Width (in)
+  default: 7
+- parameter: height
+  label: Height (in)
+  default: 6

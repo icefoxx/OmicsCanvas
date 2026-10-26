@@ -1,0 +1,10 @@
+{
+  "id": "basic",
+  "label": "Effect estimates and confidence intervals",
+  "plugin_id": "forest_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "expected": "expected/result.png"
+}

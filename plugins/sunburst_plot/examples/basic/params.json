@@ -1,0 +1,9 @@
+{
+  "level1_column": "level1",
+  "level2_column": "level2",
+  "value_column": "value",
+  "title": "Cell-type composition",
+  "inner_radius": 0.2,
+  "width": 7,
+  "height": 7
+}

@@ -1,0 +1,704 @@
+[
+  {
+    "plugin": "annotated_tree_plot",
+    "goal": "Draw a annotated tree",
+    "correct_top": true,
+    "top": "annotated_tree_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/annotated_tree_plot/examples/basic/input/data.csv",
+      "annot": "plugins/annotated_tree_plot/examples/basic/input/annot.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 7,
+      "mode": "default",
+      "mappings": {
+        "parent_column": "parent",
+        "child_column": "child",
+        "length_column": "length",
+        "group_column": "group",
+        "size_column": "size"
+      },
+      "params": {
+        "title": "AI demo \u00b7 annotated_tree_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "parent_column": "parent",
+        "child_column": "child",
+        "length_column": "length",
+        "group_column": "group",
+        "size_column": "size"
+      }
+    }
+  },
+  {
+    "plugin": "bar3d_plot",
+    "goal": "Draw a lego plot",
+    "correct_top": true,
+    "top": "bar3d_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/bar3d_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 96,
+      "mode": "default",
+      "mappings": {
+        "x_column": "x",
+        "y_column": "y",
+        "value_column": "count",
+        "group_column": "group"
+      },
+      "params": {
+        "title": "AI demo \u00b7 bar3d_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "x_column": "x",
+        "y_column": "y",
+        "value_column": "count",
+        "group_column": "group"
+      }
+    }
+  },
+  {
+    "plugin": "binary_evaluation_plot",
+    "goal": "Draw a roc curve",
+    "correct_top": true,
+    "top": "binary_evaluation_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/binary_evaluation_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 160,
+      "mode": "roc",
+      "mappings": {
+        "outcome_column": "outcome",
+        "score_column": "score",
+        "group_column": "group",
+        "x_column": "x",
+        "y_column": "y"
+      },
+      "params": {
+        "title": "AI demo \u00b7 binary_evaluation_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "outcome_column": "outcome",
+        "score_column": "score",
+        "group_column": "group",
+        "x_column": "x",
+        "y_column": "y",
+        "plot_type": "roc"
+      }
+    }
+  },
+  {
+    "plugin": "bland_altman_plot",
+    "goal": "Draw a bland altman",
+    "correct_top": true,
+    "top": "bland_altman_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/bland_altman_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 80,
+      "mode": "default",
+      "mappings": {
+        "x_column": "method_a",
+        "y_column": "method_b",
+        "group_column": "group"
+      },
+      "params": {
+        "title": "AI demo \u00b7 bland_altman_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "x_column": "method_a",
+        "y_column": "method_b",
+        "group_column": "group"
+      }
+    }
+  },
+  {
+    "plugin": "circular_distribution_plot",
+    "goal": "Draw a circular score",
+    "correct_top": true,
+    "top": "circular_distribution_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/circular_distribution_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 240,
+      "mode": "default",
+      "mappings": {
+        "value_column": "score",
+        "feature_column": "metric",
+        "group_column": "group",
+        "id_column": "id"
+      },
+      "params": {
+        "title": "AI demo \u00b7 circular_distribution_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "value_column": "score",
+        "feature_column": "metric",
+        "group_column": "group",
+        "id_column": "id"
+      }
+    }
+  },
+  {
+    "plugin": "circular_genomic_plot",
+    "goal": "Draw a circular genome",
+    "correct_top": true,
+    "top": "circular_genomic_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/circular_genomic_plot/examples/basic/input/data.csv",
+      "chromosomes": "plugins/circular_genomic_plot/examples/basic/input/chromosomes.csv",
+      "links": "plugins/circular_genomic_plot/examples/basic/input/links.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 108,
+      "mode": "default",
+      "mappings": {
+        "chromosome_column": "chromosome",
+        "start_column": "start",
+        "end_column": "end",
+        "value_column": "value",
+        "group_column": "track"
+      },
+      "params": {
+        "title": "AI demo \u00b7 circular_genomic_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "chromosome_column": "chromosome",
+        "start_column": "start",
+        "end_column": "end",
+        "value_column": "value",
+        "group_column": "track"
+      }
+    }
+  },
+  {
+    "plugin": "clonal_fish_plot",
+    "goal": "Draw a clonal fish",
+    "correct_top": true,
+    "top": "clonal_fish_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/clonal_fish_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 20,
+      "mode": "default",
+      "mappings": {
+        "group_column": "clone",
+        "parent_column": "parent",
+        "x_column": "time",
+        "value_column": "fraction"
+      },
+      "params": {
+        "title": "AI demo \u00b7 clonal_fish_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "group_column": "clone",
+        "parent_column": "parent",
+        "x_column": "time",
+        "value_column": "fraction"
+      }
+    }
+  },
+  {
+    "plugin": "ecdf_plot",
+    "goal": "Draw a ecdf",
+    "correct_top": true,
+    "top": "ecdf_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/ecdf_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 260,
+      "mode": "default",
+      "mappings": {
+        "value_column": "value",
+        "group_column": "group"
+      },
+      "params": {
+        "title": "AI demo \u00b7 ecdf_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "value_column": "value",
+        "group_column": "group"
+      }
+    }
+  },
+  {
+    "plugin": "embedding_vector_plot",
+    "goal": "Draw a embedding vector",
+    "correct_top": true,
+    "top": "embedding_vector_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/embedding_vector_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 240,
+      "mode": "default",
+      "mappings": {
+        "x_column": "x",
+        "y_column": "y",
+        "vx_column": "vx",
+        "vy_column": "vy",
+        "group_column": "group"
+      },
+      "params": {
+        "title": "AI demo \u00b7 embedding_vector_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "x_column": "x",
+        "y_column": "y",
+        "vx_column": "vx",
+        "vy_column": "vy",
+        "group_column": "group"
+      }
+    }
+  },
+  {
+    "plugin": "forest_plot",
+    "goal": "Draw a forest plot",
+    "correct_top": true,
+    "top": "forest_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/forest_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 8,
+      "mode": "default",
+      "mappings": {
+        "label_column": "label",
+        "effect_column": "effect",
+        "lower_column": "lower",
+        "upper_column": "upper",
+        "group_column": "group"
+      },
+      "params": {
+        "title": "AI demo \u00b7 forest_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "label_column": "label",
+        "effect_column": "effect",
+        "lower_column": "lower",
+        "upper_column": "upper",
+        "group_column": "group"
+      }
+    }
+  },
+  {
+    "plugin": "interactive_3d_scatter",
+    "goal": "Draw a 3d embedding",
+    "correct_top": true,
+    "top": "interactive_3d_scatter",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/interactive_3d_scatter/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 225,
+      "mode": "default",
+      "mappings": {
+        "x_column": "PC1",
+        "y_column": "PC2",
+        "z_column": "PC3",
+        "group_column": "group"
+      },
+      "params": {
+        "title": "AI demo \u00b7 interactive_3d_scatter",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "x_column": "PC1",
+        "y_column": "PC2",
+        "z_column": "PC3",
+        "group_column": "group"
+      }
+    }
+  },
+  {
+    "plugin": "linked_matrix_network_plot",
+    "goal": "Draw a linked heatmap",
+    "correct_top": true,
+    "top": "linked_matrix_network_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/linked_matrix_network_plot/examples/basic/input/data.csv",
+      "links": "plugins/linked_matrix_network_plot/examples/basic/input/links.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 40,
+      "mode": "default",
+      "mappings": {
+        "row_column": "feature",
+        "column_column": "condition",
+        "value_column": "value"
+      },
+      "params": {
+        "title": "AI demo \u00b7 linked_matrix_network_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "row_column": "feature",
+        "column_column": "condition",
+        "value_column": "value"
+      }
+    }
+  },
+  {
+    "plugin": "manhattan_qq_plot",
+    "goal": "Draw a manhattan",
+    "correct_top": true,
+    "top": "manhattan_qq_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/manhattan_qq_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 420,
+      "mode": "default",
+      "mappings": {
+        "pvalue_column": "pvalue",
+        "chromosome_column": "chromosome",
+        "position_column": "position",
+        "label_column": "label"
+      },
+      "params": {
+        "title": "AI demo \u00b7 manhattan_qq_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "pvalue_column": "pvalue",
+        "chromosome_column": "chromosome",
+        "position_column": "position",
+        "label_column": "label"
+      }
+    }
+  },
+  {
+    "plugin": "nomogram_plot",
+    "goal": "Draw a nomogram",
+    "correct_top": true,
+    "top": "nomogram_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/nomogram_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 26,
+      "mode": "default",
+      "mappings": {
+        "group_column": "scale",
+        "position_column": "position",
+        "label_column": "label"
+      },
+      "params": {
+        "title": "AI demo \u00b7 nomogram_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "group_column": "scale",
+        "position_column": "position",
+        "label_column": "label"
+      }
+    }
+  },
+  {
+    "plugin": "oncoprint_plot",
+    "goal": "Draw a oncoprint",
+    "correct_top": true,
+    "top": "oncoprint_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/oncoprint_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 92,
+      "mode": "default",
+      "mappings": {
+        "feature_column": "gene",
+        "sample_column": "sample",
+        "group_column": "alteration"
+      },
+      "params": {
+        "title": "AI demo \u00b7 oncoprint_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "feature_column": "gene",
+        "sample_column": "sample",
+        "group_column": "alteration"
+      }
+    }
+  },
+  {
+    "plugin": "protein_variant_plot",
+    "goal": "Draw a protein variant",
+    "correct_top": true,
+    "top": "protein_variant_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/protein_variant_plot/examples/basic/input/data.csv",
+      "domains": "plugins/protein_variant_plot/examples/basic/input/domains.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 9,
+      "mode": "default",
+      "mappings": {
+        "position_column": "position",
+        "value_column": "count",
+        "label_column": "variant",
+        "group_column": "group"
+      },
+      "params": {
+        "title": "AI demo \u00b7 protein_variant_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "position_column": "position",
+        "value_column": "count",
+        "label_column": "variant",
+        "group_column": "group"
+      }
+    }
+  },
+  {
+    "plugin": "radviz_plot",
+    "goal": "Draw a radviz",
+    "correct_top": true,
+    "top": "radviz_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/radviz_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 195,
+      "mode": "default",
+      "mappings": {
+        "group_column": "group"
+      },
+      "params": {
+        "title": "AI demo \u00b7 radviz_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "group_column": "group"
+      }
+    }
+  },
+  {
+    "plugin": "risk_stratification_panel",
+    "goal": "Draw a risk stratification panel",
+    "correct_top": true,
+    "top": "risk_stratification_panel",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/risk_stratification_panel/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 60,
+      "mode": "default",
+      "mappings": {
+        "id_column": "subject",
+        "value_column": "risk_score",
+        "time_column": "time",
+        "event_column": "event",
+        "group_column": "group"
+      },
+      "params": {
+        "title": "AI demo \u00b7 risk_stratification_panel",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "id_column": "subject",
+        "value_column": "risk_score",
+        "time_column": "time",
+        "event_column": "event",
+        "group_column": "group"
+      }
+    }
+  },
+  {
+    "plugin": "sequence_alignment_plot",
+    "goal": "Draw a sequence alignment",
+    "correct_top": true,
+    "top": "sequence_alignment_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/sequence_alignment_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 7,
+      "mode": "default",
+      "mappings": {
+        "id_column": "sequence_id",
+        "sequence_column": "sequence"
+      },
+      "params": {
+        "title": "AI demo \u00b7 sequence_alignment_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "id_column": "sequence_id",
+        "sequence_column": "sequence"
+      }
+    }
+  },
+  {
+    "plugin": "spatial_region_plot",
+    "goal": "Draw a spatial region",
+    "correct_top": true,
+    "top": "spatial_region_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/spatial_region_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 24,
+      "mode": "default",
+      "mappings": {
+        "x_column": "x",
+        "y_column": "y",
+        "group_column": "region",
+        "value_column": "value",
+        "part_column": "part"
+      },
+      "params": {
+        "title": "AI demo \u00b7 spatial_region_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "x_column": "x",
+        "y_column": "y",
+        "group_column": "region",
+        "value_column": "value",
+        "part_column": "part"
+      }
+    }
+  },
+  {
+    "plugin": "survival_plot",
+    "goal": "Draw a kaplan",
+    "correct_top": true,
+    "top": "survival_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/survival_plot/examples/basic/input/data.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 130,
+      "mode": "survival",
+      "mappings": {
+        "time_column": "time",
+        "event_column": "event",
+        "group_column": "group"
+      },
+      "params": {
+        "title": "AI demo \u00b7 survival_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "time_column": "time",
+        "event_column": "event",
+        "group_column": "group",
+        "curve_type": "survival"
+      }
+    }
+  },
+  {
+    "plugin": "swimmer_plot",
+    "goal": "Draw a swimmer",
+    "correct_top": true,
+    "top": "swimmer_plot",
+    "workflow_matched": true,
+    "canonical_inputs": {
+      "input": "plugins/swimmer_plot/examples/basic/input/data.csv",
+      "events": "plugins/swimmer_plot/examples/basic/input/events.csv"
+    },
+    "draft": {
+      "data_scope": "all_rows",
+      "rows": 14,
+      "mode": "default",
+      "mappings": {
+        "id_column": "subject",
+        "start_column": "start",
+        "end_column": "end",
+        "group_column": "group"
+      },
+      "params": {
+        "title": "AI demo \u00b7 swimmer_plot",
+        "title_show": true,
+        "width": 8,
+        "height": 5.5,
+        "dpi": 150,
+        "id_column": "subject",
+        "start_column": "start",
+        "end_column": "end",
+        "group_column": "group"
+      }
+    }
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "data_mapping": {
+    "category_column": {"type": "column", "label": "Category column", "default": "category", "help": "Labels around the circle."},
+    "value_column": {"type": "column", "label": "Value column", "default": "value", "help": "Bar height (numeric)."},
+    "group_column": {"type": "column", "label": "Group column", "default": "group", "help": "Stack fill; empty = one series."},
+    "groups_include": {"type": "string_array", "label": "Groups to keep", "default": []},
+    "groups_exclude": {"type": "string_array", "label": "Groups to drop", "default": []},
+    "group_order": {"type": "string_array", "label": "Group order", "default": []},
+    "category_order": {"type": "string_array", "label": "Category order", "default": []}
+  },
+  "marks": {
+    "plot_type": {"type": "select", "label": "Bar mode", "default": "stacked", "options": ["stacked", "single"], "help": "single ignores group and sums values per category."},
+    "inner_radius": {"type": "number", "label": "Inner hole", "default": 0.2, "min": 0, "max": 0.9, "step": 0.05, "help": "Fraction of the radius left empty."},
+    "bar_alpha": {"type": "number", "label": "Bar opacity", "default": 0.95, "min": 0, "max": 1, "step": 0.05},
+    "bar_width": {"type": "number", "label": "Bar width", "default": 0.9, "min": 0.2, "max": 1, "step": 0.05},
+    "label_show": {"type": "boolean", "label": "Category labels", "default": true},
+    "label_size": {"type": "number", "label": "Label size", "default": 8}
+  },
+  "colors": {
+    "palette": {"type": "select", "label": "Palette", "default": "Set 2", "options": ["Set 2", "Dark 3", "Viridis", "Zissou 1"]},
+    "group_colors": {"type": "object", "label": "Colour per group", "default": {}, "help": "{\"group\": \"#hex\"}; overrides the palette."}
+  },
+  "labels": {
+    "title": {"type": "string", "label": "Title", "default": ""},
+    "subtitle": {"type": "string", "label": "Subtitle", "default": ""},
+    "legend_title": {"type": "string", "label": "Legend title", "default": "", "help": "Empty = group column name."},
+    "title_size": {"type": "number", "label": "Title size", "default": 13}
+  },
+  "legend": {
+    "legend_show": {"type": "boolean", "label": "Show legend", "default": true},
+    "legend_position": {"type": "select", "label": "Legend position", "default": "right", "options": ["right", "bottom", "top", "left"]},
+    "legend_text_size": {"type": "number", "label": "Legend text size", "default": 9}
+  },
+  "theme": {
+    "font_family": {"type": "string", "label": "Font family", "default": "sans"},
+    "base_size": {"type": "number", "label": "Base font size", "default": 11},
+    "grid_show": {"type": "boolean", "label": "Radial grid", "default": true}
+  },
+  "export": {
+    "width": {"type": "number", "label": "Width (in)", "default": 7},
+    "height": {"type": "number", "label": "Height (in)", "default": 7},
+    "dpi": {"type": "number", "label": "PNG dpi", "default": 300}
+  }
+}

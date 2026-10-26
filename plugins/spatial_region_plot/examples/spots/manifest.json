@@ -1,0 +1,10 @@
+{
+  "id": "spots",
+  "label": "Measured spatial spots",
+  "plugin_id": "spatial_region_plot",
+  "inputs": {
+    "input": "input/data.csv"
+  },
+  "params": "params.json",
+  "expected": "expected/result.png"
+}

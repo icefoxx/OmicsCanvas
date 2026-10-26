@@ -1,0 +1,35 @@
+{
+  "plugin_id": "circular_tree_embedding",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Annotation hierarchy",
+      "plugin_id": "circular_tree_embedding",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/cells.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "similarity",
+      "label": "Feature similarity",
+      "plugin_id": "circular_tree_embedding",
+      "params": "similarity/params.json",
+      "inputs": {
+        "input": "similarity/input/cells.csv"
+      },
+      "expected": "similarity/expected/result.png"
+    },
+    {
+      "id": "CAB_demo",
+      "label": "CAB_demo",
+      "plugin_id": "circular_tree_embedding",
+      "params": "CAB_demo/params.json",
+      "inputs": {
+        "input": "CAB_demo/input/cells.csv"
+      },
+      "expected": "CAB_demo/expected/result.png"
+    }
+  ]
+}

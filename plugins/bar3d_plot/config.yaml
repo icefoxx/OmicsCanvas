@@ -1,0 +1,29 @@
+id: bar3d_plot
+name: 3D Bar / Lego
+version: 1.0.0
+description: Display a supplied two-dimensional grid of counts as projected three-dimensional
+  bars.
+language: R
+entrypoint: plot.R
+category: Comparison
+subcategory: General
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+- projected_faces_used.csv
+runtime:
+  command: Rscript plugins/bar3d_plot/plot.R --input input.csv --params params.json
+    --output output_dir

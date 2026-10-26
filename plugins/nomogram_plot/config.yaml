@@ -1,0 +1,27 @@
+id: nomogram_plot
+name: Nomogram Scales
+version: 1.0.0
+description: Display supplied predictor point scales and total-point outcome mappings.
+language: R
+entrypoint: plot.R
+category: Multi-panel
+subcategory: Annotation
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+runtime:
+  command: Rscript plugins/nomogram_plot/plot.R --input input.csv --params params.json
+    --output output_dir

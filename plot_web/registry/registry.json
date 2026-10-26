@@ -1708,6 +1708,140 @@
       ]
     },
     {
+      "id": "annotated_tree_plot",
+      "engine_plugin_id": "annotated_tree_plot",
+      "name": "Annotated Tree",
+      "short_name": "Annotated Tree",
+      "description": "Draw a supplied weighted tree with leaf metadata or a linked feature heatmap.",
+      "aliases": [
+        "annotated tree",
+        "annotated tree plot"
+      ],
+      "categories": [
+        "Expression / Statistics"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "clustering"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "source",
+          "target",
+          "weight"
+        ],
+        "optional_roles": [
+          "group",
+          "size"
+        ],
+        "accepted_types": {
+          "source": "categorical",
+          "target": "categorical",
+          "weight": "numeric",
+          "group": "categorical",
+          "size": "numeric"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Supplied tree and feature heatmap",
+          "short_description": "Supplied tree and feature heatmap",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/annotated_tree_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "circular",
+          "name": "Circular tree with weighted nodes",
+          "short_description": "Circular tree with weighted nodes",
+          "representative_example": "circular",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "circular"
+          ],
+          "preview_asset": "plugins/annotated_tree_plot/all_examples_gallery/circular.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Supplied tree and feature heatmap",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "annotated_tree_plot",
+          "preview_asset": "plugins/annotated_tree_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "circular",
+          "name": "Circular tree with weighted nodes",
+          "variant": "circular",
+          "preset": "recommended",
+          "example_id": "circular",
+          "plugin_id": "annotated_tree_plot",
+          "preview_asset": "plugins/annotated_tree_plot/all_examples_gallery/circular.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
       "id": "balloon_plot",
       "engine_plugin_id": "balloon_plot",
       "name": "Balloon Plot",
@@ -1855,6 +1989,1278 @@
       "gallery": {
         "visible": false
       }
+    },
+    {
+      "id": "bar3d_plot",
+      "engine_plugin_id": "bar3d_plot",
+      "name": "3D Bar / Lego",
+      "short_name": "3D Bar / Lego",
+      "description": "Display a supplied two-dimensional grid of counts as projected three-dimensional bars.",
+      "aliases": [
+        "3d bar / lego",
+        "bar3d plot"
+      ],
+      "categories": [
+        "Comparison"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x",
+          "y",
+          "size"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "x": "categorical",
+          "y": "categorical",
+          "size": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Mutation-context count grid",
+          "short_description": "Mutation-context count grid",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/bar3d_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "free_scale",
+          "name": "Grid heights with independent panel scales",
+          "short_description": "Grid heights with independent panel scales",
+          "representative_example": "free_scale",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "free_scale"
+          ],
+          "preview_asset": "plugins/bar3d_plot/all_examples_gallery/free_scale.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Mutation-context count grid",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "bar3d_plot",
+          "preview_asset": "plugins/bar3d_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "free_scale",
+          "name": "Grid heights with independent panel scales",
+          "variant": "free_scale",
+          "preset": "recommended",
+          "example_id": "free_scale",
+          "plugin_id": "bar3d_plot",
+          "preview_asset": "plugins/bar3d_plot/all_examples_gallery/free_scale.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "binary_evaluation_plot",
+      "engine_plugin_id": "binary_evaluation_plot",
+      "name": "Binary Model Evaluation",
+      "short_name": "Binary Model Evaluation",
+      "description": "ROC, precision\u2013recall, calibration and decision curves from supplied predictions.",
+      "aliases": [
+        "binary model evaluation",
+        "binary evaluation plot"
+      ],
+      "categories": [
+        "Benchmark"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x",
+          "condition"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "x": "numeric",
+          "condition": "any",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Receiver operating characteristic",
+          "short_description": "Receiver operating characteristic",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "precision_recall",
+          "name": "Precision and recall",
+          "short_description": "Precision and recall",
+          "representative_example": "precision_recall",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "precision_recall"
+          ],
+          "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/precision_recall.png"
+        },
+        {
+          "id": "calibration",
+          "name": "Probability calibration",
+          "short_description": "Probability calibration",
+          "representative_example": "calibration",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 3
+          },
+          "legacy_ids": [
+            "calibration"
+          ],
+          "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/calibration.png"
+        },
+        {
+          "id": "decision_curve",
+          "name": "Net benefit by threshold",
+          "short_description": "Net benefit by threshold",
+          "representative_example": "decision_curve",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 4
+          },
+          "legacy_ids": [
+            "decision_curve"
+          ],
+          "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/decision_curve.png"
+        },
+        {
+          "id": "supplied_curve",
+          "name": "Supplied evaluation curves",
+          "short_description": "Supplied evaluation curves",
+          "representative_example": "supplied_curve",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 5
+          },
+          "legacy_ids": [
+            "supplied_curve"
+          ],
+          "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/supplied_curve.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Receiver operating characteristic",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "binary_evaluation_plot",
+          "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "precision_recall",
+          "name": "Precision and recall",
+          "variant": "precision_recall",
+          "preset": "recommended",
+          "example_id": "precision_recall",
+          "plugin_id": "binary_evaluation_plot",
+          "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/precision_recall.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "calibration",
+          "name": "Probability calibration",
+          "variant": "calibration",
+          "preset": "recommended",
+          "example_id": "calibration",
+          "plugin_id": "binary_evaluation_plot",
+          "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/calibration.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "decision_curve",
+          "name": "Net benefit by threshold",
+          "variant": "decision_curve",
+          "preset": "recommended",
+          "example_id": "decision_curve",
+          "plugin_id": "binary_evaluation_plot",
+          "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/decision_curve.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "supplied_curve",
+          "name": "Supplied evaluation curves",
+          "variant": "supplied_curve",
+          "preset": "recommended",
+          "example_id": "supplied_curve",
+          "plugin_id": "binary_evaluation_plot",
+          "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/supplied_curve.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "bland_altman_plot",
+      "engine_plugin_id": "bland_altman_plot",
+      "name": "Bland\u2013Altman Agreement",
+      "short_name": "Bland\u2013Altman Agreement",
+      "description": "Compare paired measurements using mean differences and limits of agreement.",
+      "aliases": [
+        "bland\u2013altman agreement",
+        "bland altman plot"
+      ],
+      "categories": [
+        "Scatter"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x",
+          "y"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "x": "numeric",
+          "y": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Paired measurement agreement",
+          "short_description": "Paired measurement agreement",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/bland_altman_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "percent",
+          "name": "Relative measurement agreement",
+          "short_description": "Relative measurement agreement",
+          "representative_example": "percent",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "percent"
+          ],
+          "preview_asset": "plugins/bland_altman_plot/all_examples_gallery/percent.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Paired measurement agreement",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "bland_altman_plot",
+          "preview_asset": "plugins/bland_altman_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "percent",
+          "name": "Relative measurement agreement",
+          "variant": "percent",
+          "preset": "recommended",
+          "example_id": "percent",
+          "plugin_id": "bland_altman_plot",
+          "preview_asset": "plugins/bland_altman_plot/all_examples_gallery/percent.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "circular_bar_plot",
+      "engine_plugin_id": "circular_bar_plot",
+      "name": "Circular Bar Plot",
+      "short_name": "Circular Bar",
+      "description": "Radial bars for ranked categories, stacked or single-series, around a polar axis.",
+      "aliases": [
+        "circular bar",
+        "polar bar",
+        "radial bar"
+      ],
+      "categories": [
+        "Comparison"
+      ],
+      "analysis_contexts": [
+        "composition",
+        "general_statistics",
+        "gene_expression"
+      ],
+      "tasks": [
+        "group_comparison",
+        "composition",
+        "ranking"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "group"
+        ],
+        "optional_roles": [
+          "size"
+        ],
+        "accepted_types": {
+          "group": "categorical",
+          "size": "numeric"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Stacked",
+          "short_description": "Stacked polar bars by category and group.",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/circular_bar_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "single",
+          "name": "Single series",
+          "short_description": "One polar bar per category, summed across groups.",
+          "representative_example": "single",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "single"
+          ],
+          "preview_asset": "plugins/circular_bar_plot/all_examples_gallery/single.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "circular_bar_plot",
+          "preview_asset": "plugins/circular_bar_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "single",
+          "name": "Single series",
+          "variant": "single",
+          "preset": "recommended",
+          "example_id": "single",
+          "plugin_id": "circular_bar_plot",
+          "preview_asset": "plugins/circular_bar_plot/all_examples_gallery/single.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "circular_distribution_plot",
+      "engine_plugin_id": "circular_distribution_plot",
+      "name": "Circular Score Distribution",
+      "short_name": "Circular Score Distribution",
+      "description": "Compare numeric score distributions and highlighted observations on concentric arcs.",
+      "aliases": [
+        "circular score distribution",
+        "circular distribution plot"
+      ],
+      "categories": [
+        "Distribution"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "distribution"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x",
+          "feature"
+        ],
+        "optional_roles": [
+          "group",
+          "id"
+        ],
+        "accepted_types": {
+          "x": "numeric",
+          "feature": "categorical",
+          "group": "categorical",
+          "id": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Scores across reference groups",
+          "short_description": "Scores across reference groups",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/circular_distribution_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "shared_range",
+          "name": "Scores on a common scale",
+          "short_description": "Scores on a common scale",
+          "representative_example": "shared_range",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "shared_range"
+          ],
+          "preview_asset": "plugins/circular_distribution_plot/all_examples_gallery/shared_range.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Scores across reference groups",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "circular_distribution_plot",
+          "preview_asset": "plugins/circular_distribution_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "shared_range",
+          "name": "Scores on a common scale",
+          "variant": "shared_range",
+          "preset": "recommended",
+          "example_id": "shared_range",
+          "plugin_id": "circular_distribution_plot",
+          "preview_asset": "plugins/circular_distribution_plot/all_examples_gallery/shared_range.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "circular_genomic_plot",
+      "engine_plugin_id": "circular_genomic_plot",
+      "name": "Circular Genome Tracks",
+      "short_name": "Circular Genome Tracks",
+      "description": "Arrange supplied genomic intervals, values and optional links on a circular genome.",
+      "aliases": [
+        "circular genome tracks",
+        "circular genomic plot"
+      ],
+      "categories": [
+        "Genomics"
+      ],
+      "analysis_contexts": [
+        "genomics",
+        "gene_expression"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "feature",
+          "x",
+          "y",
+          "expression"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "feature": "categorical",
+          "x": "numeric",
+          "y": "numeric",
+          "expression": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Circular interval heatmap",
+          "short_description": "Circular interval heatmap",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "bars",
+          "name": "Circular interval magnitudes",
+          "short_description": "Circular interval magnitudes",
+          "representative_example": "bars",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "bars"
+          ],
+          "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/bars.png"
+        },
+        {
+          "id": "points",
+          "name": "Circular interval points",
+          "short_description": "Circular interval points",
+          "representative_example": "points",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 3
+          },
+          "legacy_ids": [
+            "points"
+          ],
+          "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/points.png"
+        },
+        {
+          "id": "linear",
+          "name": "Linear chromosome overview",
+          "short_description": "Linear chromosome overview",
+          "representative_example": "linear",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 4
+          },
+          "legacy_ids": [
+            "linear"
+          ],
+          "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/linear.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Circular interval heatmap",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "circular_genomic_plot",
+          "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "bars",
+          "name": "Circular interval magnitudes",
+          "variant": "bars",
+          "preset": "recommended",
+          "example_id": "bars",
+          "plugin_id": "circular_genomic_plot",
+          "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/bars.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "points",
+          "name": "Circular interval points",
+          "variant": "points",
+          "preset": "recommended",
+          "example_id": "points",
+          "plugin_id": "circular_genomic_plot",
+          "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/points.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "linear",
+          "name": "Linear chromosome overview",
+          "variant": "linear",
+          "preset": "recommended",
+          "example_id": "linear",
+          "plugin_id": "circular_genomic_plot",
+          "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/linear.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "circular_heatmap",
+      "engine_plugin_id": "circular_heatmap",
+      "name": "Circular Heatmap",
+      "short_name": "Circular Heatmap",
+      "description": "Matrix values drawn as tiles around a polar axis.",
+      "aliases": [
+        "circular heatmap",
+        "polar heatmap",
+        "radial heatmap"
+      ],
+      "categories": [
+        "Heatmap"
+      ],
+      "analysis_contexts": [
+        "gene_expression",
+        "bulk_expression",
+        "single_cell"
+      ],
+      "tasks": [
+        "heatmap",
+        "gene_expression",
+        "gene_clustering"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "feature",
+          "group"
+        ],
+        "optional_roles": [
+          "expression"
+        ],
+        "accepted_types": {
+          "feature": "categorical",
+          "group": "categorical",
+          "expression": "numeric"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "short_description": "Feature rings around sample angles.",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/circular_heatmap/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "clustered",
+          "name": "Clustered",
+          "short_description": "Rows and columns reordered by hierarchical clustering.",
+          "representative_example": "clustered",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "clustered"
+          ],
+          "preview_asset": "plugins/circular_heatmap/all_examples_gallery/clustered.png"
+        },
+        {
+          "id": "categorical",
+          "name": "Categorical annotation rings",
+          "short_description": "Categorical annotation rings",
+          "representative_example": "categorical",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 9
+          },
+          "legacy_ids": [
+            "categorical"
+          ],
+          "preview_asset": "plugins/circular_heatmap/all_examples_gallery/categorical.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "circular_heatmap",
+          "preview_asset": "plugins/circular_heatmap/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "clustered",
+          "name": "Clustered",
+          "variant": "clustered",
+          "preset": "recommended",
+          "example_id": "clustered",
+          "plugin_id": "circular_heatmap",
+          "preview_asset": "plugins/circular_heatmap/all_examples_gallery/clustered.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "categorical",
+          "name": "Categorical annotation rings",
+          "variant": "categorical",
+          "preset": "recommended",
+          "example_id": "categorical",
+          "plugin_id": "circular_heatmap",
+          "preview_asset": "plugins/circular_heatmap/all_examples_gallery/categorical.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "circular_tree_embedding",
+      "engine_plugin_id": "circular_tree_embedding",
+      "name": "Circular Tree + Embedding",
+      "short_name": "Tree + Embedding",
+      "description": "A radial hierarchy and annotation rings surrounding a linked cell embedding.",
+      "aliases": [
+        "circular dendrogram",
+        "radial tree",
+        "tree embedding",
+        "taxonomy embedding",
+        "cell atlas"
+      ],
+      "categories": [
+        "Dimension"
+      ],
+      "analysis_contexts": [
+        "single_cell",
+        "cell_clustering",
+        "gene_expression"
+      ],
+      "tasks": [
+        "cell_clustering",
+        "clustering",
+        "marker_visualization"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x_embedding",
+          "y_embedding",
+          "cluster",
+          "group"
+        ],
+        "optional_roles": [
+          "feature",
+          "metadata"
+        ],
+        "accepted_types": {
+          "x_embedding": "numeric",
+          "y_embedding": "numeric",
+          "cluster": "categorical",
+          "group": "categorical",
+          "feature": "numeric",
+          "metadata": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Annotation hierarchy",
+          "short_description": "Known class-to-subtype hierarchy around an embedding.",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/circular_tree_embedding/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "similarity",
+          "name": "Feature similarity",
+          "short_description": "Cluster leaf mean feature profiles independently of the embedding coordinates.",
+          "representative_example": "similarity",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "similarity"
+          ],
+          "preview_asset": "plugins/circular_tree_embedding/all_examples_gallery/similarity.png"
+        },
+        {
+          "id": "CAB_demo",
+          "name": "Atlas overview",
+          "short_description": "Broad annotation colors in a reference-inspired composition with synthetic cells.",
+          "representative_example": "CAB_demo",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 3
+          },
+          "preview_asset": "plugins/circular_tree_embedding/all_examples_gallery/CAB_demo.png",
+          "legacy_ids": []
+        },
+        {
+          "id": "cab_demo",
+          "name": "Cab Demo",
+          "description": "",
+          "preview_asset": "plugins/circular_tree_embedding/all_examples_gallery/CAB_demo.png",
+          "recommended_for": [],
+          "parameter_groups": [
+            "data_mapping",
+            "marks",
+            "colors",
+            "labels",
+            "legend",
+            "axes",
+            "theme",
+            "layout",
+            "statistics",
+            "export"
+          ],
+          "legacy_ids": [
+            "CAB_demo"
+          ]
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Annotation hierarchy",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "circular_tree_embedding",
+          "preview_asset": "plugins/circular_tree_embedding/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "similarity",
+          "name": "Feature similarity",
+          "variant": "similarity",
+          "preset": "recommended",
+          "example_id": "similarity",
+          "plugin_id": "circular_tree_embedding",
+          "preview_asset": "plugins/circular_tree_embedding/all_examples_gallery/similarity.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "CAB_demo",
+          "name": "CAB_demo",
+          "variant": "cab_demo",
+          "preset": "recommended",
+          "example_id": "CAB_demo",
+          "plugin_id": "circular_tree_embedding",
+          "preview_asset": "plugins/circular_tree_embedding/all_examples_gallery/CAB_demo.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
     },
     {
       "id": "classified_bar_plot",
@@ -2005,6 +3411,137 @@
       "gallery": {
         "visible": false
       }
+    },
+    {
+      "id": "clonal_fish_plot",
+      "engine_plugin_id": "clonal_fish_plot",
+      "name": "Clonal Evolution",
+      "short_name": "Clonal Evolution",
+      "description": "Show supplied nested clone fractions across time.",
+      "aliases": [
+        "clonal evolution",
+        "clonal fish plot"
+      ],
+      "categories": [
+        "Composition"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "composition"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "source",
+          "target",
+          "x",
+          "weight"
+        ],
+        "optional_roles": [],
+        "accepted_types": {
+          "source": "categorical",
+          "target": "categorical",
+          "x": "numeric",
+          "weight": "numeric"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Nested clone fractions",
+          "short_description": "Nested clone fractions",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/clonal_fish_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "percent",
+          "name": "Clone fractions in percent",
+          "short_description": "Clone fractions in percent",
+          "representative_example": "percent",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "percent"
+          ],
+          "preview_asset": "plugins/clonal_fish_plot/all_examples_gallery/percent.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Nested clone fractions",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "clonal_fish_plot",
+          "preview_asset": "plugins/clonal_fish_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "percent",
+          "name": "Clone fractions in percent",
+          "variant": "percent",
+          "preset": "recommended",
+          "example_id": "percent",
+          "plugin_id": "clonal_fish_plot",
+          "preview_asset": "plugins/clonal_fish_plot/all_examples_gallery/percent.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
     },
     {
       "id": "cluster_dendrogram_plot",
@@ -2939,6 +4476,267 @@
       ]
     },
     {
+      "id": "ecdf_plot",
+      "engine_plugin_id": "ecdf_plot",
+      "name": "Empirical CDF",
+      "short_name": "Empirical CDF",
+      "description": "Compare cumulative distributions with optional distribution-free confidence bands.",
+      "aliases": [
+        "empirical cdf",
+        "ecdf plot"
+      ],
+      "categories": [
+        "Distribution"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "distribution"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "x": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Cumulative score distributions",
+          "short_description": "Cumulative score distributions",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/ecdf_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "steps",
+          "name": "Empirical distribution steps",
+          "short_description": "Empirical distribution steps",
+          "representative_example": "steps",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "steps"
+          ],
+          "preview_asset": "plugins/ecdf_plot/all_examples_gallery/steps.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Cumulative score distributions",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "ecdf_plot",
+          "preview_asset": "plugins/ecdf_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "steps",
+          "name": "Empirical distribution steps",
+          "variant": "steps",
+          "preset": "recommended",
+          "example_id": "steps",
+          "plugin_id": "ecdf_plot",
+          "preview_asset": "plugins/ecdf_plot/all_examples_gallery/steps.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "embedding_vector_plot",
+      "engine_plugin_id": "embedding_vector_plot",
+      "name": "Embedding Vector Field",
+      "short_name": "Embedding Vector Field",
+      "description": "Overlay supplied displacement vectors on an embedding without inferring velocities.",
+      "aliases": [
+        "embedding vector field",
+        "embedding vector plot"
+      ],
+      "categories": [
+        "Dimension"
+      ],
+      "analysis_contexts": [
+        "single_cell",
+        "cell_clustering"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x",
+          "y",
+          "metadata"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "x": "numeric",
+          "y": "numeric",
+          "metadata": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Supplied vector field",
+          "short_description": "Supplied vector field",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/embedding_vector_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "radial",
+          "name": "Supplied outward displacement field",
+          "short_description": "Supplied outward displacement field",
+          "representative_example": "radial",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "radial"
+          ],
+          "preview_asset": "plugins/embedding_vector_plot/all_examples_gallery/radial.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Supplied vector field",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "embedding_vector_plot",
+          "preview_asset": "plugins/embedding_vector_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "radial",
+          "name": "Supplied outward displacement field",
+          "variant": "radial",
+          "preset": "recommended",
+          "example_id": "radial",
+          "plugin_id": "embedding_vector_plot",
+          "preview_asset": "plugins/embedding_vector_plot/all_examples_gallery/radial.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
       "id": "exp_stat_plot",
       "engine_plugin_id": "exp_stat_plot",
       "name": "Basic / Advanced Bar Plot",
@@ -3620,6 +5418,162 @@
           }
         }
       ]
+    },
+    {
+      "id": "forest_plot",
+      "engine_plugin_id": "forest_plot",
+      "name": "Forest Plot",
+      "short_name": "Forest Plot",
+      "description": "Compare supplied effect estimates and confidence intervals.",
+      "aliases": [
+        "forest plot",
+        "forest plot"
+      ],
+      "categories": [
+        "Comparison"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "effect",
+          "feature"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "effect": "numeric",
+          "feature": "categorical",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Effect estimates and confidence intervals",
+          "short_description": "Effect estimates and confidence intervals",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/forest_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "log_ratio",
+          "name": "Ratios on a logarithmic axis",
+          "short_description": "Ratios on a logarithmic axis",
+          "representative_example": "log_ratio",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "log_ratio"
+          ],
+          "preview_asset": "plugins/forest_plot/all_examples_gallery/log_ratio.png"
+        },
+        {
+          "id": "signed_effects",
+          "name": "Signed differences",
+          "short_description": "Signed differences",
+          "representative_example": "signed_effects",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 3
+          },
+          "legacy_ids": [
+            "signed_effects"
+          ],
+          "preview_asset": "plugins/forest_plot/all_examples_gallery/signed_effects.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Effect estimates and confidence intervals",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "forest_plot",
+          "preview_asset": "plugins/forest_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "log_ratio",
+          "name": "Ratios on a logarithmic axis",
+          "variant": "log_ratio",
+          "preset": "recommended",
+          "example_id": "log_ratio",
+          "plugin_id": "forest_plot",
+          "preview_asset": "plugins/forest_plot/all_examples_gallery/log_ratio.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "signed_effects",
+          "name": "Signed differences",
+          "variant": "signed_effects",
+          "preset": "recommended",
+          "example_id": "signed_effects",
+          "plugin_id": "forest_plot",
+          "preview_asset": "plugins/forest_plot/all_examples_gallery/signed_effects.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
     },
     {
       "id": "go_kegg_enrichment_bar_bubble",
@@ -4416,7 +6370,7 @@
           "id": "summary_bar",
           "name": "Summary: Standard Bar",
           "description": "",
-          "preview_asset": null,
+          "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_bar.png",
           "recommended_for": [],
           "parameter_groups": [
             "data_mapping",
@@ -4438,7 +6392,7 @@
           "id": "summary_stacked",
           "name": "Summary: Stacked Bar",
           "description": "",
-          "preview_asset": null,
+          "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_stacked.png",
           "recommended_for": [],
           "parameter_groups": [
             "data_mapping",
@@ -4460,7 +6414,7 @@
           "id": "summary_grouped",
           "name": "Summary: Grouped Bar",
           "description": "",
-          "preview_asset": null,
+          "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_grouped.png",
           "recommended_for": [],
           "parameter_groups": [
             "data_mapping",
@@ -4482,7 +6436,7 @@
           "id": "summary_pie",
           "name": "Summary: Pie Per Cluster",
           "description": "",
-          "preview_asset": null,
+          "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_pie.png",
           "recommended_for": [],
           "parameter_groups": [
             "data_mapping",
@@ -4504,7 +6458,7 @@
           "id": "summary_donut",
           "name": "Summary: Donut Per Cluster",
           "description": "",
-          "preview_asset": null,
+          "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_donut.png",
           "recommended_for": [],
           "parameter_groups": [
             "data_mapping",
@@ -4597,7 +6551,7 @@
           "preset": "recommended",
           "example_id": "summary_bar",
           "plugin_id": "hierarchical_marker_panel",
-          "preview_asset": null,
+          "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_bar.png",
           "parameters": {},
           "gallery_visible": true
         },
@@ -4608,7 +6562,7 @@
           "preset": "recommended",
           "example_id": "summary_stacked",
           "plugin_id": "hierarchical_marker_panel",
-          "preview_asset": null,
+          "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_stacked.png",
           "parameters": {},
           "gallery_visible": true
         },
@@ -4619,7 +6573,7 @@
           "preset": "recommended",
           "example_id": "summary_grouped",
           "plugin_id": "hierarchical_marker_panel",
-          "preview_asset": null,
+          "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_grouped.png",
           "parameters": {},
           "gallery_visible": true
         },
@@ -4630,7 +6584,7 @@
           "preset": "recommended",
           "example_id": "summary_pie",
           "plugin_id": "hierarchical_marker_panel",
-          "preview_asset": null,
+          "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_pie.png",
           "parameters": {},
           "gallery_visible": true
         },
@@ -4641,7 +6595,7 @@
           "preset": "recommended",
           "example_id": "summary_donut",
           "plugin_id": "hierarchical_marker_panel",
-          "preview_asset": null,
+          "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_donut.png",
           "parameters": {},
           "gallery_visible": true
         }
@@ -4802,6 +6756,139 @@
       "entrypoint": "plot.R",
       "language": "R",
       "status": "stable",
+      "version": "1.0.0"
+    },
+    {
+      "id": "interactive_3d_scatter",
+      "engine_plugin_id": "interactive_3d_scatter",
+      "name": "3D Embedding",
+      "short_name": "3D Embedding",
+      "description": "View supplied three-dimensional coordinates with an interactive scene and vector projection.",
+      "aliases": [
+        "3d embedding",
+        "interactive 3d scatter"
+      ],
+      "categories": [
+        "Dimension"
+      ],
+      "analysis_contexts": [
+        "single_cell",
+        "cell_clustering"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x",
+          "y",
+          "z"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "x": "numeric",
+          "y": "numeric",
+          "z": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Three-dimensional sample coordinates",
+          "short_description": "Three-dimensional sample coordinates",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/interactive_3d_scatter/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "alternate_view",
+          "name": "Alternate viewing angle",
+          "short_description": "Alternate viewing angle",
+          "representative_example": "alternate_view",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "alternate_view"
+          ],
+          "preview_asset": "plugins/interactive_3d_scatter/all_examples_gallery/alternate_view.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Three-dimensional sample coordinates",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "interactive_3d_scatter",
+          "preview_asset": "plugins/interactive_3d_scatter/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "alternate_view",
+          "name": "Alternate viewing angle",
+          "variant": "alternate_view",
+          "preset": "recommended",
+          "example_id": "alternate_view",
+          "plugin_id": "interactive_3d_scatter",
+          "preview_asset": "plugins/interactive_3d_scatter/all_examples_gallery/alternate_view.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
       "version": "1.0.0"
     },
     {
@@ -5877,17 +7964,24 @@
       "aliases": [
         "lollipop",
         "signed enrichment",
-        "cleveland enrichment"
+        "cleveland enrichment",
+        "transcription factor",
+        "regulon",
+        "diverging TF"
       ],
       "categories": [
         "Set / Enrichment"
       ],
       "analysis_contexts": [
-        "functional_enrichment"
+        "functional_enrichment",
+        "single_cell",
+        "differential_expression"
       ],
       "tasks": [
         "ora",
-        "gsea"
+        "gsea",
+        "differential_expression",
+        "ranking"
       ],
       "data_requirements": {
         "required_roles": [],
@@ -5957,7 +8051,22 @@
           "legacy_ids": [
             "oct4_enrichment"
           ],
-          "preview_asset": null
+          "preview_asset": "plugins/interactive_enrichment_lollipop/all_examples_gallery/oct4_enrichment.png"
+        },
+        {
+          "id": "diverging_tf",
+          "name": "Diverging TF Lollipop",
+          "short_description": "Signed transcription-factor effects with central labels, a continuous gradient, and p-value-sized heads.",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 3
+          },
+          "representative_example": "CAB_demo",
+          "legacy_ids": [
+            "CAB_demo"
+          ],
+          "preview_asset": "plugins/interactive_enrichment_lollipop/all_examples_gallery/CAB_demo.png"
         }
       ],
       "demos": [
@@ -5979,7 +8088,18 @@
           "preset": "recommended",
           "example_id": "oct4_enrichment",
           "plugin_id": "interactive_enrichment_lollipop",
-          "preview_asset": null,
+          "preview_asset": "plugins/interactive_enrichment_lollipop/all_examples_gallery/oct4_enrichment.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "CAB_demo",
+          "name": "Diverging transcription factor lollipop",
+          "variant": "diverging_tf",
+          "preset": "recommended",
+          "example_id": "CAB_demo",
+          "plugin_id": "interactive_enrichment_lollipop",
+          "preview_asset": "plugins/interactive_enrichment_lollipop/all_examples_gallery/CAB_demo.png",
           "parameters": {},
           "gallery_visible": true
         }
@@ -6001,7 +8121,7 @@
       "entrypoint": "plot.R",
       "language": "R",
       "status": "stable",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "id": "interactive_genomic_signal_track_plot",
@@ -6496,21 +8616,28 @@
     {
       "id": "interactive_network_plot",
       "engine_plugin_id": "interactive_network_plot",
-      "name": "Interactive Network Plot",
-      "short_name": "Interactive Network Plot",
-      "description": "Interactive edge-list and membership/network-Venn graph with static exports.",
+      "name": "Interactive Network",
+      "short_name": "Network",
+      "description": "Edge-list and membership graphs with preset layouts (force-directed, circle, concentric, radial, hierarchical) and a draggable HTML view.\n",
       "aliases": [
-        "interactive network plot",
-        "network"
+        "network",
+        "graph",
+        "interaction network",
+        "membership network",
+        "circular network",
+        "concentric network"
       ],
       "categories": [
         "Network"
       ],
       "analysis_contexts": [
-        "relationships_overlap"
+        "relationships_overlap",
+        "network",
+        "general_statistics"
       ],
       "tasks": [
-        "network"
+        "network",
+        "overlap"
       ],
       "data_requirements": {
         "required_roles": [],
@@ -6553,54 +8680,104 @@
       ],
       "variants": [
         {
-          "id": "membership",
-          "name": "Membership",
-          "description": "",
-          "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/membership.png",
-          "recommended_for": [],
-          "parameter_groups": [
-            "data_mapping",
-            "marks",
-            "colors",
-            "labels",
-            "legend",
-            "axes",
-            "theme",
-            "layout",
-            "statistics",
-            "export"
-          ],
+          "id": "network",
+          "name": "Force-directed network",
+          "short_description": "Weighted interaction graph with a Fruchterman\u2013Reingold layout.",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "representative_example": "network",
           "legacy_ids": [
-            "membership"
-          ]
+            "network",
+            "manual_layout"
+          ],
+          "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/network.png"
         },
         {
-          "id": "network",
-          "name": "Network",
-          "description": "",
-          "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/network.png",
-          "recommended_for": [],
-          "parameter_groups": [
-            "data_mapping",
-            "marks",
-            "colors",
-            "labels",
-            "legend",
-            "axes",
-            "theme",
-            "layout",
-            "statistics",
-            "export"
-          ],
+          "id": "circle",
+          "name": "Circular network",
+          "short_description": "Nodes on one ring, optionally sorted by degree or size.",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 2
+          },
+          "representative_example": "circle",
           "legacy_ids": [
-            "network"
-          ]
+            "circle"
+          ],
+          "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/circle.png"
+        },
+        {
+          "id": "concentric",
+          "name": "Concentric network",
+          "short_description": "One ring per group, with optional size sorting.",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 3
+          },
+          "representative_example": "concentric",
+          "legacy_ids": [
+            "concentric"
+          ],
+          "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/concentric.png"
+        },
+        {
+          "id": "membership",
+          "name": "Membership radial",
+          "short_description": "Group nodes inside, members on an outer ring, with membership edges.",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 4
+          },
+          "representative_example": "membership",
+          "legacy_ids": [
+            "membership"
+          ],
+          "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/membership.png"
         }
       ],
       "demos": [
         {
+          "id": "network",
+          "name": "Force-directed network",
+          "variant": "network",
+          "preset": "recommended",
+          "example_id": "network",
+          "plugin_id": "interactive_network_plot",
+          "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/network.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "circle",
+          "name": "Circular layout",
+          "variant": "circle",
+          "preset": "recommended",
+          "example_id": "circle",
+          "plugin_id": "interactive_network_plot",
+          "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/circle.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "concentric",
+          "name": "Concentric layout",
+          "variant": "concentric",
+          "preset": "recommended",
+          "example_id": "concentric",
+          "plugin_id": "interactive_network_plot",
+          "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/concentric.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
           "id": "membership",
-          "name": "membership",
+          "name": "Membership radial",
           "variant": "membership",
           "preset": "recommended",
           "example_id": "membership",
@@ -6610,23 +8787,28 @@
           "gallery_visible": true
         },
         {
-          "id": "network",
-          "name": "network",
+          "id": "manual_layout",
+          "name": "Manual layout",
           "variant": "network",
           "preset": "recommended",
-          "example_id": "network",
+          "example_id": "manual_layout",
           "plugin_id": "interactive_network_plot",
-          "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/network.png",
+          "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/manual_layout.png",
           "parameters": {},
-          "gallery_visible": true
+          "gallery_visible": false
         }
       ],
-      "legacy_presets": {},
+      "legacy_presets": {
+        "manual_layout": {
+          "variant": "network",
+          "preset": "recommended"
+        }
+      },
       "recommendation_rules": [],
       "entrypoint": "plot.R",
       "language": "R",
       "status": "experimental",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     {
       "id": "interactive_pie_plot",
@@ -7726,6 +9908,165 @@
       ]
     },
     {
+      "id": "line_plot",
+      "engine_plugin_id": "line_plot",
+      "name": "Line Plot",
+      "short_name": "Line",
+      "description": "Multi-series lines with optional points, error bars, a loess smooth, and a second y axis.",
+      "aliases": [
+        "line chart",
+        "time series",
+        "connected line"
+      ],
+      "categories": [
+        "Comparison"
+      ],
+      "analysis_contexts": [
+        "general_statistics",
+        "bulk_expression"
+      ],
+      "tasks": [
+        "group_comparison",
+        "expression_pattern"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x",
+          "y"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "x": "numeric",
+          "y": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "short_description": "Grouped lines with points and error bars.",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/line_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "smooth",
+          "name": "Smooth",
+          "short_description": "Loess smooth over numeric x.",
+          "representative_example": "smooth",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "smooth"
+          ],
+          "preview_asset": "plugins/line_plot/all_examples_gallery/smooth.png"
+        },
+        {
+          "id": "interval_band",
+          "name": "Supplied interval band",
+          "short_description": "Supplied interval band",
+          "representative_example": "interval_band",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 9
+          },
+          "legacy_ids": [
+            "interval_band"
+          ],
+          "preview_asset": "plugins/line_plot/all_examples_gallery/interval_band.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "line_plot",
+          "preview_asset": "plugins/line_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "smooth",
+          "name": "Smooth",
+          "variant": "smooth",
+          "preset": "recommended",
+          "example_id": "smooth",
+          "plugin_id": "line_plot",
+          "preview_asset": "plugins/line_plot/all_examples_gallery/smooth.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "interval_band",
+          "name": "Supplied confidence or credible bounds",
+          "variant": "interval_band",
+          "preset": "recommended",
+          "example_id": "interval_band",
+          "plugin_id": "line_plot",
+          "preview_asset": "plugins/line_plot/all_examples_gallery/interval_band.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
       "id": "trajectory",
       "engine_plugin_id": "lineage_plot",
       "name": "Lineage / trajectory",
@@ -7875,6 +10216,552 @@
       "entrypoint": "plot.R",
       "language": "R",
       "status": "stable",
+      "version": "1.0.0"
+    },
+    {
+      "id": "linked_matrix_network_plot",
+      "engine_plugin_id": "linked_matrix_network_plot",
+      "name": "Linked Heatmap + Network",
+      "short_name": "Linked Heatmap + Network",
+      "description": "Link a numeric feature matrix to supplied weighted relationships.",
+      "aliases": [
+        "linked matrix network plot"
+      ],
+      "categories": [
+        "Multi-panel"
+      ],
+      "analysis_contexts": [
+        "general_statistics",
+        "gene_expression"
+      ],
+      "tasks": [
+        "summary"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "feature",
+          "sample",
+          "expression"
+        ],
+        "optional_roles": [],
+        "accepted_types": {
+          "feature": "categorical",
+          "sample": "categorical",
+          "expression": "numeric"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Linked matrix and relationships",
+          "short_description": "Linked matrix and relationships",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/linked_matrix_network_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "dot_matrix",
+          "name": "Dot matrix and relationships",
+          "short_description": "Dot matrix and relationships",
+          "representative_example": "dot_matrix",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "dot_matrix"
+          ],
+          "preview_asset": "plugins/linked_matrix_network_plot/all_examples_gallery/dot_matrix.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Linked matrix and relationships",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "linked_matrix_network_plot",
+          "preview_asset": "plugins/linked_matrix_network_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "dot_matrix",
+          "name": "Dot matrix and relationships",
+          "variant": "dot_matrix",
+          "preset": "recommended",
+          "example_id": "dot_matrix",
+          "plugin_id": "linked_matrix_network_plot",
+          "preview_asset": "plugins/linked_matrix_network_plot/all_examples_gallery/dot_matrix.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "manhattan_qq_plot",
+      "engine_plugin_id": "manhattan_qq_plot",
+      "name": "Manhattan / QQ",
+      "short_name": "Manhattan / QQ",
+      "description": "Display genomic association probabilities and their expected-quantile comparison.",
+      "aliases": [
+        "manhattan / qq",
+        "manhattan qq plot"
+      ],
+      "categories": [
+        "Genomics"
+      ],
+      "analysis_contexts": [
+        "genomics",
+        "gene_expression"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "pvalue"
+        ],
+        "optional_roles": [
+          "x",
+          "feature"
+        ],
+        "accepted_types": {
+          "pvalue": "numeric",
+          "x": "numeric",
+          "feature": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Association overview",
+          "short_description": "Association overview",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/manhattan_qq_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "manhattan",
+          "name": "Genomic association signals",
+          "short_description": "Genomic association signals",
+          "representative_example": "manhattan",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "manhattan"
+          ],
+          "preview_asset": "plugins/manhattan_qq_plot/all_examples_gallery/manhattan.png"
+        },
+        {
+          "id": "qq",
+          "name": "Expected and observed probabilities",
+          "short_description": "Expected and observed probabilities",
+          "representative_example": "qq",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 3
+          },
+          "legacy_ids": [
+            "qq"
+          ],
+          "preview_asset": "plugins/manhattan_qq_plot/all_examples_gallery/qq.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Association overview",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "manhattan_qq_plot",
+          "preview_asset": "plugins/manhattan_qq_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "manhattan",
+          "name": "Genomic association signals",
+          "variant": "manhattan",
+          "preset": "recommended",
+          "example_id": "manhattan",
+          "plugin_id": "manhattan_qq_plot",
+          "preview_asset": "plugins/manhattan_qq_plot/all_examples_gallery/manhattan.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "qq",
+          "name": "Expected and observed probabilities",
+          "variant": "qq",
+          "preset": "recommended",
+          "example_id": "qq",
+          "plugin_id": "manhattan_qq_plot",
+          "preview_asset": "plugins/manhattan_qq_plot/all_examples_gallery/qq.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "nomogram_plot",
+      "engine_plugin_id": "nomogram_plot",
+      "name": "Nomogram Scales",
+      "short_name": "Nomogram Scales",
+      "description": "Display supplied predictor point scales and total-point outcome mappings.",
+      "aliases": [
+        "nomogram scales",
+        "nomogram plot"
+      ],
+      "categories": [
+        "Multi-panel"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "group",
+          "x",
+          "feature"
+        ],
+        "optional_roles": [],
+        "accepted_types": {
+          "group": "categorical",
+          "x": "numeric",
+          "feature": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Supplied predictor point scales",
+          "short_description": "Supplied predictor point scales",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/nomogram_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "compact",
+          "name": "Supplied total-point outcome mapping",
+          "short_description": "Supplied total-point outcome mapping",
+          "representative_example": "compact",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "compact"
+          ],
+          "preview_asset": "plugins/nomogram_plot/all_examples_gallery/compact.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Supplied predictor point scales",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "nomogram_plot",
+          "preview_asset": "plugins/nomogram_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "compact",
+          "name": "Supplied total-point outcome mapping",
+          "variant": "compact",
+          "preset": "recommended",
+          "example_id": "compact",
+          "plugin_id": "nomogram_plot",
+          "preview_asset": "plugins/nomogram_plot/all_examples_gallery/compact.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "oncoprint_plot",
+      "engine_plugin_id": "oncoprint_plot",
+      "name": "Mutation Matrix",
+      "short_name": "Mutation Matrix",
+      "description": "Show multiple alteration types per gene and sample with marginal frequencies.",
+      "aliases": [
+        "mutation matrix",
+        "oncoprint plot"
+      ],
+      "categories": [
+        "Heatmap"
+      ],
+      "analysis_contexts": [
+        "genomics",
+        "gene_expression"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "feature",
+          "sample"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "feature": "categorical",
+          "sample": "categorical",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Multi-hit alteration matrix",
+          "short_description": "Multi-hit alteration matrix",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/oncoprint_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "input_order",
+          "name": "Input-order alteration matrix",
+          "short_description": "Input-order alteration matrix",
+          "representative_example": "input_order",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "input_order"
+          ],
+          "preview_asset": "plugins/oncoprint_plot/all_examples_gallery/input_order.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Multi-hit alteration matrix",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "oncoprint_plot",
+          "preview_asset": "plugins/oncoprint_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "input_order",
+          "name": "Input-order alteration matrix",
+          "variant": "input_order",
+          "preset": "recommended",
+          "example_id": "input_order",
+          "plugin_id": "oncoprint_plot",
+          "preview_asset": "plugins/oncoprint_plot/all_examples_gallery/input_order.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
       "version": "1.0.0"
     },
     {
@@ -8032,6 +10919,137 @@
       }
     },
     {
+      "id": "protein_variant_plot",
+      "engine_plugin_id": "protein_variant_plot",
+      "name": "Protein Variant Map",
+      "short_name": "Protein Variant Map",
+      "description": "Place variant counts and annotated domains on a protein coordinate.",
+      "aliases": [
+        "protein variant map",
+        "protein variant plot"
+      ],
+      "categories": [
+        "Genomics"
+      ],
+      "analysis_contexts": [
+        "genomics",
+        "gene_expression"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x",
+          "size"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "x": "numeric",
+          "size": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Protein variants and domains",
+          "short_description": "Protein variants and domains",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/protein_variant_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "variants_only",
+          "name": "Variant count profile",
+          "short_description": "Variant count profile",
+          "representative_example": "variants_only",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "variants_only"
+          ],
+          "preview_asset": "plugins/protein_variant_plot/all_examples_gallery/variants_only.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Protein variants and domains",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "protein_variant_plot",
+          "preview_asset": "plugins/protein_variant_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "variants_only",
+          "name": "Variant count profile",
+          "variant": "variants_only",
+          "preset": "recommended",
+          "example_id": "variants_only",
+          "plugin_id": "protein_variant_plot",
+          "preview_asset": "plugins/protein_variant_plot/all_examples_gallery/variants_only.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
       "id": "quadrant_correlation_scatter",
       "engine_plugin_id": "quadrant_correlation_scatter",
       "name": "Quadrant Correlation Scatter",
@@ -8110,6 +11128,268 @@
       "entrypoint": "plot.R",
       "language": "R",
       "status": "experimental",
+      "version": "1.0.0"
+    },
+    {
+      "id": "radviz_plot",
+      "engine_plugin_id": "radviz_plot",
+      "name": "Wheel / RadViz",
+      "short_name": "Wheel / RadViz",
+      "description": "Project nonnegative feature weights toward labeled vertices of a wheel.",
+      "aliases": [
+        "wheel / radviz",
+        "radviz plot"
+      ],
+      "categories": [
+        "Dimension"
+      ],
+      "analysis_contexts": [
+        "single_cell",
+        "cell_clustering"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "expression"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "expression": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Feature-weight wheel",
+          "short_description": "Feature-weight wheel",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/radviz_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "minmax",
+          "name": "Feature-scaled wheel",
+          "short_description": "Feature-scaled wheel",
+          "representative_example": "minmax",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "minmax"
+          ],
+          "preview_asset": "plugins/radviz_plot/all_examples_gallery/minmax.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Feature-weight wheel",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "radviz_plot",
+          "preview_asset": "plugins/radviz_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "minmax",
+          "name": "Feature-scaled wheel",
+          "variant": "minmax",
+          "preset": "recommended",
+          "example_id": "minmax",
+          "plugin_id": "radviz_plot",
+          "preview_asset": "plugins/radviz_plot/all_examples_gallery/minmax.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "raincloud_plot",
+      "engine_plugin_id": "raincloud_plot",
+      "name": "Raincloud Plot",
+      "short_name": "Raincloud",
+      "description": "Half-violin, box, and jittered points for group distributions of a numeric value.",
+      "aliases": [
+        "raincloud",
+        "half violin",
+        "cloud plot"
+      ],
+      "categories": [
+        "Distribution"
+      ],
+      "analysis_contexts": [
+        "general_statistics",
+        "single_cell",
+        "bulk_expression"
+      ],
+      "tasks": [
+        "distribution",
+        "group_comparison",
+        "gene_expression"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "expression"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "expression": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Horizontal",
+          "short_description": "Horizontal raincloud of expression by group.",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/raincloud_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "vertical",
+          "name": "Vertical",
+          "short_description": "Vertical raincloud with the same layers.",
+          "representative_example": "vertical",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "vertical"
+          ],
+          "preview_asset": "plugins/raincloud_plot/all_examples_gallery/vertical.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "raincloud_plot",
+          "preview_asset": "plugins/raincloud_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "vertical",
+          "name": "Vertical",
+          "variant": "vertical",
+          "preset": "recommended",
+          "example_id": "vertical",
+          "plugin_id": "raincloud_plot",
+          "preview_asset": "plugins/raincloud_plot/all_examples_gallery/vertical.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
       "version": "1.0.0"
     },
     {
@@ -8308,6 +11588,142 @@
       "version": "1.0.0"
     },
     {
+      "id": "risk_stratification_panel",
+      "engine_plugin_id": "risk_stratification_panel",
+      "name": "Risk Stratification Panel",
+      "short_name": "Risk Stratification Panel",
+      "description": "Align supplied risk ranks, event follow-up and selected numeric features.",
+      "aliases": [
+        "risk stratification panel"
+      ],
+      "categories": [
+        "Multi-panel"
+      ],
+      "analysis_contexts": [
+        "general_statistics",
+        "gene_expression"
+      ],
+      "tasks": [
+        "summary"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "id",
+          "x",
+          "y",
+          "condition"
+        ],
+        "optional_roles": [
+          "group",
+          "expression"
+        ],
+        "accepted_types": {
+          "id": "categorical",
+          "x": "numeric",
+          "y": "numeric",
+          "condition": "numeric",
+          "group": "categorical",
+          "expression": "numeric"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Aligned risk and follow-up",
+          "short_description": "Aligned risk and follow-up",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/risk_stratification_panel/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "scores_only",
+          "name": "Scores and follow-up",
+          "short_description": "Scores and follow-up",
+          "representative_example": "scores_only",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "scores_only"
+          ],
+          "preview_asset": "plugins/risk_stratification_panel/all_examples_gallery/scores_only.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Aligned risk and follow-up",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "risk_stratification_panel",
+          "preview_asset": "plugins/risk_stratification_panel/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "scores_only",
+          "name": "Scores and follow-up",
+          "variant": "scores_only",
+          "preset": "recommended",
+          "example_id": "scores_only",
+          "plugin_id": "risk_stratification_panel",
+          "preview_asset": "plugins/risk_stratification_panel/all_examples_gallery/scores_only.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
       "id": "volcano",
       "engine_plugin_id": "sca_volcano_plot",
       "name": "Volcano",
@@ -8501,6 +11917,292 @@
       "entrypoint": "plot.R",
       "language": "R",
       "status": "stable",
+      "version": "1.0.0"
+    },
+    {
+      "id": "sequence_alignment_plot",
+      "engine_plugin_id": "sequence_alignment_plot",
+      "name": "Sequence Alignment",
+      "short_name": "Sequence Alignment",
+      "description": "Display aligned DNA or protein sequences with consensus conservation.",
+      "aliases": [
+        "sequence alignment",
+        "sequence alignment plot"
+      ],
+      "categories": [
+        "Genomics"
+      ],
+      "analysis_contexts": [
+        "genomics",
+        "gene_expression"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "id",
+          "metadata"
+        ],
+        "optional_roles": [],
+        "accepted_types": {
+          "id": "categorical",
+          "metadata": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Aligned nucleotide sequences",
+          "short_description": "Aligned nucleotide sequences",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/sequence_alignment_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "protein",
+          "name": "Aligned protein sequences",
+          "short_description": "Aligned protein sequences",
+          "representative_example": "protein",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "protein"
+          ],
+          "preview_asset": "plugins/sequence_alignment_plot/all_examples_gallery/protein.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Aligned nucleotide sequences",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "sequence_alignment_plot",
+          "preview_asset": "plugins/sequence_alignment_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "protein",
+          "name": "Aligned protein sequences",
+          "variant": "protein",
+          "preset": "recommended",
+          "example_id": "protein",
+          "plugin_id": "sequence_alignment_plot",
+          "preview_asset": "plugins/sequence_alignment_plot/all_examples_gallery/protein.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "spatial_region_plot",
+      "engine_plugin_id": "spatial_region_plot",
+      "name": "Spatial Region Map",
+      "short_name": "Spatial Region Map",
+      "description": "Color supplied anatomical or tissue-region polygons by numeric measurements.",
+      "aliases": [
+        "spatial region map",
+        "spatial region plot"
+      ],
+      "categories": [
+        "Feature"
+      ],
+      "analysis_contexts": [
+        "genomics",
+        "gene_expression"
+      ],
+      "tasks": [
+        "feature_expression"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x",
+          "y",
+          "group",
+          "expression"
+        ],
+        "optional_roles": [],
+        "accepted_types": {
+          "x": "numeric",
+          "y": "numeric",
+          "group": "categorical",
+          "expression": "numeric"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Measured tissue regions",
+          "short_description": "Measured tissue regions",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/spatial_region_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "tissue",
+          "name": "Regions over a synthetic tissue background",
+          "short_description": "Regions over a synthetic tissue background",
+          "representative_example": "tissue",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "tissue"
+          ],
+          "preview_asset": "plugins/spatial_region_plot/all_examples_gallery/tissue.png"
+        },
+        {
+          "id": "spots",
+          "name": "Measured spatial spots",
+          "short_description": "Measured spatial spots",
+          "representative_example": "spots",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 9
+          },
+          "legacy_ids": [
+            "spots"
+          ],
+          "preview_asset": "plugins/spatial_region_plot/all_examples_gallery/spots.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Measured tissue regions",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "spatial_region_plot",
+          "preview_asset": "plugins/spatial_region_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "tissue",
+          "name": "Regions over a synthetic tissue background",
+          "variant": "tissue",
+          "preset": "recommended",
+          "example_id": "tissue",
+          "plugin_id": "spatial_region_plot",
+          "preview_asset": "plugins/spatial_region_plot/all_examples_gallery/tissue.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "spots",
+          "name": "Measured spatial spots",
+          "variant": "spots",
+          "preset": "recommended",
+          "example_id": "spots",
+          "plugin_id": "spatial_region_plot",
+          "preview_asset": "plugins/spatial_region_plot/all_examples_gallery/spots.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
       "version": "1.0.0"
     },
     {
@@ -9056,6 +12758,532 @@
       }
     },
     {
+      "id": "sunburst_plot",
+      "engine_plugin_id": "sunburst_plot",
+      "name": "Sunburst Plot",
+      "short_name": "Sunburst",
+      "description": "Hierarchical category shares as concentric rings.",
+      "aliases": [
+        "sunburst",
+        "multi-level donut",
+        "concentric composition"
+      ],
+      "categories": [
+        "Composition"
+      ],
+      "analysis_contexts": [
+        "composition",
+        "single_cell",
+        "cell_composition"
+      ],
+      "tasks": [
+        "composition",
+        "cell_composition"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "group"
+        ],
+        "optional_roles": [
+          "size"
+        ],
+        "accepted_types": {
+          "group": "categorical",
+          "size": "numeric"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Two rings",
+          "short_description": "Parent and child rings of category shares.",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/sunburst_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "three_level",
+          "name": "Three rings",
+          "short_description": "Three nested rings of category shares.",
+          "representative_example": "three_level",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "three_level"
+          ],
+          "preview_asset": "plugins/sunburst_plot/all_examples_gallery/three_level.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "sunburst_plot",
+          "preview_asset": "plugins/sunburst_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "three_level",
+          "name": "Three rings",
+          "variant": "three_level",
+          "preset": "recommended",
+          "example_id": "three_level",
+          "plugin_id": "sunburst_plot",
+          "preview_asset": "plugins/sunburst_plot/all_examples_gallery/three_level.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "survival_plot",
+      "engine_plugin_id": "survival_plot",
+      "name": "Survival Curve",
+      "short_name": "Survival Curve",
+      "description": "Kaplan\u2013Meier curves with censor marks, confidence bands and numbers at risk.",
+      "aliases": [
+        "survival curve",
+        "survival plot"
+      ],
+      "categories": [
+        "Comparison"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "x",
+          "condition"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "x": "numeric",
+          "condition": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Survival by cohort",
+          "short_description": "Survival by cohort",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/survival_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "conditional",
+          "name": "Conditional survival",
+          "short_description": "Conditional survival",
+          "representative_example": "conditional",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "conditional"
+          ],
+          "preview_asset": "plugins/survival_plot/all_examples_gallery/conditional.png"
+        },
+        {
+          "id": "event_probability",
+          "name": "Event probability",
+          "short_description": "Event probability",
+          "representative_example": "event_probability",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 3
+          },
+          "legacy_ids": [
+            "event_probability"
+          ],
+          "preview_asset": "plugins/survival_plot/all_examples_gallery/event_probability.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Survival by cohort",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "survival_plot",
+          "preview_asset": "plugins/survival_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "conditional",
+          "name": "Conditional survival",
+          "variant": "conditional",
+          "preset": "recommended",
+          "example_id": "conditional",
+          "plugin_id": "survival_plot",
+          "preview_asset": "plugins/survival_plot/all_examples_gallery/conditional.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "event_probability",
+          "name": "Event probability",
+          "variant": "event_probability",
+          "preset": "recommended",
+          "example_id": "event_probability",
+          "plugin_id": "survival_plot",
+          "preview_asset": "plugins/survival_plot/all_examples_gallery/event_probability.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "swimmer_plot",
+      "engine_plugin_id": "swimmer_plot",
+      "name": "Swimmer Timeline",
+      "short_name": "Swimmer Timeline",
+      "description": "Show observation intervals and dated events for individual subjects.",
+      "aliases": [
+        "swimmer timeline",
+        "swimmer plot"
+      ],
+      "categories": [
+        "Comparison"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "group_comparison"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "id",
+          "x",
+          "y"
+        ],
+        "optional_roles": [
+          "group"
+        ],
+        "accepted_types": {
+          "id": "categorical",
+          "x": "numeric",
+          "y": "numeric",
+          "group": "categorical"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Observation intervals and events",
+          "short_description": "Observation intervals and events",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/swimmer_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "staggered",
+          "name": "Staggered observation windows",
+          "short_description": "Staggered observation windows",
+          "representative_example": "staggered",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "staggered"
+          ],
+          "preview_asset": "plugins/swimmer_plot/all_examples_gallery/staggered.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Observation intervals and events",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "swimmer_plot",
+          "preview_asset": "plugins/swimmer_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "staggered",
+          "name": "Staggered observation windows",
+          "variant": "staggered",
+          "preset": "recommended",
+          "example_id": "staggered",
+          "plugin_id": "swimmer_plot",
+          "preview_asset": "plugins/swimmer_plot/all_examples_gallery/staggered.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
+      "id": "ternary_plot",
+      "engine_plugin_id": "ternary_plot",
+      "name": "Ternary Plot",
+      "short_name": "Ternary",
+      "description": "Three-part compositions on a simplex, with optional grouping and size mapping.",
+      "aliases": [
+        "ternary",
+        "simplex",
+        "three-part composition"
+      ],
+      "categories": [
+        "Scatter"
+      ],
+      "analysis_contexts": [
+        "composition",
+        "cell_composition",
+        "general_statistics"
+      ],
+      "tasks": [
+        "composition",
+        "cell_composition"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "group"
+        ],
+        "optional_roles": [
+          "size"
+        ],
+        "accepted_types": {
+          "group": "categorical",
+          "size": "numeric"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "short_description": "Grouped points on an A\u2013B\u2013C simplex.",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/ternary_plot/all_examples_gallery/basic.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "ternary_plot",
+          "preview_asset": "plugins/ternary_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
+      "version": "1.0.0"
+    },
+    {
       "id": "threshold_matrix_heatmap",
       "engine_plugin_id": "threshold_matrix_heatmap",
       "name": "Threshold Matrix Heatmap",
@@ -9134,6 +13362,112 @@
       "entrypoint": "plot.R",
       "language": "R",
       "status": "experimental",
+      "version": "1.0.0"
+    },
+    {
+      "id": "treemap_plot",
+      "engine_plugin_id": "treemap_plot",
+      "name": "Treemap Plot",
+      "short_name": "Treemap",
+      "description": "Hierarchical category shares as nested rectangles.",
+      "aliases": [
+        "treemap",
+        "nested rectangles",
+        "mosaic composition"
+      ],
+      "categories": [
+        "Composition"
+      ],
+      "analysis_contexts": [
+        "composition",
+        "single_cell",
+        "cell_composition"
+      ],
+      "tasks": [
+        "composition",
+        "cell_composition"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "group"
+        ],
+        "optional_roles": [
+          "size"
+        ],
+        "accepted_types": {
+          "group": "categorical",
+          "size": "numeric"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Nested",
+          "short_description": "Parent tiles split into child rectangles.",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/treemap_plot/all_examples_gallery/basic.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "treemap_plot",
+          "preview_asset": "plugins/treemap_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
       "version": "1.0.0"
     },
     {
@@ -9317,6 +13651,136 @@
       "entrypoint": "plot.R",
       "language": "R",
       "status": "stable",
+      "version": "1.0.0"
+    },
+    {
+      "id": "waterfall_plot",
+      "engine_plugin_id": "waterfall_plot",
+      "name": "Waterfall Plot",
+      "short_name": "Waterfall",
+      "description": "Cumulative signed bars that show how sequential contributions add to a total.",
+      "aliases": [
+        "waterfall",
+        "cascade",
+        "running total"
+      ],
+      "categories": [
+        "Comparison"
+      ],
+      "analysis_contexts": [
+        "general_statistics"
+      ],
+      "tasks": [
+        "group_comparison",
+        "ranking"
+      ],
+      "data_requirements": {
+        "required_roles": [
+          "group"
+        ],
+        "optional_roles": [
+          "size"
+        ],
+        "accepted_types": {
+          "group": "categorical",
+          "size": "numeric"
+        }
+      },
+      "parameter_groups": [
+        "data_mapping",
+        "marks",
+        "colors",
+        "labels",
+        "legend",
+        "axes",
+        "theme",
+        "layout",
+        "statistics",
+        "export"
+      ],
+      "presets": [
+        {
+          "id": "recommended",
+          "name": "Recommended"
+        },
+        {
+          "id": "publication",
+          "name": "Publication"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        },
+        {
+          "id": "blank",
+          "name": "Blank"
+        },
+        {
+          "id": "large_dataset",
+          "name": "Large dataset"
+        }
+      ],
+      "variants": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "short_description": "Signed steps plus a total bar.",
+          "representative_example": "basic",
+          "gallery": {
+            "visible": true,
+            "section": "recommended",
+            "order": 1
+          },
+          "legacy_ids": [
+            "basic"
+          ],
+          "preview_asset": "plugins/waterfall_plot/all_examples_gallery/basic.png"
+        },
+        {
+          "id": "no_total",
+          "name": "Without total",
+          "short_description": "Signed steps without the closing total bar.",
+          "representative_example": "no_total",
+          "gallery": {
+            "visible": true,
+            "section": "more",
+            "order": 2
+          },
+          "legacy_ids": [
+            "no_total"
+          ],
+          "preview_asset": "plugins/waterfall_plot/all_examples_gallery/no_total.png"
+        }
+      ],
+      "demos": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "variant": "basic",
+          "preset": "recommended",
+          "example_id": "basic",
+          "plugin_id": "waterfall_plot",
+          "preview_asset": "plugins/waterfall_plot/all_examples_gallery/basic.png",
+          "parameters": {},
+          "gallery_visible": true
+        },
+        {
+          "id": "no_total",
+          "name": "Without total",
+          "variant": "no_total",
+          "preset": "recommended",
+          "example_id": "no_total",
+          "plugin_id": "waterfall_plot",
+          "preview_asset": "plugins/waterfall_plot/all_examples_gallery/no_total.png",
+          "parameters": {},
+          "gallery_visible": true
+        }
+      ],
+      "legacy_presets": {},
+      "recommendation_rules": [],
+      "entrypoint": "plot.R",
+      "language": "R",
+      "status": "beta",
       "version": "1.0.0"
     }
   ],
@@ -10101,6 +14565,34 @@
       "preview_asset": "plugins/alluvial_plot/all_examples_gallery/long.png"
     },
     {
+      "plugin_id": "annotated_tree_plot",
+      "family_id": "annotated_tree_plot",
+      "example_id": "basic",
+      "label": "Supplied tree and feature heatmap",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/annotated_tree_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "annotated_tree_plot",
+      "family_id": "annotated_tree_plot",
+      "example_id": "circular",
+      "label": "Circular tree with weighted nodes",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "circular",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/annotated_tree_plot/all_examples_gallery/circular.png"
+    },
+    {
       "plugin_id": "balloon_plot",
       "family_id": "balloon_plot",
       "example_id": "basic",
@@ -10141,6 +14633,328 @@
       },
       "parameter_group": null,
       "preview_asset": "plugins/balloon_plot/all_examples_gallery/no_stats.png"
+    },
+    {
+      "plugin_id": "bar3d_plot",
+      "family_id": "bar3d_plot",
+      "example_id": "basic",
+      "label": "Mutation-context count grid",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/bar3d_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "bar3d_plot",
+      "family_id": "bar3d_plot",
+      "example_id": "free_scale",
+      "label": "Grid heights with independent panel scales",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "free_scale",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/bar3d_plot/all_examples_gallery/free_scale.png"
+    },
+    {
+      "plugin_id": "binary_evaluation_plot",
+      "family_id": "binary_evaluation_plot",
+      "example_id": "basic",
+      "label": "Receiver operating characteristic",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "binary_evaluation_plot",
+      "family_id": "binary_evaluation_plot",
+      "example_id": "precision_recall",
+      "label": "Precision and recall",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "precision_recall",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/precision_recall.png"
+    },
+    {
+      "plugin_id": "binary_evaluation_plot",
+      "family_id": "binary_evaluation_plot",
+      "example_id": "calibration",
+      "label": "Probability calibration",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "calibration",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/calibration.png"
+    },
+    {
+      "plugin_id": "binary_evaluation_plot",
+      "family_id": "binary_evaluation_plot",
+      "example_id": "decision_curve",
+      "label": "Net benefit by threshold",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "decision_curve",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/decision_curve.png"
+    },
+    {
+      "plugin_id": "binary_evaluation_plot",
+      "family_id": "binary_evaluation_plot",
+      "example_id": "supplied_curve",
+      "label": "Supplied evaluation curves",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "supplied_curve",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/binary_evaluation_plot/all_examples_gallery/supplied_curve.png"
+    },
+    {
+      "plugin_id": "bland_altman_plot",
+      "family_id": "bland_altman_plot",
+      "example_id": "basic",
+      "label": "Paired measurement agreement",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/bland_altman_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "bland_altman_plot",
+      "family_id": "bland_altman_plot",
+      "example_id": "percent",
+      "label": "Relative measurement agreement",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "percent",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/bland_altman_plot/all_examples_gallery/percent.png"
+    },
+    {
+      "plugin_id": "circular_bar_plot",
+      "family_id": "circular_bar_plot",
+      "example_id": "basic",
+      "label": "Basic",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_bar_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "circular_bar_plot",
+      "family_id": "circular_bar_plot",
+      "example_id": "single",
+      "label": "Single series",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "single",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_bar_plot/all_examples_gallery/single.png"
+    },
+    {
+      "plugin_id": "circular_distribution_plot",
+      "family_id": "circular_distribution_plot",
+      "example_id": "basic",
+      "label": "Scores across reference groups",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_distribution_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "circular_distribution_plot",
+      "family_id": "circular_distribution_plot",
+      "example_id": "shared_range",
+      "label": "Scores on a common scale",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "shared_range",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_distribution_plot/all_examples_gallery/shared_range.png"
+    },
+    {
+      "plugin_id": "circular_genomic_plot",
+      "family_id": "circular_genomic_plot",
+      "example_id": "basic",
+      "label": "Circular interval heatmap",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "circular_genomic_plot",
+      "family_id": "circular_genomic_plot",
+      "example_id": "bars",
+      "label": "Circular interval magnitudes",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "bars",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/bars.png"
+    },
+    {
+      "plugin_id": "circular_genomic_plot",
+      "family_id": "circular_genomic_plot",
+      "example_id": "points",
+      "label": "Circular interval points",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "points",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/points.png"
+    },
+    {
+      "plugin_id": "circular_genomic_plot",
+      "family_id": "circular_genomic_plot",
+      "example_id": "linear",
+      "label": "Linear chromosome overview",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "linear",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_genomic_plot/all_examples_gallery/linear.png"
+    },
+    {
+      "plugin_id": "circular_heatmap",
+      "family_id": "circular_heatmap",
+      "example_id": "basic",
+      "label": "Basic",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_heatmap/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "circular_heatmap",
+      "family_id": "circular_heatmap",
+      "example_id": "clustered",
+      "label": "Clustered",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "clustered",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_heatmap/all_examples_gallery/clustered.png"
+    },
+    {
+      "plugin_id": "circular_heatmap",
+      "family_id": "circular_heatmap",
+      "example_id": "categorical",
+      "label": "Categorical annotation rings",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "categorical",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_heatmap/all_examples_gallery/categorical.png"
+    },
+    {
+      "plugin_id": "circular_tree_embedding",
+      "family_id": "circular_tree_embedding",
+      "example_id": "basic",
+      "label": "Annotation hierarchy",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_tree_embedding/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "circular_tree_embedding",
+      "family_id": "circular_tree_embedding",
+      "example_id": "similarity",
+      "label": "Feature similarity",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "similarity",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_tree_embedding/all_examples_gallery/similarity.png"
+    },
+    {
+      "plugin_id": "circular_tree_embedding",
+      "family_id": "circular_tree_embedding",
+      "example_id": "CAB_demo",
+      "label": "CAB_demo",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "cab_demo",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/circular_tree_embedding/all_examples_gallery/CAB_demo.png"
     },
     {
       "plugin_id": "classified_bar_plot",
@@ -10194,6 +15008,34 @@
       "maps_to": null,
       "parameter_group": "labels",
       "preview_asset": "plugins/classified_bar_plot/all_examples_gallery/labeled.png"
+    },
+    {
+      "plugin_id": "clonal_fish_plot",
+      "family_id": "clonal_fish_plot",
+      "example_id": "basic",
+      "label": "Nested clone fractions",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/clonal_fish_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "clonal_fish_plot",
+      "family_id": "clonal_fish_plot",
+      "example_id": "percent",
+      "label": "Clone fractions in percent",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "percent",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/clonal_fish_plot/all_examples_gallery/percent.png"
     },
     {
       "plugin_id": "cluster_dendrogram_plot",
@@ -10444,6 +15286,62 @@
       },
       "parameter_group": null,
       "preview_asset": "plugins/dynamic_venn_diagram/all_examples_gallery/params.png"
+    },
+    {
+      "plugin_id": "ecdf_plot",
+      "family_id": "ecdf_plot",
+      "example_id": "basic",
+      "label": "Cumulative score distributions",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/ecdf_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "ecdf_plot",
+      "family_id": "ecdf_plot",
+      "example_id": "steps",
+      "label": "Empirical distribution steps",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "steps",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/ecdf_plot/all_examples_gallery/steps.png"
+    },
+    {
+      "plugin_id": "embedding_vector_plot",
+      "family_id": "embedding_vector_plot",
+      "example_id": "basic",
+      "label": "Supplied vector field",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/embedding_vector_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "embedding_vector_plot",
+      "family_id": "embedding_vector_plot",
+      "example_id": "radial",
+      "label": "Supplied outward displacement field",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "radial",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/embedding_vector_plot/all_examples_gallery/radial.png"
     },
     {
       "plugin_id": "exp_stat_plot",
@@ -10708,6 +15606,48 @@
       "preview_asset": "plugins/fgsea_enrichment_plot/all_examples_gallery/gene_sankey.png"
     },
     {
+      "plugin_id": "forest_plot",
+      "family_id": "forest_plot",
+      "example_id": "basic",
+      "label": "Effect estimates and confidence intervals",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/forest_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "forest_plot",
+      "family_id": "forest_plot",
+      "example_id": "log_ratio",
+      "label": "Ratios on a logarithmic axis",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "log_ratio",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/forest_plot/all_examples_gallery/log_ratio.png"
+    },
+    {
+      "plugin_id": "forest_plot",
+      "family_id": "forest_plot",
+      "example_id": "signed_effects",
+      "label": "Signed differences",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "signed_effects",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/forest_plot/all_examples_gallery/signed_effects.png"
+    },
+    {
       "plugin_id": "go_kegg_enrichment_bar_bubble",
       "family_id": "go_kegg_enrichment_bar_bubble",
       "example_id": "go_kegg",
@@ -10940,7 +15880,7 @@
         "preset": "recommended"
       },
       "parameter_group": null,
-      "preview_asset": null
+      "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_bar.png"
     },
     {
       "plugin_id": "hierarchical_marker_panel",
@@ -10954,7 +15894,7 @@
         "preset": "recommended"
       },
       "parameter_group": null,
-      "preview_asset": null
+      "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_stacked.png"
     },
     {
       "plugin_id": "hierarchical_marker_panel",
@@ -10968,7 +15908,7 @@
         "preset": "recommended"
       },
       "parameter_group": null,
-      "preview_asset": null
+      "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_grouped.png"
     },
     {
       "plugin_id": "hierarchical_marker_panel",
@@ -10982,7 +15922,7 @@
         "preset": "recommended"
       },
       "parameter_group": null,
-      "preview_asset": null
+      "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_pie.png"
     },
     {
       "plugin_id": "hierarchical_marker_panel",
@@ -10996,7 +15936,7 @@
         "preset": "recommended"
       },
       "parameter_group": null,
-      "preview_asset": null
+      "preview_asset": "plugins/hierarchical_marker_panel/all_examples_gallery/summary_donut.png"
     },
     {
       "plugin_id": "highlight_effect_plot",
@@ -11039,6 +15979,34 @@
       },
       "parameter_group": null,
       "preview_asset": "plugins/highlight_effect_plot/all_examples_gallery/summary.png"
+    },
+    {
+      "plugin_id": "interactive_3d_scatter",
+      "family_id": "interactive_3d_scatter",
+      "example_id": "basic",
+      "label": "Three-dimensional sample coordinates",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/interactive_3d_scatter/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "interactive_3d_scatter",
+      "family_id": "interactive_3d_scatter",
+      "example_id": "alternate_view",
+      "label": "Alternate viewing angle",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "alternate_view",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/interactive_3d_scatter/all_examples_gallery/alternate_view.png"
     },
     {
       "plugin_id": "interactive_arc_network_plot",
@@ -11382,7 +16350,21 @@
         "preset": "recommended"
       },
       "parameter_group": null,
-      "preview_asset": null
+      "preview_asset": "plugins/interactive_enrichment_lollipop/all_examples_gallery/oct4_enrichment.png"
+    },
+    {
+      "plugin_id": "interactive_enrichment_lollipop",
+      "family_id": "enrichment_lollipop",
+      "example_id": "CAB_demo",
+      "label": "Diverging transcription factor lollipop",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "diverging_tf",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/interactive_enrichment_lollipop/all_examples_gallery/CAB_demo.png"
     },
     {
       "plugin_id": "interactive_genomic_signal_track_plot",
@@ -11521,19 +16503,50 @@
     {
       "plugin_id": "interactive_network_plot",
       "family_id": "interactive_network_plot",
-      "example_id": "manual_layout",
-      "label": "manual_layout",
+      "example_id": "network",
+      "label": "Force-directed network",
       "plot_type": "edge_list",
-      "classification": "parameter",
-      "maps_to": null,
-      "parameter_group": "layout",
-      "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/manual_layout.png"
+      "classification": "variant",
+      "maps_to": {
+        "variant": "network",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/network.png"
+    },
+    {
+      "plugin_id": "interactive_network_plot",
+      "family_id": "interactive_network_plot",
+      "example_id": "circle",
+      "label": "Circular layout",
+      "plot_type": "edge_list",
+      "classification": "variant",
+      "maps_to": {
+        "variant": "circle",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/circle.png"
+    },
+    {
+      "plugin_id": "interactive_network_plot",
+      "family_id": "interactive_network_plot",
+      "example_id": "concentric",
+      "label": "Concentric layout",
+      "plot_type": "edge_list",
+      "classification": "variant",
+      "maps_to": {
+        "variant": "concentric",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/concentric.png"
     },
     {
       "plugin_id": "interactive_network_plot",
       "family_id": "interactive_network_plot",
       "example_id": "membership",
-      "label": "membership",
+      "label": "Membership radial",
       "plot_type": "membership",
       "classification": "variant",
       "maps_to": {
@@ -11546,16 +16559,16 @@
     {
       "plugin_id": "interactive_network_plot",
       "family_id": "interactive_network_plot",
-      "example_id": "network",
-      "label": "network",
+      "example_id": "manual_layout",
+      "label": "Manual layout",
       "plot_type": "edge_list",
-      "classification": "variant",
+      "classification": "parameter",
       "maps_to": {
         "variant": "network",
         "preset": "recommended"
       },
-      "parameter_group": null,
-      "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/network.png"
+      "parameter_group": "layout",
+      "preview_asset": "plugins/interactive_network_plot/all_examples_gallery/manual_layout.png"
     },
     {
       "plugin_id": "interactive_pie_plot",
@@ -11907,6 +16920,48 @@
       "preview_asset": "plugins/interactive_violin_plot/all_examples_gallery/long.png"
     },
     {
+      "plugin_id": "line_plot",
+      "family_id": "line_plot",
+      "example_id": "basic",
+      "label": "Basic",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/line_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "line_plot",
+      "family_id": "line_plot",
+      "example_id": "smooth",
+      "label": "Smooth",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "smooth",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/line_plot/all_examples_gallery/smooth.png"
+    },
+    {
+      "plugin_id": "line_plot",
+      "family_id": "line_plot",
+      "example_id": "interval_band",
+      "label": "Supplied confidence or credible bounds",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "interval_band",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/line_plot/all_examples_gallery/interval_band.png"
+    },
+    {
       "plugin_id": "lineage_plot",
       "family_id": "trajectory",
       "example_id": "basic",
@@ -11947,6 +17002,132 @@
       },
       "parameter_group": null,
       "preview_asset": "plugins/lineage_plot/all_examples_gallery/whiskers.png"
+    },
+    {
+      "plugin_id": "linked_matrix_network_plot",
+      "family_id": "linked_matrix_network_plot",
+      "example_id": "basic",
+      "label": "Linked matrix and relationships",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/linked_matrix_network_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "linked_matrix_network_plot",
+      "family_id": "linked_matrix_network_plot",
+      "example_id": "dot_matrix",
+      "label": "Dot matrix and relationships",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "dot_matrix",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/linked_matrix_network_plot/all_examples_gallery/dot_matrix.png"
+    },
+    {
+      "plugin_id": "manhattan_qq_plot",
+      "family_id": "manhattan_qq_plot",
+      "example_id": "basic",
+      "label": "Association overview",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/manhattan_qq_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "manhattan_qq_plot",
+      "family_id": "manhattan_qq_plot",
+      "example_id": "manhattan",
+      "label": "Genomic association signals",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "manhattan",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/manhattan_qq_plot/all_examples_gallery/manhattan.png"
+    },
+    {
+      "plugin_id": "manhattan_qq_plot",
+      "family_id": "manhattan_qq_plot",
+      "example_id": "qq",
+      "label": "Expected and observed probabilities",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "qq",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/manhattan_qq_plot/all_examples_gallery/qq.png"
+    },
+    {
+      "plugin_id": "nomogram_plot",
+      "family_id": "nomogram_plot",
+      "example_id": "basic",
+      "label": "Supplied predictor point scales",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/nomogram_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "nomogram_plot",
+      "family_id": "nomogram_plot",
+      "example_id": "compact",
+      "label": "Supplied total-point outcome mapping",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "compact",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/nomogram_plot/all_examples_gallery/compact.png"
+    },
+    {
+      "plugin_id": "oncoprint_plot",
+      "family_id": "oncoprint_plot",
+      "example_id": "basic",
+      "label": "Multi-hit alteration matrix",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/oncoprint_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "oncoprint_plot",
+      "family_id": "oncoprint_plot",
+      "example_id": "input_order",
+      "label": "Input-order alteration matrix",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "input_order",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/oncoprint_plot/all_examples_gallery/input_order.png"
     },
     {
       "plugin_id": "pie_dot_matrix",
@@ -11991,6 +17172,34 @@
       "preview_asset": "plugins/pie_dot_matrix/all_examples_gallery/correlation.png"
     },
     {
+      "plugin_id": "protein_variant_plot",
+      "family_id": "protein_variant_plot",
+      "example_id": "basic",
+      "label": "Protein variants and domains",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/protein_variant_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "protein_variant_plot",
+      "family_id": "protein_variant_plot",
+      "example_id": "variants_only",
+      "label": "Variant count profile",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "variants_only",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/protein_variant_plot/all_examples_gallery/variants_only.png"
+    },
+    {
       "plugin_id": "quadrant_correlation_scatter",
       "family_id": "quadrant_correlation_scatter",
       "example_id": "params",
@@ -12003,6 +17212,62 @@
       },
       "parameter_group": null,
       "preview_asset": "plugins/quadrant_correlation_scatter/all_examples_gallery/params.png"
+    },
+    {
+      "plugin_id": "radviz_plot",
+      "family_id": "radviz_plot",
+      "example_id": "basic",
+      "label": "Feature-weight wheel",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/radviz_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "radviz_plot",
+      "family_id": "radviz_plot",
+      "example_id": "minmax",
+      "label": "Feature-scaled wheel",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "minmax",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/radviz_plot/all_examples_gallery/minmax.png"
+    },
+    {
+      "plugin_id": "raincloud_plot",
+      "family_id": "raincloud_plot",
+      "example_id": "basic",
+      "label": "Basic",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/raincloud_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "raincloud_plot",
+      "family_id": "raincloud_plot",
+      "example_id": "vertical",
+      "label": "Vertical",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "vertical",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/raincloud_plot/all_examples_gallery/vertical.png"
     },
     {
       "plugin_id": "ranked_annotation_panel",
@@ -12045,6 +17310,34 @@
       },
       "parameter_group": null,
       "preview_asset": "plugins/regression_scatter_plot/all_examples_gallery/CAB_demo.png"
+    },
+    {
+      "plugin_id": "risk_stratification_panel",
+      "family_id": "risk_stratification_panel",
+      "example_id": "basic",
+      "label": "Aligned risk and follow-up",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/risk_stratification_panel/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "risk_stratification_panel",
+      "family_id": "risk_stratification_panel",
+      "example_id": "scores_only",
+      "label": "Scores and follow-up",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "scores_only",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/risk_stratification_panel/all_examples_gallery/scores_only.png"
     },
     {
       "plugin_id": "sca_volcano_plot",
@@ -12101,6 +17394,76 @@
       },
       "parameter_group": null,
       "preview_asset": "plugins/sca_volcano_plot/all_examples_gallery/regions.png"
+    },
+    {
+      "plugin_id": "sequence_alignment_plot",
+      "family_id": "sequence_alignment_plot",
+      "example_id": "basic",
+      "label": "Aligned nucleotide sequences",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/sequence_alignment_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "sequence_alignment_plot",
+      "family_id": "sequence_alignment_plot",
+      "example_id": "protein",
+      "label": "Aligned protein sequences",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "protein",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/sequence_alignment_plot/all_examples_gallery/protein.png"
+    },
+    {
+      "plugin_id": "spatial_region_plot",
+      "family_id": "spatial_region_plot",
+      "example_id": "basic",
+      "label": "Measured tissue regions",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/spatial_region_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "spatial_region_plot",
+      "family_id": "spatial_region_plot",
+      "example_id": "tissue",
+      "label": "Regions over a synthetic tissue background",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "tissue",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/spatial_region_plot/all_examples_gallery/tissue.png"
+    },
+    {
+      "plugin_id": "spatial_region_plot",
+      "family_id": "spatial_region_plot",
+      "example_id": "spots",
+      "label": "Measured spatial spots",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "spots",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/spatial_region_plot/all_examples_gallery/spots.png"
     },
     {
       "plugin_id": "stacked_bar_plot",
@@ -12296,6 +17659,118 @@
       "preview_asset": "plugins/stat_plot/all_examples_gallery/venn.png"
     },
     {
+      "plugin_id": "sunburst_plot",
+      "family_id": "sunburst_plot",
+      "example_id": "basic",
+      "label": "Basic",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/sunburst_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "sunburst_plot",
+      "family_id": "sunburst_plot",
+      "example_id": "three_level",
+      "label": "Three rings",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "three_level",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/sunburst_plot/all_examples_gallery/three_level.png"
+    },
+    {
+      "plugin_id": "survival_plot",
+      "family_id": "survival_plot",
+      "example_id": "basic",
+      "label": "Survival by cohort",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/survival_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "survival_plot",
+      "family_id": "survival_plot",
+      "example_id": "conditional",
+      "label": "Conditional survival",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "conditional",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/survival_plot/all_examples_gallery/conditional.png"
+    },
+    {
+      "plugin_id": "survival_plot",
+      "family_id": "survival_plot",
+      "example_id": "event_probability",
+      "label": "Event probability",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "event_probability",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/survival_plot/all_examples_gallery/event_probability.png"
+    },
+    {
+      "plugin_id": "swimmer_plot",
+      "family_id": "swimmer_plot",
+      "example_id": "basic",
+      "label": "Observation intervals and events",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/swimmer_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "swimmer_plot",
+      "family_id": "swimmer_plot",
+      "example_id": "staggered",
+      "label": "Staggered observation windows",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "staggered",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/swimmer_plot/all_examples_gallery/staggered.png"
+    },
+    {
+      "plugin_id": "ternary_plot",
+      "family_id": "ternary_plot",
+      "example_id": "basic",
+      "label": "Basic",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/ternary_plot/all_examples_gallery/basic.png"
+    },
+    {
       "plugin_id": "threshold_matrix_heatmap",
       "family_id": "threshold_matrix_heatmap",
       "example_id": "params",
@@ -12308,6 +17783,20 @@
       },
       "parameter_group": null,
       "preview_asset": "plugins/threshold_matrix_heatmap/all_examples_gallery/params.png"
+    },
+    {
+      "plugin_id": "treemap_plot",
+      "family_id": "treemap_plot",
+      "example_id": "basic",
+      "label": "Basic",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/treemap_plot/all_examples_gallery/basic.png"
     },
     {
       "plugin_id": "violin_plot",
@@ -12364,6 +17853,34 @@
       },
       "parameter_group": null,
       "preview_asset": "plugins/violin_plot/all_examples_gallery/matrix.png"
+    },
+    {
+      "plugin_id": "waterfall_plot",
+      "family_id": "waterfall_plot",
+      "example_id": "basic",
+      "label": "Basic",
+      "plot_type": null,
+      "classification": "demo",
+      "maps_to": {
+        "variant": "basic",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/waterfall_plot/all_examples_gallery/basic.png"
+    },
+    {
+      "plugin_id": "waterfall_plot",
+      "family_id": "waterfall_plot",
+      "example_id": "no_total",
+      "label": "Without total",
+      "plot_type": null,
+      "classification": "variant",
+      "maps_to": {
+        "variant": "no_total",
+        "preset": "recommended"
+      },
+      "parameter_group": null,
+      "preview_asset": "plugins/waterfall_plot/all_examples_gallery/no_total.png"
     }
   ],
   "vocab": {
@@ -12431,6 +17948,7 @@
     "data_roles": [
       "x",
       "y",
+      "z",
       "x_embedding",
       "y_embedding",
       "group",

@@ -1,0 +1,105 @@
+summary: Connect two values per category to emphasize the difference between groups
+  or conditions.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare before and after
+- Compare two cohort metrics
+- Rank categories by their change
+common_uses: []
+input_requirements: Category and two numeric columns, or category/group/value long
+  data.
+learn_more: 'Input: Category and two numeric columns, or category/group/value long
+  data. Interpretation: Endpoint positions encode group values and line length encodes
+  the absolute difference. Check mappings, order and transformations before adjusting
+  labels, colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Endpoint positions encode group values and line length encodes the absolute
+    difference.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Without individual IDs, do not imply subject-level pairing
+- id: caution_2
+  title: Caution 2
+  text: Connecting lines are not confidence intervals or significance tests
+examples:
+- id: basic
+  title: Two-condition category differences
+  description: 'Use case: Compare before and after. This preset illustrates two-condition
+    category differences. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare before and after
+  input_requirements: Category and two numeric columns, or category/group/value long
+    data.
+  preview_asset: plugins/interactive_dumbbell_plot/all_examples_gallery/basic.png
+  mappings:
+    category_column: school
+- id: custom_layout
+  title: Ordering and endpoint labels
+  description: 'Use case: Compare two cohort metrics. This preset illustrates ordering
+    and endpoint labels. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: custom_layout
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare two cohort metrics
+  input_requirements: Category and two numeric columns, or category/group/value long
+    data.
+  preview_asset: plugins/interactive_dumbbell_plot/all_examples_gallery/custom_layout.png
+  mappings:
+    category_column: school
+- id: interactive
+  title: Inspect both values on hover
+  description: 'Use case: Rank categories by their change. This preset illustrates
+    inspect both values on hover. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: interactive
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Rank categories by their change
+  input_requirements: Category and two numeric columns, or category/group/value long
+    data.
+  preview_asset: plugins/interactive_dumbbell_plot/all_examples_gallery/interactive.png
+  variant_id: interactive
+  mappings:
+    category_column: school
+    tooltip_columns:
+    - school
+    - Women
+    - Men
+literature_ids:
+- guo_clinical_transfer_2026
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  interactive:
+    summary: 'Use case: Rank categories by their change. This preset illustrates inspect
+      both values on hover. Replace its input with your data while retaining the appropriate
+      view settings.'
+customization:
+- parameter: input_mode
+  label: input_mode
+  default: null
+- parameter: group_column
+  label: group_column
+  default: null
+- parameter: value_column
+  label: value_column
+  default: null
+- parameter: category_column
+  label: category_column
+  default: null
+- parameter: group_colors
+  label: group_colors
+  default: null
+- parameter: width
+  label: width
+  default: 9
+- parameter: height
+  label: height
+  default: 6

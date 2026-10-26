@@ -1,0 +1,130 @@
+summary: Stack signal tracks on a shared genomic axis with optional feature intervals
+  and expression panels.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare sequencing signals near a locus
+- Align peaks and gene annotations
+- Inspect signal alongside expression
+common_uses: []
+input_requirements: Track/position/value long data; optional chromosome, sample, interval
+  and expression tables.
+learn_more: 'Input: Track/position/value long data; optional chromosome, sample, interval
+  and expression tables. Interpretation: Horizontal position uses the supplied genomic
+  coordinates; each track shows its input signal. Check mappings, order and transformations
+  before adjusting labels, colors and canvas dimensions. Confirm legends and units
+  before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Horizontal position uses the supplied genomic coordinates; each track shows
+    its input signal.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Check genome assembly and coordinate conventions
+- id: caution_2
+  title: Caution 2
+  text: Independently scaled tracks cannot be compared by absolute height
+examples:
+- id: basic
+  title: Multiple tracks on shared coordinates
+  description: 'Use case: Compare sequencing signals near a locus. This preset illustrates
+    multiple tracks on shared coordinates. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare sequencing signals near a locus
+  input_requirements: Track/position/value long data; optional chromosome, sample,
+    interval and expression tables.
+  preview_asset: plugins/interactive_genomic_signal_track_plot/all_examples_gallery/basic.png
+- id: custom_layout
+  title: Track and annotation layout
+  description: 'Use case: Align peaks and gene annotations. This preset illustrates
+    track and annotation layout. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: custom_layout
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Align peaks and gene annotations
+  input_requirements: Track/position/value long data; optional chromosome, sample,
+    interval and expression tables.
+  preview_asset: plugins/interactive_genomic_signal_track_plot/all_examples_gallery/custom_layout.png
+- id: interactive
+  title: Inspect signals and intervals on hover
+  description: 'Use case: Inspect signal alongside expression. This preset illustrates
+    inspect signals and intervals on hover. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: interactive
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect signal alongside expression
+  input_requirements: Track/position/value long data; optional chromosome, sample,
+    interval and expression tables.
+  preview_asset: plugins/interactive_genomic_signal_track_plot/all_examples_gallery/interactive.png
+  variant_id: interactive
+literature_ids:
+- li_cerebrum_2021
+- yang_projection_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  interactive:
+    summary: 'Use case: Inspect signal alongside expression. This preset illustrates
+      inspect signals and intervals on hover. Replace its input with your data while
+      retaining the appropriate view settings.'
+customization:
+- parameter: value_column
+  label: value_column
+  default: value
+- parameter: width
+  label: width
+  default: 14
+- parameter: height
+  label: height
+  default: 8
+source_modules:
+- title: FigureYa3genomeView
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa3genomeView
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa57profile_1bw
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa57profile_1bw
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa67phastCons
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa67phastCons
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa82IGVzoom
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa82IGVzoom
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa133m6Apeak_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa133m6Apeak_update
+  scope: Text-only HTML and R source review; peak calling/annotation remains upstream.
+    Plot supplied intervals/signals with genomic tracks.
+- title: FigureYa145target
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa145target
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa155ATAC
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa155ATAC
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa172ggplot2Gviz
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa172ggplot2Gviz
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa257armCNV
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa257armCNV
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

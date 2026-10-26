@@ -1,0 +1,12 @@
+{
+  "parent_column": "parent",
+  "child_column": "child",
+  "length_column": "length",
+  "group_column": "group",
+  "size_column": "size",
+  "feature_columns": [
+    "Gene_A",
+    "Gene_B"
+  ],
+  "title": "Supplied tree and feature heatmap"
+}

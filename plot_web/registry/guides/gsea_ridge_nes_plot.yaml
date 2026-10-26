@@ -1,0 +1,59 @@
+summary: Place pathway-member ranking distributions beside precomputed normalized
+  enrichment scores.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare pathway score distributions
+- Check agreement with NES direction
+- Inspect leading-edge support
+common_uses: []
+input_requirements: Ranked genes and enrichment results with NES and probabilities;
+  optional gene sets or leading-edge members.
+learn_more: 'Input: Ranked genes and enrichment results with NES and probabilities;
+  optional gene sets or leading-edge members. Interpretation: Ridges summarize member-score
+  distributions while NES is the supplied enrichment statistic. Check mappings, order
+  and transformations before adjusting labels, colors and canvas dimensions. Confirm
+  legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Ridges summarize member-score distributions while NES is the supplied enrichment
+    statistic.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: A density peak is not NES
+- id: caution_2
+  title: Caution 2
+  text: Leading-edge-only distributions do not describe the full gene set
+examples:
+- id: basic
+  title: Pathway distributions alongside NES
+  description: 'Use case: Compare pathway score distributions. This preset illustrates
+    pathway distributions alongside nes. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare pathway score distributions
+  input_requirements: Ranked genes and enrichment results with NES and probabilities;
+    optional gene sets or leading-edge members.
+  preview_asset: plugins/gsea_ridge_nes_plot/all_examples_gallery/basic.png
+literature_ids:
+- gsea_subramanian_2005
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes:
+- Only one independent demonstration bundle is available. Three application scenarios
+  are listed, but a second input or mode-specific bundle is still needed.
+variants: {}
+customization:
+- parameter: base_size
+  label: base_size
+  default: 11
+- parameter: width
+  label: width
+  default: 9.2
+- parameter: height
+  label: height
+  default: 7.2

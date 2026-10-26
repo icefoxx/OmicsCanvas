@@ -1,0 +1,34 @@
+id: protein_variant_plot
+name: Protein Variant Map
+version: 1.0.0
+description: Place variant counts and annotated domains on a protein coordinate.
+language: R
+entrypoint: plot.R
+category: Genomics
+subcategory: General
+status: beta
+inputs:
+- id: input
+  type: table
+  formats:
+  - csv
+  - tsv
+  - txt
+  required: true
+- id: domains
+  type: table
+  formats:
+  - csv
+  - tsv
+  required: false
+outputs:
+- result.svg
+- result.pdf
+- result.png
+- figure.json
+- run.log
+- data_used.csv
+- domains_used.csv
+runtime:
+  command: Rscript plugins/protein_variant_plot/plot.R --input input.csv --params
+    params.json --output output_dir

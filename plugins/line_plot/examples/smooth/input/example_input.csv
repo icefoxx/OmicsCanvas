@@ -1,0 +1,15 @@
+x,y,group,se
+0,2.1,Vehicle,0.18
+1,2.4,Vehicle,0.16
+2,2.6,Vehicle,0.20
+3,2.5,Vehicle,0.17
+4,2.7,Vehicle,0.19
+5,2.8,Vehicle,0.21
+6,2.9,Vehicle,0.18
+0,2.0,Drug,0.15
+1,2.8,Drug,0.18
+2,3.6,Drug,0.22
+3,4.1,Drug,0.24
+4,4.5,Drug,0.21
+5,4.7,Drug,0.23
+6,4.8,Drug,0.20

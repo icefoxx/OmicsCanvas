@@ -1,0 +1,25 @@
+{
+  "plugin_id": "clonal_fish_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Nested clone fractions",
+      "plugin_id": "clonal_fish_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "percent",
+      "label": "Clone fractions in percent",
+      "plugin_id": "clonal_fish_plot",
+      "params": "percent/params.json",
+      "inputs": {
+        "input": "percent/input/data.csv"
+      },
+      "expected": "percent/expected/result.png"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+summary: Compute or read a correlation matrix and show coefficients using color, numbers
+  and triangular layouts.
+observation_type: observations or summary items in the input table
+best_for:
+- Inspect metric redundancy
+- Explore covarying features
+- Review precomputed correlations
+common_uses: []
+input_requirements: Raw wide numeric observations, or a square matrix with matching
+  row/column labels.
+learn_more: 'Input: Raw wide numeric observations, or a square matrix with matching
+  row/column labels. Interpretation: Color and numbers represent the chosen correlation
+  coefficient; probability annotations require valid tests or supplied results. Check
+  mappings, order and transformations before adjusting labels, colors and canvas dimensions.
+  Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Color and numbers represent the chosen correlation coefficient; probability
+    annotations require valid tests or supplied results.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Correlation does not establish causation
+- id: caution_2
+  title: Caution 2
+  text: Pairwise missingness can change effective sample sizes between cells
+examples:
+- id: basic
+  title: Correlations from raw observations
+  description: 'Use case: Inspect metric redundancy. This preset illustrates correlations
+    from raw observations. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect metric redundancy
+  input_requirements: Raw wide numeric observations, or a square matrix with matching
+    row/column labels.
+  preview_asset: plugins/interactive_correlation_matrix/all_examples_gallery/basic.png
+  mappings:
+    id_column: sample
+- id: lower_triangle
+  title: Nonredundant lower triangle
+  description: 'Use case: Explore covarying features. This preset illustrates nonredundant
+    lower triangle. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: lower_triangle
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Explore covarying features
+  input_requirements: Raw wide numeric observations, or a square matrix with matching
+    row/column labels.
+  preview_asset: plugins/interactive_correlation_matrix/all_examples_gallery/lower_triangle.png
+  variant_id: lower_triangle
+  mappings:
+    id_column: sample
+- id: interactive
+  title: Inspect individual coefficients on hover
+  description: 'Use case: Review precomputed correlations. This preset illustrates
+    inspect individual coefficients on hover. Replace its input with your data while
+    retaining the appropriate view settings.'
+  demo_id: interactive
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Review precomputed correlations
+  input_requirements: Raw wide numeric observations, or a square matrix with matching
+    row/column labels.
+  preview_asset: plugins/interactive_correlation_matrix/all_examples_gallery/interactive.png
+  variant_id: interactive
+  mappings:
+    id_column: sample
+literature_ids:
+- sanchez_wheat_2025
+- li_freeze_thaw_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  interactive:
+    summary: 'Use case: Review precomputed correlations. This preset illustrates inspect
+      individual coefficients on hover. Replace its input with your data while retaining
+      the appropriate view settings.'
+  lower_triangle:
+    summary: 'Use case: Explore covarying features. This preset illustrates nonredundant
+      lower triangle. Replace its input with your data while retaining the appropriate
+      view settings.'
+customization: []
+source_modules:
+- title: FigureYa37correlationV2_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa37correlationV2_update
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa73batchCorrelation
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa73batchCorrelation
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa76corrgram
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa76corrgram
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa97correlationV3
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa97correlationV3
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa115cofactor
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa115cofactor
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa124AssociationHeatmap
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa124AssociationHeatmap
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa126CorrelationHeatmap
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa126CorrelationHeatmap
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa152DouleCorPlot
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa152DouleCorPlot
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa181multiCorrelation
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa181multiCorrelation
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa201ClusterCorrelation
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa201ClusterCorrelation
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa230immunelandscape
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa230immunelandscape
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa242corMethExpr
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa242corMethExpr
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa300pancanCor
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa300pancanCor
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

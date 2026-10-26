@@ -1,0 +1,98 @@
+summary: Show grouped continuous distributions as violins with optional points and
+  boxes.
+observation_type: observations or summary items in the input table
+best_for:
+- Compare expression or score distributions
+- Inspect multimodality and tails
+- Arrange distributions by condition
+common_uses: []
+input_requirements: Numeric wide observations or group/value long data.
+learn_more: 'Input: Numeric wide observations or group/value long data. Interpretation:
+  Violin width represents estimated density; boxes and points show quantiles and observations.
+  Check mappings, order and transformations before adjusting labels, colors and canvas
+  dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Violin width represents estimated density; boxes and points show quantiles
+    and observations.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Bandwidth affects apparent multimodality
+- id: caution_2
+  title: Caution 2
+  text: Treating cells as independent replicates inflates evidence
+examples:
+- id: basic
+  title: Grouped continuous distributions
+  description: 'Use case: Compare expression or score distributions. This preset illustrates
+    grouped continuous distributions. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare expression or score distributions
+  input_requirements: Numeric wide observations or group/value long data.
+  preview_asset: plugins/interactive_violin_plot/all_examples_gallery/basic.png
+  mappings:
+    id_column: sample
+- id: long
+  title: Group-value mappings from long data
+  description: 'Use case: Inspect multimodality and tails. This preset illustrates
+    group-value mappings from long data. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: long
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect multimodality and tails
+  input_requirements: Numeric wide observations or group/value long data.
+  preview_asset: plugins/interactive_violin_plot/all_examples_gallery/long.png
+  variant_id: long
+  mappings:
+    id_column: sample
+    feature_column: feature
+    value_column: value
+    group_column: group
+- id: custom_layout
+  title: Readable point and density layers
+  description: 'Use case: Arrange distributions by condition. This preset illustrates
+    readable point and density layers. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: custom_layout
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Arrange distributions by condition
+  input_requirements: Numeric wide observations or group/value long data.
+  preview_asset: plugins/interactive_violin_plot/all_examples_gallery/custom_layout.png
+  mappings:
+    id_column: sample
+literature_ids:
+- allen_raincloud_2019
+- chen_ibd_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  long:
+    summary: 'Use case: Inspect multimodality and tails. This preset illustrates group-value
+      mappings from long data. Replace its input with your data while retaining the
+      appropriate view settings.'
+customization:
+- parameter: input_mode
+  label: input_mode
+  default: auto
+- parameter: sort_by
+  label: sort_by
+  default: variance
+- parameter: top_n
+  label: top_n
+  default: 0
+- parameter: palette
+  label: palette
+  default: null
+- parameter: width
+  label: width
+  default: 10
+- parameter: height
+  label: height
+  default: 6

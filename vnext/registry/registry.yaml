@@ -88,6 +88,34 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: annotated_tree_plot
+  version: 1.0.0
+  family: matrix
+  name: Annotated Tree
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - size
+  - source
+  - target
+  - weight
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: balloon_plot
   version: 1.0.0
   family: matrix
@@ -112,6 +140,218 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: bar3d_plot
+  version: 1.0.0
+  family: matrix
+  name: 3D Bar / Lego
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - value
+  - x
+  - y
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: binary_evaluation_plot
+  version: 1.0.0
+  family: group_comparison
+  name: Binary Model Evaluation
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: bland_altman_plot
+  version: 1.0.0
+  family: correlation
+  name: Bland–Altman Agreement
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - x
+  - y
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: circular_bar_plot
+  version: 1.0.0
+  family: group_comparison
+  name: Circular Bar Plot
+  aliases: []
+  accepts:
+  - table
+  required_semantics:
+  - category
+  - value
+  optional_semantics:
+  - group
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: circular_distribution_plot
+  version: 1.0.0
+  family: group_comparison
+  name: Circular Score Distribution
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - feature
+  - group
+  - id
+  - value
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: circular_genomic_plot
+  version: 1.0.0
+  family: genomic_track
+  name: Circular Genome Tracks
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - value
+  - x
+  - y
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: circular_heatmap
+  version: 1.0.0
+  family: matrix
+  name: Circular Heatmap
+  aliases: []
+  accepts:
+  - table
+  required_semantics:
+  - feature
+  - group
+  - value
+  optional_semantics: []
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: circular_tree_embedding
+  version: 1.0.0
+  family: embedding
+  name: Circular Tree + Embedding
+  aliases: []
+  accepts:
+  - table
+  required_semantics:
+  - x
+  - y
+  - group
+  - cluster
+  optional_semantics:
+  - feature
+  statistics:
+    method: cluster_method
+  capabilities:
+    interactive: false
+    statistics: true
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: classified_bar_plot
   version: 1.0.0
   family: composition
@@ -138,6 +378,33 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: clonal_fish_plot
+  version: 1.0.0
+  family: composition
+  name: Clonal Evolution
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - source
+  - target
+  - value
+  - x
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: cluster_dendrogram_plot
   version: 1.0.0
   family: matrix
@@ -307,6 +574,58 @@ skills:
   entrypoint: plot.R
   language: R
   status: experimental
+- id: ecdf_plot
+  version: 1.0.0
+  family: group_comparison
+  name: Empirical CDF
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - value
+  statistics:
+    method: stat_method
+  capabilities:
+    interactive: false
+    statistics: true
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: embedding_vector_plot
+  version: 1.0.0
+  family: embedding
+  name: Embedding Vector Field
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - x
+  - y
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: exp_stat_plot
   version: 1.0.0
   family: group_comparison
@@ -391,6 +710,34 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: forest_plot
+  version: 1.0.0
+  family: group_comparison
+  name: Forest Plot
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - category
+  - ci_high
+  - ci_low
+  - group
+  - value
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: go_kegg_enrichment_bar_bubble
   version: 1.0.1
   family: enrichment
@@ -553,6 +900,33 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: interactive_3d_scatter
+  version: 1.0.0
+  family: embedding
+  name: 3D Embedding
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - x
+  - y
+  - z
+  statistics: {}
+  capabilities:
+    interactive: true
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: interactive_arc_network_plot
   version: 1.0.0
   family: network
@@ -1060,6 +1434,35 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: line_plot
+  version: 1.0.0
+  family: group_comparison
+  name: Line Plot
+  aliases: []
+  accepts:
+  - table
+  required_semantics:
+  - x
+  - y
+  optional_semantics:
+  - ci_high
+  - ci_low
+  - group
+  - se
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: lineage_plot
   version: 1.0.0
   family: embedding
@@ -1086,6 +1489,109 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: linked_matrix_network_plot
+  version: 1.0.0
+  family: multi_panel
+  name: Linked Heatmap + Network
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - feature
+  - sample
+  - value
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: manhattan_qq_plot
+  version: 1.0.0
+  family: genomic_track
+  name: Manhattan / QQ
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - label
+  - pvalue
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: nomogram_plot
+  version: 1.0.0
+  family: multi_panel
+  name: Nomogram Scales
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - label
+  - x
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: oncoprint_plot
+  version: 1.0.0
+  family: matrix
+  name: Mutation Matrix
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - feature
+  - group
+  - sample
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: pie_dot_matrix
   version: 1.0.0
   family: matrix
@@ -1110,6 +1616,33 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: protein_variant_plot
+  version: 1.0.0
+  family: genomic_track
+  name: Protein Variant Map
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - label
+  - value
+  - x
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: quadrant_correlation_scatter
   version: 1.0.0
   family: correlation
@@ -1137,6 +1670,56 @@ skills:
   entrypoint: plot.R
   language: R
   status: experimental
+- id: radviz_plot
+  version: 1.0.0
+  family: embedding
+  name: Wheel / RadViz
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - feature
+  - group
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: raincloud_plot
+  version: 1.0.0
+  family: group_comparison
+  name: Raincloud Plot
+  aliases: []
+  accepts:
+  - table
+  required_semantics:
+  - value
+  optional_semantics:
+  - group
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: ranked_annotation_panel
   version: 1.0.0
   family: multi_panel
@@ -1190,6 +1773,33 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: risk_stratification_panel
+  version: 1.0.0
+  family: multi_panel
+  name: Risk Stratification Panel
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - id
+  - value
+  - x
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: sca_volcano_plot
   version: 1.0.0
   family: differential_expression
@@ -1218,6 +1828,57 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: sequence_alignment_plot
+  version: 1.0.0
+  family: genomic_track
+  name: Sequence Alignment
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - id
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: spatial_region_plot
+  version: 1.0.0
+  family: matrix
+  name: Spatial Region Map
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - value
+  - x
+  - y
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: stacked_bar_plot
   version: 1.0.0
   family: composition
@@ -1270,6 +1931,111 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: sunburst_plot
+  version: 1.0.0
+  family: composition
+  name: Sunburst Plot
+  aliases: []
+  accepts:
+  - table
+  required_semantics:
+  - group
+  - value
+  optional_semantics:
+  - category
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: survival_plot
+  version: 1.0.0
+  family: group_comparison
+  name: Survival Curve
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - value
+  - x
+  statistics:
+    method: stat_method
+  capabilities:
+    interactive: false
+    statistics: true
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: swimmer_plot
+  version: 1.0.0
+  family: group_comparison
+  name: Swimmer Timeline
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - id
+  - x
+  - y
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
+- id: ternary_plot
+  version: 1.0.0
+  family: composition
+  name: Ternary Plot
+  aliases: []
+  accepts:
+  - table
+  required_semantics: []
+  optional_semantics:
+  - group
+  - size
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: threshold_matrix_heatmap
   version: 1.0.0
   family: matrix
@@ -1295,6 +2061,32 @@ skills:
   entrypoint: plot.R
   language: R
   status: experimental
+- id: treemap_plot
+  version: 1.0.0
+  family: composition
+  name: Treemap Plot
+  aliases: []
+  accepts:
+  - table
+  required_semantics:
+  - group
+  - value
+  optional_semantics:
+  - category
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta
 - id: violin_plot
   version: 1.0.0
   family: group_comparison
@@ -1323,3 +2115,28 @@ skills:
   entrypoint: plot.R
   language: R
   status: stable
+- id: waterfall_plot
+  version: 1.0.0
+  family: group_comparison
+  name: Waterfall Plot
+  aliases: []
+  accepts:
+  - table
+  required_semantics:
+  - category
+  - value
+  optional_semantics: []
+  statistics: {}
+  capabilities:
+    interactive: false
+    statistics: false
+    export_svg: true
+    export_pdf: true
+    export_png: true
+    legacy_params: true
+    vnext_migrated: true
+  curated: true
+  guardrails: []
+  entrypoint: plot.R
+  language: R
+  status: beta

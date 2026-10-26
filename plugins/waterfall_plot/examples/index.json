@@ -1,0 +1,7 @@
+{
+  "plugin_id": "waterfall_plot",
+  "examples": [
+    {"id": "basic", "label": "Basic", "plugin_id": "waterfall_plot", "params": "basic/params.json", "inputs": {"input": "basic/input/example_input.csv"}, "expected": "basic/expected/result.png", "bundle": "basic"},
+    {"id": "no_total", "label": "Without total", "plugin_id": "waterfall_plot", "params": "no_total/params.json", "inputs": {"input": "no_total/input/example_input.csv"}, "expected": "no_total/expected/result.png", "bundle": "no_total"}
+  ]
+}

@@ -1,0 +1,229 @@
+version: '1.0'
+workflows:
+- id: clinical-outcomes
+  name: Clinical outcomes and model evaluation
+  skill: skills/omicscanvas-clinical/SKILL.md
+  keywords:
+  - survival
+  - calibration
+  - roc
+  - precision recall
+  - clinical
+  - risk
+  - kaplan
+  - 生存
+  - 校准
+  plugins:
+  - survival_plot
+  - binary_evaluation_plot
+  - forest_plot
+  - bland_altman_plot
+  - swimmer_plot
+  - nomogram_plot
+  - risk_stratification_panel
+- id: single-cell
+  name: Single-cell embeddings and annotation
+  skill: skills/omicscanvas-single-cell/SKILL.md
+  keywords:
+  - single cell
+  - single-cell
+  - umap
+  - tsne
+  - embedding
+  - annotation
+  - cell type
+  - trajectory
+  - 细胞
+  - 降维
+  plugins:
+  - advanced_dim_plot
+  - advanced_feature_plot
+  - feature_density_plot
+  - hierarchical_marker_panel
+  - circular_tree_embedding
+  - lineage_plot
+  - interactive_3d_scatter
+  - radviz_plot
+  - embedding_vector_plot
+  - dot_plot
+  - group_heatmap
+  - interactive_violin_plot
+- id: differential-enrichment
+  name: Differential effects and pathway enrichment
+  skill: skills/omicscanvas-enrichment/SKILL.md
+  keywords:
+  - differential
+  - volcano
+  - enrichment
+  - pathway
+  - gsea
+  - regulon
+  - transcription factor
+  - 富集
+  - 差异
+  - 转录因子
+  plugins:
+  - sca_volcano_plot
+  - interactive_enrichment_lollipop
+  - fgsea_enrichment_plot
+  - go_kegg_enrichment_bar_bubble
+  - gsea_pathway_heatmap
+  - gsea_ridge_nes_plot
+  - highlight_effect_plot
+  - forest_plot
+- id: expression-matrices
+  name: Expression matrices and annotated heatmaps
+  skill: skills/omicscanvas-matrices/SKILL.md
+  keywords:
+  - expression matrix
+  - heatmap
+  - marker
+  - dendrogram
+  - matrix
+  - annotation panel
+  - 热图
+  - 表达矩阵
+  plugins:
+  - group_heatmap
+  - circular_heatmap
+  - dot_plot
+  - balloon_plot
+  - pie_dot_matrix
+  - interactive_binary_plot
+  - interactive_clustered_heatmap_plot
+  - interactive_dual_triangle_heatmap_plot
+  - ranked_annotation_panel
+  - threshold_matrix_heatmap
+  - den_plot
+  - cluster_dendrogram_plot
+  - exp_stat_plot
+- id: relationships
+  name: Relationships, overlap and networks
+  skill: skills/omicscanvas-relationships/SKILL.md
+  keywords:
+  - network
+  - overlap
+  - venn
+  - upset
+  - sankey
+  - alluvial
+  - correlation
+  - mantel
+  - 互作
+  - 网络
+  - 相关
+  - 交集
+  plugins:
+  - alluvial_plot
+  - interactive_sankey_plot
+  - interactive_network_plot
+  - interactive_arc_network_plot
+  - dynamic_venn_diagram
+  - interactive_upset_plot
+  - interactive_correlation_matrix
+  - interactive_mantel_correlation_network
+  - linked_matrix_network_plot
+- id: genomics
+  name: Genomic, mutation and sequence figures
+  skill: skills/omicscanvas-genomics/SKILL.md
+  keywords:
+  - genomic
+  - genome
+  - mutation
+  - oncoprint
+  - manhattan
+  - sequence
+  - motif
+  - protein
+  - clone
+  - 突变
+  - 基因组
+  - 序列
+  plugins:
+  - manhattan_qq_plot
+  - oncoprint_plot
+  - protein_variant_plot
+  - circular_genomic_plot
+  - sequence_alignment_plot
+  - interactive_motif_logo_plot
+  - interactive_genomic_signal_track_plot
+  - clonal_fish_plot
+- id: spatial
+  name: Spatial tissue regions and supplied vector overlays
+  skill: skills/omicscanvas-spatial/SKILL.md
+  keywords:
+  - spatial
+  - tissue
+  - polygon
+  - region map
+  - spot
+  - 空间
+  - 组织
+  plugins:
+  - spatial_region_plot
+  - embedding_vector_plot
+- id: composition-hierarchy
+  name: Compositions, hierarchies and cumulative contributions
+  skill: skills/omicscanvas-composition/SKILL.md
+  keywords:
+  - composition
+  - fraction
+  - proportion
+  - hierarchy
+  - tree
+  - treemap
+  - sunburst
+  - ternary
+  - waterfall
+  - 组成
+  - 比例
+  - 树状
+  plugins:
+  - stacked_bar_plot
+  - circular_bar_plot
+  - interactive_pie_plot
+  - sunburst_plot
+  - treemap_plot
+  - ternary_plot
+  - waterfall_plot
+  - annotated_tree_plot
+  - alluvial_plot
+  - clonal_fish_plot
+- id: distribution-comparison
+  name: Distributions, comparisons and summary charts
+  skill: skills/omicscanvas-comparison/SKILL.md
+  keywords:
+  - distribution
+  - compare
+  - comparison
+  - histogram
+  - violin
+  - ecdf
+  - regression
+  - radar
+  - line
+  - 分布
+  - 比较
+  plugins:
+  - classified_bar_plot
+  - bar3d_plot
+  - combo_bar_dot_matrix
+  - combo_bar_line_plot
+  - circular_distribution_plot
+  - ecdf_plot
+  - exp_stat_plot
+  - highlight_effect_plot
+  - interactive_bubble_score_matrix
+  - interactive_dumbbell_plot
+  - interactive_histogram_plot
+  - interactive_radar_plot
+  - interactive_ridgeline_plot
+  - interactive_violin_plot
+  - line_plot
+  - quadrant_correlation_scatter
+  - raincloud_plot
+  - regression_scatter_plot
+  - stat_plot
+  - violin_plot
+  - forest_plot
+  - bland_altman_plot

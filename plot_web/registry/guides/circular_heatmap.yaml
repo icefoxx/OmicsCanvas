@@ -1,0 +1,125 @@
+summary: Arrange matrix values in concentric rings and angular tiles, with optional
+  clustering.
+observation_type: observations or summary items in the input table
+best_for:
+- Summarize sample-marker matrices
+- Find coordinated feature modules
+- Compare a prescribed sample order
+common_uses: []
+input_requirements: Long-format row, column and value fields; duplicate row-column
+  pairs are averaged.
+learn_more: 'Input: Long-format row, column and value fields; duplicate row-column
+  pairs are averaged. Interpretation: Rows form rings, columns occupy angular positions
+  and color encodes values. Check mappings, order and transformations before adjusting
+  labels, colors and canvas dimensions. Confirm legends and units before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Rows form rings, columns occupy angular positions and color encodes values.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Different ring areas do not imply different feature totals
+- id: caution_2
+  title: Caution 2
+  text: Clustering reflects the chosen distance and preprocessing
+- type: caution
+  title: Geometry and inference
+  text: Choose categorical values for concentric sample annotation rings. Categorical
+    cells must be unique; numeric clustering is unavailable. Named category colors
+    apply only to categorical mode.
+examples:
+- id: basic
+  title: Matrix in input order
+  description: 'Use case: Summarize sample-marker matrices. This preset illustrates
+    matrix in input order. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Summarize sample-marker matrices
+  input_requirements: Long-format row, column and value fields; duplicate row-column
+    pairs are averaged.
+  preview_asset: plugins/circular_heatmap/all_examples_gallery/basic.png
+  variant_id: basic
+  mappings:
+    row_column: row
+    column_column: column
+    value_column: value
+- id: clustered
+  title: Clustered feature modules
+  description: 'Use case: Find coordinated feature modules. This preset illustrates
+    clustered feature modules. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: clustered
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Find coordinated feature modules
+  input_requirements: Long-format row, column and value fields; duplicate row-column
+    pairs are averaged.
+  preview_asset: plugins/circular_heatmap/all_examples_gallery/clustered.png
+  variant_id: clustered
+  mappings:
+    row_column: row
+    column_column: column
+    value_column: value
+    cluster_columns: true
+- id: categorical
+  title: Categorical annotation rings
+  description: Categorical annotation rings
+  scenario: Categorical annotation rings
+  demo_id: categorical
+  variant_id: categorical
+  preview_asset: plugins/circular_heatmap/all_examples_gallery/categorical.png
+  data_note: Independent synthetic data; upstream inference is not performed.
+literature_ids:
+- eisen_clustering_1998
+- chen_ibd_2025
+- kohn_sleep_2025
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  basic:
+    summary: Feature rings around sample angles.
+  clustered:
+    summary: Rows and columns reordered by hierarchical clustering.
+customization:
+- parameter: value_column
+  label: Value column
+  default: value
+- parameter: palette
+  label: Fill palette
+  default: Blue-Red 3
+- parameter: cluster_rows
+  label: Cluster rows
+  default: false
+- parameter: cluster_columns
+  label: Cluster columns
+  default: false
+- parameter: label_show
+  label: Column labels
+  default: true
+- parameter: base_size
+  label: Base font size
+  default: 11
+- parameter: width
+  label: Width (in)
+  default: 7
+- parameter: height
+  label: Height (in)
+  default: 7
+source_modules:
+- title: FigureYa205immunophenoscore_update
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa205immunophenoscore_update
+  scope: Related concentric heatmap grammar; provide precomputed immune scores. The
+    source variable-width immunophenogram and its scoring algorithm are not reproduced
+    exactly.
+- title: FigureYa236circGroup
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa236circGroup
+  scope: Categorical concentric annotation rings are available in circular_heatmap;
+    upstream association tests remain separate.
+- title: FigureYa303panCircos
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa303panCircos
+  scope: Categorical concentric annotation rings are available in circular_heatmap;
+    upstream association tests remain separate.

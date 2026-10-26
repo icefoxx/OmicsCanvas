@@ -1,148 +1,611 @@
 {
   "data": {
-    "category_column": { "type": "column", "label": "Category / y label column", "default": null },
-    "value_column": { "type": "column", "label": "Value / effect column (x)", "default": null },
-    "group_column": { "type": "column", "label": "Group / type column (color)", "default": null },
-    "size_column": { "type": "column", "label": "Size / weight column", "default": null },
-    "label_column": { "type": "column", "label": "Label column", "default": null },
-    "pvalue_column": { "type": "column", "label": "P-value column", "default": null },
-    "categories_include": { "type": "string_array", "label": "Categories include", "default": [] },
-    "categories_exclude": { "type": "string_array", "label": "Categories exclude", "default": [] },
-    "types_include": { "type": "string_array", "label": "Types include", "default": [] },
-    "types_exclude": { "type": "string_array", "label": "Types exclude", "default": [] },
-    "category_order": { "type": "string_array", "label": "Category order", "default": [] },
-    "type_order": { "type": "string_array", "label": "Type / legend order", "default": [] },
+    "category_column": {
+      "type": "column",
+      "label": "Category / y label column",
+      "default": null
+    },
+    "value_column": {
+      "type": "column",
+      "label": "Value / effect column (x)",
+      "default": null
+    },
+    "group_column": {
+      "type": "column",
+      "label": "Group / type column (color)",
+      "default": null
+    },
+    "size_column": {
+      "type": "column",
+      "label": "Size / weight column",
+      "default": null
+    },
+    "label_column": {
+      "type": "column",
+      "label": "Label column",
+      "default": null
+    },
+    "pvalue_column": {
+      "type": "column",
+      "label": "P-value column",
+      "default": null
+    },
+    "categories_include": {
+      "type": "string_array",
+      "label": "Categories include",
+      "default": []
+    },
+    "categories_exclude": {
+      "type": "string_array",
+      "label": "Categories exclude",
+      "default": []
+    },
+    "types_include": {
+      "type": "string_array",
+      "label": "Types include",
+      "default": []
+    },
+    "types_exclude": {
+      "type": "string_array",
+      "label": "Types exclude",
+      "default": []
+    },
+    "category_order": {
+      "type": "string_array",
+      "label": "Category order",
+      "default": []
+    },
+    "type_order": {
+      "type": "string_array",
+      "label": "Type / legend order",
+      "default": []
+    },
     "sort_by": {
       "type": "select",
       "label": "Sort by",
       "default": "input",
-      "options": ["input", "value", "size", "category", "type_value"]
+      "options": [
+        "input",
+        "value",
+        "size",
+        "category",
+        "type_value"
+      ],
+      "help": "Input keeps file order, which can match a previously sorted example; top_n is applied after sorting."
     },
     "sort": {
       "type": "select",
       "label": "Sort direction",
       "default": "descending",
-      "options": ["descending", "ascending"]
+      "options": [
+        "descending",
+        "ascending"
+      ]
     },
-    "top_n": { "type": "integer", "label": "Keep top N (0 = all)", "default": 0 }
+    "top_n": {
+      "type": "integer",
+      "label": "Keep top N (0 = all)",
+      "default": 0
+    }
   },
   "canvas": {
     "orientation": {
       "type": "select",
       "label": "Orientation",
       "default": "horizontal",
-      "options": ["horizontal", "vertical"]
+      "options": [
+        "horizontal",
+        "vertical"
+      ]
     },
-    "width": { "type": "number", "label": "Width (in)", "default": 9 },
-    "height": { "type": "number", "label": "Height (in)", "default": 7 },
-    "dpi": { "type": "number", "label": "PNG DPI", "default": 300 },
-    "font_family": { "type": "string", "label": "Font family", "default": "sans" },
-    "base_size": { "type": "number", "label": "Base font size", "default": 11 },
-    "margin": { "type": "number", "label": "Plot margin (cm)", "default": 0.4 },
-    "panel_border_show": { "type": "boolean", "label": "Panel border", "default": true },
-    "panel_border_color": { "type": "color", "label": "Panel border color", "default": "#444444" },
-    "plot_background": { "type": "color", "label": "Plot background", "default": "#FFFFFF" },
-    "panel_background": { "type": "color", "label": "Panel background", "default": "#FFFFFF" },
-    "reverse_categories": { "type": "boolean", "label": "Reverse category axis (first on top)", "default": true }
+    "width": {
+      "type": "number",
+      "label": "Width (in)",
+      "default": 9
+    },
+    "height": {
+      "type": "number",
+      "label": "Height (in)",
+      "default": 7
+    },
+    "dpi": {
+      "type": "number",
+      "label": "PNG DPI",
+      "default": 300
+    },
+    "font_family": {
+      "type": "string",
+      "label": "Font family",
+      "default": "sans"
+    },
+    "base_size": {
+      "type": "number",
+      "label": "Base font size",
+      "default": 11
+    },
+    "margin": {
+      "type": "number",
+      "label": "Plot margin (cm)",
+      "default": 0.4
+    },
+    "panel_border_show": {
+      "type": "boolean",
+      "label": "Panel border",
+      "default": true
+    },
+    "panel_border_color": {
+      "type": "color",
+      "label": "Panel border color",
+      "default": "#444444"
+    },
+    "plot_background": {
+      "type": "color",
+      "label": "Plot background",
+      "default": "#FFFFFF"
+    },
+    "panel_background": {
+      "type": "color",
+      "label": "Panel background",
+      "default": "#FFFFFF"
+    },
+    "reverse_categories": {
+      "type": "boolean",
+      "label": "Reverse category axis (first on top)",
+      "default": true
+    }
   },
   "lollipop": {
-    "type_colors": { "type": "object", "label": "Per-type lollipop colors", "default": {} },
-    "group_colors": { "type": "object", "label": "Alias of type_colors", "default": {} },
-    "stem_show": { "type": "boolean", "label": "Stem / line switch", "default": true },
-    "stem_color": { "type": "color", "label": "Line stroke", "default": "#B0B0B0" },
-    "stem_width": { "type": "number", "label": "Line stroke-width", "default": 0.7 },
-    "stem_alpha": { "type": "number", "label": "Line stroke-opacity", "default": 0.9 },
+    "type_colors": {
+      "type": "object",
+      "label": "Per-type lollipop colors",
+      "default": {},
+      "help": "Only for color_mode = group; value mode uses a continuous effect gradient."
+    },
+    "group_colors": {
+      "type": "object",
+      "label": "Alias of type_colors",
+      "default": {},
+      "help": "Only for color_mode = group; value mode uses a continuous effect gradient."
+    },
+    "stem_show": {
+      "type": "boolean",
+      "label": "Stem / line switch",
+      "default": true
+    },
+    "stem_color": {
+      "type": "color",
+      "label": "Line stroke",
+      "default": "#B0B0B0",
+      "help": "Only for color_mode = group; value mode uses a continuous effect gradient."
+    },
+    "stem_width": {
+      "type": "number",
+      "label": "Line stroke-width",
+      "default": 0.7
+    },
+    "stem_alpha": {
+      "type": "number",
+      "label": "Line stroke-opacity",
+      "default": 0.9
+    },
     "stem_linetype": {
       "type": "select",
       "label": "Line type",
       "default": "solid",
-      "options": ["solid", "dashed", "dotted", "dotdash"]
+      "options": [
+        "solid",
+        "dashed",
+        "dotted",
+        "dotdash"
+      ]
     },
-    "stroke_dasharray": { "type": "string", "label": "Line stroke-dasharray (non-empty → dashed)", "default": "" },
-    "r": { "type": "number", "label": "Fixed head radius (when size switch off)", "default": 8 },
-    "size_switch": { "type": "boolean", "label": "Lollipop size switch (map radius)", "default": true },
-    "min_radius": { "type": "number", "label": "min-radius", "default": 4 },
-    "max_radius": { "type": "number", "label": "max-radius", "default": 20 },
-    "point_size_min": { "type": "number", "label": "Alias of min_radius (ggplot units)", "default": null },
-    "point_size_max": { "type": "number", "label": "Alias of max_radius (ggplot units)", "default": null },
-    "point_alpha": { "type": "number", "label": "Head fill-opacity", "default": 1 },
-    "point_stroke": { "type": "number", "label": "Head stroke-width", "default": 0 },
-    "point_border_color": { "type": "color", "label": "Head stroke", "default": "#000000" },
-    "point_shape": { "type": "integer", "label": "Point shape (16 solid, 21 filled+stroke)", "default": 16 },
-    "padding": { "type": "number", "label": "Dodge padding (multi-group)", "default": 0.3 },
-    "dodge": { "type": "boolean", "label": "Dodge groups", "default": false },
-    "zero_line_show": { "type": "boolean", "label": "Zero line switch", "default": true },
-    "zero_line_color": { "type": "color", "label": "Zero line color", "default": "#888888" },
-    "zero_line_width": { "type": "number", "label": "Zero line width", "default": 0.5 },
+    "stroke_dasharray": {
+      "type": "string",
+      "label": "Line stroke-dasharray (non-empty \u2192 dashed)",
+      "default": ""
+    },
+    "r": {
+      "type": "number",
+      "label": "Fixed head radius (when size switch off)",
+      "default": 8,
+      "help": "Only when size_switch is false; fixed head diameter uses the legacy radius conversion."
+    },
+    "size_switch": {
+      "type": "boolean",
+      "label": "Lollipop size switch (map radius)",
+      "default": true
+    },
+    "min_radius": {
+      "type": "number",
+      "label": "min-radius",
+      "default": 4,
+      "help": "Used when size_switch is true and point_size_min is not set."
+    },
+    "max_radius": {
+      "type": "number",
+      "label": "max-radius",
+      "default": 20,
+      "help": "Used when size_switch is true and point_size_max is not set."
+    },
+    "point_size_min": {
+      "type": "number",
+      "label": "Alias of min_radius (ggplot units)",
+      "default": null
+    },
+    "point_size_max": {
+      "type": "number",
+      "label": "Alias of max_radius (ggplot units)",
+      "default": null
+    },
+    "point_alpha": {
+      "type": "number",
+      "label": "Head fill-opacity",
+      "default": 1
+    },
+    "point_stroke": {
+      "type": "number",
+      "label": "Head stroke-width",
+      "default": 0
+    },
+    "point_border_color": {
+      "type": "color",
+      "label": "Head stroke",
+      "default": "#000000",
+      "help": "Only for filled shapes 21\u201325 with point_stroke > 0."
+    },
+    "point_shape": {
+      "type": "integer",
+      "label": "Point shape (16 solid, 21 filled+stroke)",
+      "default": 16,
+      "help": "Point symbol (0\u201325); 21\u201325 support a separate border."
+    },
+    "padding": {
+      "type": "number",
+      "label": "Dodge padding (multi-group)",
+      "default": 0.3,
+      "help": "Only when dodge is enabled and the data has multiple groups."
+    },
+    "dodge": {
+      "type": "boolean",
+      "label": "Dodge groups",
+      "default": false,
+      "help": "Offsets categories only when the data has multiple groups."
+    },
+    "zero_line_show": {
+      "type": "boolean",
+      "label": "Zero line switch",
+      "default": true
+    },
+    "zero_line_color": {
+      "type": "color",
+      "label": "Zero line color",
+      "default": "#888888",
+      "help": "Only when zero_line_show is enabled."
+    },
+    "zero_line_width": {
+      "type": "number",
+      "label": "Zero line width",
+      "default": 0.5,
+      "help": "Only when zero_line_show is enabled."
+    },
     "zero_line_linetype": {
       "type": "select",
       "label": "Zero line type",
       "default": "solid",
-      "options": ["solid", "dashed", "dotted"]
+      "options": [
+        "solid",
+        "dashed",
+        "dotted"
+      ],
+      "help": "Only when zero_line_show is enabled."
     },
-    "label_show": { "type": "boolean", "label": "Lollipop text switch", "default": false },
-    "label_size": { "type": "number", "label": "Text font-size", "default": 3.5 },
-    "label_color": { "type": "color", "label": "Text fill", "default": "#222222" },
+    "label_show": {
+      "type": "boolean",
+      "label": "Lollipop text switch",
+      "default": false
+    },
+    "label_size": {
+      "type": "number",
+      "label": "Text font-size",
+      "default": 3.5,
+      "help": "Size of numeric labels and central category labels, in ggplot units."
+    },
+    "label_color": {
+      "type": "color",
+      "label": "Text fill",
+      "default": "#222222"
+    },
     "label_face": {
       "type": "select",
       "label": "Text font-weight/style",
       "default": "plain",
-      "options": ["plain", "bold", "italic"]
+      "options": [
+        "plain",
+        "bold",
+        "italic"
+      ]
     },
-    "label_nudge_x": { "type": "number", "label": "Text x offset", "default": 0 },
-    "value_format": { "type": "string", "label": "Value format (sprintf)", "default": "" },
-    "label_repel": { "type": "boolean", "label": "Repel labels", "default": false },
-    "pvalue_label_show": { "type": "boolean", "label": "Show p-value labels", "default": false }
+    "label_nudge_x": {
+      "type": "number",
+      "label": "Text x offset",
+      "default": 0,
+      "help": "Only for numeric head labels when label_show is enabled; central category labels use label_gap."
+    },
+    "value_format": {
+      "type": "string",
+      "label": "Value format (sprintf)",
+      "default": ""
+    },
+    "label_repel": {
+      "type": "boolean",
+      "label": "Repel labels",
+      "default": false,
+      "help": "Only for numeric head labels when label_show is enabled."
+    },
+    "pvalue_label_show": {
+      "type": "boolean",
+      "label": "Show p-value labels",
+      "default": false
+    },
+    "color_mode": {
+      "type": "select",
+      "label": "Color mapping",
+      "default": "group",
+      "options": [
+        "group",
+        "value"
+      ],
+      "help": "Value maps the signed effect to a zero-centered gradient on both stems and heads; group uses categorical colors."
+    },
+    "color_low": {
+      "type": "color",
+      "label": "Negative effect color",
+      "default": "#879B39",
+      "help": "Only for color_mode = value, or negative enrichment arrows."
+    },
+    "color_mid": {
+      "type": "color",
+      "label": "Zero effect color",
+      "default": "#FFFFED",
+      "help": "Only for color_mode = value; midpoint is zero."
+    },
+    "color_high": {
+      "type": "color",
+      "label": "Positive effect color",
+      "default": "#CB6582",
+      "help": "Only for color_mode = value, or positive enrichment arrows."
+    },
+    "size_transform": {
+      "type": "select",
+      "label": "Point size statistic",
+      "default": "identity",
+      "options": [
+        "identity",
+        "neg_log10_pvalue"
+      ],
+      "help": "Identity uses size_column (or absolute effect); neg_log10_pvalue uses pvalue_column, which must contain probabilities in [0,1]. Requires size_switch."
+    },
+    "category_label_position": {
+      "type": "select",
+      "label": "Category label position",
+      "default": "axis",
+      "options": [
+        "axis",
+        "zero_opposite"
+      ],
+      "help": "Zero opposite places each name on the empty side of zero, opposite its stem. Vertical orientation falls back to category-axis labels."
+    },
+    "label_gap": {
+      "type": "number",
+      "label": "Central label gap",
+      "default": 0.012,
+      "min": 0,
+      "max": 0.15,
+      "step": 0.002,
+      "help": "Fraction of the effect range; only for category_label_position = zero_opposite."
+    },
+    "direction_labels_show": {
+      "type": "boolean",
+      "label": "Show enrichment arrows",
+      "default": false,
+      "help": "Adds colored arrows and group labels below the horizontal axis; omitted in vertical orientation."
+    },
+    "negative_label": {
+      "type": "string",
+      "label": "Negative direction label",
+      "default": "Enriched in group 1",
+      "help": "Only when direction_labels_show is enabled."
+    },
+    "positive_label": {
+      "type": "string",
+      "label": "Positive direction label",
+      "default": "Enriched in group 2",
+      "help": "Only when direction_labels_show is enabled."
+    }
   },
   "xAxis": {
-    "xlab": { "type": "string", "label": "X axis label", "default": "" },
-    "x_title_show": { "type": "boolean", "label": "Show x title (default: shown when an x title is set)", "default": null },
-    "x_axis_text_size": { "type": "number", "label": "X tick font-size", "default": 10 },
-    "x_min": { "type": "number", "label": "X min-value", "default": null },
-    "x_max": { "type": "number", "label": "X max-value", "default": null },
-    "x_limits": { "type": "number_array", "label": "X limits [min,max]", "default": [] },
-    "grid_show": { "type": "boolean", "label": "Grid switch", "default": true },
-    "grid_major_color": { "type": "color", "label": "Grid stroke", "default": "#E5E5E5" }
+    "xlab": {
+      "type": "string",
+      "label": "X axis label",
+      "default": ""
+    },
+    "x_title_show": {
+      "type": "boolean",
+      "label": "Show x title (default: shown when an x title is set)",
+      "default": null,
+      "help": "Only visible when xlab is nonempty."
+    },
+    "x_axis_text_size": {
+      "type": "number",
+      "label": "X tick font-size",
+      "default": 10
+    },
+    "x_min": {
+      "type": "number",
+      "label": "X min-value",
+      "default": null,
+      "help": "Only when x_limits is empty; legacy lower effect-axis limit."
+    },
+    "x_max": {
+      "type": "number",
+      "label": "X max-value",
+      "default": null,
+      "help": "Only when x_limits is empty; legacy upper effect-axis limit."
+    },
+    "x_limits": {
+      "type": "number_array",
+      "label": "X limits [min,max]",
+      "default": []
+    },
+    "grid_show": {
+      "type": "boolean",
+      "label": "Grid switch",
+      "default": true
+    },
+    "grid_major_color": {
+      "type": "color",
+      "label": "Grid stroke",
+      "default": "#E5E5E5",
+      "help": "Only when grid_show is enabled."
+    }
   },
   "yAxis": {
-    "ylab": { "type": "string", "label": "Y axis label", "default": "" },
-    "y_title_show": { "type": "boolean", "label": "Show y title (default: shown when a y title is set)", "default": null },
-    "y_axis_text_size": { "type": "number", "label": "Y tick font-size", "default": 10 },
-    "axis_text_color": { "type": "color", "label": "Axis text color", "default": "#333333" }
+    "ylab": {
+      "type": "string",
+      "label": "Y axis label",
+      "default": ""
+    },
+    "y_title_show": {
+      "type": "boolean",
+      "label": "Show y title (default: shown when a y title is set)",
+      "default": null,
+      "help": "Only visible when ylab is nonempty."
+    },
+    "y_axis_text_size": {
+      "type": "number",
+      "label": "Y tick font-size",
+      "default": 10,
+      "help": "Category-axis text size; hidden when category_label_position = zero_opposite."
+    },
+    "axis_text_color": {
+      "type": "color",
+      "label": "Axis text color",
+      "default": "#333333"
+    }
   },
   "title": {
-    "title_show": { "type": "boolean", "label": "Title switch", "default": true },
-    "title": { "type": "string", "label": "Title text", "default": "" },
-    "title_size": { "type": "number", "label": "Title font-size", "default": 14 },
-    "title_color": { "type": "color", "label": "Title fill", "default": "#222222" },
+    "title_show": {
+      "type": "boolean",
+      "label": "Title switch",
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "label": "Title text",
+      "default": ""
+    },
+    "title_size": {
+      "type": "number",
+      "label": "Title font-size",
+      "default": 14
+    },
+    "title_color": {
+      "type": "color",
+      "label": "Title fill",
+      "default": "#222222"
+    },
     "title_face": {
       "type": "select",
       "label": "Title font-weight",
       "default": "plain",
-      "options": ["plain", "bold", "italic"]
+      "options": [
+        "plain",
+        "bold",
+        "italic"
+      ]
     },
-    "title_hjust": { "type": "number", "label": "Title hjust", "default": 0.5 },
-    "subtitle": { "type": "string", "label": "Subtitle", "default": "" }
+    "title_hjust": {
+      "type": "number",
+      "label": "Title hjust",
+      "default": 0.5
+    },
+    "subtitle": {
+      "type": "string",
+      "label": "Subtitle",
+      "default": ""
+    }
   },
   "legend": {
-    "legend_show": { "type": "boolean", "label": "Legend switch", "default": true },
-    "legend_title": { "type": "string", "label": "Legend title", "default": "" },
+    "legend_show": {
+      "type": "boolean",
+      "label": "Legend switch",
+      "default": true
+    },
+    "legend_title": {
+      "type": "string",
+      "label": "Legend title",
+      "default": ""
+    },
     "legend_position": {
       "type": "select",
       "label": "Legend position",
       "default": "right",
-      "options": ["right", "left", "top", "bottom", "none"]
+      "options": [
+        "right",
+        "left",
+        "top",
+        "bottom",
+        "none",
+        "inside"
+      ]
     },
-    "legend_text_size": { "type": "number", "label": "Legend text size", "default": 10 },
-    "legend_title_size": { "type": "number", "label": "Legend title size", "default": 11 },
-    "size_legend_title": { "type": "string", "label": "Size legend title", "default": "Set size" },
-    "size_legend_breaks": { "type": "number_array", "label": "Size legend breaks", "default": [] },
-    "show_size_legend": { "type": "boolean", "label": "Show size legend", "default": true }
+    "legend_text_size": {
+      "type": "number",
+      "label": "Legend text size",
+      "default": 10
+    },
+    "legend_title_size": {
+      "type": "number",
+      "label": "Legend title size",
+      "default": 11
+    },
+    "size_legend_title": {
+      "type": "string",
+      "label": "Size legend title",
+      "default": "",
+      "help": "Empty uses the mapped size column or transformed p-value name."
+    },
+    "size_legend_breaks": {
+      "type": "number_array",
+      "label": "Size legend breaks",
+      "default": []
+    },
+    "show_size_legend": {
+      "type": "boolean",
+      "label": "Show size legend",
+      "default": true
+    }
   },
   "export": {
-    "interactive": { "type": "boolean", "label": "Write interactive HTML", "default": false },
-    "width": { "type": "number", "label": "Export width (in)", "default": 9 },
-    "height": { "type": "number", "label": "Export height (in)", "default": 7 },
-    "dpi": { "type": "number", "label": "Export DPI", "default": 300 }
+    "interactive": {
+      "type": "boolean",
+      "label": "Write interactive HTML",
+      "default": false
+    },
+    "width": {
+      "type": "number",
+      "label": "Export width (in)",
+      "default": 9
+    },
+    "height": {
+      "type": "number",
+      "label": "Export height (in)",
+      "default": 7
+    },
+    "dpi": {
+      "type": "number",
+      "label": "Export DPI",
+      "default": 300
+    }
   }
 }

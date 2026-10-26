@@ -1,0 +1,255 @@
+summary: Link a radial cell-type hierarchy to a central embedding with matching annotation
+  colors.
+observation_type: single cells with supplied two-dimensional coordinates and a unique
+  annotation hierarchy
+best_for:
+- Summarize a cell atlas at multiple annotation levels
+- Compare known taxonomy with feature-based cluster similarity
+- Switch center colors between broad classes and fine subtypes
+input_requirements: One cell table with numeric embedding X/Y, a leaf subtype, and
+  ordered categorical hierarchy columns. Similarity mode additionally requires at
+  least two finite numeric feature columns.
+learn_more: The outer rings describe annotation paths and the center shows the supplied
+  embedding. Choose annotation mode for known taxonomy or similarity mode to cluster
+  per-leaf mean feature profiles. Angular placement is independent of UMAP position;
+  match labels and colors instead of interpreting angle as a coordinate.
+interpretation:
+- id: topology
+  title: Tree construction
+  type: direct
+  text: Annotation mode shows supplied parent-child relationships with equal depth
+    per level. Similarity mode uses Euclidean distances on mean feature profiles,
+    optionally standardized across leaves.
+- id: colors
+  title: Matched annotations
+  type: direct
+  text: The center color annotation must belong to the ring hierarchy. Select class,
+    subclass or subtype and use the same named color overrides throughout.
+cautions:
+- id: distance
+  title: Embedding and tree distances
+  text: No UMAP/t-SNE or lineage inference is performed. Do not interpret global embedding
+    distances as calibrated similarity, or annotation branch lengths as biological
+    distances.
+- id: area
+  title: Areas and angles
+  text: Circular slots are equal per leaf, not proportional to cell abundance. Hulls
+    are descriptive convex envelopes, not density contours or confidence intervals.
+- id: hierarchy
+  title: Unique paths
+  text: Each child label and leaf must have one unique parent path. Similarity order
+    may split a category into multiple separate ring arcs.
+examples:
+- id: basic
+  title: Known cell-type taxonomy
+  description: Summarize an annotated cell atlas
+  demo_id: basic
+  variant_id: basic
+  scenario: Summarize an annotated cell atlas
+  data_note: Independent synthetic cell data, not the original reference image or
+    paper data.
+  preview_asset: plugins/circular_tree_embedding/all_examples_gallery/basic.png
+  mappings:
+    x_column: UMAP_1
+    y_column: UMAP_2
+    cluster_column: subtype
+    group_column: subclass
+- id: similarity
+  title: Feature-based relationships
+  description: Compare subtype feature profiles independently of the embedding
+  demo_id: similarity
+  variant_id: similarity
+  scenario: Compare subtype feature profiles independently of the embedding
+  data_note: Independent synthetic cell data, not the original reference image or
+    paper data.
+  preview_asset: plugins/circular_tree_embedding/all_examples_gallery/similarity.png
+  mappings:
+    x_column: UMAP_1
+    y_column: UMAP_2
+    cluster_column: subtype
+    group_column: subtype
+- id: CAB_demo
+  title: CAB_demo
+  description: Show broad class colors in a reference-inspired atlas arrangement
+  demo_id: CAB_demo
+  variant_id: CAB_demo
+  scenario: Show broad class colors in a reference-inspired atlas arrangement
+  data_note: Independent synthetic cell data, not the original reference image or
+    paper data.
+  preview_asset: plugins/circular_tree_embedding/all_examples_gallery/CAB_demo.png
+  mappings:
+    x_column: UMAP_1
+    y_column: UMAP_2
+    cluster_column: subtype
+    group_column: class
+  literature_id: lee_brain_atlas_2026
+literature_ids:
+- lee_brain_atlas_2026
+coverage_notes:
+- Figure 2a in Lee et al. (Nature, 2026) is the verified reference for this composite
+  grammar. The source describes eight classes, 27 subclasses and 65 subtypes; local
+  demos have 17 synthetic leaves.
+- One verified published reference is currently linked; the 2–3-reference target remains
+  open.
+customization:
+- label: Embedding X
+  default: UMAP_1
+  help: ''
+  parameter: x_column
+- label: Embedding Y
+  default: UMAP_2
+  help: ''
+  parameter: y_column
+- label: Leaf / subtype
+  default: subtype
+  help: ''
+  parameter: cluster_column
+- label: Center color annotation
+  default: subclass
+  help: ''
+  parameter: group_column
+- label: Hierarchy from broad to fine
+  default:
+  - class
+  - subclass
+  help: Ordered categorical columns. Each leaf must have exactly one path. Leaf column
+    is added automatically.
+  parameter: hierarchy_columns
+- label: Similarity features
+  default:
+  - Gene_A
+  - Gene_B
+  - Gene_C
+  - Gene_D
+  help: Numeric features for tree_mode = similarity. Uses per-leaf means, never embedding
+    distances.
+  parameter: feature_columns
+- label: Tree construction
+  default: annotation
+  help: Annotation uses ordered categorical paths; similarity clusters per-leaf feature
+    means.
+  parameter: tree_mode
+- label: Linkage method
+  default: average
+  help: Only for tree_mode = similarity; Euclidean distance on per-leaf feature means.
+  parameter: cluster_method
+- label: Standardize features
+  default: true
+  help: Only for tree_mode = similarity. Z-score each feature across leaf means; constant
+    features contribute zero.
+  parameter: scale_features
+- label: Point size
+  default: 0.45
+  help: ''
+  parameter: point_size
+- label: Point opacity
+  default: 0.72
+  help: ''
+  parameter: point_alpha
+- label: Hull opacity
+  default: 0.13
+  help: Hull opacity applies only when hull_show is enabled.
+  parameter: hull_alpha
+- label: Tree line width
+  default: 0.32
+  help: ''
+  parameter: tree_line_width
+- label: Show group envelopes
+  default: true
+  help: Convex hulls are descriptive envelopes, not density contours or confidence
+    intervals.
+  parameter: hull_show
+- label: Palette
+  default: Dark 3
+  help: ''
+  parameter: palette
+- label: Annotation colors
+  default: {}
+  help: Named colors keyed by column:value (for example class:Neuronal), or by category
+    name. Shared by rings and embedding.
+  parameter: group_colors
+- label: Tree color
+  default: '#9CAFB0'
+  help: ''
+  parameter: tree_color
+- label: Show center labels
+  default: true
+  help: ''
+  parameter: label_show
+- label: Center label size
+  default: 2.6
+  help: Only when label_show is enabled; in ggplot text units.
+  parameter: label_size
+- label: Show outer leaf labels
+  default: true
+  help: ''
+  parameter: leaf_label_show
+- label: Outer label size
+  default: 2.5
+  help: Only when leaf_label_show is enabled; auto-fit shrinks dense or long labels.
+  parameter: leaf_label_size
+- label: Show ring labels
+  default: true
+  help: Labels are omitted for arcs too narrow to hold their text.
+  parameter: ring_label_show
+- label: Ring label size
+  default: 2.3
+  help: Only when ring_label_show is enabled; labels auto-fit to arc length.
+  parameter: ring_label_size
+- label: Title
+  default: ''
+  help: ''
+  parameter: title
+- label: Subtitle
+  default: ''
+  help: ''
+  parameter: subtitle
+- label: Caption
+  default: ''
+  help: ''
+  parameter: caption
+- label: Center embedding radius
+  default: 0.62
+  help: Fraction of tree outer radius. Isotropic scaling preserves the supplied coordinate
+    aspect ratio.
+  parameter: embedding_radius
+- label: Circular opening (degrees)
+  default: 18
+  help: ''
+  parameter: gap_angle
+- label: Rotation (degrees)
+  default: 0
+  help: ''
+  parameter: rotation
+- label: Annotation ring width
+  default: 0.045
+  help: ''
+  parameter: ring_width
+- label: Font family
+  default: sans
+  help: ''
+  parameter: font_family
+- label: Base font size
+  default: 11
+  help: ''
+  parameter: base_size
+- label: Background
+  default: '#FFFFFF'
+  help: ''
+  parameter: plot_background
+- label: Width
+  default: 10
+  help: ''
+  parameter: width
+- label: Height
+  default: 10
+  help: ''
+  parameter: height
+- label: Dpi
+  default: 180
+  help: ''
+  parameter: dpi
+reporting:
+  base_template: '{family_name}. Report the supplied embedding, annotation levels
+    and center color mapping. For similarity trees, report feature columns, scaling,
+    Euclidean distance and linkage.'

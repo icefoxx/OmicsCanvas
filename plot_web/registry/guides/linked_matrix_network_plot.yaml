@@ -1,0 +1,192 @@
+summary: Link a numeric feature matrix to supplied weighted relationships.
+observation_type: supplied measurements, scores or weighted relationships
+input_requirements: Long feature/condition/value matrix plus a required links CSV
+  with source, target, weight and optional group. Every link source must match a matrix
+  feature.
+best_for:
+- Link molecular measurements to supplied relationships
+- Summarize feature-to-drug or feature-to-pathway links
+- Compare a matrix and network without recomputing interactions
+learn_more: Edges are supplied relationships; the engine does not infer interactions,
+  causal links or drug responses.
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Link a numeric feature matrix to supplied weighted relationships.
+cautions:
+- id: caution_0
+  title: Interpretation limit
+  text: Edges are supplied relationships; the engine does not infer interactions,
+    causal links or drug responses.
+- id: caution_1
+  title: Interpretation limit
+  text: Edge width represents absolute weight; edge class colors are supplied separately
+    and must be described.
+examples:
+- id: basic
+  title: Linked matrix and relationships
+  description: Link molecular measurements to supplied relationships
+  scenario: Link molecular measurements to supplied relationships
+  demo_id: basic
+  variant_id: basic
+  preview_asset: plugins/linked_matrix_network_plot/all_examples_gallery/basic.png
+  data_note: Independent synthetic demonstration, not original publication data.
+- id: dot_matrix
+  title: Dot matrix and relationships
+  description: Summarize feature-to-drug or feature-to-pathway links
+  scenario: Summarize feature-to-drug or feature-to-pathway links
+  demo_id: dot_matrix
+  variant_id: dot_matrix
+  preview_asset: plugins/linked_matrix_network_plot/all_examples_gallery/dot_matrix.png
+  data_note: Independent synthetic demonstration, not original publication data.
+literature_ids:
+- figureya_lu_2025
+coverage_notes:
+- The reference collection is linked as a methodology source; its upstream analyses
+  are not reproduced.
+customization:
+- parameter: row_column
+  label: Row column
+  default: feature
+  help: ''
+- parameter: column_column
+  label: Column column
+  default: condition
+  help: ''
+- parameter: value_column
+  label: Value column
+  default: value
+  help: ''
+- parameter: edge_group_column
+  label: Edge group column
+  default: group
+  help: ''
+- parameter: matrix_mark
+  label: Matrix mark
+  default: heatmap
+  help: ''
+- parameter: node_gap
+  label: Node gap
+  default: 4
+  help: ''
+- parameter: dot_size
+  label: Dot size
+  default: 5
+  help: Only for matrix_mark = dot.
+- parameter: curvature
+  label: Curvature
+  default: 0.12
+  help: ''
+- parameter: edge_alpha
+  label: Edge alpha
+  default: 0.65
+  help: ''
+- parameter: point_size
+  label: Point size
+  default: 2
+  help: ''
+- parameter: line_width
+  label: Line width
+  default: 0.6
+  help: ''
+- parameter: low_color
+  label: Low color
+  default: '#397DA3'
+  help: ''
+- parameter: high_color
+  label: High color
+  default: '#D16472'
+  help: ''
+- parameter: palette
+  label: Palette
+  default: Set 2
+  help: ''
+- parameter: group_colors
+  label: Named colors
+  default: {}
+  help: Named categorical colors override the palette.
+- parameter: label_size
+  label: Label size
+  default: 2.8
+  help: ''
+- parameter: title
+  label: Title
+  default: ''
+  help: ''
+- parameter: subtitle
+  label: Subtitle
+  default: ''
+  help: Empty uses the automatic description.
+- parameter: caption
+  label: Caption
+  default: ''
+  help: ''
+- parameter: title_size
+  label: Title size
+  default: 13
+  help: Only when a nonempty title is supplied.
+- parameter: legend_show
+  label: Legend show
+  default: true
+  help: ''
+- parameter: legend_position
+  label: Legend position
+  default: right
+  help: ''
+- parameter: legend_text_size
+  label: Legend text size
+  default: 9
+  help: ''
+- parameter: font_family
+  label: Font family
+  default: sans
+  help: ''
+- parameter: base_size
+  label: Base size
+  default: 11
+  help: ''
+- parameter: plot_background
+  label: Plot background
+  default: '#FFFFFF'
+  help: ''
+- parameter: grid_show
+  label: Grid show
+  default: false
+  help: ''
+- parameter: width
+  label: Width
+  default: 8
+  help: Inches.
+- parameter: height
+  label: Height
+  default: 6
+  help: Inches.
+- parameter: dpi
+  label: Dpi
+  default: 150
+  help: ''
+reporting:
+  base_template: '{family_name}. Report supplied mappings, score definitions, relationship
+    definitions and all display transformations.'
+source_modules:
+- title: FigureYa174squareCross
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa174squareCross
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa199crosslink
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa199crosslink
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa228linkCor
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa228linkCor
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
+- title: FigureYa256panelLink
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa256panelLink
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.

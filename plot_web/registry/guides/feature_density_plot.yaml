@@ -1,0 +1,93 @@
+summary: Show expression-weighted feature density on existing embedding coordinates.
+observation_type: observations or summary items in the input table
+best_for:
+- Locate marker-enriched regions
+- Reduce point overplotting
+- Compare multifeature enrichment patterns
+common_uses: []
+input_requirements: Expression values, observation IDs and their matching embedding
+  coordinates.
+learn_more: 'Input: Expression values, observation IDs and their matching embedding
+  coordinates. Interpretation: Color represents a density estimate or its rescaling,
+  not an individual observation''s raw expression. Check mappings, order and transformations
+  before adjusting labels, colors and canvas dimensions. Confirm legends and units
+  before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Color represents a density estimate or its rescaling, not an individual observation's
+    raw expression.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: Bandwidth changes the apparent hotspots
+- id: caution_2
+  title: Caution 2
+  text: Density depends on sampling and the embedding layout
+examples:
+- id: basic
+  title: Single-feature density hotspots
+  description: 'Use case: Locate marker-enriched regions. This preset illustrates
+    single-feature density hotspots. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Locate marker-enriched regions
+  input_requirements: Expression values, observation IDs and their matching embedding
+    coordinates.
+  preview_asset: plugins/feature_density_plot/all_examples_gallery/basic.png
+  mappings:
+    dim1_column: UMAP_1
+    dim2_column: UMAP_2
+    cell_id_column: cell
+    feature_id_column: feature
+- id: coexpression
+  title: Multifeature density colocalization
+  description: 'Use case: Reduce point overplotting. This preset illustrates multifeature
+    density colocalization. Replace its input with your data while retaining the appropriate
+    view settings.'
+  demo_id: coexpression
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Reduce point overplotting
+  input_requirements: Expression values, observation IDs and their matching embedding
+    coordinates.
+  preview_asset: plugins/feature_density_plot/all_examples_gallery/coexpression.png
+  variant_id: coexpression
+  mappings:
+    dim1_column: UMAP_1
+    dim2_column: UMAP_2
+    cell_id_column: cell
+    feature_id_column: feature
+- id: scale01
+  title: Relative intensity on a common range
+  description: 'Use case: Compare multifeature enrichment patterns. This preset illustrates
+    relative intensity on a common range. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: scale01
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare multifeature enrichment patterns
+  input_requirements: Expression values, observation IDs and their matching embedding
+    coordinates.
+  preview_asset: plugins/feature_density_plot/all_examples_gallery/scale01.png
+  variant_id: scale01
+  mappings:
+    dim1_column: UMAP_1
+    dim2_column: UMAP_2
+    cell_id_column: cell
+    feature_id_column: feature
+literature_ids: []
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  coexpression:
+    summary: 'Use case: Reduce point overplotting. This preset illustrates multifeature
+      density colocalization. Replace its input with your data while retaining the
+      appropriate view settings.'
+  scale01:
+    summary: 'Use case: Compare multifeature enrichment patterns. This preset illustrates
+      relative intensity on a common range. Replace its input with your data while
+      retaining the appropriate view settings.'
+customization: []

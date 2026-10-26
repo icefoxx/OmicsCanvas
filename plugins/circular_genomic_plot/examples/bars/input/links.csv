@@ -1,0 +1,4 @@
+source_chr,source_pos,target_chr,target_pos
+chr1,180000,chr2,430000
+chr2,100000,chr3,300000
+chr1,800000,chr3,500000

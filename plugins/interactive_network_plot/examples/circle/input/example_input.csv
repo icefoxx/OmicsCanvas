@@ -1,0 +1,9 @@
+source,target,weight,edge_group,directed
+ALPHA,BETA,3,Pathway,true
+ALPHA,GAMMA,2,Pathway,true
+BETA,DELTA,1,Regulatory,false
+GAMMA,DELTA,4,Regulatory,false
+DELTA,EPSILON,2,Metabolic,false
+EPSILON,ZETA,1,Metabolic,false
+ZETA,ALPHA,2,Pathway,false
+BETA,GAMMA,3,Complex,false

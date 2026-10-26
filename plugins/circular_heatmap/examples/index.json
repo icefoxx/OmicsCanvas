@@ -1,0 +1,37 @@
+{
+  "plugin_id": "circular_heatmap",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Basic",
+      "plugin_id": "circular_heatmap",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/example_input.csv"
+      },
+      "expected": "basic/expected/result.png",
+      "bundle": "basic"
+    },
+    {
+      "id": "clustered",
+      "label": "Clustered",
+      "plugin_id": "circular_heatmap",
+      "params": "clustered/params.json",
+      "inputs": {
+        "input": "clustered/input/example_input.csv"
+      },
+      "expected": "clustered/expected/result.png",
+      "bundle": "clustered"
+    },
+    {
+      "id": "categorical",
+      "label": "Categorical annotation rings",
+      "plugin_id": "circular_heatmap",
+      "inputs": {
+        "input": "categorical/input/data.csv"
+      },
+      "params": "categorical/params.json",
+      "expected": "categorical/expected/result.png"
+    }
+  ]
+}

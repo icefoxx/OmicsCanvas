@@ -1,0 +1,9 @@
+{
+  "group_column": "clone",
+  "parent_column": "parent",
+  "x_column": "time",
+  "value_column": "fraction",
+  "title": "Clone fractions in percent",
+  "fraction_unit": "percent",
+  "timepoint_show": false
+}

@@ -1,0 +1,25 @@
+{
+  "plugin_id": "nomogram_plot",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Supplied predictor point scales",
+      "plugin_id": "nomogram_plot",
+      "params": "basic/params.json",
+      "inputs": {
+        "input": "basic/input/data.csv"
+      },
+      "expected": "basic/expected/result.png"
+    },
+    {
+      "id": "compact",
+      "label": "Supplied total-point outcome mapping",
+      "plugin_id": "nomogram_plot",
+      "params": "compact/params.json",
+      "inputs": {
+        "input": "compact/input/data.csv"
+      },
+      "expected": "compact/expected/result.png"
+    }
+  ]
+}

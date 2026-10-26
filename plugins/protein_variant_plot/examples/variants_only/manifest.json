@@ -1,0 +1,11 @@
+{
+  "id": "variants_only",
+  "label": "Variant count profile",
+  "plugin_id": "protein_variant_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv",
+    "domains": "input/domains.csv"
+  },
+  "expected": "expected/result.png"
+}

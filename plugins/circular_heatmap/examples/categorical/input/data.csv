@@ -1,0 +1,55 @@
+row,column,value
+Cohort,S01,Discovery
+Cohort,S02,Validation
+Cohort,S03,Discovery
+Cohort,S04,Validation
+Cohort,S05,Discovery
+Cohort,S06,Validation
+Cohort,S07,Discovery
+Cohort,S08,Validation
+Cohort,S09,Discovery
+Cohort,S10,Validation
+Cohort,S11,Discovery
+Cohort,S12,Validation
+Cohort,S13,Discovery
+Cohort,S14,Validation
+Cohort,S15,Discovery
+Cohort,S16,Validation
+Cohort,S17,Discovery
+Cohort,S18,Validation
+Stage,S01,Stage I
+Stage,S02,Stage II
+Stage,S03,Stage III
+Stage,S04,Stage I
+Stage,S05,Stage II
+Stage,S06,Stage III
+Stage,S07,Stage I
+Stage,S08,Stage II
+Stage,S09,Stage III
+Stage,S10,Stage I
+Stage,S11,Stage II
+Stage,S12,Stage III
+Stage,S13,Stage I
+Stage,S14,Stage II
+Stage,S15,Stage III
+Stage,S16,Stage I
+Stage,S17,Stage II
+Stage,S18,Stage III
+Response,S01,Responder
+Response,S02,Nonresponder
+Response,S03,Responder
+Response,S04,Nonresponder
+Response,S05,Responder
+Response,S06,Nonresponder
+Response,S07,Responder
+Response,S08,Nonresponder
+Response,S09,Responder
+Response,S10,Nonresponder
+Response,S11,Responder
+Response,S12,Nonresponder
+Response,S13,Responder
+Response,S14,Nonresponder
+Response,S15,Responder
+Response,S16,Nonresponder
+Response,S17,Responder
+Response,S18,Nonresponder

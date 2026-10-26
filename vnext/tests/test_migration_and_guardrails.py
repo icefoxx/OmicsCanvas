@@ -164,3 +164,21 @@ def test_fault_injection_subset_detected_without_false_positives(plugin_ids):
     assert summary["clean"]["false_positive_errors"] == 0
     assert summary["total"]["n"] > 0
     assert summary["total"]["detected"] == summary["total"]["n"]
+
+
+def test_three_dimensional_embedding_checks_the_z_coordinate():
+    codes = _validate('interactive_3d_scatter', {'x':'a','y':'b','z':'c'},
+                      ['a','b','c'], [{'a':'1','b':'2','c':'not_numeric'}])
+    assert codes.get('NON_NUMERIC_COORDINATES') == 'error'
+
+
+def test_categorical_circular_rings_do_not_weaken_numeric_heatmap_checks(tmp_path):
+    from vnext.adapters.legacy_r import legacy_params_to_plotspec
+    from vnext.validate.pipeline import validate_plotspec
+    table = tmp_path/'rings.csv'
+    table.write_text('row,column,value\nCohort,S1,Discovery\nCohort,S2,Validation\n')
+    params = dict(row_column='row', column_column='column', value_column='value')
+    numeric = validate_plotspec(legacy_params_to_plotspec('circular_heatmap', params), tables={'input': table})
+    assert any(e['code'] == 'NON_NUMERIC_VALUES' for e in numeric['errors'])
+    categorical = validate_plotspec(legacy_params_to_plotspec('circular_heatmap', dict(params, value_mode='categorical')), tables={'input': table})
+    assert categorical['valid']

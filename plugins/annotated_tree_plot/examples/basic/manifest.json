@@ -1,0 +1,11 @@
+{
+  "id": "basic",
+  "label": "Supplied tree and feature heatmap",
+  "plugin_id": "annotated_tree_plot",
+  "params": "params.json",
+  "inputs": {
+    "input": "input/data.csv",
+    "annot": "input/annot.csv"
+  },
+  "expected": "expected/result.png"
+}

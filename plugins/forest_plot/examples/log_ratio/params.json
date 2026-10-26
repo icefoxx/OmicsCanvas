@@ -1,0 +1,10 @@
+{
+  "label_column": "label",
+  "effect_column": "effect",
+  "lower_column": "lower",
+  "upper_column": "upper",
+  "group_column": "group",
+  "title": "Ratios on a logarithmic axis",
+  "x_scale": "log10",
+  "null_value": 1
+}

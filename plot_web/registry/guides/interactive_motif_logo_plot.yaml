@@ -1,0 +1,108 @@
+summary: Display DNA position-probability matrices as sequence logos with optional
+  motif statistics.
+observation_type: observations or summary items in the input table
+best_for:
+- Inspect enriched sequence preferences
+- Compare conservation across positions
+- Organize candidate binding motifs
+common_uses: []
+input_requirements: Motif/position/A/C/G/T long data or a grouped wide probability
+  matrix.
+learn_more: 'Input: Motif/position/A/C/G/T long data or a grouped wide probability
+  matrix. Interpretation: Relative letter heights encode base probabilities; total
+  column height can reflect information content. Check mappings, order and transformations
+  before adjusting labels, colors and canvas dimensions. Confirm legends and units
+  before export.'
+interpretation:
+- id: encoding
+  type: direct
+  title: How to read this plot
+  text: Relative letter heights encode base probabilities; total column height can
+    reflect information content.
+cautions:
+- id: caution_1
+  title: Caution 1
+  text: A motif match rarely identifies a unique transcription factor
+- id: caution_2
+  title: Caution 2
+  text: A sequence logo alone does not establish enrichment significance
+examples:
+- id: basic
+  title: Candidate sequence preferences
+  description: 'Use case: Inspect enriched sequence preferences. This preset illustrates
+    candidate sequence preferences. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: basic
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Inspect enriched sequence preferences
+  input_requirements: Motif/position/A/C/G/T long data or a grouped wide probability
+    matrix.
+  preview_asset: plugins/interactive_motif_logo_plot/all_examples_gallery/basic.png
+- id: custom
+  title: Base colors and row layout
+  description: 'Use case: Compare conservation across positions. This preset illustrates
+    base colors and row layout. Replace its input with your data while retaining the
+    appropriate view settings.'
+  demo_id: custom
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Compare conservation across positions
+  input_requirements: Motif/position/A/C/G/T long data or a grouped wide probability
+    matrix.
+  preview_asset: plugins/interactive_motif_logo_plot/all_examples_gallery/custom.png
+  variant_id: custom
+- id: interactive
+  title: Inspect positions and bases on hover
+  description: 'Use case: Organize candidate binding motifs. This preset illustrates
+    inspect positions and bases on hover. Replace its input with your data while retaining
+    the appropriate view settings.'
+  demo_id: interactive
+  data_note: Local demonstration bundle, not the original data of a cited paper.
+  scenario: Organize candidate binding motifs
+  input_requirements: Motif/position/A/C/G/T long data or a grouped wide probability
+    matrix.
+  preview_asset: plugins/interactive_motif_logo_plot/all_examples_gallery/interactive.png
+  variant_id: interactive
+  mappings:
+    tooltip_columns:
+    - motif
+    - position
+    - base
+    - raw_weight
+    - probability
+    - height
+literature_ids:
+- schneider_logos_1990
+- rodionova_punr_2021
+- harrington_geocas9_2017
+reporting:
+  base_template: '{family_name}. Report the actual input units, transformations and
+    display filters alongside this figure.'
+coverage_notes: []
+variants:
+  custom:
+    summary: 'Use case: Compare conservation across positions. This preset illustrates
+      base colors and row layout. Replace its input with your data while retaining
+      the appropriate view settings.'
+  interactive:
+    summary: 'Use case: Organize candidate binding motifs. This preset illustrates
+      inspect positions and bases on hover. Replace its input with your data while
+      retaining the appropriate view settings.'
+customization:
+- parameter: input_mode
+  label: input_mode
+  default: auto
+- parameter: base_size
+  label: base_size
+  default: 11
+- parameter: width
+  label: width
+  default: null
+- parameter: height
+  label: height
+  default: null
+source_modules:
+- title: FigureYa86SNPmotif
+  url: https://github.com/ying-ge/FigureYa/tree/8d7a02c7d00467c45471139b63620571afebbeba/FigureYa86SNPmotif
+  scope: Coverage refers to supplied plot-ready tables and the listed visual grammar.
+    Upstream analysis, exact publication styling and every original composite are
+    not automatically reproduced.
